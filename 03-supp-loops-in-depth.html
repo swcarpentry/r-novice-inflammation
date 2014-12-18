@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row-fluid">
+        <div class="span10 offset1">
+          <h1 class="title"></h1>
+          
+<h3 id="to-loop-or-not-to-loop...">To loop or not to loop...?</h3>
+<p>In R you have multiple options when repeating calculations: vectorized operations, <code>for</code> loops, and <code>apply</code> functions.</p>
+<p>This lesson is an extension of <a href="03-loops-R.html">Analyzing Multiple Data Sets</a>. In that lesson, we introduced how to run a custom function, <code>analyze</code>, over multiple data files:</p>
+<pre class='in'><code>analyze <- function(filename) {
+  # Plots the average, min, and max inflammation over time.
+  # Input is character string of a csv file.
+  dat <- read.csv(file = filename, header = FALSE)
+  avg_day_inflammation <- apply(dat, 2, mean)
+  plot(avg_day_inflammation)
+  max_day_inflammation <- apply(dat, 2, max)
+  plot(max_day_inflammation)
+  min_day_inflammation <- apply(dat, 2, min)
+  plot(min_day_inflammation)
+}</code></pre>
+<pre class='in'><code>filenames <- list.files(pattern = "csv")</code></pre>
+<h4 id="vectorized-operations">Vectorized operations</h4>
+<p>A key difference between R and many other languages is a topic known as <em>vectorization</em>. When you wrote the <code>total</code> function, we mentioned that R already has <code>sum</code> to do this; <code>sum</code> is <em>much</em> faster than the interpreted <code>for</code> loop because <code>sum</code> is coded in C to work with a vector of numbers. Many of R's functions work this way; the loop is hidden from you in C. Learning to use vectorized operations is a key skill in R.</p>
+<p>For example, to add pairs of numbers contained in two vectors</p>
+<pre class='in'><code>a <- 1:10
+b <- 1:10</code></pre>
+<p>you could loop over the pairs adding each in turn, but that would be very inefficient in R.</p>
+<pre class='in'><code>res <- numeric(length = length(a))
+for (i in seq_along(a)) {
+  res[i] <- a[i] + b[i]
+}
+res</code></pre>
+<div class="out">
+<pre class='out'><code> [1]  2  4  6  8 10 12 14 16 18 20
+</code></pre>
+</div>
+<p>Instead, <code>+</code> is a <em>vectorized</em> function which can operate on entire vectors at once</p>
+<pre class='in'><code>res2 <- a + b
+all.equal(res, res2)</code></pre>
+<div class="out">
+<pre class='out'><code>[1] TRUE
+</code></pre>
+</div>
+<h4 id="for-or-apply"><code>for</code> or <code>apply</code>?</h4>
+<p>A <code>for</code> loop is used to apply the same function calls to a collection of objects. R has a family of functions, the <code>apply</code> family, which can be used in much the same way. You've already used one of the family, <code>apply</code> in the first <a href="../01-starting-with-data.html">lesson</a>. The <code>apply</code> family members include</p>
+<ul>
+<li><code>apply</code> - apply over the margins of an array (e.g. the rows or columns of a matrix)</li>
+<li><code>lapply</code> - apply over an object and return list</li>
+<li><code>sapply</code> - apply over an object and return a simplified object (an array) if possible</li>
+<li><code>vapply</code> - similar to <code>sapply</code> but you specify the type of object returned by the iterations</li>
+</ul>
+<p>Each of these has an argument <code>FUN</code> which takes a function to apply to each element of the object. Instead of looping over <code>filenames</code> and calling <code>analyze</code>, as you did earlier, you could <code>sapply</code> over <code>filenames</code> with <code>FUN = analyze</code>:</p>
+<pre class='in'><code>sapply(filenames, FUN = analyze)</code></pre>
+<p>Deciding whether to use <code>for</code> or one of the <code>apply</code> family is really personal preference. Using an <code>apply</code> family function forces to you encapsulate your operations as a function rather than separate calls with <code>for</code>. <code>for</code> loops are often more natural in some circumstances; for several related operations, a <code>for</code> loop will avoid you having to pass in a lot of extra arguments to your function.</p>
+<h4 id="loops-in-r-are-slow">Loops in R are slow</h4>
+<p>No, they are not! <em>If</em> you follow some golden rules:</p>
+<ol style="list-style-type: decimal">
+<li>Don't use a loop when a vectorised alternative exists</li>
+<li>Don't grow objects (via <code>c</code>, <code>cbind</code>, etc) during the loop - R has to create a new object and copy across the information just to add a new element or row/column</li>
+<li>Allocate an object to hold the results and fill it in during the loop</li>
+</ol>
+<p>As an example, we'll create a new version of <code>analyze</code> that will return the mean inflammation per day (column) of each file.</p>
+<pre class='in'><code>analyze2 <- function(filenames) {
+  for (f in seq_along(filenames)) {
+    fdata <- read.csv(filenames[f], header = FALSE)
+    res <- apply(fdata, 2, mean)
+    if (f == 1) {
+      out <- res
+    } else {
+      # The loop is slowed by this call to cbind that grows the object
+      out <- cbind(out, res)
+    }
+  }
+  return(out)
+}
+
+system.time(avg2 <- analyze2(filenames))</code></pre>
+<div class="out">
+<pre class='out'><code>   user  system elapsed 
+  0.044   0.000   0.045 
+</code></pre>
+</div>
+<p>Note how we add a new column to <code>out</code> at each iteration? This is a cardinal sin of writing a <code>for</code> loop in R.</p>
+<p>Instead, we can create an empty matrix with the right dimensions (rows/columns) to hold the results. Then we loop over the files but this time we fill in the <code>f</code>th column of our results matrix <code>out</code>. This time there is no copying/growing for R to deal with.</p>
+<pre class='in'><code>analyze3 <- function(filenames) {
+  out <- matrix(ncol = length(filenames), nrow = 40) ## assuming 40 here from files 
+  for (f in seq_along(filenames)) {
+    fdata <- read.csv(filenames[f], header = FALSE)
+    out[, f] <- apply(fdata, 2, mean)
+  }
+  return(out)
+}
+
+system.time(avg3 <- analyze3(filenames))</code></pre>
+<div class="out">
+<pre class='out'><code>   user  system elapsed 
+  0.056   0.004   0.057 
+</code></pre>
+</div>
+<p>In this simple example there is little difference in the compute time of <code>analyze2</code> and <code>analyze3</code>. This is because we are only iterating over 12 files and hence we only incur 12 copy/grow operations. If we were doing this over more files or the data objects we were growing were larger, the penalty for copying/growing would be much larger.</p>
+<p>Note that <code>apply</code> handles these memory allocation issues for you, but then you have to write the loop part as a function to pass to <code>apply</code>. At its heart, <code>apply</code> is just a <code>for</code> loop with extra convenience.</p>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Email</a>
+        <a class="label swc-blue-bg" href="http://github.com/swcarpentry">GitHub</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+        <a class="bugreport label swc-blue-bg" href="mailto:admin@software-carpentry.org?subject=bug%20in%20{{page.path}}">Bug Report</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row-fluid">
+        <div class="span10 offset1">
+          <h1 class="title"></h1>
+          
+<h2 id="novice-r-materials---following-python-examples"># Novice R materials - following Python examples</h2>
+<ul>
+<li>Draw concept map of where we are headed towards best scientific practices, and reproducibility.</li>
+<li>Its really important that you know what you did. More journals/grants/etc. are also making it important for them to know what you did.</li>
+<li>A lot of scientific code is <em>not</em> reproducible.</li>
+<li>If you keep a lab notebook, why are we not as careful with our code?</li>
+<li>We edit each others manuscripts, but we don't edit each other's code.</li>
+<li>If you write your code with &quot;future you&quot; in mind, you will save yourself and others a lot of time.</li>
+</ul>
+<h1 id="very-basics-of-r">Very basics of R</h1>
+<p>R is a versatile, open source programming language that was specifically designed for data analysis. As such R is extremely useful both for statistics and data science. Inspired by the programming language S.</p>
+<ul>
+<li>Open source software under GPL.<br /></li>
+<li>Superior (if not just comparable) to commercial alternatives. R has over 5,000 user contributed packages at this time. It's widely used both in academia and industry.<br /></li>
+<li>Available on all platforms.<br /></li>
+<li>Not just for statistics, but also general purpose programming.<br /></li>
+<li>Is (sort of) object oriented and functional.<br /></li>
+<li>Large and growing community of peers.</li>
+</ul>
+<p>Some of the same commands we learned from the command line can be used in R. List objects in your current environment</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre>
+<pre><code>##  [1] &quot;a&quot;                 &quot;abbrev&quot;            &quot;age&quot;              
+##  [4] &quot;analyze&quot;           &quot;analyze2&quot;          &quot;analyze3&quot;         
+##  [7] &quot;avg_inflammation&quot;  &quot;avg2&quot;              &quot;avg3&quot;             
+## [10] &quot;b&quot;                 &quot;center&quot;            &quot;centered&quot;         
+## [13] &quot;d.summary&quot;         &quot;dat&quot;               &quot;diff&quot;             
+## [16] &quot;display&quot;           &quot;f&quot;                 &quot;fahr_to_celsius&quot;  
+## [19] &quot;fahr_to_kelvin&quot;    &quot;fence&quot;             &quot;filenames&quot;        
+## [22] &quot;final&quot;             &quot;hello&quot;             &quot;i&quot;                
+## [25] &quot;kelvin_to_celsius&quot; &quot;len&quot;               &quot;letter&quot;           
+## [28] &quot;m&quot;                 &quot;mass&quot;              &quot;mat&quot;              
+## [31] &quot;max_inflammation&quot;  &quot;mdat&quot;              &quot;min_inflammation&quot; 
+## [34] &quot;more_data&quot;         &quot;odds&quot;              &quot;original&quot;         
+## [37] &quot;out&quot;               &quot;pangram&quot;           &quot;patient_1&quot;        
+## [40] &quot;print_numbers&quot;     &quot;print_words&quot;       &quot;res&quot;              
+## [43] &quot;res2&quot;              &quot;span&quot;              &quot;temp&quot;             
+## [46] &quot;tempo&quot;             &quot;test_data&quot;         &quot;total&quot;            
+## [49] &quot;vowel&quot;             &quot;weight_kg&quot;         &quot;weight_lb&quot;        
+## [52] &quot;weights&quot;           &quot;words&quot;             &quot;x&quot;                
+## [55] &quot;xlist&quot;             &quot;y&quot;                 &quot;z&quot;</code></pre>
+<p>Remove objects from your current environment.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">5</span>
+<span class="kw">rm</span>(x)</code></pre>
+<p>Remove all objects from your current environment. Typing <code>x</code> on the console will give you an error.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</code></pre>
+<p>Notice that we have <em>nested</em> one function inside of another.</p>
+<p>Use <code>#</code> signs to comment. Comment liberally in your R scripts. Anything to the right of a <code>#</code> is ignored by R.</p>
+<h3 id="assignment-operator">Assignment operator</h3>
+<p><code>&lt;-</code> is the assignment operator. Assigns values on the right to objects on the left. Mostly similar to <code>=</code> but not always. Learn to use <code>&lt;-</code> as it is good programming practice. Using <code>=</code> in place of <code>&lt;-</code> can lead to issues down the line.</p>
+<h3 id="package-management">Package management</h3>
+<p><code>install.packages(&quot;package-name&quot;)</code> will download a package from one of the CRAN mirrors assuming that a binary is available for your operating system. If you have not set a preferred CRAN mirror in your <code>options()</code>, then a menu will pop up asking you to choose a location. To set it permanently, add the CRAN mirror in your <code>~/.Rprofile</code></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">local</span>({
+    r &lt;-<span class="st"> </span><span class="kw">getOption</span>(<span class="st">&quot;repos&quot;</span>)
+    r[<span class="st">&quot;CRAN&quot;</span>] &lt;-<span class="st"> &quot;http://cran.rstudio.com/&quot;</span>  <span class="co"># hard code the RStudio mirror</span>
+    <span class="kw">options</span>(<span class="dt">repos =</span> r)
+})</code></pre>
+<p>Use <code>old.packages()</code> to list all your locally-installed packages that are now out of date. <code>update.packages()</code> will update all packages in the known libraries interactively. This can take a while if you haven't done it recently. To update everything without any user intervention, use the <code>ask = FALSE</code> argument.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">update.packages</span>(<span class="dt">ask =</span> <span class="ot">FALSE</span>)</code></pre>
+<h2 id="introduction-to-r-and-rstudio">Introduction to R and RStudio</h2>
+<p>Let's start by learning about our tool.</p>
+<p><em>Point out the different windows in RStudio.</em> * Console, Scripts, Environments, Plots * Avoid using shortcuts. * Code and workflow is more reproducible if we can document everything that we do. * Our end goal is not just to &quot;do stuff&quot; but to do it in a way that anyone can easily and exactly replicate our workflow and results.</p>
+<p>You can get output from R simply by typing in math</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span> +<span class="st"> </span><span class="dv">5</span></code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">12</span>/<span class="dv">7</span></code></pre>
+<pre><code>## [1] 1.714</code></pre>
+<p>or by typing words, with the command <code>writeLines()</code></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">writeLines</span>(<span class="st">&quot;hello world&quot;</span>)</code></pre>
+<pre><code>## hello world</code></pre>
+<p>We can assign our results to an object, if we give it a name</p>
+<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">60</span> *<span class="st"> </span><span class="dv">60</span>
+hours &lt;-<span class="st"> </span><span class="dv">365</span> *<span class="st"> </span><span class="dv">24</span></code></pre>
+<p>The <em>result</em> of the operation on the right hand side of <code>&lt;-</code> is <em>assigned</em> to an object with the name specified on the left hand side of <code>&lt;-</code>. The <em>result</em> could be any type of R object, including your own functions.</p>
+<h2 id="data-types-and-structures">Data types and structures</h2>
+<h3 id="understanding-basic-data-types-in-r">Understanding basic data types in R</h3>
+<p>To make the best of the R language, you'll need a strong understanding of the basic data types and data structures and how to operate on those.</p>
+<p>Very important to understand because these are the objects you will manipulate on a day-to-day basis in R. Dealing with object conversions is one of the most common sources of frustration for beginners.</p>
+<p><strong>Everything</strong> in R is an object.</p>
+<p>R has 6 (although we will not discuss the raw class for this workshop) atomic vector types.</p>
+<ul>
+<li>character</li>
+<li>numeric (real or decimal)</li>
+<li>integer</li>
+<li>logical</li>
+<li>complex</li>
+</ul>
+<p>By <em>atomic</em>, we mean the vector only holds data of a single type.</p>
+<ul>
+<li><strong>character</strong>: <code>&quot;a&quot;</code>, <code>&quot;swc&quot;</code></li>
+<li><strong>numeric</strong>: <code>2</code>, <code>15.5</code></li>
+<li><strong>integer</strong>: <code>2L</code> (the <code>L</code> tells R to store this as an integer)</li>
+<li><strong>logical</strong>: <code>TRUE</code>, <code>FALSE</code></li>
+<li><strong>complex</strong>: <code>1+4i</code> (complex numbers with real and imaginary parts)</li>
+</ul>
+<p>R provides many functions to examine features of vectors and other objects, for example</p>
+<ul>
+<li><code>typeof()</code> - what is it?<br /></li>
+<li><code>length()</code> - how long is it? What about two dimensional objects?<br /></li>
+<li><code>attributes()</code> - does it have any metadata?</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Example</span>
+x &lt;-<span class="st"> &quot;dataset&quot;</span>
+<span class="kw">typeof</span>(x)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(x)</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">
+y &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+y</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(y)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(y)</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">
+z &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(y)
+z</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(z)</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<p>R has many <strong>data structures</strong>. These include</p>
+<ul>
+<li>atomic vector</li>
+<li>list</li>
+<li>matrix</li>
+<li>data frame</li>
+<li>factors</li>
+</ul>
+<h3 id="vectors">Vectors</h3>
+<p>A vector is the most common and basic data structure in R and is pretty much the workhorse of R. Technically, vectors can be one of two types:</p>
+<ul>
+<li>atomic vectors</li>
+<li>lists</li>
+</ul>
+<p>although the term &quot;vector&quot; most commonly refers to the atomic types not to lists.</p>
+<h4 id="atomic-vectors">Atomic Vectors</h4>
+<p>A vector is a collection of elements that are most commonly <code>character</code>, <code>logical</code>, <code>integer</code> or <code>numeric</code>.</p>
+<p>You can create an empty vector with <code>vector()</code>. (By default the mode is <code>logical</code>. You can be more explicit as shown in the examples below.) It is more common to use direct constructors such as <code>character()</code>, <code>numeric()</code>, etc.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">vector</span>()
+<span class="co"># with a length and type</span>
+<span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>, <span class="dt">length =</span> <span class="dv">10</span>)</code></pre>
+<pre><code>##  [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">character</span>(<span class="dv">5</span>)  ## character vector of length 5</code></pre>
+<pre><code>## [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">numeric</span>(<span class="dv">5</span>)</code></pre>
+<pre><code>## [1] 0 0 0 0 0</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">logical</span>(<span class="dv">5</span>)</code></pre>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE</code></pre>
+<p>Various examples:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)
+x</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(x)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<p><code>x</code> is a numeric vector. These are the most common kind. They are numeric objects and are treated as double precision real numbers. To explicitly create integers, add an <code>L</code> to each (or <em>coerce</em> to the integer type using <code>as.integer()</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 2L, 3L)</code></pre>
+<p>You can also have logical vectors.</p>
+<pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)</code></pre>
+<p>Finally you can have character vectors:</p>
+<pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sarah&quot;</span>, <span class="st">&quot;Tracy&quot;</span>, <span class="st">&quot;Jon&quot;</span>)</code></pre>
+<p><strong>Examine your vector</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(z)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(z)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(z)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(z)</code></pre>
+<pre><code>##  chr [1:3] &quot;Sarah&quot; &quot;Tracy&quot; &quot;Jon&quot;</code></pre>
+<p>Question: Do you see a property that's common to all these vectors above?</p>
+<p><strong>Add elements</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">c</span>(z, <span class="st">&quot;Annette&quot;</span>)
+z</code></pre>
+<pre><code>## [1] &quot;Sarah&quot;   &quot;Tracy&quot;   &quot;Jon&quot;     &quot;Annette&quot;</code></pre>
+<p>More examples of vectors</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.7</span>)
+x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)
+x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>)
+x &lt;-<span class="st"> </span><span class="dv">9</span>:<span class="dv">100</span>
+x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> +<span class="st"> </span>(<span class="dv">0</span>+0i), <span class="dv">2</span> +<span class="st"> </span>(<span class="dv">0</span>+4i))</code></pre>
+<p>You can also create vectors as a sequence of numbers</p>
+<pre class="sourceCode r"><code class="sourceCode r">series &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+<span class="kw">seq</span>(<span class="dv">10</span>)</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="fl">0.1</span>)</code></pre>
+<pre><code>##  [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3
+## [15]  2.4  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7
+## [29]  3.8  3.9  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1
+## [43]  5.2  5.3  5.4  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5
+## [57]  6.6  6.7  6.8  6.9  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9
+## [71]  8.0  8.1  8.2  8.3  8.4  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3
+## [85]  9.4  9.5  9.6  9.7  9.8  9.9 10.0</code></pre>
+<p><code>Inf</code> is infinity. You can have either positive or negative infinity.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>/<span class="dv">0</span></code></pre>
+<pre><code>## [1] Inf</code></pre>
+<p><code>NaN</code> means Not a Number. It's an undefined value.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">0</span>/<span class="dv">0</span></code></pre>
+<pre><code>## [1] NaN</code></pre>
+<p>Objects can have <strong>attributes</strong>. Attribues are part of the object. These include:</p>
+<ul>
+<li>names</li>
+<li>dimnames</li>
+<li>dim</li>
+<li>class</li>
+<li>attributes (contain metadata)</li>
+</ul>
+<p>You can also glean other attribute-like information such as length (works on vectors and lists) or number of characters (for character strings).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(<span class="dv">1</span>:<span class="dv">10</span>)</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nchar</span>(<span class="st">&quot;Software Carpentry&quot;</span>)</code></pre>
+<pre><code>## [1] 18</code></pre>
+<p><strong>What happens when you mix types?</strong></p>
+<p>R will create a resulting vector that is the least common denominator. The coercion will move towards the one that's easiest to <strong>coerce</strong> to.</p>
+<p>Guess what the following do without running them first</p>
+<pre class="sourceCode r"><code class="sourceCode r">xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.7</span>, <span class="st">&quot;a&quot;</span>)
+xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="dv">2</span>)
+xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>)</code></pre>
+<p>This is called implicit coercion. You can also coerce vectors explicitly using the <code>as.&lt;class_name&gt;</code>. Example</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.numeric</span>(<span class="st">&quot;1&quot;</span>)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.character</span>(<span class="dv">1</span>:<span class="dv">2</span>)</code></pre>
+<pre><code>## [1] &quot;1&quot; &quot;2&quot;</code></pre>
+<h3 id="matrix">Matrix</h3>
+<p>In R matrices are an extension of the numeric or character vectors. They are not a separate type of object but simply an atomic vector with dimensions; the number of rows and columns.</p>
+<pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)
+m</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]   NA   NA
+## [2,]   NA   NA</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(m)</code></pre>
+<pre><code>## [1] 2 2</code></pre>
+<p>Matrices in R are filled column-wise.</p>
+<pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</code></pre>
+<p>Other ways to construct a matrix</p>
+<pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+<span class="kw">dim</span>(m) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)</code></pre>
+<p>This takes a vector and transform into a matrix with 2 rows and 5 columns.</p>
+<p>Another way is to bind columns or rows using <code>cbind()</code> and <code>rbind()</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">3</span>
+y &lt;-<span class="st"> </span><span class="dv">10</span>:<span class="dv">12</span>
+<span class="kw">cbind</span>(x, y)</code></pre>
+<pre><code>##      x  y
+## [1,] 1 10
+## [2,] 2 11
+## [3,] 3 12</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbind</span>(x, y)</code></pre>
+<pre><code>##   [,1] [,2] [,3]
+## x    1    2    3
+## y   10   11   12</code></pre>
+<p>You can also use the <code>byrow</code> argument to specify how the matrix is filled. From R's own documentation:</p>
+<pre class="sourceCode r"><code class="sourceCode r">mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)
+mdat</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]   11   12   13</code></pre>
+<h3 id="list">List</h3>
+<p>In R lists act as containers. Unlike atomic vectors, the contents of a list are not restricted to a single mode and can encompass any mixture of data types. Lists are sometimes called generic vectors, because the elements of a list can by of any type of R object, even lists containing further lists. This property makes them fundamentally different from atomic vectors.</p>
+<p>A list is a special type of vector. Each element can be a different type.</p>
+<p>Create lists using <code>list()</code> or coerce other objects using <code>as.list()</code>. An empty list of the required length can be created using <code>vector()</code></p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>, <span class="dv">1</span> +<span class="st"> </span>(<span class="dv">0</span>+4i))
+x</code></pre>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] &quot;a&quot;
+## 
+## [[3]]
+## [1] TRUE
+## 
+## [[4]]
+## [1] 1+4i</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">
+x &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="dv">5</span>)  ## empty list
+<span class="kw">length</span>(x)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x[[<span class="dv">1</span>]]</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">
+x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+x &lt;-<span class="st"> </span><span class="kw">as.list</span>(x)
+<span class="kw">length</span>(x)</code></pre>
+<pre><code>## [1] 10</code></pre>
+<ol style="list-style-type: decimal">
+<li>What is the class of <code>x[1]</code>?</li>
+<li>What about <code>x[[1]]</code>?</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">xlist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="st">&quot;Karthik Ram&quot;</span>, <span class="dt">b =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">data =</span> <span class="kw">head</span>(iris))
+xlist</code></pre>
+<pre><code>## $a
+## [1] &quot;Karthik Ram&quot;
+## 
+## $b
+##  [1]  1  2  3  4  5  6  7  8  9 10
+## 
+## $data
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<ol style="list-style-type: decimal">
+<li>What is the length of this object? What about its structure?</li>
+</ol>
+<p>Lists can be extremely useful inside functions. You can “staple” together lots of different kinds of results into a single object that a function can return.</p>
+<p>A list does not print to the console like a vector. Instead, each element of the list starts on a new line.</p>
+<p>Elements are indexed by double brackets. Single brackets will still return a(nother) list.</p>
+<h3 id="factors">Factors</h3>
+<p>Factors are special vectors that represent categorical data. Factors can be ordered or unordered and are important for modelling functions such as <code>lm()</code> and <code>glm()</code> and also in <code>plot()</code> methods.</p>
+<p>Once created factors can only contain a pre-defined set values, known as <em>levels</em>.</p>
+<p>Factors are stored as integers that have labels associated the unique integers. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings. Some string methods will coerce factors to strings, while others will throw an error.</p>
+<p>Sometimes factors can be left unordered. Example: male, female.</p>
+<p>Other times you might want factors to be ordered (or ranked). Example: low, medium, high.</p>
+<p>Underlying it's represented by numbers 1, 2, 3.</p>
+<p>They are better than using simple integer labels because factors are what are called self describing. male and female is more descriptive than 1s and 2s. Helpful when there is no additional metadata.</p>
+<p>Which is male? 1 or 2? You wouldn't be able to tell with just integer data. Factors have this information built in.</p>
+<p>Factors can be created with <code>factor()</code>. Input is often a character vector.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>, <span class="st">&quot;yes&quot;</span>))
+x</code></pre>
+<pre><code>## [1] yes no  no  yes yes
+## Levels: no yes</code></pre>
+<p><code>table(x)</code> will return a frequency table counting the number of elements in each level.</p>
+<p>If you need to convert a factor to a character vector, simply use</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.character</span>(x)</code></pre>
+<pre><code>## [1] &quot;yes&quot; &quot;no&quot;  &quot;no&quot;  &quot;yes&quot; &quot;yes&quot;</code></pre>
+<p>To convert a factor to a numeric vector, go via a character. Compare</p>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">2</span>))
+<span class="kw">as.numeric</span>(f)  ## wrong!</code></pre>
+<pre><code>## [1] 1 3 4 2</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(f))</code></pre>
+<pre><code>## [1]  1  5 10  2</code></pre>
+<p>In modeling functions, it is important to know what the baseline level is. This is the first factor but by default the ordering is determined by alphanumerical order of elements. You can change this by speciying the <code>levels</code> (another option is to use the function <code>relevel()</code>).</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>), <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>))
+x</code></pre>
+<pre><code>## [1] yes no  yes
+## Levels: yes no</code></pre>
+<h3 id="data-frame">Data frame</h3>
+<p>A data frame is a very important data type in R. It's pretty much the <em>de facto</em> data structure for most tabular data and what we use for statistics.</p>
+<p>A data frame is a special type of list where every element of the list has same length.</p>
+<p>Data frames can have additional attributes such as <code>rownames()</code>, which can be useful for annotating data, like <code>subject_id</code> or <code>sample_id</code>. But most of the time they are not used.</p>
+<p>Some additional information on data frames:</p>
+<ul>
+<li>Usually created by <code>read.csv()</code> and <code>read.table()</code>.</li>
+<li>Can convert to matrix with <code>data.matrix()</code> (preferred) or <code>as.matrix()</code></li>
+<li>Coercion will be forced and not always what you expect.</li>
+<li>Can also create with <code>data.frame()</code> function.</li>
+<li>Find the number of rows and columns with <code>nrow(dat)</code> and <code>ncol(dat)</code>, respectively.</li>
+<li>Rownames are usually 1, 2, ..., n.</li>
+</ul>
+<h4 id="creating-data-frames-by-hand">Creating data frames by hand</h4>
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> letters[<span class="dv">1</span>:<span class="dv">10</span>], <span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">y =</span> <span class="dv">11</span>:<span class="dv">20</span>)
+dat</code></pre>
+<pre><code>##    id  x  y
+## 1   a  1 11
+## 2   b  2 12
+## 3   c  3 13
+## 4   d  4 14
+## 5   e  5 15
+## 6   f  6 16
+## 7   g  7 17
+## 8   h  8 18
+## 9   i  9 19
+## 10  j 10 20</code></pre>
+<h4 id="useful-data-frame-functions">Useful data frame functions</h4>
+<ul>
+<li><code>head()</code> - shown first 6 rows</li>
+<li><code>tail()</code> - show last 6 rows</li>
+<li><code>dim()</code> - returns the dimensions</li>
+<li><code>nrow()</code> - number of rows</li>
+<li><code>ncol()</code> - number of columns</li>
+<li><code>str()</code> - structure of each column</li>
+<li><code>names()</code> - shows the <code>names</code> attribute for a data frame, which gives the column names.</li>
+</ul>
+<p>See that it is actually a special list:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.list</span>(iris)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(iris)</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Dimensions</th>
+<th align="left">Homogenous</th>
+<th align="left">Heterogeneous</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1-D</td>
+<td align="left">atomic vector</td>
+<td align="left">list</td>
+</tr>
+<tr class="even">
+<td align="left">2_D</td>
+<td align="left">matrix</td>
+<td align="left">data frame</td>
+</tr>
+</tbody>
+</table>
+<h3 id="indexing">Indexing</h3>
+<p>Vectors have positions, these positions are ordered and can be called using <code>object[index]</code></p>
+<pre class="sourceCode r"><code class="sourceCode r">letters[<span class="dv">2</span>]</code></pre>
+<pre><code>## [1] &quot;b&quot;</code></pre>
+<h3 id="functions">Functions</h3>
+<p>A function is an R object that takes inputs to perform a task. Functions take in information and may return desired outputs.</p>
+<p><code>output &lt;- name_of_function(inputs)</code></p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+y &lt;-<span class="st"> </span><span class="kw">sum</span>(x)</code></pre>
+<h3 id="help">Help</h3>
+<p>All functions come with a help screen. It is critical that you learn to read the help screens since they provide important information on what the function does, how it works, and usually sample examples at the very bottom.</p>
+<h3 id="get-new-functions">Get new functions</h3>
+<p>To install any package use <code>install.packages()</code></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)  ## install the ggplot2 package</code></pre>
+<p>You can't ever learn all of R, but you can learn how to build a program and how to find help to do the things that you want to do.</p>
+<p>Let's get hands-on.</p>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Email</a>
+        <a class="label swc-blue-bg" href="http://github.com/swcarpentry">GitHub</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+        <a class="bugreport label swc-blue-bg" href="mailto:admin@software-carpentry.org?subject=bug%20in%20{{page.path}}">Bug Report</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+  </body>
+</html>

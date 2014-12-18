@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row-fluid">
+        <div class="span10 offset1">
+          <h1 class="title"></h1>
+          
+<h2 id="analyzing-patient-data">Analyzing Patient Data</h2>
+<p>We are studying inflammation in patients who have been given a new treatment for arthritis, and need to analyze the first dozen data sets. The data sets are stored in <a href="../../gloss.html#comma-separeted-values">comma-separated values</a> (CSV) format: each row holds information for a single patient, and the columns represent successive days. The first few rows of our first file look like this:</p>
+<div class="out">
+<pre class='out'><code>0,0,1,3,1,2,4,7,8,3,3,3,10,5,7,4,7,7,12,18,6,13,11,11,7,7,4,6,8,8,4,4,5,7,3,4,2,3,0,0
+0,1,2,1,2,1,3,2,2,6,10,11,5,9,4,4,7,16,8,6,18,4,12,5,12,7,11,5,11,3,3,5,4,4,5,5,1,1,0,1
+0,1,1,3,3,2,6,2,5,9,5,7,4,5,4,15,5,11,9,10,19,14,12,17,7,12,11,7,4,2,10,5,4,2,2,3,2,2,1,1
+0,0,2,0,4,2,2,1,6,7,10,7,9,13,8,8,15,10,10,7,17,4,4,7,6,15,6,4,9,11,3,5,6,3,3,4,2,3,2,1
+0,1,1,3,3,1,3,5,2,4,4,7,6,5,3,10,8,10,6,17,9,14,9,7,13,9,12,6,7,7,9,6,3,2,2,4,2,0,1,1
+</code></pre>
+</div>
+<p>We want to:</p>
+<ul>
+<li>load that data into memory,</li>
+<li>calculate the average inflammation per day across all patients, and</li>
+<li>plot the result.</li>
+</ul>
+<p>To do all that, we'll have to learn a little bit about programming.</p>
+<h4 id="objectives">Objectives</h4>
+<ul>
+<li>Read tabular data from a file into a program.</li>
+<li>Assign values to variables.</li>
+<li>Select individual values and subsections from data.</li>
+<li>Perform operations on a data frame of data.</li>
+<li>Display simple graphs.</li>
+</ul>
+<h3 id="loading-data">Loading Data</h3>
+<p>To load our inflammation data, first we need to locate our data. We can change the current working directory to the location of the CSV files using the function <code>setwd</code>. For example, if the CSV files are located in a directory named <code>swc</code> in our home directory, we would change the working directory using the following command:</p>
+<pre class='in'><code>setwd("~/swc")</code></pre>
+<p>Just like in the Unix Shell, we type the command and then press <code>Enter</code> (or <code>return</code>). Alternatively you can change the working directory using the RStudio GUI using the menu option <code>Session</code> -&gt; <code>Set Working Directory</code> -&gt; <code>Choose Directory...</code></p>
+<p>Now we could load the data into R using <code>read.csv</code>:</p>
+<pre class='in'><code>read.csv(file = "inflammation-01.csv", header = FALSE)</code></pre>
+<p>The expression <code>read.csv(...)</code> is a <a href="../../gloss.html#function-call">function call</a> that asks R to run the function <code>read.csv</code>.</p>
+<p><code>read.csv</code> has two <a href="../../gloss.html#argument">arguments</a>: the name of the file we want to read, and whether the first line of the file contains names for the columns of data. The filename needs to be a character string (or <a href="../../gloss.html#string">string</a> for short), so we put it in quotes. Assigning the second argument, <code>header</code>, to be <code>FALSE</code> indicates that the data file does not have column headers. We'll talk more about the value <code>FALSE</code>, and its converse <code>TRUE</code>, in lesson 04.</p>
+<blockquote>
+<p><strong>Tip:</strong> <code>read.csv</code> actually has many more arguments that you may find useful when importing your own data in the future. You can learn more about these options in this supplementary <a href="01-supp-ReadWriteCsv.html">lesson</a>.</p>
+</blockquote>
+<p>The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s). For example, in this case if we provided the name of a different file to the argument <code>file</code>, <code>read.csv</code> would read it instead. We'll learn more of the details about functions and their arguments in the next lesson.</p>
+<p>Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file <code>inflammation-01.csv</code>. Try it out.</p>
+<p><code>read.csv</code> read the file, but didn't save the data in memory. To do that, we need to assign the data frame to a variable. A variable is just a name for a value, such as <code>x</code>, <code>current_temperature</code>, or <code>subject_id</code>. We can create a new variable simply by assigning a value to it using <code>&lt;-</code></p>
+<pre class='in'><code>weight_kg <- 55</code></pre>
+<p>Once a variable has a value, we can print it by typing the name of the variable and hitting <code>Enter</code> (or <code>return</code>). In general, R will print to the console any object returned by a function or operation <em>unless</em> we assign it to a variable.</p>
+<pre class='in'><code>weight_kg</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 55
+</code></pre>
+</div>
+<p>We can do arithmetic with the variable:</p>
+<pre class='in'><code># weight in pounds:
+2.2 * weight_kg</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 121
+</code></pre>
+</div>
+<blockquote>
+<p><strong>Tip:</strong> We can add comments to our code using the <code>#</code> character. It is useful to document our code in this way so that others (and us the next time we read it) have an easier time following what the code is doing.</p>
+</blockquote>
+<p>We can also change an object's value by assigning it a new value:</p>
+<pre class='in'><code>weight_kg <- 57.5
+# weight in kilograms is now
+weight_kg</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 57.5
+</code></pre>
+</div>
+<p>If we imagine the variable as a sticky note with a name written on it, assignment is like putting the sticky note on a particular value:</p>
+<p><img src="../python/img/python-sticky-note-variables-01.svg" alt="Variables as Sticky Notes" /></p>
+<p>This means that assigning a value to one object does not change the values of other variables. For example, let's store the subject's weight in pounds in a variable:</p>
+<pre class='in'><code>weight_lb <- 2.2 * weight_kg
+# weight in kg...
+weight_kg</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 57.5
+</code></pre>
+</div>
+<pre class='in'><code># ...and in pounds
+weight_lb</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 126.5
+</code></pre>
+</div>
+<p><img src="../python/img/python-sticky-note-variables-02.svg" alt="Creating Another Variable" /></p>
+<p>and then change <code>weight_kg</code>:</p>
+<pre class='in'><code>weight_kg <- 100.0
+# weight in kg now...
+weight_kg</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 100
+</code></pre>
+</div>
+<pre class='in'><code># ...and in weight pounds still
+weight_lb</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 126.5
+</code></pre>
+</div>
+<p><img src="../python/img/python-sticky-note-variables-03.svg" alt="Updating a Variable" /></p>
+<p>Since <code>weight_lb</code> doesn't &quot;remember&quot; where its value came from, it isn't automatically updated when <code>weight_kg</code> changes. This is different from the way spreadsheets work.</p>
+<p>Now that we know how to assign things to variables, let's re-run <code>read.csv</code> and save its result:</p>
+<pre class='in'><code>dat <- read.csv(file = "inflammation-01.csv", header = FALSE)</code></pre>
+<p>This statement doesn't produce any output because assignment doesn't display anything. If we want to check that our data has been loaded, we can print the variable's value. However, for large data sets it is convenient to use the function <code>head</code> to display only the first few rows of data.</p>
+<pre class='in'><code>head(dat)</code></pre>
+<div class="out">
+<pre class='out'><code>  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20
+1  0  0  1  3  1  2  4  7  8   3   3   3  10   5   7   4   7   7  12  18
+2  0  1  2  1  2  1  3  2  2   6  10  11   5   9   4   4   7  16   8   6
+3  0  1  1  3  3  2  6  2  5   9   5   7   4   5   4  15   5  11   9  10
+4  0  0  2  0  4  2  2  1  6   7  10   7   9  13   8   8  15  10  10   7
+5  0  1  1  3  3  1  3  5  2   4   4   7   6   5   3  10   8  10   6  17
+6  0  0  1  2  2  4  2  1  6   4   7   6   6   9   9  15   4  16  18  12
+  V21 V22 V23 V24 V25 V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38
+1   6  13  11  11   7   7   4   6   8   8   4   4   5   7   3   4   2   3
+2  18   4  12   5  12   7  11   5  11   3   3   5   4   4   5   5   1   1
+3  19  14  12  17   7  12  11   7   4   2  10   5   4   2   2   3   2   2
+4  17   4   4   7   6  15   6   4   9  11   3   5   6   3   3   4   2   3
+5   9  14   9   7  13   9  12   6   7   7   9   6   3   2   2   4   2   0
+6  12   5  18   9   5   3  10   3  12   7   8   4   7   3   5   4   4   3
+  V39 V40
+1   0   0
+2   0   1
+3   1   1
+4   2   1
+5   1   1
+6   2   1
+</code></pre>
+</div>
+<h4 id="challenge">Challenge</h4>
+<p>Draw diagrams showing what variables refer to what values after each statement in the following program:</p>
+<pre><code>mass &lt;- 47.5
+age &lt;- 122
+mass &lt;- mass * 2.0
+age &lt;- age - 20</code></pre>
+<h3 id="manipulating-data">Manipulating Data</h3>
+<p>Now that our data is in memory, we can start doing things with it. First, let's ask what type of thing <code>dat</code> <em>is</em>:</p>
+<pre class='in'><code>class(dat)</code></pre>
+<div class="out">
+<pre class='out'><code>[1] "data.frame"
+</code></pre>
+</div>
+<p>The output tells us that data currently is a data frame in R. This is similar to a spreadsheet in MS Excel that many of us are familiar with using. Data frames are very useful for storing data because you can have a continuous variable, e.g. rainfall, in one column and a categorical variable, e.g. month, in another.</p>
+<p>We can see the dimensions, or <a href="../../gloss.html#shape">shape</a>, of the data frame like this:</p>
+<pre class='in'><code>dim(dat)</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 60 40
+</code></pre>
+</div>
+<p>This tells us that our data frame, <code>dat</code>, has 60 rows and 40 columns.</p>
+<p>If we want to get a single value from the data frame, we can provide an <a href="../../gloss.html#index">index</a> in square brackets, just as we do in math:</p>
+<pre class='in'><code># first value in dat
+dat[1, 1]</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 0
+</code></pre>
+</div>
+<pre class='in'><code># middle value in dat
+dat[30, 20]</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 16
+</code></pre>
+</div>
+<p>An index like <code>[30, 20]</code> selects a single element of a data frame, but we can select whole sections as well. For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:</p>
+<pre class='in'><code>dat[1:4, 1:10]</code></pre>
+<div class="out">
+<pre class='out'><code>  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
+1  0  0  1  3  1  2  4  7  8   3
+2  0  1  2  1  2  1  3  2  2   6
+3  0  1  1  3  3  2  6  2  5   9
+4  0  0  2  0  4  2  2  1  6   7
+</code></pre>
+</div>
+<p>The <a href="../../gloss.html#slice">slice</a> <code>1:4</code> means, &quot;Start at index 1 and go to index 4.&quot;</p>
+<p>The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:</p>
+<pre class='in'><code>dat[5:10, 1:10]</code></pre>
+<div class="out">
+<pre class='out'><code>   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
+5   0  1  1  3  3  1  3  5  2   4
+6   0  0  1  2  2  4  2  1  6   4
+7   0  0  2  2  4  2  2  5  5   8
+8   0  0  1  2  3  1  2  3  5   3
+9   0  0  0  3  1  5  6  5  5   8
+10  0  1  1  2  1  3  5  3  5   8
+</code></pre>
+</div>
+<p>We can use the function <code>c</code>, which stands for <strong>c</strong>ombine, to select non-contiguous values:</p>
+<pre class='in'><code>dat[c(3, 8, 37, 56), c(10, 14, 29)]</code></pre>
+<div class="out">
+<pre class='out'><code>   V10 V14 V29
+3    9   5   4
+8    3   5   6
+37   6   9  10
+56   7  11   9
+</code></pre>
+</div>
+<p>We also don't have to provide a slice for either the rows or the columns. If we don't include a slice for the rows, R returns all the rows; if we don't include a slice for the columns, R returns all the columns. If we don't provide a slice for either rows or columns, e.g. <code>dat[, ]</code>, R returns the full data frame.</p>
+<pre class='in'><code># All columns from row 5
+dat[5, ]</code></pre>
+<div class="out">
+<pre class='out'><code>  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20
+5  0  1  1  3  3  1  3  5  2   4   4   7   6   5   3  10   8  10   6  17
+  V21 V22 V23 V24 V25 V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38
+5   9  14   9   7  13   9  12   6   7   7   9   6   3   2   2   4   2   0
+  V39 V40
+5   1   1
+</code></pre>
+</div>
+<pre class='in'><code># All rows from column 16
+dat[, 16]</code></pre>
+<div class="out">
+<pre class='out'><code> [1]  4  4 15  8 10 15 13  9 11  6  3  8 12  3  5 10 11  4 11 13 15  5 14
+[24] 13  4  9 13  6  7  6 14  3 15  4 15 11  7 10 15  6  5  6 15 11 15  6
+[47] 11 15 14  4 10 15 11  6 13  8  4 13 12  9
+</code></pre>
+</div>
+<p>Now let's perform some common mathematical operations to learn about our inflammation data. When analyzing data we often want to look at partial statistics, such as the maximum value per patient or the average value per day. One way to do this is to select the data we want to create a new temporary data frame, and then perform the calculation on this subset:</p>
+<pre class='in'><code># first row, all of the columns
+patient_1 <- dat[1, ]
+# max inflammation for patient 1
+max(patient_1)</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 18
+</code></pre>
+</div>
+<p>We don't actually need to store the row in a variable of its own. Instead, we can combine the selection and the function call:</p>
+<pre class='in'><code># max inflammation for patient 2
+max(dat[2, ])</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 18
+</code></pre>
+</div>
+<p>R also has functions for other commons calculations, e.g. finding the minimum, mean, median, and standard deviation of the data:</p>
+<pre class='in'><code># minimum inflammation on day 7
+min(dat[, 7])</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 1
+</code></pre>
+</div>
+<pre class='in'><code># mean inflammation on day 7
+mean(dat[, 7])</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 3.8
+</code></pre>
+</div>
+<pre class='in'><code># median inflammation on day 7
+median(dat[, 7])</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 4
+</code></pre>
+</div>
+<pre class='in'><code># standard deviation of inflammation on day 7
+sd(dat[, 7])</code></pre>
+<div class="out">
+<pre class='out'><code>[1] 1.725
+</code></pre>
+</div>
+<p>What if we need the maximum inflammation for all patients, or the average for each day? As the diagram below shows, we want to perform the operation across a margin of the data frame:</p>
+<p><img src="figure/r-operations-across-axes.svg" alt="Operations Across Axes" /></p>
+<p>To support this, we can use the <code>apply</code> function.</p>
+<blockquote>
+<p><strong>Tip:</strong> To learn about a function in R, e.g. <code>apply</code>, we can read its help documention by running <code>help(apply)</code> or <code>?apply</code>.</p>
+</blockquote>
+<p><code>apply</code> allows us to repeat a function on all of the rows (<code>MARGIN = 1</code>) or columns (<code>MARGIN = 2</code>) of a data frame.</p>
+<p>Thus, to obtain the average inflammation of each patient we will need to calculate the mean of all of the rows (<code>MARGIN = 1</code>) of the data frame.</p>
+<pre class='in'><code>avg_patient_inflammation <- apply(dat, 1, mean)</code></pre>
+<p>And to obtain the average inflammation of each day we will need to calculate the mean of all of the columns (<code>MARGIN = 2</code>) of the data frame.</p>
+<pre class='in'><code>avg_day_inflammation <- apply(dat, 2, mean)</code></pre>
+<p>Since the second argument to <code>apply</code> is <code>MARGIN</code>, the above command is equivalent to <code>apply(dat, MARGIN = 2, mean)</code>. We'll learn why this is so in the next lesson.</p>
+<blockquote>
+<p><strong>Tip:</strong> Some common operations have more efficient alternatives. For example, you can calculate the row-wise or column-wise means with <code>rowMeans</code> and <code>colMeans</code>, respectively.</p>
+</blockquote>
+<h4 id="challenge-1">Challenge</h4>
+<p>A subsection of a data frame is called a <a href="../../gloss.html#slice">slice</a>. We can take slices of character vectors as well:</p>
+<pre class='in'><code>element <- c("o", "x", "y", "g", "e", "n")
+# first three characters
+element[1:3]</code></pre>
+<div class="out">
+<pre class='out'><code>[1] "o" "x" "y"
+</code></pre>
+</div>
+<pre class='in'><code># last three characters
+element[4:6]</code></pre>
+<div class="out">
+<pre class='out'><code>[1] "g" "e" "n"
+</code></pre>
+</div>
+<ol style="list-style-type: decimal">
+<li><p>If the first four characters are selected using the slice <code>element[1:4]</code>, how can we obtain the first four characters in reverse order?</p></li>
+<li><p>What is <code>element[-1]</code>? What is <code>element[-4]</code>? Given those answers, explain what <code>element[-1:-4]</code> does.</p></li>
+<li><p>Use a slice of <code>element</code> to create a new character vector that spells the word &quot;eon&quot;, e.g. <code>c(&quot;e&quot;, &quot;o&quot;, &quot;n&quot;)</code>.</p></li>
+</ol>
+<h3 id="plotting">Plotting</h3>
+<p>The mathematician Richard Hamming once said, &quot;The purpose of computing is insight, not numbers,&quot; and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R's plotting features.</p>
+<p>Let's take a look at the average inflammation over time. Recall that we already calculated these values above using <code>apply(dat, 2, mean)</code> and saved them in the variable <code>avg_day_inflammation</code>. Plotting the values is done with the function <code>plot</code>.</p>
+<pre class='in'><code>plot(avg_day_inflammation)</code></pre>
+<p><img src="figure/01-starting-with-data-plot-avg-inflammation.png" title="plot of chunk plot-avg-inflammation" alt="plot of chunk plot-avg-inflammation" style="display: block; margin: auto;" /></p>
+<p>Above, we gave the function <code>plot</code> a vector of numbers corresponding to the average inflammation per day across all patients. <code>plot</code> created a scatter plot where the y-axis is the average inflammation level and the x-axis is the order, or index, of the values in the vector, which in this case correspond to the 40 days of treatment. The result is roughly a linear rise and fall, which is suspicious: based on other studies, we expect a sharper rise and slower fall. Let's have a look at two other statistics: the maximum and minimum inflammation per day.</p>
+<pre class='in'><code>max_day_inflammation <- apply(dat, 2, max)
+plot(max_day_inflammation)</code></pre>
+<p><img src="figure/01-starting-with-data-plot-max-inflammation.png" title="plot of chunk plot-max-inflammation" alt="plot of chunk plot-max-inflammation" style="display: block; margin: auto;" /></p>
+<pre class='in'><code>min_day_inflammation <- apply(dat, 2, min)
+plot(min_day_inflammation)</code></pre>
+<p><img src="figure/01-starting-with-data-plot-min-inflammation.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" /></p>
+<p>The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.</p>
+<h4 id="challenge-2">Challenge</h4>
+<p>Create a plot showing the standard deviation of the inflammation data for each day across all patients.</p>
+<h4 id="key-points">Key Points</h4>
+<ul>
+<li>Use <code>variable &lt;- value</code> to assign a value to a variable in order to record it in memory.</li>
+<li>Objects are created on demand whenever a value is assigned to them.</li>
+<li>The function <code>dim</code> gives the dimensions of a data frame.</li>
+<li>Use <code>object[x, y]</code> to select a single element from a data frame.</li>
+<li>Use <code>from:to</code> to specify a sequence that includes the indices from <code>from</code> to <code>to</code>.</li>
+<li>All the indexing and slicing that works on data frames also works on vectors.</li>
+<li>Use <code>#</code> to add comments to programs.</li>
+<li>Use <code>mean</code>, <code>max</code>, <code>min</code> and <code>sd</code> to calculate simple statistics.</li>
+<li>Use <code>apply</code> to calculate statistics across the rows or columns of a data frame.</li>
+<li>Use <code>plot</code> to create simple visualizations.</li>
+</ul>
+<h4 id="next-steps">Next Steps</h4>
+<p>Our work so far has convinced us that something's wrong with our first data file. We would like to check the other 11 the same way, but typing in the same commands repeatedly is tedious and error-prone. Since computers don't get bored (that we know of), we should create a way to do a complete analysis with a single command, and then figure out how to repeat that step once for each file. These operations are the subjects of the next two lessons.</p>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Email</a>
+        <a class="label swc-blue-bg" href="http://github.com/swcarpentry">GitHub</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+        <a class="bugreport label swc-blue-bg" href="mailto:admin@software-carpentry.org?subject=bug%20in%20{{page.path}}">Bug Report</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+  </body>
+</html>

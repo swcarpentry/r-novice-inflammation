@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row-fluid">
+        <div class="span10 offset1">
+          <h1 class="title"></h1>
+          
+<h1 id="taking-notes-and-creating-reports">Taking notes and creating reports:</h1>
+<h2 id="introducing-knitr">Introducing Knitr</h2>
+<p><code>Knitr</code> is an R package that makes your code neat, pretty, and shows your notes, code, and output simultaneously in an <code>html</code> document. You create these documents in <code>.Rmd</code> files. You can write in <code>LateX</code> or <code>md</code>.</p>
+<p>knitr extracts R code in the input document (.Rmd), evaluates it and writes the results to the output document (html). There are two types of R code: chunks (code as separate paragraphs) and inline R code.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;knitr&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)</code></pre>
+<p>Restart RStudio. Open a new <code>Rmd</code> file.</p>
+<p>In Rmd, anything between lines that start and end with triple quotes ``` will be run as R code.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)</code></pre>
+<h3 id="challenge">Challenge</h3>
+<ol style="list-style-type: decimal">
+<li>Open an new .Rmd script and save it as inflammation_report.Rmd</li>
+<li>Copy and paste the code as embedded R chunks to read in the data and plot average inflammation, or the heat map that we created.</li>
+<li>Add a few notes describing what the code does and what the main findings are.</li>
+<li><code>KNIT</code> and view the html</li>
+</ol>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Email</a>
+        <a class="label swc-blue-bg" href="http://github.com/swcarpentry">GitHub</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+        <a class="bugreport label swc-blue-bg" href="mailto:admin@software-carpentry.org?subject=bug%20in%20{{page.path}}">Bug Report</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+  </body>
+</html>
