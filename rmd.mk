@@ -20,12 +20,12 @@ all : rmd
 #----------------------------------------------------------------------
 
 # Chunk options for knitr
-CHUNK_OPTS = novice/r/chunk-options.R
+CHUNK_OPTS = chunk-options.R
 
 # R Markdown files.  Add patterns here to convert files stored in
 # other locations.
 RMD_SRC = \
-	$(wildcard novice/r/??-*.Rmd)
+	$(wildcard ??-*.Rmd)
 
 # Files converted to Markdown.
 RMD_TX = $(patsubst %.Rmd,%.md,$(RMD_SRC))
