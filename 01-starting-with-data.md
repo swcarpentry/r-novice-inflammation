@@ -1,6 +1,5 @@
 ---
 layout: lesson
-root: ../..
 ---
 
 
@@ -51,7 +50,7 @@ Alternatively you can change the working directory using the RStudio GUI using t
 Now we could load the data into R using `read.csv`:
 
 
-<pre class='in'><code>read.csv(file = "inflammation-01.csv", header = FALSE)</code></pre>
+<pre class='in'><code>read.csv(file = "data/inflammation-01.csv", header = FALSE)</code></pre>
 
 The expression `read.csv(...)` is a [function call](../../gloss.html#function-call) that asks R to run the function `read.csv`. 
 
@@ -175,7 +174,7 @@ This is different from the way spreadsheets work.
 Now that we know how to assign things to variables, let's re-run `read.csv` and save its result:
 
 
-<pre class='in'><code>dat <- read.csv(file = "inflammation-01.csv", header = FALSE)</code></pre>
+<pre class='in'><code>dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)</code></pre>
 
 This statement doesn't produce any output because assignment doesn't display anything.
 If we want to check that our data has been loaded, we can print the variable's value.

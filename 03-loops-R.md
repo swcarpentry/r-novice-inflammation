@@ -22,14 +22,14 @@ We have created a function called `analyze` that creates graphs of the minimum, 
   plot(min_day_inflammation)
 }
 
-analyze("inflammation-01.csv")</code></pre>
+analyze("data/inflammation-01.csv")</code></pre>
 
 <img src="figure/03-loops-R-inflammation-011.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-012.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-013.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" />
 
 We can use it to analyze other data sets one by one:
 
 
-<pre class='in'><code>analyze("inflammation-02.csv")</code></pre>
+<pre class='in'><code>analyze("data/inflammation-02.csv")</code></pre>
 
 <img src="figure/03-loops-R-inflammation-021.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-022.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-023.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" />
 
@@ -105,7 +105,7 @@ but that's a bad approach for two reasons:
 </code></pre></div>
 
 > **Tip:** R has has a special variable, `NA`, for designating missing values that are **N**ot **A**vailable in a data set.
-See `?NA` and [An Introduction to R][na] for more details.
+> See `?NA` and [An Introduction to R][na] for more details.
 
 [na]: http://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values
 
@@ -268,7 +268,7 @@ Write a function called `expo` that uses a loop to calculate the same result.
 <div class='out'><pre class='out'><code>[1] 16
 </code></pre></div>
 
-1. Write a function called `total` that calculates the sum of the values in a vector.
+3. Write a function called `total` that calculates the sum of the values in a vector.
 (R has a built-in function called `sum` that does this for you.
 Please don't use it for this exercise.)
 
@@ -298,7 +298,24 @@ Since no pattern is specified to filter the files, all files are returned.
 So to list all the csv files, we could run either of the following:
 
 
-<pre class='in'><code>list.files(pattern = "csv")</code></pre>
+<pre class='in'><code>list.files(path = "data", pattern = "csv")</code></pre>
+
+
+
+<div class='out'><pre class='out'><code> [1] "car-speeds-cleaned.csv" "car-speeds.csv"        
+ [3] "inflammation-01.csv"    "inflammation-02.csv"   
+ [5] "inflammation-03.csv"    "inflammation-04.csv"   
+ [7] "inflammation-05.csv"    "inflammation-06.csv"   
+ [9] "inflammation-07.csv"    "inflammation-08.csv"   
+[11] "inflammation-09.csv"    "inflammation-10.csv"   
+[13] "inflammation-11.csv"    "inflammation-12.csv"   
+[15] "small-01.csv"           "small-02.csv"          
+[17] "small-03.csv"          
+</code></pre></div>
+
+
+
+<pre class='in'><code>list.files(pat = "data", pattern = "inflammation")</code></pre>
 
 
 
@@ -309,31 +326,56 @@ So to list all the csv files, we could run either of the following:
 </code></pre></div>
 
 
-
-<pre class='in'><code>list.files(pattern = "inflammation")</code></pre>
-
-
-
-<div class='out'><pre class='out'><code> [1] "inflammation-01.csv" "inflammation-02.csv" "inflammation-03.csv"
- [4] "inflammation-04.csv" "inflammation-05.csv" "inflammation-06.csv"
- [7] "inflammation-07.csv" "inflammation-08.csv" "inflammation-09.csv"
-[10] "inflammation-10.csv" "inflammation-11.csv" "inflammation-12.csv"
-</code></pre></div>
-
-We have to name the argument `pattern` because we are using the default option for the first argument `path` (see the previous [lesson](02-func-R.html) to review default function arguments).
-
-> **Tip:** Since this is just a small example, we have the data and code in the same directory.
-For larger projects, it is recommended to organize separate parts of the analysis into multiple subdirectories, e.g. one subdirectory for the raw data, one for the code, and one for the results like figures.
+> **Tip:** 
+For larger projects, it is recommended to organize separate parts of the analysis into multiple subdirectories, e.g. one subdirectory for the raw data, one for the code, and one for the results like figures. We have done that here to some extent, putting all of our data files into the subdirectory "data".
 For more advice on this topic, you can read [A quick guide to organizing computational biology projects][Noble2009] by William Stafford Noble.
 
 [Noble2009]: http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
 
+
 As these examples show, `list.files` result is a vector of strings, which means we can loop over it to do something with each filename in turn.
 In our case, the "something" we want is our `analyze` function.
-Let's test it by analyzing the first three files in the vector:
+
+Because we have put our data in separate subdirectory, if we want to access these files
+using the output of `list.files` we also need to include the "path" portion of the file name.
+We can do that by using the argument `full.names = TRUE`.
 
 
-<pre class='in'><code>filenames <- list.files(pattern = "csv")
+<pre class='in'><code>list.files(path = "data", pattern = "csv", full.names = TRUE)</code></pre>
+
+
+
+<div class='out'><pre class='out'><code> [1] "data/car-speeds-cleaned.csv" "data/car-speeds.csv"        
+ [3] "data/inflammation-01.csv"    "data/inflammation-02.csv"   
+ [5] "data/inflammation-03.csv"    "data/inflammation-04.csv"   
+ [7] "data/inflammation-05.csv"    "data/inflammation-06.csv"   
+ [9] "data/inflammation-07.csv"    "data/inflammation-08.csv"   
+[11] "data/inflammation-09.csv"    "data/inflammation-10.csv"   
+[13] "data/inflammation-11.csv"    "data/inflammation-12.csv"   
+[15] "data/small-01.csv"           "data/small-02.csv"          
+[17] "data/small-03.csv"          
+</code></pre></div>
+
+
+
+<pre class='in'><code>list.files(pat = "data", pattern = "inflammation", full.names = TRUE)</code></pre>
+
+
+
+<div class='out'><pre class='out'><code> [1] "data/inflammation-01.csv" "data/inflammation-02.csv"
+ [3] "data/inflammation-03.csv" "data/inflammation-04.csv"
+ [5] "data/inflammation-05.csv" "data/inflammation-06.csv"
+ [7] "data/inflammation-07.csv" "data/inflammation-08.csv"
+ [9] "data/inflammation-09.csv" "data/inflammation-10.csv"
+[11] "data/inflammation-11.csv" "data/inflammation-12.csv"
+</code></pre></div>
+
+
+Let's test out running our `analyze` function by using it on the first three files in the vector returned by `list.files`:
+
+
+
+<pre class='in'><code>filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 filenames <- filenames[1:3]
 for (f in filenames) {
   print(f)
@@ -342,17 +384,17 @@ for (f in filenames) {
 
 
 
-<div class='out'><pre class='out'><code>[1] "inflammation-01.csv"
+<div class='out'><pre class='out'><code>[1] "data/inflammation-01.csv"
 </code></pre></div>
 
 <img src="figure/03-loops-R-loop-analyze1.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze2.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze3.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
 
-<div class='out'><pre class='out'><code>[1] "inflammation-02.csv"
+<div class='out'><pre class='out'><code>[1] "data/inflammation-02.csv"
 </code></pre></div>
 
 <img src="figure/03-loops-R-loop-analyze4.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze5.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze6.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
 
-<div class='out'><pre class='out'><code>[1] "inflammation-03.csv"
+<div class='out'><pre class='out'><code>[1] "data/inflammation-03.csv"
 </code></pre></div>
 
 <img src="figure/03-loops-R-loop-analyze7.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze8.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze9.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
