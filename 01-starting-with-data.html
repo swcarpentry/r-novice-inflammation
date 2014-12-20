@@ -57,7 +57,7 @@
 <pre class='in'><code>setwd("~/swc")</code></pre>
 <p>Just like in the Unix Shell, we type the command and then press <code>Enter</code> (or <code>return</code>). Alternatively you can change the working directory using the RStudio GUI using the menu option <code>Session</code> -&gt; <code>Set Working Directory</code> -&gt; <code>Choose Directory...</code></p>
 <p>Now we could load the data into R using <code>read.csv</code>:</p>
-<pre class='in'><code>read.csv(file = "inflammation-01.csv", header = FALSE)</code></pre>
+<pre class='in'><code>read.csv(file = "data/inflammation-01.csv", header = FALSE)</code></pre>
 <p>The expression <code>read.csv(...)</code> is a <a href="../../gloss.html#function-call">function call</a> that asks R to run the function <code>read.csv</code>.</p>
 <p><code>read.csv</code> has two <a href="../../gloss.html#argument">arguments</a>: the name of the file we want to read, and whether the first line of the file contains names for the columns of data. The filename needs to be a character string (or <a href="../../gloss.html#string">string</a> for short), so we put it in quotes. Assigning the second argument, <code>header</code>, to be <code>FALSE</code> indicates that the data file does not have column headers. We'll talk more about the value <code>FALSE</code>, and its converse <code>TRUE</code>, in lesson 04.</p>
 <blockquote>
@@ -92,7 +92,7 @@ weight_kg</code></pre>
 </code></pre>
 </div>
 <p>If we imagine the variable as a sticky note with a name written on it, assignment is like putting the sticky note on a particular value:</p>
-<p><img src="../python/img/python-sticky-note-variables-01.svg" alt="Variables as Sticky Notes" /></p>
+<p><img src="figure/python-sticky-note-variables-01.svg" alt="Variables as Sticky Notes" /></p>
 <p>This means that assigning a value to one object does not change the values of other variables. For example, let's store the subject's weight in pounds in a variable:</p>
 <pre class='in'><code>weight_lb <- 2.2 * weight_kg
 # weight in kg...
@@ -107,7 +107,7 @@ weight_lb</code></pre>
 <pre class='out'><code>[1] 126.5
 </code></pre>
 </div>
-<p><img src="../python/img/python-sticky-note-variables-02.svg" alt="Creating Another Variable" /></p>
+<p><img src="figure/python-sticky-note-variables-02.svg" alt="Creating Another Variable" /></p>
 <p>and then change <code>weight_kg</code>:</p>
 <pre class='in'><code>weight_kg <- 100.0
 # weight in kg now...
@@ -122,10 +122,10 @@ weight_lb</code></pre>
 <pre class='out'><code>[1] 126.5
 </code></pre>
 </div>
-<p><img src="../python/img/python-sticky-note-variables-03.svg" alt="Updating a Variable" /></p>
+<p><img src="figure/python-sticky-note-variables-03.svg" alt="Updating a Variable" /></p>
 <p>Since <code>weight_lb</code> doesn't &quot;remember&quot; where its value came from, it isn't automatically updated when <code>weight_kg</code> changes. This is different from the way spreadsheets work.</p>
 <p>Now that we know how to assign things to variables, let's re-run <code>read.csv</code> and save its result:</p>
-<pre class='in'><code>dat <- read.csv(file = "inflammation-01.csv", header = FALSE)</code></pre>
+<pre class='in'><code>dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)</code></pre>
 <p>This statement doesn't produce any output because assignment doesn't display anything. If we want to check that our data has been loaded, we can print the variable's value. However, for large data sets it is convenient to use the function <code>head</code> to display only the first few rows of data.</p>
 <pre class='in'><code>head(dat)</code></pre>
 <div class="out">

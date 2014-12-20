@@ -39,7 +39,7 @@
 <pre class='in'><code>#First, set a working directory (see lesson 'Analyzing Patient Data' for more info)
 setwd('~/swc')</code></pre>
 <pre class='in'><code>#Import the data and look at the first six rows
-carSpeeds <- read.csv(file='car-speeds.csv')
+carSpeeds <- read.csv(file='data/car-speeds.csv')
 head(carSpeeds) </code></pre>
 <div class="out">
 <pre class='out'><code>  Color Speed     State
@@ -65,7 +65,7 @@ carSpeeds[1,]</code></pre>
 </code></pre>
 </div>
 <pre class='in'><code>#The first row of the data if the header argument is set to FALSE:
-carSpeeds <- read.csv(file='car-speeds.csv', header=FALSE)
+carSpeeds <- read.csv(file='data/car-speeds.csv', header=FALSE)
 
 carSpeeds[1,]</code></pre>
 <div class="out">
@@ -81,7 +81,7 @@ carSpeeds[1,]</code></pre>
 # the results to the Color column, using '<-'
 
 #First - reload the data with a header
-carSpeeds <- read.csv(file='car-speeds.csv')
+carSpeeds <- read.csv(file='data/car-speeds.csv')
 
 carSpeeds$Color<- ifelse(carSpeeds$Color=='Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color</code></pre>
@@ -103,7 +103,7 @@ carSpeeds$Color</code></pre>
 </div>
 <p>What happened?!? It looks like 'Blue' was replaced with 'Green', but every other color was turned into a number (as a character string, given the quote marks before and after). This is because the colors of the cars were loaded as factors, and the factor level was reported following replacement.</p>
 <p>Now, let's load the dataset using <code>stringsAsFactors=FALSE</code>, and see what happens when we try to replace 'Blue' with 'Green' in the <code>$Color</code> column:</p>
-<pre class='in'><code>carSpeeds <- read.csv(file='car-speeds.csv', stringsAsFactors=FALSE)
+<pre class='in'><code>carSpeeds <- read.csv(file='data/car-speeds.csv', stringsAsFactors=FALSE)
 
 carSpeeds$Color<- ifelse(carSpeeds$Color=='Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color</code></pre>
@@ -126,7 +126,7 @@ carSpeeds$Color</code></pre>
 <p>That's better!</p>
 <h4 id="the-as.is-argument">The as.is argument</h4>
 <p>This is an extension of the <code>stringsAsFactors</code> argument, but gives you control over individual columns. For example, if we want the colors of cars imported as strings, but we want the names of the states imported as factors, we would load the data set as:</p>
-<pre class='in'><code>carSpeeds <- read.csv(file='car-speeds.csv', as.is = 1) 
+<pre class='in'><code>carSpeeds <- read.csv(file='data/car-speeds.csv', as.is = 1) 
 
 #Note, the 1 applies as.is to the first column only</code></pre>
 <p>Now we can see that if we try to replace 'Blue' with 'Green' in the <code>$Color</code> column everything looks fine, while trying to replace 'Arizona' with 'Ohio' in the <code>$State</code> column returns the factor numbers for the names of states that we haven't replaced:</p>
@@ -178,7 +178,7 @@ Levels:  Red Black Green Red White
 </div>
 <p>Oops, we see two values for red cars.</p>
 <p>Let's try again, this time importing the data using the <code>strip.white</code> argument. NOTE - this argument must be accompanied by the <code>sep</code> argument, by which we indicate the type of delimiter in the file (the comma for most .csv files)</p>
-<pre class='in'><code>carSpeeds<-read.csv(file='car-speeds.csv',stringsAsFactors=FALSE,strip.white=TRUE,sep=',')
+<pre class='in'><code>carSpeeds<-read.csv(file='data/car-speeds.csv',stringsAsFactors=FALSE,strip.white=TRUE,sep=',')
  
 unique(carSpeeds$Color)</code></pre>
 <div class="out">
@@ -190,12 +190,12 @@ unique(carSpeeds$Color)</code></pre>
 <p>After altering our cars dataset by replacing 'Blue' with 'Green' in the <code>$Color</code> column, we now want to save the output. There are several arguments for the <code>write.csv(...)</code> <a href="../../gloss.html#function-call">function call</a>, a few of which are particularly important for how the data are exported. Let's explore these now.</p>
 <pre class='in'><code>#Export the data. The write.csv() function requires a minimum of two arguments, the data to be saved and the name of the output file.
 
-write.csv(carSpeeds, file='car-speeds-cleaned.csv')</code></pre>
+write.csv(carSpeeds, file='data/car-speeds-cleaned.csv')</code></pre>
 <p>If you open the file, you'll see that it has header names, because the data had headers within R, but that there are numbers in the first column.</p>
 <p><img src="figure/CSV_WithRowNums.png" alt="csv written without row.names argument" /></p>
 <h4 id="the-row.names-argument">The row.names argument</h4>
 <p>This argument allows us to set the names of the rows in the output data file. R's default for this argument is <code>TRUE</code>, and since it does not know what else to name the rows for the cars data set, it resorts to using row numbers. To correct this, we can set <code>row.names</code> to <code>FALSE</code>:</p>
-<pre class='in'><code>write.csv(carSpeeds, file='car-speeds-cleaned.csv', row.names=FALSE)</code></pre>
+<pre class='in'><code>write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE)</code></pre>
 <p>Now we see:</p>
 <p><img src="figure/CSV_WithoutRowNums.png" alt="csv written with row.names argument" /></p>
 <blockquote>
@@ -216,10 +216,10 @@ head(carSpeeds)</code></pre>
 6  Blue    41   Arizona
 </code></pre>
 </div>
-<pre class='in'><code>write.csv(carSpeeds, file='car-speeds-cleaned.csv', row.names=FALSE)</code></pre>
+<pre class='in'><code>write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE)</code></pre>
 <p>Now we'll set <code>NA</code> to -9999 when we write the new .csv file:</p>
 <pre class='in'><code>#Note - the na argument requires a string input
-write.csv(carSpeeds, file='car-speeds-cleaned.csv', row.names=FALSE, na= '-9999')</code></pre>
+write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE, na= '-9999')</code></pre>
 <p>And we see:</p>
 <p><img src="figure/CSV_WithSpecialNA.png" alt="csv written with -9999 as NA" /></p>
 <h4 id="key-points">Key Points</h4>
