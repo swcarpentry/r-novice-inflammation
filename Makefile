@@ -46,3 +46,8 @@ clean :
 # very-clean : Remove generated HTML.
 very-clean :
 	@rm -f $(DST_PAGES)
+
+## rmd      : Convert R Markdown files to Markdown.
+# This uses an auxiliary Makefile 'rmd.mk'.
+rmd :
+	make -f rmd.mk
