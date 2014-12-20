@@ -62,7 +62,7 @@ Here's how we can save all three plots of the first inflamation data set in a pd
 
 ```{r, results='hide'}
 pdf("inflammation-01.pdf")
-analyze("inflammation-01.csv")
+analyze("data/inflammation-01.csv")
 dev.off()
 ```
 
@@ -189,7 +189,7 @@ plot_dist <- function(x, threshold) {
 ```
 
 ```{r conditional-challenge}
-dat <- read.csv("inflammation-01.csv", header = FALSE)
+dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 plot_dist(dat[, 10], threshold = 10)  # day (column) 10
 plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 ```
@@ -209,7 +209,7 @@ plot_dist <- function(x, threshold, use_boxplot = TRUE) {
 ```
 
 ```{r conditional-challenge-hist}
-dat <- read.csv("inflammation-01.csv", header = FALSE)
+dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 plot_dist(dat[, 10], threshold = 10, use_boxplot = TRUE)  # day (column) 10 - create boxplot
 plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
 plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
@@ -258,20 +258,20 @@ is.null(output)
 Now we can use `analyze` both interactively:
 
 ```{r inflammation-01}
-analyze("inflammation-01.csv")
+analyze("data/inflammation-01.csv")
 ```
 
 and to save plots:
 
 ```{r results='hide'}
-analyze("inflammation-01.csv", output = "inflammation-01.pdf")
+analyze("data/inflammation-01.csv", output = "inflammation-01.pdf")
 ```
 
 This now works well when we want to process one data file at a time, but how can we specify the output file in `analyze_all`?
 We need to substitute the filename ending "csv" with "pdf", which we can do using the function `sub`:
 
 ```{r}
-f <- "inflammation-01.csv"
+f <- "data/inflammation-01.csv"
 sub("csv", "pdf", f)
 ```
 
@@ -281,7 +281,7 @@ Now let's update `analyze_all`:
 analyze_all <- function(pattern) {
   # Runs the function analyze for each file in the current working directory
   # that contains the given pattern.
-  filenames <- list.files(pattern = pattern)
+  filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
   for (f in filenames) {
     pdf_name <- sub("csv", "pdf", f)
     analyze(f, output = pdf_name)
@@ -292,7 +292,7 @@ analyze_all <- function(pattern) {
 Now we can save all of the results with just one line of code:
 
 ```{r}
-analyze_all("csv")
+analyze_all("inflammation")
 ```
 
 Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analzye_all`.
