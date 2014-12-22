@@ -315,7 +315,7 @@ So to list all the csv files, we could run either of the following:
 
 
 
-<pre class='in'><code>list.files(pat = "data", pattern = "inflammation")</code></pre>
+<pre class='in'><code>list.files(path = "data", pattern = "inflammation")</code></pre>
 
 
 
@@ -358,7 +358,7 @@ We can do that by using the argument `full.names = TRUE`.
 
 
 
-<pre class='in'><code>list.files(pat = "data", pattern = "inflammation", full.names = TRUE)</code></pre>
+<pre class='in'><code>list.files(path = "data", pattern = "inflammation", full.names = TRUE)</code></pre>
 
 
 

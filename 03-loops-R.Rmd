@@ -238,7 +238,7 @@ So to list all the csv files, we could run either of the following:
 
 ```{r}
 list.files(path = "data", pattern = "csv")
-list.files(pat = "data", pattern = "inflammation")
+list.files(path = "data", pattern = "inflammation")
 ```
 
 
@@ -258,7 +258,7 @@ We can do that by using the argument `full.names = TRUE`.
 
 ```{r}
 list.files(path = "data", pattern = "csv", full.names = TRUE)
-list.files(pat = "data", pattern = "inflammation", full.names = TRUE)
+list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 ```
 
 
