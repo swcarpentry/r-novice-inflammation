@@ -41,7 +41,7 @@
   min_day_inflammation <- apply(dat, 2, min)
   plot(min_day_inflammation)
 }</code></pre>
-<pre class='in'><code>filenames <- list.files(pattern = "csv")</code></pre>
+<pre class='in'><code>filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)</code></pre>
 <h4 id="vectorized-operations">Vectorized operations</h4>
 <p>A key difference between R and many other languages is a topic known as <em>vectorization</em>. When you wrote the <code>total</code> function, we mentioned that R already has <code>sum</code> to do this; <code>sum</code> is <em>much</em> faster than the interpreted <code>for</code> loop because <code>sum</code> is coded in C to work with a vector of numbers. Many of R's functions work this way; the loop is hidden from you in C. Learning to use vectorized operations is a key skill in R.</p>
 <p>For example, to add pairs of numbers contained in two vectors</p>
@@ -100,7 +100,7 @@ all.equal(res, res2)</code></pre>
 system.time(avg2 <- analyze2(filenames))</code></pre>
 <div class="out">
 <pre class='out'><code>   user  system elapsed 
-  0.044   0.000   0.045 
+  0.036   0.000   0.037 
 </code></pre>
 </div>
 <p>Note how we add a new column to <code>out</code> at each iteration? This is a cardinal sin of writing a <code>for</code> loop in R.</p>
@@ -117,7 +117,7 @@ system.time(avg2 <- analyze2(filenames))</code></pre>
 system.time(avg3 <- analyze3(filenames))</code></pre>
 <div class="out">
 <pre class='out'><code>   user  system elapsed 
-  0.056   0.004   0.057 
+  0.029   0.000   0.031 
 </code></pre>
 </div>
 <p>In this simple example there is little difference in the compute time of <code>analyze2</code> and <code>analyze3</code>. This is because we are only iterating over 12 files and hence we only incur 12 copy/grow operations. If we were doing this over more files or the data objects we were growing were larger, the penalty for copying/growing would be much larger.</p>
