@@ -26,7 +26,7 @@ In that lesson, we introduced how to run a custom function, `analyze`, over mult
 }</code></pre>
 
 
-<pre class='in'><code>filenames <- list.files(pattern = "csv")</code></pre>
+<pre class='in'><code>filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)</code></pre>
 
 #### Vectorized operations
 
@@ -118,7 +118,7 @@ system.time(avg2 <- analyze2(filenames))</code></pre>
 
 
 <div class='out'><pre class='out'><code>   user  system elapsed 
-  0.044   0.000   0.045 
+  0.036   0.000   0.037 
 </code></pre></div>
 
 Note how we add a new column to `out` at each iteration?
@@ -143,7 +143,7 @@ system.time(avg3 <- analyze3(filenames))</code></pre>
 
 
 <div class='out'><pre class='out'><code>   user  system elapsed 
-  0.056   0.004   0.057 
+  0.029   0.000   0.031 
 </code></pre></div>
 
 In this simple example there is little difference in the compute time of `analyze2` and `analyze3`.

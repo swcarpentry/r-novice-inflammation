@@ -1,6 +1,5 @@
 ---
 layout: lesson
-root: ../..
 ---
 
 
@@ -51,7 +50,7 @@ Alternatively you can change the working directory using the RStudio GUI using t
 Now we could load the data into R using `read.csv`:
 
 
-<pre class='in'><code>read.csv(file = "inflammation-01.csv", header = FALSE)</code></pre>
+<pre class='in'><code>read.csv(file = "data/inflammation-01.csv", header = FALSE)</code></pre>
 
 The expression `read.csv(...)` is a [function call](../../gloss.html#function-call) that asks R to run the function `read.csv`. 
 
@@ -118,7 +117,7 @@ weight_kg</code></pre>
 If we imagine the variable as a sticky note with a name written on it, 
 assignment is like putting the sticky note on a particular value:
 
-<img src="../python/img/python-sticky-note-variables-01.svg" alt="Variables as Sticky Notes" />
+<img src="figure/python-sticky-note-variables-01.svg" alt="Variables as Sticky Notes" />
 
 This means that assigning a value to one object does not change the values of other variables. 
 For example, let's store the subject's weight in pounds in a variable:
@@ -143,7 +142,7 @@ weight_lb</code></pre>
 <div class='out'><pre class='out'><code>[1] 126.5
 </code></pre></div>
 
-<img src="../python/img/python-sticky-note-variables-02.svg" alt="Creating Another Variable" />
+<img src="figure/python-sticky-note-variables-02.svg" alt="Creating Another Variable" />
 
 and then change `weight_kg`:
 
@@ -167,7 +166,7 @@ weight_lb</code></pre>
 <div class='out'><pre class='out'><code>[1] 126.5
 </code></pre></div>
 
-<img src="../python/img/python-sticky-note-variables-03.svg" alt="Updating a Variable" />
+<img src="figure/python-sticky-note-variables-03.svg" alt="Updating a Variable" />
 
 Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes. 
 This is different from the way spreadsheets work.
@@ -175,7 +174,7 @@ This is different from the way spreadsheets work.
 Now that we know how to assign things to variables, let's re-run `read.csv` and save its result:
 
 
-<pre class='in'><code>dat <- read.csv(file = "inflammation-01.csv", header = FALSE)</code></pre>
+<pre class='in'><code>dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)</code></pre>
 
 This statement doesn't produce any output because assignment doesn't display anything.
 If we want to check that our data has been loaded, we can print the variable's value.

@@ -139,37 +139,37 @@ final <- fahr_to_celsius(original)
 
 The diagram below shows what memory looks like after the first line has been executed:
 
-<img src="../python/img/python-call-stack-01.svg" alt="Call Stack (Initial State)" />
+<img src="figure/python-call-stack-01.svg" alt="Call Stack (Initial State)" />
 
 When we call `fahr_to_celsius`, R *doesn't* create the variable `temp` right away.
 Instead, it creates something called a [stack frame](../../gloss.html#stack-frame) to keep track of the variables defined by `fahr_to_kelvin`.
 Initially, this stack frame only holds the value of `temp`:
 
-<img src="../python/img/python-call-stack-02.svg" alt="Call Stack Immediately After First Function Call" />
+<img src="figure/python-call-stack-02.svg" alt="Call Stack Immediately After First Function Call" />
 
 When we call `fahr_to_kelvin` inside `fahr_to_celsius`, R creates another stack frame to hold `fahr_to_kelvin`'s variables:
 
-<img src="../python/img/python-call-stack-03.svg" alt="Call Stack During First Nested Function Call" />
+<img src="figure/python-call-stack-03.svg" alt="Call Stack During First Nested Function Call" />
 
 It does this because there are now two variables in play called `temp`: the argument to `fahr_to_celsius`, and the argument to `fahr_to_kelvin`.
 Having two variables with the same name in the same part of the program would be ambiguous, so R (and every other modern programming language) creates a new stack frame for each function call to keep that function's variables separate from those defined by other functions.
 
 When the call to `fahr_to_kelvin` returns a value, R throws away `fahr_to_kelvin`'s stack frame and creates a new variable in the stack frame for `fahr_to_celsius` to hold the temperature in Kelvin:
 
-<img src="../python/img/python-call-stack-04.svg" alt="Call Stack After Return From First Nested Function Call" />
+<img src="figure/python-call-stack-04.svg" alt="Call Stack After Return From First Nested Function Call" />
 
 It then calls `kelvin_to_celsius`, which means it creates a stack frame to hold that function's variables:
 
-<img src="../python/img/python-call-stack-05.svg" alt="Call Stack During Call to Second Nested Function" />
+<img src="figure/python-call-stack-05.svg" alt="Call Stack During Call to Second Nested Function" />
 
 Once again, R throws away that stack frame when `kelvin_to_celsius` is done
 and creates the variable `result` in the stack frame for `fahr_to_celsius`:
 
-<img src="../python/img/python-call-stack-06.svg" alt="Call Stack After Second Nested Function Returns" />
+<img src="figure/python-call-stack-06.svg" alt="Call Stack After Second Nested Function Returns" />
 
 Finally, when `fahr_to_celsius` is done, R throws away *its* stack frame and puts its result in a new variable called `final` that lives in the stack frame we started with:
 
-<img src="../python/img/python-call-stack-07.svg" alt="Call Stack After All Functions Have Finished" />
+<img src="figure/python-call-stack-07.svg" alt="Call Stack After All Functions Have Finished" />
 
 This final stack frame is always there;
 it holds the variables we defined outside the functions in our code.
@@ -198,7 +198,7 @@ span <- function(a) {
   return(diff)
 }
 
-dat <- read.csv(file = "inflammation-01.csv", header = FALSE)
+dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 # span of inflammation data
 span(dat)
 ```
@@ -206,7 +206,7 @@ span(dat)
 Notice `span` assigns a value to variable called `diff`. We might very well use a variable with the same name (`diff`) to hold the inflammation data:
 
 ```{r}
-diff <- read.csv(file = "inflammation-01.csv", header = FALSE)
+diff <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 # span of inflammation data
 span(diff)
 ```
@@ -254,7 +254,7 @@ center(z, 3)
 That looks right, so let's try center on our real data. We'll center the inflammation data from day 4 around 0:
 
 ```{r}
-dat <- read.csv(file = "inflammation-01.csv", header = FALSE)
+dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 centered <- center(dat[, 4], 0)
 head(centered)
 ```
@@ -328,7 +328,7 @@ You will want to switch to this more formal method of writing documentation when
 #### Challenges
 
   + Write a function called `analyze` that takes a filename as a argument and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
-  `analyze("inflammation-01.csv")` should produce the graphs already shown, while `analyze("inflammation-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
+  `analyze("data/inflammation-01.csv")` should produce the graphs already shown, while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
 
 [01]: 01-starting-with-data.html
 
@@ -373,18 +373,18 @@ plot(dat[, 4], answer)  # This hasn't been introduced yet, but it may be
 
 ### Defining Defaults
 
-We have passed arguments to functions in two ways: directly, as in `dim(dat)`, and by name, as in `read.csv(file = "inflammation-01.csv", header = FALSE)`.
+We have passed arguments to functions in two ways: directly, as in `dim(dat)`, and by name, as in `read.csv(file = "data/inflammation-01.csv", header = FALSE)`.
 In fact, we can pass the arguments to `read.csv` without naming them:
 
 ```{r}
-dat <- read.csv("inflammation-01.csv", FALSE)
+dat <- read.csv("data/inflammation-01.csv", FALSE)
 ```
 
 However, the position of the arguments matters if they are not named.
 
 ```{r}
-dat <- read.csv(header = FALSE, file = "inflammation-01.csv")
-dat <- read.csv(FALSE, "inflammation-01.csv")
+dat <- read.csv(header = FALSE, file = "data/inflammation-01.csv")
+dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
 
 To understand what's going on, and make our own functions easier to use, let's re-define our `center` function like this:
@@ -469,7 +469,7 @@ This tells us that `read.csv()` has one argument, `file`, that doesn't have a de
 Now we understand why the following gives an error:
 
 ```{r, results="hide"}
-dat <- read.csv(FALSE, "inflammation-01.csv")
+dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
 
 It fails because `FALSE` is assigned to `file` and the filename is assigned to the argument `header`.
@@ -514,10 +514,10 @@ We now have a function called analyze to visualize a single data set.
 We could use it to explore all 12 of our current data sets like this:
 
 ```{r, eval=FALSE}
-analyze("inflammation-01.csv")
-analyze("inflammation-02.csv")
+analyze("data/inflammation-01.csv")
+analyze("data/inflammation-02.csv")
 #...
-analyze("inflammation-12.csv")
+analyze("data/inflammation-12.csv")
 ```
 
 but the chances of us typing all 12 filenames correctly aren't great, and we'll be even worse off if we get another hundred files.
