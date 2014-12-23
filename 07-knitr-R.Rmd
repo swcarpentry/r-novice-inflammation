@@ -4,7 +4,7 @@ root: ../..
 ---
 
 ```{r, include = FALSE}
-source("chunk-options.R")
+source("tools/chunk-options.R")
 ```
 
 # Taking notes and creating reports:
