@@ -117,20 +117,20 @@ outer(dry_principle)</code></pre>
 <pre class='in'><code>original <- 32
 final <- fahr_to_celsius(original)</code></pre>
 <p>The diagram below shows what memory looks like after the first line has been executed:</p>
-<p><img src="../python/img/python-call-stack-01.svg" alt="Call Stack (Initial State)" /></p>
+<p><img src="figure/python-call-stack-01.svg" alt="Call Stack (Initial State)" /></p>
 <p>When we call <code>fahr_to_celsius</code>, R <em>doesn't</em> create the variable <code>temp</code> right away. Instead, it creates something called a <a href="../../gloss.html#stack-frame">stack frame</a> to keep track of the variables defined by <code>fahr_to_kelvin</code>. Initially, this stack frame only holds the value of <code>temp</code>:</p>
-<p><img src="../python/img/python-call-stack-02.svg" alt="Call Stack Immediately After First Function Call" /></p>
+<p><img src="figure/python-call-stack-02.svg" alt="Call Stack Immediately After First Function Call" /></p>
 <p>When we call <code>fahr_to_kelvin</code> inside <code>fahr_to_celsius</code>, R creates another stack frame to hold <code>fahr_to_kelvin</code>'s variables:</p>
-<p><img src="../python/img/python-call-stack-03.svg" alt="Call Stack During First Nested Function Call" /></p>
+<p><img src="figure/python-call-stack-03.svg" alt="Call Stack During First Nested Function Call" /></p>
 <p>It does this because there are now two variables in play called <code>temp</code>: the argument to <code>fahr_to_celsius</code>, and the argument to <code>fahr_to_kelvin</code>. Having two variables with the same name in the same part of the program would be ambiguous, so R (and every other modern programming language) creates a new stack frame for each function call to keep that function's variables separate from those defined by other functions.</p>
 <p>When the call to <code>fahr_to_kelvin</code> returns a value, R throws away <code>fahr_to_kelvin</code>'s stack frame and creates a new variable in the stack frame for <code>fahr_to_celsius</code> to hold the temperature in Kelvin:</p>
-<p><img src="../python/img/python-call-stack-04.svg" alt="Call Stack After Return From First Nested Function Call" /></p>
+<p><img src="figure/python-call-stack-04.svg" alt="Call Stack After Return From First Nested Function Call" /></p>
 <p>It then calls <code>kelvin_to_celsius</code>, which means it creates a stack frame to hold that function's variables:</p>
-<p><img src="../python/img/python-call-stack-05.svg" alt="Call Stack During Call to Second Nested Function" /></p>
+<p><img src="figure/python-call-stack-05.svg" alt="Call Stack During Call to Second Nested Function" /></p>
 <p>Once again, R throws away that stack frame when <code>kelvin_to_celsius</code> is done and creates the variable <code>result</code> in the stack frame for <code>fahr_to_celsius</code>:</p>
-<p><img src="../python/img/python-call-stack-06.svg" alt="Call Stack After Second Nested Function Returns" /></p>
+<p><img src="figure/python-call-stack-06.svg" alt="Call Stack After Second Nested Function Returns" /></p>
 <p>Finally, when <code>fahr_to_celsius</code> is done, R throws away <em>its</em> stack frame and puts its result in a new variable called <code>final</code> that lives in the stack frame we started with:</p>
-<p><img src="../python/img/python-call-stack-07.svg" alt="Call Stack After All Functions Have Finished" /></p>
+<p><img src="figure/python-call-stack-07.svg" alt="Call Stack After All Functions Have Finished" /></p>
 <p>This final stack frame is always there; it holds the variables we defined outside the functions in our code. What it <em>doesn't</em> hold is the variables that were in the various stack frames. If we try to get the value of <code>temp</code> after our functions have finished running, R tells us that there's no such thing:</p>
 <pre class='in'><code>temp</code></pre>
 <div class="out">
@@ -146,7 +146,7 @@ final <- fahr_to_celsius(original)</code></pre>
   return(diff)
 }
 
-dat <- read.csv(file = "inflammation-01.csv", header = FALSE)
+dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 # span of inflammation data
 span(dat)</code></pre>
 <div class="out">
@@ -154,7 +154,7 @@ span(dat)</code></pre>
 </code></pre>
 </div>
 <p>Notice <code>span</code> assigns a value to variable called <code>diff</code>. We might very well use a variable with the same name (<code>diff</code>) to hold the inflammation data:</p>
-<pre class='in'><code>diff <- read.csv(file = "inflammation-01.csv", header = FALSE)
+<pre class='in'><code>diff <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 # span of inflammation data
 span(diff)</code></pre>
 <div class="out">
@@ -189,7 +189,7 @@ z</code></pre>
 </code></pre>
 </div>
 <p>That looks right, so let's try center on our real data. We'll center the inflammation data from day 4 around 0:</p>
-<pre class='in'><code>dat <- read.csv(file = "inflammation-01.csv", header = FALSE)
+<pre class='in'><code>dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 centered <- center(dat[, 4], 0)
 head(centered)</code></pre>
 <div class="out">
@@ -273,18 +273,18 @@ sd(dat[, 4]) - sd(centered)</code></pre>
 </blockquote>
 <h4 id="challenges-2">Challenges</h4>
 <ul>
-<li>Write a function called <code>analyze</code> that takes a filename as a argument and displays the three graphs produced in the <a href="01-starting-with-data.html">previous lesson</a> (average, min and max inflammation over time). <code>analyze(&quot;inflammation-01.csv&quot;)</code> should produce the graphs already shown, while <code>analyze(&quot;inflammation-02.csv&quot;)</code> should produce corresponding graphs for the second data set. Be sure to document your function with comments.</li>
+<li>Write a function called <code>analyze</code> that takes a filename as a argument and displays the three graphs produced in the <a href="01-starting-with-data.html">previous lesson</a> (average, min and max inflammation over time). <code>analyze(&quot;data/inflammation-01.csv&quot;)</code> should produce the graphs already shown, while <code>analyze(&quot;data/inflammation-02.csv&quot;)</code> should produce corresponding graphs for the second data set. Be sure to document your function with comments.</li>
 </ul>
 <ul>
 <li><p>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>)/(<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</p></li>
 <li><p>Test that your <code>rescale</code> function is working properly using <code>min</code>, <code>max</code>, and <code>plot</code>.</p></li>
 </ul>
 <h3 id="defining-defaults">Defining Defaults</h3>
-<p>We have passed arguments to functions in two ways: directly, as in <code>dim(dat)</code>, and by name, as in <code>read.csv(file = &quot;inflammation-01.csv&quot;, header = FALSE)</code>. In fact, we can pass the arguments to <code>read.csv</code> without naming them:</p>
-<pre class='in'><code>dat <- read.csv("inflammation-01.csv", FALSE)</code></pre>
+<p>We have passed arguments to functions in two ways: directly, as in <code>dim(dat)</code>, and by name, as in <code>read.csv(file = &quot;data/inflammation-01.csv&quot;, header = FALSE)</code>. In fact, we can pass the arguments to <code>read.csv</code> without naming them:</p>
+<pre class='in'><code>dat <- read.csv("data/inflammation-01.csv", FALSE)</code></pre>
 <p>However, the position of the arguments matters if they are not named.</p>
-<pre class='in'><code>dat <- read.csv(header = FALSE, file = "inflammation-01.csv")
-dat <- read.csv(FALSE, "inflammation-01.csv")</code></pre>
+<pre class='in'><code>dat <- read.csv(header = FALSE, file = "data/inflammation-01.csv")
+dat <- read.csv(FALSE, "data/inflammation-01.csv")</code></pre>
 <div class="out">
 <pre class='out'><code>Error: 'file' must be a character string or connection
 </code></pre>
@@ -375,7 +375,7 @@ display(c = 77)</code></pre>
 <pre class='in'><code>read.csv(file, header = TRUE, sep = ",", quote = "\"",
          dec = ".", fill = TRUE, comment.char = "", ...)</code></pre>
 <p>This tells us that <code>read.csv()</code> has one argument, <code>file</code>, that doesn't have a default value, and six others that do. Now we understand why the following gives an error:</p>
-<pre class='in'><code>dat <- read.csv(FALSE, "inflammation-01.csv")</code></pre>
+<pre class='in'><code>dat <- read.csv(FALSE, "data/inflammation-01.csv")</code></pre>
 <div class="out">
 <pre class='out'><code>Error: 'file' must be a character string or connection
 </code></pre>
@@ -400,10 +400,10 @@ display(c = 77)</code></pre>
 </ul>
 <h4 id="next-steps">Next Steps</h4>
 <p>We now have a function called analyze to visualize a single data set. We could use it to explore all 12 of our current data sets like this:</p>
-<pre class='in'><code>analyze("inflammation-01.csv")
-analyze("inflammation-02.csv")
+<pre class='in'><code>analyze("data/inflammation-01.csv")
+analyze("data/inflammation-02.csv")
 #...
-analyze("inflammation-12.csv")</code></pre>
+analyze("data/inflammation-12.csv")</code></pre>
 <p>but the chances of us typing all 12 filenames correctly aren't great, and we'll be even worse off if we get another hundred files. What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.</p>
         </div>
       </div>
