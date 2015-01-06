@@ -4,7 +4,7 @@ root: ../..
 ---
 
 ```{r, include = FALSE}
-source("chunk-options.R")
+source("tools/chunk-options.R")
 ```
 
 ## Command-Line Programs
@@ -142,7 +142,7 @@ This function gets the name of the file to process from the first element return
 Here's a simple test to run from the Unix Shell:
 
 ```{r engine='bash'}
-Rscript readings-01.R inflammation-01.csv
+Rscript readings-01.R data/inflammation-01.csv
 ```
 
 There is no output because we have defined a function, but haven't actually called it.
@@ -153,7 +153,7 @@ cat readings-02.R
 ```
 
 ```{r engine='bash'}
-Rscript readings-02.R inflammation-01.csv
+Rscript readings-02.R data/inflammation-01.csv
 ```
 
 #### Challenges

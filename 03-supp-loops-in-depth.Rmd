@@ -4,7 +4,7 @@ root: ../..
 ---
 
 ```{r, include = FALSE}
-source("chunk-options.R")
+source("tools/chunk-options.R")
 ```
 
 ### To loop or not to loop...?
@@ -29,7 +29,7 @@ analyze <- function(filename) {
 ```
 
 ```{r files}
-filenames <- list.files(pattern = "csv")
+filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 ```
 
 #### Vectorized operations
