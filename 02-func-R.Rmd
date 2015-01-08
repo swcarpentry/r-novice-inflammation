@@ -497,7 +497,7 @@ max(answer)
 
 #### Key Points
 
-* Define a function using `name <- function(...args...)`.
+* Define a function using `name <- function(...args...) {...body...}`.
 * The body of a function should be surrounded by curly braces (`{}`).
 * Call a function using `name(...values...)`.
 * Each time a function is called, a new stack frame is created on the [call stack](../../gloss.html#call-stack) to hold its arguments and local variables.
