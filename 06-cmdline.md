@@ -12,7 +12,7 @@ In order to do that, we need to make our programs work like other Unix command-l
 For example, we may want a program that reads a data set and prints the average inflammation per patient:
 
 ~~~
-$ Rscript readings.R --mean inflammation-01.csv
+$ Rscript readings.R --mean data/inflammation-01.csv
 5.45
 5.425
 6.1
@@ -25,13 +25,13 @@ $ Rscript readings.R --mean inflammation-01.csv
 but we might also want to look at the minimum of the first four lines
 
 ~~~
-$ head -4 inflammation-01.csv | Rscript readings.R --min
+$ head -4 data/inflammation-01.csv | Rscript readings.R --min
 ~~~
 
 or the maximum inflammations in several files one after another:
 
 ~~~
-$ Rscript readings.R --max inflammation-*.csv
+$ Rscript readings.R --max data/inflammation-*.csv
 ~~~
 
 Our overall requirements are:
@@ -70,7 +70,7 @@ Now we can run the code in the file we created from the Unix Shell using `Rscrip
 
 
 
-<div class='out'><pre class='out'><code>R version 3.1.1 (2014-07-10)
+<div class='out'><pre class='out'><code>R version 3.1.2 (2014-10-31)
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 locale:
@@ -112,7 +112,6 @@ Let's see what happens when we run this program in the Unix Shell:
 --slave
 --no-restore
 --file=print-args.R
---args
 </code></pre></div>
 
 From this output, we learn that `Rscript` is just a convenience command for running R scripts.
@@ -202,7 +201,7 @@ This function gets the name of the file to process from the first element return
 Here's a simple test to run from the Unix Shell:
 
 
-<pre class='in'><code>Rscript readings-01.R inflammation-01.csv</code></pre>
+<pre class='in'><code>Rscript readings-01.R data/inflammation-01.csv</code></pre>
 
 There is no output because we have defined a function, but haven't actually called it.
 Let's add a call to `main` and save it as `readings-02.R`:
@@ -220,7 +219,7 @@ main()
 </code></pre></div>
 
 
-<pre class='in'><code>Rscript readings-02.R inflammation-01.csv</code></pre>
+<pre class='in'><code>Rscript readings-02.R data/inflammation-01.csv</code></pre>
 
 
 
@@ -317,38 +316,18 @@ main()
   
 
 
-  + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program that lists all the files in the current directory that contain a specific pattern:
+  + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program, `find-pattern.R`, that lists all the files in the current directory that contain a specific pattern:
 
 
-<pre class='in'><code>Rscript find-pattern.R inflammation</code></pre>
+<pre class='in'><code># For example, searching for the pattern "print-args" returns the two scripts we
+# wrote earlier
+Rscript find-pattern.R print-args</code></pre>
 
 
 
 
-<div class='out'><pre class='out'><code>inflammation-01.csv
-inflammation-01.pdf
-inflammation-02.csv
-inflammation-02.pdf
-inflammation-03.csv
-inflammation-03.pdf
-inflammation-04.csv
-inflammation-04.pdf
-inflammation-05.csv
-inflammation-05.pdf
-inflammation-06.csv
-inflammation-06.pdf
-inflammation-07.csv
-inflammation-07.pdf
-inflammation-08.csv
-inflammation-08.pdf
-inflammation-09.csv
-inflammation-09.pdf
-inflammation-10.csv
-inflammation-10.pdf
-inflammation-11.csv
-inflammation-11.pdf
-inflammation-12.csv
-inflammation-12.pdf
+<div class='out'><pre class='out'><code>print-args.R
+print-args-trailing.R
 </code></pre></div>
 
 
@@ -360,18 +339,18 @@ Since 60 lines of output per file is a lot to page through, we'll start by using
 Let's investigate them from the Unix Shell:
 
 
-<pre class='in'><code>ls small-*.csv</code></pre>
+<pre class='in'><code>ls data/small-*.csv</code></pre>
 
 
 
 
-<div class='out'><pre class='out'><code>small-01.csv
-small-02.csv
-small-03.csv
+<div class='out'><pre class='out'><code>data/small-01.csv
+data/small-02.csv
+data/small-03.csv
 </code></pre></div>
 
 
-<pre class='in'><code>cat small-01.csv</code></pre>
+<pre class='in'><code>cat data/small-01.csv</code></pre>
 
 
 
@@ -381,7 +360,7 @@ small-03.csv
 </code></pre></div>
 
 
-<pre class='in'><code>Rscript readings-02.R small-01.csv</code></pre>
+<pre class='in'><code>Rscript readings-02.R data/small-01.csv</code></pre>
 
 
 
@@ -416,7 +395,7 @@ main()
 and here it is in action:
 
 
-<pre class='in'><code>Rscript readings-03.R small-01.csv small-02.csv</code></pre>
+<pre class='in'><code>Rscript readings-03.R data/small-01.csv data/small-02.csv</code></pre>
 
 
 
@@ -471,7 +450,7 @@ main()
 And we can confirm this works by running it from the Unix Shell:
 
 
-<pre class='in'><code>Rscript readings-04.R --max small-01.csv</code></pre>
+<pre class='in'><code>Rscript readings-04.R --max data/small-01.csv</code></pre>
 
 
 
@@ -555,7 +534,7 @@ In this example, we passed it as an argument to the function `readLines`, which 
 Let's try running it from the Unix Shell as if it were a regular command-line program:
 
 
-<pre class='in'><code>Rscript count-stdin.R < small-01.csv</code></pre>
+<pre class='in'><code>Rscript count-stdin.R < data/small-01.csv</code></pre>
 
 
 
@@ -568,7 +547,7 @@ Note that because we did not specify `sep = "\n"` when calling `cat`, the output
 A common mistake is to try to run something that reads from standard input like this:
 
 
-<pre class='in'><code>Rscript count-stdin.R small-01.csv</code></pre>
+<pre class='in'><code>Rscript count-stdin.R data/small-01.csv</code></pre>
 
 i.e., to forget the `<` character that redirect the file to standard input.
 In this case, there's nothing in standard input, so the program waits at the start of the loop for someone to type something on the keyboard.
@@ -617,7 +596,7 @@ Let's try it out.
 Instead of calculating the mean inflammation of every patient, we'll only calculate the mean for the first 10 patients (rows):
 
 
-<pre class='in'><code>head inflammation-01.csv | Rscript readings-06.R --mean</code></pre>
+<pre class='in'><code>head data/inflammation-01.csv | Rscript readings-06.R --mean</code></pre>
 
 
 
