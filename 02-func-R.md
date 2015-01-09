@@ -52,7 +52,7 @@ fahr_to_kelvin(32)</code></pre>
 
 
 
-<div class='out'><pre class='out'><code>[1] 273.1
+<div class='out'><pre class='out'><code>[1] 273.15
 </code></pre></div>
 
 
@@ -62,7 +62,7 @@ fahr_to_kelvin(212)</code></pre>
 
 
 
-<div class='out'><pre class='out'><code>[1] 373.1
+<div class='out'><pre class='out'><code>[1] 373.15
 </code></pre></div>
 
 We've successfully called the function that we defined, and we have access to the value that we returned.
@@ -82,7 +82,7 @@ kelvin_to_celsius(0)</code></pre>
 
 
 
-<div class='out'><pre class='out'><code>[1] -273.1
+<div class='out'><pre class='out'><code>[1] -273.15
 </code></pre></div>
 
 What about converting Fahrenheit to Celsius?
@@ -193,7 +193,7 @@ If we try to get the value of `temp` after our functions have finished running, 
 
 
 
-<div class='out'><pre class='out'><code>Error: object 'temp' not found
+<div class='out'><pre class='out'><code>Error in eval(expr, envir, enclos): object 'temp' not found
 </code></pre></div>
 
 > **Tip:** The explanation of the stack frame above was very general and the basic concept will help you understand most languages you try to program with.
@@ -368,7 +368,7 @@ sd(dat[, 4])</code></pre>
 
 
 
-<div class='out'><pre class='out'><code>[1] 1.068
+<div class='out'><pre class='out'><code>[1] 1.067628
 </code></pre></div>
 
 
@@ -378,7 +378,7 @@ sd(centered)</code></pre>
 
 
 
-<div class='out'><pre class='out'><code>[1] 1.068
+<div class='out'><pre class='out'><code>[1] 1.067628
 </code></pre></div>
 
 Those values look the same, but we probably wouldn't notice if they were different in the sixth decimal place.
@@ -461,7 +461,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")</code></pre>
 
 
 
-<div class='out'><pre class='out'><code>Error: 'file' must be a character string or connection
+<div class='out'><pre class='out'><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 </code></pre></div>
 
 To understand what's going on, and make our own functions easier to use, let's re-define our `center` function like this:
@@ -600,7 +600,7 @@ Now we understand why the following gives an error:
 
 
 
-<div class='out'><pre class='out'><code>Error: 'file' must be a character string or connection
+<div class='out'><pre class='out'><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 </code></pre></div>
 
 It fails because `FALSE` is assigned to `file` and the filename is assigned to the argument `header`.
@@ -614,8 +614,7 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 
 #### Key Points
 
-* Define a function using `name <- function(...args...)`.
-* The body of a function should be surrounded by curly braces (`{}`).
+* Define a function using `name <- function(...args...) {...body...}`.
 * Call a function using `name(...values...)`.
 * Each time a function is called, a new stack frame is created on the [call stack](../../gloss.html#call-stack) to hold its arguments and local variables.
 * R looks for variables in the current stack frame before looking for them at the top level.
