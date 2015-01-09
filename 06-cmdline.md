@@ -316,10 +316,12 @@ main()
   
 
 
-  + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program that lists all the files in the current directory that contain a specific pattern:
+  + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program, `find-pattern.R`, that lists all the files in the current directory that contain a specific pattern:
 
 
-<pre class='in'><code>Rscript find-pattern.R print-args</code></pre>
+<pre class='in'><code># For example, searching for the pattern "print-args" returns the two scripts we
+# wrote earlier
+Rscript find-pattern.R print-args</code></pre>
 
 
 
