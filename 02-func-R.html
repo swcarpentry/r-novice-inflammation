@@ -53,13 +53,13 @@
 <pre class='in'><code># freezing point of water
 fahr_to_kelvin(32)</code></pre>
 <div class="out">
-<pre class='out'><code>[1] 273.1
+<pre class='out'><code>[1] 273.15
 </code></pre>
 </div>
 <pre class='in'><code># boiling point of water
 fahr_to_kelvin(212)</code></pre>
 <div class="out">
-<pre class='out'><code>[1] 373.1
+<pre class='out'><code>[1] 373.15
 </code></pre>
 </div>
 <p>We've successfully called the function that we defined, and we have access to the value that we returned.</p>
@@ -73,7 +73,7 @@ fahr_to_kelvin(212)</code></pre>
 #absolute zero in Celsius
 kelvin_to_celsius(0)</code></pre>
 <div class="out">
-<pre class='out'><code>[1] -273.1
+<pre class='out'><code>[1] -273.15
 </code></pre>
 </div>
 <p>What about converting Fahrenheit to Celsius? We could write out the formula, but we don't need to. Instead, we can <a href="../../gloss.html#function-composition">compose</a> the two functions we have already created:</p>
@@ -134,7 +134,7 @@ final <- fahr_to_celsius(original)</code></pre>
 <p>This final stack frame is always there; it holds the variables we defined outside the functions in our code. What it <em>doesn't</em> hold is the variables that were in the various stack frames. If we try to get the value of <code>temp</code> after our functions have finished running, R tells us that there's no such thing:</p>
 <pre class='in'><code>temp</code></pre>
 <div class="out">
-<pre class='out'><code>Error: object 'temp' not found
+<pre class='out'><code>Error in eval(expr, envir, enclos): object 'temp' not found
 </code></pre>
 </div>
 <blockquote>
@@ -237,13 +237,13 @@ max(centered)</code></pre>
 <pre class='in'><code># original standard deviation
 sd(dat[, 4])</code></pre>
 <div class="out">
-<pre class='out'><code>[1] 1.068
+<pre class='out'><code>[1] 1.067628
 </code></pre>
 </div>
 <pre class='in'><code># centerted standard deviation
 sd(centered)</code></pre>
 <div class="out">
-<pre class='out'><code>[1] 1.068
+<pre class='out'><code>[1] 1.067628
 </code></pre>
 </div>
 <p>Those values look the same, but we probably wouldn't notice if they were different in the sixth decimal place. Let's do this instead:</p>
@@ -286,7 +286,7 @@ sd(dat[, 4]) - sd(centered)</code></pre>
 <pre class='in'><code>dat <- read.csv(header = FALSE, file = "data/inflammation-01.csv")
 dat <- read.csv(FALSE, "data/inflammation-01.csv")</code></pre>
 <div class="out">
-<pre class='out'><code>Error: 'file' must be a character string or connection
+<pre class='out'><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 </code></pre>
 </div>
 <p>To understand what's going on, and make our own functions easier to use, let's re-define our <code>center</code> function like this:</p>
@@ -377,7 +377,7 @@ display(c = 77)</code></pre>
 <p>This tells us that <code>read.csv()</code> has one argument, <code>file</code>, that doesn't have a default value, and six others that do. Now we understand why the following gives an error:</p>
 <pre class='in'><code>dat <- read.csv(FALSE, "data/inflammation-01.csv")</code></pre>
 <div class="out">
-<pre class='out'><code>Error: 'file' must be a character string or connection
+<pre class='out'><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 </code></pre>
 </div>
 <p>It fails because <code>FALSE</code> is assigned to <code>file</code> and the filename is assigned to the argument <code>header</code>.</p>
@@ -387,8 +387,7 @@ display(c = 77)</code></pre>
 </ul>
 <h4 id="key-points">Key Points</h4>
 <ul>
-<li>Define a function using <code>name &lt;- function(...args...)</code>.</li>
-<li>The body of a function should be surrounded by curly braces (<code>{}</code>).</li>
+<li>Define a function using <code>name &lt;- function(...args...) {...body...}</code>.</li>
 <li>Call a function using <code>name(...values...)</code>.</li>
 <li>Each time a function is called, a new stack frame is created on the <a href="../../gloss.html#call-stack">call stack</a> to hold its arguments and local variables.</li>
 <li>R looks for variables in the current stack frame before looking for them at the top level.</li>
