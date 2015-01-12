@@ -56,8 +56,10 @@ We'll tackle these questions in turn below.
 Using the text editor of your choice, save the following line of code in a text file called `session-info.R`:
 
 
-<div class='out'><pre class='out'><code>sessionInfo()
-</code></pre></div>
+~~~{.output}
+sessionInfo()
+
+~~~
 
 The function, `sessionInfo`, outputs the version of R you are running as well as the type of computer you are using (as well as the versions of the packages that have been loaded).
 This is very useful information to include when asking others for help with your R code.
@@ -65,12 +67,15 @@ This is very useful information to include when asking others for help with your
 Now we can run the code in the file we created from the Unix Shell using `Rscript`:
 
 
-<pre class='in'><code>Rscript session-info.R</code></pre>
+~~~{.r}
+Rscript session-info.R
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>R version 3.1.2 (2014-10-31)
+~~~{.output}
+R version 3.1.2 (2014-10-31)
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 locale:
@@ -83,7 +88,8 @@ locale:
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
-</code></pre></div>
+
+~~~
 
 > **Tip:** If that did not work, remember that you must be in the correct directory.
 You can determine which directory you are currently in using `pwd` and change to a different directory using `cd`.
@@ -92,9 +98,11 @@ For a review, see this [lesson](../shell/01-filedir.html) or the [Unix Shell Ref
 Now let's create another script that does something more interesting. Write the following lines in a file named `print-args.R`:
 
 
-<div class='out'><pre class='out'><code>args <- commandArgs()
+~~~{.output}
+args <- commandArgs()
 cat(args, sep = "\n")
-</code></pre></div>
+
+~~~
 
 The function `commandArgs` extracts all the command line arguments and returns them as a vector.
 The function `cat`, similar to the `cat` of the Unix Shell, outputs the contents of the variable.
@@ -103,16 +111,20 @@ Because we set the argument `sep` to `"\n"`, which is the symbol to start a new 
 Let's see what happens when we run this program in the Unix Shell:
 
 
-<pre class='in'><code>Rscript print-args.R</code></pre>
+~~~{.r}
+Rscript print-args.R
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>/usr/lib/R/bin/exec/R
+~~~{.output}
+/usr/lib/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
-</code></pre></div>
+
+~~~
 
 From this output, we learn that `Rscript` is just a convenience command for running R scripts.
 The first argument in the vector is the path to the `R` executable.
@@ -127,27 +139,34 @@ From the R help file:
 Thus running a file with Rscript is an easier way to run the following:
 
 
-<pre class='in'><code>R --slave --no-restore --file=print-args.R --args</code></pre>
+~~~{.r}
+R --slave --no-restore --file=print-args.R --args
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>/usr/lib/R/bin/exec/R
+~~~{.output}
+/usr/lib/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
 --args
-</code></pre></div>
+
+~~~
 
 If we run it with a few arguments, however:
 
 
-<pre class='in'><code>Rscript print-args.R first second third</code></pre>
+~~~{.r}
+Rscript print-args.R first second third
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>/usr/lib/R/bin/exec/R
+~~~{.output}
+/usr/lib/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -155,29 +174,36 @@ If we run it with a few arguments, however:
 first
 second
 third
-</code></pre></div>
+
+~~~
 
 then `commandArgs` adds each of those arguments to the vector it returns.
 Since the first elements of the vector are always the same, we can tell `commandArgs` to only return the arguments that come after `--args`.
 Let's update `print-args.R` and save it as `print-args-trailing.R`:
 
 
-<div class='out'><pre class='out'><code>args <- commandArgs(trailingOnly = TRUE)
+~~~{.output}
+args <- commandArgs(trailingOnly = TRUE)
 cat(args, sep = "\n")
-</code></pre></div>
+
+~~~
 
 And then run `print-args-trailing` from the Unix Shell:
 
 
-<pre class='in'><code>Rscript print-args-trailing.R first second third</code></pre>
+~~~{.r}
+Rscript print-args-trailing.R first second third
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>first
+~~~{.output}
+first
 second
 third
-</code></pre></div>
+
+~~~
 
 Now `commandArgs` returns only the arguments that we listed after `print-args-trailing.R`.
 
@@ -187,27 +213,32 @@ By convention this function is usually called `main`, though we can call it what
 Write the following code in a file called `readings-01.R`:
 
 
-<div class='out'><pre class='out'><code>main <- function() {
+~~~{.output}
+main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   filename <- args[1]
   dat <- read.csv(file = filename, header = FALSE)
   mean_per_patient <- apply(dat, 1, mean)
   cat(mean_per_patient, sep = "\n")
 }
-</code></pre></div>
+
+~~~
 
 
 This function gets the name of the file to process from the first element returned by `commandArgs`.
 Here's a simple test to run from the Unix Shell:
 
 
-<pre class='in'><code>Rscript readings-01.R data/inflammation-01.csv</code></pre>
+~~~{.r}
+Rscript readings-01.R data/inflammation-01.csv
+~~~
 
 There is no output because we have defined a function, but haven't actually called it.
 Let's add a call to `main` and save it as `readings-02.R`:
 
 
-<div class='out'><pre class='out'><code>main <- function() {
+~~~{.output}
+main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   filename <- args[1]
   dat <- read.csv(file = filename, header = FALSE)
@@ -216,15 +247,19 @@ Let's add a call to `main` and save it as `readings-02.R`:
 }
 
 main()
-</code></pre></div>
+
+~~~
 
 
-<pre class='in'><code>Rscript readings-02.R data/inflammation-01.csv</code></pre>
+~~~{.r}
+Rscript readings-02.R data/inflammation-01.csv
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>5.45
+~~~{.output}
+5.45
 5.425
 6.1
 5.9
@@ -284,7 +319,8 @@ main()
 6.4
 7.05
 5.9
-</code></pre></div>
+
+~~~
 
 #### Challenges
 
@@ -293,22 +329,30 @@ main()
   You can convert from a string to a number using the function `as.numeric`.
 
 
-<pre class='in'><code>Rscript arith.R 1 + 2</code></pre>
+~~~{.r}
+Rscript arith.R 1 + 2
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>3
-</code></pre></div>
+~~~{.output}
+3
+
+~~~
 
 
-<pre class='in'><code>Rscript arith.R 3 - 4</code></pre>
+~~~{.r}
+Rscript arith.R 3 - 4
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>-1
-</code></pre></div>
+~~~{.output}
+-1
+
+~~~
 
 
 
@@ -319,16 +363,20 @@ main()
   + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program, `find-pattern.R`, that lists all the files in the current directory that contain a specific pattern:
 
 
-<pre class='in'><code># For example, searching for the pattern "print-args" returns the two scripts we
+~~~{.r}
+# For example, searching for the pattern "print-args" returns the two scripts we
 # wrote earlier
-Rscript find-pattern.R print-args</code></pre>
+Rscript find-pattern.R print-args
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>print-args.R
+~~~{.output}
+print-args.R
 print-args-trailing.R
-</code></pre></div>
+
+~~~
 
 
 
@@ -339,35 +387,47 @@ Since 60 lines of output per file is a lot to page through, we'll start by using
 Let's investigate them from the Unix Shell:
 
 
-<pre class='in'><code>ls data/small-*.csv</code></pre>
+~~~{.r}
+ls data/small-*.csv
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>data/small-01.csv
+~~~{.output}
+data/small-01.csv
 data/small-02.csv
 data/small-03.csv
-</code></pre></div>
+
+~~~
 
 
-<pre class='in'><code>cat data/small-01.csv</code></pre>
+~~~{.r}
+cat data/small-01.csv
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>0,0,1
+~~~{.output}
+0,0,1
 0,1,2
-</code></pre></div>
+
+~~~
 
 
-<pre class='in'><code>Rscript readings-02.R data/small-01.csv</code></pre>
+~~~{.r}
+Rscript readings-02.R data/small-01.csv
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>0.3333333
+~~~{.output}
+0.3333333
 1
-</code></pre></div>
+
+~~~
 
 Using small data files as input also allows us to check our results more easily: here, for example, we can see that our program is calculating the mean correctly for each line, whereas we were really taking it on faith before.
 This is yet another rule of programming: "[test the simple things first](../../rules.html#test-simple-first)".
@@ -380,7 +440,8 @@ The solution is to loop over the vector returned by `commandArgs(trailingOnly = 
 Here's our changed program, which we'll save as `readings-03.R`:
 
 
-<div class='out'><pre class='out'><code>main <- function() {
+~~~{.output}
+main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   for (filename in args) {
     dat <- read.csv(file = filename, header = FALSE)
@@ -390,21 +451,26 @@ Here's our changed program, which we'll save as `readings-03.R`:
 }
 
 main()
-</code></pre></div>
+
+~~~
 
 and here it is in action:
 
 
-<pre class='in'><code>Rscript readings-03.R data/small-01.csv data/small-02.csv</code></pre>
+~~~{.r}
+Rscript readings-03.R data/small-01.csv data/small-02.csv
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>0.3333333
+~~~{.output}
+0.3333333
 1
 13.66667
 11
-</code></pre></div>
+
+~~~
 
 **Note**: at this point, we have created three versions of our script called `readings-01.R`, `readings-02.R`, and `readings-03.R`.
 We wouldn't do this in real life: instead, we would have one file called `readings.R` that we committed to version control every time we got an enhancement working.
@@ -425,7 +491,8 @@ The next step is to teach our program to pay attention to the `--min`, `--mean`,
 These always appear before the names of the files, so let's save the following in `readings-04.R`:
 
 
-<div class='out'><pre class='out'><code>main <- function() {
+~~~{.output}
+main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   action <- args[1]
   filenames <- args[-1]
@@ -445,19 +512,24 @@ These always appear before the names of the files, so let's save the following i
 }
 
 main()
-</code></pre></div>
+
+~~~
 
 And we can confirm this works by running it from the Unix Shell:
 
 
-<pre class='in'><code>Rscript readings-04.R --max data/small-01.csv</code></pre>
+~~~{.r}
+Rscript readings-04.R --max data/small-01.csv
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>1
+~~~{.output}
+1
 2
-</code></pre></div>
+
+~~~
 
 but there are several things wrong with it:
 
@@ -470,7 +542,8 @@ This version pulls the processing of each file out of the loop into a function o
 It also checks that `action` is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as `readings-05.R`:
 
 
-<div class='out'><pre class='out'><code>main <- function() {
+~~~{.output}
+main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   action <- args[1]
   filenames <- args[-1]
@@ -495,7 +568,8 @@ process <- function(filename, action) {
 }
 
 main()
-</code></pre></div>
+
+~~~
 
 This is four lines longer than its predecessor, but broken into more digestible chunks of 8 and 12 lines.
 
@@ -522,11 +596,13 @@ The next thing our program has to do is read data from standard input if no file
 Let's experiment in another script, which we'll save as `count-stdin.R`:
 
 
-<div class='out'><pre class='out'><code>lines <- readLines(con = file("stdin"))
+~~~{.output}
+lines <- readLines(con = file("stdin"))
 count <- length(lines)
 cat("lines in standard input: ")
 cat(count, sep = "\n")
-</code></pre></div>
+
+~~~
 
 This little program reads lines from the program's standard input using `file("stdin")`.
 This allows us to do almost anything with it that we could do to a regular file.
@@ -534,20 +610,26 @@ In this example, we passed it as an argument to the function `readLines`, which 
 Let's try running it from the Unix Shell as if it were a regular command-line program:
 
 
-<pre class='in'><code>Rscript count-stdin.R < data/small-01.csv</code></pre>
+~~~{.r}
+Rscript count-stdin.R < data/small-01.csv
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>lines in standard input: 2
-</code></pre></div>
+~~~{.output}
+lines in standard input: 2
+
+~~~
 
 Note that because we did not specify `sep = "\n"` when calling `cat`, the output is written on the same line.
 
 A common mistake is to try to run something that reads from standard input like this:
 
 
-<pre class='in'><code>Rscript count-stdin.R data/small-01.csv</code></pre>
+~~~{.r}
+Rscript count-stdin.R data/small-01.csv
+~~~
 
 i.e., to forget the `<` character that redirect the file to standard input.
 In this case, there's nothing in standard input, so the program waits at the start of the loop for someone to type something on the keyboard.
@@ -561,7 +643,8 @@ Luckily, `read.csv` can handle either a filename or an open file as its first pa
 That leaves `main`, which we'll update and save as `readings-06.R`:
 
 
-<div class='out'><pre class='out'><code>main <- function() {
+~~~{.output}
+main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   action <- args[1]
   filenames <- args[-1]
@@ -590,18 +673,22 @@ process <- function(filename, action) {
 }
 
 main()
-</code></pre></div>
+
+~~~
 
 Let's try it out.
 Instead of calculating the mean inflammation of every patient, we'll only calculate the mean for the first 10 patients (rows):
 
 
-<pre class='in'><code>head data/inflammation-01.csv | Rscript readings-06.R --mean</code></pre>
+~~~{.r}
+head data/inflammation-01.csv | Rscript readings-06.R --mean
+~~~
 
 
 
 
-<div class='out'><pre class='out'><code>5.45
+~~~{.output}
+5.45
 5.425
 6.1
 5.9
@@ -611,7 +698,8 @@ Instead of calculating the mean inflammation of every patient, we'll only calcul
 6.65
 6.625
 6.525
-</code></pre></div>
+
+~~~
 
 And now we're done: the program now does everything we set out to do.
 
