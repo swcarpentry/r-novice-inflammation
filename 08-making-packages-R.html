@@ -47,21 +47,20 @@ License: Abbreviation for an open source license</code></pre>
 <h2 id="making-your-first-r-package">Making your first R package</h2>
 <p>Let's turn our temperature conversion functions into an R package.</p>
 <pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
-    <span class="co"># Converts Fahrenheit to Kelvin</span>
+    <span class="co">#Converts Fahrenheit to Kelvin</span>
     kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span>/<span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
     kelvin
 }</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
-    <span class="co"># Converts Kelvin to Celsius</span>
-    Celsius &lt;-<span class="st"> </span>temp -<span class="st"> </span><span class="fl">273.15</span>
-    Celsius
+  <span class="co">#Converts Kelvin to Celsius</span>
+  Celsius &lt;-<span class="st"> </span>temp -<span class="st"> </span><span class="fl">273.15</span>
+  Celsius
 }</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">fahr_to_celsius &lt;-<span class="st"> </span>function(temp) {
-    <span class="co"># Converts Fahrenheit to Celsius using fahr_to_kelvin() and</span>
-    <span class="co"># kelvin_to_celsius()</span>
-    temp_k &lt;-<span class="st"> </span><span class="kw">fahr_to_kelvin</span>(temp)
+  <span class="co">#Converts Fahrenheit to Celsius using fahr_to_kelvin() and kelvin_to_celsius()</span>
+  temp_k &lt;-<span class="st"> </span><span class="kw">fahr_to_kelvin</span>(temp)
     result &lt;-<span class="st"> </span><span class="kw">kelvin_to_celsius</span>(temp_k)
-    result
+  result
 }</code></pre>
 <p>We will use the <code>devtools</code> and <code>roxygen2</code> packages, which make creating packages in R relatively simple. First, install the <code>devtools</code> package, which will allow you to install the <code>roxygen2</code> package from GitHub (<a href="https://github.com/klutometis/roxygen">code</a>).</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
@@ -81,9 +80,9 @@ License: Abbreviation for an open source license</code></pre>
 <span class="co">#&#39; fahr_to_kelvin(32)</span>
 
 fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
-    <span class="co"># Converts Fahrenheit to Kelvin</span>
-    kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span>/<span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
-    kelvin
+  <span class="co">#Converts Fahrenheit to Kelvin</span>
+  kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span>/<span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
+  kelvin
 }</code></pre>
 <p>The <code>roxygen2</code> package reads lines that begin with <code>#'</code> as comments to create the documentation for your package. Descriptive tags are preceded with the <code>@</code> symbol. For example, <code>@param</code> has information about the input parameters for the function. Now, we will use <code>roxygen2</code> to convert our documentation to the standard R format.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;./tempConvert&quot;</span>)
@@ -93,16 +92,19 @@ fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;..&quot;</span>)
 <span class="kw">install</span>(<span class="st">&quot;tempConvert&quot;</span>)
 
-<span class="st">`</span><span class="dt">?</span><span class="st">`</span>(fahr_to_kelvin)</code></pre>
+?fahr_to_kelvin</code></pre>
 <p>Notice there is now a tempConvert environment that is the parent environment to the global environment.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">search</span>()</code></pre>
 <p>Now that our package is loaded, let's try out some of the functions.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fahr_to_celsius</span>(<span class="dv">32</span>)</code></pre>
-<pre><code>## [1] 0</code></pre>
+<pre class="output"><code>[1] 0
+</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fahr_to_kelvin</span>(<span class="dv">212</span>)</code></pre>
-<pre><code>## [1] 373.1</code></pre>
+<pre class="output"><code>[1] 373.1
+</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kelvin_to_celsius</span>(<span class="fl">273.15</span>)</code></pre>
-<pre><code>## [1] 0</code></pre>
+<pre class="output"><code>[1] 0
+</code></pre>
 <h2 id="challenges">Challenges</h2>
 <ul>
 <li>Create some new functions for your tempConvert package to convert from Kelvin to Fahrenheit or from Celsius to Kelvin or Fahrenheit.</li>

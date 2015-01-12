@@ -41,49 +41,38 @@
 </ul>
 <h1 id="image-grids">Image Grids</h1>
 <p>Let's start by creating some simple heat maps using a source code from a package that is being developed called <code>rblocks</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;rblocks.R&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&#39;rblocks.R&#39;</span>)</code></pre>
 <p>Once we have sourced our own set of function (kind of like your own personal library) we can call any of these functions by name.</p>
 <p>The first step is to create our own &quot;image&quot;:</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid1 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dt">type =</span> <span class="st">&quot;vector&quot;</span>)
 grid1</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3" /><p class="caption">plot of chunk unnamed-chunk-3</p>
-</div>
+<p><img src="figure/unnamed-chunk-3.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" /></p>
 <p>We can see that this grid represents a vector. It is a single dimension and has 5 locations (which we gave to it in the first argument). We can see the summarized information in the grid:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(grid1)</code></pre>
+<pre class="output"><code>Classes &#39;block&#39;, &#39;character&#39;  chr [1:5] &quot;#7BEA7B&quot; &quot;#7BEA7B&quot; &quot;#7BEA7B&quot; &quot;#7BEA7B&quot; ...
+</code></pre>
 <p>The obvious thing to do with a grid like this is color in its cells. Let's look at the different ways to access elements of a vector (using positive integers, negative integers, logical vectors etc. as indices).</p>
 <p>Let's change the color by indexing using <strong>positive integers</strong>. Here, we tell the program to select the first two elements of grid1, and to color them red:</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid1[<span class="dv">1</span>:<span class="dv">2</span>] &lt;-<span class="st"> &quot;red&quot;</span>
 grid1</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5" /><p class="caption">plot of chunk unnamed-chunk-5</p>
-</div>
+<p><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" /></p>
 <p>Let's try it another way index using <strong>negative integers</strong>. Here we tell the program to select elements that ARE NOT 1-3, and color them blue:</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid2 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dt">type =</span> <span class="st">&quot;vector&quot;</span>)
 grid2[-<span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">3</span>)] &lt;-<span class="st"> &quot;blue&quot;</span>
 grid2</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6" /><p class="caption">plot of chunk unnamed-chunk-6</p>
-</div>
+<p><img src="figure/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" /></p>
 <p>Lets try to index using <strong>logical vectors</strong>. Here we use a set a true/false statements to tell the cells what color to display:</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid3 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dt">type =</span> <span class="st">&quot;vector&quot;</span>)
-grid3[<span class="kw">c</span>(T, F, T, F, T)] =<span class="st"> &quot;darkred&quot;</span>
+grid3[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)] &lt;-<span class="st"> &quot;darkred&quot;</span>
 grid3</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7" /><p class="caption">plot of chunk unnamed-chunk-7</p>
-</div>
+<p><img src="figure/unnamed-chunk-7.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;" /></p>
 <p>One challenging concept for those new to R is the recycling rule. rBlocks can be used to explain this concept visually.</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid4 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dt">type =</span> <span class="st">&quot;vector&quot;</span>)
 grid4</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-81.png" alt="plot of chunk unnamed-chunk-8" /><p class="caption">plot of chunk unnamed-chunk-8</p>
-</div>
-<pre class="sourceCode r"><code class="sourceCode r">
-grid4[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)] &lt;-<span class="st"> &quot;blue&quot;</span>
+<p><img src="figure/unnamed-chunk-81.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r">grid4[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)] &lt;-<span class="st"> &quot;blue&quot;</span>
 grid4</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-82.png" alt="plot of chunk unnamed-chunk-8" /><p class="caption">plot of chunk unnamed-chunk-8</p>
-</div>
+<p><img src="figure/unnamed-chunk-82.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
 <p>In this example, we are using a logical vector <code>c(TRUE, FALSE)</code> to access elements of the vector grid4. According to the recycling rule, this short vector is expanded out as `c(TRUE, FALSE, TRUE, FALSE, TRUE) to match the length of grid4. The grid image makes on top makes it easy to understand what is happening.</p>
 <p>R has lots of ways to refer to colors:</p>
 <ul>
@@ -111,25 +100,26 @@ for (i in <span class="dv">1</span>:<span class="dv">5</span>) {
 <pre class="sourceCode r"><code class="sourceCode r">grid6 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dt">type =</span> <span class="st">&quot;matrix&quot;</span>)
 grid6[<span class="dv">1</span>] &lt;-<span class="st"> &quot;dodgerblue3&quot;</span>
 grid6</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10" /><p class="caption">plot of chunk unnamed-chunk-10</p>
-</div>
+<p><img src="figure/unnamed-chunk-10.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;" /></p>
 <p>In a matrix, if you only have a single index value, it assumes the cell you refer to is the same (e.g. [1] ~ [1,1])</p>
 <p>single index accesses first column of data.frame</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid7 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dt">type =</span> <span class="st">&quot;data.frame&quot;</span>)
 grid7[<span class="dv">1</span>] &lt;-<span class="st"> &quot;dodgerblue3&quot;</span>
 grid7</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11" /><p class="caption">plot of chunk unnamed-chunk-11</p>
-</div>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print_raw</span>(grid7)  <span class="co">#shows the data frame</span></code></pre>
+<p><img src="figure/unnamed-chunk-11.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print_raw</span>(grid7) <span class="co">#shows the data frame</span></code></pre>
+<pre class="output"><code>           V1      V2      V3      V4      V5
+1 dodgerblue3 #7BEA7B #7BEA7B #7BEA7B #7BEA7B
+2 dodgerblue3 #7BEA7B #7BEA7B #7BEA7B #7BEA7B
+3 dodgerblue3 #7BEA7B #7BEA7B #7BEA7B #7BEA7B
+4 dodgerblue3 #7BEA7B #7BEA7B #7BEA7B #7BEA7B
+5 dodgerblue3 #7BEA7B #7BEA7B #7BEA7B #7BEA7B
+</code></pre>
 <p>Here, with a data frame, if you only have a single index value, it assumes you mean the entire first column. How would we color the entire first row? What else can we do to make sure we are indexing properly?</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid7b &lt;-<span class="st"> </span>grid7
-grid7b[<span class="dv">1</span>, ] &lt;-<span class="st"> &quot;goldenrod&quot;</span>
+grid7b[<span class="dv">1</span>,] &lt;-<span class="st"> &quot;goldenrod&quot;</span>
 grid7b</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-12.png" alt="plot of chunk unnamed-chunk-12" /><p class="caption">plot of chunk unnamed-chunk-12</p>
-</div>
+<p><img src="figure/unnamed-chunk-12.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" style="display: block; margin: auto;" /></p>
 <p>Remember the apply function from earlier? Let us use apply to change the light green cells in grid7 to <code>olivedrab</code> and the blue cells to <code>darkslategray</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid8 &lt;-<span class="st"> </span><span class="kw">apply</span>(grid7, <span class="dv">2</span>, function(df) {
     if (<span class="kw">sum</span>(df ==<span class="st"> &quot;dodgerblue3&quot;</span>) ==<span class="st"> </span><span class="dv">5</span>) {
@@ -140,71 +130,83 @@ grid7b</code></pre>
     <span class="kw">return</span>(df)
 })
 
-grid8
-<span class="kw">display</span>(grid8)</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-13.png" alt="plot of chunk unnamed-chunk-13" /><p class="caption">plot of chunk unnamed-chunk-13</p>
-</div>
+grid8</code></pre>
+<pre class="output"><code>     V1              V2          V3          V4          V5         
+[1,] &quot;darkslategrey&quot; &quot;olivedrab&quot; &quot;olivedrab&quot; &quot;olivedrab&quot; &quot;olivedrab&quot;
+[2,] &quot;darkslategrey&quot; &quot;olivedrab&quot; &quot;olivedrab&quot; &quot;olivedrab&quot; &quot;olivedrab&quot;
+[3,] &quot;darkslategrey&quot; &quot;olivedrab&quot; &quot;olivedrab&quot; &quot;olivedrab&quot; &quot;olivedrab&quot;
+[4,] &quot;darkslategrey&quot; &quot;olivedrab&quot; &quot;olivedrab&quot; &quot;olivedrab&quot; &quot;olivedrab&quot;
+[5,] &quot;darkslategrey&quot; &quot;olivedrab&quot; &quot;olivedrab&quot; &quot;olivedrab&quot; &quot;olivedrab&quot;
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">display</span>(grid8)</code></pre>
+<p><img src="figure/unnamed-chunk-13.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" style="display: block; margin: auto;" /></p>
 <p>We need the <code>display</code> function here, since apply drops attributes, and my implementation of the grid needs the object to be marked with the block class to overlod the print method (I am sure there are more elegant implementations that can handle this better, without bothering the user. Any thoughts?)</p>
 <p>One of the gotchas in R is how it coerces data structures when subsetting. Here is a simple way to visualize this behavior with data.frames.</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid9 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dv">5</span>)
 grid9</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-14.png" alt="plot of chunk unnamed-chunk-14" /><p class="caption">plot of chunk unnamed-chunk-14</p>
-</div>
+<p><img src="figure/unnamed-chunk-14.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" /></p>
 <p>extracting the first column converts it to a vector</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid10 &lt;-<span class="st"> </span>grid9[, <span class="dv">1</span>]
 <span class="kw">display</span>(grid10)</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-15.png" alt="plot of chunk unnamed-chunk-15" /><p class="caption">plot of chunk unnamed-chunk-15</p>
-</div>
+<p><img src="figure/unnamed-chunk-15.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" /></p>
 <h1 id="conditionals-control-flow">Conditionals (Control flow)</h1>
 <p>The other thing we need in order to create a heat map of our own is a way to pick a color based on a data value. The tool R gives us for doing this is called a conditional statement, and looks like this:</p>
 <pre class="sourceCode r"><code class="sourceCode r">num &lt;-<span class="st"> </span><span class="dv">37</span>
-if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
-    <span class="st">&quot;greater&quot;</span>
+if (num &gt;<span class="st"> </span><span class="dv">100</span>){
+    <span class="st">&#39;greater&#39;</span>
 } else {
-    <span class="st">&quot;not greater&quot;</span>
-}
-<span class="st">&quot;done&quot;</span></code></pre>
+    <span class="st">&#39;not greater&#39;</span>
+}   </code></pre>
+<pre class="output"><code>[1] &quot;not greater&quot;
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="st">&#39;done&#39;</span></code></pre>
+<pre class="output"><code>[1] &quot;done&quot;
+</code></pre>
 <p>The structure of conditional statements is similar to functions and loops. The second line of this code uses the keyword <code>if</code> to tell R that we want to make a choice. If the test that follows it is true, the body of the <code>if</code> (i.e., the lines indented underneath it) are executed. If the test is false, the body of the <code>else</code> is executed instead. Only one or the other is ever executed:</p>
 <p><em>draw a diagram on the board of the what is happening (boxes and arrows)</em></p>
 <p>Conditional statements don't have to include an else. If there isn't one, R simply does nothing if the test is false:</p>
 <pre class="sourceCode r"><code class="sourceCode r">num &lt;-<span class="st"> </span><span class="dv">53</span>
-<span class="st">&quot;before conditional...&quot;</span>
-if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
-    <span class="st">&quot;53 is greater than 100&quot;</span>
+<span class="st">&#39;before conditional...&#39;</span></code></pre>
+<pre class="output"><code>[1] &quot;before conditional...&quot;
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
+    <span class="st">&#39;53 is greater than 100&#39;</span>
 }
-<span class="st">&quot;...after conditional&quot;</span></code></pre>
+<span class="st">&#39;...after conditional&#39;</span></code></pre>
+<pre class="output"><code>[1] &quot;...after conditional&quot;
+</code></pre>
 <p>We can also chain several tests together using <code>else if</code> and <code>else</code>. This makes it simple to write a function that returns the sign of a number:</p>
-<pre class="sourceCode r"><code class="sourceCode r">Sign &lt;-<span class="st"> </span>function(num) {
+<pre class="sourceCode r"><code class="sourceCode r">Sign &lt;-<span class="st"> </span>function(num){
     if (num &gt;<span class="st"> </span><span class="dv">0</span>) {
-        <span class="kw">return</span>(<span class="dv">1</span>)
+        <span class="kw">return</span> (<span class="dv">1</span>)
     } else if (num ==<span class="st"> </span><span class="dv">0</span>) {
-        <span class="kw">return</span>(<span class="dv">0</span>)
+        <span class="kw">return</span> (<span class="dv">0</span>)
     } else {
-        <span class="kw">return</span>(-<span class="dv">1</span>)
+        <span class="kw">return</span> (-<span class="dv">1</span>)
     }
 }
 
-<span class="kw">paste</span>(<span class="st">&quot;sign of -3:&quot;</span>, <span class="kw">Sign</span>(-<span class="dv">3</span>))</code></pre>
+<span class="kw">paste</span>(<span class="st">&#39;sign of -3:&#39;</span>, <span class="kw">Sign</span>(-<span class="dv">3</span>))</code></pre>
+<pre class="output"><code>[1] &quot;sign of -3: -1&quot;
+</code></pre>
 <p>One important thing to notice the code above is that we use a double equals sign == to test for equality rather than a single equals sign because the latter is used to mean assignment. This convention was inherited from <code>C</code>, and while many other programming languages work the same way, it does take a bit of getting used to... You can think of it in a sentence the difference between &quot;equals&quot; (=) and &quot;is equal to&quot; (==).</p>
 <p>We can also combine tests using <code>&amp;</code> and <code>|</code> and is only true if both parts are true:</p>
 <pre class="sourceCode r"><code class="sourceCode r">if (<span class="dv">1</span> &gt;<span class="st"> </span><span class="dv">0</span> &amp;<span class="st"> </span>-<span class="dv">1</span> &gt;<span class="st"> </span><span class="dv">0</span>) {
-    <span class="st">&quot;both parts are true&quot;</span>
+    <span class="st">&#39;both parts are true&#39;</span>
 }</code></pre>
 <p>while &quot;or&quot; (<code>|</code>) is true if either part is true:</p>
-<pre class="sourceCode r"><code class="sourceCode r">if (<span class="dv">1</span> &lt;<span class="st"> </span><span class="dv">0</span> |<span class="st"> &quot;left&quot;</span> &lt;<span class="st"> &quot;right&quot;</span>) {
-    <span class="st">&quot;at least one test is true&quot;</span>
+<pre class="sourceCode r"><code class="sourceCode r">if (<span class="dv">1</span> &lt;<span class="st"> </span><span class="dv">0</span> |<span class="st"> &#39;left&#39;</span> &lt;<span class="st"> &#39;right&#39;</span>) {
+    <span class="st">&#39;at least one test is true&#39;</span>
 }</code></pre>
+<pre class="output"><code>[1] &quot;at least one test is true&quot;
+</code></pre>
 <p>In this case, &quot;either&quot; means &quot;either or both&quot;, not &quot;either one or the other but not both&quot;.</p>
 <h3 id="challenges">Challenges</h3>
 <ol style="list-style-type: decimal">
 <li>Write a function called <code>near</code> that returns <code>TRUE</code> if its first parameter is within 10% of its second and <code>FALSE</code> otherwise. Compare your implementation with your neighbor's: do you return the same answer for all possible pairs of numbers? How might you make a simple test for your function?</li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r">near &lt;-<span class="st"> </span>function(param1, param2) {
-    <span class="co"># returns True if its first parameter is within 10% of its second and False</span>
-    <span class="co"># otherwise.</span>
+    <span class="co">#returns True if its first parameter is within 10% of its second and False otherwise.</span>
     ten_percent &lt;-<span class="st"> </span>param2 *<span class="st"> </span><span class="fl">0.1</span>
     if (param1 &gt;=<span class="st"> </span>(param2 -<span class="st"> </span>ten_percent) &amp;<span class="st"> </span>param1 &lt;=<span class="st"> </span>(param2 +<span class="st"> </span>ten_percent)) {
         <span class="ot">TRUE</span>
@@ -215,14 +217,16 @@ if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
 <h1 id="nesting">Nesting</h1>
 <p>Another thing to realize is that if statements can be combined with loops just as easily as they can be combined with functions. For example, if we want to sum the positive numbers in a list, we can write this:</p>
 <pre class="sourceCode r"><code class="sourceCode r">numbers &lt;-<span class="st"> </span><span class="kw">c</span>(-<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">2</span>, -<span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">6</span>)
-total &lt;-<span class="st"> </span><span class="dv">0</span>
+total   &lt;-<span class="st"> </span><span class="dv">0</span>
 for (n in <span class="dv">1</span>:<span class="kw">length</span>(numbers)) {
     if (numbers[n] &gt;=<span class="st"> </span><span class="dv">0</span>) {
         total &lt;-<span class="st"> </span>total +<span class="st"> </span>numbers[n]
     }
-}
-
-<span class="kw">paste</span>(<span class="st">&quot;sum of positive values:&quot;</span>, total)</code></pre>
+} 
+    
+<span class="kw">paste</span>(<span class="st">&#39;sum of positive values:&#39;</span>, total)</code></pre>
+<pre class="output"><code>[1] &quot;sum of positive values: 20&quot;
+</code></pre>
 <p>We could equally well calculate the positive and negative sums in a single loop:</p>
 <pre class="sourceCode r"><code class="sourceCode r">pos_total &lt;-<span class="st"> </span><span class="dv">0</span>
 neg_total &lt;-<span class="st"> </span><span class="dv">0</span>
@@ -233,35 +237,42 @@ for (n in <span class="dv">1</span>:<span class="kw">length</span>(numbers)) {
         neg_total &lt;-<span class="st"> </span>neg_total +<span class="st"> </span>numbers[n]
     }
 }
-
-<span class="kw">paste</span>(<span class="st">&quot;negative and positive sums are:&quot;</span>, neg_total, pos_total)</code></pre>
+    
+<span class="kw">paste</span>(<span class="st">&#39;negative and positive sums are:&#39;</span>, neg_total, pos_total)</code></pre>
+<pre class="output"><code>[1] &quot;negative and positive sums are: -6 20&quot;
+</code></pre>
 <p>We can even put one loop inside another:</p>
-<pre class="sourceCode r"><code class="sourceCode r">for (consonant in <span class="dv">1</span>:<span class="kw">nchar</span>(<span class="st">&quot;bcd&quot;</span>)) {
-    for (vowel in <span class="dv">1</span>:<span class="kw">nchar</span>(<span class="st">&quot;ae&quot;</span>)) {
+<pre class="sourceCode r"><code class="sourceCode r">for(consonant in <span class="dv">1</span>:<span class="kw">nchar</span>(<span class="st">&#39;bcd&#39;</span>)) {
+    for (vowel in <span class="dv">1</span>:<span class="kw">nchar</span>(<span class="st">&#39;ae&#39;</span>)) {
         <span class="kw">print</span>(<span class="kw">c</span>(consonant, vowel))
     }
 }</code></pre>
+<pre class="output"><code>[1] 1 1
+[1] 1 2
+[1] 2 1
+[1] 2 2
+[1] 3 1
+[1] 3 2
+</code></pre>
 <p>The inner loop runs from start to finish each time the outer loop runs once: <em>draw a diagram with boxes and arrows for what is happening</em></p>
 <p>We can combine nesting and conditionals to create patterns in an image:</p>
 <pre class="sourceCode r"><code class="sourceCode r">height &lt;-<span class="st"> </span><span class="dv">5</span>
-width &lt;-<span class="st"> </span><span class="dv">5</span>
-square &lt;-<span class="st"> </span><span class="kw">block_grid</span>(height, width, <span class="dt">type =</span> <span class="st">&quot;matrix&quot;</span>)
-for (x in <span class="dv">1</span>:<span class="dv">5</span>) {
+width  &lt;-<span class="st"> </span><span class="dv">5</span>
+square &lt;-<span class="st"> </span><span class="kw">block_grid</span>(height, width, <span class="dt">type=</span><span class="st">&quot;matrix&quot;</span>)
+for(x in <span class="dv">1</span>:<span class="dv">5</span>) {
     for (y in <span class="dv">1</span>:<span class="dv">5</span>) {
         if (x &lt;<span class="st"> </span>y) {
-            square[x, y] =<span class="st"> &quot;hotpink&quot;</span>
+            square[x,y] =<span class="st"> &quot;hotpink&quot;</span>
         } else if (x ==<span class="st"> </span>y) {
-            square[x, y] =<span class="st"> &quot;Gray40&quot;</span>
+            square[x,y] =<span class="st"> &quot;Gray40&quot;</span>
         } else {
-            square[x, y] =<span class="st"> &quot;chartreuse&quot;</span>
+            square[x,y] =<span class="st"> &quot;chartreuse&quot;</span>
         }
     }
 }</code></pre>
 <p><em>What do you think this will look like?</em></p>
 <pre class="sourceCode r"><code class="sourceCode r">square</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-26.png" alt="plot of chunk unnamed-chunk-26" /><p class="caption">plot of chunk unnamed-chunk-26</p>
-</div>
+<p><img src="figure/unnamed-chunk-26.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" style="display: block; margin: auto;" /></p>
 <p>This is our first hand-made data visualization: the colors show where x is less than, equal to, or greater than y.</p>
 <h3 id="challenges-1">Challenges</h3>
 <ol style="list-style-type: decimal">
@@ -269,18 +280,20 @@ for (x in <span class="dv">1</span>:<span class="dv">5</span>) {
 </ol>
 <h2 id="creating-a-heat-map">Creating a Heat Map</h2>
 <p>The last step is to turn our data into something we can see. As in previous lessons, the first step is to get the data into memory:</p>
-<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">data.matrix</span>(<span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>))
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">data.matrix</span>(<span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header=</span><span class="ot">FALSE</span>))
 <span class="kw">dim</span>(dat)</code></pre>
+<pre class="output"><code>[1] 60 40
+</code></pre>
 <p>The second is to create an image grid that is the same size as the data:</p>
 <pre class="sourceCode r"><code class="sourceCode r">height &lt;-<span class="st"> </span><span class="kw">nrow</span>(dat)
-width &lt;-<span class="st"> </span><span class="kw">ncol</span>(dat)
-heat_map &lt;-<span class="st"> </span><span class="kw">block_grid</span>(height, width, <span class="dt">type =</span> <span class="st">&quot;matrix&quot;</span>)</code></pre>
+width  &lt;-<span class="st"> </span><span class="kw">ncol</span>(dat)
+heat_map &lt;-<span class="st"> </span><span class="kw">block_grid</span>(height, width, <span class="dt">type=</span><span class="st">&quot;matrix&quot;</span>)</code></pre>
 <p>The third step is to decide how we are going to color the cells in the heat map. To keep things simple, we will use red, green, and blue as our colors, and compare data values to the data set's mean. Here's the code:</p>
-<pre class="sourceCode r"><code class="sourceCode r">for (x in <span class="dv">1</span>:height) {
+<pre class="sourceCode r"><code class="sourceCode r">for(x in <span class="dv">1</span>:height) {
     for (y in <span class="dv">1</span>:width) {
-        if (dat[x, y] &lt;<span class="st"> </span><span class="kw">mean</span>(dat)) {
+        if(dat[x, y] &lt;<span class="st"> </span><span class="kw">mean</span>(dat)) {
             heat_map[x, y] =<span class="st"> &quot;red&quot;</span>
-        } else if (dat[x, y] ==<span class="st"> </span><span class="kw">mean</span>(dat)) {
+        } else if(dat[x, y] ==<span class="st"> </span><span class="kw">mean</span>(dat)) {
             heat_map[x, y] =<span class="st"> &quot;green&quot;</span>
         } else {
             heat_map[x, y] =<span class="st"> &quot;blue&quot;</span>
@@ -289,9 +302,7 @@ heat_map &lt;-<span class="st"> </span><span class="kw">block_grid</span>(height
 }
 
 heat_map</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-29.png" alt="plot of chunk unnamed-chunk-29" /><p class="caption">plot of chunk unnamed-chunk-29</p>
-</div>
+<p><img src="figure/unnamed-chunk-29.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" style="display: block; margin: auto;" /></p>
 <p>This may be what we asked for, but both the image and the code are hideous:</p>
 <ul>
 <li>It's too large for us to view the whole thing at once on a small laptop screen.</li>
@@ -311,10 +322,10 @@ heat_map</code></pre>
 </ul>
 <p>Our modified code looks like this:</p>
 <pre class="sourceCode r"><code class="sourceCode r">flipped &lt;-<span class="st"> </span><span class="kw">t</span>(dat)
-height &lt;-<span class="st"> </span><span class="kw">nrow</span>(flipped)
-width &lt;-<span class="st"> </span><span class="kw">ncol</span>(flipped)
-center &lt;-<span class="st"> </span><span class="kw">mean</span>(flipped)
-heatmap &lt;-<span class="st"> </span><span class="kw">block_grid</span>(height, width, <span class="dt">type =</span> <span class="st">&quot;matrix&quot;</span>)
+height  &lt;-<span class="st"> </span><span class="kw">nrow</span>(flipped)
+width   &lt;-<span class="st"> </span><span class="kw">ncol</span>(flipped)
+center  &lt;-<span class="st"> </span><span class="kw">mean</span>(flipped)
+heatmap &lt;-<span class="st"> </span><span class="kw">block_grid</span>(height, width, <span class="dt">type=</span><span class="st">&quot;matrix&quot;</span>)
 
 for (x in <span class="dv">1</span>:height) {
     for (y in <span class="dv">1</span>:width) {
@@ -329,22 +340,19 @@ for (x in <span class="dv">1</span>:height) {
 }
 
 heatmap</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-30.png" alt="plot of chunk unnamed-chunk-30" /><p class="caption">plot of chunk unnamed-chunk-30</p>
-</div>
+<p><img src="figure/unnamed-chunk-30.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" /></p>
 <p>That's a bit better—but now the contrast between the colors isn't great enough. And there still aren't very many fuchsia cells: we may want to widen the band around the mean that gets that color. We could rewrite our loop a third time, but the right thing to do is to put our code in a function so that we can experiment with bands and colors more easily.</p>
-<pre class="sourceCode r"><code class="sourceCode r">make_heatmap &lt;-<span class="st"> </span>function(values, low_color, mid_color, high_color, low_band, 
-    high_band) {
+<pre class="sourceCode r"><code class="sourceCode r">make_heatmap &lt;-<span class="st"> </span>function(values, low_color, mid_color, high_color, low_band, high_band) {
     height &lt;-<span class="st"> </span><span class="kw">nrow</span>(values)
-    width &lt;-<span class="st"> </span><span class="kw">ncol</span>(values)
-    result &lt;-<span class="st"> </span><span class="kw">block_grid</span>(height, width, <span class="dt">type =</span> <span class="st">&quot;matrix&quot;</span>)
+    width  &lt;-<span class="st"> </span><span class="kw">ncol</span>(values)
+    result &lt;-<span class="st"> </span><span class="kw">block_grid</span>(height, width, <span class="dt">type=</span><span class="st">&quot;matrix&quot;</span>)
     center &lt;-<span class="st"> </span><span class="kw">mean</span>(values)
-    
-    for (x in <span class="dv">1</span>:height) {
+        
+    for (x in <span class="dv">1</span>:height) { 
         for (y in <span class="dv">1</span>:width) {
             if (values[x, y] &lt;<span class="st"> </span>(low_band *<span class="st"> </span>center)) {
                 result[x, y] &lt;-<span class="st"> </span>low_color
-            } else if (values[x, y] &gt;<span class="st"> </span>(high_band *<span class="st"> </span>center)) {
+            } else if(values[x, y] &gt;<span class="st"> </span>(high_band *<span class="st"> </span>center)) {
                 result[x, y] &lt;-<span class="st"> </span>high_color
             } else {
                 result[x, y] &lt;-<span class="st"> </span>mid_color
@@ -356,28 +364,24 @@ heatmap</code></pre>
 <p>To test this function, we'll run it with the settings we just used:</p>
 <pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">make_heatmap</span>(flipped, <span class="st">&quot;lightpink&quot;</span>, <span class="st">&quot;hotpink&quot;</span>, <span class="st">&quot;deeppink4&quot;</span>, <span class="fl">0.8</span>, <span class="fl">1.2</span>)
 h</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-32.png" alt="plot of chunk unnamed-chunk-32" /><p class="caption">plot of chunk unnamed-chunk-32</p>
-</div>
+<p><img src="figure/unnamed-chunk-32.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" /></p>
 <p>That seems right, so let's widen the band and use more dramatic colors:</p>
 <pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">make_heatmap</span>(flipped, <span class="st">&quot;gray60&quot;</span>, <span class="st">&quot;chartreuse&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="fl">0.5</span>, <span class="fl">1.5</span>)
 h</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-33.png" alt="plot of chunk unnamed-chunk-33" /><p class="caption">plot of chunk unnamed-chunk-33</p>
-</div>
+<p><img src="figure/unnamed-chunk-33.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" style="display: block; margin: auto;" /></p>
 <p>We'll probably want to experiment a bit more before publishing, but writing a function has made experimenting easy. We can make it even easier by re-defining our function one more time to give the parameters default values. While we're at it, let's put the low and high bands at the front, since they're more likely to change than our color choices:</p>
-<pre class="sourceCode r"><code class="sourceCode r">make_heatmap &lt;-<span class="st"> </span>function(values, <span class="dt">low_band =</span> <span class="fl">0.5</span>, <span class="dt">high_band =</span> <span class="fl">1.5</span>, <span class="dt">low_color =</span> <span class="st">&quot;gray60&quot;</span>, 
-    <span class="dt">mid_color =</span> <span class="st">&quot;chartreuse&quot;</span>, <span class="dt">high_color =</span> <span class="st">&quot;darkgreen&quot;</span>) {
+<pre class="sourceCode r"><code class="sourceCode r">make_heatmap &lt;-<span class="st"> </span>function(values, <span class="dt">low_band=</span><span class="fl">0.5</span>, <span class="dt">high_band=</span><span class="fl">1.5</span>,
+                         <span class="dt">low_color=</span><span class="st">&quot;gray60&quot;</span>, <span class="dt">mid_color=</span><span class="st">&quot;chartreuse&quot;</span>, <span class="dt">high_color=</span><span class="st">&quot;darkgreen&quot;</span>) {
     height &lt;-<span class="st"> </span><span class="kw">nrow</span>(values)
-    width &lt;-<span class="st"> </span><span class="kw">ncol</span>(values)
-    result &lt;-<span class="st"> </span><span class="kw">block_grid</span>(height, width, <span class="dt">type =</span> <span class="st">&quot;matrix&quot;</span>)
+    width  &lt;-<span class="st"> </span><span class="kw">ncol</span>(values)
+    result &lt;-<span class="st"> </span><span class="kw">block_grid</span>(height, width, <span class="dt">type=</span><span class="st">&quot;matrix&quot;</span>)
     center &lt;-<span class="st"> </span><span class="kw">mean</span>(values)
-    
-    for (x in <span class="dv">1</span>:height) {
+        
+    for (x in <span class="dv">1</span>:height) { 
         for (y in <span class="dv">1</span>:width) {
             if (values[x, y] &lt;<span class="st"> </span>(low_band *<span class="st"> </span>center)) {
                 result[x, y] &lt;-<span class="st"> </span>low_color
-            } else if (values[x, y] &gt;<span class="st"> </span>(high_band *<span class="st"> </span>center)) {
+            } else if(values[x, y] &gt;<span class="st"> </span>(high_band *<span class="st"> </span>center)) {
                 result[x, y] &lt;-<span class="st"> </span>high_color
             } else {
                 result[x, y] &lt;-<span class="st"> </span>mid_color
@@ -385,26 +389,19 @@ h</code></pre>
         }
     }
     result
-}</code></pre>
+}    </code></pre>
 <p>Once default values are added, the function's first line is too long to fit comfortably on our screen. Rather than breaking it wherever it hits the right edge of the screen, we have divided the parameters into logical groups to make it more readable.</p>
 <p>Again, our first test is to re-run it with the same values as before (which we give it in a different order, since we've changed the order of parameters):</p>
 <pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">make_heatmap</span>(flipped, <span class="fl">0.5</span>, <span class="fl">1.5</span>, <span class="st">&quot;gray60&quot;</span>, <span class="st">&quot;chartreuse&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>)
 h</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-35.png" alt="plot of chunk unnamed-chunk-35" /><p class="caption">plot of chunk unnamed-chunk-35</p>
-</div>
+<p><img src="figure/unnamed-chunk-35.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" style="display: block; margin: auto;" /></p>
 <p>We can now leave out everything except the data being visualized, or provide the data and the bands and re-use the default colors and block size:</p>
 <pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">make_heatmap</span>(flipped)
 h</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-361.png" alt="plot of chunk unnamed-chunk-36" /><p class="caption">plot of chunk unnamed-chunk-36</p>
-</div>
-<pre class="sourceCode r"><code class="sourceCode r">
-h &lt;-<span class="st"> </span><span class="kw">make_heatmap</span>(flipped, <span class="fl">0.4</span>, <span class="fl">1.6</span>)
+<p><img src="figure/unnamed-chunk-361.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">make_heatmap</span>(flipped, <span class="fl">0.4</span>, <span class="fl">1.6</span>)
 h</code></pre>
-<div class="figure">
-<img src="figure/unnamed-chunk-362.png" alt="plot of chunk unnamed-chunk-36" /><p class="caption">plot of chunk unnamed-chunk-36</p>
-</div>
+<p><img src="figure/unnamed-chunk-362.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" style="display: block; margin: auto;" /></p>
 <p>We can now explore our data with just a few keystrokes, which means we can concentrate on our science and not on our programming.</p>
 <h3 id="challenges-2">Challenges</h3>
 <ol style="list-style-type: decimal">

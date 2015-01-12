@@ -10,7 +10,8 @@ root: ../..
 We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
 
 
-<pre class='in'><code>analyze <- function(filename) {
+~~~{.r}
+analyze <- function(filename) {
   # Plots the average, min, and max inflammation over time.
   # Input is character string of a csv file.
   dat <- read.csv(file = filename, header = FALSE)
@@ -22,14 +23,17 @@ We have created a function called `analyze` that creates graphs of the minimum, 
   plot(min_day_inflammation)
 }
 
-analyze("data/inflammation-01.csv")</code></pre>
+analyze("data/inflammation-01.csv")
+~~~
 
 <img src="figure/03-loops-R-inflammation-011.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-012.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-013.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" />
 
 We can use it to analyze other data sets one by one:
 
 
-<pre class='in'><code>analyze("data/inflammation-02.csv")</code></pre>
+~~~{.r}
+analyze("data/inflammation-02.csv")
+~~~
 
 <img src="figure/03-loops-R-inflammation-021.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-022.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-023.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" />
 
@@ -54,7 +58,8 @@ Suppose we want to print each word in a sentence.
 One way is to use six `print` statements:
 
 
-<pre class='in'><code>best_practice <- c("Let", "the", "computer", "do", "the", "work")
+~~~{.r}
+best_practice <- c("Let", "the", "computer", "do", "the", "work")
 print_words <- function(sentence) {
   print(sentence[1])
   print(sentence[2])
@@ -64,17 +69,20 @@ print_words <- function(sentence) {
   print(sentence[6])
 }
 
-print_words(best_practice)</code></pre>
+print_words(best_practice)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] "Let"
+~~~{.output}
+[1] "Let"
 [1] "the"
 [1] "computer"
 [1] "do"
 [1] "the"
 [1] "work"
-</code></pre></div>
+
+~~~
 
 but that's a bad approach for two reasons:
 
@@ -83,26 +91,34 @@ but that's a bad approach for two reasons:
  2. It's fragile: if we give it a longer vector, it only prints part of the data, and if we give it a shorter input, it returns `NA` values because we're asking for elements that don't exist!
 
 
-<pre class='in'><code>best_practice[-6]</code></pre>
+~~~{.r}
+best_practice[-6]
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] "Let"      "the"      "computer" "do"       "the"     
-</code></pre></div>
+~~~{.output}
+[1] "Let"      "the"      "computer" "do"       "the"     
+
+~~~
 
 
 
-<pre class='in'><code>print_words(best_practice[-6])</code></pre>
+~~~{.r}
+print_words(best_practice[-6])
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] "Let"
+~~~{.output}
+[1] "Let"
 [1] "the"
 [1] "computer"
 [1] "do"
 [1] "the"
 [1] NA
-</code></pre></div>
+
+~~~
 
 > **Tip:** R has has a special variable, `NA`, for designating missing values that are **N**ot **A**vailable in a data set.
 > See `?NA` and [An Introduction to R][na] for more details.
@@ -112,45 +128,55 @@ but that's a bad approach for two reasons:
 Here's a better approach:
 
 
-<pre class='in'><code>print_words <- function(sentence) {
+~~~{.r}
+print_words <- function(sentence) {
   for (word in sentence) {
     print(word)
   }
 }
 
-print_words(best_practice)</code></pre>
+print_words(best_practice)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] "Let"
+~~~{.output}
+[1] "Let"
 [1] "the"
 [1] "computer"
 [1] "do"
 [1] "the"
 [1] "work"
-</code></pre></div>
+
+~~~
 
 This is shorter---certainly shorter than something that prints every character in a hundred-letter string---and more robust as well:
 
 
-<pre class='in'><code>print_words(best_practice[-6])</code></pre>
+~~~{.r}
+print_words(best_practice[-6])
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] "Let"
+~~~{.output}
+[1] "Let"
 [1] "the"
 [1] "computer"
 [1] "do"
 [1] "the"
-</code></pre></div>
+
+~~~
 
 The improved version of `print_words` uses a [for loop](../../gloss.html#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
 The general form of a loop is:
 
 
-<pre class='in'><code>for (variable in collection) {
+~~~{.r}
+for (variable in collection) {
   do things with variable
-}</code></pre>
+}
+~~~
 
 We can name the [loop variable](../../gloss.html#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
 `in` is part of the `for` syntax.
@@ -162,18 +188,22 @@ For a single-line loop body, as here, the braces aren't needed, but it is good p
 Here's another loop that repeatedly updates a variable:
 
 
-<pre class='in'><code>len <- 0
+~~~{.r}
+len <- 0
 vowels <- c("a", "e", "i", "o", "u")
 for (v in vowels) {
   len <- len + 1
 }
 # Number of vowels
-len</code></pre>
+len
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 5
-</code></pre></div>
+~~~{.output}
+[1] 5
+
+~~~
 
 It's worth tracing the execution of this little program step by step.
 Since there are five elements in the vector `vowels`, the statement inside the loop will be executed five times.
@@ -186,37 +216,49 @@ Note that a loop variable is just a variable that's being used to record progres
 It still exists after the loop is over, and we can re-use variables previously defined as loop variables as well:
 
 
-<pre class='in'><code>letter <- "z"
+~~~{.r}
+letter <- "z"
 for (letter in c("a", "b", "c")) {
   print(letter)
-}</code></pre>
+}
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] "a"
+~~~{.output}
+[1] "a"
 [1] "b"
 [1] "c"
-</code></pre></div>
+
+~~~
 
 
 
-<pre class='in'><code># after the loop, letter is
-letter</code></pre>
+~~~{.r}
+# after the loop, letter is
+letter
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] "c"
-</code></pre></div>
+~~~{.output}
+[1] "c"
+
+~~~
 
 Note also that finding the length of a vector is such a common operation that R actually has a built-in function to do it called `length`:
 
 
-<pre class='in'><code>length(vowels)</code></pre>
+~~~{.r}
+length(vowels)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 5
-</code></pre></div>
+~~~{.output}
+[1] 5
+
+~~~
 
 `length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](00-first-timers.html) to learn more about the different ways to store data in R).
 
@@ -225,48 +267,64 @@ Note also that finding the length of a vector is such a common operation that R 
 1. R has a built-in function called `seq` that creates a list of numbers:
 
 
-<pre class='in'><code>seq(3)</code></pre>
+~~~{.r}
+seq(3)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 1 2 3
-</code></pre></div>
+~~~{.output}
+[1] 1 2 3
+
+~~~
 
 Using `seq`, write a function that prints the first **N** natural numbers, one per line:
 
 
 
 
-<pre class='in'><code>print_N(3)</code></pre>
+~~~{.r}
+print_N(3)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 1
+~~~{.output}
+[1] 1
 [1] 2
 [1] 3
-</code></pre></div>
+
+~~~
 
 2. Exponentiation is built into R:
 
 
-<pre class='in'><code>2^4</code></pre>
+~~~{.r}
+2^4
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 16
-</code></pre></div>
+~~~{.output}
+[1] 16
+
+~~~
 
 Write a function called `expo` that uses a loop to calculate the same result.
 
 
 
 
-<pre class='in'><code>expo(2, 4)</code></pre>
+~~~{.r}
+expo(2, 4)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 16
-</code></pre></div>
+~~~{.output}
+[1] 16
+
+~~~
 
 3. Write a function called `total` that calculates the sum of the values in a vector.
 (R has a built-in function called `sum` that does this for you.
@@ -275,13 +333,17 @@ Please don't use it for this exercise.)
 
 
 
-<pre class='in'><code>ex_vec <- c(4, 8, 15, 16, 23, 42)
-total(ex_vec)</code></pre>
+~~~{.r}
+ex_vec <- c(4, 8, 15, 16, 23, 42)
+total(ex_vec)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 108
-</code></pre></div>
+~~~{.output}
+[1] 108
+
+~~~
 
 ### Processing Multiple Files
 
@@ -298,11 +360,14 @@ Since no pattern is specified to filter the files, all files are returned.
 So to list all the csv files, we could run either of the following:
 
 
-<pre class='in'><code>list.files(path = "data", pattern = "csv")</code></pre>
+~~~{.r}
+list.files(path = "data", pattern = "csv")
+~~~
 
 
 
-<div class='out'><pre class='out'><code> [1] "car-speeds-cleaned.csv" "car-speeds.csv"        
+~~~{.output}
+ [1] "car-speeds-cleaned.csv" "car-speeds.csv"        
  [3] "inflammation-01.csv"    "inflammation-02.csv"   
  [5] "inflammation-03.csv"    "inflammation-04.csv"   
  [7] "inflammation-05.csv"    "inflammation-06.csv"   
@@ -311,19 +376,24 @@ So to list all the csv files, we could run either of the following:
 [13] "inflammation-11.csv"    "inflammation-12.csv"   
 [15] "small-01.csv"           "small-02.csv"          
 [17] "small-03.csv"          
-</code></pre></div>
+
+~~~
 
 
 
-<pre class='in'><code>list.files(path = "data", pattern = "inflammation")</code></pre>
+~~~{.r}
+list.files(path = "data", pattern = "inflammation")
+~~~
 
 
 
-<div class='out'><pre class='out'><code> [1] "inflammation-01.csv" "inflammation-02.csv" "inflammation-03.csv"
+~~~{.output}
+ [1] "inflammation-01.csv" "inflammation-02.csv" "inflammation-03.csv"
  [4] "inflammation-04.csv" "inflammation-05.csv" "inflammation-06.csv"
  [7] "inflammation-07.csv" "inflammation-08.csv" "inflammation-09.csv"
 [10] "inflammation-10.csv" "inflammation-11.csv" "inflammation-12.csv"
-</code></pre></div>
+
+~~~
 
 
 > **Tip:** 
@@ -341,11 +411,14 @@ using the output of `list.files` we also need to include the "path" portion of t
 We can do that by using the argument `full.names = TRUE`.
 
 
-<pre class='in'><code>list.files(path = "data", pattern = "csv", full.names = TRUE)</code></pre>
+~~~{.r}
+list.files(path = "data", pattern = "csv", full.names = TRUE)
+~~~
 
 
 
-<div class='out'><pre class='out'><code> [1] "data/car-speeds-cleaned.csv" "data/car-speeds.csv"        
+~~~{.output}
+ [1] "data/car-speeds-cleaned.csv" "data/car-speeds.csv"        
  [3] "data/inflammation-01.csv"    "data/inflammation-02.csv"   
  [5] "data/inflammation-03.csv"    "data/inflammation-04.csv"   
  [7] "data/inflammation-05.csv"    "data/inflammation-06.csv"   
@@ -354,48 +427,61 @@ We can do that by using the argument `full.names = TRUE`.
 [13] "data/inflammation-11.csv"    "data/inflammation-12.csv"   
 [15] "data/small-01.csv"           "data/small-02.csv"          
 [17] "data/small-03.csv"          
-</code></pre></div>
+
+~~~
 
 
 
-<pre class='in'><code>list.files(path = "data", pattern = "inflammation", full.names = TRUE)</code></pre>
+~~~{.r}
+list.files(path = "data", pattern = "inflammation", full.names = TRUE)
+~~~
 
 
 
-<div class='out'><pre class='out'><code> [1] "data/inflammation-01.csv" "data/inflammation-02.csv"
+~~~{.output}
+ [1] "data/inflammation-01.csv" "data/inflammation-02.csv"
  [3] "data/inflammation-03.csv" "data/inflammation-04.csv"
  [5] "data/inflammation-05.csv" "data/inflammation-06.csv"
  [7] "data/inflammation-07.csv" "data/inflammation-08.csv"
  [9] "data/inflammation-09.csv" "data/inflammation-10.csv"
 [11] "data/inflammation-11.csv" "data/inflammation-12.csv"
-</code></pre></div>
+
+~~~
 
 
 Let's test out running our `analyze` function by using it on the first three files in the vector returned by `list.files`:
 
 
 
-<pre class='in'><code>filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
+~~~{.r}
+filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 filenames <- filenames[1:3]
 for (f in filenames) {
   print(f)
   analyze(f)
-}</code></pre>
+}
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] "data/inflammation-01.csv"
-</code></pre></div>
+~~~{.output}
+[1] "data/inflammation-01.csv"
+
+~~~
 
 <img src="figure/03-loops-R-loop-analyze1.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze2.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze3.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
 
-<div class='out'><pre class='out'><code>[1] "data/inflammation-02.csv"
-</code></pre></div>
+~~~{.output}
+[1] "data/inflammation-02.csv"
+
+~~~
 
 <img src="figure/03-loops-R-loop-analyze4.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze5.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze6.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
 
-<div class='out'><pre class='out'><code>[1] "data/inflammation-03.csv"
-</code></pre></div>
+~~~{.output}
+[1] "data/inflammation-03.csv"
+
+~~~
 
 <img src="figure/03-loops-R-loop-analyze7.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze8.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze9.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
 
