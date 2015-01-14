@@ -36,13 +36,12 @@
 </ul>
 <h3 id="read-a-.csv-and-explore-the-arguments">Read a .csv and explore the arguments</h3>
 <p>Let's start by opening a .csv file containing information on the speeds at which cars of different colors were clocked in 45 mph zones in the four-corners states (<code>CarSpeeds.csv</code>). We will use the built in <code>read.csv(...)</code> <a href="../../gloss.html#function-call">function call</a>, which reads the data in as a data frame, and assign the data frame to a variable (using <code>&lt;-</code>) so that it is stored in R's memory. Then we will explore some of the basic arguments that can be supplied to the function.</p>
-<pre class='in'><code>#First, set a working directory (see lesson 'Analyzing Patient Data' for more info)
-setwd('~/swc')</code></pre>
-<pre class='in'><code>#Import the data and look at the first six rows
-carSpeeds <- read.csv(file='data/car-speeds.csv')
-head(carSpeeds) </code></pre>
-<div class="out">
-<pre class='out'><code>  Color Speed     State
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#First, set a working directory (see lesson &#39;Analyzing Patient Data&#39; for more info)</span>
+<span class="kw">setwd</span>(<span class="st">&#39;~/swc&#39;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Import the data and look at the first six rows</span>
+carSpeeds &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&#39;data/car-speeds.csv&#39;</span>)
+<span class="kw">head</span>(carSpeeds) </code></pre>
+<pre class="output"><code>  Color Speed     State
 1  Blue    32 NewMexico
 2   Red    45   Arizona
 3  Blue    35  Colorado
@@ -50,152 +49,135 @@ head(carSpeeds) </code></pre>
 5   Red    25   Arizona
 6  Blue    41   Arizona
 </code></pre>
-</div>
 <blockquote>
 <p><strong>Tip:</strong> The default delimiter of the read.csv() function is a comma, but you can use other delimiters by supplying the 'sep' argument to the function (e.g., typing <code>sep = ';'</code> allows a semi-colon separated file to be correctly imported -see ?read.csv() for more information on this and other options for working with different file types).</p>
 </blockquote>
 <p>The call above will import the data, but we have not taken advantage of several handy arguments that can be helpful in loading the data in the format we want. Let's explore some of these arguments.</p>
 <h4 id="the-header-argument">The header argument</h4>
 <p>The default for <code>read.csv(...)</code> is to set the <code>header</code> argument to <code>TRUE</code>. This means that the first row of values in the .csv is set as header information (column names). If your data set does not have a header, set the <code>header</code> argument to <code>FALSE</code>:</p>
-<pre class='in'><code>#The first row of the data without setting the header argument:
-carSpeeds[1,]</code></pre>
-<div class="out">
-<pre class='out'><code>  Color Speed     State
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#The first row of the data without setting the header argument:</span>
+carSpeeds[<span class="dv">1</span>,]</code></pre>
+<pre class="output"><code>  Color Speed     State
 1  Blue    32 NewMexico
 </code></pre>
-</div>
-<pre class='in'><code>#The first row of the data if the header argument is set to FALSE:
-carSpeeds <- read.csv(file='data/car-speeds.csv', header=FALSE)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#The first row of the data if the header argument is set to FALSE:</span>
+carSpeeds &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&#39;data/car-speeds.csv&#39;</span>, <span class="dt">header=</span><span class="ot">FALSE</span>)
 
-carSpeeds[1,]</code></pre>
-<div class="out">
-<pre class='out'><code>     V1    V2    V3
+carSpeeds[<span class="dv">1</span>,]</code></pre>
+<pre class="output"><code>     V1    V2    V3
 1 Color Speed State
 </code></pre>
-</div>
 <p>Clearly this is not the desired behavior for this data set, but it may be useful if you have a dataset without headers.</p>
 <h4 id="the-stringsasfactors-argument">The stringsAsFactors argument</h4>
 <p>This is perhaps the most important argument in <code>read.csv()</code>, particularly if you are working with categorical data. This is because the default behavior of R is to convert character <a href="../../gloss.html#string">string</a>s into factors, which may make it difficult to do such things as replace values. For example, let's say we find out that the data collector was color blind, and accidentally recorded green cars as being blue. In order to correct the data set, let's replace 'Blue' with 'Green' in the <code>$Color</code> column:</p>
-<pre class='in'><code>#Here we will use R's ifelse function, in which we provide the test phrase, the outcome if the 
-# result of the test is 'TRUE', and the outcome if the result is 'FALSE'. We will also assign 
-# the results to the Color column, using '<-'
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Here we will use R&#39;s ifelse function, in which we provide the test phrase, the outcome if the </span>
+<span class="co"># result of the test is &#39;TRUE&#39;, and the outcome if the result is &#39;FALSE&#39;. We will also assign </span>
+<span class="co"># the results to the Color column, using &#39;&lt;-&#39;</span>
 
-#First - reload the data with a header
-carSpeeds <- read.csv(file='data/car-speeds.csv')
+<span class="co">#First - reload the data with a header</span>
+carSpeeds &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&#39;data/car-speeds.csv&#39;</span>)
 
-carSpeeds$Color<- ifelse(carSpeeds$Color=='Blue', 'Green', carSpeeds$Color)
+carSpeeds$Color&lt;-<span class="st"> </span><span class="kw">ifelse</span>(carSpeeds$Color==<span class="st">&#39;Blue&#39;</span>, <span class="st">&#39;Green&#39;</span>, carSpeeds$Color)
 carSpeeds$Color</code></pre>
-<div class="out">
-<pre class='out'><code>  [1] "Green" "1"     "Green" "5"     "4"     "Green" "Green" "2"    
-  [9] "5"     "4"     "4"     "5"     "Green" "Green" "2"     "4"    
- [17] "Green" "Green" "5"     "Green" "Green" "Green" "4"     "Green"
- [25] "4"     "4"     "4"     "4"     "5"     "Green" "4"     "5"    
- [33] "2"     "4"     "2"     "2"     "Green" "4"     "2"     "4"    
- [41] "2"     "2"     "4"     "4"     "5"     "2"     "Green" "4"    
- [49] "4"     "2"     "2"     "4"     "5"     "4"     "Green" "Green"
- [57] "2"     "Green" "5"     "2"     "4"     "Green" "Green" "5"    
- [65] "2"     "4"     "4"     "2"     "Green" "5"     "Green" "4"    
- [73] "5"     "5"     "Green" "Green" "Green" "Green" "Green" "5"    
- [81] "2"     "Green" "5"     "2"     "2"     "4"     "4"     "5"    
- [89] "5"     "5"     "5"     "4"     "4"     "4"     "5"     "2"    
- [97] "5"     "2"     "2"     "5"    
+<pre class="output"><code>  [1] &quot;Green&quot; &quot;4&quot;     &quot;Green&quot; &quot;5&quot;     &quot;3&quot;     &quot;Green&quot; &quot;Green&quot; &quot;1&quot;    
+  [9] &quot;5&quot;     &quot;3&quot;     &quot;3&quot;     &quot;5&quot;     &quot;Green&quot; &quot;Green&quot; &quot;1&quot;     &quot;3&quot;    
+ [17] &quot;Green&quot; &quot;Green&quot; &quot;5&quot;     &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;3&quot;     &quot;Green&quot;
+ [25] &quot;3&quot;     &quot;3&quot;     &quot;3&quot;     &quot;3&quot;     &quot;5&quot;     &quot;Green&quot; &quot;3&quot;     &quot;5&quot;    
+ [33] &quot;1&quot;     &quot;3&quot;     &quot;1&quot;     &quot;1&quot;     &quot;Green&quot; &quot;3&quot;     &quot;1&quot;     &quot;3&quot;    
+ [41] &quot;1&quot;     &quot;1&quot;     &quot;3&quot;     &quot;3&quot;     &quot;5&quot;     &quot;1&quot;     &quot;Green&quot; &quot;3&quot;    
+ [49] &quot;3&quot;     &quot;1&quot;     &quot;1&quot;     &quot;3&quot;     &quot;5&quot;     &quot;3&quot;     &quot;Green&quot; &quot;Green&quot;
+ [57] &quot;1&quot;     &quot;Green&quot; &quot;5&quot;     &quot;1&quot;     &quot;3&quot;     &quot;Green&quot; &quot;Green&quot; &quot;5&quot;    
+ [65] &quot;1&quot;     &quot;3&quot;     &quot;3&quot;     &quot;1&quot;     &quot;Green&quot; &quot;5&quot;     &quot;Green&quot; &quot;3&quot;    
+ [73] &quot;5&quot;     &quot;5&quot;     &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;5&quot;    
+ [81] &quot;1&quot;     &quot;Green&quot; &quot;5&quot;     &quot;1&quot;     &quot;1&quot;     &quot;3&quot;     &quot;3&quot;     &quot;5&quot;    
+ [89] &quot;5&quot;     &quot;5&quot;     &quot;5&quot;     &quot;3&quot;     &quot;3&quot;     &quot;3&quot;     &quot;5&quot;     &quot;1&quot;    
+ [97] &quot;5&quot;     &quot;1&quot;     &quot;1&quot;     &quot;5&quot;    
 </code></pre>
-</div>
 <p>What happened?!? It looks like 'Blue' was replaced with 'Green', but every other color was turned into a number (as a character string, given the quote marks before and after). This is because the colors of the cars were loaded as factors, and the factor level was reported following replacement.</p>
 <p>Now, let's load the dataset using <code>stringsAsFactors=FALSE</code>, and see what happens when we try to replace 'Blue' with 'Green' in the <code>$Color</code> column:</p>
-<pre class='in'><code>carSpeeds <- read.csv(file='data/car-speeds.csv', stringsAsFactors=FALSE)
+<pre class="sourceCode r"><code class="sourceCode r">carSpeeds &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&#39;data/car-speeds.csv&#39;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
 
-carSpeeds$Color<- ifelse(carSpeeds$Color=='Blue', 'Green', carSpeeds$Color)
+carSpeeds$Color&lt;-<span class="st"> </span><span class="kw">ifelse</span>(carSpeeds$Color==<span class="st">&#39;Blue&#39;</span>, <span class="st">&#39;Green&#39;</span>, carSpeeds$Color)
 carSpeeds$Color</code></pre>
-<div class="out">
-<pre class='out'><code>  [1] "Green" " Red"  "Green" "White" "Red"   "Green" "Green" "Black"
-  [9] "White" "Red"   "Red"   "White" "Green" "Green" "Black" "Red"  
- [17] "Green" "Green" "White" "Green" "Green" "Green" "Red"   "Green"
- [25] "Red"   "Red"   "Red"   "Red"   "White" "Green" "Red"   "White"
- [33] "Black" "Red"   "Black" "Black" "Green" "Red"   "Black" "Red"  
- [41] "Black" "Black" "Red"   "Red"   "White" "Black" "Green" "Red"  
- [49] "Red"   "Black" "Black" "Red"   "White" "Red"   "Green" "Green"
- [57] "Black" "Green" "White" "Black" "Red"   "Green" "Green" "White"
- [65] "Black" "Red"   "Red"   "Black" "Green" "White" "Green" "Red"  
- [73] "White" "White" "Green" "Green" "Green" "Green" "Green" "White"
- [81] "Black" "Green" "White" "Black" "Black" "Red"   "Red"   "White"
- [89] "White" "White" "White" "Red"   "Red"   "Red"   "White" "Black"
- [97] "White" "Black" "Black" "White"
+<pre class="output"><code>  [1] &quot;Green&quot; &quot; Red&quot;  &quot;Green&quot; &quot;White&quot; &quot;Red&quot;   &quot;Green&quot; &quot;Green&quot; &quot;Black&quot;
+  [9] &quot;White&quot; &quot;Red&quot;   &quot;Red&quot;   &quot;White&quot; &quot;Green&quot; &quot;Green&quot; &quot;Black&quot; &quot;Red&quot;  
+ [17] &quot;Green&quot; &quot;Green&quot; &quot;White&quot; &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;Red&quot;   &quot;Green&quot;
+ [25] &quot;Red&quot;   &quot;Red&quot;   &quot;Red&quot;   &quot;Red&quot;   &quot;White&quot; &quot;Green&quot; &quot;Red&quot;   &quot;White&quot;
+ [33] &quot;Black&quot; &quot;Red&quot;   &quot;Black&quot; &quot;Black&quot; &quot;Green&quot; &quot;Red&quot;   &quot;Black&quot; &quot;Red&quot;  
+ [41] &quot;Black&quot; &quot;Black&quot; &quot;Red&quot;   &quot;Red&quot;   &quot;White&quot; &quot;Black&quot; &quot;Green&quot; &quot;Red&quot;  
+ [49] &quot;Red&quot;   &quot;Black&quot; &quot;Black&quot; &quot;Red&quot;   &quot;White&quot; &quot;Red&quot;   &quot;Green&quot; &quot;Green&quot;
+ [57] &quot;Black&quot; &quot;Green&quot; &quot;White&quot; &quot;Black&quot; &quot;Red&quot;   &quot;Green&quot; &quot;Green&quot; &quot;White&quot;
+ [65] &quot;Black&quot; &quot;Red&quot;   &quot;Red&quot;   &quot;Black&quot; &quot;Green&quot; &quot;White&quot; &quot;Green&quot; &quot;Red&quot;  
+ [73] &quot;White&quot; &quot;White&quot; &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;White&quot;
+ [81] &quot;Black&quot; &quot;Green&quot; &quot;White&quot; &quot;Black&quot; &quot;Black&quot; &quot;Red&quot;   &quot;Red&quot;   &quot;White&quot;
+ [89] &quot;White&quot; &quot;White&quot; &quot;White&quot; &quot;Red&quot;   &quot;Red&quot;   &quot;Red&quot;   &quot;White&quot; &quot;Black&quot;
+ [97] &quot;White&quot; &quot;Black&quot; &quot;Black&quot; &quot;White&quot;
 </code></pre>
-</div>
 <p>That's better!</p>
 <h4 id="the-as.is-argument">The as.is argument</h4>
 <p>This is an extension of the <code>stringsAsFactors</code> argument, but gives you control over individual columns. For example, if we want the colors of cars imported as strings, but we want the names of the states imported as factors, we would load the data set as:</p>
-<pre class='in'><code>carSpeeds <- read.csv(file='data/car-speeds.csv', as.is = 1) 
+<pre class="sourceCode r"><code class="sourceCode r">carSpeeds &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&#39;data/car-speeds.csv&#39;</span>, <span class="dt">as.is =</span> <span class="dv">1</span>) 
 
-#Note, the 1 applies as.is to the first column only</code></pre>
+<span class="co">#Note, the 1 applies as.is to the first column only</span></code></pre>
 <p>Now we can see that if we try to replace 'Blue' with 'Green' in the <code>$Color</code> column everything looks fine, while trying to replace 'Arizona' with 'Ohio' in the <code>$State</code> column returns the factor numbers for the names of states that we haven't replaced:</p>
-<pre class='in'><code>carSpeeds$Color<- ifelse(carSpeeds$Color=='Blue', 'Green', carSpeeds$Color)
+<pre class="sourceCode r"><code class="sourceCode r">carSpeeds$Color&lt;-<span class="st"> </span><span class="kw">ifelse</span>(carSpeeds$Color==<span class="st">&#39;Blue&#39;</span>, <span class="st">&#39;Green&#39;</span>, carSpeeds$Color)
 carSpeeds$Color</code></pre>
-<div class="out">
-<pre class='out'><code>  [1] "Green" " Red"  "Green" "White" "Red"   "Green" "Green" "Black"
-  [9] "White" "Red"   "Red"   "White" "Green" "Green" "Black" "Red"  
- [17] "Green" "Green" "White" "Green" "Green" "Green" "Red"   "Green"
- [25] "Red"   "Red"   "Red"   "Red"   "White" "Green" "Red"   "White"
- [33] "Black" "Red"   "Black" "Black" "Green" "Red"   "Black" "Red"  
- [41] "Black" "Black" "Red"   "Red"   "White" "Black" "Green" "Red"  
- [49] "Red"   "Black" "Black" "Red"   "White" "Red"   "Green" "Green"
- [57] "Black" "Green" "White" "Black" "Red"   "Green" "Green" "White"
- [65] "Black" "Red"   "Red"   "Black" "Green" "White" "Green" "Red"  
- [73] "White" "White" "Green" "Green" "Green" "Green" "Green" "White"
- [81] "Black" "Green" "White" "Black" "Black" "Red"   "Red"   "White"
- [89] "White" "White" "White" "Red"   "Red"   "Red"   "White" "Black"
- [97] "White" "Black" "Black" "White"
+<pre class="output"><code>  [1] &quot;Green&quot; &quot; Red&quot;  &quot;Green&quot; &quot;White&quot; &quot;Red&quot;   &quot;Green&quot; &quot;Green&quot; &quot;Black&quot;
+  [9] &quot;White&quot; &quot;Red&quot;   &quot;Red&quot;   &quot;White&quot; &quot;Green&quot; &quot;Green&quot; &quot;Black&quot; &quot;Red&quot;  
+ [17] &quot;Green&quot; &quot;Green&quot; &quot;White&quot; &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;Red&quot;   &quot;Green&quot;
+ [25] &quot;Red&quot;   &quot;Red&quot;   &quot;Red&quot;   &quot;Red&quot;   &quot;White&quot; &quot;Green&quot; &quot;Red&quot;   &quot;White&quot;
+ [33] &quot;Black&quot; &quot;Red&quot;   &quot;Black&quot; &quot;Black&quot; &quot;Green&quot; &quot;Red&quot;   &quot;Black&quot; &quot;Red&quot;  
+ [41] &quot;Black&quot; &quot;Black&quot; &quot;Red&quot;   &quot;Red&quot;   &quot;White&quot; &quot;Black&quot; &quot;Green&quot; &quot;Red&quot;  
+ [49] &quot;Red&quot;   &quot;Black&quot; &quot;Black&quot; &quot;Red&quot;   &quot;White&quot; &quot;Red&quot;   &quot;Green&quot; &quot;Green&quot;
+ [57] &quot;Black&quot; &quot;Green&quot; &quot;White&quot; &quot;Black&quot; &quot;Red&quot;   &quot;Green&quot; &quot;Green&quot; &quot;White&quot;
+ [65] &quot;Black&quot; &quot;Red&quot;   &quot;Red&quot;   &quot;Black&quot; &quot;Green&quot; &quot;White&quot; &quot;Green&quot; &quot;Red&quot;  
+ [73] &quot;White&quot; &quot;White&quot; &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;White&quot;
+ [81] &quot;Black&quot; &quot;Green&quot; &quot;White&quot; &quot;Black&quot; &quot;Black&quot; &quot;Red&quot;   &quot;Red&quot;   &quot;White&quot;
+ [89] &quot;White&quot; &quot;White&quot; &quot;White&quot; &quot;Red&quot;   &quot;Red&quot;   &quot;Red&quot;   &quot;White&quot; &quot;Black&quot;
+ [97] &quot;White&quot; &quot;Black&quot; &quot;Black&quot; &quot;White&quot;
 </code></pre>
-</div>
-<pre class='in'><code>carSpeeds$State<- ifelse(carSpeeds$State=='Arizona','Ohio',carSpeeds$State)
+<pre class="sourceCode r"><code class="sourceCode r">carSpeeds$State&lt;-<span class="st"> </span><span class="kw">ifelse</span>(carSpeeds$State==<span class="st">&#39;Arizona&#39;</span>,<span class="st">&#39;Ohio&#39;</span>,carSpeeds$State)
 carSpeeds$State</code></pre>
-<div class="out">
-<pre class='out'><code>  [1] "3"    "Ohio" "2"    "Ohio" "Ohio" "Ohio" "3"    "2"    "Ohio" "2"   
- [11] "4"    "4"    "4"    "4"    "4"    "3"    "Ohio" "3"    "Ohio" "4"   
- [21] "4"    "4"    "3"    "2"    "2"    "3"    "2"    "4"    "2"    "4"   
- [31] "3"    "2"    "2"    "4"    "2"    "2"    "3"    "Ohio" "4"    "2"   
- [41] "2"    "3"    "Ohio" "4"    "Ohio" "2"    "3"    "3"    "3"    "2"   
- [51] "Ohio" "4"    "4"    "Ohio" "3"    "2"    "4"    "2"    "4"    "4"   
- [61] "4"    "2"    "3"    "2"    "3"    "2"    "3"    "Ohio" "3"    "4"   
- [71] "4"    "2"    "Ohio" "4"    "2"    "2"    "2"    "Ohio" "3"    "Ohio"
- [81] "4"    "2"    "2"    "Ohio" "Ohio" "Ohio" "4"    "Ohio" "4"    "4"   
- [91] "4"    "Ohio" "Ohio" "3"    "2"    "2"    "4"    "3"    "Ohio" "4"   
+<pre class="output"><code>  [1] &quot;3&quot;    &quot;Ohio&quot; &quot;2&quot;    &quot;Ohio&quot; &quot;Ohio&quot; &quot;Ohio&quot; &quot;3&quot;    &quot;2&quot;    &quot;Ohio&quot; &quot;2&quot;   
+ [11] &quot;4&quot;    &quot;4&quot;    &quot;4&quot;    &quot;4&quot;    &quot;4&quot;    &quot;3&quot;    &quot;Ohio&quot; &quot;3&quot;    &quot;Ohio&quot; &quot;4&quot;   
+ [21] &quot;4&quot;    &quot;4&quot;    &quot;3&quot;    &quot;2&quot;    &quot;2&quot;    &quot;3&quot;    &quot;2&quot;    &quot;4&quot;    &quot;2&quot;    &quot;4&quot;   
+ [31] &quot;3&quot;    &quot;2&quot;    &quot;2&quot;    &quot;4&quot;    &quot;2&quot;    &quot;2&quot;    &quot;3&quot;    &quot;Ohio&quot; &quot;4&quot;    &quot;2&quot;   
+ [41] &quot;2&quot;    &quot;3&quot;    &quot;Ohio&quot; &quot;4&quot;    &quot;Ohio&quot; &quot;2&quot;    &quot;3&quot;    &quot;3&quot;    &quot;3&quot;    &quot;2&quot;   
+ [51] &quot;Ohio&quot; &quot;4&quot;    &quot;4&quot;    &quot;Ohio&quot; &quot;3&quot;    &quot;2&quot;    &quot;4&quot;    &quot;2&quot;    &quot;4&quot;    &quot;4&quot;   
+ [61] &quot;4&quot;    &quot;2&quot;    &quot;3&quot;    &quot;2&quot;    &quot;3&quot;    &quot;2&quot;    &quot;3&quot;    &quot;Ohio&quot; &quot;3&quot;    &quot;4&quot;   
+ [71] &quot;4&quot;    &quot;2&quot;    &quot;Ohio&quot; &quot;4&quot;    &quot;2&quot;    &quot;2&quot;    &quot;2&quot;    &quot;Ohio&quot; &quot;3&quot;    &quot;Ohio&quot;
+ [81] &quot;4&quot;    &quot;2&quot;    &quot;2&quot;    &quot;Ohio&quot; &quot;Ohio&quot; &quot;Ohio&quot; &quot;4&quot;    &quot;Ohio&quot; &quot;4&quot;    &quot;4&quot;   
+ [91] &quot;4&quot;    &quot;Ohio&quot; &quot;Ohio&quot; &quot;3&quot;    &quot;2&quot;    &quot;2&quot;    &quot;4&quot;    &quot;3&quot;    &quot;Ohio&quot; &quot;4&quot;   
 </code></pre>
-</div>
 <h4 id="challenge">Challenge:</h4>
 <p>Suppose we want to keep the colors of cars as factors for some other operations we want to perform. Write code for replacing 'Blue' with 'Green' in the <code>$Color</code> column of the cars dataset without importing the data with <code>stringsAsFactors=FALSE</code>.</p>
 <h4 id="the-strip.white-argument">The strip.white argument</h4>
 <p>It is not uncommon for mistakes to have been made when the data were recorded, for example a space (whitespace) may have been inserted before a data value. By default this whitespace will be kept in the R environment, such that ' Red' will be recognized as a different value than 'Red'. In order to avoid this type of error, use the <code>strip.white</code> argument. Let's see how this works by checking for the unique values in the <code>$Color</code> column of our dataset:</p>
 <p>Here, the data recorder added a space before the color of the car in one of the cells:</p>
-<pre class='in'><code>#We use the built in unique() function to extract the unique colors in our dataset
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#We use the built in unique() function to extract the unique colors in our dataset</span>
  
-unique(carSpeeds$Color)</code></pre>
-<div class="out">
-<pre class='out'><code>[1] Green  Red  White Red   Black
-Levels:  Red Black Green Red White
+<span class="kw">unique</span>(carSpeeds$Color)</code></pre>
+<pre class="output"><code>[1] Green  Red  White Red   Black
+Levels: Black Green Red  Red White
 </code></pre>
-</div>
 <p>Oops, we see two values for red cars.</p>
 <p>Let's try again, this time importing the data using the <code>strip.white</code> argument. NOTE - this argument must be accompanied by the <code>sep</code> argument, by which we indicate the type of delimiter in the file (the comma for most .csv files)</p>
-<pre class='in'><code>carSpeeds<-read.csv(file='data/car-speeds.csv',stringsAsFactors=FALSE,strip.white=TRUE,sep=',')
+<pre class="sourceCode r"><code class="sourceCode r">carSpeeds&lt;-<span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&#39;data/car-speeds.csv&#39;</span>,<span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>,<span class="dt">strip.white=</span><span class="ot">TRUE</span>,<span class="dt">sep=</span><span class="st">&#39;,&#39;</span>)
  
-unique(carSpeeds$Color)</code></pre>
-<div class="out">
-<pre class='out'><code>[1] "Blue"  "Red"   "White" "Black"
+<span class="kw">unique</span>(carSpeeds$Color)</code></pre>
+<pre class="output"><code>[1] &quot;Blue&quot;  &quot;Red&quot;   &quot;White&quot; &quot;Black&quot;
 </code></pre>
-</div>
 <p>That's better!</p>
 <h3 id="write-a-new-.csv-and-explore-the-arguments">Write a new .csv and explore the arguments</h3>
 <p>After altering our cars dataset by replacing 'Blue' with 'Green' in the <code>$Color</code> column, we now want to save the output. There are several arguments for the <code>write.csv(...)</code> <a href="../../gloss.html#function-call">function call</a>, a few of which are particularly important for how the data are exported. Let's explore these now.</p>
-<pre class='in'><code>#Export the data. The write.csv() function requires a minimum of two arguments, the data to be saved and the name of the output file.
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Export the data. The write.csv() function requires a minimum of two arguments, the data to be saved and the name of the output file.</span>
 
-write.csv(carSpeeds, file='data/car-speeds-cleaned.csv')</code></pre>
+<span class="kw">write.csv</span>(carSpeeds, <span class="dt">file=</span><span class="st">&#39;data/car-speeds-cleaned.csv&#39;</span>)</code></pre>
 <p>If you open the file, you'll see that it has header names, because the data had headers within R, but that there are numbers in the first column.</p>
 <p><img src="figure/CSV_WithRowNums.png" alt="csv written without row.names argument" /></p>
 <h4 id="the-row.names-argument">The row.names argument</h4>
 <p>This argument allows us to set the names of the rows in the output data file. R's default for this argument is <code>TRUE</code>, and since it does not know what else to name the rows for the cars data set, it resorts to using row numbers. To correct this, we can set <code>row.names</code> to <code>FALSE</code>:</p>
-<pre class='in'><code>write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(carSpeeds, <span class="dt">file=</span><span class="st">&#39;data/car-speeds-cleaned.csv&#39;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>)</code></pre>
 <p>Now we see:</p>
 <p><img src="figure/CSV_WithoutRowNums.png" alt="csv written with row.names argument" /></p>
 <blockquote>
@@ -203,11 +185,10 @@ write.csv(carSpeeds, file='data/car-speeds-cleaned.csv')</code></pre>
 </blockquote>
 <h4 id="the-na-argument">The na argument</h4>
 <p>There are times when we want to specify certain values for <code>NA</code>s in the data set (e.g., we are going to pass the data to a program that only accepts -9999 as a nodata value). In this case, we want to set the <code>NA</code> value of our output file to the desired value, using the <code>na</code> argument. Let's see how this works:</p>
-<pre class='in'><code>#First, replace the speed in the 3rd row with NA, by using an index (square brackets to indicate the position of the value we want to replace)
-carSpeeds$Speed[3]<-NA
-head(carSpeeds)</code></pre>
-<div class="out">
-<pre class='out'><code>  Color Speed     State
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#First, replace the speed in the 3rd row with NA, by using an index (square brackets to indicate the position of the value we want to replace)</span>
+carSpeeds$Speed[<span class="dv">3</span>]&lt;-<span class="ot">NA</span>
+<span class="kw">head</span>(carSpeeds)</code></pre>
+<pre class="output"><code>  Color Speed     State
 1  Blue    32 NewMexico
 2   Red    45   Arizona
 3  Blue    NA  Colorado
@@ -215,11 +196,10 @@ head(carSpeeds)</code></pre>
 5   Red    25   Arizona
 6  Blue    41   Arizona
 </code></pre>
-</div>
-<pre class='in'><code>write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(carSpeeds, <span class="dt">file=</span><span class="st">&#39;data/car-speeds-cleaned.csv&#39;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>)</code></pre>
 <p>Now we'll set <code>NA</code> to -9999 when we write the new .csv file:</p>
-<pre class='in'><code>#Note - the na argument requires a string input
-write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE, na= '-9999')</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Note - the na argument requires a string input</span>
+<span class="kw">write.csv</span>(carSpeeds, <span class="dt">file=</span><span class="st">&#39;data/car-speeds-cleaned.csv&#39;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>, <span class="dt">na=</span> <span class="st">&#39;-9999&#39;</span>)</code></pre>
 <p>And we see:</p>
 <p><img src="figure/CSV_WithSpecialNA.png" alt="csv written with -9999 as NA" /></p>
 <h4 id="key-points">Key Points</h4>

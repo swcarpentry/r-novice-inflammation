@@ -13,7 +13,8 @@ This lesson is an extension of [Analyzing Multiple Data Sets](03-loops-R.html).
 In that lesson, we introduced how to run a custom function, `analyze`, over multiple data files:
 
 
-<pre class='in'><code>analyze <- function(filename) {
+~~~{.r}
+analyze <- function(filename) {
   # Plots the average, min, and max inflammation over time.
   # Input is character string of a csv file.
   dat <- read.csv(file = filename, header = FALSE)
@@ -23,10 +24,13 @@ In that lesson, we introduced how to run a custom function, `analyze`, over mult
   plot(max_day_inflammation)
   min_day_inflammation <- apply(dat, 2, min)
   plot(min_day_inflammation)
-}</code></pre>
+}
+~~~
 
 
-<pre class='in'><code>filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)</code></pre>
+~~~{.r}
+filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
+~~~
 
 #### Vectorized operations
 
@@ -38,33 +42,43 @@ Learning to use vectorized operations is a key skill in R.
 For example, to add pairs of numbers contained in two vectors
 
 
-<pre class='in'><code>a <- 1:10
-b <- 1:10</code></pre>
+~~~{.r}
+a <- 1:10
+b <- 1:10
+~~~
 
 you could loop over the pairs adding each in turn, but that would be very inefficient in R.
 
 
-<pre class='in'><code>res <- numeric(length = length(a))
+~~~{.r}
+res <- numeric(length = length(a))
 for (i in seq_along(a)) {
   res[i] <- a[i] + b[i]
 }
-res</code></pre>
+res
+~~~
 
 
 
-<div class='out'><pre class='out'><code> [1]  2  4  6  8 10 12 14 16 18 20
-</code></pre></div>
+~~~{.output}
+ [1]  2  4  6  8 10 12 14 16 18 20
+
+~~~
 
 Instead, `+` is a *vectorized* function which can operate on entire vectors at once
 
 
-<pre class='in'><code>res2 <- a + b
-all.equal(res, res2)</code></pre>
+~~~{.r}
+res2 <- a + b
+all.equal(res, res2)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] TRUE
-</code></pre></div>
+~~~{.output}
+[1] TRUE
+
+~~~
 
 #### `for` or `apply`?
 
@@ -82,7 +96,9 @@ Each of these has an argument `FUN` which takes a function to apply to each elem
 Instead of looping over `filenames` and calling `analyze`, as you did earlier, you could `sapply` over `filenames` with `FUN = analyze`:
 
 
-<pre class='in'><code>sapply(filenames, FUN = analyze)</code></pre>
+~~~{.r}
+sapply(filenames, FUN = analyze)
+~~~
 
 Deciding whether to use `for` or one of the `apply` family is really personal preference.
 Using an `apply` family function forces to you encapsulate your operations as a function rather than separate calls with `for`.
@@ -99,7 +115,8 @@ No, they are not! *If* you follow some golden rules:
 As an example, we'll create a new version of `analyze` that will return the mean inflammation per day (column) of each file.
 
 
-<pre class='in'><code>analyze2 <- function(filenames) {
+~~~{.r}
+analyze2 <- function(filenames) {
   for (f in seq_along(filenames)) {
     fdata <- read.csv(filenames[f], header = FALSE)
     res <- apply(fdata, 2, mean)
@@ -113,13 +130,16 @@ As an example, we'll create a new version of `analyze` that will return the mean
   return(out)
 }
 
-system.time(avg2 <- analyze2(filenames))</code></pre>
+system.time(avg2 <- analyze2(filenames))
+~~~
 
 
 
-<div class='out'><pre class='out'><code>   user  system elapsed 
-  0.036   0.000   0.037 
-</code></pre></div>
+~~~{.output}
+   user  system elapsed 
+  0.048   0.000   0.069 
+
+~~~
 
 Note how we add a new column to `out` at each iteration?
 This is a cardinal sin of writing a `for` loop in R.
@@ -129,7 +149,8 @@ Then we loop over the files but this time we fill in the `f`th column of our res
 This time there is no copying/growing for R to deal with.
 
 
-<pre class='in'><code>analyze3 <- function(filenames) {
+~~~{.r}
+analyze3 <- function(filenames) {
   out <- matrix(ncol = length(filenames), nrow = 40) ## assuming 40 here from files 
   for (f in seq_along(filenames)) {
     fdata <- read.csv(filenames[f], header = FALSE)
@@ -138,13 +159,16 @@ This time there is no copying/growing for R to deal with.
   return(out)
 }
 
-system.time(avg3 <- analyze3(filenames))</code></pre>
+system.time(avg3 <- analyze3(filenames))
+~~~
 
 
 
-<div class='out'><pre class='out'><code>   user  system elapsed 
-  0.029   0.000   0.031 
-</code></pre></div>
+~~~{.output}
+   user  system elapsed 
+  0.044   0.000   0.046 
+
+~~~
 
 In this simple example there is little difference in the compute time of `analyze2` and `analyze3`.
 This is because we are only iterating over 12 files and hence we only incur 12 copy/grow operations.
