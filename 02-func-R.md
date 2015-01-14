@@ -25,10 +25,12 @@ In this lesson, we'll learn how to write a function so that we can repeat severa
 Let's start by defining a function `fahr_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
 
 
-<pre class='in'><code>fahr_to_kelvin <- function(temp) {
+~~~{.r}
+fahr_to_kelvin <- function(temp) {
   kelvin <- ((temp - 32) * (5 / 9)) + 273.15
   return(kelvin)
-}</code></pre>
+}
+~~~
 
 We define `fahr_to_kelvin` by assigning it to the output of `function`.
 The list of argument names are containted within parentheses.
@@ -47,23 +49,31 @@ Let's try running our function.
 Calling our own function is no different from calling any other function:
 
 
-<pre class='in'><code># freezing point of water
-fahr_to_kelvin(32)</code></pre>
+~~~{.r}
+# freezing point of water
+fahr_to_kelvin(32)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 273.1
-</code></pre></div>
+~~~{.output}
+[1] 273.1
+
+~~~
 
 
 
-<pre class='in'><code># boiling point of water
-fahr_to_kelvin(212)</code></pre>
+~~~{.r}
+# boiling point of water
+fahr_to_kelvin(212)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 373.1
-</code></pre></div>
+~~~{.output}
+[1] 373.1
+
+~~~
 
 We've successfully called the function that we defined, and we have access to the value that we returned.
 
@@ -72,37 +82,45 @@ We've successfully called the function that we defined, and we have access to th
 Now that we've seen how to turn Fahrenheit into Kelvin, it's easy to turn Kelvin into Celsius:
 
 
-<pre class='in'><code>kelvin_to_celsius <- function(temp) {
+~~~{.r}
+kelvin_to_celsius <- function(temp) {
   celsius <- temp - 273.15
   return(celsius)
 }
 
 #absolute zero in Celsius
-kelvin_to_celsius(0)</code></pre>
+kelvin_to_celsius(0)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] -273.1
-</code></pre></div>
+~~~{.output}
+[1] -273.1
+
+~~~
 
 What about converting Fahrenheit to Celsius?
 We could write out the formula, but we don't need to.
 Instead, we can [compose](../../gloss.html#function-composition) the two functions we have already created:
 
 
-<pre class='in'><code>fahr_to_celsius <- function(temp) {
+~~~{.r}
+fahr_to_celsius <- function(temp) {
   temp_k <- fahr_to_kelvin(temp)
   result <- kelvin_to_celsius(temp_k)
   return(result)
 }
 
 # freezing point of water in Celsius
-fahr_to_celsius(32.0)</code></pre>
+fahr_to_celsius(32.0)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 0
-</code></pre></div>
+~~~{.output}
+[1] 0
+
+~~~
 
 This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want. 
 Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
@@ -116,16 +134,20 @@ Real-life functions will usually be larger than the ones shown here--typically h
 
   
 
-<pre class='in'><code>best_practice <- c("Write", "programs", "for", "people", "not", "computers")
+~~~{.r}
+best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 asterisk <- "***"  # R interprets a variable with a single value as a vector
                    # with one element.
-fence(best_practice, asterisk)</code></pre>
+fence(best_practice, asterisk)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] "***"       "Write"     "programs"  "for"       "people"    "not"      
+~~~{.output}
+[1] "***"       "Write"     "programs"  "for"       "people"    "not"      
 [7] "computers" "***"      
-</code></pre></div>
+
+~~~
 
   + If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
     Write a function called `outer` that returns a vector made up of just the first and last elements of its input:
@@ -133,21 +155,27 @@ fence(best_practice, asterisk)</code></pre>
 
 
 
-<pre class='in'><code>dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
-outer(dry_principle)</code></pre>
+~~~{.r}
+dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
+outer(dry_principle)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] "Don't"  "others"
-</code></pre></div>
+~~~{.output}
+[1] "Don't"  "others"
+
+~~~
 
 ### The Call Stack
 
 Let's take a closer look at what happens when we call `fahr_to_celsius(32)`. To make things clearer, we'll start by putting the initial value 32 in a variable and store the final result in one as well:
 
 
-<pre class='in'><code>original <- 32
-final <- fahr_to_celsius(original)</code></pre>
+~~~{.r}
+original <- 32
+final <- fahr_to_celsius(original)
+~~~
 
 The diagram below shows what memory looks like after the first line has been executed:
 
@@ -189,12 +217,16 @@ What it *doesn't* hold is the variables that were in the various stack frames.
 If we try to get the value of `temp` after our functions have finished running, R tells us that there's no such thing:
 
 
-<pre class='in'><code>temp</code></pre>
+~~~{.r}
+temp
+~~~
 
 
 
-<div class='out'><pre class='out'><code>Error: object 'temp' not found
-</code></pre></div>
+~~~{.output}
+Error: object 'temp' not found
+
+~~~
 
 > **Tip:** The explanation of the stack frame above was very general and the basic concept will help you understand most languages you try to program with.
 However, R has some unique aspects that can be exploited when performing more complicated operations.
@@ -209,31 +241,39 @@ For context, R uses the terminology "environments" instead of frames.
 Why go to all this trouble? Well, here's a function called `span` that calculates the difference between the mininum and maximum values in an array:
 
 
-<pre class='in'><code>span <- function(a) {
+~~~{.r}
+span <- function(a) {
   diff <- max(a) - min(a)
   return(diff)
 }
 
 dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 # span of inflammation data
-span(dat)</code></pre>
+span(dat)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 20
-</code></pre></div>
+~~~{.output}
+[1] 20
+
+~~~
 
 Notice `span` assigns a value to variable called `diff`. We might very well use a variable with the same name (`diff`) to hold the inflammation data:
 
 
-<pre class='in'><code>diff <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
+~~~{.r}
+diff <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 # span of inflammation data
-span(diff)</code></pre>
+span(diff)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 20
-</code></pre></div>
+~~~{.output}
+[1] 20
+
+~~~
 
 We don't expect the variable `diff` to have the value 20 after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
 And yes, we could probably choose a different name than `diff` for our variable in this case, but we don't want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.
@@ -248,9 +288,11 @@ That only works if functions don't interfere with each other; if they do, we hav
     Draw a diagram showing how the call stack changes when we run the following:
 
 
-<pre class='in'><code>inside <- "carbon"
+~~~{.r}
+inside <- "carbon"
 outside <- "+"
-result <- outer(fence(inside, outside))</code></pre>
+result <- outer(fence(inside, outside))
+~~~
 
 ### Testing and Documenting
 
@@ -258,151 +300,205 @@ Once we start putting things in functions so that we can re-use them, we need to
 To see how to do this, let's write a function to center a dataset around a particular value:
 
 
-<pre class='in'><code>center <- function(data, desired) {
+~~~{.r}
+center <- function(data, desired) {
   new_data <- (data - mean(data)) + desired
   return(new_data)
-}</code></pre>
+}
+~~~
 
 We could test this on our actual data, but since we don't know what the values ought to be, it will be hard to tell if the result was correct.
 Instead, let's create a vector of 0s and then center that around 3.
 This will make it simple to see if our function is working as expected:
 
 
-<pre class='in'><code>z <- c(0, 0, 0, 0)
-z</code></pre>
+~~~{.r}
+z <- c(0, 0, 0, 0)
+z
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 0 0 0 0
-</code></pre></div>
+~~~{.output}
+[1] 0 0 0 0
+
+~~~
 
 
 
-<pre class='in'><code>center(z, 3)</code></pre>
+~~~{.r}
+center(z, 3)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 3 3 3 3
-</code></pre></div>
+~~~{.output}
+[1] 3 3 3 3
+
+~~~
 
 That looks right, so let's try center on our real data. We'll center the inflammation data from day 4 around 0:
 
 
-<pre class='in'><code>dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
+~~~{.r}
+dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 centered <- center(dat[, 4], 0)
-head(centered)</code></pre>
+head(centered)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1]  1.25 -0.75  1.25 -1.75  1.25  0.25
-</code></pre></div>
+~~~{.output}
+[1]  1.25 -0.75  1.25 -1.75  1.25  0.25
+
+~~~
 
 It's hard to tell from the default output whether the result is correct, but there are a few simple tests that will reassure us:
 
 
-<pre class='in'><code># original min
-min(dat[, 4])</code></pre>
+~~~{.r}
+# original min
+min(dat[, 4])
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 0
-</code></pre></div>
+~~~{.output}
+[1] 0
+
+~~~
 
 
 
-<pre class='in'><code># original mean
-mean(dat[, 4])</code></pre>
+~~~{.r}
+# original mean
+mean(dat[, 4])
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 1.75
-</code></pre></div>
+~~~{.output}
+[1] 1.75
+
+~~~
 
 
 
-<pre class='in'><code># original max
-max(dat[, 4])</code></pre>
+~~~{.r}
+# original max
+max(dat[, 4])
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 3
-</code></pre></div>
+~~~{.output}
+[1] 3
+
+~~~
 
 
 
-<pre class='in'><code># centered min
-min(centered)</code></pre>
+~~~{.r}
+# centered min
+min(centered)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] -1.75
-</code></pre></div>
+~~~{.output}
+[1] -1.75
+
+~~~
 
 
 
-<pre class='in'><code># centered mean
-mean(centered)</code></pre>
+~~~{.r}
+# centered mean
+mean(centered)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 0
-</code></pre></div>
+~~~{.output}
+[1] 0
+
+~~~
 
 
 
-<pre class='in'><code># centered max
-max(centered)</code></pre>
+~~~{.r}
+# centered max
+max(centered)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 1.25
-</code></pre></div>
+~~~{.output}
+[1] 1.25
+
+~~~
 
 That seems almost right: the original mean was about 1.75, so the lower bound from zero is now about -1.75.
 The mean of the centered data is 0.
 We can even go further and check that the standard deviation hasn't changed:
 
 
-<pre class='in'><code># original standard deviation
-sd(dat[, 4])</code></pre>
+~~~{.r}
+# original standard deviation
+sd(dat[, 4])
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 1.068
-</code></pre></div>
+~~~{.output}
+[1] 1.068
+
+~~~
 
 
 
-<pre class='in'><code># centerted standard deviation
-sd(centered)</code></pre>
+~~~{.r}
+# centerted standard deviation
+sd(centered)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 1.068
-</code></pre></div>
+~~~{.output}
+[1] 1.068
+
+~~~
 
 Those values look the same, but we probably wouldn't notice if they were different in the sixth decimal place.
 Let's do this instead:
 
 
-<pre class='in'><code># difference in standard deviations before and after
-sd(dat[, 4]) - sd(centered)</code></pre>
+~~~{.r}
+# difference in standard deviations before and after
+sd(dat[, 4]) - sd(centered)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 0
-</code></pre></div>
+~~~{.output}
+[1] 0
+
+~~~
 
 Sometimes, a very small difference can be detected due to rounding at very low decimal places.
 R has a useful function for comparing two objects allowing for rounding errors, `all.equal`:
 
 
-<pre class='in'><code>all.equal(sd(dat[, 4]), sd(centered))</code></pre>
+~~~{.r}
+all.equal(sd(dat[, 4]), sd(centered))
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] TRUE
-</code></pre></div>
+~~~{.output}
+[1] TRUE
+
+~~~
 
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
 We have one more task first, though: we should write some [documentation](../../gloss.html#documentation) for our function to remind ourselves later what it's for and how to use it.
@@ -410,13 +506,15 @@ We have one more task first, though: we should write some [documentation](../../
 A common way to put documentation in software is to add [comments](../../gloss.html#comment) like this:
 
 
-<pre class='in'><code>center <- function(data, desired) {
+~~~{.r}
+center <- function(data, desired) {
   # return a new vector containing the original data centered around the
   # desired value.
   # Example: center(c(1, 2, 3), 0) => c(-1, 0, 1)
   new_data <- (data - mean(data)) + desired
   return(new_data)
-}</code></pre>
+}
+~~~
 
 > **Tip:** Formal documentation for R functions is written in separate `.Rd` using a markup language similar to [LaTeX][].
 You see the result of this documentation when you look at the help file for a given function, e.g. `?read.csv`.
@@ -451,127 +549,167 @@ We have passed arguments to functions in two ways: directly, as in `dim(dat)`, a
 In fact, we can pass the arguments to `read.csv` without naming them:
 
 
-<pre class='in'><code>dat <- read.csv("data/inflammation-01.csv", FALSE)</code></pre>
+~~~{.r}
+dat <- read.csv("data/inflammation-01.csv", FALSE)
+~~~
 
 However, the position of the arguments matters if they are not named.
 
 
-<pre class='in'><code>dat <- read.csv(header = FALSE, file = "data/inflammation-01.csv")
-dat <- read.csv(FALSE, "data/inflammation-01.csv")</code></pre>
+~~~{.r}
+dat <- read.csv(header = FALSE, file = "data/inflammation-01.csv")
+dat <- read.csv(FALSE, "data/inflammation-01.csv")
+~~~
 
 
 
-<div class='out'><pre class='out'><code>Error: 'file' must be a character string or connection
-</code></pre></div>
+~~~{.output}
+Error: 'file' must be a character string or connection
+
+~~~
 
 To understand what's going on, and make our own functions easier to use, let's re-define our `center` function like this:
 
 
-<pre class='in'><code>center <- function(data, desired = 0) {
+~~~{.r}
+center <- function(data, desired = 0) {
   # return a new vector containing the original data centered around the
   # desired value (0 by default).
   # Example: center(c(1, 2, 3), 0) => c(-1, 0, 1)
   new_data <- (data - mean(data)) + desired
   return(new_data)
-}</code></pre>
+}
+~~~
 
 The key change is that the second argument is now written `desired = 0` instead of just `desired`.
 If we call the function with two arguments, it works as it did before:
 
 
-<pre class='in'><code>test_data <- c(0, 0, 0, 0)
-center(test_data, 3)</code></pre>
+~~~{.r}
+test_data <- c(0, 0, 0, 0)
+center(test_data, 3)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 3 3 3 3
-</code></pre></div>
+~~~{.output}
+[1] 3 3 3 3
+
+~~~
 
 But we can also now call `center()` with just one argument, in which case `desired` is automatically assigned the default value of `0`:
 
 
-<pre class='in'><code>more_data <- 5 + test_data
-more_data</code></pre>
+~~~{.r}
+more_data <- 5 + test_data
+more_data
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 5 5 5 5
-</code></pre></div>
+~~~{.output}
+[1] 5 5 5 5
+
+~~~
 
 
 
-<pre class='in'><code>center(more_data)</code></pre>
+~~~{.r}
+center(more_data)
+~~~
 
 
 
-<div class='out'><pre class='out'><code>[1] 0 0 0 0
-</code></pre></div>
+~~~{.output}
+[1] 0 0 0 0
+
+~~~
 
 This is handy: if we usually want a function to work one way, but occasionally need it to do something else, we can allow people to pass an argument when they need to but provide a default to make the normal case easier.
 
 The example below shows how R matches values to arguments
 
 
-<pre class='in'><code>display <- function(a = 1, b = 2, c = 3) {
+~~~{.r}
+display <- function(a = 1, b = 2, c = 3) {
   result <- c(a, b, c)
   names(result) <- c("a", "b", "c")  # This names each element of the vector
   return(result)
 }
 
 # no arguments
-display()</code></pre>
+display()
+~~~
 
 
 
-<div class='out'><pre class='out'><code>a b c 
+~~~{.output}
+a b c 
 1 2 3 
-</code></pre></div>
+
+~~~
 
 
 
-<pre class='in'><code># one argument
-display(55)</code></pre>
+~~~{.r}
+# one argument
+display(55)
+~~~
 
 
 
-<div class='out'><pre class='out'><code> a  b  c 
+~~~{.output}
+ a  b  c 
 55  2  3 
-</code></pre></div>
+
+~~~
 
 
 
-<pre class='in'><code># two arguments
-display(55, 66)</code></pre>
+~~~{.r}
+# two arguments
+display(55, 66)
+~~~
 
 
 
-<div class='out'><pre class='out'><code> a  b  c 
+~~~{.output}
+ a  b  c 
 55 66  3 
-</code></pre></div>
+
+~~~
 
 
 
-<pre class='in'><code># three arguments
-display (55, 66, 77)</code></pre>
+~~~{.r}
+# three arguments
+display (55, 66, 77)
+~~~
 
 
 
-<div class='out'><pre class='out'><code> a  b  c 
+~~~{.output}
+ a  b  c 
 55 66 77 
-</code></pre></div>
+
+~~~
 
 As this example shows, arguments are matched from left to right, and any that haven't been given a value explicitly get their default value.
 We can override this behavior by naming the value as we pass it in:
 
 
-<pre class='in'><code># only setting the value of c
-display(c = 77)</code></pre>
+~~~{.r}
+# only setting the value of c
+display(c = 77)
+~~~
 
 
 
-<div class='out'><pre class='out'><code> a  b  c 
+~~~{.output}
+ a  b  c 
  1  2 77 
-</code></pre></div>
+
+~~~
 
 > **Tip:** To be precise, R has three ways that arguments supplied by you are matched to the *formal arguments* of the function definition
 >
@@ -584,24 +722,32 @@ display(c = 77)</code></pre>
 With that in hand, let's look at the help for `read.csv()`:
 
 
-<pre class='in'><code>?read.csv</code></pre>
+~~~{.r}
+?read.csv
+~~~
 
 There's a lot of information there, but the most important part is the first couple of lines:
 
 
-<pre class='in'><code>read.csv(file, header = TRUE, sep = ",", quote = "\"",
-         dec = ".", fill = TRUE, comment.char = "", ...)</code></pre>
+~~~{.r}
+read.csv(file, header = TRUE, sep = ",", quote = "\"",
+         dec = ".", fill = TRUE, comment.char = "", ...)
+~~~
 
 This tells us that `read.csv()` has one argument, `file`, that doesn't have a default value, and six others that do.
 Now we understand why the following gives an error:
 
 
-<pre class='in'><code>dat <- read.csv(FALSE, "data/inflammation-01.csv")</code></pre>
+~~~{.r}
+dat <- read.csv(FALSE, "data/inflammation-01.csv")
+~~~
 
 
 
-<div class='out'><pre class='out'><code>Error: 'file' must be a character string or connection
-</code></pre></div>
+~~~{.output}
+Error: 'file' must be a character string or connection
+
+~~~
 
 It fails because `FALSE` is assigned to `file` and the filename is assigned to the argument `header`.
 
@@ -614,8 +760,7 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 
 #### Key Points
 
-* Define a function using `name <- function(...args...)`.
-* The body of a function should be surrounded by curly braces (`{}`).
+* Define a function using `name <- function(...args...) {...body...}`.
 * Call a function using `name(...values...)`.
 * Each time a function is called, a new stack frame is created on the [call stack](../../gloss.html#call-stack) to hold its arguments and local variables.
 * R looks for variables in the current stack frame before looking for them at the top level.
@@ -631,10 +776,12 @@ We now have a function called analyze to visualize a single data set.
 We could use it to explore all 12 of our current data sets like this:
 
 
-<pre class='in'><code>analyze("data/inflammation-01.csv")
+~~~{.r}
+analyze("data/inflammation-01.csv")
 analyze("data/inflammation-02.csv")
 #...
-analyze("data/inflammation-12.csv")</code></pre>
+analyze("data/inflammation-12.csv")
+~~~
 
 but the chances of us typing all 12 filenames correctly aren't great, and we'll be even worse off if we get another hundred files.
 What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.

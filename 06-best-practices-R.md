@@ -3,25 +3,26 @@ layout: lesson
 root: ../..
 ---
 
+
+
 # Some best practices for using R and designing programs
 
 1. Start your code with a description of what it is:
 
 
-```r
-# This is code to replicate the analyses and figures from my 2014 Science
-# paper. Code developed by Sarah Supp, Tracy Teal, and Jon Borelli
-```
-
+~~~{.r}
+#This is code to replicate the analyses and figures from my 2014 Science paper.
+#Code developed by Sarah Supp, Tracy Teal, and Jon Borelli
+~~~
 
 2. Run all of your import statments (`library`):
 
 
-```r
+~~~{.r}
 library(ggplot2)
 library(reshape)
 library(vegan)
-```
+~~~
 
 3. Set your working directory before `source()`ing a script, or start `R` inside your project folder:
 
@@ -43,10 +44,9 @@ Consider using the convention that the user running the script should begin in t
 5. If you have only one or a few functions, put them at the top of your code, so they are among the first things run. If you written many functions, put them all in their own .R file, and `source` them. Source will run all of these functions so that you can use them as you need them.
 
 
-```r
+~~~{.r}
 source("my_genius_fxns.R")
-```
-
+~~~
 
 6. Use consistent style within your code.
 
@@ -57,19 +57,16 @@ source("my_genius_fxns.R")
 9. Manage all of your source files for a project in the same directory. Then use relative paths as necessary. For example, use
 
 
-```r
+~~~{.r}
 dat <- read.csv(file = "/files/dataset-2013-01.csv", header = TRUE)
-```
-
+~~~
 
 rather than:
 
 
-```r
-dat <- read.csv(file = "/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv",
-    header = TRUE)
-```
-
+~~~{.r}
+dat <- read.csv(file = "/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv", header = TRUE)
+~~~
 
 10. Don't save a session history (the default option in R, when it asks if you want an `RData` file). Instead, start in a clean environment so that older objects don't contaminate your current environment. This can lead to unexpected results, especially if the code were to be run on someone else's machine.
 
