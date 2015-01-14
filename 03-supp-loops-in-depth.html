@@ -30,40 +30,36 @@
 <h3 id="to-loop-or-not-to-loop...">To loop or not to loop...?</h3>
 <p>In R you have multiple options when repeating calculations: vectorized operations, <code>for</code> loops, and <code>apply</code> functions.</p>
 <p>This lesson is an extension of <a href="03-loops-R.html">Analyzing Multiple Data Sets</a>. In that lesson, we introduced how to run a custom function, <code>analyze</code>, over multiple data files:</p>
-<pre class='in'><code>analyze <- function(filename) {
-  # Plots the average, min, and max inflammation over time.
-  # Input is character string of a csv file.
-  dat <- read.csv(file = filename, header = FALSE)
-  avg_day_inflammation <- apply(dat, 2, mean)
-  plot(avg_day_inflammation)
-  max_day_inflammation <- apply(dat, 2, max)
-  plot(max_day_inflammation)
-  min_day_inflammation <- apply(dat, 2, min)
-  plot(min_day_inflammation)
+<pre class="sourceCode r"><code class="sourceCode r">analyze &lt;-<span class="st"> </span>function(filename) {
+  <span class="co"># Plots the average, min, and max inflammation over time.</span>
+  <span class="co"># Input is character string of a csv file.</span>
+  dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> filename, <span class="dt">header =</span> <span class="ot">FALSE</span>)
+  avg_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, mean)
+  <span class="kw">plot</span>(avg_day_inflammation)
+  max_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, max)
+  <span class="kw">plot</span>(max_day_inflammation)
+  min_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, min)
+  <span class="kw">plot</span>(min_day_inflammation)
 }</code></pre>
-<pre class='in'><code>filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">filenames &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;inflammation&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</code></pre>
 <h4 id="vectorized-operations">Vectorized operations</h4>
 <p>A key difference between R and many other languages is a topic known as <em>vectorization</em>. When you wrote the <code>total</code> function, we mentioned that R already has <code>sum</code> to do this; <code>sum</code> is <em>much</em> faster than the interpreted <code>for</code> loop because <code>sum</code> is coded in C to work with a vector of numbers. Many of R's functions work this way; the loop is hidden from you in C. Learning to use vectorized operations is a key skill in R.</p>
 <p>For example, to add pairs of numbers contained in two vectors</p>
-<pre class='in'><code>a <- 1:10
-b <- 1:10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+b &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span></code></pre>
 <p>you could loop over the pairs adding each in turn, but that would be very inefficient in R.</p>
-<pre class='in'><code>res <- numeric(length = length(a))
-for (i in seq_along(a)) {
-  res[i] <- a[i] + b[i]
+<pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dt">length =</span> <span class="kw">length</span>(a))
+for (i in <span class="kw">seq_along</span>(a)) {
+  res[i] &lt;-<span class="st"> </span>a[i] +<span class="st"> </span>b[i]
 }
 res</code></pre>
-<div class="out">
-<pre class='out'><code> [1]  2  4  6  8 10 12 14 16 18 20
+<pre class="output"><code> [1]  2  4  6  8 10 12 14 16 18 20
 </code></pre>
-</div>
 <p>Instead, <code>+</code> is a <em>vectorized</em> function which can operate on entire vectors at once</p>
-<pre class='in'><code>res2 <- a + b
-all.equal(res, res2)</code></pre>
-<div class="out">
-<pre class='out'><code>[1] TRUE
+<pre class="sourceCode r"><code class="sourceCode r">res2 &lt;-<span class="st"> </span>a +<span class="st"> </span>b
+<span class="kw">all.equal</span>(res, res2)</code></pre>
+<pre class="output"><code>[1] TRUE
 </code></pre>
-</div>
 <h4 id="for-or-apply"><code>for</code> or <code>apply</code>?</h4>
 <p>A <code>for</code> loop is used to apply the same function calls to a collection of objects. R has a family of functions, the <code>apply</code> family, which can be used in much the same way. You've already used one of the family, <code>apply</code> in the first <a href="../01-starting-with-data.html">lesson</a>. The <code>apply</code> family members include</p>
 <ul>
@@ -73,7 +69,7 @@ all.equal(res, res2)</code></pre>
 <li><code>vapply</code> - similar to <code>sapply</code> but you specify the type of object returned by the iterations</li>
 </ul>
 <p>Each of these has an argument <code>FUN</code> which takes a function to apply to each element of the object. Instead of looping over <code>filenames</code> and calling <code>analyze</code>, as you did earlier, you could <code>sapply</code> over <code>filenames</code> with <code>FUN = analyze</code>:</p>
-<pre class='in'><code>sapply(filenames, FUN = analyze)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(filenames, <span class="dt">FUN =</span> analyze)</code></pre>
 <p>Deciding whether to use <code>for</code> or one of the <code>apply</code> family is really personal preference. Using an <code>apply</code> family function forces to you encapsulate your operations as a function rather than separate calls with <code>for</code>. <code>for</code> loops are often more natural in some circumstances; for several related operations, a <code>for</code> loop will avoid you having to pass in a lot of extra arguments to your function.</p>
 <h4 id="loops-in-r-are-slow">Loops in R are slow</h4>
 <p>No, they are not! <em>If</em> you follow some golden rules:</p>
@@ -83,43 +79,39 @@ all.equal(res, res2)</code></pre>
 <li>Allocate an object to hold the results and fill it in during the loop</li>
 </ol>
 <p>As an example, we'll create a new version of <code>analyze</code> that will return the mean inflammation per day (column) of each file.</p>
-<pre class='in'><code>analyze2 <- function(filenames) {
-  for (f in seq_along(filenames)) {
-    fdata <- read.csv(filenames[f], header = FALSE)
-    res <- apply(fdata, 2, mean)
-    if (f == 1) {
-      out <- res
+<pre class="sourceCode r"><code class="sourceCode r">analyze2 &lt;-<span class="st"> </span>function(filenames) {
+  for (f in <span class="kw">seq_along</span>(filenames)) {
+    fdata &lt;-<span class="st"> </span><span class="kw">read.csv</span>(filenames[f], <span class="dt">header =</span> <span class="ot">FALSE</span>)
+    res &lt;-<span class="st"> </span><span class="kw">apply</span>(fdata, <span class="dv">2</span>, mean)
+    if (f ==<span class="st"> </span><span class="dv">1</span>) {
+      out &lt;-<span class="st"> </span>res
     } else {
-      # The loop is slowed by this call to cbind that grows the object
-      out <- cbind(out, res)
+      <span class="co"># The loop is slowed by this call to cbind that grows the object</span>
+      out &lt;-<span class="st"> </span><span class="kw">cbind</span>(out, res)
     }
   }
-  return(out)
+  <span class="kw">return</span>(out)
 }
 
-system.time(avg2 <- analyze2(filenames))</code></pre>
-<div class="out">
-<pre class='out'><code>   user  system elapsed 
-  0.036   0.000   0.037 
+<span class="kw">system.time</span>(avg2 &lt;-<span class="st"> </span><span class="kw">analyze2</span>(filenames))</code></pre>
+<pre class="output"><code>   user  system elapsed 
+  0.048   0.000   0.069 
 </code></pre>
-</div>
 <p>Note how we add a new column to <code>out</code> at each iteration? This is a cardinal sin of writing a <code>for</code> loop in R.</p>
 <p>Instead, we can create an empty matrix with the right dimensions (rows/columns) to hold the results. Then we loop over the files but this time we fill in the <code>f</code>th column of our results matrix <code>out</code>. This time there is no copying/growing for R to deal with.</p>
-<pre class='in'><code>analyze3 <- function(filenames) {
-  out <- matrix(ncol = length(filenames), nrow = 40) ## assuming 40 here from files 
-  for (f in seq_along(filenames)) {
-    fdata <- read.csv(filenames[f], header = FALSE)
-    out[, f] <- apply(fdata, 2, mean)
+<pre class="sourceCode r"><code class="sourceCode r">analyze3 &lt;-<span class="st"> </span>function(filenames) {
+  out &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">ncol =</span> <span class="kw">length</span>(filenames), <span class="dt">nrow =</span> <span class="dv">40</span>) ## assuming 40 here from files 
+  for (f in <span class="kw">seq_along</span>(filenames)) {
+    fdata &lt;-<span class="st"> </span><span class="kw">read.csv</span>(filenames[f], <span class="dt">header =</span> <span class="ot">FALSE</span>)
+    out[, f] &lt;-<span class="st"> </span><span class="kw">apply</span>(fdata, <span class="dv">2</span>, mean)
   }
-  return(out)
+  <span class="kw">return</span>(out)
 }
 
-system.time(avg3 <- analyze3(filenames))</code></pre>
-<div class="out">
-<pre class='out'><code>   user  system elapsed 
-  0.029   0.000   0.031 
+<span class="kw">system.time</span>(avg3 &lt;-<span class="st"> </span><span class="kw">analyze3</span>(filenames))</code></pre>
+<pre class="output"><code>   user  system elapsed 
+  0.044   0.000   0.046 
 </code></pre>
-</div>
 <p>In this simple example there is little difference in the compute time of <code>analyze2</code> and <code>analyze3</code>. This is because we are only iterating over 12 files and hence we only incur 12 copy/grow operations. If we were doing this over more files or the data objects we were growing were larger, the penalty for copying/growing would be much larger.</p>
 <p>Note that <code>apply</code> handles these memory allocation issues for you, but then you have to write the loop part as a function to pass to <code>apply</code>. At its heart, <code>apply</code> is just a <code>for</code> loop with extra convenience.</p>
         </div>
