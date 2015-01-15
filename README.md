@@ -29,8 +29,18 @@ repository. For making your contribution, we use the GitHub flow, which is
 nicely explained in the chapter [Contributing to a Project][pro-git] in Pro Git
 by Scott Chacon.
 
+When editing topic pages, you should change the source R Markdown
+file. Afterwards you can render the pages by running `make preview`
+from the base of the repository. Building the rendered page with the
+Makefile requires installing some dependencies first. In addition to
+the dependencies listed in the [lesson template
+documentation][dependencies], you also need to install the R package
+[knitr][].
+
 [issues]: https://github.com/swcarpentry/r-novice-inflammation/issues
 [pro-git]: http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project
+[dependencies]: https://github.com/swcarpentry/lesson-template#dependencies
+[knitr]: http://cran.r-project.org/web/packages/knitr/index.html
 
 ## Getting Help
 
