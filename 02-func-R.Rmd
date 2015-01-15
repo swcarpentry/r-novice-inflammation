@@ -112,10 +112,10 @@ fence(best_practice, asterisk)
 ```
 
   + If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
-    Write a function called `outer` that returns a vector made up of just the first and last elements of its input:
+    Write a function called `firstlast` that returns a vector made up of just the first and last elements of its input:
     
 ```{r, include=FALSE}
-outer <- function(v) {
+firstlast <- function(v) {
   first <- v[1]
   last <- v[length(v)]
   answer <- c(first, last)
@@ -125,7 +125,7 @@ outer <- function(v) {
 
 ```{r}
 dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
-outer(dry_principle)
+firstlast(dry_principle)
 ```
 
 ### The Call Stack
@@ -220,13 +220,13 @@ That only works if functions don't interfere with each other; if they do, we hav
 
 #### Challenges
 
-  + We previously wrote functions called `fence` and `outer`.
+  + We previously wrote functions called `fence` and `firstlast`.
     Draw a diagram showing how the call stack changes when we run the following:
 
 ```{r, results="hide"}
 inside <- "carbon"
 outside <- "+"
-result <- outer(fence(inside, outside))
+result <- firstlast(fence(inside, outside))
 ```
 
 ### Testing and Documenting
