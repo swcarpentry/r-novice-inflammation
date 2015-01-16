@@ -57,7 +57,7 @@ fahr_to_kelvin(32)
 
 
 ~~~{.output}
-[1] 273.1
+[1] 273.15
 
 ~~~
 
@@ -71,7 +71,7 @@ fahr_to_kelvin(212)
 
 
 ~~~{.output}
-[1] 373.1
+[1] 373.15
 
 ~~~
 
@@ -95,7 +95,7 @@ kelvin_to_celsius(0)
 
 
 ~~~{.output}
-[1] -273.1
+[1] -273.15
 
 ~~~
 
@@ -150,14 +150,14 @@ fence(best_practice, asterisk)
 ~~~
 
   + If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
-    Write a function called `outer` that returns a vector made up of just the first and last elements of its input:
+    Write a function called `outside` that returns a vector made up of just the first and last elements of its input:
     
 
 
 
 ~~~{.r}
 dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
-outer(dry_principle)
+outside(dry_principle)
 ~~~
 
 
@@ -224,7 +224,7 @@ temp
 
 
 ~~~{.output}
-Error: object 'temp' not found
+Error in eval(expr, envir, enclos): object 'temp' not found
 
 ~~~
 
@@ -284,14 +284,21 @@ That only works if functions don't interfere with each other; if they do, we hav
 
 #### Challenges
 
-  + We previously wrote functions called `fence` and `outer`.
+  + We previously wrote functions called `fence` and `outside`.
     Draw a diagram showing how the call stack changes when we run the following:
 
 
 ~~~{.r}
 inside <- "carbon"
 outside <- "+"
-result <- outer(fence(inside, outside))
+result <- outside(fence(inside, outside))
+~~~
+
+
+
+~~~{.output}
+Error in eval(expr, envir, enclos): could not find function "outside"
+
 ~~~
 
 ### Testing and Documenting
@@ -451,7 +458,7 @@ sd(dat[, 4])
 
 
 ~~~{.output}
-[1] 1.068
+[1] 1.067628
 
 ~~~
 
@@ -465,7 +472,7 @@ sd(centered)
 
 
 ~~~{.output}
-[1] 1.068
+[1] 1.067628
 
 ~~~
 
@@ -564,7 +571,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 
 ~~~{.output}
-Error: 'file' must be a character string or connection
+Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 
 ~~~
 
@@ -745,7 +752,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 
 ~~~{.output}
-Error: 'file' must be a character string or connection
+Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 
 ~~~
 
