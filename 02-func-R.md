@@ -1,6 +1,8 @@
 ---
-layout: lesson
-root: ../..
+layout: page
+title: Programming with R
+subtitle: Creating functions
+minutes: 30
 ---
 
 
@@ -57,7 +59,7 @@ fahr_to_kelvin(32)
 
 
 ~~~{.output}
-[1] 273.1
+[1] 273.15
 
 ~~~
 
@@ -71,7 +73,7 @@ fahr_to_kelvin(212)
 
 
 ~~~{.output}
-[1] 373.1
+[1] 373.15
 
 ~~~
 
@@ -95,7 +97,7 @@ kelvin_to_celsius(0)
 
 
 ~~~{.output}
-[1] -273.1
+[1] -273.15
 
 ~~~
 
@@ -224,7 +226,7 @@ temp
 
 
 ~~~{.output}
-Error: object 'temp' not found
+Error in eval(expr, envir, enclos): objet 'temp' introuvable
 
 ~~~
 
@@ -451,7 +453,7 @@ sd(dat[, 4])
 
 
 ~~~{.output}
-[1] 1.068
+[1] 1.067628
 
 ~~~
 
@@ -465,7 +467,7 @@ sd(centered)
 
 
 ~~~{.output}
-[1] 1.068
+[1] 1.067628
 
 ~~~
 
@@ -564,7 +566,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 
 ~~~{.output}
-Error: 'file' must be a character string or connection
+Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 
 ~~~
 
@@ -745,7 +747,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 
 ~~~{.output}
-Error: 'file' must be a character string or connection
+Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 
 ~~~
 
