@@ -1,6 +1,8 @@
 ---
-layout: lesson
-root: ../..
+layout: page
+title: Programming with R
+subtitle: Loops in R
+minutes: 30
 ---
 
 
@@ -136,8 +138,254 @@ system.time(avg2 <- analyze2(filenames))
 
 
 ~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
+guillements
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
+guillements
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
+guillements
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
+guillements
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
+guillements
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
+guillements
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
    user  system elapsed 
-  0.048   0.000   0.069 
+  0.048   0.001   0.051 
 
 ~~~
 
@@ -165,8 +413,254 @@ system.time(avg3 <- analyze3(filenames))
 
 
 ~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
+guillements
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
+guillements
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
+guillements
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
+guillements
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
+guillements
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
+guillements
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) 'nul' au milieu de l'entrée
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
    user  system elapsed 
-  0.044   0.000   0.046 
+  0.051   0.000   0.052 
 
 ~~~
 

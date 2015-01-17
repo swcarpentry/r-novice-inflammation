@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: </title>
+    <title>Software Carpentry: Programming with R</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,8 +25,8 @@
       </div>
       <div class="row-fluid">
         <div class="span10 offset1">
-          <h1 class="title"></h1>
-          
+          <h1 class="title">Programming with R</h1>
+          <h2 class="subtitle">Dynamic reports with knitr</h2>
 <h1 id="taking-notes-and-creating-reports">Taking notes and creating reports:</h1>
 <h2 id="introducing-knitr">Introducing Knitr</h2>
 <p><code>Knitr</code> is an R package that makes your code neat, pretty, and shows your notes, code, and output simultaneously in an <code>html</code> document. You create these documents in <code>.Rmd</code> files. You can write in <code>LateX</code> or <code>md</code>.</p>
@@ -36,13 +36,13 @@
 <p>Restart RStudio. Open a new <code>Rmd</code> file.</p>
 <p>In Rmd, anything between lines that start and end with triple quotes ``` will be run as R code.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)</code></pre>
-<pre class="output"><code>     speed           dist    
- Min.   : 4.0   Min.   :  2  
- 1st Qu.:12.0   1st Qu.: 26  
- Median :15.0   Median : 36  
- Mean   :15.4   Mean   : 43  
- 3rd Qu.:19.0   3rd Qu.: 56  
- Max.   :25.0   Max.   :120  
+<pre class="output"><code>     speed           dist       
+ Min.   : 4.0   Min.   :  2.00  
+ 1st Qu.:12.0   1st Qu.: 26.00  
+ Median :15.0   Median : 36.00  
+ Mean   :15.4   Mean   : 42.98  
+ 3rd Qu.:19.0   3rd Qu.: 56.00  
+ Max.   :25.0   Max.   :120.00  
 </code></pre>
 <h3 id="challenge">Challenge</h3>
 <ol style="list-style-type: decimal">

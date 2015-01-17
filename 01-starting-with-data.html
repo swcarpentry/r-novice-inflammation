@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: </title>
+    <title>Software Carpentry: Programming with R</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,8 +25,8 @@
       </div>
       <div class="row-fluid">
         <div class="span10 offset1">
-          <h1 class="title"></h1>
-          
+          <h1 class="title">Programming with R</h1>
+          <h2 class="subtitle">Analyzing patient data</h2>
 <h2 id="analyzing-patient-data">Analyzing Patient Data</h2>
 <p>We are studying inflammation in patients who have been given a new treatment for arthritis, and need to analyze the first dozen data sets. The data sets are stored in <a href="../../gloss.html#comma-separeted-values">comma-separated values</a> (CSV) format: each row holds information for a single patient, and the columns represent successive days. The first few rows of our first file look like this:</p>
 <pre class="output"><code>0,0,1,3,1,2,4,7,8,3,3,3,10,5,7,4,7,7,12,18,6,13,11,11,7,7,4,6,8,8,4,4,5,7,3,4,2,3,0,0
@@ -230,7 +230,7 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># standard deviation of inflammation on day 7</span>
 <span class="kw">sd</span>(dat[, <span class="dv">7</span>])</code></pre>
-<pre class="output"><code>[1] 1.725
+<pre class="output"><code>[1] 1.725187
 </code></pre>
 <p>What if we need the maximum inflammation for all patients, or the average for each day? As the diagram below shows, we want to perform the operation across a margin of the data frame:</p>
 <p><img src="figure/r-operations-across-axes.svg" alt="Operations Across Axes" /></p>
@@ -267,14 +267,14 @@ element[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <p>The mathematician Richard Hamming once said, &quot;The purpose of computing is insight, not numbers,&quot; and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R's plotting features.</p>
 <p>Let's take a look at the average inflammation over time. Recall that we already calculated these values above using <code>apply(dat, 2, mean)</code> and saved them in the variable <code>avg_day_inflammation</code>. Plotting the values is done with the function <code>plot</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(avg_day_inflammation)</code></pre>
-<p><img src="figure/01-starting-with-data-plot-avg-inflammation.png" title="plot of chunk plot-avg-inflammation" alt="plot of chunk plot-avg-inflammation" style="display: block; margin: auto;" /></p>
+<p><img src="figure/01-starting-with-data-plot-avg-inflammation-1.png" title="plot of chunk plot-avg-inflammation" alt="plot of chunk plot-avg-inflammation" style="display: block; margin: auto;" /></p>
 <p>Above, we gave the function <code>plot</code> a vector of numbers corresponding to the average inflammation per day across all patients. <code>plot</code> created a scatter plot where the y-axis is the average inflammation level and the x-axis is the order, or index, of the values in the vector, which in this case correspond to the 40 days of treatment. The result is roughly a linear rise and fall, which is suspicious: based on other studies, we expect a sharper rise and slower fall. Let's have a look at two other statistics: the maximum and minimum inflammation per day.</p>
 <pre class="sourceCode r"><code class="sourceCode r">max_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, max)
 <span class="kw">plot</span>(max_day_inflammation)</code></pre>
-<p><img src="figure/01-starting-with-data-plot-max-inflammation.png" title="plot of chunk plot-max-inflammation" alt="plot of chunk plot-max-inflammation" style="display: block; margin: auto;" /></p>
+<p><img src="figure/01-starting-with-data-plot-max-inflammation-1.png" title="plot of chunk plot-max-inflammation" alt="plot of chunk plot-max-inflammation" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r">min_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, min)
 <span class="kw">plot</span>(min_day_inflammation)</code></pre>
-<p><img src="figure/01-starting-with-data-plot-min-inflammation.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" /></p>
+<p><img src="figure/01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" /></p>
 <p>The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.</p>
 <h4 id="challenge-2">Challenge</h4>
 <p>Create a plot showing the standard deviation of the inflammation data for each day across all patients.</p>
