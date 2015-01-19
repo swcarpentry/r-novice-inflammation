@@ -1,8 +1,9 @@
 ---
-layout: lesson
-root: ../..
-title: R Reference
+layout: page
+title: Programming with R
+subtitle: Reference
 ---
+
 # Basic Operation
 
 - `# this is a comment in R`
