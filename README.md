@@ -37,10 +37,18 @@ the dependencies listed in the [lesson template
 documentation][dependencies], you also need to install the R package
 [knitr][].
 
+Once you've made your edits and rendered the corresponding html files,
+you need to add, commit, and push both the source R Markdown file(s)
+and the rendered html file(s). Including the html file(s) is required
+for viewing the [online version of the lessons][online] (you can learn
+more about the design of the build process [here][design]).
+
 [issues]: https://github.com/swcarpentry/r-novice-inflammation/issues
 [pro-git]: http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project
 [dependencies]: https://github.com/swcarpentry/lesson-template#dependencies
 [knitr]: http://cran.r-project.org/web/packages/knitr/index.html
+[online]: http://swcarpentry.github.io/r-novice-inflammation/
+[design]: https://github.com/swcarpentry/lesson-template/blob/gh-pages/DESIGN.md
 
 ## Getting Help
 
