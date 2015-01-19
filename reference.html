@@ -32,16 +32,16 @@
 <li><code># this is a comment in R</code></li>
 <li>Use <code>x &lt;- 3</code> to assign a value, <code>3</code>, to a variable, <code>x</code></li>
 <li>R counts from 1, unlike many other programming languages (e.g., Python)</li>
-<li><code>length(thing)</code> produces the length of a collection</li>
+<li><code>length(thing)</code> returns the number of elements contained in the variable <code>collection</code></li>
 <li><code>c(value1, value2, value3)</code> creates a vector</li>
-<li><code>container[i]</code> selects the i'th element from the container</li>
+<li><code>container[i]</code> selects the i'th element from the variable <code>container</code></li>
 </ul>
 <p>List objects in current environment <code>ls()</code></p>
 <p>Remove objects in current environment <code>rm(x)</code></p>
 <p>Remove all objects from current environment <code>rm(list = ls())</code></p>
 <h1 id="control-flow">Control Flow</h1>
 <ul>
-<li><p>Create a contitional using <code>if</code>, <code>elif</code>, and <code>else</code></p>
+<li><p>Create a contitional using <code>if</code>, <code>else if</code>, and <code>else</code></p>
 <pre><code>if(x &gt; 0){
     print(&quot;value is positive&quot;)
 } else if (x &lt; 0){
@@ -64,14 +64,14 @@
 <li>Use <code>==</code> to test for equality</li>
 <li><code>3 == 3</code>, will return <code>TRUE</code>,</li>
 <li><code>'apple' == 'orange'</code> will return <code>FALSE</code></li>
-<li><code>X &amp; Y</code> is <code>True</code> is both X and Y are true</li>
-<li><code>X | Y</code> is <code>True</code> if either X or Y, or both are true</li>
+<li><code>X &amp; Y</code> is <code>TRUE</code> is both X and Y are true</li>
+<li><code>X | Y</code> is <code>TRUE</code> if either X or Y, or both are true</li>
 </ul>
 <h1 id="functions">Functions</h1>
 <ul>
 <li><p>Defining a function:</p>
 <pre><code>is_positive &lt;- function(integer_value){
-    if(interver_value &gt; 0){
+    if(integer_value &gt; 0){
        TRUE
     else{
        FALSE

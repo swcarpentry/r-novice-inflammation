@@ -9,9 +9,10 @@ subtitle: Reference
 - `# this is a comment in R`
 - Use `x <- 3` to assign a value, `3`,  to a variable, `x`
 - R counts from 1, unlike many other programming languages (e.g., Python)
-- `length(thing)` produces the length of a collection
+- `length(thing)` returns the number of elements contained in the variable
+  `collection`
 - `c(value1, value2, value3)` creates a vector
-- `container[i]` selects the i'th element from the container
+- `container[i]` selects the i'th element from the variable `container`
 
 List objects in current environment
 `ls()`
@@ -24,7 +25,7 @@ Remove all objects from current environment
 
 # Control Flow
 
-- Create a contitional using `if`, `elif`, and `else`
+- Create a contitional using `if`, `else if`, and `else`
 
 		if(x > 0){
 			print("value is positive")
@@ -52,15 +53,15 @@ This will print:
 - Use `==` to test for equality
   - `3 == 3`, will return `TRUE`,
   - `'apple' == 'orange'` will return `FALSE`
-- `X & Y` is `True` is both X and Y are true
-- `X | Y` is `True` if either X or Y, or both are true
+- `X & Y` is `TRUE` is both X and Y are true
+- `X | Y` is `TRUE` if either X or Y, or both are true
 
 # Functions
 
 - Defining a function:
 
 		is_positive <- function(integer_value){
-			if(interver_value > 0){
+			if(integer_value > 0){
 			   TRUE
 			else{
 			   FALSE
