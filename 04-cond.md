@@ -100,12 +100,6 @@ print("done")
 
 ~~~{.output}
 [1] "not greater"
-
-~~~
-
-
-
-~~~{.output}
 [1] "done"
 
 ~~~
@@ -115,7 +109,7 @@ If the following test is true, the body of the `if` (i.e., the lines in the curl
 If the test is false, the body of the `else` is executed instead.
 Only one or the other is ever executed:
 
-<img src="figure/python-flowchart-conditional.svg" alt="Executing a Conditional" />
+<img src="fig/python-flowchart-conditional.svg" alt="Executing a Conditional" />
 
 In the example above, the test `num > 100` returns the value `FALSE`, which is why the code inside the `if` block was skipped and the code inside the `else` statment was run instead.
 
@@ -266,13 +260,13 @@ dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 plot_dist(dat[, 10], threshold = 10)  # day (column) 10
 ~~~
 
-<img src="figure/04-cond-conditional-challenge1.png" title="plot of chunk conditional-challenge" alt="plot of chunk conditional-challenge" style="display: block; margin: auto;" />
+<img src="fig/04-cond-conditional-challenge-1.png" title="plot of chunk conditional-challenge" alt="plot of chunk conditional-challenge" style="display: block; margin: auto;" />
 
 ~~~{.r}
 plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 ~~~
 
-<img src="figure/04-cond-conditional-challenge2.png" title="plot of chunk conditional-challenge" alt="plot of chunk conditional-challenge" style="display: block; margin: auto;" />
+<img src="fig/04-cond-conditional-challenge-2.png" title="plot of chunk conditional-challenge" alt="plot of chunk conditional-challenge" style="display: block; margin: auto;" />
 
   + One of your collaborators prefers to see the distributions of the larger vectors as a histogram instead of as a boxplot.  In order to choose between a histogram and a boxplot we will edit the function `plot_dist` and add an additional argument `use_boxplot`.  By defualt we will set `use_boxplot` to `TRUE` which will create a boxplot when the vector is longer than `threshold`.  When `use_boxplot` is set to `FALSE`, `plot_dist` will instead plot a histogram for the larger vectors.  As before, if the length of the vector is shorter than `threshold`, `plot_dist` will create a stripchart.  A histogram is made with the `hist` command in R.  
 
@@ -284,19 +278,19 @@ dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 plot_dist(dat[, 10], threshold = 10, use_boxplot = TRUE)  # day (column) 10 - create boxplot
 ~~~
 
-<img src="figure/04-cond-conditional-challenge-hist1.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
+<img src="fig/04-cond-conditional-challenge-hist-1.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
 
 ~~~{.r}
 plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
 ~~~
 
-<img src="figure/04-cond-conditional-challenge-hist2.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
+<img src="fig/04-cond-conditional-challenge-hist-2.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
 
 ~~~{.r}
 plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 ~~~
 
-<img src="figure/04-cond-conditional-challenge-hist3.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
+<img src="fig/04-cond-conditional-challenge-hist-3.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
 </div>
 
 ### Saving automatically generated figures
@@ -366,7 +360,7 @@ Now we can use `analyze` both interactively:
 analyze("data/inflammation-01.csv")
 ~~~
 
-<img src="figure/04-cond-inflammation-011.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="figure/04-cond-inflammation-012.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="figure/04-cond-inflammation-013.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" />
+<img src="fig/04-cond-inflammation-01-1.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/04-cond-inflammation-01-2.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/04-cond-inflammation-01-3.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" />
 
 and to save plots:
 
@@ -411,6 +405,13 @@ Now we can save all of the results with just one line of code:
 
 ~~~{.r}
 analyze_all("inflammation")
+~~~
+
+
+
+~~~{.output}
+Error in read.table(file = file, header = header, sep = sep, quote = quote, : no lines available in input
+
 ~~~
 
 Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analzye_all`.
