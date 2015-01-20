@@ -1,6 +1,8 @@
 ---
-layout: lesson
-root: ../..
+layout: page
+title: Programming with R
+subtitle: Analyzing multiple data sets
+minutes: 30
 ---
 
 ```{r, include = FALSE}
