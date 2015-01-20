@@ -332,7 +332,7 @@ You will want to switch to this more formal method of writing documentation when
 
 [01]: 01-starting-with-data.html
 
-```{r, include=FALSE}
+```{r, eval=FALSE, include=FALSE}
 analyze <- function(filename) {
   # Plots the average, min, and max inflammation over time.
   # Input is character string of a csv file.
