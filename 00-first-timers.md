@@ -1,6 +1,8 @@
 ---
-layout: lesson
-root: ../..
+layout: page
+title: Programming with R
+subtitle: First timers
+minutes: 30
 ---
 
 
@@ -116,7 +118,7 @@ You can get output from R simply by typing in math
 
 
 ~~~{.output}
-[1] 1.714
+[1] 1.714286
 
 ~~~
 

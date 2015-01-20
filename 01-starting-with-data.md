@@ -1,5 +1,8 @@
 ---
-layout: lesson
+layout: page
+title: Programming with R
+subtitle: Analyzing patient data
+minutes: 30
 ---
 
 
@@ -509,7 +512,7 @@ sd(dat[, 7])
 
 
 ~~~{.output}
-[1] 1.725
+[1] 1.725187
 
 ~~~
 
@@ -600,7 +603,7 @@ Plotting the values is done with the function `plot`.
 plot(avg_day_inflammation)
 ~~~
 
-<img src="figure/01-starting-with-data-plot-avg-inflammation.png" title="plot of chunk plot-avg-inflammation" alt="plot of chunk plot-avg-inflammation" style="display: block; margin: auto;" />
+<img src="figure/01-starting-with-data-plot-avg-inflammation-1.png" title="plot of chunk plot-avg-inflammation" alt="plot of chunk plot-avg-inflammation" style="display: block; margin: auto;" />
 
 Above, we gave the function `plot` a vector of numbers corresponding to the average inflammation per day across all patients.
 `plot` created a scatter plot where the y-axis is the average inflammation level and the x-axis is the order, or index, of the values in the vector, which in this case correspond to the 40 days of treatment.
@@ -613,7 +616,7 @@ max_day_inflammation <- apply(dat, 2, max)
 plot(max_day_inflammation)
 ~~~
 
-<img src="figure/01-starting-with-data-plot-max-inflammation.png" title="plot of chunk plot-max-inflammation" alt="plot of chunk plot-max-inflammation" style="display: block; margin: auto;" />
+<img src="figure/01-starting-with-data-plot-max-inflammation-1.png" title="plot of chunk plot-max-inflammation" alt="plot of chunk plot-max-inflammation" style="display: block; margin: auto;" />
 
 
 ~~~{.r}
@@ -621,7 +624,7 @@ min_day_inflammation <- apply(dat, 2, min)
 plot(min_day_inflammation)
 ~~~
 
-<img src="figure/01-starting-with-data-plot-min-inflammation.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" />
+<img src="figure/01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" />
 
 The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.
 
