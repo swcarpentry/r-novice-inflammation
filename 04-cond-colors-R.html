@@ -46,7 +46,7 @@
 <p>The first step is to create our own &quot;image&quot;:</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid1 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dt">type =</span> <span class="st">&quot;vector&quot;</span>)
 grid1</code></pre>
-<p><img src="figure/unnamed-chunk-3.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" /></p>
 <p>We can see that this grid represents a vector. It is a single dimension and has 5 locations (which we gave to it in the first argument). We can see the summarized information in the grid:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(grid1)</code></pre>
 <pre class="output"><code>Classes &#39;block&#39;, &#39;character&#39;  chr [1:5] &quot;#7BEA7B&quot; &quot;#7BEA7B&quot; &quot;#7BEA7B&quot; &quot;#7BEA7B&quot; ...
@@ -55,24 +55,24 @@ grid1</code></pre>
 <p>Let's change the color by indexing using <strong>positive integers</strong>. Here, we tell the program to select the first two elements of grid1, and to color them red:</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid1[<span class="dv">1</span>:<span class="dv">2</span>] &lt;-<span class="st"> &quot;red&quot;</span>
 grid1</code></pre>
-<p><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" /></p>
 <p>Let's try it another way index using <strong>negative integers</strong>. Here we tell the program to select elements that ARE NOT 1-3, and color them blue:</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid2 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dt">type =</span> <span class="st">&quot;vector&quot;</span>)
 grid2[-<span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">3</span>)] &lt;-<span class="st"> &quot;blue&quot;</span>
 grid2</code></pre>
-<p><img src="figure/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" /></p>
 <p>Lets try to index using <strong>logical vectors</strong>. Here we use a set a true/false statements to tell the cells what color to display:</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid3 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dt">type =</span> <span class="st">&quot;vector&quot;</span>)
 grid3[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)] &lt;-<span class="st"> &quot;darkred&quot;</span>
 grid3</code></pre>
-<p><img src="figure/unnamed-chunk-7.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;" /></p>
 <p>One challenging concept for those new to R is the recycling rule. rBlocks can be used to explain this concept visually.</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid4 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dt">type =</span> <span class="st">&quot;vector&quot;</span>)
 grid4</code></pre>
-<p><img src="figure/unnamed-chunk-81.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r">grid4[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)] &lt;-<span class="st"> &quot;blue&quot;</span>
 grid4</code></pre>
-<p><img src="figure/unnamed-chunk-82.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-8-2.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
 <p>In this example, we are using a logical vector <code>c(TRUE, FALSE)</code> to access elements of the vector grid4. According to the recycling rule, this short vector is expanded out as `c(TRUE, FALSE, TRUE, FALSE, TRUE) to match the length of grid4. The grid image makes on top makes it easy to understand what is happening.</p>
 <p>R has lots of ways to refer to colors:</p>
 <ul>
@@ -100,13 +100,13 @@ for (i in <span class="dv">1</span>:<span class="dv">5</span>) {
 <pre class="sourceCode r"><code class="sourceCode r">grid6 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dt">type =</span> <span class="st">&quot;matrix&quot;</span>)
 grid6[<span class="dv">1</span>] &lt;-<span class="st"> &quot;dodgerblue3&quot;</span>
 grid6</code></pre>
-<p><img src="figure/unnamed-chunk-10.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-10-1.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;" /></p>
 <p>In a matrix, if you only have a single index value, it assumes the cell you refer to is the same (e.g. [1] ~ [1,1])</p>
 <p>single index accesses first column of data.frame</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid7 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dt">type =</span> <span class="st">&quot;data.frame&quot;</span>)
 grid7[<span class="dv">1</span>] &lt;-<span class="st"> &quot;dodgerblue3&quot;</span>
 grid7</code></pre>
-<p><img src="figure/unnamed-chunk-11.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print_raw</span>(grid7) <span class="co">#shows the data frame</span></code></pre>
 <pre class="output"><code>           V1      V2      V3      V4      V5
 1 dodgerblue3 #7BEA7B #7BEA7B #7BEA7B #7BEA7B
@@ -119,7 +119,7 @@ grid7</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">grid7b &lt;-<span class="st"> </span>grid7
 grid7b[<span class="dv">1</span>,] &lt;-<span class="st"> &quot;goldenrod&quot;</span>
 grid7b</code></pre>
-<p><img src="figure/unnamed-chunk-12.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" style="display: block; margin: auto;" /></p>
 <p>Remember the apply function from earlier? Let us use apply to change the light green cells in grid7 to <code>olivedrab</code> and the blue cells to <code>darkslategray</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid8 &lt;-<span class="st"> </span><span class="kw">apply</span>(grid7, <span class="dv">2</span>, function(df) {
     if (<span class="kw">sum</span>(df ==<span class="st"> &quot;dodgerblue3&quot;</span>) ==<span class="st"> </span><span class="dv">5</span>) {
@@ -139,16 +139,16 @@ grid8</code></pre>
 [5,] &quot;darkslategrey&quot; &quot;olivedrab&quot; &quot;olivedrab&quot; &quot;olivedrab&quot; &quot;olivedrab&quot;
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">display</span>(grid8)</code></pre>
-<p><img src="figure/unnamed-chunk-13.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" style="display: block; margin: auto;" /></p>
 <p>We need the <code>display</code> function here, since apply drops attributes, and my implementation of the grid needs the object to be marked with the block class to overlod the print method (I am sure there are more elegant implementations that can handle this better, without bothering the user. Any thoughts?)</p>
 <p>One of the gotchas in R is how it coerces data structures when subsetting. Here is a simple way to visualize this behavior with data.frames.</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid9 &lt;-<span class="st"> </span><span class="kw">block_grid</span>(<span class="dv">5</span>, <span class="dv">5</span>)
 grid9</code></pre>
-<p><img src="figure/unnamed-chunk-14.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" /></p>
 <p>extracting the first column converts it to a vector</p>
 <pre class="sourceCode r"><code class="sourceCode r">grid10 &lt;-<span class="st"> </span>grid9[, <span class="dv">1</span>]
 <span class="kw">display</span>(grid10)</code></pre>
-<p><img src="figure/unnamed-chunk-15.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" /></p>
 <h1 id="conditionals-control-flow">Conditionals (Control flow)</h1>
 <p>The other thing we need in order to create a heat map of our own is a way to pick a color based on a data value. The tool R gives us for doing this is called a conditional statement, and looks like this:</p>
 <pre class="sourceCode r"><code class="sourceCode r">num &lt;-<span class="st"> </span><span class="dv">37</span>
@@ -272,7 +272,7 @@ for(x in <span class="dv">1</span>:<span class="dv">5</span>) {
 }</code></pre>
 <p><em>What do you think this will look like?</em></p>
 <pre class="sourceCode r"><code class="sourceCode r">square</code></pre>
-<p><img src="figure/unnamed-chunk-26.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" style="display: block; margin: auto;" /></p>
 <p>This is our first hand-made data visualization: the colors show where x is less than, equal to, or greater than y.</p>
 <h3 id="challenges-1">Challenges</h3>
 <ol style="list-style-type: decimal">
@@ -302,7 +302,7 @@ heat_map &lt;-<span class="st"> </span><span class="kw">block_grid</span>(height
 }
 
 heat_map</code></pre>
-<p><img src="figure/unnamed-chunk-29.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" style="display: block; margin: auto;" /></p>
 <p>This may be what we asked for, but both the image and the code are hideous:</p>
 <ul>
 <li>It's too large for us to view the whole thing at once on a small laptop screen.</li>
@@ -340,7 +340,7 @@ for (x in <span class="dv">1</span>:height) {
 }
 
 heatmap</code></pre>
-<p><img src="figure/unnamed-chunk-30.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" /></p>
 <p>That's a bit better—but now the contrast between the colors isn't great enough. And there still aren't very many fuchsia cells: we may want to widen the band around the mean that gets that color. We could rewrite our loop a third time, but the right thing to do is to put our code in a function so that we can experiment with bands and colors more easily.</p>
 <pre class="sourceCode r"><code class="sourceCode r">make_heatmap &lt;-<span class="st"> </span>function(values, low_color, mid_color, high_color, low_band, high_band) {
     height &lt;-<span class="st"> </span><span class="kw">nrow</span>(values)
@@ -364,11 +364,11 @@ heatmap</code></pre>
 <p>To test this function, we'll run it with the settings we just used:</p>
 <pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">make_heatmap</span>(flipped, <span class="st">&quot;lightpink&quot;</span>, <span class="st">&quot;hotpink&quot;</span>, <span class="st">&quot;deeppink4&quot;</span>, <span class="fl">0.8</span>, <span class="fl">1.2</span>)
 h</code></pre>
-<p><img src="figure/unnamed-chunk-32.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" /></p>
 <p>That seems right, so let's widen the band and use more dramatic colors:</p>
 <pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">make_heatmap</span>(flipped, <span class="st">&quot;gray60&quot;</span>, <span class="st">&quot;chartreuse&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>, <span class="fl">0.5</span>, <span class="fl">1.5</span>)
 h</code></pre>
-<p><img src="figure/unnamed-chunk-33.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" style="display: block; margin: auto;" /></p>
 <p>We'll probably want to experiment a bit more before publishing, but writing a function has made experimenting easy. We can make it even easier by re-defining our function one more time to give the parameters default values. While we're at it, let's put the low and high bands at the front, since they're more likely to change than our color choices:</p>
 <pre class="sourceCode r"><code class="sourceCode r">make_heatmap &lt;-<span class="st"> </span>function(values, <span class="dt">low_band=</span><span class="fl">0.5</span>, <span class="dt">high_band=</span><span class="fl">1.5</span>,
                          <span class="dt">low_color=</span><span class="st">&quot;gray60&quot;</span>, <span class="dt">mid_color=</span><span class="st">&quot;chartreuse&quot;</span>, <span class="dt">high_color=</span><span class="st">&quot;darkgreen&quot;</span>) {
@@ -394,14 +394,14 @@ h</code></pre>
 <p>Again, our first test is to re-run it with the same values as before (which we give it in a different order, since we've changed the order of parameters):</p>
 <pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">make_heatmap</span>(flipped, <span class="fl">0.5</span>, <span class="fl">1.5</span>, <span class="st">&quot;gray60&quot;</span>, <span class="st">&quot;chartreuse&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>)
 h</code></pre>
-<p><img src="figure/unnamed-chunk-35.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" style="display: block; margin: auto;" /></p>
 <p>We can now leave out everything except the data being visualized, or provide the data and the bands and re-use the default colors and block size:</p>
 <pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">make_heatmap</span>(flipped)
 h</code></pre>
-<p><img src="figure/unnamed-chunk-361.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">make_heatmap</span>(flipped, <span class="fl">0.4</span>, <span class="fl">1.6</span>)
 h</code></pre>
-<p><img src="figure/unnamed-chunk-362.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" style="display: block; margin: auto;" /></p>
+<p><img src="fig/04-cond-colors-R-unnamed-chunk-36-2.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" style="display: block; margin: auto;" /></p>
 <p>We can now explore our data with just a few keystrokes, which means we can concentrate on our science and not on our programming.</p>
 <h3 id="challenges-2">Challenges</h3>
 <ol style="list-style-type: decimal">
