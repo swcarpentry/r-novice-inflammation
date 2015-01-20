@@ -5,6 +5,7 @@ root: ../..
 
 ```{r, include = FALSE}
 source("tools/chunk-options.R")
+opts_chunk$set(fig.path = "fig/04-cond-colors-R-")
 ```
 
 # Making Choices
