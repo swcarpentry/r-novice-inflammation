@@ -57,7 +57,7 @@ fahr_to_kelvin(32)
 
 
 ~~~{.output}
-[1] 273.1
+[1] 273.15
 
 ~~~
 
@@ -71,7 +71,7 @@ fahr_to_kelvin(212)
 
 
 ~~~{.output}
-[1] 373.1
+[1] 373.15
 
 ~~~
 
@@ -95,7 +95,7 @@ kelvin_to_celsius(0)
 
 
 ~~~{.output}
-[1] -273.1
+[1] -273.15
 
 ~~~
 
@@ -179,37 +179,37 @@ final <- fahr_to_celsius(original)
 
 The diagram below shows what memory looks like after the first line has been executed:
 
-<img src="figure/python-call-stack-01.svg" alt="Call Stack (Initial State)" />
+<img src="fig/python-call-stack-01.svg" alt="Call Stack (Initial State)" />
 
 When we call `fahr_to_celsius`, R *doesn't* create the variable `temp` right away.
 Instead, it creates something called a [stack frame](../../gloss.html#stack-frame) to keep track of the variables defined by `fahr_to_kelvin`.
 Initially, this stack frame only holds the value of `temp`:
 
-<img src="figure/python-call-stack-02.svg" alt="Call Stack Immediately After First Function Call" />
+<img src="fig/python-call-stack-02.svg" alt="Call Stack Immediately After First Function Call" />
 
 When we call `fahr_to_kelvin` inside `fahr_to_celsius`, R creates another stack frame to hold `fahr_to_kelvin`'s variables:
 
-<img src="figure/python-call-stack-03.svg" alt="Call Stack During First Nested Function Call" />
+<img src="fig/python-call-stack-03.svg" alt="Call Stack During First Nested Function Call" />
 
 It does this because there are now two variables in play called `temp`: the argument to `fahr_to_celsius`, and the argument to `fahr_to_kelvin`.
 Having two variables with the same name in the same part of the program would be ambiguous, so R (and every other modern programming language) creates a new stack frame for each function call to keep that function's variables separate from those defined by other functions.
 
 When the call to `fahr_to_kelvin` returns a value, R throws away `fahr_to_kelvin`'s stack frame and creates a new variable in the stack frame for `fahr_to_celsius` to hold the temperature in Kelvin:
 
-<img src="figure/python-call-stack-04.svg" alt="Call Stack After Return From First Nested Function Call" />
+<img src="fig/python-call-stack-04.svg" alt="Call Stack After Return From First Nested Function Call" />
 
 It then calls `kelvin_to_celsius`, which means it creates a stack frame to hold that function's variables:
 
-<img src="figure/python-call-stack-05.svg" alt="Call Stack During Call to Second Nested Function" />
+<img src="fig/python-call-stack-05.svg" alt="Call Stack During Call to Second Nested Function" />
 
 Once again, R throws away that stack frame when `kelvin_to_celsius` is done
 and creates the variable `result` in the stack frame for `fahr_to_celsius`:
 
-<img src="figure/python-call-stack-06.svg" alt="Call Stack After Second Nested Function Returns" />
+<img src="fig/python-call-stack-06.svg" alt="Call Stack After Second Nested Function Returns" />
 
 Finally, when `fahr_to_celsius` is done, R throws away *its* stack frame and puts its result in a new variable called `final` that lives in the stack frame we started with:
 
-<img src="figure/python-call-stack-07.svg" alt="Call Stack After All Functions Have Finished" />
+<img src="fig/python-call-stack-07.svg" alt="Call Stack After All Functions Have Finished" />
 
 This final stack frame is always there;
 it holds the variables we defined outside the functions in our code.
@@ -224,7 +224,7 @@ temp
 
 
 ~~~{.output}
-Error: object 'temp' not found
+Error in eval(expr, envir, enclos): objet 'temp' introuvable
 
 ~~~
 
@@ -451,7 +451,7 @@ sd(dat[, 4])
 
 
 ~~~{.output}
-[1] 1.068
+[1] 1.067628
 
 ~~~
 
@@ -465,7 +465,7 @@ sd(centered)
 
 
 ~~~{.output}
-[1] 1.068
+[1] 1.067628
 
 ~~~
 
@@ -564,7 +564,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 
 ~~~{.output}
-Error: 'file' must be a character string or connection
+Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 
 ~~~
 
@@ -745,7 +745,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 
 ~~~{.output}
-Error: 'file' must be a character string or connection
+Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 
 ~~~
 
