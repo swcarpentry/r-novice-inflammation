@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: </title>
+    <title>Software Carpentry: Programming with R</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,8 +25,8 @@
       </div>
       <div class="row-fluid">
         <div class="span10 offset1">
-          <h1 class="title"></h1>
-          
+          <h1 class="title">Programming with R</h1>
+          <h2 class="subtitle">Analyzing multiple data sets</h2>
 <h2 id="analyzing-multiple-data-sets">Analyzing Multiple Data Sets</h2>
 <p>We have created a function called <code>analyze</code> that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:</p>
 <pre class="sourceCode r"><code class="sourceCode r">analyze &lt;-<span class="st"> </span>function(filename) {
@@ -42,10 +42,10 @@
 }
 
 <span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>)</code></pre>
-<p><img src="figure/03-loops-R-inflammation-011.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-012.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-013.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03-loops-R-inflammation-01-1.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-01-2.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-01-3.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /></p>
 <p>We can use it to analyze other data sets one by one:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-02.csv&quot;</span>)</code></pre>
-<p><img src="figure/03-loops-R-inflammation-021.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-022.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-023.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /></p>
+<p><img src="figure/03-loops-R-inflammation-02-1.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-02-2.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="figure/03-loops-R-inflammation-02-3.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /></p>
 <p>but we have a dozen data sets right now and more on the way. We want to create plots for all our data sets with a single statement. To do that, we'll have to teach the computer how to repeat things.</p>
 <div class="objectives" markdown="1">
 <h4>Objectives</h4>
@@ -200,10 +200,14 @@ letter</code></pre>
 [17] &quot;small-03.csv&quot;          
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;inflammation&quot;</span>)</code></pre>
-<pre class="output"><code> [1] &quot;inflammation-01.csv&quot; &quot;inflammation-02.csv&quot; &quot;inflammation-03.csv&quot;
- [4] &quot;inflammation-04.csv&quot; &quot;inflammation-05.csv&quot; &quot;inflammation-06.csv&quot;
- [7] &quot;inflammation-07.csv&quot; &quot;inflammation-08.csv&quot; &quot;inflammation-09.csv&quot;
-[10] &quot;inflammation-10.csv&quot; &quot;inflammation-11.csv&quot; &quot;inflammation-12.csv&quot;
+<pre class="output"><code> [1] &quot;inflammation-01.csv&quot; &quot;inflammation-01.pdf&quot; &quot;inflammation-02.csv&quot;
+ [4] &quot;inflammation-02.pdf&quot; &quot;inflammation-03.csv&quot; &quot;inflammation-03.pdf&quot;
+ [7] &quot;inflammation-04.csv&quot; &quot;inflammation-04.pdf&quot; &quot;inflammation-05.csv&quot;
+[10] &quot;inflammation-05.pdf&quot; &quot;inflammation-06.csv&quot; &quot;inflammation-06.pdf&quot;
+[13] &quot;inflammation-07.csv&quot; &quot;inflammation-07.pdf&quot; &quot;inflammation-08.csv&quot;
+[16] &quot;inflammation-08.pdf&quot; &quot;inflammation-09.csv&quot; &quot;inflammation-09.pdf&quot;
+[19] &quot;inflammation-10.csv&quot; &quot;inflammation-10.pdf&quot; &quot;inflammation-11.csv&quot;
+[22] &quot;inflammation-11.pdf&quot; &quot;inflammation-12.csv&quot; &quot;inflammation-12.pdf&quot;
 </code></pre>
 <blockquote>
 <p><strong>Tip:</strong> For larger projects, it is recommended to organize separate parts of the analysis into multiple subdirectories, e.g. one subdirectory for the raw data, one for the code, and one for the results like figures. We have done that here to some extent, putting all of our data files into the subdirectory &quot;data&quot;. For more advice on this topic, you can read <a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424">A quick guide to organizing computational biology projects</a> by William Stafford Noble.</p>
@@ -222,12 +226,18 @@ letter</code></pre>
 [17] &quot;data/small-03.csv&quot;          
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;inflammation&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</code></pre>
-<pre class="output"><code> [1] &quot;data/inflammation-01.csv&quot; &quot;data/inflammation-02.csv&quot;
- [3] &quot;data/inflammation-03.csv&quot; &quot;data/inflammation-04.csv&quot;
- [5] &quot;data/inflammation-05.csv&quot; &quot;data/inflammation-06.csv&quot;
- [7] &quot;data/inflammation-07.csv&quot; &quot;data/inflammation-08.csv&quot;
- [9] &quot;data/inflammation-09.csv&quot; &quot;data/inflammation-10.csv&quot;
-[11] &quot;data/inflammation-11.csv&quot; &quot;data/inflammation-12.csv&quot;
+<pre class="output"><code> [1] &quot;data/inflammation-01.csv&quot; &quot;data/inflammation-01.pdf&quot;
+ [3] &quot;data/inflammation-02.csv&quot; &quot;data/inflammation-02.pdf&quot;
+ [5] &quot;data/inflammation-03.csv&quot; &quot;data/inflammation-03.pdf&quot;
+ [7] &quot;data/inflammation-04.csv&quot; &quot;data/inflammation-04.pdf&quot;
+ [9] &quot;data/inflammation-05.csv&quot; &quot;data/inflammation-05.pdf&quot;
+[11] &quot;data/inflammation-06.csv&quot; &quot;data/inflammation-06.pdf&quot;
+[13] &quot;data/inflammation-07.csv&quot; &quot;data/inflammation-07.pdf&quot;
+[15] &quot;data/inflammation-08.csv&quot; &quot;data/inflammation-08.pdf&quot;
+[17] &quot;data/inflammation-09.csv&quot; &quot;data/inflammation-09.pdf&quot;
+[19] &quot;data/inflammation-10.csv&quot; &quot;data/inflammation-10.pdf&quot;
+[21] &quot;data/inflammation-11.csv&quot; &quot;data/inflammation-11.pdf&quot;
+[23] &quot;data/inflammation-12.csv&quot; &quot;data/inflammation-12.pdf&quot;
 </code></pre>
 <p>Let's test out running our <code>analyze</code> function by using it on the first three files in the vector returned by <code>list.files</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">filenames &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;inflammation&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)
@@ -238,13 +248,23 @@ for (f in filenames) {
 }</code></pre>
 <pre class="output"><code>[1] &quot;data/inflammation-01.csv&quot;
 </code></pre>
-<p><img src="figure/03-loops-R-loop-analyze1.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze2.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze3.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
-<pre class="output"><code>[1] &quot;data/inflammation-02.csv&quot;
+<p><img src="figure/03-loops-R-loop-analyze-1.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze-2.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
+<pre class="output"><code>[1] &quot;data/inflammation-01.pdf&quot;
 </code></pre>
-<p><img src="figure/03-loops-R-loop-analyze4.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze5.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze6.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
-<pre class="output"><code>[1] &quot;data/inflammation-03.csv&quot;
+<pre class="output"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : caractère(s) &#39;nul&#39; au milieu de l&#39;entrée
 </code></pre>
-<p><img src="figure/03-loops-R-loop-analyze7.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze8.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="figure/03-loops-R-loop-analyze9.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
+<pre class="output"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="output"><code>Warning in min(x): aucun argument trouvé pour min ; Inf est renvoyé
+</code></pre>
+<pre class="output"><code>Warning in max(x): aucun argument pour max ; -Inf est renvoyé
+</code></pre>
+<p><img src="figure/03-loops-R-loop-analyze-3.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
+<pre class="output"><code>Error in plot.window(...): valeurs finies requises pour &#39;ylim&#39;
+</code></pre>
+<p><img src="figure/03-loops-R-loop-analyze-4.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
 <p>Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.</p>
 <blockquote>
 <p><strong>Tip:</strong> In this lesson we saw how to use a simple <code>for</code> loop to repeat an operation. As you progress with R, you will learn that there are multiple ways to accomplish this. Sometimes the choice of one method over another is more a matter of personal style, but other times it can have consequences for the speed of your code. For instruction on best practices, see this supplementary <a href="03-supp-loops-in-depth.html">lesson</a> that demonstrates how to properly repeat operations in R.</p>
