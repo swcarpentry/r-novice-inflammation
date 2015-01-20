@@ -1,8 +1,5 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Analyzing patient data
-minutes: 30
+layout: lesson
 ---
 
 
@@ -140,7 +137,7 @@ weight_kg
 If we imagine the variable as a sticky note with a name written on it, 
 assignment is like putting the sticky note on a particular value:
 
-<img src="figure/python-sticky-note-variables-01.svg" alt="Variables as Sticky Notes" />
+<img src="fig/python-sticky-note-variables-01.svg" alt="Variables as Sticky Notes" />
 
 This means that assigning a value to one object does not change the values of other variables. 
 For example, let's store the subject's weight in pounds in a variable:
@@ -173,7 +170,7 @@ weight_lb
 
 ~~~
 
-<img src="figure/python-sticky-note-variables-02.svg" alt="Creating Another Variable" />
+<img src="fig/python-sticky-note-variables-02.svg" alt="Creating Another Variable" />
 
 and then change `weight_kg`:
 
@@ -205,7 +202,7 @@ weight_lb
 
 ~~~
 
-<img src="figure/python-sticky-note-variables-03.svg" alt="Updating a Variable" />
+<img src="fig/python-sticky-note-variables-03.svg" alt="Updating a Variable" />
 
 Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes. 
 This is different from the way spreadsheets work.
@@ -519,7 +516,7 @@ sd(dat[, 7])
 What if we need the maximum inflammation for all patients, or the average for each day?
 As the diagram below shows, we want to perform the operation across a margin of the data frame:
 
-<img src="figure/r-operations-across-axes.svg" alt="Operations Across Axes" />
+<img src="fig/r-operations-across-axes.svg" alt="Operations Across Axes" />
 
 To support this, we can use the `apply` function.
 
@@ -603,7 +600,7 @@ Plotting the values is done with the function `plot`.
 plot(avg_day_inflammation)
 ~~~
 
-<img src="figure/01-starting-with-data-plot-avg-inflammation-1.png" title="plot of chunk plot-avg-inflammation" alt="plot of chunk plot-avg-inflammation" style="display: block; margin: auto;" />
+<img src="fig/01-starting-with-data-plot-avg-inflammation-1.png" title="plot of chunk plot-avg-inflammation" alt="plot of chunk plot-avg-inflammation" style="display: block; margin: auto;" />
 
 Above, we gave the function `plot` a vector of numbers corresponding to the average inflammation per day across all patients.
 `plot` created a scatter plot where the y-axis is the average inflammation level and the x-axis is the order, or index, of the values in the vector, which in this case correspond to the 40 days of treatment.
@@ -616,7 +613,7 @@ max_day_inflammation <- apply(dat, 2, max)
 plot(max_day_inflammation)
 ~~~
 
-<img src="figure/01-starting-with-data-plot-max-inflammation-1.png" title="plot of chunk plot-max-inflammation" alt="plot of chunk plot-max-inflammation" style="display: block; margin: auto;" />
+<img src="fig/01-starting-with-data-plot-max-inflammation-1.png" title="plot of chunk plot-max-inflammation" alt="plot of chunk plot-max-inflammation" style="display: block; margin: auto;" />
 
 
 ~~~{.r}
@@ -624,7 +621,7 @@ min_day_inflammation <- apply(dat, 2, min)
 plot(min_day_inflammation)
 ~~~
 
-<img src="figure/01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" />
+<img src="fig/01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" />
 
 The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.
 
