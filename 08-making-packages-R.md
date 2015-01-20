@@ -1,6 +1,8 @@
 ---
-layout: lesson
-root: ../..
+layout: page
+title: Programming with R
+subtitle: Making packages in R
+minutes: 30
 ---
 
 
@@ -171,7 +173,7 @@ fahr_to_kelvin(212)
 
 
 ~~~{.output}
-[1] 373.1
+[1] 373.15
 
 ~~~
 

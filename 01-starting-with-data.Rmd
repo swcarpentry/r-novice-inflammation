@@ -1,5 +1,8 @@
 ---
-layout: lesson
+layout: page
+title: Programming with R
+subtitle: Analyzing patient data
+minutes: 30
 ---
 
 ```{r, include = FALSE}
