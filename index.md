@@ -26,3 +26,7 @@ and to use that language *well*.
 3.  [Analyzing Multiple Data Sets](03-loops-R.html)
 4.  [Making Choices](04-cond.html)
 5.  [Command-Line Programs](06-cmdline.html)
+
+## Other Resources
+
+*   [Reference](reference.html)
