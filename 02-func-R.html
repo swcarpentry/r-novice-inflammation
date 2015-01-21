@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: </title>
+    <title>Software Carpentry: Programming with R</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,8 +25,8 @@
       </div>
       <div class="row-fluid">
         <div class="span10 offset1">
-          <h1 class="title"></h1>
-          
+          <h1 class="title">Programming with R</h1>
+          <h2 class="subtitle">Creating functions</h2>
 <h2 id="creating-functions">Creating Functions</h2>
 <p>If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics. But we have twelve files to check, and may have more in the future. In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.</p>
 <h4 id="objectives">Objectives</h4>
@@ -82,10 +82,12 @@
 <pre class="output"><code>[1] 0
 </code></pre>
 <p>This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want. Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.</p>
-<h4 id="challenges">Challenges</h4>
+<div id="challenges" class="challenge">
+<h2>Challenges</h2>
 <ul>
 <li>In the last lesson, we learned to <strong>c</strong>oncatenate elements into a vector using the <code>c</code> function, e.g. <code>x &lt;- c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)</code> creates a vector <code>x</code> with three elements. Furthermore, we can extend that vector again using <code>c</code>, e.g. <code>y &lt;- c(x, &quot;D&quot;)</code> creates a vector <code>y</code> with four elements. Write a function called <code>fence</code> that takes two vectors as arguments, called <code>original</code> and <code>wrapper</code>, and returns a new vector that has the wrapper vector at the beginning and end of the original:</li>
 </ul>
+</div>
 <pre class="sourceCode r"><code class="sourceCode r">best_practice &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Write&quot;</span>, <span class="st">&quot;programs&quot;</span>, <span class="st">&quot;for&quot;</span>, <span class="st">&quot;people&quot;</span>, <span class="st">&quot;not&quot;</span>, <span class="st">&quot;computers&quot;</span>)
 asterisk &lt;-<span class="st"> &quot;***&quot;</span>  <span class="co"># R interprets a variable with a single value as a vector</span>
                    <span class="co"># with one element.</span>
@@ -93,11 +95,13 @@ asterisk &lt;-<span class="st"> &quot;***&quot;</span>  <span class="co"># R int
 <pre class="output"><code>[1] &quot;***&quot;       &quot;Write&quot;     &quot;programs&quot;  &quot;for&quot;       &quot;people&quot;    &quot;not&quot;      
 [7] &quot;computers&quot; &quot;***&quot;      
 </code></pre>
+<blockquote>
 <ul>
-<li>If the variable <code>v</code> refers to a vector, then <code>v[1]</code> is the vector's first element and <code>v[length(v)]</code> is its last (the function <code>length</code> returns the number of elements in a vector). Write a function called <code>outer</code> that returns a vector made up of just the first and last elements of its input:</li>
+<li>If the variable <code>v</code> refers to a vector, then <code>v[1]</code> is the vector's first element and <code>v[length(v)]</code> is its last (the function <code>length</code> returns the number of elements in a vector). Write a function called <code>outside</code> that returns a vector made up of just the first and last elements of its input:</li>
 </ul>
+</blockquote>
 <pre class="sourceCode r"><code class="sourceCode r">dry_principle &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Don&#39;t&quot;</span>, <span class="st">&quot;repeat&quot;</span>, <span class="st">&quot;yourself&quot;</span>, <span class="st">&quot;or&quot;</span>, <span class="st">&quot;others&quot;</span>)
-<span class="kw">outer</span>(dry_principle)</code></pre>
+<span class="kw">outside</span>(dry_principle)</code></pre>
 <pre class="output"><code>[1] &quot;Don&#39;t&quot;  &quot;others&quot;
 </code></pre>
 <h3 id="the-call-stack">The Call Stack</h3>
@@ -145,13 +149,17 @@ dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="
 </code></pre>
 <p>We don't expect the variable <code>diff</code> to have the value 20 after this function call, so the name <code>diff</code> cannot refer to the same variable defined inside <code>span</code> as it does in as it does in the main body of our program (which R refers to as the global environment). And yes, we could probably choose a different name than <code>diff</code> for our variable in this case, but we don't want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.</p>
 <p>The big idea here is <a href="../../gloss.html#encapsulation">encapsulation</a>, and it's the key to writing correct, comprehensible programs. A function's job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something. That only works if functions don't interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.</p>
-<h4 id="challenges-1">Challenges</h4>
+<div id="challenges-1" class="challenge">
+<h2>Challenges</h2>
 <ul>
-<li>We previously wrote functions called <code>fence</code> and <code>outer</code>. Draw a diagram showing how the call stack changes when we run the following:</li>
+<li>We previously wrote functions called <code>fence</code> and <code>outside</code>. Draw a diagram showing how the call stack changes when we run the following:</li>
 </ul>
+</div>
 <pre class="sourceCode r"><code class="sourceCode r">inside &lt;-<span class="st"> &quot;carbon&quot;</span>
 outside &lt;-<span class="st"> &quot;+&quot;</span>
-result &lt;-<span class="st"> </span><span class="kw">outer</span>(<span class="kw">fence</span>(inside, outside))</code></pre>
+result &lt;-<span class="st"> </span><span class="kw">outside</span>(<span class="kw">fence</span>(inside, outside))</code></pre>
+<pre class="output"><code>Error in eval(expr, envir, enclos): impossible de trouver la fonction &quot;outside&quot;
+</code></pre>
 <h3 id="testing-and-documenting">Testing and Documenting</h3>
 <p>Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly. To see how to do this, let's write a function to center a dataset around a particular value:</p>
 <pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, desired) {
@@ -227,14 +235,22 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 <blockquote>
 <p><strong>Tip:</strong> Formal documentation for R functions is written in separate <code>.Rd</code> using a markup language similar to <a href="http://www.latex-project.org/">LaTeX</a>. You see the result of this documentation when you look at the help file for a given function, e.g. <code>?read.csv</code>. The <a href="http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html">roxygen2</a> package allows R coders to write documentation alongside the function code and then process it into the appropriate <code>.Rd</code> files. You will want to switch to this more formal method of writing documentation when you start writing more complicated R projects.</p>
 </blockquote>
-<h4 id="challenges-2">Challenges</h4>
+<div id="challenges-2" class="challenge">
+<h2>Challenges</h2>
 <ul>
 <li>Write a function called <code>analyze</code> that takes a filename as a argument and displays the three graphs produced in the <a href="01-starting-with-data.html">previous lesson</a> (average, min and max inflammation over time). <code>analyze(&quot;data/inflammation-01.csv&quot;)</code> should produce the graphs already shown, while <code>analyze(&quot;data/inflammation-02.csv&quot;)</code> should produce corresponding graphs for the second data set. Be sure to document your function with comments.</li>
 </ul>
+</div>
+<blockquote>
 <ul>
-<li><p>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>)/(<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</p></li>
-<li><p>Test that your <code>rescale</code> function is working properly using <code>min</code>, <code>max</code>, and <code>plot</code>.</p></li>
+<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>)/(<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</li>
 </ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Test that your <code>rescale</code> function is working properly using <code>min</code>, <code>max</code>, and <code>plot</code>.</li>
+</ul>
+</blockquote>
 <h3 id="defining-defaults">Defining Defaults</h3>
 <p>We have passed arguments to functions in two ways: directly, as in <code>dim(dat)</code>, and by name, as in <code>read.csv(file = &quot;data/inflammation-01.csv&quot;, header = FALSE)</code>. In fact, we can pass the arguments to <code>read.csv</code> without naming them:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="ot">FALSE</span>)</code></pre>
@@ -317,10 +333,12 @@ more_data</code></pre>
 <pre class="output"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : &#39;file&#39; must be a character string or connection
 </code></pre>
 <p>It fails because <code>FALSE</code> is assigned to <code>file</code> and the filename is assigned to the argument <code>header</code>.</p>
-<h4 id="challenges-3">Challenges</h4>
+<div id="challenges-3" class="challenge">
+<h2>Challenges</h2>
 <ul>
 <li>Rewrite the <code>rescale</code> function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want. Compare your implementation to your neighbor's: do the two functions always behave the same way?</li>
 </ul>
+</div>
 <h4 id="key-points">Key Points</h4>
 <ul>
 <li>Define a function using <code>name &lt;- function(...args...) {...body...}</code>.</li>
