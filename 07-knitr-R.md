@@ -47,9 +47,9 @@ summary(cars)
 
 ~~~
 
-### Challenge
-
-1. Open an new .Rmd script and save it as inflammation_report.Rmd
-2. Copy and paste the code as embedded R chunks to read in the data and plot average inflammation, or the heat map that we created.
-3. Add a few notes describing what the code does and what the main findings are.
-4. `KNIT` and view the html
+> ## Challenge {.challenge}
+>
+> 1. Open an new .Rmd script and save it as inflammation_report.Rmd
+> 2. Copy and paste the code as embedded R chunks to read in the data and plot average inflammation, or the heat map that we created.
+> 3. Add a few notes describing what the code does and what the main findings are.
+> 4. `KNIT` and view the html
