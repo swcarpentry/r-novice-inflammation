@@ -174,11 +174,10 @@ if (1 > 0 | -1 > 0) {
 
 In this case, "either" means "either or both", not "either one or the other but not both".
 
-<div class="challenges" markdown="1">
-#### Challenges
-
-  + Write a function, `plot_dist`, that plots a boxplot if the length of the vector is greater than a specified threshold and a stripchart otherwise.
-  To do this you'll use the R functions `boxplot` and `stripchart`.
+> ## Challenges {.challenge}
+>
+>  + Write a function, `plot_dist`, that plots a boxplot if the length of the vector is greater than a specified threshold and a stripchart otherwise.
+>  To do this you'll use the R functions `boxplot` and `stripchart`.
 
 ```{r echo=FALSE}
 plot_dist <- function(x, threshold) {
@@ -196,7 +195,7 @@ plot_dist(dat[, 10], threshold = 10)  # day (column) 10
 plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 ```
 
-  + One of your collaborators prefers to see the distributions of the larger vectors as a histogram instead of as a boxplot.  In order to choose between a histogram and a boxplot we will edit the function `plot_dist` and add an additional argument `use_boxplot`.  By defualt we will set `use_boxplot` to `TRUE` which will create a boxplot when the vector is longer than `threshold`.  When `use_boxplot` is set to `FALSE`, `plot_dist` will instead plot a histogram for the larger vectors.  As before, if the length of the vector is shorter than `threshold`, `plot_dist` will create a stripchart.  A histogram is made with the `hist` command in R.  
+>  + One of your collaborators prefers to see the distributions of the larger vectors as a histogram instead of as a boxplot.  In order to choose between a histogram and a boxplot we will edit the function `plot_dist` and add an additional argument `use_boxplot`.  By defualt we will set `use_boxplot` to `TRUE` which will create a boxplot when the vector is longer than `threshold`.  When `use_boxplot` is set to `FALSE`, `plot_dist` will instead plot a histogram for the larger vectors.  As before, if the length of the vector is shorter than `threshold`, `plot_dist` will create a stripchart.  A histogram is made with the `hist` command in R.
 
 ```{r echo=FALSE}
 plot_dist <- function(x, threshold, use_boxplot = TRUE) {
@@ -216,7 +215,6 @@ plot_dist(dat[, 10], threshold = 10, use_boxplot = TRUE)  # day (column) 10 - cr
 plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
 plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 ```
-</div>
 
 ### Saving automatically generated figures
 
@@ -299,11 +297,10 @@ analyze_all("inflammation")
 
 Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analzye_all`.
 
-<div class="challenges" markdown="1">
-#### Challenges
-
-  + One of your collaborators asks if you can recreate the figures with lines instead of points.
-  Find the relevant argument to `plot` by reading the documentation (`?plot`), update `analyze`, and then recreate all the figures with `analyze_all`.
+> ## Challenges {.challenge}
+>
+>  + One of your collaborators asks if you can recreate the figures with lines instead of points.
+>  Find the relevant argument to `plot` by reading the documentation (`?plot`), update `analyze`, and then recreate all the figures with `analyze_all`.
 
 ```{r analyze-save-line, echo=FALSE}
 analyze <- function(filename, output = NULL) {
@@ -326,7 +323,6 @@ analyze <- function(filename, output = NULL) {
   }
 }
 ```
-</div>
 
 <div class="keypoints" markdown="1">
 #### Key Points
