@@ -219,8 +219,8 @@ carSpeeds$State
 
 ~~~
 
-#### Challenge:
-Suppose we want to keep the colors of cars as factors for some other operations we want to perform. Write code for replacing 'Blue' with 'Green' in the `$Color` column of the cars dataset without importing the data with `stringsAsFactors=FALSE`.
+> ## Challenge {.challenge}
+> Suppose we want to keep the colors of cars as factors for some other operations we want to perform. Write code for replacing 'Blue' with 'Green' in the `$Color` column of the cars dataset without importing the data with `stringsAsFactors=FALSE`.
 
 
 
