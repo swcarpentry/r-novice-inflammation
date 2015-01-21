@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: </title>
+    <title>Software Carpentry: Programming with R</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,8 +25,8 @@
       </div>
       <div class="row-fluid">
         <div class="span10 offset1">
-          <h1 class="title"></h1>
-          
+          <h1 class="title">Programming with R</h1>
+          <h2 class="subtitle">Making choices</h2>
 <h1 id="making-choices">Making Choices</h1>
 <p>Our previous lessons have shown us how to manipulate data, define our own functions, and repeat things. However, the programs we have written so far always do the same things, regardless of what data they're given. We want programs to make choices based on the values they are manipulating. To help us see what decisions they're making, we'll start by looking at how computers manipulate images.</p>
 <h2 id="objectives">Objectives</h2>
@@ -201,10 +201,12 @@ if (num &gt;<span class="st"> </span><span class="dv">100</span>){
 <pre class="output"><code>[1] &quot;at least one test is true&quot;
 </code></pre>
 <p>In this case, &quot;either&quot; means &quot;either or both&quot;, not &quot;either one or the other but not both&quot;.</p>
-<h3 id="challenges">Challenges</h3>
+<div id="challenges" class="challenge">
+<h2>Challenges</h2>
 <ol style="list-style-type: decimal">
 <li>Write a function called <code>near</code> that returns <code>TRUE</code> if its first parameter is within 10% of its second and <code>FALSE</code> otherwise. Compare your implementation with your neighbor's: do you return the same answer for all possible pairs of numbers? How might you make a simple test for your function?</li>
 </ol>
+</div>
 <pre class="sourceCode r"><code class="sourceCode r">near &lt;-<span class="st"> </span>function(param1, param2) {
     <span class="co">#returns True if its first parameter is within 10% of its second and False otherwise.</span>
     ten_percent &lt;-<span class="st"> </span>param2 *<span class="st"> </span><span class="fl">0.1</span>
@@ -274,10 +276,12 @@ for(x in <span class="dv">1</span>:<span class="dv">5</span>) {
 <pre class="sourceCode r"><code class="sourceCode r">square</code></pre>
 <p><img src="fig/04-cond-colors-R-unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" style="display: block; margin: auto;" /></p>
 <p>This is our first hand-made data visualization: the colors show where x is less than, equal to, or greater than y.</p>
-<h3 id="challenges-1">Challenges</h3>
+<div id="challenges-1" class="challenge">
+<h2>Challenges</h2>
 <ol style="list-style-type: decimal">
 <li>Will changing the nesting of the loops in the code above—i.e., wrapping the Y-axis loop around the X-axis loop—change the final image? Why or why not?</li>
 </ol>
+</div>
 <h2 id="creating-a-heat-map">Creating a Heat Map</h2>
 <p>The last step is to turn our data into something we can see. As in previous lessons, the first step is to get the data into memory:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">data.matrix</span>(<span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header=</span><span class="ot">FALSE</span>))
@@ -403,7 +407,8 @@ h</code></pre>
 h</code></pre>
 <p><img src="fig/04-cond-colors-R-unnamed-chunk-36-2.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" style="display: block; margin: auto;" /></p>
 <p>We can now explore our data with just a few keystrokes, which means we can concentrate on our science and not on our programming.</p>
-<h3 id="challenges-2">Challenges</h3>
+<div id="challenges-2" class="challenge">
+<h2>Challenges</h2>
 <ol style="list-style-type: decimal">
 <li>Why did we transpose our data outside our heat map function?</li>
 <li>Why not have the function perform the transpose?</li>
@@ -411,6 +416,7 @@ h</code></pre>
 <li>Do you think this is a good or bad design choice?</li>
 <li>Explain what the overall effect of this code is: <code>temp = left left = right right = temp</code></li>
 </ol>
+</div>
 <h2 id="key-points">Key Points</h2>
 <ul>
 <li>Learn how to source code</li>
