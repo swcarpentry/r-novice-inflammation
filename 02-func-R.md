@@ -131,10 +131,12 @@ Real-life functions will usually be larger than the ones shown here--typically h
 >
 >  + In the last lesson, we learned to **c**oncatenate elements into a vector using the `c` function, e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
 >  Furthermore, we can extend that vector again using `c`, e.g. `y <- c(x, "D")` creates a vector `y` with four elements.
->  Write a function called `fence` that takes two vectors as arguments, called `original` and `wrapper`, and returns a new vector that has the wrapper vector at the beginning and end of the original:
-  
+>  Write a function called `fence` that takes two vectors as arguments, called
+>`original` and `wrapper`, and returns a new vector that has the wrapper vector
+>at the beginning and end of the original:
+>
 
-  
+
 
 ~~~{.r}
 best_practice <- c("Write", "programs", "for", "people", "not", "computers")
@@ -153,7 +155,7 @@ fence(best_practice, asterisk)
 
 >  + If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
 >    Write a function called `outside` that returns a vector made up of just the first and last elements of its input:
-    
+
 
 
 
@@ -168,6 +170,7 @@ outside(dry_principle)
 [1] "Don't"  "others"
 
 ~~~
+
 
 ### The Call Stack
 
@@ -287,7 +290,8 @@ That only works if functions don't interfere with each other; if they do, we hav
 > ## Challenges {.challenge}
 >
 >  + We previously wrote functions called `fence` and `outside`.
->    Draw a diagram showing how the call stack changes when we run the following:
+>    Draw a diagram showing how the call stack changes when we run the
+>following:
 
 
 ~~~{.r}
