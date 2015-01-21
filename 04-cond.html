@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: </title>
+    <title>Software Carpentry: Programming with R</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,8 +25,8 @@
       </div>
       <div class="row-fluid">
         <div class="span10 offset1">
-          <h1 class="title"></h1>
-          
+          <h1 class="title">Programming with R</h1>
+          <h2 class="subtitle">Making choices</h2>
 <h2 id="making-choices">Making Choices</h2>
 <p>Our previous lessons have shown us how to manipulate data, define our own functions, and repeat things. However, the programs we have written so far always do the same things, regardless of what data they're given. We want programs to make choices based on the values they are manipulating.</p>
 <div class="objectives" markdown="1">
@@ -137,27 +137,29 @@ if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
 <pre class="output"><code>[1] &quot;at least one part is true&quot;
 </code></pre>
 <p>In this case, &quot;either&quot; means &quot;either or both&quot;, not &quot;either one or the other but not both&quot;.</p>
-<div class="challenges" markdown="1">
-<h4>Challenges</h4>
+<div id="challenges" class="challenge">
+<h2>Challenges</h2>
 <ul>
 <li>Write a function, <code>plot_dist</code>, that plots a boxplot if the length of the vector is greater than a specified threshold and a stripchart otherwise. To do this you'll use the R functions <code>boxplot</code> and <code>stripchart</code>.</li>
 </ul>
+</div>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)
 <span class="kw">plot_dist</span>(dat[, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>)  <span class="co"># day (column) 10</span></code></pre>
 <p><img src="fig/04-cond-conditional-challenge-1.png" title="plot of chunk conditional-challenge" alt="plot of chunk conditional-challenge" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_dist</span>(dat[<span class="dv">1</span>:<span class="dv">5</span>, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>)  <span class="co"># samples (rows) 1-5 on day (column) 10</span></code></pre>
 <p><img src="fig/04-cond-conditional-challenge-2.png" title="plot of chunk conditional-challenge" alt="plot of chunk conditional-challenge" style="display: block; margin: auto;" /></p>
+<blockquote>
 <ul>
 <li>One of your collaborators prefers to see the distributions of the larger vectors as a histogram instead of as a boxplot. In order to choose between a histogram and a boxplot we will edit the function <code>plot_dist</code> and add an additional argument <code>use_boxplot</code>. By defualt we will set <code>use_boxplot</code> to <code>TRUE</code> which will create a boxplot when the vector is longer than <code>threshold</code>. When <code>use_boxplot</code> is set to <code>FALSE</code>, <code>plot_dist</code> will instead plot a histogram for the larger vectors. As before, if the length of the vector is shorter than <code>threshold</code>, <code>plot_dist</code> will create a stripchart. A histogram is made with the <code>hist</code> command in R.</li>
 </ul>
+</blockquote>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)
 <span class="kw">plot_dist</span>(dat[, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>, <span class="dt">use_boxplot =</span> <span class="ot">TRUE</span>)  <span class="co"># day (column) 10 - create boxplot</span></code></pre>
 <p><img src="fig/04-cond-conditional-challenge-hist-1.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_dist</span>(dat[, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>, <span class="dt">use_boxplot =</span> <span class="ot">FALSE</span>)  <span class="co"># day (column) 10 - create histogram</span></code></pre>
 <p><img src="fig/04-cond-conditional-challenge-hist-2.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_dist</span>(dat[<span class="dv">1</span>:<span class="dv">5</span>, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>)  <span class="co"># samples (rows) 1-5 on day (column) 10</span></code></pre>
-<img src="fig/04-cond-conditional-challenge-hist-3.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
-</div>
+<p><img src="fig/04-cond-conditional-challenge-hist-3.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" /></p>
 <h3 id="saving-automatically-generated-figures">Saving automatically generated figures</h3>
 <p>Now that we know how to have R make decisions based on input values, let's update <code>analyze</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">analyze &lt;-<span class="st"> </span>function(filename, <span class="dt">output =</span> <span class="ot">NULL</span>) {
@@ -209,11 +211,9 @@ if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
 }</code></pre>
 <p>Now we can save all of the results with just one line of code:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze_all</span>(<span class="st">&quot;inflammation&quot;</span>)</code></pre>
-<pre class="output"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : no lines available in input
-</code></pre>
 <p>Now if we need to make any changes to our analysis, we can edit the <code>analyze</code> function and quickly regenerate all the figures with <code>analzye_all</code>.</p>
-<div class="challenges" markdown="1">
-<h4>Challenges</h4>
+<div id="challenges-1" class="challenge">
+<h2>Challenges</h2>
 <ul>
 <li>One of your collaborators asks if you can recreate the figures with lines instead of points. Find the relevant argument to <code>plot</code> by reading the documentation (<code>?plot</code>), update <code>analyze</code>, and then recreate all the figures with <code>analyze_all</code>.</li>
 </ul>
