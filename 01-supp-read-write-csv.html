@@ -149,8 +149,10 @@ carSpeeds$State</code></pre>
  [81] &quot;4&quot;    &quot;2&quot;    &quot;2&quot;    &quot;Ohio&quot; &quot;Ohio&quot; &quot;Ohio&quot; &quot;4&quot;    &quot;Ohio&quot; &quot;4&quot;    &quot;4&quot;   
  [91] &quot;4&quot;    &quot;Ohio&quot; &quot;Ohio&quot; &quot;3&quot;    &quot;2&quot;    &quot;2&quot;    &quot;4&quot;    &quot;3&quot;    &quot;Ohio&quot; &quot;4&quot;   
 </code></pre>
-<h4 id="challenge">Challenge:</h4>
+<div id="challenge" class="challenge challenge">
+<h2>Challenge</h2>
 <p>Suppose we want to keep the colors of cars as factors for some other operations we want to perform. Write code for replacing 'Blue' with 'Green' in the <code>$Color</code> column of the cars dataset without importing the data with <code>stringsAsFactors=FALSE</code>.</p>
+</div>
 <h4 id="the-strip.white-argument">The strip.white argument</h4>
 <p>It is not uncommon for mistakes to have been made when the data were recorded, for example a space (whitespace) may have been inserted before a data value. By default this whitespace will be kept in the R environment, such that ' Red' will be recognized as a different value than 'Red'. In order to avoid this type of error, use the <code>strip.white</code> argument. Let's see how this works by checking for the unique values in the <code>$Color</code> column of our dataset:</p>
 <p>Here, the data recorder added a space before the color of the car in one of the cells:</p>
