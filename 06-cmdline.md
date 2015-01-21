@@ -79,12 +79,12 @@ R version 3.1.2 (2014-10-31)
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [1] LC_CTYPE=fr_FR.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=fr_CA.UTF-8        LC_COLLATE=fr_FR.UTF-8    
+ [5] LC_MONETARY=fr_CA.UTF-8    LC_MESSAGES=fr_FR.UTF-8   
+ [7] LC_PAPER=fr_CA.UTF-8       LC_NAME=C                 
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[11] LC_MEASUREMENT=fr_CA.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     

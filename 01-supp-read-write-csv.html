@@ -174,12 +174,12 @@ Levels: Black Green Red  Red White
 
 <span class="kw">write.csv</span>(carSpeeds, <span class="dt">file=</span><span class="st">&#39;data/car-speeds-cleaned.csv&#39;</span>)</code></pre>
 <p>If you open the file, you'll see that it has header names, because the data had headers within R, but that there are numbers in the first column.</p>
-<p><img src="figure/CSV_WithRowNums.png" alt="csv written without row.names argument" /></p>
+<p><img src="fig/CSV_WithRowNums.png" alt="csv written without row.names argument" /></p>
 <h4 id="the-row.names-argument">The row.names argument</h4>
 <p>This argument allows us to set the names of the rows in the output data file. R's default for this argument is <code>TRUE</code>, and since it does not know what else to name the rows for the cars data set, it resorts to using row numbers. To correct this, we can set <code>row.names</code> to <code>FALSE</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(carSpeeds, <span class="dt">file=</span><span class="st">&#39;data/car-speeds-cleaned.csv&#39;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>)</code></pre>
 <p>Now we see:</p>
-<p><img src="figure/CSV_WithoutRowNums.png" alt="csv written with row.names argument" /></p>
+<p><img src="fig/CSV_WithoutRowNums.png" alt="csv written with row.names argument" /></p>
 <blockquote>
 <p><strong>Tip:</strong> there is also a <code>col.names</code> argument, which can be used to set the column names for a data set without headers. If the data set already has headers (e.g., we used the headers = TRUE argument when importing the data) then a <code>col.names</code> argument will be ignored.</p>
 </blockquote>
@@ -201,7 +201,7 @@ carSpeeds$Speed[<span class="dv">3</span>]&lt;-<span class="ot">NA</span>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Note - the na argument requires a string input</span>
 <span class="kw">write.csv</span>(carSpeeds, <span class="dt">file=</span><span class="st">&#39;data/car-speeds-cleaned.csv&#39;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>, <span class="dt">na=</span> <span class="st">&#39;-9999&#39;</span>)</code></pre>
 <p>And we see:</p>
-<p><img src="figure/CSV_WithSpecialNA.png" alt="csv written with -9999 as NA" /></p>
+<p><img src="fig/CSV_WithSpecialNA.png" alt="csv written with -9999 as NA" /></p>
 <h4 id="key-points">Key Points</h4>
 <ul>
 <li>Import data from a .csv file using the <code>read.csv(...)</code> function.</li>

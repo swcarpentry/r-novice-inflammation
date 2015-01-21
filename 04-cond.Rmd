@@ -1,11 +1,13 @@
 ---
-layout: lesson
-root: ../..
+layout: page
+title: Programming with R
+subtitle: Making choices
+minutes: 30
 ---
 
 ```{r, include = FALSE}
 source("tools/chunk-options.R")
-opts_chunk$set(fig.path = "figure/04-cond-")
+opts_chunk$set(fig.path = "fig/04-cond-")
 ```
 
 ## Making Choices
@@ -100,7 +102,7 @@ If the following test is true, the body of the `if` (i.e., the lines in the curl
 If the test is false, the body of the `else` is executed instead.
 Only one or the other is ever executed:
 
-<img src="figure/python-flowchart-conditional.svg" alt="Executing a Conditional" />
+<img src="fig/python-flowchart-conditional.svg" alt="Executing a Conditional" />
 
 In the example above, the test `num > 100` returns the value `FALSE`, which is why the code inside the `if` block was skipped and the code inside the `else` statment was run instead.
 

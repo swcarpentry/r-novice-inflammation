@@ -1,11 +1,13 @@
 ---
-layout: lesson
-root: ../..
+layout: page
+title: Programming with R
+subtitle: Analyzing multiple data sets
+minutes: 30
 ---
 
 ```{r, include = FALSE}
 source("tools/chunk-options.R")
-opts_chunk$set(fig.path = "figure/03-loops-R-")
+opts_chunk$set(fig.path = "fig/03-loops-R-")
 ```
 
 ## Analyzing Multiple Data Sets
