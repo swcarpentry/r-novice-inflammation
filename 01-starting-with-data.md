@@ -256,7 +256,7 @@ head(dat)
 > ## Challenge {.challenge}
 >
 > Draw diagrams showing what variables refer to what values after each statement in the following program:
-
+>
 ~~~{.r}
 mass <- 47.5
 age <- 122
@@ -553,7 +553,7 @@ For example, you can calculate the row-wise or column-wise means with `rowMeans`
 >
 > A subsection of a data frame is called a [slice](../../gloss.html#slice).
 > We can take slices of character vectors as well:
-
+>
 
 ~~~{.r}
 element <- c("o", "x", "y", "g", "e", "n")
@@ -581,7 +581,7 @@ element[4:6]
 [1] "g" "e" "n"
 
 ~~~
-
+>
 > 1.  If the first four characters are selected using the slice `element[1:4]`, how can we obtain the first four characters in reverse order?
 >    
 > 1.  What is `element[-1]`?
