@@ -1,6 +1,8 @@
 ---
-layout: lesson
-root: ../..
+layout: page
+title: Programming with R
+subtitle: Analyzing multiple data sets
+minutes: 30
 ---
 
 
@@ -464,7 +466,7 @@ Let's test out running our `analyze` function by using it on the first three fil
 
 
 ~~~{.r}
-filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
+filenames <- list.files(path = "data", pattern = "inflammation-\\d+.csv", full.names = TRUE)
 filenames <- filenames[1:3]
 for (f in filenames) {
   print(f)
@@ -479,51 +481,21 @@ for (f in filenames) {
 
 ~~~
 
-<img src="fig/03-loops-R-loop-analyze-1.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-2.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
+<img src="fig/03-loops-R-loop-analyze-1.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-2.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-3.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
 
 ~~~{.output}
-[1] "data/inflammation-01.pdf"
+[1] "data/inflammation-02.csv"
 
 ~~~
 
-
+<img src="fig/03-loops-R-loop-analyze-4.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-5.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-6.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
 
 ~~~{.output}
-Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+[1] "data/inflammation-03.csv"
 
 ~~~
 
-
-
-~~~{.output}
-Warning in mean.default(newX[, i], ...): argument is not numeric or
-logical: returning NA
-
-~~~
-
-
-
-~~~{.output}
-Warning in min(x): aucun argument trouvé pour min ; Inf est renvoyé
-
-~~~
-
-
-
-~~~{.output}
-Warning in max(x): aucun argument pour max ; -Inf est renvoyé
-
-~~~
-
-<img src="fig/03-loops-R-loop-analyze-3.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
-
-~~~{.output}
-Error in plot.window(...): valeurs finies requises pour 'ylim'
-
-~~~
-
-<img src="fig/03-loops-R-loop-analyze-4.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
+<img src="fig/03-loops-R-loop-analyze-7.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-8.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-9.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
 
 Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.
 
