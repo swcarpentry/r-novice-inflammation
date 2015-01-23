@@ -1,5 +1,8 @@
 ---
-layout: lesson
+layout: page
+title: Programming with R
+subtitle: Analyzing patient data
+minutes: 30
 ---
 
 
@@ -250,14 +253,16 @@ head(dat)
 
 ~~~
 
-#### Challenge
-
-Draw diagrams showing what variables refer to what values after each statement in the following program:
-
-	mass <- 47.5
-	age <- 122
-	mass <- mass * 2.0
-	age <- age - 20
+> ## Challenge {.challenge}
+>
+> Draw diagrams showing what variables refer to what values after each statement in the following program:
+>
+~~~{.r}
+mass <- 47.5
+age <- 122
+mass <- mass * 2.0
+age <- age - 20
+~~~
 
 ### Manipulating Data
 
@@ -544,11 +549,11 @@ We'll learn why this is so in the next lesson.
 > **Tip:** Some common operations have more efficient alternatives.
 For example, you can calculate the row-wise or column-wise means with `rowMeans` and `colMeans`, respectively.
 
-#### Challenge
-
-A subsection of a data frame is called a [slice](../../gloss.html#slice).
-We can take slices of character vectors as well:
-
+> ## Challenge {.challenge}
+>
+> A subsection of a data frame is called a [slice](../../gloss.html#slice).
+> We can take slices of character vectors as well:
+>
 
 ~~~{.r}
 element <- c("o", "x", "y", "g", "e", "n")
@@ -576,15 +581,15 @@ element[4:6]
 [1] "g" "e" "n"
 
 ~~~
-
-1.  If the first four characters are selected using the slice `element[1:4]`, how can we obtain the first four characters in reverse order?
-    
-1.  What is `element[-1]`?
-    What is `element[-4]`?
-    Given those answers,
-    explain what `element[-1:-4]` does.
-
-1.  Use a slice of `element` to create a new character vector that spells the word "eon", e.g. `c("e", "o", "n")`.
+>
+> 1.  If the first four characters are selected using the slice `element[1:4]`, how can we obtain the first four characters in reverse order?
+>    
+> 1.  What is `element[-1]`?
+>    What is `element[-4]`?
+>    Given those answers,
+>    explain what `element[-1:-4]` does.
+>
+> 1.  Use a slice of `element` to create a new character vector that spells the word "eon", e.g. `c("e", "o", "n")`.
 
 ### Plotting
 
@@ -625,10 +630,9 @@ plot(min_day_inflammation)
 
 The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.
 
-#### Challenge
-
-Create a plot showing the standard deviation of the inflammation data 
-for each day across all patients.
+> ## Challenge {.challenge}
+>
+> Create a plot showing the standard deviation of the inflammation data for each day across all patients.
 
 #### Key Points
 

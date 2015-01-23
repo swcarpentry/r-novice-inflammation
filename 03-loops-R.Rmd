@@ -159,15 +159,15 @@ length(vowels)
 
 `length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](00-first-timers.html) to learn more about the different ways to store data in R).
 
-#### Challenges
-
-1. R has a built-in function called `seq` that creates a list of numbers:
+> ## Challenges {.challenge}
+>
+> 1. R has a built-in function called `seq` that creates a list of numbers:
 
 ```{r}
 seq(3)
 ```
 
-Using `seq`, write a function that prints the first **N** natural numbers, one per line:
+> Using `seq`, write a function that prints the first **N** natural numbers, one per line:
 
 ```{r include=FALSE}
 print_N <- function(N) {
@@ -182,13 +182,13 @@ print_N <- function(N) {
 print_N(3)
 ```
 
-2. Exponentiation is built into R:
+> 2. Exponentiation is built into R:
 
 ```{r}
 2^4
 ```
 
-Write a function called `expo` that uses a loop to calculate the same result.
+> Write a function called `expo` that uses a loop to calculate the same result.
 
 ```{r include=FALSE}
 expo <- function(base, power) {
@@ -204,9 +204,9 @@ expo <- function(base, power) {
 expo(2, 4)
 ```
 
-3. Write a function called `total` that calculates the sum of the values in a vector.
-(R has a built-in function called `sum` that does this for you.
-Please don't use it for this exercise.)
+> 3. Write a function called `total` that calculates the sum of the values in a vector.
+> (R has a built-in function called `sum` that does this for you.
+> Please don't use it for this exercise.)
 
 ```{r include=FALSE}
 total <- function(vec) {
@@ -283,9 +283,9 @@ As you progress with R, you will learn that there are multiple ways to accomplis
 Sometimes the choice of one method over another is more a matter of personal style, but other times it can have consequences for the speed of your code.
 For instruction on best practices, see this supplementary [lesson](03-supp-loops-in-depth.html) that demonstrates how to properly repeat operations in R.
 
-#### Challenges
-
-1. Write a function called `analyze_all` that takes a filename pattern as its sole argument and runs `analyze` for each file whose name matches the pattern.
+> ## Challenges {.challenge}
+>
+> 1. Write a function called `analyze_all` that takes a filename pattern as its sole argument and runs `analyze` for each file whose name matches the pattern.
 
 ```{r analyze_all, include=FALSE}
 analyze_all <- function(pattern) {

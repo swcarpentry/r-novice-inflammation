@@ -322,11 +322,11 @@ Rscript readings-02.R data/inflammation-01.csv
 
 ~~~
 
-#### Challenges
-
-  + Write a command-line program that does addition and subtraction.
-  **Hint:** Everything argument read from the command-line is interpreted as a character [string](../../gloss.html#string).
-  You can convert from a string to a number using the function `as.numeric`.
+> ## Challenges {.challenge}
+>
+>  + Write a command-line program that does addition and subtraction.
+>  **Hint:** Everything argument read from the command-line is interpreted as a character [string](../../gloss.html#string).
+>  You can convert from a string to a number using the function `as.numeric`.
 
 
 ~~~{.r}
@@ -355,13 +355,13 @@ Rscript arith.R 3 - 4
 ~~~
 
 
+>
+>  + What goes wrong if you try to add multiplication using `*` to the program?
+>
 
-  + What goes wrong if you try to add multiplication using `*` to the program?
-  
-
-
-  + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program, `find-pattern.R`, that lists all the files in the current directory that contain a specific pattern:
-
+>
+>  + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program, `find-pattern.R`, that lists all the files in the current directory that contain a specific pattern:
+>
 
 ~~~{.r}
 # For example, searching for the pattern "print-args" returns the two scripts we
@@ -476,10 +476,10 @@ Rscript readings-03.R data/small-01.csv data/small-02.csv
 We wouldn't do this in real life: instead, we would have one file called `readings.R` that we committed to version control every time we got an enhancement working.
 For teaching, though, we need all the successive versions side by side.
 
-#### Challenges
-
-  + Write a program called `check.R` that takes the names of one or more inflammation data files as arguments and checks that all the files have the same number of rows and columns.
-  What is the best way to test your program?
+> ## Challenges {.challenge}
+>
+>  + Write a program called `check.R` that takes the names of one or more inflammation data files as arguments and checks that all the files have the same number of rows and columns.
+>  What is the best way to test your program?
 
 
 
@@ -580,13 +580,13 @@ We will not cover this package in this lesson but when you start writing program
 [argparse-py]: http://docs.python.org/dev/library/argparse.html
 [vignette]: http://cran.r-project.org/web/packages/argparse/vignettes/argparse.pdf
 
-#### Challenges
-
-  + Rewrite this program so that it uses `-n`, `-m`, and `-x` instead of `--min`, `--mean`, and `--max` respectively.
-    Is the code easier to read?
-    Is the program easier to understand?
-
-  + Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.
+> ## Challenges {.challenge}
+>
+>  + Rewrite this program so that it uses `-n`, `-m`, and `-x` instead of `--min`, `--mean`, and `--max` respectively.
+>    Is the code easier to read?
+>    Is the program easier to understand?
+>
+>  + Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.
 
 
 
@@ -703,11 +703,11 @@ head data/inflammation-01.csv | Rscript readings-06.R --mean
 
 And now we're done: the program now does everything we set out to do.
 
-#### Challenges
-
-  + Write a program called `line-count.R` that works like the Unix `wc` command:
-    *   If no filenames are given, it reports the number of lines in standard input.
-    *   If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.
+> ## Challenges {.challenge}
+>
+>  + Write a program called `line-count.R` that works like the Unix `wc` command:
+>    *   If no filenames are given, it reports the number of lines in standard input.
+>    *   If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.
 
 
 

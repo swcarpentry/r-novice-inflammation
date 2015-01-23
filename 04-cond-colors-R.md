@@ -1,6 +1,8 @@
 ---
-layout: lesson
-root: ../..
+layout: page
+title: Programming with R
+subtitle: Making choices
+minutes: 30
 ---
 
 
@@ -370,9 +372,9 @@ if (1 < 0 | 'left' < 'right') {
 
 In this case, "either" means "either or both", not "either one or the other but not both".
 
-### Challenges
-
-1. Write a function called `near` that returns `TRUE` if its first parameter is within 10% of its second and `FALSE` otherwise. Compare your implementation with your neighbor's: do you return the same answer for all possible pairs of numbers? How might you make a simple test for your function?
+> ## Challenges {.challenge}
+>
+> 1. Write a function called `near` that returns `TRUE` if its first parameter is within 10% of its second and `FALSE` otherwise. Compare your implementation with your neighbor's: do you return the same answer for all possible pairs of numbers? How might you make a simple test for your function?
 
 
 ~~~{.r}
@@ -493,9 +495,9 @@ square
 
 This is our first hand-made data visualization: the colors show where x is less than, equal to, or greater than y.
 
-### Challenges
-
-1. Will changing the nesting of the loops in the code above—i.e., wrapping the Y-axis loop around the X-axis loop—change the final image? Why or why not?
+> ## Challenges {.challenge}
+>
+> 1. Will changing the nesting of the loops in the code above—i.e., wrapping the Y-axis loop around the X-axis loop—change the final image? Why or why not?
 
 	
 ## Creating a Heat Map
@@ -691,13 +693,13 @@ h
 
 We can now explore our data with just a few keystrokes, which means we can concentrate on our science and not on our programming.
 
-### Challenges
-
-1. Why did we transpose our data outside our heat map function? 
-2. Why not have the function perform the transpose?
-3. Why does the heat map function return the grid rather than displaying it immediately? 
-4. Do you think this is a good or bad design choice?
-5. Explain what the overall effect of this code is: `temp = left left = right right = temp`
+> ## Challenges {.challenge}
+>
+> 1. Why did we transpose our data outside our heat map function? 
+> 2. Why not have the function perform the transpose?
+> 3. Why does the heat map function return the grid rather than displaying it immediately? 
+> 4. Do you think this is a good or bad design choice?
+> 5. Explain what the overall effect of this code is: `temp = left left = right right = temp`
 
 ## Key Points
 
