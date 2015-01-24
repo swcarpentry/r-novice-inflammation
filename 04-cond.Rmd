@@ -30,15 +30,15 @@ So far, we have built a function `analyze` to plot summary statistics of the inf
 
 ```{r analyze}
 analyze <- function(filename) {
-  # Plots the average, min, and max inflammation over time.
+  # Plots the average, min, and max aneurism count over time.
   # Input is character string of a csv file.
-  dat <- read.csv(file = filename, header = FALSE)
-  avg_day_inflammation <- apply(dat, 2, mean)
-  plot(avg_day_inflammation)
-  max_day_inflammation <- apply(dat, 2, max)
-  plot(max_day_inflammation)
-  min_day_inflammation <- apply(dat, 2, min)
-  plot(min_day_inflammation)
+  dat <- read.csv(file = filename, header = TRUE)
+  avg_quad_aneurism <- apply(dat[,5:8], 2, mean)
+  plot(avg_quad_aneurism)
+  max_quad_aneurism <- apply(dat[,5:8], 2, max)
+  plot(max_quad_aneurism)
+  min_quad_aneurism <- apply(dat[,5:8], 2, min)
+  plot(min_quad_aneurism)
 }
 ```
 
@@ -56,15 +56,15 @@ analyze_all <- function(pattern) {
 ```
 
 While these are useful in an interactive R session, what if we want to send our results to our collaborators?
-Since we currently have 12 data sets, running `analyze_all` creates 36 plots.
+Since we currently have 5 data sets, running `analyze_all` creates 15 plots.
 Saving each of these individually would be tedious and error-prone.
-And in the likely situation that we want to change how the data is processed or the look of the plots, we would have to once again save all 36 before sharing the updated results with our collaborators.
+And in the likely situation that we want to change how the data is processed or the look of the plots, we would have to once again save all 15 before sharing the updated results with our collaborators.
 
-Here's how we can save all three plots of the first inflamation data set in a pdf file:
+Here's how we can save all three plots of the first aneurism data set in a pdf file:
 
 ```{r, results='hide'}
-pdf("inflammation-01.pdf")
-analyze("data/inflammation-01.csv")
+pdf("output/aneurism-01.pdf")
+analyze("data/sample-01.csv")
 dev.off()
 ```
 
@@ -191,9 +191,9 @@ plot_dist <- function(x, threshold) {
 ```
 
 ```{r conditional-challenge}
-dat <- read.csv("data/inflammation-01.csv", header = FALSE)
-plot_dist(dat[, 10], threshold = 10)  # day (column) 10
-plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
+dat <- read.csv("data/sample-01.csv", header = FALSE)
+plot_dist(dat[, 5], threshold = 10)  # day (column) 10
+plot_dist(dat[1:5, 5], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 ```
 
   + One of your collaborators prefers to see the distributions of the larger vectors as a histogram instead of as a boxplot.  In order to choose between a histogram and a boxplot we will edit the function `plot_dist` and add an additional argument `use_boxplot`.  By defualt we will set `use_boxplot` to `TRUE` which will create a boxplot when the vector is longer than `threshold`.  When `use_boxplot` is set to `FALSE`, `plot_dist` will instead plot a histogram for the larger vectors.  As before, if the length of the vector is shorter than `threshold`, `plot_dist` will create a stripchart.  A histogram is made with the `hist` command in R.  
@@ -211,10 +211,10 @@ plot_dist <- function(x, threshold, use_boxplot = TRUE) {
 ```
 
 ```{r conditional-challenge-hist}
-dat <- read.csv("data/inflammation-01.csv", header = FALSE)
-plot_dist(dat[, 10], threshold = 10, use_boxplot = TRUE)  # day (column) 10 - create boxplot
-plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
-plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
+dat <- read.csv("data/sample-01.csv", header = FALSE)
+plot_dist(dat[, 5], threshold = 10, use_boxplot = TRUE)  # quadrant 1 (column 5) - create boxplot
+plot_dist(dat[, 5], threshold = 10, use_boxplot = FALSE)  # quadrant 1 (column 5) - create histogram
+plot_dist(dat[1:5, 5], threshold = 10)  # samples (rows) 1-5 on quadrant 1 (column) 5
 ```
 </div>
 
@@ -224,20 +224,21 @@ Now that we know how to have R make decisions based on input values, let's updat
 
 ```{r analyze-save}
 analyze <- function(filename, output = NULL) {
-  # Plots the average, min, and max inflammation over time.
+  # Plots the average, min, and max aneurims count over time.
   # Input:
   #    filename: character string of a csv file
   #    output: character string of pdf file for saving
   if (!is.null(output)) {
     pdf(output)
   }
-  dat <- read.csv(file = filename, header = FALSE)
-  avg_day_inflammation <- apply(dat, 2, mean)
-  plot(avg_day_inflammation)
-  max_day_inflammation <- apply(dat, 2, max)
-  plot(max_day_inflammation)
-  min_day_inflammation <- apply(dat, 2, min)
-  plot(min_day_inflammation)
+  dat <- read.csv(file = filename, header = TRUE)
+  avg_quad_aneurism <- apply(dat[,5:8], 2, mean)
+  plot(avg_quad_aneurism)
+  max_quad_aneurism <- apply(dat[,5:8], 2, max)
+  plot(max_quad_aneurism)
+  min_quad_aneurism <- apply(dat[,5:8], 2, min)
+  plot(min_quad_aneurism)
+}
   if (!is.null(output)) {
     dev.off()
   }
@@ -259,21 +260,21 @@ is.null(output)
 
 Now we can use `analyze` both interactively:
 
-```{r inflammation-01}
-analyze("data/inflammation-01.csv")
+```{r sample-01}
+analyze("data/sample-01.csv")
 ```
 
 and to save plots:
 
 ```{r results='hide'}
-analyze("data/inflammation-01.csv", output = "inflammation-01.pdf")
+analyze("data/sample-01.csv", output = "sample-01.pdf")
 ```
 
 This now works well when we want to process one data file at a time, but how can we specify the output file in `analyze_all`?
 We need to substitute the filename ending "csv" with "pdf", which we can do using the function `sub`:
 
 ```{r}
-f <- "data/inflammation-01.csv"
+f <- "data/sample-01.csv"
 sub("csv", "pdf", f)
 ```
 
@@ -286,6 +287,7 @@ analyze_all <- function(pattern) {
   filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
   for (f in filenames) {
     pdf_name <- sub("csv", "pdf", f)
+    paste('output',pdf_name,sep='/')
     analyze(f, output = pdf_name)
   }
 }
@@ -294,7 +296,7 @@ analyze_all <- function(pattern) {
 Now we can save all of the results with just one line of code:
 
 ```{r}
-analyze_all("inflammation")
+analyze_all("sample")
 ```
 
 Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analzye_all`.
@@ -314,13 +316,13 @@ analyze <- function(filename, output = NULL) {
   if (!is.null(output)) {
     pdf(output)
   }
-  dat <- read.csv(file = filename, header = FALSE)
-  avg_day_inflammation <- apply(dat, 2, mean)
-  plot(avg_day_inflammation, type = "l")
-  max_day_inflammation <- apply(dat, 2, max)
-  plot(max_day_inflammation, type = "l")
-  min_day_inflammation <- apply(dat, 2, min)
-  plot(min_day_inflammation, type = "l")
+  dat <- read.csv(file = filename, header = TRUE)
+  avg_quad_aneurism <- apply(dat[,5:8], 2, mean)
+  plot(avg_quad_aneurism, type='l')
+  max_quad_aneurism <- apply(dat[,5:8], 2, max)
+  plot(max_quad_aneurism, type='l')
+  min_quad_aneurism <- apply(dat[,5:8], 2, min)
+  plot(min_quad_aneurism, type='l')
   if (!is.null(output)) {
     dev.off()
   }
