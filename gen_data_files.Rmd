@@ -1,0 +1,77 @@
+---
+title: "SWC sample data generator"
+output: html_document
+---
+
+Generate the sample data for the R-novice lessons
+
+```{r echo=FALSE}
+roundn<-function(val,n)
+  {
+  #rounds to n decimal places
+  #example roundn(c(10.004,10.005),2) = 10, 10.01
+  val=val*10^n
+  val=round(val)
+  return(val/10^n)
+  }
+```
+
+```{r}
+nPatients<-100
+nSamples<-5
+```
+
+create the variables that will stay the same across all samples
+```{r}
+subID<-sprintf('Sub%03d',1:nPatients)
+gender<-sample(c('m','M','f','F',NA),nPatients,TRUE,prob=c(0.25,0.1,0.35,0.1,0.1))
+group<-vector(length=nPatients)
+group[1:round(nPatients/2)]<-TRUE
+b_bp_s<-round(rnorm(nPatients,mean=120,sd=15))
+b_age<-roundn(runif(nPatients,min=12,max=20),1)
+b_outcome_q1<-round(runif(nPatients,min=100,max=200))
+b_outcome_q2<-round(runif(nPatients,min=100,max=200))
+b_outcome_q3<-round(runif(nPatients,min=110,max=200))
+b_outcome_q4<-round(runif(nPatients,min=110,max=200))
+```
+
+Fix the data so there is a group difference
+```{r}
+b_outcome_q1[group]<-b_outcome_q1[group]+round(rnorm(sum(group),10,20))
+b_outcome_q1[group]<-b_outcome_q1[group]+round(rnorm(sum(group),10,20))
+
+b_outcome_q2[group]<-b_outcome_q2[group]+round(rnorm(sum(group),10,20))
+b_outcome_q2[group]<-b_outcome_q2[group]+round(rnorm(sum(group),10,20))
+
+b_outcome_q3[group]<-b_outcome_q3[group]+round(rnorm(sum(group),10,20))
+b_outcome_q3[group]<-b_outcome_q3[group]+round(rnorm(sum(group),10,20))
+
+b_outcome_q4[group]<-b_outcome_q4[group]+round(rnorm(sum(group),10,20))
+b_outcome_q4[group]<-b_outcome_q4[group]+round(rnorm(sum(group),10,20))
+
+```
+Generate the variables that vary for each sample
+going to output each sample to a seperate text file
+```{r}
+for(iSample in 1:nSamples)
+  {
+  fname=sprintf('data/sample-%02d.csv',iSample)
+  bp_s<-b_bp_s + round(rnorm(nPatients,mean=0,sd=10))
+  age<-b_age+iSample
+  outcome_q1<-b_outcome_q1+(iSample * abs(round(rnorm(nPatients,mean=0,sd=0.1))))
+  outcome_q2<-b_outcome_q2+(iSample * abs(round(rnorm(nPatients,mean=0,sd=0.1))))
+  outcome_q3<-b_outcome_q3+(iSample * abs(round(rnorm(nPatients,mean=0,sd=0.1))))
+  outcome_q4<-b_outcome_q4+(iSample * abs(round(rnorm(nPatients,mean=0,sd=0.1))))
+  
+  df<-data.frame('ID'=subID,
+                 'Gender'=gender,
+                 'Group'=group,
+                 'BloodPressure'=bp_s,
+                 'Aneurisms_q1'=outcome_q1,
+                 'Aneurisms_q2'=outcome_q2,
+                 'Aneurisms_q3'=outcome_q3,
+                 'Aneurisms_q4'=outcome_q4)
+  
+  write.csv(df,fname,row.names=FALSE)
+  }
+```
