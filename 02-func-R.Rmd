@@ -13,7 +13,7 @@ opts_chunk$set(fig.path = "fig/02-func-R-")
 ## Creating Functions
 
 If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics. 
-But we have twelve files to check, and may have more in the future.
+But we have several files to check, and may have more in the future.
 In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.
 
 #### Objectives
@@ -200,17 +200,17 @@ span <- function(a) {
   return(diff)
 }
 
-dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
-# span of inflammation data
-span(dat)
+dat <- read.csv(file = "data/sample-01.csv", header = TRUE)
+# span of aneurism data
+span(dat[,5:8])
 ```
 
 Notice `span` assigns a value to variable called `diff`. We might very well use a variable with the same name (`diff`) to hold the inflammation data:
 
 ```{r}
-diff <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
+diff <- read.csv(file = "data/sample-01.csv", header = TRUE)
 # span of inflammation data
-span(diff)
+span(diff[,5:8])
 ```
 
 We don't expect the variable `diff` to have the value `r span(diff)` after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
@@ -256,8 +256,8 @@ center(z, 3)
 That looks right, so let's try center on our real data. We'll center the inflammation data from day 4 around 0:
 
 ```{r}
-dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
-centered <- center(dat[, 4], 0)
+dat <- read.csv(file = "data/sample-01.csv", header = FALSE)
+centered <- center(dat[, 5], 0)
 head(centered)
 ```
 
@@ -265,11 +265,11 @@ It's hard to tell from the default output whether the result is correct, but the
 
 ```{r}
 # original min
-min(dat[, 4])
+min(dat[, 5])
 # original mean
-mean(dat[, 4])
+mean(dat[, 5])
 # original max
-max(dat[, 4])
+max(dat[, 5])
 # centered min
 min(centered)
 # centered mean
@@ -284,7 +284,7 @@ We can even go further and check that the standard deviation hasn't changed:
 
 ```{r}
 # original standard deviation
-sd(dat[, 4])
+sd(dat[, 5])
 # centerted standard deviation
 sd(centered)
 ```
@@ -294,14 +294,14 @@ Let's do this instead:
 
 ```{r}
 # difference in standard deviations before and after
-sd(dat[, 4]) - sd(centered)
+sd(dat[, 5]) - sd(centered)
 ```
 
 Sometimes, a very small difference can be detected due to rounding at very low decimal places.
 R has a useful function for comparing two objects allowing for rounding errors, `all.equal`:
 
 ```{r}
-all.equal(sd(dat[, 4]), sd(centered))
+all.equal(sd(dat[, 5]), sd(centered))
 ```
 
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
@@ -329,22 +329,22 @@ You will want to switch to this more formal method of writing documentation when
 
 #### Challenges
 
-  + Write a function called `analyze` that takes a filename as a argument and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
-  `analyze("data/inflammation-01.csv")` should produce the graphs already shown, while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
+  + Write a function called `analyze` that takes a filename as a argument and displays the three graphs produced in the [previous lesson][01] (average, min and max aneurism count of each quadrant).
+  `analyze("data/sample-01.csv")` should produce the graphs already shown, while `analyze("data/sample-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
 
 [01]: 01-starting-with-data.html
 
 ```{r, eval=FALSE, include=FALSE}
 analyze <- function(filename) {
-  # Plots the average, min, and max inflammation over time.
+  # Plots the average, min, and max aneurism count over time.
   # Input is character string of a csv file.
-  dat <- read.csv(file = filename, header = FALSE)
-  avg_day_inflammation <- apply(dat, 2, mean)
-  plot(avg_day_inflammation)
-  max_day_inflammation <- apply(dat, 2, max)
-  plot(max_day_inflammation)
-  min_day_inflammation <- apply(dat, 2, min)
-  plot(min_day_inflammation)
+  dat <- read.csv(file = filename, header = TRUE)
+  avg_quad_aneurism <- apply(dat[,5:8], 2, mean)
+  plot(avg_quad_aneurism)
+  max_quad_aneurism <- apply(dat[,5:8], 2, max)
+  plot(max_quad_aneurism)
+  min_quad_aneurism <- apply(dat[,5:8], 2, min)
+  plot(min_quad_aneurism)
 }
 ```
 
@@ -365,28 +365,28 @@ rescale <- function(v) {
   + Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
 
 ```{r rescale-test, include=FALSE}
-answer <- rescale(dat[, 4])
+answer <- rescale(dat[, 5])
 min(answer)
 max(answer)
 plot(answer)
-plot(dat[, 4], answer)  # This hasn't been introduced yet, but it may be
+plot(dat[, 5], answer)  # This hasn't been introduced yet, but it may be
                         # useful to show when explaining the answer.
 ```
 
 ### Defining Defaults
 
-We have passed arguments to functions in two ways: directly, as in `dim(dat)`, and by name, as in `read.csv(file = "data/inflammation-01.csv", header = FALSE)`.
+We have passed arguments to functions in two ways: directly, as in `dim(dat)`, and by name, as in `read.csv(file = "data/sample-01.csv", header = FALSE)`.
 In fact, we can pass the arguments to `read.csv` without naming them:
 
 ```{r}
-dat <- read.csv("data/inflammation-01.csv", FALSE)
+dat <- read.csv("data/sample-01.csv", TRUE)
 ```
 
 However, the position of the arguments matters if they are not named.
 
 ```{r}
-dat <- read.csv(header = FALSE, file = "data/inflammation-01.csv")
-dat <- read.csv(FALSE, "data/inflammation-01.csv")
+dat <- read.csv(header = TRUE, file = "data/sample-01.csv")
+dat <- read.csv(TRUE, "data/sample-01.csv")
 ```
 
 To understand what's going on, and make our own functions easier to use, let's re-define our `center` function like this:
@@ -471,7 +471,7 @@ This tells us that `read.csv()` has one argument, `file`, that doesn't have a de
 Now we understand why the following gives an error:
 
 ```{r, results="hide"}
-dat <- read.csv(FALSE, "data/inflammation-01.csv")
+dat <- read.csv(TRUE, "data/inflammation-01.csv")
 ```
 
 It fails because `FALSE` is assigned to `file` and the filename is assigned to the argument `header`.
@@ -489,10 +489,10 @@ rescale <- function(v, lower = 0, upper = 1) {
   result <- (v - L) / (H - L) * (upper - lower) + lower
   return(result)
 }
-answer <- rescale(dat[, 4], lower = 2, upper = 5)
+answer <- rescale(dat[, 5], lower = 2, upper = 5)
 min(answer)
 max(answer)
-answer <- rescale(dat[, 4], lower = -5, upper = -2)
+answer <- rescale(dat[, 5], lower = -5, upper = -2)
 min(answer)
 max(answer)
 ```
@@ -512,14 +512,14 @@ max(answer)
 #### Next Steps
 
 We now have a function called analyze to visualize a single data set.
-We could use it to explore all 12 of our current data sets like this:
+We could use it to explore all of our current data sets like this:
 
 ```{r, eval=FALSE}
-analyze("data/inflammation-01.csv")
-analyze("data/inflammation-02.csv")
+analyze("data/sample-01.csv")
+analyze("data/sample-02.csv")
 #...
-analyze("data/inflammation-12.csv")
+analyze("data/sample-05.csv")
 ```
 
-but the chances of us typing all 12 filenames correctly aren't great, and we'll be even worse off if we get another hundred files.
+but the chances of us typing all filenames correctly aren't great, and we'll be even worse off if we get another hundred files.
 What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.
