@@ -57,7 +57,16 @@ So far we have plotted a single vector of numbers. R automatically uses the posi
 We can explicity define both the x and y axis.
 
 ```{r}
-plot(y=dat$BloodPressure)
+plot(y=dat$BloodPressure,x=dat$Age)
+```
+
+#### Challenge
+1. Produce 4 plots showing the effect of Treatment (Group) on Aneurism count for each quadrant.
+
+What type of plot is shown, why?
+
+### Plotting against a factor
+When plotting against a factor (with more than two levels) R automatically creates a boxplot. This is often a more useful visualisation.
 
 #### Key Points
 
