@@ -46,7 +46,7 @@ We can change the current working directory to the location of the CSV files usi
 For example, if the CSV files are located in a directory named `swc` in our home directory, we would change the working directory using the following command:
 
 ```{r, eval=FALSE}
-setwd("~/swc")
+setwd("~/swc/")
 ```
 
 Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
@@ -291,6 +291,11 @@ barplot(table(exprmt))
 --->
 
 ### Addressing data
+There are 3 main ways to address data in a data frame:
+* By Index
+* By Logical vector
+* By Name (columns only)
+
 #### By Index
 We can see the dimensions, or [shape](../../gloss.html#shape), of the data frame like this:
 
@@ -350,9 +355,22 @@ x <- c(5,3,7,10,15,13,17)
 x[c(TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE)]
 ```
 
-Logical vectors can be created using `Relational Operators` e.g. `< > = !=`.
+Logical vectors can be created using `Relational Operators` e.g. `< , > ,  == , !=`.
 ```{r}
 x > 10
+```
+
+#### By Name
+Columns in a dataframe can be named. In our case these names came from the header row of the csv file. Column names can be listed with the `names()` command.
+
+```{r}
+names(dat)
+```
+
+Columns can be addressed using the `$` operator
+
+```{r}
+dat$Gender
 ```
 
 
@@ -378,7 +396,38 @@ element[4:6]
 
 Index addressing and Logical addressing can be combined. 
 
-3. Using Index addressing for the columns and Logical addressing for the rows, select all the Gender values that are lower case "m".
+3. Using Index addressing for the columns and Logical addressing for the rows, select all the rows with lower case "m" for gender.
+
+```{r}
+#Create an index vector for the lower case "m"
+index<-dat$Gender=="m"
+dat[index,]
+```
+
+### Combining indexing and assignment
+
+We have seen how we slice data using indexing and how we can assign values to variables using the assignment operator.
+We can combine these two operations:
+
+```{r}
+x <- c(5,3,7,10,15,13,17)
+x[x>10] <- 0
+
+x
+```
+
+### Challenge
+
+1. Combine indexing and assigment to correct the Gender column so that all values are uppercase
+
+```{r}
+index_m<-dat$Gender=='m'
+index_f<-dat$Gender=='f'
+
+dat[index_m=='m',2]<-'M'
+dat[index_f=='f',2]<-'F'
+
+```
 
 
 ### Manipulating Data
