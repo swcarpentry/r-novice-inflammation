@@ -459,8 +459,8 @@ Plotting the values is done with the function `plot`.
 plot(avg_eye_aneurisms)
 ```
 
-Above, we gave the function `plot` a vector of numbers corresponding to the average inflammation per day across all patients.
-`plot` created a scatter plot where the y-axis is the average inflammation level and the x-axis is the order, or index, of the values in the vector, which in this case correspond to the 4 quadrants of the eye.
+Above, we gave the function `plot` a vector of numbers corresponding to the average aneurism count per quadrant across all patients.
+`plot` created a scatter plot where the y-axis is the average aneurism counts and the x-axis is the order, or index, of the values in the vector, which in this case correspond to the 4 quadrants of the eye.
 
 Let's have a look at two other statistics: the maximum and minimum inflammation per day.
 
