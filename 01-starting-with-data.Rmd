@@ -178,76 +178,6 @@ The output tells us that data currently is a data frame in R.
 This is similar to a spreadsheet in MS Excel that many of us are familiar with using.
 Data frames are very useful for storing data because you can have a continuous variable, e.g. rainfall, in one column and a categorical variable, e.g. month, in another.
 
-We can see the dimensions, or [shape](../../gloss.html#shape), of the data frame like this:
-
-```{r}
-dim(dat)
-```
-
-This tells us that our data frame, `dat`, has `r nrow(dat)` rows and `r ncol(dat)` columns.
-
-If we want to get a single value from the data frame, we can provide an [index](../../gloss.html#index) in square brackets, just as we do in math:
-
-```{r}
-# first value in dat
-dat[1, 1]
-# middle value in dat
-dat[30, 4]
-```
-
-An index like `[30, 20]` selects a single element of a data frame, but we can select whole sections as well. 
-For example, we can select the first ten patients (rows) of values for the first four observations (columns) like this:
-
-```{r}
-dat[1:10, 1:4]
-```
-
-The [slice](../../gloss.html#slice) `1:4` means, "Start at index 1 and go to index 4."
-
-The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
-
-```{r}
-dat[5:10, 1:4]
-```
-We can use the function `c`, which stands for **c**ombine, to select non-contiguous values:
-
-```{r}
-dat[c(3, 8, 37, 56), c(1, 3, 6)]
-```
-
-We also don't have to provide a slice for either the rows or the columns.
-If we don't include a slice for the rows, R returns all the rows; if we don't include a slice for the columns, R returns all the columns.
-If we don't provide a slice for either rows or columns, e.g. `dat[, ]`, R returns the full data frame.
-
-```{r}
-# All columns from row 5
-dat[5, ]
-# All rows from column 4
-dat[, 4]
-```
-
-#### Challenge
-
-A subsection of a data frame is called a [slice](../../gloss.html#slice).
-We can take slices of character vectors as well:
-
-```{r}
-element <- c("o", "x", "y", "g", "e", "n")
-# first three characters
-element[1:3]
-# last three characters
-element[4:6]
-```
-
-1.  If the first four characters are selected using the slice `element[1:4]`, how can we obtain the first four characters in reverse order?
-    
-1.  What is `element[-1]`?
-    What is `element[-4]`?
-    Given those answers,
-    explain what `element[-1:-4]` does.
-
-1.  Use a slice of `element` to create a new character vector that spells the word "eon", e.g. `c("e", "o", "n")`.
-
 ### Column types
 
 A data frame is made up of columns of data. The columns do not have to have the same type.
@@ -360,6 +290,95 @@ barplot(table(exprmt))
 ```
 --->
 
+### Addressing data
+#### By Index
+We can see the dimensions, or [shape](../../gloss.html#shape), of the data frame like this:
+
+```{r}
+dim(dat)
+```
+
+This tells us that our data frame, `dat`, has `r nrow(dat)` rows and `r ncol(dat)` columns.
+
+If we want to get a single value from the data frame, we can provide an [index](../../gloss.html#index) in square brackets, just as we do in math:
+
+```{r}
+# first value in dat
+dat[1, 1]
+# middle value in dat
+dat[30, 4]
+```
+
+An index like `[30, 20]` selects a single element of a data frame, but we can select whole sections as well. 
+For example, we can select the first ten patients (rows) of values for the first four observations (columns) like this:
+
+```{r}
+dat[1:10, 1:4]
+```
+
+The [slice](../../gloss.html#slice) `1:4` means, "Start at index 1 and go to index 4."
+
+The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
+
+```{r}
+dat[5:10, 1:4]
+```
+We can use the function `c`, which stands for **c**ombine, to select non-contiguous values:
+
+```{r}
+dat[c(3, 8, 37, 56), c(1, 3, 6)]
+```
+
+We also don't have to provide a slice for either the rows or the columns.
+If we don't include a slice for the rows, R returns all the rows; if we don't include a slice for the columns, R returns all the columns.
+If we don't provide a slice for either rows or columns, e.g. `dat[, ]`, R returns the full data frame.
+
+```{r}
+# All columns from row 5
+dat[5, ]
+# All rows from column 4
+dat[, 4]
+```
+
+#### Logical adressing
+
+We have seen how to address data structures using an index. Logical addressing is another useful approach.
+
+```{r}
+x <- c(5,3,7,10,15,13,17)
+
+x[c(TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE)]
+```
+
+Logical vectors can be created using `Relational Operators` e.g. `< > = !=`.
+```{r}
+x > 10
+```
+
+
+#### Challenge
+
+A subsection of a data frame is called a [slice](../../gloss.html#slice).
+We can take slices of character vectors as well:
+
+```{r}
+element <- c("o", "x", "y", "g", "e", "n")
+# first three characters
+element[1:3]
+# last three characters
+element[4:6]
+```
+
+1.  If the first four characters are selected using the slice `element[1:4]`, how can we obtain the first four characters in reverse order?
+    
+2.  What is `element[-1]`?
+    What is `element[-4]`?
+    Given those answers,
+    explain what `element[-1:-4]` does.
+
+Index addressing and Logical addressing can be combined. 
+
+3. Using Index addressing for the columns and Logical addressing for the rows, select all the Gender values that are lower case "m".
 
 
 ### Manipulating Data
@@ -455,9 +474,6 @@ min_eye_aneurism<- apply(dat[,5:8], 2, min)
 plot(min_eye_aneurism)
 ```
 
-#todo
-The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.
-
 #### Challenge
 
 Create a plot showing the standard deviation of the aneurims data 
@@ -478,7 +494,7 @@ for each quadrant across all patients.
 
 #### Next Steps
 
-Our work so far has looked at the first data sample, we have 4 more from subsequent years.
+Our work so far has looked at the data from the first site, we have 4 samples from other locations.
 We would like to check the others the same way, but typing in the same commands repeatedly is tedious and error-prone.
 Since computers don't get bored (that we know of), we should create a way to do a complete analysis with a single command, and then figure out how to repeat that step once for each file.
 These operations are the subjects of the next two lessons.
