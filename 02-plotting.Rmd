@@ -16,7 +16,7 @@ dat$Gender[dat$Gender=="m"]<-"M"
 dat$Gender[dat$Gender=="f"]<-"F"
 dat$Gender<-factor(dat$Gender)
 
-avg_eye_aneurisms<-apply(dat[,5:8],2,mean)
+avg_eye_aneurisms<-apply(dat[,6:9],2,mean)
 ```
 ### Plotting
 
@@ -37,12 +37,12 @@ Above, we gave the function `plot` a vector of numbers corresponding to the aver
 Let's have a look at two other statistics: the maximum and minimum inflammation per day.
 
 ```{r plot-max-aneurisms}
-max_eye_aneurism <- apply(dat[,5:8], 2, max)
+max_eye_aneurism <- apply(dat[,6:9], 2, max)
 plot(max_eye_aneurism)
 ```
 
 ```{r plot-min-aneurism}
-min_eye_aneurism<- apply(dat[,5:8], 2, min)
+min_eye_aneurism<- apply(dat[,6:9], 2, min)
 plot(min_eye_aneurism)
 ```
 
@@ -51,17 +51,16 @@ plot(min_eye_aneurism)
 Create a plot showing the standard deviation of the aneurims data 
 for each quadrant across all patients.
 
+### Defining x and y axes
+
+So far we have plotted a single vector of numbers. R automatically uses the position of the value as the x axis variable.
+We can explicity define both the x and y axis.
+
+```{r}
+plot(y=dat$BloodPressure)
+
 #### Key Points
 
-* Use `variable <- value` to assign a value to a variable in order to record it in memory.
-* Objects are created on demand whenever a value is assigned to them.
-* The function `dim` gives the dimensions of a data frame.
-* Use `object[x, y]` to select a single element from a data frame.
-* Use `from:to` to specify a sequence that includes the indices from `from` to `to`.
-* All the indexing and slicing that works on data frames also works on vectors.
-* Use `#` to add comments to programs.
-* Use `mean`, `max`, `min` and `sd` to calculate simple statistics.
-* Use `apply` to calculate statistics across the rows or columns of a data frame.
 * Use `plot` to create simple visualizations.
 
 #### Next Steps

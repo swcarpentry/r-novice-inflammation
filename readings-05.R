@@ -13,11 +13,11 @@ process <- function(filename, action) {
   dat <- read.csv(file = filename, header = TRUE)
   
   if (action == "--min") {
-    values <- apply(dat[,5:8], 1, min)
+    values <- apply(dat[,6:9], 1, min)
   } else if (action == "--mean") {
-    values <- apply(dat[,5:8], 1, mean)
+    values <- apply(dat[,6:9], 1, mean)
   } else if (action == "--max") {
-    values <- apply(dat[,5:8], 1, max)
+    values <- apply(dat[,6:9], 1, max)
   }
   cat(values, sep = "\n")
 }

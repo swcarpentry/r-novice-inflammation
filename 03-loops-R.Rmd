@@ -19,11 +19,11 @@ analyze <- function(filename) {
   # Plots the average, min, and max aneurism count over time.
   # Input is character string of a csv file.
   dat <- read.csv(file = filename, header = TRUE)
-  avg_quad_aneurism <- apply(dat[,5:8], 2, mean)
+  avg_quad_aneurism <- apply(dat[,6:9], 2, mean)
   plot(avg_quad_aneurism)
-  max_quad_aneurism <- apply(dat[,5:8], 2, max)
+  max_quad_aneurism <- apply(dat[,6:9], 2, max)
   plot(max_quad_aneurism)
-  min_quad_aneurism <- apply(dat[,5:8], 2, min)
+  min_quad_aneurism <- apply(dat[,6:9], 2, min)
   plot(min_quad_aneurism)
 }
 analyze("data/Site-01.csv")

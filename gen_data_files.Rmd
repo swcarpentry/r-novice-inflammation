@@ -69,6 +69,7 @@ for(iSite in 1:nSites)
                  'Gender'=gender,
                  'Group'=group,
                  'BloodPressure'=bp_s,
+                 'Age'=age,
                  'Aneurisms_q1'=round(outcome_q1),
                  'Aneurisms_q2'=round(outcome_q2),
                  'Aneurisms_q3'=round(outcome_q3),

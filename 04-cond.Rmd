@@ -33,11 +33,11 @@ analyze <- function(filename) {
   # Plots the average, min, and max aneurism count over time.
   # Input is character string of a csv file.
   dat <- read.csv(file = filename, header = TRUE)
-  avg_quad_aneurism <- apply(dat[,5:8], 2, mean)
+  avg_quad_aneurism <- apply(dat[,6:9], 2, mean)
   plot(avg_quad_aneurism)
-  max_quad_aneurism <- apply(dat[,5:8], 2, max)
+  max_quad_aneurism <- apply(dat[,6:9], 2, max)
   plot(max_quad_aneurism)
-  min_quad_aneurism <- apply(dat[,5:8], 2, min)
+  min_quad_aneurism <- apply(dat[,6:9], 2, min)
   plot(min_quad_aneurism)
 }
 ```
@@ -192,8 +192,8 @@ plot_dist <- function(x, threshold) {
 
 ```{r conditional-challenge}
 dat <- read.csv("data/Site-01.csv", header = FALSE)
-plot_dist(dat[, 5], threshold = 10)  # day (column) 10
-plot_dist(dat[1:5, 5], threshold = 10)  # samples (rows) 1-5 on day (column) 10
+plot_dist(dat[, 6], threshold = 10)  # Quadrant 1 (column 6)
+plot_dist(dat[1:5, 6], threshold = 10)  # samples (rows) 1-5 on quadrant 1 (column 6)
 ```
 
   + One of your collaborators prefers to see the distributions of the larger vectors as a histogram instead of as a boxplot.  In order to choose between a histogram and a boxplot we will edit the function `plot_dist` and add an additional argument `use_boxplot`.  By defualt we will set `use_boxplot` to `TRUE` which will create a boxplot when the vector is longer than `threshold`.  When `use_boxplot` is set to `FALSE`, `plot_dist` will instead plot a histogram for the larger vectors.  As before, if the length of the vector is shorter than `threshold`, `plot_dist` will create a stripchart.  A histogram is made with the `hist` command in R.  
@@ -212,9 +212,9 @@ plot_dist <- function(x, threshold, use_boxplot = TRUE) {
 
 ```{r conditional-challenge-hist}
 dat <- read.csv("data/Site-01.csv", header = FALSE)
-plot_dist(dat[, 5], threshold = 10, use_boxplot = TRUE)  # quadrant 1 (column 5) - create boxplot
-plot_dist(dat[, 5], threshold = 10, use_boxplot = FALSE)  # quadrant 1 (column 5) - create histogram
-plot_dist(dat[1:5, 5], threshold = 10)  # samples (rows) 1-5 on quadrant 1 (column) 5
+plot_dist(dat[, 6], threshold = 10, use_boxplot = TRUE)  # quadrant 1 (column 5) - create boxplot
+plot_dist(dat[, 6], threshold = 10, use_boxplot = FALSE)  # quadrant 1 (column 5) - create histogram
+plot_dist(dat[1:5, 6], threshold = 10)  # samples (rows) 1-5 on quadrant 1 (column) 5
 ```
 </div>
 
@@ -232,11 +232,11 @@ analyze <- function(filename, output = NULL) {
     pdf(output)
   }
   dat <- read.csv(file = filename, header = TRUE)
-  avg_quad_aneurism <- apply(dat[,5:8], 2, mean)
+  avg_quad_aneurism <- apply(dat[,6:9], 2, mean)
   plot(avg_quad_aneurism)
-  max_quad_aneurism <- apply(dat[,5:8], 2, max)
+  max_quad_aneurism <- apply(dat[,6:9], 2, max)
   plot(max_quad_aneurism)
-  min_quad_aneurism <- apply(dat[,5:8], 2, min)
+  min_quad_aneurism <- apply(dat[,6:9], 2, min)
   plot(min_quad_aneurism)
 
   if (!is.null(output)) {
@@ -299,7 +299,7 @@ Now we can save all of the results with just one line of code:
 analyze_all("sample")
 ```
 
-Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analzye_all`.
+Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analyze_all`.
 
 <div class="challenges" markdown="1">
 #### Challenges
@@ -317,11 +317,11 @@ analyze <- function(filename, output = NULL) {
     pdf(output)
   }
   dat <- read.csv(file = filename, header = TRUE)
-  avg_quad_aneurism <- apply(dat[,5:8], 2, mean)
+  avg_quad_aneurism <- apply(dat[,6:9], 2, mean)
   plot(avg_quad_aneurism, type='l')
-  max_quad_aneurism <- apply(dat[,5:8], 2, max)
+  max_quad_aneurism <- apply(dat[,6:9], 2, max)
   plot(max_quad_aneurism, type='l')
-  min_quad_aneurism <- apply(dat[,5:8], 2, min)
+  min_quad_aneurism <- apply(dat[,6:9], 2, min)
   plot(min_quad_aneurism, type='l')
   if (!is.null(output)) {
     dev.off()
