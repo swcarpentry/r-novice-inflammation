@@ -18,7 +18,7 @@ The data sets are stored in [comma-separated values](../../gloss.html#comma-sepa
 The first few rows of our first file look like this:
 
 ```{r echo = FALSE}
-tmp <- read.csv("data/sample-01.csv", header = TRUE, nrows = 5)
+tmp <- read.csv("data/Site-01.csv", header = TRUE, nrows = 5)
 write.table(tmp, quote = FALSE, sep = ",", row.names = FALSE, col.names = TRUE)
 rm(tmp)
 ```
@@ -55,7 +55,7 @@ Alternatively you can change the working directory using the RStudio GUI using t
 Now we could load the data into R using `read.csv`:
 
 ```{r, results="hide"}
-read.csv(file = "data/sample-01.csv", header = TRUE)
+read.csv(file = "data/Site-01.csv", header = TRUE)
 ```
 
 The expression `read.csv(...)` is a [function call](../../gloss.html#function-call) that asks R to run the function `read.csv`. 
@@ -72,7 +72,7 @@ The utility of a function is that it will perform its given action on whatever v
 For example, in this case if we provided the name of a different file to the argument `file`, `read.csv` would read it instead.
 We'll learn more of the details about functions and their arguments in the next lesson.
 
-Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `sample-01.csv`.
+Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `Site-01.csv`.
 Try it out.
 
 `read.csv` read the file, but didn't save the data in memory.
@@ -145,7 +145,7 @@ This is different from the way spreadsheets work.
 Now that we know how to assign things to variables, let's re-run `read.csv` and save its result:
 
 ```{r}
-dat <- read.csv(file = "data/sample-01.csv", header = TRUE)
+dat <- read.csv(file = "data/Site-01.csv", header = TRUE)
 ```
 
 This statement doesn't produce any output because assignment doesn't display anything.
@@ -249,6 +249,7 @@ element[4:6]
 1.  Use a slice of `element` to create a new character vector that spells the word "eon", e.g. `c("e", "o", "n")`.
 
 ### Column types
+
 A data frame is made up of columns of data. The columns do not have to have the same type.
 
 We can use the `class()` function to examine a single column.
@@ -270,7 +271,7 @@ We see the first two columns (ID and Gender) are type factor. Factors are a very
 
 This section is taken from the datacarpentry lessons git@github.com:datacarpentry/datacarpentry.git
 
-```{r, echo=FALSE, purl=TRUE}
+```{r, echo=FALSE}
 ### Factors
 ```
 
@@ -286,7 +287,7 @@ Once created, factors can only contain a pre-defined set values, known as
 *levels*. By default, R always sorts *levels* in alphabetical order. For
 instance, if you have a factor with 2 levels:
 
-```{r, purl=TRUE}
+```{r}
 sex <- factor(c("male", "female", "female", "male"))
 ```
 
@@ -295,7 +296,7 @@ R will assign `1` to the level `"female"` and `2` to the level `"male"` (because
 `"male"`). You can check this by using the function `levels()`, and check the
 number of levels using `nlevels()`:
 
-```{r, purl=FALSE}
+```{r}
 levels(sex)
 nlevels(sex)
 ```
@@ -305,7 +306,7 @@ to specify the order because it is meaningful (e.g., "low", "medium", "high") or
 it is required by particular type of analysis. Additionally, specifying the
 order of the levels allows to compare levels:
 
-```{r, purl=TRUE, error=TRUE}
+```{r, error=TRUE}
 food <- factor(c("low", "high", "medium", "high", "low", "medium", "high"))
 levels(food)
 food <- factor(food, levels=c("low", "medium", "high"))
@@ -331,7 +332,7 @@ If you need to convert a factor to a character vector, simply use
 Converting a factor to a numeric vector is however a little trickier, and you
 have to go via a character vector. Compare:
 
-```{r, purl=TRUE}
+```{r}
 f <- factor(c(1, 5, 10, 2))
 as.numeric(f)               ## wrong! and there is no warning...
 as.numeric(as.character(f)) ## works...
@@ -343,7 +344,7 @@ as.numeric(levels(f))[f]    ## The recommended way.
 The function `table()` tabulates observations and can be used to create
 bar plots quickly. For instance:
 
-```{r, results='show', purl=TRUE}
+```{r, results='show'}
 ## Question: How can you recreate this plot but by having "control"
 ## being listed last instead of first?
 exprmt <- factor(c("treat1", "treat2", "treat1", "treat3", "treat1", "control",
@@ -353,7 +354,7 @@ barplot(table(exprmt))
 ```
 
 <!---
-```{r, purl=FALSE}
+```{r}
 exprmt <- factor(exprmt, levels=c("treat1", "treat2", "treat3", "control"))
 barplot(table(exprmt))
 ```

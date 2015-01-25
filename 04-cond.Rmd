@@ -63,8 +63,8 @@ And in the likely situation that we want to change how the data is processed or 
 Here's how we can save all three plots of the first aneurism data set in a pdf file:
 
 ```{r, results='hide'}
-pdf("output/aneurism-01.pdf")
-analyze("data/sample-01.csv")
+pdf("output/Site-01.pdf")
+analyze("data/Site-01.csv")
 dev.off()
 ```
 
@@ -191,7 +191,7 @@ plot_dist <- function(x, threshold) {
 ```
 
 ```{r conditional-challenge}
-dat <- read.csv("data/sample-01.csv", header = FALSE)
+dat <- read.csv("data/Site-01.csv", header = FALSE)
 plot_dist(dat[, 5], threshold = 10)  # day (column) 10
 plot_dist(dat[1:5, 5], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 ```
@@ -211,7 +211,7 @@ plot_dist <- function(x, threshold, use_boxplot = TRUE) {
 ```
 
 ```{r conditional-challenge-hist}
-dat <- read.csv("data/sample-01.csv", header = FALSE)
+dat <- read.csv("data/Site-01.csv", header = FALSE)
 plot_dist(dat[, 5], threshold = 10, use_boxplot = TRUE)  # quadrant 1 (column 5) - create boxplot
 plot_dist(dat[, 5], threshold = 10, use_boxplot = FALSE)  # quadrant 1 (column 5) - create histogram
 plot_dist(dat[1:5, 5], threshold = 10)  # samples (rows) 1-5 on quadrant 1 (column) 5
@@ -238,7 +238,7 @@ analyze <- function(filename, output = NULL) {
   plot(max_quad_aneurism)
   min_quad_aneurism <- apply(dat[,5:8], 2, min)
   plot(min_quad_aneurism)
-}
+
   if (!is.null(output)) {
     dev.off()
   }
@@ -260,21 +260,21 @@ is.null(output)
 
 Now we can use `analyze` both interactively:
 
-```{r sample-01}
-analyze("data/sample-01.csv")
+```{r Site-01}
+analyze("data/Site-01.csv")
 ```
 
 and to save plots:
 
 ```{r results='hide'}
-analyze("data/sample-01.csv", output = "sample-01.pdf")
+analyze("data/Site-01.csv", output = "Site-01.pdf")
 ```
 
 This now works well when we want to process one data file at a time, but how can we specify the output file in `analyze_all`?
 We need to substitute the filename ending "csv" with "pdf", which we can do using the function `sub`:
 
 ```{r}
-f <- "data/sample-01.csv"
+f <- "data/Site-01.csv"
 sub("csv", "pdf", f)
 ```
 

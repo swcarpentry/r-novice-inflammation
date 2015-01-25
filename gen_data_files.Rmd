@@ -18,59 +18,61 @@ roundn<-function(val,n)
 
 ```{r}
 nPatients<-100
-nSamples<-5
+nSites<-5
 ```
 
 create the variables that will stay the same across all samples
 ```{r}
 subID<-sprintf('Sub%03d',1:nPatients)
-gender<-sample(c('m','M','f','F',NA),nPatients,TRUE,prob=c(0.25,0.1,0.35,0.1,0.1))
+gender<-sample(c('m','M','f','F'),nPatients,TRUE,prob=c(0.35,0.1,0.35,0.1))
 group<-vector(length=nPatients)
 group[1:round(nPatients/2)]<-TRUE
 b_bp_s<-round(rnorm(nPatients,mean=120,sd=15))
 b_age<-roundn(runif(nPatients,min=12,max=20),1)
 b_outcome_q1<-round(runif(nPatients,min=100,max=200))
 b_outcome_q2<-round(runif(nPatients,min=100,max=200))
-b_outcome_q3<-round(runif(nPatients,min=110,max=200))
-b_outcome_q4<-round(runif(nPatients,min=110,max=200))
+b_outcome_q3<-round(runif(nPatients,min=150,max=250))
+b_outcome_q4<-round(runif(nPatients,min=150,max=250))
 ```
 
 Fix the data so there is a group difference
 ```{r}
 b_outcome_q1[group]<-b_outcome_q1[group]+round(rnorm(sum(group),10,20))
-b_outcome_q1[group]<-b_outcome_q1[group]+round(rnorm(sum(group),10,20))
-
 b_outcome_q2[group]<-b_outcome_q2[group]+round(rnorm(sum(group),10,20))
-b_outcome_q2[group]<-b_outcome_q2[group]+round(rnorm(sum(group),10,20))
-
 b_outcome_q3[group]<-b_outcome_q3[group]+round(rnorm(sum(group),10,20))
-b_outcome_q3[group]<-b_outcome_q3[group]+round(rnorm(sum(group),10,20))
-
-b_outcome_q4[group]<-b_outcome_q4[group]+round(rnorm(sum(group),10,20))
 b_outcome_q4[group]<-b_outcome_q4[group]+round(rnorm(sum(group),10,20))
 
 ```
 Generate the variables that vary for each sample
 going to output each sample to a seperate text file
 ```{r}
-for(iSample in 1:nSamples)
+for(iSite in 1:nSites)
   {
-  fname=sprintf('data/sample-%02d.csv',iSample)
+  fname=sprintf('data/Site-%02d.csv',iSite)
   bp_s<-b_bp_s + round(rnorm(nPatients,mean=0,sd=10))
-  age<-b_age+iSample
-  outcome_q1<-b_outcome_q1+(iSample * abs(round(rnorm(nPatients,mean=0,sd=0.1))))
-  outcome_q2<-b_outcome_q2+(iSample * abs(round(rnorm(nPatients,mean=0,sd=0.1))))
-  outcome_q3<-b_outcome_q3+(iSample * abs(round(rnorm(nPatients,mean=0,sd=0.1))))
-  outcome_q4<-b_outcome_q4+(iSample * abs(round(rnorm(nPatients,mean=0,sd=0.1))))
+  age<-roundn(runif(nPatients,min=12,max=20),1)
+  outcome_q1<-b_outcome_q1+rnorm(nPatients,mean=0,sd=25)
+  outcome_q2<-b_outcome_q2+rnorm(nPatients,mean=0,sd=25)
+  outcome_q3<-b_outcome_q3+rnorm(nPatients,mean=0,sd=25)
+  outcome_q4<-b_outcome_q4+rnorm(nPatients,mean=0,sd=25)
+  
+  if(iSite == 3)
+    {
+    outcome_q1<-outcome_q1 / 10
+    outcome_q2<-outcome_q2 / 10
+    outcome_q3<-outcome_q3 / 10
+    outcome_q4<-outcome_q4 / 10
+    
+    }
   
   df<-data.frame('ID'=subID,
                  'Gender'=gender,
                  'Group'=group,
                  'BloodPressure'=bp_s,
-                 'Aneurisms_q1'=outcome_q1,
-                 'Aneurisms_q2'=outcome_q2,
-                 'Aneurisms_q3'=outcome_q3,
-                 'Aneurisms_q4'=outcome_q4)
+                 'Aneurisms_q1'=round(outcome_q1),
+                 'Aneurisms_q2'=round(outcome_q2),
+                 'Aneurisms_q3'=round(outcome_q3),
+                 'Aneurisms_q4'=round(outcome_q4))
   
   write.csv(df,fname,row.names=FALSE)
   }
