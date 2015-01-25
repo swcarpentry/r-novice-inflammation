@@ -205,15 +205,16 @@ dat <- read.csv(file = "data/sample-01.csv", header = TRUE)
 span(dat[,5:8])
 ```
 
-Notice `span` assigns a value to variable called `diff`. We might very well use a variable with the same name (`diff`) to hold the inflammation data:
+Notice `span` assigns a value to variable called `diff`. We might very well use a variable with the same name (`diff`) to hold the data:
 
 ```{r}
 diff <- read.csv(file = "data/sample-01.csv", header = TRUE)
-# span of inflammation data
+# span of aneurism data
 span(diff[,5:8])
 ```
 
-We don't expect the variable `diff` to have the value `r span(diff)` after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
+
+We don't expect the variable `diff` to have the value `r span(diff[,5:8])` after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
 And yes, we could probably choose a different name than `diff` for our variable in this case, but we don't want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.
 
 The big idea here is [encapsulation](../../gloss.html#encapsulation), and it's the key to writing correct, comprehensible programs.
@@ -253,11 +254,11 @@ z
 center(z, 3)
 ```
 
-That looks right, so let's try center on our real data. We'll center the inflammation data from day 4 around 0:
+That looks right, so let's try center on our real data. We'll center the blood pressure data from all patients around 0:
 
 ```{r}
-dat <- read.csv(file = "data/sample-01.csv", header = FALSE)
-centered <- center(dat[, 5], 0)
+dat <- read.csv(file = "data/sample-01.csv", header = TRUE)
+centered <- center(dat[, 4], 0)
 head(centered)
 ```
 
@@ -265,11 +266,11 @@ It's hard to tell from the default output whether the result is correct, but the
 
 ```{r}
 # original min
-min(dat[, 5])
+min(dat[, 4])
 # original mean
-mean(dat[, 5])
+mean(dat[, 4])
 # original max
-max(dat[, 5])
+max(dat[, 4])
 # centered min
 min(centered)
 # centered mean
@@ -284,7 +285,7 @@ We can even go further and check that the standard deviation hasn't changed:
 
 ```{r}
 # original standard deviation
-sd(dat[, 5])
+sd(dat[, 4])
 # centerted standard deviation
 sd(centered)
 ```
@@ -294,14 +295,14 @@ Let's do this instead:
 
 ```{r}
 # difference in standard deviations before and after
-sd(dat[, 5]) - sd(centered)
+sd(dat[, 4]) - sd(centered)
 ```
 
 Sometimes, a very small difference can be detected due to rounding at very low decimal places.
 R has a useful function for comparing two objects allowing for rounding errors, `all.equal`:
 
 ```{r}
-all.equal(sd(dat[, 5]), sd(centered))
+all.equal(sd(dat[, 4]), sd(centered))
 ```
 
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
@@ -375,7 +376,7 @@ plot(dat[, 5], answer)  # This hasn't been introduced yet, but it may be
 
 ### Defining Defaults
 
-We have passed arguments to functions in two ways: directly, as in `dim(dat)`, and by name, as in `read.csv(file = "data/sample-01.csv", header = FALSE)`.
+We have passed arguments to functions in two ways: directly, as in `dim(dat)`, and by name, as in `read.csv(file = "data/sample-01.csv", header = TRUE)`.
 In fact, we can pass the arguments to `read.csv` without naming them:
 
 ```{r}
@@ -471,7 +472,7 @@ This tells us that `read.csv()` has one argument, `file`, that doesn't have a de
 Now we understand why the following gives an error:
 
 ```{r, results="hide"}
-dat <- read.csv(TRUE, "data/inflammation-01.csv")
+dat <- read.csv(FALSE, "data/sample-01.csv")
 ```
 
 It fails because `FALSE` is assigned to `file` and the filename is assigned to the argument `header`.
