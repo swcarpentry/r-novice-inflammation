@@ -62,8 +62,8 @@ The expression `read.csv(...)` is a [function call](../../gloss.html#function-ca
 
 `read.csv` has two [arguments](../../gloss.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
 The filename needs to be a character string (or [string](../../gloss.html#string) for short), so we put it in quotes.
-Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers.
-We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
+Assigning the second argument, `header`, to be `TRUE` indicates that the data file does have column headers.
+We'll talk more about the value `TRUE`, and its converse `FALSE`, in lesson 04.
 
 > **Tip:** `read.csv` actually has many more arguments that you may find useful when importing your own data in the future.
 You can learn more about these options in this supplementary [lesson](01-supp-ReadWriteCsv.html).
