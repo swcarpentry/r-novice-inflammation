@@ -494,40 +494,6 @@ We'll learn why this is so in the next lesson.
 For example, you can calculate the row-wise or column-wise means with `rowMeans` and `colMeans`, respectively.
 
 
-
-### Plotting
-
-The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and the best way to develop insight is often to visualize data.
-Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R's plotting features. 
-
-Let's take a look at the average inflammation over time.
-Recall that we already calculated these values above using `apply(dat, 2, mean)` and saved them in the variable `avg_eye_aneurisms`.
-Plotting the values is done with the function `plot`.
-
-```{r plot-avg-aneurisms}
-plot(avg_eye_aneurisms)
-```
-
-Above, we gave the function `plot` a vector of numbers corresponding to the average aneurism count per quadrant across all patients.
-`plot` created a scatter plot where the y-axis is the average aneurism counts and the x-axis is the order, or index, of the values in the vector, which in this case correspond to the 4 quadrants of the eye.
-
-Let's have a look at two other statistics: the maximum and minimum inflammation per day.
-
-```{r plot-max-aneurisms}
-max_eye_aneurism <- apply(dat[,5:8], 2, max)
-plot(max_eye_aneurism)
-```
-
-```{r plot-min-aneurism}
-min_eye_aneurism<- apply(dat[,5:8], 2, min)
-plot(min_eye_aneurism)
-```
-
-#### Challenge
-
-Create a plot showing the standard deviation of the aneurims data 
-for each quadrant across all patients.
-
 #### Key Points
 
 * Use `variable <- value` to assign a value to a variable in order to record it in memory.
@@ -539,7 +505,7 @@ for each quadrant across all patients.
 * Use `#` to add comments to programs.
 * Use `mean`, `max`, `min` and `sd` to calculate simple statistics.
 * Use `apply` to calculate statistics across the rows or columns of a data frame.
-* Use `plot` to create simple visualizations.
+
 
 #### Next Steps
 
