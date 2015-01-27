@@ -229,7 +229,7 @@ temp
 
 
 ~~~{.output}
-Error in eval(expr, envir, enclos): objet 'temp' introuvable
+Error in eval(expr, envir, enclos): object 'temp' not found
 
 ~~~
 
@@ -303,7 +303,7 @@ result <- outside(fence(inside, outside))
 
 
 ~~~{.output}
-Error in eval(expr, envir, enclos): impossible de trouver la fonction "outside"
+Error in eval(expr, envir, enclos): could not find function "outside"
 
 ~~~
 
