@@ -58,9 +58,10 @@
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)</code></pre>
 <p>The expression <code>read.csv(...)</code> is a <a href="../../gloss.html#function-call">function call</a> that asks R to run the function <code>read.csv</code>.</p>
 <p><code>read.csv</code> has two <a href="../../gloss.html#argument">arguments</a>: the name of the file we want to read, and whether the first line of the file contains names for the columns of data. The filename needs to be a character string (or <a href="../../gloss.html#string">string</a> for short), so we put it in quotes. Assigning the second argument, <code>header</code>, to be <code>FALSE</code> indicates that the data file does not have column headers. We'll talk more about the value <code>FALSE</code>, and its converse <code>TRUE</code>, in lesson 04.</p>
-<blockquote>
-<p><strong>Tip:</strong> <code>read.csv</code> actually has many more arguments that you may find useful when importing your own data in the future. You can learn more about these options in this supplementary <a href="01-supp-ReadWriteCsv.html">lesson</a>.</p>
-</blockquote>
+<div id="tip" class="callout">
+<h2>Tip</h2>
+<p><code>read.csv</code> actually has many more arguments that you may find useful when importing your own data in the future. You can learn more about these options in this supplementary <a href="01-supp-ReadWriteCsv.html">lesson</a>.</p>
+</div>
 <p>The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s). For example, in this case if we provided the name of a different file to the argument <code>file</code>, <code>read.csv</code> would read it instead. We'll learn more of the details about functions and their arguments in the next lesson.</p>
 <p>Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file <code>inflammation-01.csv</code>. Try it out.</p>
 <p><code>read.csv</code> read the file, but didn't save the data in memory. To do that, we need to assign the data frame to a variable. A variable is just a name for a value, such as <code>x</code>, <code>current_temperature</code>, or <code>subject_id</code>. We can create a new variable simply by assigning a value to it using <code>&lt;-</code></p>
@@ -74,9 +75,10 @@
 <span class="fl">2.2</span> *<span class="st"> </span>weight_kg</code></pre>
 <pre class="output"><code>[1] 121
 </code></pre>
-<blockquote>
-<p><strong>Tip:</strong> We can add comments to our code using the <code>#</code> character. It is useful to document our code in this way so that others (and us the next time we read it) have an easier time following what the code is doing.</p>
-</blockquote>
+<div id="tip-1" class="callout">
+<h2>Tip</h2>
+<p>We can add comments to our code using the <code>#</code> character. It is useful to document our code in this way so that others (and us the next time we read it) have an easier time following what the code is doing.</p>
+</div>
 <p>We can also change an object's value by assigning it a new value:</p>
 <pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="fl">57.5</span>
 <span class="co"># weight in kilograms is now</span>
@@ -134,7 +136,7 @@ weight_lb</code></pre>
 5   1   1
 6   2   1
 </code></pre>
-<div id="challenge" class="challenge challenge">
+<div id="challenge" class="challenge">
 <h2>Challenge</h2>
 <p>Draw diagrams showing what variables refer to what values after each statement in the following program:</p>
 <pre class="sourceCode r"><code class="sourceCode r">mass &lt;-<span class="st"> </span><span class="fl">47.5</span>
@@ -237,19 +239,21 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 <p>What if we need the maximum inflammation for all patients, or the average for each day? As the diagram below shows, we want to perform the operation across a margin of the data frame:</p>
 <p><img src="fig/r-operations-across-axes.svg" alt="Operations Across Axes" /></p>
 <p>To support this, we can use the <code>apply</code> function.</p>
-<blockquote>
-<p><strong>Tip:</strong> To learn about a function in R, e.g. <code>apply</code>, we can read its help documention by running <code>help(apply)</code> or <code>?apply</code>.</p>
-</blockquote>
+<div id="tip-2" class="callout">
+<h2>Tip</h2>
+<p>To learn about a function in R, e.g. <code>apply</code>, we can read its help documention by running <code>help(apply)</code> or <code>?apply</code>.</p>
+</div>
 <p><code>apply</code> allows us to repeat a function on all of the rows (<code>MARGIN = 1</code>) or columns (<code>MARGIN = 2</code>) of a data frame.</p>
 <p>Thus, to obtain the average inflammation of each patient we will need to calculate the mean of all of the rows (<code>MARGIN = 1</code>) of the data frame.</p>
 <pre class="sourceCode r"><code class="sourceCode r">avg_patient_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">1</span>, mean)</code></pre>
 <p>And to obtain the average inflammation of each day we will need to calculate the mean of all of the columns (<code>MARGIN = 2</code>) of the data frame.</p>
 <pre class="sourceCode r"><code class="sourceCode r">avg_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, mean)</code></pre>
 <p>Since the second argument to <code>apply</code> is <code>MARGIN</code>, the above command is equivalent to <code>apply(dat, MARGIN = 2, mean)</code>. We'll learn why this is so in the next lesson.</p>
-<blockquote>
-<p><strong>Tip:</strong> Some common operations have more efficient alternatives. For example, you can calculate the row-wise or column-wise means with <code>rowMeans</code> and <code>colMeans</code>, respectively.</p>
-</blockquote>
-<div id="challenge-1" class="challenge challenge">
+<div id="tip-3" class="callout">
+<h2>Tip</h2>
+<p>Some common operations have more efficient alternatives. For example, you can calculate the row-wise or column-wise means with <code>rowMeans</code> and <code>colMeans</code>, respectively.</p>
+</div>
+<div id="challenge-1" class="challenge">
 <h2>Challenge</h2>
 <p>A subsection of a data frame is called a <a href="../../gloss.html#slice">slice</a>. We can take slices of character vectors as well:</p>
 </div>
@@ -282,7 +286,7 @@ element[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <span class="kw">plot</span>(min_day_inflammation)</code></pre>
 <p><img src="fig/01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" /></p>
 <p>The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.</p>
-<div id="challenge-2" class="challenge challenge">
+<div id="challenge-2" class="challenge">
 <h2>Challenge</h2>
 <p>Create a plot showing the standard deviation of the inflammation data for each day across all patients.</p>
 </div>
