@@ -401,7 +401,7 @@ Index addressing and Logical addressing can be combined.
 ```{r}
 #Create an index vector for the lower case "m"
 index<-dat$Gender=="m"
-dat[index,]
+head(dat[index,]) #N.B, using head function to limit output
 ```
 
 ### Combining indexing and assignment
@@ -424,11 +424,22 @@ x
 index_m<-dat$Gender=='m'
 index_f<-dat$Gender=='f'
 
-dat[index_m=='m',2]<-'M'
-dat[index_f=='f',2]<-'F'
+dat[index_m,2]<-'M'
+dat[index_f,2]<-'F'
 
 ```
+### Removing levels from a factor
 
+In the previous challenge we updated the data for Gender. R still thinks the levels "m" and "f" are valid for the Gender data.
+```{r}
+levels(dat$Gender)
+```
+
+The `droplevels` function will remove any unused levels
+```{r}
+dat<-droplevels(dat)
+levels(dat$Gender)
+```
 
 ### Manipulating Data
 
