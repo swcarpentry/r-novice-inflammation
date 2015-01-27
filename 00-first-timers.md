@@ -4,6 +4,9 @@ title: Programming with R
 subtitle: First timers
 minutes: 30
 ---
+> ## Objectives {.objectives}
+>
+> FIXME: Write these
 
 
 

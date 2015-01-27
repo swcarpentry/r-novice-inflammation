@@ -4,6 +4,11 @@ title: Programming with R
 subtitle: Making choices
 minutes: 30
 ---
+> ## Objectives {.objectives}
+> 
+> *   Save plot(s) in a pdf file.
+> *   Write conditional statements with `if` and `else`.
+> *   Correctly evaluate expressions containing `&` ("and") and `|` ("or").
 
 
 
@@ -13,13 +18,6 @@ Our previous lessons have shown us how to manipulate data, define our own functi
 However, the programs we have written so far always do the same things, regardless of what data they're given.
 We want programs to make choices based on the values they are manipulating.
 
-<div class="objectives" markdown="1">
-#### Objectives
-
-*   Save plot(s) in a pdf file.
-*   Write conditional statements with `if` and `else`.
-*   Correctly evaluate expressions containing `&` ("and") and `|` ("or").
-</div>
 
 ### Saving plots to a file
 
@@ -405,6 +403,13 @@ Now we can save all of the results with just one line of code:
 
 ~~~{.r}
 analyze_all("inflammation")
+~~~
+
+
+
+~~~{.output}
+Error in read.table(file = file, header = header, sep = sep, quote = quote, : no lines available in input
+
 ~~~
 
 Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analzye_all`.

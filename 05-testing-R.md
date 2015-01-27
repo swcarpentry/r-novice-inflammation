@@ -4,6 +4,13 @@ title: Programming with R
 subtitle: Defensive programming
 minutes: 30
 ---
+> ## Objectives {.objectives}
+> 
+> * Learn how to defensively program for potential errors
+> * `stop`
+> * `break`
+> * `continue`
+> * Programming with version control
 
 
 
@@ -18,14 +25,6 @@ To achieve that, we need to:
 * make sure we know what "correct" actually means.
 
 The good news is, doing these things will speed up our programming, not slow it down. As in real carpentry—the kind done with lumber—the time saved by measuring carefully before cutting a piece of wood is much greater than the time that measuring takes.
-
-## Objectives
-
-* Learn how to defensively program for potential errors
-* `stop`
-* `break`
-* `continue`
-* Programming with version control
 
 ## Debugging
 

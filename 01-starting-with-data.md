@@ -4,6 +4,12 @@ title: Programming with R
 subtitle: Analyzing patient data
 minutes: 30
 ---
+> ## Objectives {.objectives}
+> * Read tabular data from a file into a program.
+> * Assign values to variables.
+> * Select individual values and subsections from data.
+> * Perform operations on a data frame of data.
+> * Display simple graphs.
 
 
 
@@ -31,14 +37,6 @@ We want to:
 * plot the result.
 
 To do all that, we'll have to learn a little bit about programming.
-
-#### Objectives
-
-* Read tabular data from a file into a program.
-* Assign values to variables.
-* Select individual values and subsections from data.
-* Perform operations on a data frame of data.
-* Display simple graphs.
 
 ### Loading Data
 

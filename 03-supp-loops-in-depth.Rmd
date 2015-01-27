@@ -4,6 +4,9 @@ title: Programming with R
 subtitle: Loops in R
 minutes: 30
 ---
+> ## Objectives {.objectives}
+>
+> FIXME: Write these
 
 ```{r, include = FALSE}
 source("tools/chunk-options.R")

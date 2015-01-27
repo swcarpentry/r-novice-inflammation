@@ -4,6 +4,9 @@ title: Programming with R
 subtitle: Dynamic reports with knitr
 minutes: 30
 ---
+> ## Objectives {.objectives}
+>
+> FIXME: Write these
 
 
 
