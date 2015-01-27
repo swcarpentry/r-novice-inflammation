@@ -330,7 +330,7 @@ You will want to switch to this more formal method of writing documentation when
 
 #### Challenges
 
-  + Write a function called `analyze` that takes a filename as a argument and displays the three graphs produced in the [previous lesson][01] (average, min and max aneurism count of each quadrant).
+  + Write a function called `analyze` that takes a filename as a argument and displays the four boxplots produced in the [previous lesson][01] (aneurism count given treatment for each quadrant).
   `analyze("data/Site-01.csv")` should produce the graphs already shown, while `analyze("data/Site-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
 
 [01]: 01-starting-with-data.html
@@ -340,12 +340,10 @@ analyze <- function(filename) {
   # Plots the average, min, and max aneurism per quadrant.
   # Input is character string of a csv file.
   dat <- read.csv(file = filename, header = TRUE)
-  avg_quad_aneurism <- apply(dat[,6:9], 2, mean)
-  plot(avg_quad_aneurism)
-  max_quad_aneurism <- apply(dat[,6:9], 2, max)
-  plot(max_quad_aneurism)
-  min_quad_aneurism <- apply(dat[,6:9], 2, min)
-  plot(min_quad_aneurism)
+  plot(x=dat$Group,y=dat$Aneurisms_q1)
+  plot(x=dat$Group,y=dat$Aneurisms_q2)
+  plot(x=dat$Group,y=dat$Aneurisms_q3)
+  plot(x=dat$Group,y=dat$Aneurisms_q4)
 }
 ```
 
