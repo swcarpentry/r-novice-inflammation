@@ -67,12 +67,12 @@
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 locale:
- [1] LC_CTYPE=fr_FR.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=fr_CA.UTF-8        LC_COLLATE=fr_FR.UTF-8    
- [5] LC_MONETARY=fr_CA.UTF-8    LC_MESSAGES=fr_FR.UTF-8   
- [7] LC_PAPER=fr_CA.UTF-8       LC_NAME=C                 
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=fr_CA.UTF-8 LC_IDENTIFICATION=C       
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
@@ -86,7 +86,7 @@ cat(args, sep = &quot;\n&quot;)
 </code></pre>
 <p>The function <code>commandArgs</code> extracts all the command line arguments and returns them as a vector. The function <code>cat</code>, similar to the <code>cat</code> of the Unix Shell, outputs the contents of the variable. Since we did not specify a filename for writing, <code>cat</code> sends the output to <a href="../../gloss.html#standard-output">standard output</a>, which we can then pipe to other Unix functions. Because we set the argument <code>sep</code> to <code>&quot;\n&quot;</code>, which is the symbol to start a new line, each element of the vector is printed on its own line. Let's see what happens when we run this program in the Unix Shell:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript print-args.R</code></pre>
-<pre class="output"><code>/usr/lib/R/bin/exec/R
+<pre class="output"><code>/usr/lib64/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -100,7 +100,7 @@ cat(args, sep = &quot;\n&quot;)
 </ul>
 <p>Thus running a file with Rscript is an easier way to run the following:</p>
 <pre class="sourceCode r"><code class="sourceCode r">R --slave --no-restore --file=print-args.R --args</code></pre>
-<pre class="output"><code>/usr/lib/R/bin/exec/R
+<pre class="output"><code>/usr/lib64/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -108,7 +108,7 @@ cat(args, sep = &quot;\n&quot;)
 </code></pre>
 <p>If we run it with a few arguments, however:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript print-args.R first second third</code></pre>
-<pre class="output"><code>/usr/lib/R/bin/exec/R
+<pre class="output"><code>/usr/lib64/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R

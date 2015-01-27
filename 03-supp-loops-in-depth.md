@@ -139,7 +139,7 @@ system.time(avg2 <- analyze2(filenames))
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -155,8 +155,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
-guillements
+na.strings, : EOF within quoted string
 
 ~~~
 
@@ -164,7 +163,7 @@ guillements
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -180,7 +179,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -196,32 +195,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
-
-~~~
-
-
-
-~~~{.output}
-Warning in mean.default(newX[, i], ...): argument is not numeric or
-logical: returning NA
-
-~~~
-
-
-
-~~~{.output}
-Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
-guillements
-
-~~~
-
-
-
-~~~{.output}
-Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -237,8 +211,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
-guillements
+na.strings, : EOF within quoted string
 
 ~~~
 
@@ -246,7 +219,7 @@ guillements
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -262,8 +235,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
-guillements
+na.strings, : EOF within quoted string
 
 ~~~
 
@@ -271,23 +243,7 @@ guillements
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
-
-~~~
-
-
-
-~~~{.output}
-Warning in mean.default(newX[, i], ...): argument is not numeric or
-logical: returning NA
-
-~~~
-
-
-
-~~~{.output}
-Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -303,8 +259,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
-guillements
+na.strings, : EOF within quoted string
 
 ~~~
 
@@ -312,7 +267,7 @@ guillements
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -328,23 +283,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
-
-~~~
-
-
-
-~~~{.output}
-Warning in mean.default(newX[, i], ...): argument is not numeric or
-logical: returning NA
-
-~~~
-
-
-
-~~~{.output}
-Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -360,8 +299,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
-guillements
+na.strings, : EOF within quoted string
 
 ~~~
 
@@ -369,7 +307,63 @@ guillements
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -414,7 +408,7 @@ system.time(avg3 <- analyze3(filenames))
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -430,8 +424,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
-guillements
+na.strings, : EOF within quoted string
 
 ~~~
 
@@ -439,7 +432,7 @@ guillements
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -455,7 +448,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -471,32 +464,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
-
-~~~
-
-
-
-~~~{.output}
-Warning in mean.default(newX[, i], ...): argument is not numeric or
-logical: returning NA
-
-~~~
-
-
-
-~~~{.output}
-Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
-guillements
-
-~~~
-
-
-
-~~~{.output}
-Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -512,8 +480,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
-guillements
+na.strings, : EOF within quoted string
 
 ~~~
 
@@ -521,7 +488,7 @@ guillements
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -537,8 +504,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
-guillements
+na.strings, : EOF within quoted string
 
 ~~~
 
@@ -546,23 +512,7 @@ guillements
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
-
-~~~
-
-
-
-~~~{.output}
-Warning in mean.default(newX[, i], ...): argument is not numeric or
-logical: returning NA
-
-~~~
-
-
-
-~~~{.output}
-Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -578,8 +528,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
-guillements
+na.strings, : EOF within quoted string
 
 ~~~
 
@@ -587,7 +536,7 @@ guillements
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -603,23 +552,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
-
-~~~
-
-
-
-~~~{.output}
-Warning in mean.default(newX[, i], ...): argument is not numeric or
-logical: returning NA
-
-~~~
-
-
-
-~~~{.output}
-Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
 
 ~~~
 
@@ -635,8 +568,7 @@ logical: returning NA
 
 ~~~{.output}
 Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-na.strings, : Fin de fichier (EOF) dans une chaîne de caractères entre
-guillements
+na.strings, : EOF within quoted string
 
 ~~~
 
@@ -644,7 +576,63 @@ guillements
 
 ~~~{.output}
 Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
-dec, : caractère(s) 'nul' au milieu de l'entrée
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.output}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.output}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
 
 ~~~
 
