@@ -49,9 +49,10 @@ carSpeeds &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span c
 5   Red    25   Arizona
 6  Blue    41   Arizona
 </code></pre>
-<blockquote>
-<p><strong>Tip:</strong> The default delimiter of the read.csv() function is a comma, but you can use other delimiters by supplying the 'sep' argument to the function (e.g., typing <code>sep = ';'</code> allows a semi-colon separated file to be correctly imported -see ?read.csv() for more information on this and other options for working with different file types).</p>
-</blockquote>
+<div id="tip" class="callout">
+<h2>Tip</h2>
+<p>The default delimiter of the <code>read.csv()</code> function is a comma, but you can use other delimiters by supplying the 'sep' argument to the function (e.g., typing <code>sep = ';'</code> allows a semi-colon separated file to be correctly imported -see <code>?read.csv()</code> for more information on this and other options for working with different file types).</p>
+</div>
 <p>The call above will import the data, but we have not taken advantage of several handy arguments that can be helpful in loading the data in the format we want. Let's explore some of these arguments.</p>
 <h4 id="the-header-argument">The header argument</h4>
 <p>The default for <code>read.csv(...)</code> is to set the <code>header</code> argument to <code>TRUE</code>. This means that the first row of values in the .csv is set as header information (column names). If your data set does not have a header, set the <code>header</code> argument to <code>FALSE</code>:</p>
@@ -79,19 +80,19 @@ carSpeeds &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span c
 
 carSpeeds$Color&lt;-<span class="st"> </span><span class="kw">ifelse</span>(carSpeeds$Color==<span class="st">&#39;Blue&#39;</span>, <span class="st">&#39;Green&#39;</span>, carSpeeds$Color)
 carSpeeds$Color</code></pre>
-<pre class="output"><code>  [1] &quot;Green&quot; &quot;4&quot;     &quot;Green&quot; &quot;5&quot;     &quot;3&quot;     &quot;Green&quot; &quot;Green&quot; &quot;1&quot;    
-  [9] &quot;5&quot;     &quot;3&quot;     &quot;3&quot;     &quot;5&quot;     &quot;Green&quot; &quot;Green&quot; &quot;1&quot;     &quot;3&quot;    
- [17] &quot;Green&quot; &quot;Green&quot; &quot;5&quot;     &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;3&quot;     &quot;Green&quot;
- [25] &quot;3&quot;     &quot;3&quot;     &quot;3&quot;     &quot;3&quot;     &quot;5&quot;     &quot;Green&quot; &quot;3&quot;     &quot;5&quot;    
- [33] &quot;1&quot;     &quot;3&quot;     &quot;1&quot;     &quot;1&quot;     &quot;Green&quot; &quot;3&quot;     &quot;1&quot;     &quot;3&quot;    
- [41] &quot;1&quot;     &quot;1&quot;     &quot;3&quot;     &quot;3&quot;     &quot;5&quot;     &quot;1&quot;     &quot;Green&quot; &quot;3&quot;    
- [49] &quot;3&quot;     &quot;1&quot;     &quot;1&quot;     &quot;3&quot;     &quot;5&quot;     &quot;3&quot;     &quot;Green&quot; &quot;Green&quot;
- [57] &quot;1&quot;     &quot;Green&quot; &quot;5&quot;     &quot;1&quot;     &quot;3&quot;     &quot;Green&quot; &quot;Green&quot; &quot;5&quot;    
- [65] &quot;1&quot;     &quot;3&quot;     &quot;3&quot;     &quot;1&quot;     &quot;Green&quot; &quot;5&quot;     &quot;Green&quot; &quot;3&quot;    
+<pre class="output"><code>  [1] &quot;Green&quot; &quot;1&quot;     &quot;Green&quot; &quot;5&quot;     &quot;4&quot;     &quot;Green&quot; &quot;Green&quot; &quot;2&quot;    
+  [9] &quot;5&quot;     &quot;4&quot;     &quot;4&quot;     &quot;5&quot;     &quot;Green&quot; &quot;Green&quot; &quot;2&quot;     &quot;4&quot;    
+ [17] &quot;Green&quot; &quot;Green&quot; &quot;5&quot;     &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;4&quot;     &quot;Green&quot;
+ [25] &quot;4&quot;     &quot;4&quot;     &quot;4&quot;     &quot;4&quot;     &quot;5&quot;     &quot;Green&quot; &quot;4&quot;     &quot;5&quot;    
+ [33] &quot;2&quot;     &quot;4&quot;     &quot;2&quot;     &quot;2&quot;     &quot;Green&quot; &quot;4&quot;     &quot;2&quot;     &quot;4&quot;    
+ [41] &quot;2&quot;     &quot;2&quot;     &quot;4&quot;     &quot;4&quot;     &quot;5&quot;     &quot;2&quot;     &quot;Green&quot; &quot;4&quot;    
+ [49] &quot;4&quot;     &quot;2&quot;     &quot;2&quot;     &quot;4&quot;     &quot;5&quot;     &quot;4&quot;     &quot;Green&quot; &quot;Green&quot;
+ [57] &quot;2&quot;     &quot;Green&quot; &quot;5&quot;     &quot;2&quot;     &quot;4&quot;     &quot;Green&quot; &quot;Green&quot; &quot;5&quot;    
+ [65] &quot;2&quot;     &quot;4&quot;     &quot;4&quot;     &quot;2&quot;     &quot;Green&quot; &quot;5&quot;     &quot;Green&quot; &quot;4&quot;    
  [73] &quot;5&quot;     &quot;5&quot;     &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;5&quot;    
- [81] &quot;1&quot;     &quot;Green&quot; &quot;5&quot;     &quot;1&quot;     &quot;1&quot;     &quot;3&quot;     &quot;3&quot;     &quot;5&quot;    
- [89] &quot;5&quot;     &quot;5&quot;     &quot;5&quot;     &quot;3&quot;     &quot;3&quot;     &quot;3&quot;     &quot;5&quot;     &quot;1&quot;    
- [97] &quot;5&quot;     &quot;1&quot;     &quot;1&quot;     &quot;5&quot;    
+ [81] &quot;2&quot;     &quot;Green&quot; &quot;5&quot;     &quot;2&quot;     &quot;2&quot;     &quot;4&quot;     &quot;4&quot;     &quot;5&quot;    
+ [89] &quot;5&quot;     &quot;5&quot;     &quot;5&quot;     &quot;4&quot;     &quot;4&quot;     &quot;4&quot;     &quot;5&quot;     &quot;2&quot;    
+ [97] &quot;5&quot;     &quot;2&quot;     &quot;2&quot;     &quot;5&quot;    
 </code></pre>
 <p>What happened?!? It looks like 'Blue' was replaced with 'Green', but every other color was turned into a number (as a character string, given the quote marks before and after). This is because the colors of the cars were loaded as factors, and the factor level was reported following replacement.</p>
 <p>Now, let's load the dataset using <code>stringsAsFactors=FALSE</code>, and see what happens when we try to replace 'Blue' with 'Green' in the <code>$Color</code> column:</p>
@@ -149,7 +150,7 @@ carSpeeds$State</code></pre>
  [81] &quot;4&quot;    &quot;2&quot;    &quot;2&quot;    &quot;Ohio&quot; &quot;Ohio&quot; &quot;Ohio&quot; &quot;4&quot;    &quot;Ohio&quot; &quot;4&quot;    &quot;4&quot;   
  [91] &quot;4&quot;    &quot;Ohio&quot; &quot;Ohio&quot; &quot;3&quot;    &quot;2&quot;    &quot;2&quot;    &quot;4&quot;    &quot;3&quot;    &quot;Ohio&quot; &quot;4&quot;   
 </code></pre>
-<div id="challenge" class="challenge challenge">
+<div id="challenge" class="challenge">
 <h2>Challenge</h2>
 <p>Suppose we want to keep the colors of cars as factors for some other operations we want to perform. Write code for replacing 'Blue' with 'Green' in the <code>$Color</code> column of the cars dataset without importing the data with <code>stringsAsFactors=FALSE</code>.</p>
 </div>
@@ -160,7 +161,7 @@ carSpeeds$State</code></pre>
  
 <span class="kw">unique</span>(carSpeeds$Color)</code></pre>
 <pre class="output"><code>[1] Green  Red  White Red   Black
-Levels: Black Green Red  Red White
+Levels:  Red Black Green Red White
 </code></pre>
 <p>Oops, we see two values for red cars.</p>
 <p>Let's try again, this time importing the data using the <code>strip.white</code> argument. NOTE - this argument must be accompanied by the <code>sep</code> argument, by which we indicate the type of delimiter in the file (the comma for most .csv files)</p>
@@ -182,9 +183,10 @@ Levels: Black Green Red  Red White
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(carSpeeds, <span class="dt">file=</span><span class="st">&#39;data/car-speeds-cleaned.csv&#39;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>)</code></pre>
 <p>Now we see:</p>
 <p><img src="fig/CSV_WithoutRowNums.png" alt="csv written with row.names argument" /></p>
-<blockquote>
-<p><strong>Tip:</strong> there is also a <code>col.names</code> argument, which can be used to set the column names for a data set without headers. If the data set already has headers (e.g., we used the headers = TRUE argument when importing the data) then a <code>col.names</code> argument will be ignored.</p>
-</blockquote>
+<div id="tip-1" class="callout">
+<h2>Tip</h2>
+<p>there is also a <code>col.names</code> argument, which can be used to set the column names for a data set without headers. If the data set already has headers (e.g., we used the <code>headers = TRUE</code> argument when importing the data) then a <code>col.names</code> argument will be ignored.</p>
+</div>
 <h4 id="the-na-argument">The na argument</h4>
 <p>There are times when we want to specify certain values for <code>NA</code>s in the data set (e.g., we are going to pass the data to a program that only accepts -9999 as a nodata value). In this case, we want to set the <code>NA</code> value of our output file to the desired value, using the <code>na</code> argument. Let's see how this works:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#First, replace the speed in the 3rd row with NA, by using an index (square brackets to indicate the position of the value we want to replace)</span>
