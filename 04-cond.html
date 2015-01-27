@@ -27,16 +27,16 @@
         <div class="span10 offset1">
           <h1 class="title">Programming with R</h1>
           <h2 class="subtitle">Making choices</h2>
-<h2 id="making-choices">Making Choices</h2>
-<p>Our previous lessons have shown us how to manipulate data, define our own functions, and repeat things. However, the programs we have written so far always do the same things, regardless of what data they're given. We want programs to make choices based on the values they are manipulating.</p>
-<div class="objectives" markdown="1">
-<h4>Objectives</h4>
+<div id="objectives" class="objectives">
+<h2>Objectives</h2>
 <ul>
 <li>Save plot(s) in a pdf file.</li>
 <li>Write conditional statements with <code>if</code> and <code>else</code>.</li>
 <li>Correctly evaluate expressions containing <code>&amp;</code> (&quot;and&quot;) and <code>|</code> (&quot;or&quot;).</li>
 </ul>
 </div>
+<h2 id="making-choices">Making Choices</h2>
+<p>Our previous lessons have shown us how to manipulate data, define our own functions, and repeat things. However, the programs we have written so far always do the same things, regardless of what data they're given. We want programs to make choices based on the values they are manipulating.</p>
 <h3 id="saving-plots-to-a-file">Saving plots to a file</h3>
 <p>So far, we have built a function <code>analyze</code> to plot summary statistics of the inflammation data:</p>
 <pre class="sourceCode r"><code class="sourceCode r">analyze &lt;-<span class="st"> </span>function(filename) {
@@ -211,6 +211,8 @@ if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
 }</code></pre>
 <p>Now we can save all of the results with just one line of code:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze_all</span>(<span class="st">&quot;inflammation&quot;</span>)</code></pre>
+<pre class="output"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : no lines available in input
+</code></pre>
 <p>Now if we need to make any changes to our analysis, we can edit the <code>analyze</code> function and quickly regenerate all the figures with <code>analzye_all</code>.</p>
 <div id="challenges-1" class="challenge">
 <h2>Challenges</h2>
@@ -219,16 +221,17 @@ if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
 </ul>
 </div>
 <div class="keypoints" markdown="1">
-<h4>Key Points</h4>
+<h4 id="key-points">Key Points</h4>
 <ul>
 <li>Save a plot in a pdf file using <code>pdf(&quot;name.pdf&quot;)</code> and stop writing to the pdf file with <code>dev.off()</code>.</li>
 <li>Use <code>if (condition)</code> to start a conditional statement, <code>else if (condition)</code> to provide additional tests, and <code>else</code> to provide a default.</li>
 <li>The bodies of conditional statements must be surrounded by curly braces <code>{ }</code>.</li>
 <li>Use <code>==</code> to test for equality.</li>
 <li><code>X &amp; Y</code> is only true if both X and Y are true.</li>
-<li><code>X | Y</code> is true if either X or Y, or both, are true.</li>
-</ul>
+<li><code>X | Y</code> is true if either X or Y, or both, are true.
 </div>
+</li>
+</ul>
 <h4 id="next-steps">Next Steps</h4>
 <p>We have now seen the basics of interactively building R code. The last thing we need to learn is how to build command-line programs that we can use in pipelines and shell scripts, so that we can integrate our tools with other people's work. This will be the subject of our next and final lesson.</p>
         </div>

@@ -5,6 +5,15 @@ subtitle: Creating functions
 minutes: 30
 ---
 
+> ## Objectives {.objectives}
+>
+> * Define a function that takes arguments.
+> * Return a value from a function.
+> * Test a function.
+> * Explain what a call stack is, and trace changes to the call stack as functions are called.
+> * Set default values for function arguments.
+> * Explain why we should divide programs into small, single-purpose functions.
+
 
 
 ## Creating Functions
@@ -12,15 +21,6 @@ minutes: 30
 If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics. 
 But we have twelve files to check, and may have more in the future.
 In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.
-
-#### Objectives
-
-* Define a function that takes arguments.
-* Return a value from a function.
-* Test a function.
-* Explain what a call stack is, and trace changes to the call stack as functions are called.
-* Set default values for function arguments.
-* Explain why we should divide programs into small, single-purpose functions.
 
 ### Defining a function
 

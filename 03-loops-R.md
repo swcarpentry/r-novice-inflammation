@@ -5,6 +5,15 @@ subtitle: Analyzing multiple data sets
 minutes: 30
 ---
 
+> ## Objectives {.objectives}
+> 
+> * Explain what a `for` loop does.
+> * Correctly write `for` loops to repeat simple calculations.
+> * Trace changes to a loop variable as the loop runs.
+> * Trace changes to other variables as they are updated by a `for` loop.
+> * Use a function to get a list of filenames that match a simple pattern.
+> * Use a `for` loop to process multiple files.
+
 
 
 ## Analyzing Multiple Data Sets
@@ -42,17 +51,6 @@ analyze("data/inflammation-02.csv")
 but we have a dozen data sets right now and more on the way.
 We want to create plots for all our data sets with a single statement.
 To do that, we'll have to teach the computer how to repeat things.
-
-<div class="objectives" markdown="1">
-#### Objectives
-
-* Explain what a `for` loop does.
-* Correctly write `for` loops to repeat simple calculations.
-* Trace changes to a loop variable as the loop runs.
-* Trace changes to other variables as they are updated by a `for` loop.
-* Use a function to get a list of filenames that match a simple pattern.
-* Use a `for` loop to process multiple files.
-</div>
 
 ### For Loops
 

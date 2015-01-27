@@ -2,6 +2,10 @@
 layout: lesson
 root: ../..
 ---
+> ## Objectives {.objectives}
+>
+>   * Read in a .csv, and explore the arguments of the csv reader
+>   *	Write the altered data set to a new .csv, and explore the arguments
 
 
 
@@ -10,11 +14,6 @@ root: ../..
 
 The most common way that scientists store data is in Excel spreadsheets. While there are R packages designed to access data from Excel spreadsheets (e.g., gdata, RODBC, XLConnect, xlsx, RExcel), users often find it easier to save their spreadsheets in [comma-separated values](../../gloss.html#comma-separeted-values) files (CSV) and then use R's built in functionality to read and manipulate the data. In this short lesson, we'll learn how to read data from a .csv and write to a new .csv, and explore the [arguments](../../gloss.html#argument) that allow you read and write the data correctly for your needs.
 
-
-#### Objectives
-
-  * Read in a .csv, and explore the arguments of the csv reader
-  *	Write the altered data set to a new .csv, and explore the arguments
 
 
 ### Read a .csv and explore the arguments

@@ -4,7 +4,9 @@ title: Programming with R
 subtitle: Making packages in R
 minutes: 30
 ---
-
+> ## Objectives {.objectives}
+>
+> FIXME: Write these
 
 
 

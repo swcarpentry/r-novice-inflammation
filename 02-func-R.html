@@ -27,9 +27,8 @@
         <div class="span10 offset1">
           <h1 class="title">Programming with R</h1>
           <h2 class="subtitle">Creating functions</h2>
-<h2 id="creating-functions">Creating Functions</h2>
-<p>If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics. But we have twelve files to check, and may have more in the future. In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.</p>
-<h4 id="objectives">Objectives</h4>
+<div id="objectives" class="objectives">
+<h2>Objectives</h2>
 <ul>
 <li>Define a function that takes arguments.</li>
 <li>Return a value from a function.</li>
@@ -38,6 +37,9 @@
 <li>Set default values for function arguments.</li>
 <li>Explain why we should divide programs into small, single-purpose functions.</li>
 </ul>
+</div>
+<h2 id="creating-functions">Creating Functions</h2>
+<p>If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics. But we have twelve files to check, and may have more in the future. In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.</p>
 <h3 id="defining-a-function">Defining a function</h3>
 <p>Let's start by defining a function <code>fahr_to_kelvin</code> that converts temperatures from Fahrenheit to Kelvin:</p>
 <pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
@@ -243,7 +245,7 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 </div>
 <blockquote>
 <ul>
-<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>)/(<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</li>
+<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>) / (<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</li>
 </ul>
 </blockquote>
 <blockquote>
