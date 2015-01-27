@@ -33,12 +33,10 @@ analyze <- function(filename) {
   # Plots the average, min, and max aneurism count over time.
   # Input is character string of a csv file.
   dat <- read.csv(file = filename, header = TRUE)
-  avg_quad_aneurism <- apply(dat[,6:9], 2, mean)
-  plot(avg_quad_aneurism)
-  max_quad_aneurism <- apply(dat[,6:9], 2, max)
-  plot(max_quad_aneurism)
-  min_quad_aneurism <- apply(dat[,6:9], 2, min)
-  plot(min_quad_aneurism)
+  plot(x=dat$Group,y=dat$Aneurisms_q1)
+  plot(x=dat$Group,y=dat$Aneurisms_q2)
+  plot(x=dat$Group,y=dat$Aneurisms_q3)
+  plot(x=dat$Group,y=dat$Aneurisms_q4)
 }
 ```
 
@@ -232,12 +230,10 @@ analyze <- function(filename, output = NULL) {
     pdf(output)
   }
   dat <- read.csv(file = filename, header = TRUE)
-  avg_quad_aneurism <- apply(dat[,6:9], 2, mean)
-  plot(avg_quad_aneurism)
-  max_quad_aneurism <- apply(dat[,6:9], 2, max)
-  plot(max_quad_aneurism)
-  min_quad_aneurism <- apply(dat[,6:9], 2, min)
-  plot(min_quad_aneurism)
+  plot(x=dat$Group,y=dat$Aneurisms_q1)
+  plot(x=dat$Group,y=dat$Aneurisms_q2)
+  plot(x=dat$Group,y=dat$Aneurisms_q3)
+  plot(x=dat$Group,y=dat$Aneurisms_q4)
 
   if (!is.null(output)) {
     dev.off()
@@ -304,7 +300,7 @@ Now if we need to make any changes to our analysis, we can edit the `analyze` fu
 <div class="challenges" markdown="1">
 #### Challenges
 
-  + One of your collaborators asks if you can recreate the figures with lines instead of points.
+  + One of your collaborators asks if you can recreate the figures with all plots having the same values on the y-axis.
   Find the relevant argument to `plot` by reading the documentation (`?plot`), update `analyze`, and then recreate all the figures with `analyze_all`.
 
 ```{r analyze-save-line, echo=FALSE}
@@ -317,12 +313,11 @@ analyze <- function(filename, output = NULL) {
     pdf(output)
   }
   dat <- read.csv(file = filename, header = TRUE)
-  avg_quad_aneurism <- apply(dat[,6:9], 2, mean)
-  plot(avg_quad_aneurism, type='l')
-  max_quad_aneurism <- apply(dat[,6:9], 2, max)
-  plot(max_quad_aneurism, type='l')
-  min_quad_aneurism <- apply(dat[,6:9], 2, min)
-  plot(min_quad_aneurism, type='l')
+  data_limits=c(min(dat[,6:9],max(dat[,6:9]))) #find the minimum and maximum of the data
+  plot(x=dat$Group,y=dat$Aneurisms_q1,ylim=data_limits)
+  plot(x=dat$Group,y=dat$Aneurisms_q2,ylim=data_limits)
+  plot(x=dat$Group,y=dat$Aneurisms_q3,ylim=data_limits)
+  plot(x=dat$Group,y=dat$Aneurisms_q4,ylim=data_limits)
   if (!is.null(output)) {
     dev.off()
   }
