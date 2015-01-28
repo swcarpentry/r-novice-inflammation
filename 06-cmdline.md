@@ -36,7 +36,7 @@ $ Rscript readings.R --max data/inflammation-*.csv
 
 Our overall requirements are:
 
-1. If no filename is given on the command line, read data from [standard input](../../gloss.html#standard-input).
+1. If no filename is given on the command line, read data from [standard input](http://software-carpentry.org/v5/gloss.html#standard-input).
 2. If one or more filenames are given, read data from them and report statistics for each file separately.
 3. Use the `--min`, `--mean`, or `--max` flag to determine what statistic to print.
 
@@ -75,14 +75,14 @@ Rscript session-info.R
 
 
 ~~~{.output}
-R version 3.1.2 (2014-10-31)
-Platform: x86_64-apple-darwin13.4.0 (64-bit)
+R version 3.1.0 (2014-04-10)
+Platform: x86_64-apple-darwin10.8.0 (64-bit)
 
 locale:
-[1] en_CA.UTF-8/en_CA.UTF-8/en_CA.UTF-8/C/en_CA.UTF-8/en_CA.UTF-8
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  base
+[1] stats     graphics  grDevices utils     datasets  base     
 
 ~~~
 
@@ -103,7 +103,7 @@ cat(args, sep = "\n")
 
 The function `commandArgs` extracts all the command line arguments and returns them as a vector.
 The function `cat`, similar to the `cat` of the Unix Shell, outputs the contents of the variable.
-Since we did not specify a filename for writing, `cat` sends the output to [standard output](../../gloss.html#standard-output), which we can then pipe to other Unix functions.
+Since we did not specify a filename for writing, `cat` sends the output to [standard output](http://software-carpentry.org/v5/gloss.html#standard-output), which we can then pipe to other Unix functions.
 Because we set the argument `sep` to `"\n"`, which is the symbol to start a new line, each element of the vector is printed on its own line.
 Let's see what happens when we run this program in the Unix Shell:
 
@@ -120,6 +120,7 @@ Rscript print-args.R
 --slave
 --no-restore
 --file=print-args.R
+--args
 
 ~~~
 
@@ -322,7 +323,7 @@ Rscript readings-02.R data/inflammation-01.csv
 > ## Challenges {.challenge}
 >
 >  + Write a command-line program that does addition and subtraction.
->  **Hint:** Everything argument read from the command-line is interpreted as a character [string](../../gloss.html#string).
+>  **Hint:** Everything argument read from the command-line is interpreted as a character [string](http://software-carpentry.org/v5/gloss.html#string).
 >  You can convert from a string to a number using the function `as.numeric`.
 
 
@@ -533,7 +534,7 @@ but there are several things wrong with it:
 1.  `main` is too large to read comfortably.
 
 2.  If `action` isn't one of the three recognized flags, the program loads each file but does nothing with it (because none of the branches in the conditional match).
-    [Silent failures](../../gloss.html#silent-failure) like this are always hard to debug.
+    [Silent failures](http://software-carpentry.org/v5/gloss.html#silent-failure) like this are always hard to debug.
 
 This version pulls the processing of each file out of the loop into a function of its own.
 It also checks that `action` is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as `readings-05.R`:
