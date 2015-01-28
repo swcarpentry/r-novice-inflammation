@@ -64,29 +64,25 @@
 <p>Now we can run the code in the file we created from the Unix Shell using <code>Rscript</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript session-info.R</code></pre>
 <pre class="output"><code>R version 3.1.2 (2014-10-31)
-Platform: x86_64-pc-linux-gnu (64-bit)
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
 
 locale:
- [1] LC_CTYPE=fr_FR.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=fr_CA.UTF-8        LC_COLLATE=fr_FR.UTF-8    
- [5] LC_MONETARY=fr_CA.UTF-8    LC_MESSAGES=fr_FR.UTF-8   
- [7] LC_PAPER=fr_CA.UTF-8       LC_NAME=C                 
- [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=fr_CA.UTF-8 LC_IDENTIFICATION=C       
+[1] en_CA.UTF-8/en_CA.UTF-8/en_CA.UTF-8/C/en_CA.UTF-8/en_CA.UTF-8
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 </code></pre>
-<blockquote>
-<p><strong>Tip:</strong> If that did not work, remember that you must be in the correct directory. You can determine which directory you are currently in using <code>pwd</code> and change to a different directory using <code>cd</code>. For a review, see this <a href="../shell/01-filedir.html">lesson</a> or the <a href="../ref/01-shell.html">Unix Shell Reference</a>.</p>
-</blockquote>
+<div id="tip" class="callout">
+<h2>Tip</h2>
+<p>If that did not work, remember that you must be in the correct directory. You can determine which directory you are currently in using <code>pwd</code> and change to a different directory using <code>cd</code>. For a review, see this <a href="../shell/01-filedir.html">lesson</a> or the <a href="../ref/01-shell.html">Unix Shell Reference</a>.</p>
+</div>
 <p>Now let's create another script that does something more interesting. Write the following lines in a file named <code>print-args.R</code>:</p>
 <pre class="output"><code>args &lt;- commandArgs()
 cat(args, sep = &quot;\n&quot;)
 </code></pre>
 <p>The function <code>commandArgs</code> extracts all the command line arguments and returns them as a vector. The function <code>cat</code>, similar to the <code>cat</code> of the Unix Shell, outputs the contents of the variable. Since we did not specify a filename for writing, <code>cat</code> sends the output to <a href="../../gloss.html#standard-output">standard output</a>, which we can then pipe to other Unix functions. Because we set the argument <code>sep</code> to <code>&quot;\n&quot;</code>, which is the symbol to start a new line, each element of the vector is printed on its own line. Let's see what happens when we run this program in the Unix Shell:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript print-args.R</code></pre>
-<pre class="output"><code>/usr/lib/R/bin/exec/R
+<pre class="output"><code>/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -100,7 +96,7 @@ cat(args, sep = &quot;\n&quot;)
 </ul>
 <p>Thus running a file with Rscript is an easier way to run the following:</p>
 <pre class="sourceCode r"><code class="sourceCode r">R --slave --no-restore --file=print-args.R --args</code></pre>
-<pre class="output"><code>/usr/lib/R/bin/exec/R
+<pre class="output"><code>/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -108,7 +104,7 @@ cat(args, sep = &quot;\n&quot;)
 </code></pre>
 <p>If we run it with a few arguments, however:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript print-args.R first second third</code></pre>
-<pre class="output"><code>/usr/lib/R/bin/exec/R
+<pre class="output"><code>/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -237,8 +233,8 @@ main()
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For example, searching for the pattern &quot;print-args&quot; returns the two scripts we</span>
 <span class="co"># wrote earlier</span>
 Rscript find-pattern.R print-args</code></pre>
-<pre class="output"><code>print-args.R
-print-args-trailing.R
+<pre class="output"><code>print-args-trailing.R
+print-args.R
 </code></pre>
 <h3 id="handling-multiple-files">Handling Multiple Files</h3>
 <p>The next step is to teach our program how to handle multiple files. Since 60 lines of output per file is a lot to page through, we'll start by using three smaller files, each of which has three days of data for two patients. Let's investigate them from the Unix Shell:</p>
@@ -344,9 +340,10 @@ process &lt;- function(filename, action) {
 main()
 </code></pre>
 <p>This is four lines longer than its predecessor, but broken into more digestible chunks of 8 and 12 lines.</p>
-<blockquote>
-<p><strong>Tip:</strong> R has a package named <a href="http://cran.r-project.org/web/packages/argparse/index.html">argparse</a> that helps handle complex command-line flags (it utilizes a <a href="http://docs.python.org/dev/library/argparse.html">Python module</a> of the same name). We will not cover this package in this lesson but when you start writing programs with multiple parameters you'll want to read through the package's <a href="http://cran.r-project.org/web/packages/argparse/vignettes/argparse.pdf">vignette</a>.</p>
-</blockquote>
+<div id="tip-1" class="callout">
+<h2>Tip</h2>
+<p>R has a package named <a href="http://cran.r-project.org/web/packages/argparse/index.html">argparse</a> that helps handle complex command-line flags (it utilizes a <a href="http://docs.python.org/dev/library/argparse.html">Python module</a> of the same name). We will not cover this package in this lesson but when you start writing programs with multiple parameters you'll want to read through the package's <a href="http://cran.r-project.org/web/packages/argparse/vignettes/argparse.pdf">vignette</a>.</p>
+</div>
 <div id="challenges-2" class="challenge">
 <h2>Challenges</h2>
 <ul>
