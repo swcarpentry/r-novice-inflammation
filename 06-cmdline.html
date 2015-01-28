@@ -43,7 +43,7 @@
 <pre><code>$ Rscript readings.R --max data/inflammation-*.csv</code></pre>
 <p>Our overall requirements are:</p>
 <ol style="list-style-type: decimal">
-<li>If no filename is given on the command line, read data from <a href="../../gloss.html#standard-input">standard input</a>.</li>
+<li>If no filename is given on the command line, read data from <a href="http://software-carpentry.org/v5/gloss.html#standard-input">standard input</a>.</li>
 <li>If one or more filenames are given, read data from them and report statistics for each file separately.</li>
 <li>Use the <code>--min</code>, <code>--mean</code>, or <code>--max</code> flag to determine what statistic to print.</li>
 </ol>
@@ -63,11 +63,11 @@
 <p>The function, <code>sessionInfo</code>, outputs the version of R you are running as well as the type of computer you are using (as well as the versions of the packages that have been loaded). This is very useful information to include when asking others for help with your R code.</p>
 <p>Now we can run the code in the file we created from the Unix Shell using <code>Rscript</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript session-info.R</code></pre>
-<pre class="output"><code>R version 3.1.2 (2014-10-31)
-Platform: x86_64-apple-darwin13.4.0 (64-bit)
+<pre class="output"><code>R version 3.1.0 (2014-04-10)
+Platform: x86_64-apple-darwin10.8.0 (64-bit)
 
 locale:
-[1] en_CA.UTF-8/en_CA.UTF-8/en_CA.UTF-8/C/en_CA.UTF-8/en_CA.UTF-8
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
@@ -80,12 +80,13 @@ attached base packages:
 <pre class="output"><code>args &lt;- commandArgs()
 cat(args, sep = &quot;\n&quot;)
 </code></pre>
-<p>The function <code>commandArgs</code> extracts all the command line arguments and returns them as a vector. The function <code>cat</code>, similar to the <code>cat</code> of the Unix Shell, outputs the contents of the variable. Since we did not specify a filename for writing, <code>cat</code> sends the output to <a href="../../gloss.html#standard-output">standard output</a>, which we can then pipe to other Unix functions. Because we set the argument <code>sep</code> to <code>&quot;\n&quot;</code>, which is the symbol to start a new line, each element of the vector is printed on its own line. Let's see what happens when we run this program in the Unix Shell:</p>
+<p>The function <code>commandArgs</code> extracts all the command line arguments and returns them as a vector. The function <code>cat</code>, similar to the <code>cat</code> of the Unix Shell, outputs the contents of the variable. Since we did not specify a filename for writing, <code>cat</code> sends the output to <a href="http://software-carpentry.org/v5/gloss.html#standard-output">standard output</a>, which we can then pipe to other Unix functions. Because we set the argument <code>sep</code> to <code>&quot;\n&quot;</code>, which is the symbol to start a new line, each element of the vector is printed on its own line. Let's see what happens when we run this program in the Unix Shell:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript print-args.R</code></pre>
 <pre class="output"><code>/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
+--args
 </code></pre>
 <p>From this output, we learn that <code>Rscript</code> is just a convenience command for running R scripts. The first argument in the vector is the path to the <code>R</code> executable. The following are all command-line arguments that affect the behavior of R. From the R help file:</p>
 <ul>
@@ -211,7 +212,7 @@ main()
 <div id="challenges" class="challenge">
 <h2>Challenges</h2>
 <ul>
-<li>Write a command-line program that does addition and subtraction. <strong>Hint:</strong> Everything argument read from the command-line is interpreted as a character <a href="../../gloss.html#string">string</a>. You can convert from a string to a number using the function <code>as.numeric</code>.</li>
+<li>Write a command-line program that does addition and subtraction. <strong>Hint:</strong> Everything argument read from the command-line is interpreted as a character <a href="http://software-carpentry.org/v5/gloss.html#string">string</a>. You can convert from a string to a number using the function <code>as.numeric</code>.</li>
 </ul>
 </div>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript arith.R <span class="dv">1</span> +<span class="st"> </span><span class="dv">2</span></code></pre>
@@ -310,7 +311,7 @@ main()
 <p>but there are several things wrong with it:</p>
 <ol style="list-style-type: decimal">
 <li><p><code>main</code> is too large to read comfortably.</p></li>
-<li><p>If <code>action</code> isn't one of the three recognized flags, the program loads each file but does nothing with it (because none of the branches in the conditional match). <a href="../../gloss.html#silent-failure">Silent failures</a> like this are always hard to debug.</p></li>
+<li><p>If <code>action</code> isn't one of the three recognized flags, the program loads each file but does nothing with it (because none of the branches in the conditional match). <a href="http://software-carpentry.org/v5/gloss.html#silent-failure">Silent failures</a> like this are always hard to debug.</p></li>
 </ol>
 <p>This version pulls the processing of each file out of the loop into a function of its own. It also checks that <code>action</code> is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as <code>readings-05.R</code>:</p>
 <pre class="output"><code>main &lt;- function() {
