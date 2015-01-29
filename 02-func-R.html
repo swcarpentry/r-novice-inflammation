@@ -48,9 +48,10 @@
 }</code></pre>
 <p>We define <code>fahr_to_kelvin</code> by assigning it to the output of <code>function</code>. The list of argument names are containted within parentheses. Next, the <a href="../../gloss.html#function-body">body</a> of the function--the statements that are executed when it runs--is contained within curly braces (<code>{}</code>). The statements in the body are indented by two spaces. This makes the code easier to read but does not affect how the code operates.</p>
 <p>When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function. Inside the function, we use a <a href="../../gloss.html#return-statement">return statement</a> to send a result back to whoever asked for it.</p>
-<blockquote>
-<p><strong>Tip:</strong> One feature unique to R is that the return statement is not required. R automatically returns whichever variable is on the last line of the body of the function. Since we are just learning, we will explicitly define the return statement.</p>
-</blockquote>
+<div id="tip" class="callout">
+<h2>Tip</h2>
+<p>One feature unique to R is that the return statement is not required. R automatically returns whichever variable is on the last line of the body of the function. Since we are just learning, we will explicitly define the return statement.</p>
+</div>
 <p>Let's try running our function. Calling our own function is no different from calling any other function:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freezing point of water</span>
 <span class="kw">fahr_to_kelvin</span>(<span class="dv">32</span>)</code></pre>
@@ -129,9 +130,10 @@ final &lt;-<span class="st"> </span><span class="kw">fahr_to_celsius</span>(orig
 <pre class="sourceCode r"><code class="sourceCode r">temp</code></pre>
 <pre class="output"><code>Error in eval(expr, envir, enclos): object &#39;temp&#39; not found
 </code></pre>
-<blockquote>
-<p><strong>Tip:</strong> The explanation of the stack frame above was very general and the basic concept will help you understand most languages you try to program with. However, R has some unique aspects that can be exploited when performing more complicated operations. We will not be writing anything that requires knowledge of these more advanced concepts. In the future when you are comfortable writing functions in R, you can learn more by reading the <a href="http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects">R Language Manual</a> or this <a href="http://adv-r.had.co.nz/Environments.html">chapter</a> from <a href="http://adv-r.had.co.nz/">Advanced R Programming</a> by Hadley Wickham. For context, R uses the terminology &quot;environments&quot; instead of frames.</p>
-</blockquote>
+<div id="tip-1" class="callout">
+<h2>Tip</h2>
+<p>The explanation of the stack frame above was very general and the basic concept will help you understand most languages you try to program with. However, R has some unique aspects that can be exploited when performing more complicated operations. We will not be writing anything that requires knowledge of these more advanced concepts. In the future when you are comfortable writing functions in R, you can learn more by reading the <a href="http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects">R Language Manual</a> or this <a href="http://adv-r.had.co.nz/Environments.html">chapter</a> from <a href="http://adv-r.had.co.nz/">Advanced R Programming</a> by Hadley Wickham. For context, R uses the terminology &quot;environments&quot; instead of frames.</p>
+</div>
 <p>Why go to all this trouble? Well, here's a function called <code>span</code> that calculates the difference between the mininum and maximum values in an array:</p>
 <pre class="sourceCode r"><code class="sourceCode r">span &lt;-<span class="st"> </span>function(a) {
   diff &lt;-<span class="st"> </span><span class="kw">max</span>(a) -<span class="st"> </span><span class="kw">min</span>(a)
@@ -234,9 +236,10 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
   new_data &lt;-<span class="st"> </span>(data -<span class="st"> </span><span class="kw">mean</span>(data)) +<span class="st"> </span>desired
   <span class="kw">return</span>(new_data)
 }</code></pre>
-<blockquote>
-<p><strong>Tip:</strong> Formal documentation for R functions is written in separate <code>.Rd</code> using a markup language similar to <a href="http://www.latex-project.org/">LaTeX</a>. You see the result of this documentation when you look at the help file for a given function, e.g. <code>?read.csv</code>. The <a href="http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html">roxygen2</a> package allows R coders to write documentation alongside the function code and then process it into the appropriate <code>.Rd</code> files. You will want to switch to this more formal method of writing documentation when you start writing more complicated R projects.</p>
-</blockquote>
+<div id="tip-2" class="callout">
+<h2>Tip</h2>
+<p>Formal documentation for R functions is written in separate <code>.Rd</code> using a markup language similar to <a href="http://www.latex-project.org/">LaTeX</a>. You see the result of this documentation when you look at the help file for a given function, e.g. <code>?read.csv</code>. The <a href="http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html">roxygen2</a> package allows R coders to write documentation alongside the function code and then process it into the appropriate <code>.Rd</code> files. You will want to switch to this more formal method of writing documentation when you start writing more complicated R projects.</p>
+</div>
 <div id="challenges-2" class="challenge">
 <h2>Challenges</h2>
 <ul>
@@ -316,15 +319,17 @@ more_data</code></pre>
 <pre class="output"><code> a  b  c 
  1  2 77 
 </code></pre>
-<blockquote>
-<p><strong>Tip:</strong> To be precise, R has three ways that arguments supplied by you are matched to the <em>formal arguments</em> of the function definition</p>
+<div id="tip-3" class="callout">
+<h2>Tip</h2>
+<p>To be precise, R has three ways that arguments supplied</p>
+<p>by you are matched to the <em>formal arguments</em> of the function definition</p>
 <ol style="list-style-type: decimal">
 <li>by complete name,</li>
 <li>by partial name (matching on initial <em>n</em> characters of the argument name), and</li>
 <li>by position.</li>
 </ol>
 <p>Arguments are matched in the manner outlined above in <em>that order</em>: by complete name, then by partial matching of names, and finally by position.</p>
-</blockquote>
+</div>
 <p>With that in hand, let's look at the help for <code>read.csv()</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">?read.csv</code></pre>
 <p>There's a lot of information there, but the most important part is the first couple of lines:</p>

@@ -73,7 +73,7 @@ Rscript session-info.R
 
 ~~~{.output}
 R version 3.1.2 (2014-10-31)
-Platform: x86_64-pc-linux-gnu (64-bit)
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
@@ -84,13 +84,15 @@ locale:
 [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  base     
+[1] stats     graphics  grDevices utils     datasets  base
 
 ~~~
 
-> **Tip:** If that did not work, remember that you must be in the correct directory.
-You can determine which directory you are currently in using `pwd` and change to a different directory using `cd`.
-For a review, see this [lesson](../shell/01-filedir.html) or the [Unix Shell Reference](../ref/01-shell.html).
+> ## Tip {.callout} 
+>
+> If that did not work, remember that you must be in the correct directory.
+> You can determine which directory you are currently in using `pwd` and change to a different directory using `cd`.
+> For a review, see this [lesson](../shell/01-filedir.html) or the [Unix Shell Reference](../ref/01-shell.html).
 
 Now let's create another script that does something more interesting. Write the following lines in a file named `print-args.R`:
 
@@ -370,8 +372,8 @@ Rscript find-pattern.R print-args
 
 
 ~~~{.output}
-print-args.R
 print-args-trailing.R
+print-args.R
 
 ~~~
 
@@ -570,8 +572,10 @@ main()
 
 This is four lines longer than its predecessor, but broken into more digestible chunks of 8 and 12 lines.
 
-> **Tip:** R has a package named [argparse][argparse-r] that helps handle complex command-line flags (it utilizes a [Python module][argparse-py] of the same name).
-We will not cover this package in this lesson but when you start writing programs with multiple parameters you'll want to read through the package's [vignette][].
+> ## Tip {.callout} 
+>
+> R has a package named [argparse][argparse-r] that helps handle complex command-line flags (it utilizes a [Python module][argparse-py] of the same name). 
+> We will not cover this package in this lesson but when you start writing programs with multiple parameters you'll want to read through the package's [vignette][].
 
 [argparse-r]: http://cran.r-project.org/web/packages/argparse/index.html
 [argparse-py]: http://docs.python.org/dev/library/argparse.html

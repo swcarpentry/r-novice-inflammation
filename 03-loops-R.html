@@ -94,9 +94,10 @@ print_words &lt;-<span class="st"> </span>function(sentence) {
 [1] &quot;the&quot;
 [1] NA
 </code></pre>
-<blockquote>
-<p><strong>Tip:</strong> R has has a special variable, <code>NA</code>, for designating missing values that are <strong>N</strong>ot <strong>A</strong>vailable in a data set. See <code>?NA</code> and <a href="http://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values">An Introduction to R</a> for more details.</p>
-</blockquote>
+<div id="tip" class="callout">
+<h2>Tip</h2>
+<p>R has has a special variable, <code>NA</code>, for designating missing values that are <strong>N</strong>ot <strong>A</strong>vailable in a data set. See <code>?NA</code> and <a href="http://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values">An Introduction to R</a> for more details.</p>
+</div>
 <p>Here's a better approach:</p>
 <pre class="sourceCode r"><code class="sourceCode r">print_words &lt;-<span class="st"> </span>function(sentence) {
   for (word in sentence) {
@@ -215,9 +216,10 @@ letter</code></pre>
  [7] &quot;inflammation-07.csv&quot; &quot;inflammation-08.csv&quot; &quot;inflammation-09.csv&quot;
 [10] &quot;inflammation-10.csv&quot; &quot;inflammation-11.csv&quot; &quot;inflammation-12.csv&quot;
 </code></pre>
-<blockquote>
-<p><strong>Tip:</strong> For larger projects, it is recommended to organize separate parts of the analysis into multiple subdirectories, e.g. one subdirectory for the raw data, one for the code, and one for the results like figures. We have done that here to some extent, putting all of our data files into the subdirectory &quot;data&quot;. For more advice on this topic, you can read <a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424">A quick guide to organizing computational biology projects</a> by William Stafford Noble.</p>
-</blockquote>
+<div id="tip-1" class="callout">
+<h2>Tip</h2>
+<p>For larger projects, it is recommended to organize separate parts of the analysis into multiple subdirectories, e.g. one subdirectory for the raw data, one for the code, and one for the results like figures. We have done that here to some extent, putting all of our data files into the subdirectory &quot;data&quot;. For more advice on this topic, you can read <a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424">A quick guide to organizing computational biology projects</a> by William Stafford Noble.</p>
+</div>
 <p>As these examples show, <code>list.files</code> result is a vector of strings, which means we can loop over it to do something with each filename in turn. In our case, the &quot;something&quot; we want is our <code>analyze</code> function.</p>
 <p>Because we have put our data in separate subdirectory, if we want to access these files using the output of <code>list.files</code> we also need to include the &quot;path&quot; portion of the file name. We can do that by using the argument <code>full.names = TRUE</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;csv&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</code></pre>
@@ -256,9 +258,10 @@ for (f in filenames) {
 </code></pre>
 <p><img src="fig/03-loops-R-loop-analyze-7.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-8.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-9.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
 <p>Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.</p>
-<blockquote>
-<p><strong>Tip:</strong> In this lesson we saw how to use a simple <code>for</code> loop to repeat an operation. As you progress with R, you will learn that there are multiple ways to accomplish this. Sometimes the choice of one method over another is more a matter of personal style, but other times it can have consequences for the speed of your code. For instruction on best practices, see this supplementary <a href="03-supp-loops-in-depth.html">lesson</a> that demonstrates how to properly repeat operations in R.</p>
-</blockquote>
+<div id="tip-2" class="callout">
+<h2>Tip</h2>
+<p>In this lesson we saw how to use a simple <code>for</code> loop to repeat an operation. As you progress with R, you will learn that there are multiple ways to accomplish this. Sometimes the choice of one method over another is more a matter of personal style, but other times it can have consequences for the speed of your code. For instruction on best practices, see this supplementary <a href="03-supp-loops-in-depth.html">lesson</a> that demonstrates how to properly repeat operations in R.</p>
+</div>
 <div id="challenges-1" class="challenge">
 <h2>Challenges</h2>
 <ol style="list-style-type: decimal">

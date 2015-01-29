@@ -66,8 +66,11 @@ The filename needs to be a character string (or [string](../../gloss.html#string
 Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers.
 We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
 
-> **Tip:** `read.csv` actually has many more arguments that you may find useful when importing your own data in the future.
-You can learn more about these options in this supplementary [lesson](01-supp-ReadWriteCsv.html).
+> ## Tip {.callout} 
+> 
+> `read.csv` actually has many more arguments that you may find useful when 
+> importing your own data in the future. You can learn more about these 
+> options in this supplementary [lesson](01-supp-ReadWriteCsv.html).
 
 The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s).
 For example, in this case if we provided the name of a different file to the argument `file`, `read.csv` would read it instead.
@@ -116,8 +119,11 @@ We can do arithmetic with the variable:
 
 ~~~
 
-> **Tip:** We can add comments to our code using the `#` character.
-It is useful to document our code in this way so that others (and us the next time we read it) have an easier time following what the code is doing.
+> ## Tip {.callout}
+>
+> We can add comments to our code using the `#` character. It is useful to 
+> document our code in this way so that others (and us the next time we 
+> read it) have an easier time following what the code is doing.
 
 We can also change an object's value by assigning it a new value:
 
@@ -523,7 +529,10 @@ As the diagram below shows, we want to perform the operation across a margin of 
 
 To support this, we can use the `apply` function.
 
-> **Tip:** To learn about a function in R, e.g. `apply`, we can read its help documention by running `help(apply)` or `?apply`.
+> ## Tip {.callout} 
+>
+> To learn about a function in R, e.g. `apply`, we can read its help 
+> documention by running `help(apply)` or `?apply`.
 
 `apply` allows us to repeat a function on all of the rows (`MARGIN = 1`) or columns (`MARGIN = 2`) of a data frame.
 
@@ -544,8 +553,11 @@ avg_day_inflammation <- apply(dat, 2, mean)
 Since the second argument to `apply` is `MARGIN`, the above command is equivalent to `apply(dat, MARGIN = 2, mean)`.
 We'll learn why this is so in the next lesson.
 
-> **Tip:** Some common operations have more efficient alternatives.
-For example, you can calculate the row-wise or column-wise means with `rowMeans` and `colMeans`, respectively.
+> ## Tip {.callout}
+>
+> Some common operations have more efficient alternatives. For example, you 
+> can calculate the row-wise or column-wise means with `rowMeans` and 
+> `colMeans`, respectively.
 
 > ## Challenge {.challenge}
 >
