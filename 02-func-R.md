@@ -43,9 +43,12 @@ This makes the code easier to read but does not affect how the code operates.
 When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
 Inside the function, we use a [return statement](../../gloss.html#return-statement) to send a result back to whoever asked for it.
 
-> **Tip:** One feature unique to R is that the return statement is not required.
-R automatically returns whichever variable is on the last line of the body of the function.
-Since we are just learning, we will explicitly define the return statement.
+> ## Tip {.callout} 
+> 
+> One feature unique to R is that the return statement is not required.
+> R automatically returns whichever variable is on the last line of the body 
+> of the function. Since we are just learning, we will explicitly define the 
+> return statement.
 
 Let's try running our function.
 Calling our own function is no different from calling any other function:
@@ -233,11 +236,17 @@ Error in eval(expr, envir, enclos): object 'temp' not found
 
 ~~~
 
-> **Tip:** The explanation of the stack frame above was very general and the basic concept will help you understand most languages you try to program with.
-However, R has some unique aspects that can be exploited when performing more complicated operations.
-We will not be writing anything that requires knowledge of these more advanced concepts.
-In the future when you are comfortable writing functions in R, you can learn more by reading the [R Language Manual][man] or this [chapter][] from [Advanced R Programming][adv-r] by Hadley Wickham.
-For context, R uses the terminology "environments" instead of frames.
+> ## Tip {.callout} 
+> 
+> The explanation of the stack frame above was very general and the basic 
+> concept will help you understand most languages you try to program with.
+> However, R has some unique aspects that can be exploited when performing 
+> more complicated operations. We will not be writing anything that requires 
+> knowledge of these more advanced concepts. In the future when you are 
+> comfortable writing functions in R, you can learn more by reading the 
+> [R Language Manual][man] or this [chapter][] from 
+> [Advanced R Programming][adv-r] by Hadley Wickham. For context, R uses the 
+> terminology "environments" instead of frames.
 
 [man]: http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
 [chapter]: http://adv-r.had.co.nz/Environments.html
@@ -529,10 +538,15 @@ center <- function(data, desired) {
 }
 ~~~
 
-> **Tip:** Formal documentation for R functions is written in separate `.Rd` using a markup language similar to [LaTeX][].
-You see the result of this documentation when you look at the help file for a given function, e.g. `?read.csv`.
-The [roxygen2][] package allows R coders to write documentation alongside the function code and then process it into the appropriate `.Rd` files.
-You will want to switch to this more formal method of writing documentation when you start writing more complicated R projects.
+> ## Tip {.callout} 
+> 
+> Formal documentation for R functions is written in separate `.Rd` using a 
+> markup language similar to [LaTeX][]. You see the result of this documentation 
+> when you look at the help file for a given function, e.g. `?read.csv`.
+> The [roxygen2][] package allows R coders to write documentation alongside 
+> the function code and then process it into the appropriate `.Rd` files.
+> You will want to switch to this more formal method of writing documentation 
+> when you start writing more complicated R projects.
 
 [LaTeX]: http://www.latex-project.org/
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
@@ -724,13 +738,18 @@ display(c = 77)
 
 ~~~
 
-> **Tip:** To be precise, R has three ways that arguments supplied by you are matched to the *formal arguments* of the function definition
+> ## Tip {.callout}
+>
+> To be precise, R has three ways that arguments supplied 
+>
+> by you are matched to the *formal arguments* of the function definition
 >
 > 1. by complete name, 
 > 2. by partial name (matching on initial *n* characters of the argument name), and
 > 3. by position.
 >
-> Arguments are matched in the manner outlined above in *that order*: by complete name, then by partial matching of names, and finally by position.
+> Arguments are matched in the manner outlined above in *that order*: by 
+> complete name, then by partial matching of names, and finally by position.
 
 With that in hand, let's look at the help for `read.csv()`:
 

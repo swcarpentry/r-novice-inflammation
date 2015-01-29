@@ -46,7 +46,13 @@ head(carSpeeds)
 
 ~~~
 
-> **Tip:** The default delimiter of the read.csv() function is a comma, but you can use other delimiters by supplying the 'sep' argument to the function (e.g., typing `sep = ';'` allows a semi-colon separated file to be correctly imported -see ?read.csv() for more information on this and other options for working with different file types).
+> ## Tip {.callout} 
+>
+> The default delimiter of the `read.csv()` function is a comma, but you can 
+> use other delimiters by supplying the 'sep' argument to the function 
+> (e.g., typing `sep = ';'` allows a semi-colon separated file to be correctly 
+> imported -see `?read.csv()` for more information on this and other options for 
+> working with different file types).
 
 The call above will import the data, but we have not taken advantage of several handy arguments that can be helpful in loading the data in the format we want. Let's explore some of these arguments.
 
@@ -108,19 +114,19 @@ carSpeeds$Color
 
 
 ~~~{.output}
-  [1] "Green" "4"     "Green" "5"     "3"     "Green" "Green" "1"    
-  [9] "5"     "3"     "3"     "5"     "Green" "Green" "1"     "3"    
- [17] "Green" "Green" "5"     "Green" "Green" "Green" "3"     "Green"
- [25] "3"     "3"     "3"     "3"     "5"     "Green" "3"     "5"    
- [33] "1"     "3"     "1"     "1"     "Green" "3"     "1"     "3"    
- [41] "1"     "1"     "3"     "3"     "5"     "1"     "Green" "3"    
- [49] "3"     "1"     "1"     "3"     "5"     "3"     "Green" "Green"
- [57] "1"     "Green" "5"     "1"     "3"     "Green" "Green" "5"    
- [65] "1"     "3"     "3"     "1"     "Green" "5"     "Green" "3"    
+  [1] "Green" "1"     "Green" "5"     "4"     "Green" "Green" "2"    
+  [9] "5"     "4"     "4"     "5"     "Green" "Green" "2"     "4"    
+ [17] "Green" "Green" "5"     "Green" "Green" "Green" "4"     "Green"
+ [25] "4"     "4"     "4"     "4"     "5"     "Green" "4"     "5"    
+ [33] "2"     "4"     "2"     "2"     "Green" "4"     "2"     "4"    
+ [41] "2"     "2"     "4"     "4"     "5"     "2"     "Green" "4"    
+ [49] "4"     "2"     "2"     "4"     "5"     "4"     "Green" "Green"
+ [57] "2"     "Green" "5"     "2"     "4"     "Green" "Green" "5"    
+ [65] "2"     "4"     "4"     "2"     "Green" "5"     "Green" "4"    
  [73] "5"     "5"     "Green" "Green" "Green" "Green" "Green" "5"    
- [81] "1"     "Green" "5"     "1"     "1"     "3"     "3"     "5"    
- [89] "5"     "5"     "5"     "3"     "3"     "3"     "5"     "1"    
- [97] "5"     "1"     "1"     "5"    
+ [81] "2"     "Green" "5"     "2"     "2"     "4"     "4"     "5"    
+ [89] "5"     "5"     "5"     "4"     "4"     "4"     "5"     "2"    
+ [97] "5"     "2"     "2"     "5"    
 
 ~~~
 
@@ -240,7 +246,7 @@ unique(carSpeeds$Color)
 
 ~~~{.output}
 [1] Green  Red  White Red   Black
-Levels: Black Green Red  Red White
+Levels:  Red Black Green Red White
 
 ~~~
 
@@ -293,7 +299,12 @@ Now we see:
 
 <img src="fig/CSV_WithoutRowNums.png" alt="csv written with row.names argument" />
 
-> **Tip:** there is also a `col.names` argument, which can be used to set the column names for a data set without headers. If the data set already has headers (e.g., we used the headers = TRUE argument when importing the data) then a `col.names` argument will be ignored.
+> ## Tip {.callout}
+> 
+> there is also a `col.names` argument, which can be used to set the column 
+names for a data set without headers. If the data set already has headers 
+(e.g., we used the `headers = TRUE` argument when importing the data) then a 
+`col.names` argument will be ignored.
 
 
 #### The na argument

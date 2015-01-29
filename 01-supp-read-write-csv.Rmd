@@ -33,7 +33,13 @@ carSpeeds <- read.csv(file='data/car-speeds.csv')
 head(carSpeeds) 
 ```
 
-> **Tip:** The default delimiter of the read.csv() function is a comma, but you can use other delimiters by supplying the 'sep' argument to the function (e.g., typing `sep = ';'` allows a semi-colon separated file to be correctly imported -see ?read.csv() for more information on this and other options for working with different file types).
+> ## Tip {.callout} 
+>
+> The default delimiter of the `read.csv()` function is a comma, but you can 
+> use other delimiters by supplying the 'sep' argument to the function 
+> (e.g., typing `sep = ';'` allows a semi-colon separated file to be correctly 
+> imported -see `?read.csv()` for more information on this and other options for 
+> working with different file types).
 
 The call above will import the data, but we have not taken advantage of several handy arguments that can be helpful in loading the data in the format we want. Let's explore some of these arguments.
 
@@ -167,7 +173,12 @@ Now we see:
 
 <img src="fig/CSV_WithoutRowNums.png" alt="csv written with row.names argument" />
 
-> **Tip:** there is also a `col.names` argument, which can be used to set the column names for a data set without headers. If the data set already has headers (e.g., we used the headers = TRUE argument when importing the data) then a `col.names` argument will be ignored.
+> ## Tip {.callout}
+> 
+> there is also a `col.names` argument, which can be used to set the column 
+names for a data set without headers. If the data set already has headers 
+(e.g., we used the `headers = TRUE` argument when importing the data) then a 
+`col.names` argument will be ignored.
 
 
 #### The na argument
