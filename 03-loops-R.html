@@ -121,11 +121,11 @@ print_words &lt;-<span class="st"> </span>function(sentence) {
 [1] &quot;do&quot;
 [1] &quot;the&quot;
 </code></pre>
-<p>The improved version of <code>print_words</code> uses a <a href="http://software-carpentry.org/v5/gloss.html#for-loop">for loop</a> to repeat an operation---in this case, printing---once for each thing in a collection. The general form of a loop is:</p>
+<p>The improved version of <code>print_words</code> uses a <a href="reference.html#for-loop">for loop</a> to repeat an operation---in this case, printing---once for each thing in a collection. The general form of a loop is:</p>
 <pre class="sourceCode r"><code class="sourceCode r">for (variable in collection) {
   do things with variable
 }</code></pre>
-<p>We can name the <a href="http://software-carpentry.org/v5/gloss.html#loop-variable">loop variable</a> anything we like (with a few <a href="http://cran.r-project.org/doc/manuals/R-intro.html#R-commands_003b-case-sensitivity-etc">restrictions</a>, e.g. the name of the variable cannot start with a digit). <code>in</code> is part of the <code>for</code> syntax. Note that the body of the loop is enclosed in curly braces <code>{ }</code>. For a single-line loop body, as here, the braces aren't needed, but it is good practice to include them as we did.</p>
+<p>We can name the <a href="reference.html#loop-variable">loop variable</a> anything we like (with a few <a href="http://cran.r-project.org/doc/manuals/R-intro.html#R-commands_003b-case-sensitivity-etc">restrictions</a>, e.g. the name of the variable cannot start with a digit). <code>in</code> is part of the <code>for</code> syntax. Note that the body of the loop is enclosed in curly braces <code>{ }</code>. For a single-line loop body, as here, the braces aren't needed, but it is good practice to include them as we did.</p>
 <p>Here's another loop that repeatedly updates a variable:</p>
 <pre class="sourceCode r"><code class="sourceCode r">len &lt;-<span class="st"> </span><span class="dv">0</span>
 vowels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;u&quot;</span>)

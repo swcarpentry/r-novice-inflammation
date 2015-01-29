@@ -43,7 +43,7 @@
 <pre><code>$ Rscript readings.R --max data/inflammation-*.csv</code></pre>
 <p>Our overall requirements are:</p>
 <ol style="list-style-type: decimal">
-<li>If no filename is given on the command line, read data from <a href="http://software-carpentry.org/v5/gloss.html#standard-input">standard input</a>.</li>
+<li>If no filename is given on the command line, read data from <a href="reference.html#standard-input-(stdin)">standard input</a>.</li>
 <li>If one or more filenames are given, read data from them and report statistics for each file separately.</li>
 <li>Use the <code>--min</code>, <code>--mean</code>, or <code>--max</code> flag to determine what statistic to print.</li>
 </ol>
@@ -80,7 +80,7 @@ attached base packages:
 <pre class="output"><code>args &lt;- commandArgs()
 cat(args, sep = &quot;\n&quot;)
 </code></pre>
-<p>The function <code>commandArgs</code> extracts all the command line arguments and returns them as a vector. The function <code>cat</code>, similar to the <code>cat</code> of the Unix Shell, outputs the contents of the variable. Since we did not specify a filename for writing, <code>cat</code> sends the output to <a href="http://software-carpentry.org/v5/gloss.html#standard-output">standard output</a>, which we can then pipe to other Unix functions. Because we set the argument <code>sep</code> to <code>&quot;\n&quot;</code>, which is the symbol to start a new line, each element of the vector is printed on its own line. Let's see what happens when we run this program in the Unix Shell:</p>
+<p>The function <code>commandArgs</code> extracts all the command line arguments and returns them as a vector. The function <code>cat</code>, similar to the <code>cat</code> of the Unix Shell, outputs the contents of the variable. Since we did not specify a filename for writing, <code>cat</code> sends the output to <a href="reference.html#standard-output-(stdout)">standard output</a>, which we can then pipe to other Unix functions. Because we set the argument <code>sep</code> to <code>&quot;\n&quot;</code>, which is the symbol to start a new line, each element of the vector is printed on its own line. Let's see what happens when we run this program in the Unix Shell:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript print-args.R</code></pre>
 <pre class="output"><code>/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
@@ -212,7 +212,7 @@ main()
 <div id="challenges" class="challenge">
 <h2>Challenges</h2>
 <ul>
-<li>Write a command-line program that does addition and subtraction. <strong>Hint:</strong> Everything argument read from the command-line is interpreted as a character <a href="http://software-carpentry.org/v5/gloss.html#string">string</a>. You can convert from a string to a number using the function <code>as.numeric</code>.</li>
+<li>Write a command-line program that does addition and subtraction. <strong>Hint:</strong> Everything argument read from the command-line is interpreted as a character <a href="reference.html#string">string</a>. You can convert from a string to a number using the function <code>as.numeric</code>.</li>
 </ul>
 </div>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript arith.R <span class="dv">1</span> +<span class="st"> </span><span class="dv">2</span></code></pre>
@@ -311,7 +311,7 @@ main()
 <p>but there are several things wrong with it:</p>
 <ol style="list-style-type: decimal">
 <li><p><code>main</code> is too large to read comfortably.</p></li>
-<li><p>If <code>action</code> isn't one of the three recognized flags, the program loads each file but does nothing with it (because none of the branches in the conditional match). <a href="http://software-carpentry.org/v5/gloss.html#silent-failure">Silent failures</a> like this are always hard to debug.</p></li>
+<li><p>If <code>action</code> isn't one of the three recognized flags, the program loads each file but does nothing with it (because none of the branches in the conditional match). <a href="reference.html#silent-failure">Silent failures</a> like this are always hard to debug.</p></li>
 </ol>
 <p>This version pulls the processing of each file out of the loop into a function of its own. It also checks that <code>action</code> is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as <code>readings-05.R</code>:</p>
 <pre class="output"><code>main &lt;- function() {

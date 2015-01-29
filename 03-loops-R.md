@@ -173,7 +173,7 @@ print_words(best_practice[-6])
 
 ~~~
 
-The improved version of `print_words` uses a [for loop](http://software-carpentry.org/v5/gloss.html#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
+The improved version of `print_words` uses a [for loop](reference.html#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
 The general form of a loop is:
 
 
@@ -183,7 +183,7 @@ for (variable in collection) {
 }
 ~~~
 
-We can name the [loop variable](http://software-carpentry.org/v5/gloss.html#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
+We can name the [loop variable](reference.html#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
 `in` is part of the `for` syntax.
 Note that the body of the loop is enclosed in curly braces `{ }`.
 For a single-line loop body, as here, the braces aren't needed, but it is good practice to include them as we did.
