@@ -4,13 +4,12 @@ title: Programming with R
 subtitle: Best practices for using R and designing programs
 minutes: 30
 ---
+
+
+
 > ## Objectives {.objectives}
 >
 > FIXME: Write these
-
-
-
-# Some best practices for using R and designing programs
 
 1. Start your code with a description of what it is:
 

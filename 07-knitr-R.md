@@ -4,15 +4,12 @@ title: Programming with R
 subtitle: Dynamic reports with knitr
 minutes: 30
 ---
+
+
+
 > ## Objectives {.objectives}
 >
 > FIXME: Write these
-
-
-
-# Taking notes and creating reports:
-
-## Introducing Knitr
 
 `Knitr` is an R package that makes your code neat, pretty, and shows your notes, code, and output simultaneously in an `html` document. You create these documents in `.Rmd` files. You can write in `LateX` or `md`. 
 

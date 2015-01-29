@@ -35,7 +35,6 @@
 <li>Correctly evaluate expressions containing <code>&amp;</code> (&quot;and&quot;) and <code>|</code> (&quot;or&quot;).</li>
 </ul>
 </div>
-<h2 id="making-choices">Making Choices</h2>
 <p>Our previous lessons have shown us how to manipulate data, define our own functions, and repeat things. However, the programs we have written so far always do the same things, regardless of what data they're given. We want programs to make choices based on the values they are manipulating.</p>
 <h3 id="saving-plots-to-a-file">Saving plots to a file</h3>
 <p>So far, we have built a function <code>analyze</code> to plot summary statistics of the inflammation data:</p>
@@ -213,15 +212,6 @@ if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
 }</code></pre>
 <p>Now we can save all of the results with just one line of code:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze_all</span>(<span class="st">&quot;inflammation&quot;</span>)</code></pre>
-<pre class="output"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
-logical: returning NA
-</code></pre>
-<pre class="output"><code>Warning in min(x): no non-missing arguments to min; returning Inf
-</code></pre>
-<pre class="output"><code>Warning in max(x): no non-missing arguments to max; returning -Inf
-</code></pre>
-<pre class="output"><code>Error in plot.window(...): need finite &#39;ylim&#39; values
-</code></pre>
 <p>Now if we need to make any changes to our analysis, we can edit the <code>analyze</code> function and quickly regenerate all the figures with <code>analzye_all</code>.</p>
 <div id="challenges-1" class="challenge">
 <h2>Challenges</h2>

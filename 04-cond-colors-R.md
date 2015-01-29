@@ -4,6 +4,9 @@ title: Programming with R
 subtitle: Making choices
 minutes: 30
 ---
+
+
+
 > ## Objectives {.objectives}
 > 
 > * Create a simple "image" made out of colored blocks.
@@ -13,10 +16,6 @@ minutes: 30
 > * Correctly evaluate expressions containing and and or.
 > * Correctly write and interpret code containing nested loops and conditionals.
 > * Explain the advantages of putting frequently-modified code in a function.
-
-
-
-# Making Choices
 
 Our previous lessons have shown us how to manipulate data, define our own functions, and repeat things. 
 However, the programs we have written so far always do the same things, regardless of what data they're given. 

@@ -5,6 +5,11 @@ subtitle: Analyzing multiple data sets
 minutes: 30
 ---
 
+```{r, include = FALSE}
+source("tools/chunk-options.R")
+opts_chunk$set(fig.path = "fig/03-loops-R-")
+```
+
 > ## Objectives {.objectives}
 > 
 > * Explain what a `for` loop does.
@@ -13,13 +18,6 @@ minutes: 30
 > * Trace changes to other variables as they are updated by a `for` loop.
 > * Use a function to get a list of filenames that match a simple pattern.
 > * Use a `for` loop to process multiple files.
-
-```{r, include = FALSE}
-source("tools/chunk-options.R")
-opts_chunk$set(fig.path = "fig/03-loops-R-")
-```
-
-## Analyzing Multiple Data Sets
 
 We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
 

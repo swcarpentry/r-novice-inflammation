@@ -189,7 +189,7 @@ dec, : embedded nul(s) found in input
 logical: returning NA
 </code></pre>
 <pre class="output"><code>   user  system elapsed 
-  0.050   0.000   0.053 
+  0.060   0.000   0.055 
 </code></pre>
 <p>Note how we add a new column to <code>out</code> at each iteration? This is a cardinal sin of writing a <code>for</code> loop in R.</p>
 <p>Instead, we can create an empty matrix with the right dimensions (rows/columns) to hold the results. Then we loop over the files but this time we fill in the <code>f</code>th column of our results matrix <code>out</code>. This time there is no copying/growing for R to deal with.</p>

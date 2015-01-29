@@ -4,16 +4,15 @@ title: Programming with R
 subtitle: Analyzing patient data
 minutes: 30
 ---
+
+
+
 > ## Objectives {.objectives}
 > * Read tabular data from a file into a program.
 > * Assign values to variables.
 > * Select individual values and subsections from data.
 > * Perform operations on a data frame of data.
 > * Display simple graphs.
-
-
-
-## Analyzing Patient Data
 
 We are studying inflammation in patients who have been given a new treatment for arthritis,
 and need to analyze the first dozen data sets. 

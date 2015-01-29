@@ -4,13 +4,14 @@ title: Programming with R
 subtitle: First timers
 minutes: 30
 ---
-> ## Objectives {.objectives}
->
-> FIXME: Write these
 
 ```{r, include = FALSE}
 source("tools/chunk-options.R")
 ```
+
+> ## Objectives {.objectives}
+>
+> FIXME: Write these
 
 # Novice R materials - following Python examples
 
