@@ -4,13 +4,14 @@ title: Programming with R
 subtitle: Command-Line Programs
 minutes: 30
 ---
+
+
+
 > ## Objectives {.objectives}
 > 
 > *   Use the values of command-line arguments in a program.
 > *   Handle flags and files separately in a command-line program.
 > *   Read data from standard input in a program so that it can be used in a pipeline.
-
-
 
 The R Console and other interactive tools like RStudio are great for prototyping code and exploring data, but sooner or later we will want to use our program in a pipeline or run it in a shell script to process thousands of data files.
 In order to do that, we need to make our programs work like other Unix command-line tools.
@@ -73,7 +74,7 @@ Rscript session-info.R
 
 ~~~{.output}
 R version 3.1.2 (2014-10-31)
-Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Platform: x86_64-pc-linux-gnu (64-bit)
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
@@ -84,7 +85,7 @@ locale:
 [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  base
+[1] stats     graphics  grDevices utils     datasets  base     
 
 ~~~
 
@@ -372,8 +373,8 @@ Rscript find-pattern.R print-args
 
 
 ~~~{.output}
-print-args-trailing.R
 print-args.R
+print-args-trailing.R
 
 ~~~
 

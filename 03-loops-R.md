@@ -5,6 +5,8 @@ subtitle: Analyzing multiple data sets
 minutes: 30
 ---
 
+
+
 > ## Objectives {.objectives}
 > 
 > * Explain what a `for` loop does.
@@ -13,10 +15,6 @@ minutes: 30
 > * Trace changes to other variables as they are updated by a `for` loop.
 > * Use a function to get a list of filenames that match a simple pattern.
 > * Use a `for` loop to process multiple files.
-
-
-
-## Analyzing Multiple Data Sets
 
 We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
 

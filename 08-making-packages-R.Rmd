@@ -4,16 +4,14 @@ title: Programming with R
 subtitle: Making packages in R
 minutes: 30
 ---
-> ## Objectives {.objectives}
->
-> FIXME: Write these
 
 ```{r, include = FALSE}
 source("tools/chunk-options.R")
 ```
 
-Making packages in R
-====================
+> ## Objectives {.objectives}
+>
+> FIXME: Write these
 
 Why should you make your own R packages?
 

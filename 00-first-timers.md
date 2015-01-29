@@ -4,11 +4,12 @@ title: Programming with R
 subtitle: First timers
 minutes: 30
 ---
+
+
+
 > ## Objectives {.objectives}
 >
 > FIXME: Write these
-
-
 
 # Novice R materials - following Python examples
 

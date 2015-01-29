@@ -4,23 +4,21 @@ title: Programming with R
 subtitle: Making choices
 minutes: 30
 ---
-> ## Objectives {.objectives}
-> 
-> *   Save plot(s) in a pdf file.
-> *   Write conditional statements with `if` and `else`.
-> *   Correctly evaluate expressions containing `&` ("and") and `|` ("or").
 
 ```{r, include = FALSE}
 source("tools/chunk-options.R")
 opts_chunk$set(fig.path = "fig/04-cond-")
 ```
 
-## Making Choices
+> ## Objectives {.objectives}
+> 
+> *   Save plot(s) in a pdf file.
+> *   Write conditional statements with `if` and `else`.
+> *   Correctly evaluate expressions containing `&` ("and") and `|` ("or").
 
 Our previous lessons have shown us how to manipulate data, define our own functions, and repeat things.
 However, the programs we have written so far always do the same things, regardless of what data they're given.
 We want programs to make choices based on the values they are manipulating.
-
 
 ### Saving plots to a file
 

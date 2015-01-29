@@ -4,11 +4,12 @@ title: Programming with R
 subtitle: Loops in R
 minutes: 30
 ---
+
+
+
 > ## Objectives {.objectives}
 >
 > FIXME: Write these
-
-
 
 ### To loop or not to loop...?
 
@@ -382,7 +383,7 @@ logical: returning NA
 
 ~~~{.output}
    user  system elapsed 
-  0.050   0.000   0.053 
+  0.060   0.000   0.055 
 
 ~~~
 
