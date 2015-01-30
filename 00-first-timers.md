@@ -7,6 +7,10 @@ minutes: 30
 
 
 
+> ## Objectives {.objectives}
+>
+> FIXME: Write these
+
 # Novice R materials - following Python examples
 
 * Draw concept map of where we are headed towards best scientific practices, and reproducibility.

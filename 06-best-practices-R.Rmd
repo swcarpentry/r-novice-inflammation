@@ -9,7 +9,9 @@ minutes: 30
 source("tools/chunk-options.R")
 ```
 
-# Some best practices for using R and designing programs
+> ## Objectives {.objectives}
+>
+> FIXME: Write these
 
 1. Start your code with a description of what it is:
 

@@ -7,9 +7,9 @@ minutes: 30
 
 
 
-
-Making packages in R
-====================
+> ## Objectives {.objectives}
+>
+> FIXME: Write these
 
 Why should you make your own R packages?
 
