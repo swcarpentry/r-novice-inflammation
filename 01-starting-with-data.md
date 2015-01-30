@@ -16,7 +16,7 @@ minutes: 30
 
 We are studying inflammation in patients who have been given a new treatment for arthritis,
 and need to analyze the first dozen data sets. 
-The data sets are stored in [comma-separated values](../../gloss.html#comma-separeted-values) (CSV) format: each row holds information for a single patient, and the columns represent successive days. 
+The data sets are stored in [comma-separated values](reference.html#comma-separated-values-(csv)) (CSV) format: each row holds information for a single patient, and the columns represent successive days. 
 The first few rows of our first file look like this:
 
 
@@ -58,10 +58,10 @@ Now we could load the data into R using `read.csv`:
 read.csv(file = "data/inflammation-01.csv", header = FALSE)
 ~~~
 
-The expression `read.csv(...)` is a [function call](../../gloss.html#function-call) that asks R to run the function `read.csv`. 
+The expression `read.csv(...)` is a [function call](reference.html#function-call) that asks R to run the function `read.csv`. 
 
-`read.csv` has two [arguments](../../gloss.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
-The filename needs to be a character string (or [string](../../gloss.html#string) for short), so we put it in quotes.
+`read.csv` has two [arguments](reference.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
+The filename needs to be a character string (or [string](reference.html#string) for short), so we put it in quotes.
 Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers.
 We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
 
@@ -69,7 +69,7 @@ We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
 > 
 > `read.csv` actually has many more arguments that you may find useful when 
 > importing your own data in the future. You can learn more about these 
-> options in this supplementary [lesson](01-supp-ReadWriteCsv.html).
+> options in this supplementary [lesson](01-supp-read-write-csv.html).
 
 The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s).
 For example, in this case if we provided the name of a different file to the argument `file`, `read.csv` would read it instead.
@@ -288,7 +288,7 @@ The output tells us that data currently is a data frame in R.
 This is similar to a spreadsheet in MS Excel that many of us are familiar with using.
 Data frames are very useful for storing data because you can have a continuous variable, e.g. rainfall, in one column and a categorical variable, e.g. month, in another.
 
-We can see the dimensions, or [shape](../../gloss.html#shape), of the data frame like this:
+We can see the dimensions, or [shape](reference.html#shape-(of-an-array)), of the data frame like this:
 
 
 ~~~{.r}
@@ -304,7 +304,7 @@ dim(dat)
 
 This tells us that our data frame, `dat`, has 60 rows and 40 columns.
 
-If we want to get a single value from the data frame, we can provide an [index](../../gloss.html#index) in square brackets, just as we do in math:
+If we want to get a single value from the data frame, we can provide an [index](reference.html#index) in square brackets, just as we do in math:
 
 
 ~~~{.r}
@@ -352,7 +352,7 @@ dat[1:4, 1:10]
 
 ~~~
 
-The [slice](../../gloss.html#slice) `1:4` means, "Start at index 1 and go to index 4."
+The [slice](reference.html#slice) `1:4` means, "Start at index 1 and go to index 4."
 
 The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
 
@@ -560,7 +560,7 @@ We'll learn why this is so in the next lesson.
 
 > ## Challenge {.challenge}
 >
-> A subsection of a data frame is called a [slice](../../gloss.html#slice).
+> A subsection of a data frame is called a [slice](reference.html#slice).
 > We can take slices of character vectors as well:
 >
 

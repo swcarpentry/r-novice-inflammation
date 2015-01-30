@@ -34,12 +34,12 @@ fahr_to_kelvin <- function(temp) {
 
 We define `fahr_to_kelvin` by assigning it to the output of `function`.
 The list of argument names are containted within parentheses.
-Next, the [body](../../gloss.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
+Next, the [body](reference.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
 The statements in the body are indented by two spaces.
 This makes the code easier to read but does not affect how the code operates. 
 
 When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
-Inside the function, we use a [return statement](../../gloss.html#return-statement) to send a result back to whoever asked for it.
+Inside the function, we use a [return statement](reference.html#return-statement) to send a result back to whoever asked for it.
 
 > ## Tip {.callout} 
 > 
@@ -104,7 +104,7 @@ kelvin_to_celsius(0)
 
 What about converting Fahrenheit to Celsius?
 We could write out the formula, but we don't need to.
-Instead, we can [compose](../../gloss.html#function-composition) the two functions we have already created:
+Instead, we can [compose](reference.html#function-composition) the two functions we have already created:
 
 
 ~~~{.r}
@@ -188,7 +188,7 @@ The diagram below shows what memory looks like after the first line has been exe
 <img src="fig/python-call-stack-01.svg" alt="Call Stack (Initial State)" />
 
 When we call `fahr_to_celsius`, R *doesn't* create the variable `temp` right away.
-Instead, it creates something called a [stack frame](../../gloss.html#stack-frame) to keep track of the variables defined by `fahr_to_kelvin`.
+Instead, it creates something called a [stack frame](reference.html#stack-frame) to keep track of the variables defined by `fahr_to_kelvin`.
 Initially, this stack frame only holds the value of `temp`:
 
 <img src="fig/python-call-stack-02.svg" alt="Call Stack Immediately After First Function Call" />
@@ -290,7 +290,7 @@ span(diff)
 We don't expect the variable `diff` to have the value 20 after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
 And yes, we could probably choose a different name than `diff` for our variable in this case, but we don't want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.
 
-The big idea here is [encapsulation](../../gloss.html#encapsulation), and it's the key to writing correct, comprehensible programs.
+The big idea here is [encapsulation](reference.html#encapsulation), and it's the key to writing correct, comprehensible programs.
 A function's job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something.
 That only works if functions don't interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.
 
@@ -521,9 +521,9 @@ all.equal(sd(dat[, 4]), sd(centered))
 ~~~
 
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
-We have one more task first, though: we should write some [documentation](../../gloss.html#documentation) for our function to remind ourselves later what it's for and how to use it.
+We have one more task first, though: we should write some [documentation](reference.html#documentation) for our function to remind ourselves later what it's for and how to use it.
 
-A common way to put documentation in software is to add [comments](../../gloss.html#comment) like this:
+A common way to put documentation in software is to add [comments](reference.html#comment) like this:
 
 
 ~~~{.r}
@@ -792,7 +792,7 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 
 * Define a function using `name <- function(...args...) {...body...}`.
 * Call a function using `name(...values...)`.
-* Each time a function is called, a new stack frame is created on the [call stack](../../gloss.html#call-stack) to hold its arguments and local variables.
+* Each time a function is called, a new stack frame is created on the [call stack](reference.html#call-stack) to hold its arguments and local variables.
 * R looks for variables in the current stack frame before looking for them at the top level.
 * Use `help(thing)` to view help for something.
 * Put comments at the beginning of functions to provide help for that function.
