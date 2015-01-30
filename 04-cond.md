@@ -7,19 +7,15 @@ minutes: 30
 
 
 
-## Making Choices
+> ## Objectives {.objectives}
+> 
+> *   Save plot(s) in a pdf file.
+> *   Write conditional statements with `if` and `else`.
+> *   Correctly evaluate expressions containing `&` ("and") and `|` ("or").
 
 Our previous lessons have shown us how to manipulate data, define our own functions, and repeat things.
 However, the programs we have written so far always do the same things, regardless of what data they're given.
 We want programs to make choices based on the values they are manipulating.
-
-<div class="objectives" markdown="1">
-#### Objectives
-
-*   Save plot(s) in a pdf file.
-*   Write conditional statements with `if` and `else`.
-*   Correctly evaluate expressions containing `&` ("and") and `|` ("or").
-</div>
 
 ### Saving plots to a file
 
@@ -410,35 +406,6 @@ Now we can save all of the results with just one line of code:
 
 ~~~{.r}
 analyze_all("inflammation")
-~~~
-
-
-
-~~~{.output}
-Warning in mean.default(newX[, i], ...): argument is not numeric or
-logical: returning NA
-
-~~~
-
-
-
-~~~{.output}
-Warning in min(x): no non-missing arguments to min; returning Inf
-
-~~~
-
-
-
-~~~{.output}
-Warning in max(x): no non-missing arguments to max; returning -Inf
-
-~~~
-
-
-
-~~~{.output}
-Error in plot.window(...): need finite 'ylim' values
-
 ~~~
 
 Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analzye_all`.

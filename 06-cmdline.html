@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: </title>
+    <title>Software Carpentry: Programming with R</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,9 +25,16 @@
       </div>
       <div class="row-fluid">
         <div class="span10 offset1">
-          <h1 class="title"></h1>
-          
-<h2 id="command-line-programs">Command-Line Programs</h2>
+          <h1 class="title">Programming with R</h1>
+          <h2 class="subtitle">Command-Line Programs</h2>
+<div id="objectives" class="objectives">
+<h2>Objectives</h2>
+<ul>
+<li>Use the values of command-line arguments in a program.</li>
+<li>Handle flags and files separately in a command-line program.</li>
+<li>Read data from standard input in a program so that it can be used in a pipeline.</li>
+</ul>
+</div>
 <p>The R Console and other interactive tools like RStudio are great for prototyping code and exploring data, but sooner or later we will want to use our program in a pipeline or run it in a shell script to process thousands of data files. In order to do that, we need to make our programs work like other Unix command-line tools. For example, we may want a program that reads a data set and prints the average inflammation per patient:</p>
 <pre><code>$ Rscript readings.R --mean data/inflammation-01.csv
 5.45
@@ -48,14 +55,6 @@
 <li>Use the <code>--min</code>, <code>--mean</code>, or <code>--max</code> flag to determine what statistic to print.</li>
 </ol>
 <p>To make this work, we need to know how to handle command-line arguments in a program, and how to get at standard input. We'll tackle these questions in turn below.</p>
-<div class="objectives" markdown="1">
-<h4>Objectives</h4>
-<ul>
-<li>Use the values of command-line arguments in a program.</li>
-<li>Handle flags and files separately in a command-line program.</li>
-<li>Read data from standard input in a program so that it can be used in a pipeline.</li>
-</ul>
-</div>
 <h3 id="command-line-arguments">Command-Line Arguments</h3>
 <p>Using the text editor of your choice, save the following line of code in a text file called <code>session-info.R</code>:</p>
 <pre class="output"><code>sessionInfo()
@@ -64,10 +63,15 @@
 <p>Now we can run the code in the file we created from the Unix Shell using <code>Rscript</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript session-info.R</code></pre>
 <pre class="output"><code>R version 3.1.2 (2014-10-31)
-Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Platform: x86_64-pc-linux-gnu (64-bit)
 
 locale:
-[1] en_CA.UTF-8/en_CA.UTF-8/en_CA.UTF-8/C/en_CA.UTF-8/en_CA.UTF-8
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
@@ -82,7 +86,7 @@ cat(args, sep = &quot;\n&quot;)
 </code></pre>
 <p>The function <code>commandArgs</code> extracts all the command line arguments and returns them as a vector. The function <code>cat</code>, similar to the <code>cat</code> of the Unix Shell, outputs the contents of the variable. Since we did not specify a filename for writing, <code>cat</code> sends the output to <a href="../../gloss.html#standard-output">standard output</a>, which we can then pipe to other Unix functions. Because we set the argument <code>sep</code> to <code>&quot;\n&quot;</code>, which is the symbol to start a new line, each element of the vector is printed on its own line. Let's see what happens when we run this program in the Unix Shell:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript print-args.R</code></pre>
-<pre class="output"><code>/Library/Frameworks/R.framework/Resources/bin/exec/R
+<pre class="output"><code>/usr/lib64/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -96,7 +100,7 @@ cat(args, sep = &quot;\n&quot;)
 </ul>
 <p>Thus running a file with Rscript is an easier way to run the following:</p>
 <pre class="sourceCode r"><code class="sourceCode r">R --slave --no-restore --file=print-args.R --args</code></pre>
-<pre class="output"><code>/Library/Frameworks/R.framework/Resources/bin/exec/R
+<pre class="output"><code>/usr/lib64/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -104,7 +108,7 @@ cat(args, sep = &quot;\n&quot;)
 </code></pre>
 <p>If we run it with a few arguments, however:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript print-args.R first second third</code></pre>
-<pre class="output"><code>/Library/Frameworks/R.framework/Resources/bin/exec/R
+<pre class="output"><code>/usr/lib64/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -233,8 +237,8 @@ main()
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For example, searching for the pattern &quot;print-args&quot; returns the two scripts we</span>
 <span class="co"># wrote earlier</span>
 Rscript find-pattern.R print-args</code></pre>
-<pre class="output"><code>print-args-trailing.R
-print-args.R
+<pre class="output"><code>print-args.R
+print-args-trailing.R
 </code></pre>
 <h3 id="handling-multiple-files">Handling Multiple Files</h3>
 <p>The next step is to teach our program how to handle multiple files. Since 60 lines of output per file is a lot to page through, we'll start by using three smaller files, each of which has three days of data for two patients. Let's investigate them from the Unix Shell:</p>
@@ -420,14 +424,16 @@ main()
 </ul>
 </div>
 <div class="keypoints" markdown="1">
-<h4>Key Points</h4>
+<h4 id="key-points">Key Points</h4>
 <ul>
 <li>Use <code>commandArgs(trailingOnly = TRUE)</code> to obtain a vector of the command-line arguments that a program was run with.</li>
 <li>Avoid silent failures.</li>
 <li>Use <code>file(&quot;stdin&quot;)</code> to connect to a program's standard input.</li>
-<li>Use <code>cat(vec, sep = &quot;\n&quot;)</code> to write the elements of <code>vec</code> to standard output, one per line.</li>
-</ul>
+<li>Use <code>cat(vec, sep = &quot;\n&quot;)</code> to write the elements of <code>vec</code> to standard output, one per line.
 </div>
+
+</li>
+</ul>
         </div>
       </div>
       <div class="footer">
