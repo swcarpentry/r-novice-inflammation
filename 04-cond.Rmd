@@ -1,8 +1,9 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Making choices
+title: "Programming with R"
 minutes: 30
+output: pdf_document
+subtitle: Making choices
+layout: page
 ---
 
 ```{r, include = FALSE}
@@ -189,7 +190,7 @@ plot_dist <- function(x, threshold) {
 ```
 
 ```{r conditional-challenge}
-dat <- read.csv("data/Site-01.csv", header = FALSE)
+dat <- read.csv("data/Site-01.csv", header = TRUE)
 plot_dist(dat[, 6], threshold = 10)  # Quadrant 1 (column 6)
 plot_dist(dat[1:5, 6], threshold = 10)  # samples (rows) 1-5 on quadrant 1 (column 6)
 ```
@@ -209,7 +210,7 @@ plot_dist <- function(x, threshold, use_boxplot = TRUE) {
 ```
 
 ```{r conditional-challenge-hist}
-dat <- read.csv("data/Site-01.csv", header = FALSE)
+dat <- read.csv("data/Site-01.csv", header = TRUE)
 plot_dist(dat[, 6], threshold = 10, use_boxplot = TRUE)  # quadrant 1 (column 5) - create boxplot
 plot_dist(dat[, 6], threshold = 10, use_boxplot = FALSE)  # quadrant 1 (column 5) - create histogram
 plot_dist(dat[1:5, 6], threshold = 10)  # samples (rows) 1-5 on quadrant 1 (column) 5
@@ -280,11 +281,12 @@ Now let's update `analyze_all`:
 analyze_all <- function(pattern) {
   # Runs the function analyze for each file in the current working directory
   # that contains the given pattern.
-  filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
+  filenames <- list.files(path = "data", pattern = pattern)
   for (f in filenames) {
+    input_name<-paste('data',f,sep='/')
     pdf_name <- sub("csv", "pdf", f)
-    paste('output',pdf_name,sep='/')
-    analyze(f, output = pdf_name)
+    pdf_name<-paste('output',pdf_name,sep='/')
+    analyze(input_name, output = pdf_name)
   }
 }
 ```
@@ -292,7 +294,7 @@ analyze_all <- function(pattern) {
 Now we can save all of the results with just one line of code:
 
 ```{r}
-analyze_all("sample")
+analyze_all("Site")
 ```
 
 Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analyze_all`.
