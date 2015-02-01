@@ -1,8 +1,9 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Analyzing patient data
+title: "Programming with R"
 minutes: 30
+output: pdf_document
+subtitle: Analyzing patient data
+layout: page
 ---
 
 ```{r, include = FALSE}
@@ -197,99 +198,6 @@ str(dat)
 
 We see the first two columns (ID and Gender) are type factor. Factors are a very useful datatype in R and we will look at them in detail next. The Group column is a logical datatype (values are True or False). 5 columns (BloodPressure, Aneurisms_q1-4) are all type integer. One column is type num (Age).
 
-### Factors
-
-This section is taken from the datacarpentry lessons git@github.com:datacarpentry/datacarpentry.git
-
-```{r, echo=FALSE}
-### Factors
-```
-
-Factors are used to represent categorical data. Factors can be ordered or
-unordered and are an important class for statistical analysis and for plotting.
-
-Factors are stored as integers, and have labels associated with these unique
-integers. While factors look (and often behave) like character vectors, they are
-actually integers under the hood, and you need to be careful when treating them
-like strings.
-
-Once created, factors can only contain a pre-defined set values, known as
-*levels*. By default, R always sorts *levels* in alphabetical order. For
-instance, if you have a factor with 2 levels:
-
-```{r}
-sex <- factor(c("male", "female", "female", "male"))
-```
-
-R will assign `1` to the level `"female"` and `2` to the level `"male"` (because
-`f` comes before `m`, even though the first element in this vector is
-`"male"`). You can check this by using the function `levels()`, and check the
-number of levels using `nlevels()`:
-
-```{r}
-levels(sex)
-nlevels(sex)
-```
-
-Sometimes, the order of the factors does not matter, other times you might want
-to specify the order because it is meaningful (e.g., "low", "medium", "high") or
-it is required by particular type of analysis. Additionally, specifying the
-order of the levels allows to compare levels:
-
-```{r, error=TRUE}
-food <- factor(c("low", "high", "medium", "high", "low", "medium", "high"))
-levels(food)
-food <- factor(food, levels=c("low", "medium", "high"))
-levels(food)
-min(food) ## doesn't work
-food <- factor(food, levels=c("low", "medium", "high"), ordered=TRUE)
-levels(food)
-min(food) ## works!
-```
-
-In R's memory, these factors are represented by numbers (1, 2, 3). They are
-better than using simple integer labels because factors are self describing:
-`"low"`, `"medium"`, and `"high"`" is more descriptive than `1`, `2`, `3`. Which
-is low?  You wouldn't be able to tell with just integer data. Factors have this
-information built in. It is particularly helpful when there are many levels
-(like the subjects in our example data set).
-
-### Converting factors
-
-If you need to convert a factor to a character vector, simply use
-`as.character(x)`.
-
-Converting a factor to a numeric vector is however a little trickier, and you
-have to go via a character vector. Compare:
-
-```{r}
-f <- factor(c(1, 5, 10, 2))
-as.numeric(f)               ## wrong! and there is no warning...
-as.numeric(as.character(f)) ## works...
-as.numeric(levels(f))[f]    ## The recommended way.
-```
-
-### Challenge
-
-The function `table()` tabulates observations and can be used to create
-bar plots quickly. For instance:
-
-```{r, results='show'}
-## Question: How can you recreate this plot but by having "control"
-## being listed last instead of first?
-exprmt <- factor(c("treat1", "treat2", "treat1", "treat3", "treat1", "control",
-                   "treat1", "treat2", "treat3"))
-table(exprmt)
-barplot(table(exprmt))
-```
-
-<!---
-```{r}
-exprmt <- factor(exprmt, levels=c("treat1", "treat2", "treat3", "control"))
-barplot(table(exprmt))
-```
---->
-
 ### Addressing data
 There are 3 main ways to address data in a data frame:
 * By Index
@@ -428,6 +336,101 @@ dat[index_m,2]<-'M'
 dat[index_f,2]<-'F'
 
 ```
+
+
+### Factors
+
+This section is taken from the datacarpentry lessons git@github.com:datacarpentry/datacarpentry.git
+
+```{r, echo=FALSE}
+### Factors
+```
+
+Factors are used to represent categorical data. Factors can be ordered or
+unordered and are an important class for statistical analysis and for plotting.
+
+Factors are stored as integers, and have labels associated with these unique
+integers. While factors look (and often behave) like character vectors, they are
+actually integers under the hood, and you need to be careful when treating them
+like strings.
+
+Once created, factors can only contain a pre-defined set values, known as
+*levels*. By default, R always sorts *levels* in alphabetical order. For
+instance, if you have a factor with 2 levels:
+
+```{r}
+sex <- factor(c("male", "female", "female", "male"))
+```
+
+R will assign `1` to the level `"female"` and `2` to the level `"male"` (because
+`f` comes before `m`, even though the first element in this vector is
+`"male"`). You can check this by using the function `levels()`, and check the
+number of levels using `nlevels()`:
+
+```{r}
+levels(sex)
+nlevels(sex)
+```
+
+Sometimes, the order of the factors does not matter, other times you might want
+to specify the order because it is meaningful (e.g., "low", "medium", "high") or
+it is required by particular type of analysis. Additionally, specifying the
+order of the levels allows to compare levels:
+
+```{r, error=TRUE}
+food <- factor(c("low", "high", "medium", "high", "low", "medium", "high"))
+levels(food)
+food <- factor(food, levels=c("low", "medium", "high"))
+levels(food)
+min(food) ## doesn't work
+food <- factor(food, levels=c("low", "medium", "high"), ordered=TRUE)
+levels(food)
+min(food) ## works!
+```
+
+In R's memory, these factors are represented by numbers (1, 2, 3). They are
+better than using simple integer labels because factors are self describing:
+`"low"`, `"medium"`, and `"high"`" is more descriptive than `1`, `2`, `3`. Which
+is low?  You wouldn't be able to tell with just integer data. Factors have this
+information built in. It is particularly helpful when there are many levels
+(like the subjects in our example data set).
+
+### Converting factors
+
+If you need to convert a factor to a character vector, simply use
+`as.character(x)`.
+
+Converting a factor to a numeric vector is however a little trickier, and you
+have to go via a character vector. Compare:
+
+```{r}
+f <- factor(c(1, 5, 10, 2))
+as.numeric(f)               ## wrong! and there is no warning...
+as.numeric(as.character(f)) ## works...
+as.numeric(levels(f))[f]    ## The recommended way.
+```
+
+### Challenge
+
+The function `table()` tabulates observations and can be used to create
+bar plots quickly. For instance:
+
+```{r, results='show'}
+## Question: How can you recreate this plot but by having "control"
+## being listed last instead of first?
+exprmt <- factor(c("treat1", "treat2", "treat1", "treat3", "treat1", "control",
+                   "treat1", "treat2", "treat3"))
+table(exprmt)
+barplot(table(exprmt))
+```
+
+<!---
+```{r}
+exprmt <- factor(exprmt, levels=c("treat1", "treat2", "treat3", "control"))
+barplot(table(exprmt))
+```
+--->
+
 ### Removing levels from a factor
 
 In the previous challenge we updated the data for Gender. R still thinks the levels "m" and "f" are valid for the Gender data.
