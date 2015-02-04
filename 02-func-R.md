@@ -5,10 +5,7 @@ subtitle: Creating functions
 minutes: 30
 ---
 
-```{r, include = FALSE}
-source("tools/chunk-options.R")
-opts_chunk$set(fig.path = "fig/02-func-R-")
-```
+
 
 > ## Objectives {.objectives}
 >
@@ -27,12 +24,13 @@ In this lesson, we'll learn how to write a function so that we can repeat severa
 
 Let's start by defining a function `fahr_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
 
-```{r}
+
+~~~{.r}
 fahr_to_kelvin <- function(temp) {
   kelvin <- ((temp - 32) * (5 / 9)) + 273.15
   return(kelvin)
 }
-```
+~~~
 
 We define `fahr_to_kelvin` by assigning it to the output of `function`.
 The list of argument names are containted within parentheses.
@@ -53,12 +51,32 @@ Inside the function, we use a [return statement](reference.html#return-statement
 Let's try running our function.
 Calling our own function is no different from calling any other function:
 
-```{r}
+
+~~~{.r}
 # freezing point of water
 fahr_to_kelvin(32)
+~~~
+
+
+
+~~~{.output}
+[1] 273.15
+
+~~~
+
+
+
+~~~{.r}
 # boiling point of water
 fahr_to_kelvin(212)
-```
+~~~
+
+
+
+~~~{.output}
+[1] 373.15
+
+~~~
 
 We've successfully called the function that we defined, and we have access to the value that we returned.
 
@@ -66,7 +84,8 @@ We've successfully called the function that we defined, and we have access to th
 
 Now that we've seen how to turn Fahrenheit into Kelvin, it's easy to turn Kelvin into Celsius:
 
-```{r}
+
+~~~{.r}
 kelvin_to_celsius <- function(temp) {
   celsius <- temp - 273.15
   return(celsius)
@@ -74,13 +93,21 @@ kelvin_to_celsius <- function(temp) {
 
 #absolute zero in Celsius
 kelvin_to_celsius(0)
-```
+~~~
+
+
+
+~~~{.output}
+[1] -273.15
+
+~~~
 
 What about converting Fahrenheit to Celsius?
 We could write out the formula, but we don't need to.
 Instead, we can [compose](reference.html#function-composition) the two functions we have already created:
 
-```{r}
+
+~~~{.r}
 fahr_to_celsius <- function(temp) {
   temp_k <- fahr_to_kelvin(temp)
   result <- kelvin_to_celsius(temp_k)
@@ -89,7 +116,14 @@ fahr_to_celsius <- function(temp) {
 
 # freezing point of water in Celsius
 fahr_to_celsius(32.0)
-```
+~~~
+
+
+
+~~~{.output}
+[1] 0
+
+~~~
 
 This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want. 
 Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
@@ -102,46 +136,52 @@ Real-life functions will usually be larger than the ones shown here--typically h
 >`original` and `wrapper`, and returns a new vector that has the wrapper vector
 >at the beginning and end of the original:
 >
-```{r, include=FALSE}
-fence <- function(original, wrapper) {
-  answer <- c(wrapper, original, wrapper)
-  return(answer)
-}
-```
 
-```{r}
+
+
+~~~{.r}
 best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 asterisk <- "***"  # R interprets a variable with a single value as a vector
                    # with one element.
 fence(best_practice, asterisk)
-```
+~~~
+
+
+
+~~~{.output}
+[1] "***"       "Write"     "programs"  "for"       "people"    "not"      
+[7] "computers" "***"      
+
+~~~
 
 >  + If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
 >    Write a function called `outside` that returns a vector made up of just the first and last elements of its input:
 
-```{r, include=FALSE}
-outside <- function(v) {
-  first <- v[1]
-  last <- v[length(v)]
-  answer <- c(first, last)
-  return(answer)
-}
-```
 
-```{r}
+
+
+~~~{.r}
 dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
 outside(dry_principle)
-```
+~~~
+
+
+
+~~~{.output}
+[1] "Don't"  "others"
+
+~~~
 
 
 ### The Call Stack
 
 Let's take a closer look at what happens when we call `fahr_to_celsius(32)`. To make things clearer, we'll start by putting the initial value 32 in a variable and store the final result in one as well:
 
-```{r}
+
+~~~{.r}
 original <- 32
 final <- fahr_to_celsius(original)
-```
+~~~
 
 The diagram below shows what memory looks like after the first line has been executed:
 
@@ -182,9 +222,17 @@ it holds the variables we defined outside the functions in our code.
 What it *doesn't* hold is the variables that were in the various stack frames.
 If we try to get the value of `temp` after our functions have finished running, R tells us that there's no such thing:
 
-```{r}
+
+~~~{.r}
 temp
-```
+~~~
+
+
+
+~~~{.output}
+Error in eval(expr, envir, enclos): object 'temp' not found
+
+~~~
 
 > ## Tip {.callout} 
 > 
@@ -204,7 +252,8 @@ temp
 
 Why go to all this trouble? Well, here's a function called `span` that calculates the difference between the mininum and maximum values in an array:
 
-```{r}
+
+~~~{.r}
 span <- function(a) {
   diff <- max(a) - min(a)
   return(diff)
@@ -213,18 +262,33 @@ span <- function(a) {
 dat <- read.csv(file = "data/Site-01.csv", header = TRUE)
 # span of aneurism data
 span(dat[,6:9])
-```
+~~~
+
+
+
+~~~{.output}
+[1] 258
+
+~~~
 
 Notice `span` assigns a value to variable called `diff`. We might very well use a variable with the same name (`diff`) to hold the data:
 
-```{r}
+
+~~~{.r}
 diff <- read.csv(file = "data/Site-01.csv", header = TRUE)
 # span of aneurism data
 span(diff[,6:9])
-```
+~~~
 
 
-We don't expect the variable `diff` to have the value `r span(diff[,5:8])` after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
+
+~~~{.output}
+[1] 258
+
+~~~
+
+
+We don't expect the variable `diff` to have the value 310.9 after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
 And yes, we could probably choose a different name than `diff` for our variable in this case, but we don't want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.
 
 The big idea here is [encapsulation](reference.html#encapsulation), and it's the key to writing correct, comprehensible programs.
@@ -237,91 +301,233 @@ That only works if functions don't interfere with each other; if they do, we hav
 >    Draw a diagram showing how the call stack changes when we run the
 >following:
 
-```{r, results="hide"}
+
+~~~{.r}
 inside <- "carbon"
 outside <- "+"
 result <- outside(fence(inside, outside))
-```
+~~~
+
+
+
+~~~{.output}
+Error in eval(expr, envir, enclos): could not find function "outside"
+
+~~~
 
 ### Testing and Documenting
 
 Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly.
 To see how to do this, let's write a function to center a dataset around a particular value:
 
-```{r}
+
+~~~{.r}
 center <- function(data, desired) {
   new_data <- (data - mean(data)) + desired
   return(new_data)
 }
-```
+~~~
 
 We could test this on our actual data, but since we don't know what the values ought to be, it will be hard to tell if the result was correct.
 Instead, let's create a vector of 0s and then center that around 3.
 This will make it simple to see if our function is working as expected:
 
-```{r, }
+
+~~~{.r}
 z <- c(0, 0, 0, 0)
 z
+~~~
+
+
+
+~~~{.output}
+[1] 0 0 0 0
+
+~~~
+
+
+
+~~~{.r}
 center(z, 3)
-```
+~~~
+
+
+
+~~~{.output}
+[1] 3 3 3 3
+
+~~~
 
 That looks right, so let's try center on our real data. We'll center the blood pressure data from all patients around 0:
 
-```{r}
+
+~~~{.r}
 dat <- read.csv(file = "data/Site-01.csv", header = TRUE)
 centered <- center(dat[, 4], 0)
 head(centered)
-```
+~~~
+
+
+
+~~~{.output}
+[1]  13.39  20.39  11.39 -13.61   6.39  -6.61
+
+~~~
 
 It's hard to tell from the default output whether the result is correct, but there are a few simple tests that will reassure us:
 
-```{r}
+
+~~~{.r}
 # original min
 min(dat[, 4])
+~~~
+
+
+
+~~~{.output}
+[1] 62
+
+~~~
+
+
+
+~~~{.r}
 # original mean
 mean(dat[, 4])
+~~~
+
+
+
+~~~{.output}
+[1] 118.61
+
+~~~
+
+
+
+~~~{.r}
 # original max
 max(dat[, 4])
+~~~
+
+
+
+~~~{.output}
+[1] 173
+
+~~~
+
+
+
+~~~{.r}
 # centered min
 min(centered)
+~~~
+
+
+
+~~~{.output}
+[1] -56.61
+
+~~~
+
+
+
+~~~{.r}
 # centered mean
 mean(centered)
+~~~
+
+
+
+~~~{.output}
+[1] 5.680244e-16
+
+~~~
+
+
+
+~~~{.r}
 # centered max
 max(centered)
-```
+~~~
 
-That seems almost right: the original mean was about `r round(mean(dat[, 4]), 2)`, so the lower bound from zero is now about `r -round(mean(dat[, 4]), 2)`.
-The mean of the centered data is `r mean(centered)`.
+
+
+~~~{.output}
+[1] 54.39
+
+~~~
+
+That seems almost right: the original mean was about 118.61, so the lower bound from zero is now about -118.61.
+The mean of the centered data is 5.6802436 &times; 10<sup>-16</sup>.
 We can even go further and check that the standard deviation hasn't changed:
 
-```{r}
+
+~~~{.r}
 # original standard deviation
 sd(dat[, 4])
+~~~
+
+
+
+~~~{.output}
+[1] 20.85636
+
+~~~
+
+
+
+~~~{.r}
 # centerted standard deviation
 sd(centered)
-```
+~~~
+
+
+
+~~~{.output}
+[1] 20.85636
+
+~~~
 
 Those values look the same, but we probably wouldn't notice if they were different in the sixth decimal place.
 Let's do this instead:
 
-```{r}
+
+~~~{.r}
 # difference in standard deviations before and after
 sd(dat[, 4]) - sd(centered)
-```
+~~~
+
+
+
+~~~{.output}
+[1] 0
+
+~~~
 
 Sometimes, a very small difference can be detected due to rounding at very low decimal places.
 R has a useful function for comparing two objects allowing for rounding errors, `all.equal`:
 
-```{r}
+
+~~~{.r}
 all.equal(sd(dat[, 4]), sd(centered))
-```
+~~~
+
+
+
+~~~{.output}
+[1] TRUE
+
+~~~
 
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
 We have one more task first, though: we should write some [documentation](reference.html#documentation) for our function to remind ourselves later what it's for and how to use it.
 
 A common way to put documentation in software is to add [comments](reference.html#comment) like this:
 
-```{r}
+
+~~~{.r}
 center <- function(data, desired) {
   # return a new vector containing the original data centered around the
   # desired value.
@@ -329,7 +535,7 @@ center <- function(data, desired) {
   new_data <- (data - mean(data)) + desired
   return(new_data)
 }
-```
+~~~
 
 > ## Tip {.callout} 
 > 
@@ -351,62 +557,47 @@ center <- function(data, desired) {
 
 [01]: 01-starting-with-data.html
 
-```{r, eval=FALSE, include=FALSE}
-analyze <- function(filename) {
-  # Plots the average, min, and max aneurism per quadrant.
-  # Input is character string of a csv file.
-  dat <- read.csv(file = filename, header = TRUE)
-  plot(x=dat$Group,y=dat$Aneurisms_q1)
-  plot(x=dat$Group,y=dat$Aneurisms_q2)
-  plot(x=dat$Group,y=dat$Aneurisms_q3)
-  plot(x=dat$Group,y=dat$Aneurisms_q4)
-}
-```
+
 
 >  + Write a function `rescale` that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1.
 >  (If $L$ and $H$ are the lowest and highest values in the original vector, then the replacement for a value $v$ should be $(v-L) / (H-L)$.)
 >  Be sure to document your function with comments.
 
-```{r, include=FALSE}
-rescale <- function(v) {
-  # Rescales a vector, v, to lie in the range 0 to 1.
-  L <- min(v)
-  H <- max(v)
-  result <- (v - L) / (H - L)
-  return(result)
-}
-```
+
 
 >  + Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
 
-```{r rescale-test, include=FALSE}
-answer <- rescale(dat[, 4])
-min(answer)
-max(answer)
-plot(answer)
-plot(x=dat[, 4], y=answer)  # This hasn't been introduced yet, but it may be
-                        # useful to show when explaining the answer.
-```
+
 
 ### Defining Defaults
 
 We have passed arguments to functions in two ways: directly, as in `dim(dat)`, and by name, as in `read.csv(file = "data/Site-01.csv", header = TRUE)`.
 In fact, we can pass the arguments to `read.csv` without naming them:
 
-```{r}
+
+~~~{.r}
 dat <- read.csv("data/Site-01.csv", TRUE)
-```
+~~~
 
 However, the position of the arguments matters if they are not named.
 
-```{r}
+
+~~~{.r}
 dat <- read.csv(header = TRUE, file = "data/Site-01.csv")
 dat <- read.csv(TRUE, "data/Site-01.csv")
-```
+~~~
+
+
+
+~~~{.output}
+Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
+
+~~~
 
 To understand what's going on, and make our own functions easier to use, let's re-define our `center` function like this:
 
-```{r}
+
+~~~{.r}
 center <- function(data, desired = 0) {
   # return a new vector containing the original data centered around the
   # desired value (0 by default).
@@ -414,29 +605,58 @@ center <- function(data, desired = 0) {
   new_data <- (data - mean(data)) + desired
   return(new_data)
 }
-```
+~~~
 
 The key change is that the second argument is now written `desired = 0` instead of just `desired`.
 If we call the function with two arguments, it works as it did before:
 
-```{r}
+
+~~~{.r}
 test_data <- c(0, 0, 0, 0)
 center(test_data, 3)
-```
+~~~
+
+
+
+~~~{.output}
+[1] 3 3 3 3
+
+~~~
 
 But we can also now call `center()` with just one argument, in which case `desired` is automatically assigned the default value of `0`:
 
-```{r}
+
+~~~{.r}
 more_data <- 5 + test_data
 more_data
+~~~
+
+
+
+~~~{.output}
+[1] 5 5 5 5
+
+~~~
+
+
+
+~~~{.r}
 center(more_data)
-```
+~~~
+
+
+
+~~~{.output}
+[1] 0 0 0 0
+
+~~~
 
 This is handy: if we usually want a function to work one way, but occasionally need it to do something else, we can allow people to pass an argument when they need to but provide a default to make the normal case easier.
 
 The example below shows how R matches values to arguments
 
-```{r}
+
+~~~{.r}
 display <- function(a = 1, b = 2, c = 3) {
   result <- c(a, b, c)
   names(result) <- c("a", "b", "c")  # This names each element of the vector
@@ -445,21 +665,77 @@ display <- function(a = 1, b = 2, c = 3) {
 
 # no arguments
 display()
+~~~
+
+
+
+~~~{.output}
+a b c 
+1 2 3 
+
+~~~
+
+
+
+~~~{.r}
 # one argument
 display(55)
+~~~
+
+
+
+~~~{.output}
+ a  b  c 
+55  2  3 
+
+~~~
+
+
+
+~~~{.r}
 # two arguments
 display(55, 66)
+~~~
+
+
+
+~~~{.output}
+ a  b  c 
+55 66  3 
+
+~~~
+
+
+
+~~~{.r}
 # three arguments
 display (55, 66, 77)
-```
+~~~
+
+
+
+~~~{.output}
+ a  b  c 
+55 66 77 
+
+~~~
 
 As this example shows, arguments are matched from left to right, and any that haven't been given a value explicitly get their default value.
 We can override this behavior by naming the value as we pass it in:
 
-```{r}
+
+~~~{.r}
 # only setting the value of c
 display(c = 77)
-```
+~~~
+
+
+
+~~~{.output}
+ a  b  c 
+ 1  2 77 
+
+~~~
 
 > ## Tip {.callout}
 >
@@ -476,23 +752,33 @@ display(c = 77)
 
 With that in hand, let's look at the help for `read.csv()`:
 
-```{r, eval=FALSE}
+
+~~~{.r}
 ?read.csv
-```
+~~~
 
 There's a lot of information there, but the most important part is the first couple of lines:
 
-```{r, eval=FALSE}
+
+~~~{.r}
 read.csv(file, header = TRUE, sep = ",", quote = "\"",
          dec = ".", fill = TRUE, comment.char = "", ...)
-```
+~~~
 
 This tells us that `read.csv()` has one argument, `file`, that doesn't have a default value, and six others that do.
 Now we understand why the following gives an error:
 
-```{r, results="hide"}
+
+~~~{.r}
 dat <- read.csv(TRUE, "data/Site-01.csv")
-```
+~~~
+
+
+
+~~~{.output}
+Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
+
+~~~
 
 It fails because `FALSE` is assigned to `file` and the filename is assigned to the argument `header`.
 
@@ -501,21 +787,7 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 >  + Rewrite the `rescale` function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want.
 >  Compare your implementation to your neighbor's: do the two functions always behave the same way?
 
-```{r, include=FALSE}
-rescale <- function(v, lower = 0, upper = 1) {
-  # Rescales a vector, v, to lie in the range lower to upper.
-  L <- min(v)
-  H <- max(v)
-  result <- (v - L) / (H - L) * (upper - lower) + lower
-  return(result)
-}
-answer <- rescale(dat[, 4], lower = 2, upper = 5)
-min(answer)
-max(answer)
-answer <- rescale(dat[, 4], lower = -5, upper = -2)
-min(answer)
-max(answer)
-```
+
 
 #### Key Points
 
@@ -534,12 +806,13 @@ max(answer)
 We now have a function called analyze to visualize a single data set.
 We could use it to explore all of our current data sets like this:
 
-```{r, eval=FALSE}
+
+~~~{.r}
 analyze("data/Site-01.csv")
 analyze("data/Site-02.csv")
 #...
 analyze("data/Site-05.csv")
-```
+~~~
 
 but the chances of us typing all filenames correctly aren't great, and we'll be even worse off if we get another hundred files.
 What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.

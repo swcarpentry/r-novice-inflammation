@@ -5,9 +5,7 @@ subtitle: Dynamic reports with knitr
 minutes: 30
 ---
 
-```{r, include = FALSE}
-source("tools/chunk-options.R")
-```
+
 
 > ## Objectives {.objectives}
 >
@@ -17,21 +15,37 @@ source("tools/chunk-options.R")
 
 knitr extracts R code in the input document (.Rmd), evaluates it and writes the results to the output document (html). There are two types of R code: chunks (code as separate paragraphs) and inline R code.
 
-```{r, eval=FALSE}
+
+~~~{.r}
 install.packages("knitr")
-```	
-```{r}
+~~~
+
+~~~{.r}
 library(knitr)
-```    
+~~~
 
 Restart RStudio. 
 Open a new `Rmd` file. 
 
 In Rmd, anything between lines that start and end with triple quotes ``` will be run as R code.
 
-```{r}
+
+~~~{.r}
 summary(cars)
-```
+~~~
+
+
+
+~~~{.output}
+     speed           dist       
+ Min.   : 4.0   Min.   :  2.00  
+ 1st Qu.:12.0   1st Qu.: 26.00  
+ Median :15.0   Median : 36.00  
+ Mean   :15.4   Mean   : 42.98  
+ 3rd Qu.:19.0   3rd Qu.: 56.00  
+ Max.   :25.0   Max.   :120.00  
+
+~~~
 
 > ## Challenge {.challenge}
 >

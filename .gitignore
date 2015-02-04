@@ -9,7 +9,5 @@ _site
 data/
 fig/
 output/
-*.md
-*.html
 .RData
 .Rhistory

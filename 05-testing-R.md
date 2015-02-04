@@ -5,9 +5,7 @@ subtitle: Basic defensive programming
 minutes: 30
 ---
 
-```{r, include = FALSE}
-source("tools/chunk-options.R")
-```
+
 
 > ## Objectives {.objectives}
 > 

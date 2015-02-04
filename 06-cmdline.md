@@ -5,9 +5,7 @@ subtitle: Command-Line Programs
 minutes: 30
 ---
 
-```{r, include = FALSE}
-source("tools/chunk-options.R")
-```
+
 
 > ## Objectives {.objectives}
 > 
@@ -55,18 +53,41 @@ We'll tackle these questions in turn below.
 
 Using the text editor of your choice, save the following line of code in a text file called `session-info.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat session-info.R
-```
+
+~~~{.output}
+sessionInfo()
+
+~~~
 
 The function, `sessionInfo`, outputs the version of R you are running as well as the type of computer you are using (as well as the versions of the packages that have been loaded).
 This is very useful information to include when asking others for help with your R code.
 
 Now we can run the code in the file we created from the Unix Shell using `Rscript`:
 
-```{r engine='bash'}
+
+~~~{.r}
 Rscript session-info.R
-```
+~~~
+
+
+
+
+~~~{.output}
+R version 3.1.2 (2014-10-31)
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+locale:
+ [1] LC_CTYPE=en_CA.utf8       LC_NUMERIC=C             
+ [3] LC_TIME=en_CA.utf8        LC_COLLATE=en_CA.utf8    
+ [5] LC_MONETARY=en_CA.utf8    LC_MESSAGES=en_CA.utf8   
+ [7] LC_PAPER=en_CA.utf8       LC_NAME=C                
+ [9] LC_ADDRESS=C              LC_TELEPHONE=C           
+[11] LC_MEASUREMENT=en_CA.utf8 LC_IDENTIFICATION=C      
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  base     
+
+~~~
 
 > ## Tip {.callout} 
 >
@@ -76,9 +97,12 @@ Rscript session-info.R
 
 Now let's create another script that does something more interesting. Write the following lines in a file named `print-args.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat print-args.R
-```
+
+~~~{.output}
+args <- commandArgs()
+cat(args, sep = "\n")
+
+~~~
 
 The function `commandArgs` extracts all the command line arguments and returns them as a vector.
 The function `cat`, similar to the `cat` of the Unix Shell, outputs the contents of the variable.
@@ -86,9 +110,21 @@ Since we did not specify a filename for writing, `cat` sends the output to [stan
 Because we set the argument `sep` to `"\n"`, which is the symbol to start a new line, each element of the vector is printed on its own line.
 Let's see what happens when we run this program in the Unix Shell:
 
-```{r engine='bash'}
+
+~~~{.r}
 Rscript print-args.R
-```
+~~~
+
+
+
+
+~~~{.output}
+/usr/lib/R/bin/exec/R
+--slave
+--no-restore
+--file=print-args.R
+
+~~~
 
 From this output, we learn that `Rscript` is just a convenience command for running R scripts.
 The first argument in the vector is the path to the `R` executable.
@@ -102,29 +138,72 @@ From the R help file:
 
 Thus running a file with Rscript is an easier way to run the following:
 
-```{r engine='bash'}
+
+~~~{.r}
 R --slave --no-restore --file=print-args.R --args
-```
+~~~
+
+
+
+
+~~~{.output}
+/usr/lib/R/bin/exec/R
+--slave
+--no-restore
+--file=print-args.R
+--args
+
+~~~
 
 If we run it with a few arguments, however:
 
-```{r engine='bash'}
+
+~~~{.r}
 Rscript print-args.R first second third
-```
+~~~
+
+
+
+
+~~~{.output}
+/usr/lib/R/bin/exec/R
+--slave
+--no-restore
+--file=print-args.R
+--args
+first
+second
+third
+
+~~~
 
 then `commandArgs` adds each of those arguments to the vector it returns.
 Since the first elements of the vector are always the same, we can tell `commandArgs` to only return the arguments that come after `--args`.
 Let's update `print-args.R` and save it as `print-args-trailing.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat print-args-trailing.R
-```
+
+~~~{.output}
+args <- commandArgs(trailingOnly = TRUE)
+cat(args, sep = "\n")
+
+~~~
 
 And then run `print-args-trailing` from the Unix Shell:
 
-```{r engine='bash'}
+
+~~~{.r}
 Rscript print-args-trailing.R first second third
-```
+~~~
+
+
+
+
+~~~{.output}
+first
+second
+third
+
+~~~
 
 Now `commandArgs` returns only the arguments that we listed after `print-args-trailing.R`.
 
@@ -133,28 +212,155 @@ The first step is to write a function that outlines our implementation, and a pl
 By convention this function is usually called `main`, though we can call it whatever we want.
 Write the following code in a file called `readings-01.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat readings-01.R
-```
+
+~~~{.output}
+main <- function() {
+  args <- commandArgs(trailingOnly = TRUE)
+  filename <- args[1]
+  dat <- read.csv(file = filename, header = TRUE)
+  mean_per_patient <- apply(dat[,6:9], 1, mean)
+  cat(mean_per_patient, sep = "\n")
+}
+
+~~~
 
 
 This function gets the name of the file to process from the first element returned by `commandArgs`.
 Here's a simple test to run from the Unix Shell:
 
-```{r engine='bash'}
+
+~~~{.r}
 Rscript readings-01.R data/Site-01.csv
-```
+~~~
 
 There is no output because we have defined a function, but haven't actually called it.
 Let's add a call to `main` and save it as `readings-02.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat readings-02.R
-```
 
-```{r engine='bash'}
+~~~{.output}
+main <- function() {
+  args <- commandArgs(trailingOnly = TRUE)
+  filename <- args[1]
+  dat <- read.csv(file = filename, header = TRUE)
+  mean_per_patient <- apply(dat[,6:9], 1, mean)
+  cat(mean_per_patient, sep = "\n")
+}
+
+main()
+
+~~~
+
+
+~~~{.r}
 Rscript readings-02.R data/Site-01.csv
-```
+~~~
+
+
+
+
+~~~{.output}
+173.25
+213.25
+186.5
+198
+189.5
+285
+158
+246
+196.25
+177.25
+189.75
+224.25
+188
+156.25
+187
+169.75
+178.75
+213.25
+168.75
+170
+180
+133.5
+230.25
+225
+187.5
+165.25
+246.5
+187.25
+126.25
+174.5
+169.75
+173
+207
+188.25
+172.5
+164.5
+236.75
+252.25
+167
+242.5
+191.25
+156.5
+179.75
+180.5
+148.5
+260.25
+184.5
+177.5
+187.5
+193
+168.25
+158
+189.5
+236.25
+184.5
+188
+188.75
+230
+166.75
+123.25
+201.5
+194.5
+195.5
+163.75
+256.25
+185.5
+232
+164.5
+224.25
+136.75
+215
+182.5
+188.5
+165.25
+241.25
+230.75
+191.25
+196.5
+191
+192.5
+227
+153
+182
+237
+185.25
+210
+153.5
+199.25
+159.5
+152
+236.75
+256
+183.5
+166.25
+148.25
+168.5
+233
+152.25
+230.75
+143
+
+~~~
 
 > ## Challenges {.challenge}
 >
@@ -162,36 +368,57 @@ Rscript readings-02.R data/Site-01.csv
 >  **Hint:** Everything argument read from the command-line is interpreted as a character [string](reference.html#string).
 >  You can convert from a string to a number using the function `as.numeric`.
 
-```{r, engine='bash'}
+
+~~~{.r}
 Rscript arith.R 1 + 2
-```
+~~~
 
-```{r, engine='bash'}
+
+
+
+~~~{.output}
+3
+
+~~~
+
+
+~~~{.r}
 Rscript arith.R 3 - 4
-```
+~~~
 
-```{r first-answer, include=FALSE, engine='bash'}
-cat arith.R
-```
+
+
+
+~~~{.output}
+-1
+
+~~~
+
+
 >
 >  + What goes wrong if you try to add multiplication using `*` to the program?
 >
-```{r second-answer, include=FALSE, eval=FALSE}
-The * is a wildcard character in the Unix Shell.
-Thus all the files in the current working directory are included as arguments to  arith.R.
-```
+
 >
 >  + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program, `find-pattern.R`, that lists all the files in the current directory that contain a specific pattern:
 >
-```{r, engine='bash'}
+
+~~~{.r}
 # For example, searching for the pattern "print-args" returns the two scripts we
 # wrote earlier
 Rscript find-pattern.R print-args
-```
+~~~
 
-```{r third-answer, include=FALSE, engine='bash'}
-cat find-pattern.R
-```
+
+
+
+~~~{.output}
+print-args.R
+print-args-trailing.R
+
+~~~
+
+
 
 ### Handling Multiple Files
 
@@ -199,17 +426,49 @@ The next step is to teach our program how to handle multiple files.
 Since 60 lines of output per file is a lot to page through, we'll start by using three smaller files, each of which has three days of data for two patients.
 Let's investigate them from the Unix Shell:
 
-```{r, engine='bash'}
+
+~~~{.r}
 ls data/small-*.csv
-```
+~~~
 
-```{r, engine='bash'}
+
+
+
+~~~{.output}
+data/small-01.csv
+data/small-02.csv
+data/small-03.csv
+
+~~~
+
+
+~~~{.r}
 cat data/small-01.csv
-```
+~~~
 
-```{r, engine='bash'}
+
+
+
+~~~{.output}
+0,0,1
+0,1,2
+
+~~~
+
+
+~~~{.r}
 Rscript readings-02.R data/small-01.csv
-```
+~~~
+
+
+
+
+~~~{.output}
+Error in `[.data.frame`(dat, , 6:9) : undefined columns selected
+Calls: main -> apply -> [ -> [.data.frame
+Execution halted
+
+~~~
 
 Using small data files as input also allows us to check our results more easily: here, for example, we can see that our program is calculating the mean correctly for each line, whereas we were really taking it on faith before.
 This is yet another rule of programming: "[test the simple things first](../../rules.html#test-simple-first)".
@@ -221,15 +480,37 @@ We'll need to handle an unknown number of filenames, since our program could be 
 The solution is to loop over the vector returned by `commandArgs(trailingOnly = TRUE)`.
 Here's our changed program, which we'll save as `readings-03.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat readings-03.R
-```
+
+~~~{.output}
+main <- function() {
+  args <- commandArgs(trailingOnly = TRUE)
+  for (filename in args) {
+    dat <- read.csv(file = filename, header = FALSE)
+    mean_per_patient <- apply(dat[,6:9], 1, mean)
+    cat(mean_per_patient, sep = "\n")
+  }
+}
+
+main()
+
+~~~
 
 and here it is in action:
 
-```{r, engine='bash'}
+
+~~~{.r}
 Rscript readings-03.R data/small-01.csv data/small-02.csv
-```
+~~~
+
+
+
+
+~~~{.output}
+Error in `[.data.frame`(dat, , 6:9) : undefined columns selected
+Calls: main -> apply -> [ -> [.data.frame
+Execution halted
+
+~~~
 
 **Note**: at this point, we have created three versions of our script called `readings-01.R`, `readings-02.R`, and `readings-03.R`.
 We wouldn't do this in real life: instead, we would have one file called `readings.R` that we committed to version control every time we got an enhancement working.
@@ -240,33 +521,56 @@ For teaching, though, we need all the successive versions side by side.
 >  + Write a program called `check.R` that takes the names of one or more inflammation data files as arguments and checks that all the files have the same number of rows and columns.
 >  What is the best way to test your program?
 
-```{r fourth-answer, include=FALSE, engine='bash'}
-cat check.R
-```
 
-```{r testing, include=FALSE, engine='bash'}
-# For testing that it works.
-# Should pass check:
-Rscript check.R data/small-0*
-Rscript check.R data/Site-*
-# Should fail check:
-Rscript check.R data/small-0* data/Site-*
-```
+
+
 
 ### Handling Command-Line Flags
 
 The next step is to teach our program to pay attention to the `--min`, `--mean`, and `--max` flags.
 These always appear before the names of the files, so let's save the following in `readings-04.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat readings-04.R
-```
+
+~~~{.output}
+main <- function() {
+  args <- commandArgs(trailingOnly = TRUE)
+  action <- args[1]
+  filenames <- args[-1]
+  
+  for (f in filenames) {
+    dat <- read.csv(file = f, header = TRUE)
+    
+    if (action == "--min") {
+      values <- apply(dat[,6:9], 1, min)
+    } else if (action == "--mean") {
+      values <- apply(dat[,6:9], 1, mean)
+    } else if (action == "--max") {
+      values <- apply(dat[,6:9], 1, max)
+    }
+    cat(values, sep = "\n")
+  }
+}
+
+main()
+
+~~~
 
 And we can confirm this works by running it from the Unix Shell:
 
-```{r engine='bash'}
+
+~~~{.r}
 Rscript readings-04.R --max data/small-01.csv
-```
+~~~
+
+
+
+
+~~~{.output}
+Error in `[.data.frame`(dat, , 6:9) : undefined columns selected
+Calls: main -> apply -> [ -> [.data.frame
+Execution halted
+
+~~~
 
 but there are several things wrong with it:
 
@@ -278,9 +582,35 @@ but there are several things wrong with it:
 This version pulls the processing of each file out of the loop into a function of its own.
 It also checks that `action` is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as `readings-05.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat readings-05.R
-```
+
+~~~{.output}
+main <- function() {
+  args <- commandArgs(trailingOnly = TRUE)
+  action <- args[1]
+  filenames <- args[-1]
+  stopifnot(action %in% c("--min", "--mean", "--max"))
+  
+  for (f in filenames) {
+    process(f, action)
+  }
+}
+
+process <- function(filename, action) {
+  dat <- read.csv(file = filename, header = TRUE)
+  
+  if (action == "--min") {
+    values <- apply(dat[,6:9], 1, min)
+  } else if (action == "--mean") {
+    values <- apply(dat[,6:9], 1, mean)
+  } else if (action == "--max") {
+    values <- apply(dat[,6:9], 1, max)
+  }
+  cat(values, sep = "\n")
+}
+
+main()
+
+~~~
 
 This is four lines longer than its predecessor, but broken into more digestible chunks of 8 and 12 lines.
 
@@ -301,35 +631,48 @@ This is four lines longer than its predecessor, but broken into more digestible 
 >
 >  + Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.
 
-```{r usage-answer, include=FALSE, engine='bash'}
-cat readings-usage.R
-```
+
 
 ### Handling Standard Input
 
 The next thing our program has to do is read data from standard input if no filenames are given so that we can put it in a pipeline, redirect input to it, and so on.
 Let's experiment in another script, which we'll save as `count-stdin.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat count-stdin.R
-```
+
+~~~{.output}
+lines <- readLines(con = file("stdin"))
+count <- length(lines)
+cat("lines in standard input: ")
+cat(count, sep = "\n")
+
+~~~
 
 This little program reads lines from the program's standard input using `file("stdin")`.
 This allows us to do almost anything with it that we could do to a regular file.
 In this example, we passed it as an argument to the function `readLines`, which stores each line as an element in a vector.
 Let's try running it from the Unix Shell as if it were a regular command-line program:
 
-```{r engine='bash'}
+
+~~~{.r}
 Rscript count-stdin.R < data/small-01.csv
-```
+~~~
+
+
+
+
+~~~{.output}
+lines in standard input: 2
+
+~~~
 
 Note that because we did not specify `sep = "\n"` when calling `cat`, the output is written on the same line.
 
 A common mistake is to try to run something that reads from standard input like this:
 
-```{r eval=FALSE, engine='bash'}
+
+~~~{.r}
 Rscript count-stdin.R data/small-01.csv
-```
+~~~
 
 i.e., to forget the `<` character that redirect the file to standard input.
 In this case, there's nothing in standard input, so the program waits at the start of the loop for someone to type something on the keyboard.
@@ -342,16 +685,63 @@ We now need to rewrite the program so that it loads data from `file("stdin")` if
 Luckily, `read.csv` can handle either a filename or an open file as its first parameter, so we don't actually need to change `process`.
 That leaves `main`, which we'll update and save as `readings-06.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat readings-06.R
-```
+
+~~~{.output}
+main <- function() {
+  args <- commandArgs(trailingOnly = TRUE)
+  action <- args[1]
+  filenames <- args[-1]
+  stopifnot(action %in% c("--min", "--mean", "--max"))
+  
+  if (length(filenames) == 0) {
+    process(file("stdin"), action)
+  } else {  
+    for (f in filenames) {
+      process(f, action)
+    }
+  }
+}
+
+process <- function(filename, action) {
+  dat <- read.csv(file = filename, header = TRUE)
+  
+  if (action == "--min") {
+    values <- apply(dat[,6:9], 1, min)
+  } else if (action == "--mean") {
+    values <- apply(dat[,6:9], 1, mean)
+  } else if (action == "--max") {
+    values <- apply(dat[,6:9], 1, max)
+  }
+  cat(values, sep = "\n")
+}
+
+main()
+
+~~~
 
 Let's try it out.
 Instead of calculating the mean inflammation of every patient, we'll only calculate the mean for the first 10 patients (rows):
 
-```{r engine='bash'}
+
+~~~{.r}
 head data/inflammation-01.csv | Rscript readings-06.R --mean
-```
+~~~
+
+
+
+
+~~~{.output}
+2
+3.75
+2.75
+2.75
+3.25
+3.5
+2.75
+5.25
+4
+
+~~~
 
 And now we're done: the program now does everything we set out to do.
 
@@ -361,9 +751,7 @@ And now we're done: the program now does everything we set out to do.
 >    *   If no filenames are given, it reports the number of lines in standard input.
 >    *   If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.
 
-```{r line-count-answer, include=FALSE, engine='bash'}
-cat line-count.R
-```
+
 
 <div class="keypoints" markdown="1">
 #### Key Points
