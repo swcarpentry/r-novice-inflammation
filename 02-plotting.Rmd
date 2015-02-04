@@ -1,0 +1,80 @@
+---
+layout: page
+title: Programming with R
+subtitle: Plotting
+minutes: 30
+---
+
+```{r, include = FALSE}
+source("tools/chunk-options.R")
+opts_chunk$set(fig.path = "fig/01-plotting-")
+```
+
+```{r echo=FALSE}
+dat<-read.csv('data/Site-01.csv')
+dat$Gender[dat$Gender=="m"]<-"M"
+dat$Gender[dat$Gender=="f"]<-"F"
+dat$Gender<-factor(dat$Gender)
+
+avg_eye_aneurisms<-apply(dat[,6:9],2,mean)
+```
+### Plotting
+
+The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and the best way to develop insight is often to visualize data.
+Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R's plotting features. 
+
+Let's take a look at the average inflammation over time.
+Recall that we already calculated these values above using `apply(dat, 2, mean)` and saved them in the variable `avg_eye_aneurisms`.
+Plotting the values is done with the function `plot`.
+
+```{r plot-avg-aneurisms}
+plot(avg_eye_aneurisms)
+```
+
+Above, we gave the function `plot` a vector of numbers corresponding to the average aneurism count per quadrant across all patients.
+`plot` created a scatter plot where the y-axis is the average aneurism counts and the x-axis is the order, or index, of the values in the vector, which in this case correspond to the 4 quadrants of the eye.
+
+Let's have a look at two other statistics: the maximum and minimum inflammation per day.
+
+```{r plot-max-aneurisms}
+max_eye_aneurism <- apply(dat[,6:9], 2, max)
+plot(max_eye_aneurism)
+```
+
+```{r plot-min-aneurism}
+min_eye_aneurism<- apply(dat[,6:9], 2, min)
+plot(min_eye_aneurism)
+```
+
+#### Challenge
+
+Create a plot showing the standard deviation of the aneurims data 
+for each quadrant across all patients.
+
+### Defining x and y axes
+
+So far we have plotted a single vector of numbers. R automatically uses the position of the value as the x axis variable.
+We can explicity define both the x and y axis.
+
+```{r}
+plot(y=dat$BloodPressure,x=dat$Age)
+```
+
+#### Challenge
+1. Produce 4 plots showing the effect of Treatment (Group) on Aneurism count for each quadrant.
+
+What type of plot is shown, why?
+
+### Plotting against a factor
+When plotting against a factor R automatically creates a boxplot. This is often a more useful visualisation.
+
+#### Key Points
+
+* Use `plot` to create simple visualizations.
+
+#### Next Steps
+
+Our work so far has looked at the data from the first site, we have 4 samples from other locations.
+We would like to check the others the same way, but typing in the same commands repeatedly is tedious and error-prone.
+Since computers don't get bored (that we know of), we should create a way to do a complete analysis with a single command, and then figure out how to repeat that step once for each file.
+These operations are the subjects of the next two lessons.

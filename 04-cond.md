@@ -1,8 +1,9 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Making choices
+title: "Programming with R"
 minutes: 30
+output: pdf_document
+subtitle: Making choices
+layout: page
 ---
 
 
@@ -24,15 +25,13 @@ So far, we have built a function `analyze` to plot summary statistics of the inf
 
 ~~~{.r}
 analyze <- function(filename) {
-  # Plots the average, min, and max inflammation over time.
+  # Plots the average, min, and max aneurism count over time.
   # Input is character string of a csv file.
-  dat <- read.csv(file = filename, header = FALSE)
-  avg_day_inflammation <- apply(dat, 2, mean)
-  plot(avg_day_inflammation)
-  max_day_inflammation <- apply(dat, 2, max)
-  plot(max_day_inflammation)
-  min_day_inflammation <- apply(dat, 2, min)
-  plot(min_day_inflammation)
+  dat <- read.csv(file = filename, header = TRUE)
+  plot(x=dat$Group,y=dat$Aneurisms_q1)
+  plot(x=dat$Group,y=dat$Aneurisms_q2)
+  plot(x=dat$Group,y=dat$Aneurisms_q3)
+  plot(x=dat$Group,y=dat$Aneurisms_q4)
 }
 ~~~
 
@@ -51,16 +50,16 @@ analyze_all <- function(pattern) {
 ~~~
 
 While these are useful in an interactive R session, what if we want to send our results to our collaborators?
-Since we currently have 12 data sets, running `analyze_all` creates 36 plots.
+Since we currently have 5 data sets, running `analyze_all` creates 15 plots.
 Saving each of these individually would be tedious and error-prone.
-And in the likely situation that we want to change how the data is processed or the look of the plots, we would have to once again save all 36 before sharing the updated results with our collaborators.
+And in the likely situation that we want to change how the data is processed or the look of the plots, we would have to once again save all 15 before sharing the updated results with our collaborators.
 
-Here's how we can save all three plots of the first inflamation data set in a pdf file:
+Here's how we can save all three plots of the first aneurism data set in a pdf file:
 
 
 ~~~{.r}
-pdf("inflammation-01.pdf")
-analyze("data/inflammation-01.csv")
+pdf("output/Site-01.pdf")
+analyze("data/Site-01.csv")
 dev.off()
 ~~~
 
@@ -258,14 +257,14 @@ In this case, "either" means "either or both", not "either one or the other but 
 
 
 ~~~{.r}
-dat <- read.csv("data/inflammation-01.csv", header = FALSE)
-plot_dist(dat[, 10], threshold = 10)  # day (column) 10
+dat <- read.csv("data/Site-01.csv", header = TRUE)
+plot_dist(dat[, 6], threshold = 10)  # Quadrant 1 (column 6)
 ~~~
 
 <img src="fig/04-cond-conditional-challenge-1.png" title="plot of chunk conditional-challenge" alt="plot of chunk conditional-challenge" style="display: block; margin: auto;" />
 
 ~~~{.r}
-plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
+plot_dist(dat[1:5, 6], threshold = 10)  # samples (rows) 1-5 on quadrant 1 (column 6)
 ~~~
 
 <img src="fig/04-cond-conditional-challenge-2.png" title="plot of chunk conditional-challenge" alt="plot of chunk conditional-challenge" style="display: block; margin: auto;" />
@@ -276,20 +275,20 @@ plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 
 
 ~~~{.r}
-dat <- read.csv("data/inflammation-01.csv", header = FALSE)
-plot_dist(dat[, 10], threshold = 10, use_boxplot = TRUE)  # day (column) 10 - create boxplot
+dat <- read.csv("data/Site-01.csv", header = TRUE)
+plot_dist(dat[, 6], threshold = 10, use_boxplot = TRUE)  # quadrant 1 (column 5) - create boxplot
 ~~~
 
 <img src="fig/04-cond-conditional-challenge-hist-1.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
 
 ~~~{.r}
-plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
+plot_dist(dat[, 6], threshold = 10, use_boxplot = FALSE)  # quadrant 1 (column 5) - create histogram
 ~~~
 
 <img src="fig/04-cond-conditional-challenge-hist-2.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
 
 ~~~{.r}
-plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
+plot_dist(dat[1:5, 6], threshold = 10)  # samples (rows) 1-5 on quadrant 1 (column) 5
 ~~~
 
 <img src="fig/04-cond-conditional-challenge-hist-3.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
@@ -301,20 +300,19 @@ Now that we know how to have R make decisions based on input values, let's updat
 
 ~~~{.r}
 analyze <- function(filename, output = NULL) {
-  # Plots the average, min, and max inflammation over time.
+  # Plots the average, min, and max aneurims count over time.
   # Input:
   #    filename: character string of a csv file
   #    output: character string of pdf file for saving
   if (!is.null(output)) {
     pdf(output)
   }
-  dat <- read.csv(file = filename, header = FALSE)
-  avg_day_inflammation <- apply(dat, 2, mean)
-  plot(avg_day_inflammation)
-  max_day_inflammation <- apply(dat, 2, max)
-  plot(max_day_inflammation)
-  min_day_inflammation <- apply(dat, 2, min)
-  plot(min_day_inflammation)
+  dat <- read.csv(file = filename, header = TRUE)
+  plot(x=dat$Group,y=dat$Aneurisms_q1)
+  plot(x=dat$Group,y=dat$Aneurisms_q2)
+  plot(x=dat$Group,y=dat$Aneurisms_q3)
+  plot(x=dat$Group,y=dat$Aneurisms_q4)
+
   if (!is.null(output)) {
     dev.off()
   }
@@ -358,16 +356,16 @@ Now we can use `analyze` both interactively:
 
 
 ~~~{.r}
-analyze("data/inflammation-01.csv")
+analyze("data/Site-01.csv")
 ~~~
 
-<img src="fig/04-cond-inflammation-01-1.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/04-cond-inflammation-01-2.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/04-cond-inflammation-01-3.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" />
+<img src="fig/04-cond-Site-01-1.png" title="plot of chunk Site-01" alt="plot of chunk Site-01" style="display: block; margin: auto;" /><img src="fig/04-cond-Site-01-2.png" title="plot of chunk Site-01" alt="plot of chunk Site-01" style="display: block; margin: auto;" /><img src="fig/04-cond-Site-01-3.png" title="plot of chunk Site-01" alt="plot of chunk Site-01" style="display: block; margin: auto;" /><img src="fig/04-cond-Site-01-4.png" title="plot of chunk Site-01" alt="plot of chunk Site-01" style="display: block; margin: auto;" />
 
 and to save plots:
 
 
 ~~~{.r}
-analyze("data/inflammation-01.csv", output = "inflammation-01.pdf")
+analyze("data/Site-01.csv", output = "Site-01.pdf")
 ~~~
 
 This now works well when we want to process one data file at a time, but how can we specify the output file in `analyze_all`?
@@ -375,14 +373,14 @@ We need to substitute the filename ending "csv" with "pdf", which we can do usin
 
 
 ~~~{.r}
-f <- "data/inflammation-01.csv"
+f <- "data/Site-01.csv"
 sub("csv", "pdf", f)
 ~~~
 
 
 
 ~~~{.output}
-[1] "data/inflammation-01.pdf"
+[1] "data/Site-01.pdf"
 
 ~~~
 
@@ -393,10 +391,12 @@ Now let's update `analyze_all`:
 analyze_all <- function(pattern) {
   # Runs the function analyze for each file in the current working directory
   # that contains the given pattern.
-  filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
+  filenames <- list.files(path = "data", pattern = pattern)
   for (f in filenames) {
+    input_name<-paste('data',f,sep='/')
     pdf_name <- sub("csv", "pdf", f)
-    analyze(f, output = pdf_name)
+    pdf_name<-paste('output',pdf_name,sep='/')
+    analyze(input_name, output = pdf_name)
   }
 }
 ~~~
@@ -405,15 +405,23 @@ Now we can save all of the results with just one line of code:
 
 
 ~~~{.r}
-analyze_all("inflammation")
+analyze_all("Site")
 ~~~
 
-Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analzye_all`.
+Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analyze_all`.
 
+<<<<<<< HEAD
+<div class="challenges" markdown="1">
+#### Challenges
+
+  + One of your collaborators asks if you can recreate the figures with all plots having the same values on the y-axis.
+  Find the relevant argument to `plot` by reading the documentation (`?plot`), update `analyze`, and then recreate all the figures with `analyze_all`.
+=======
 > ## Challenges {.challenge}
 >
 >  + One of your collaborators asks if you can recreate the figures with lines instead of points.
 >  Find the relevant argument to `plot` by reading the documentation (`?plot`), update `analyze`, and then recreate all the figures with `analyze_all`.
+>>>>>>> f13c33168ebe1b2554597eb0f5b58645913ac9ba
 
 
 

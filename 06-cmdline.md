@@ -18,7 +18,7 @@ In order to do that, we need to make our programs work like other Unix command-l
 For example, we may want a program that reads a data set and prints the average inflammation per patient:
 
 ~~~
-$ Rscript readings.R --mean data/inflammation-01.csv
+$ Rscript readings.R --mean data/Site-01.csv
 5.45
 5.425
 6.1
@@ -31,18 +31,18 @@ $ Rscript readings.R --mean data/inflammation-01.csv
 but we might also want to look at the minimum of the first four lines
 
 ~~~
-$ head -4 data/inflammation-01.csv | Rscript readings.R --min
+$ head -4 data/Site-01.csv | Rscript readings.R --min
 ~~~
 
 or the maximum inflammations in several files one after another:
 
 ~~~
-$ Rscript readings.R --max data/inflammation-*.csv
+$ Rscript readings.R --max data/Site-*.csv
 ~~~
 
 Our overall requirements are:
 
-1. If no filename is given on the command line, read data from [standard input](../../gloss.html#standard-input).
+1. If no filename is given on the command line, read data from [standard input](reference.html#standard-input-(stdin)).
 2. If one or more filenames are given, read data from them and report statistics for each file separately.
 3. Use the `--min`, `--mean`, or `--max` flag to determine what statistic to print.
 
@@ -77,12 +77,12 @@ R version 3.1.2 (2014-10-31)
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
- [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+ [1] LC_CTYPE=en_CA.utf8       LC_NUMERIC=C             
+ [3] LC_TIME=en_CA.utf8        LC_COLLATE=en_CA.utf8    
+ [5] LC_MONETARY=en_CA.utf8    LC_MESSAGES=en_CA.utf8   
+ [7] LC_PAPER=en_CA.utf8       LC_NAME=C                
+ [9] LC_ADDRESS=C              LC_TELEPHONE=C           
+[11] LC_MEASUREMENT=en_CA.utf8 LC_IDENTIFICATION=C      
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
@@ -106,7 +106,7 @@ cat(args, sep = "\n")
 
 The function `commandArgs` extracts all the command line arguments and returns them as a vector.
 The function `cat`, similar to the `cat` of the Unix Shell, outputs the contents of the variable.
-Since we did not specify a filename for writing, `cat` sends the output to [standard output](../../gloss.html#standard-output), which we can then pipe to other Unix functions.
+Since we did not specify a filename for writing, `cat` sends the output to [standard output](reference.html#standard-output-(stdout)), which we can then pipe to other Unix functions.
 Because we set the argument `sep` to `"\n"`, which is the symbol to start a new line, each element of the vector is printed on its own line.
 Let's see what happens when we run this program in the Unix Shell:
 
@@ -119,7 +119,7 @@ Rscript print-args.R
 
 
 ~~~{.output}
-/usr/lib64/R/bin/exec/R
+/usr/lib/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -147,7 +147,7 @@ R --slave --no-restore --file=print-args.R --args
 
 
 ~~~{.output}
-/usr/lib64/R/bin/exec/R
+/usr/lib/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -166,7 +166,7 @@ Rscript print-args.R first second third
 
 
 ~~~{.output}
-/usr/lib64/R/bin/exec/R
+/usr/lib/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -217,8 +217,8 @@ Write the following code in a file called `readings-01.R`:
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   filename <- args[1]
-  dat <- read.csv(file = filename, header = FALSE)
-  mean_per_patient <- apply(dat, 1, mean)
+  dat <- read.csv(file = filename, header = TRUE)
+  mean_per_patient <- apply(dat[,6:9], 1, mean)
   cat(mean_per_patient, sep = "\n")
 }
 
@@ -230,7 +230,7 @@ Here's a simple test to run from the Unix Shell:
 
 
 ~~~{.r}
-Rscript readings-01.R data/inflammation-01.csv
+Rscript readings-01.R data/Site-01.csv
 ~~~
 
 There is no output because we have defined a function, but haven't actually called it.
@@ -241,8 +241,8 @@ Let's add a call to `main` and save it as `readings-02.R`:
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   filename <- args[1]
-  dat <- read.csv(file = filename, header = FALSE)
-  mean_per_patient <- apply(dat, 1, mean)
+  dat <- read.csv(file = filename, header = TRUE)
+  mean_per_patient <- apply(dat[,6:9], 1, mean)
   cat(mean_per_patient, sep = "\n")
 }
 
@@ -252,80 +252,120 @@ main()
 
 
 ~~~{.r}
-Rscript readings-02.R data/inflammation-01.csv
+Rscript readings-02.R data/Site-01.csv
 ~~~
 
 
 
 
 ~~~{.output}
-5.45
-5.425
-6.1
-5.9
-5.55
-6.225
-5.975
-6.65
-6.625
-6.525
-6.775
-5.8
-6.225
-5.75
-5.225
-6.3
-6.55
-5.7
-5.85
-6.55
-5.775
-5.825
-6.175
-6.1
-5.8
-6.425
-6.05
-6.025
-6.175
-6.55
-6.175
-6.35
-6.725
-6.125
-7.075
-5.725
-5.925
-6.15
-6.075
-5.75
-5.975
-5.725
-6.3
-5.9
-6.75
-5.925
-7.225
-6.15
-5.95
-6.275
-5.7
-6.1
-6.825
-5.975
-6.725
-5.7
-6.25
-6.4
-7.05
-5.9
+173.25
+213.25
+186.5
+198
+189.5
+285
+158
+246
+196.25
+177.25
+189.75
+224.25
+188
+156.25
+187
+169.75
+178.75
+213.25
+168.75
+170
+180
+133.5
+230.25
+225
+187.5
+165.25
+246.5
+187.25
+126.25
+174.5
+169.75
+173
+207
+188.25
+172.5
+164.5
+236.75
+252.25
+167
+242.5
+191.25
+156.5
+179.75
+180.5
+148.5
+260.25
+184.5
+177.5
+187.5
+193
+168.25
+158
+189.5
+236.25
+184.5
+188
+188.75
+230
+166.75
+123.25
+201.5
+194.5
+195.5
+163.75
+256.25
+185.5
+232
+164.5
+224.25
+136.75
+215
+182.5
+188.5
+165.25
+241.25
+230.75
+191.25
+196.5
+191
+192.5
+227
+153
+182
+237
+185.25
+210
+153.5
+199.25
+159.5
+152
+236.75
+256
+183.5
+166.25
+148.25
+168.5
+233
+152.25
+230.75
+143
 
 ~~~
 
 > ## Challenges {.challenge}
 >
 >  + Write a command-line program that does addition and subtraction.
->  **Hint:** Everything argument read from the command-line is interpreted as a character [string](../../gloss.html#string).
+>  **Hint:** Everything argument read from the command-line is interpreted as a character [string](reference.html#string).
 >  You can convert from a string to a number using the function `as.numeric`.
 
 
@@ -424,8 +464,9 @@ Rscript readings-02.R data/small-01.csv
 
 
 ~~~{.output}
-0.3333333
-1
+Error in `[.data.frame`(dat, , 6:9) : undefined columns selected
+Calls: main -> apply -> [ -> [.data.frame
+Execution halted
 
 ~~~
 
@@ -445,7 +486,7 @@ main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   for (filename in args) {
     dat <- read.csv(file = filename, header = FALSE)
-    mean_per_patient <- apply(dat, 1, mean)
+    mean_per_patient <- apply(dat[,6:9], 1, mean)
     cat(mean_per_patient, sep = "\n")
   }
 }
@@ -465,10 +506,9 @@ Rscript readings-03.R data/small-01.csv data/small-02.csv
 
 
 ~~~{.output}
-0.3333333
-1
-13.66667
-11
+Error in `[.data.frame`(dat, , 6:9) : undefined columns selected
+Calls: main -> apply -> [ -> [.data.frame
+Execution halted
 
 ~~~
 
@@ -498,14 +538,14 @@ main <- function() {
   filenames <- args[-1]
   
   for (f in filenames) {
-    dat <- read.csv(file = f, header = FALSE)
+    dat <- read.csv(file = f, header = TRUE)
     
     if (action == "--min") {
-      values <- apply(dat, 1, min)
+      values <- apply(dat[,6:9], 1, min)
     } else if (action == "--mean") {
-      values <- apply(dat, 1, mean)
+      values <- apply(dat[,6:9], 1, mean)
     } else if (action == "--max") {
-      values <- apply(dat, 1, max)
+      values <- apply(dat[,6:9], 1, max)
     }
     cat(values, sep = "\n")
   }
@@ -526,8 +566,9 @@ Rscript readings-04.R --max data/small-01.csv
 
 
 ~~~{.output}
-1
-2
+Error in `[.data.frame`(dat, , 6:9) : undefined columns selected
+Calls: main -> apply -> [ -> [.data.frame
+Execution halted
 
 ~~~
 
@@ -536,7 +577,7 @@ but there are several things wrong with it:
 1.  `main` is too large to read comfortably.
 
 2.  If `action` isn't one of the three recognized flags, the program loads each file but does nothing with it (because none of the branches in the conditional match).
-    [Silent failures](../../gloss.html#silent-failure) like this are always hard to debug.
+    [Silent failures](reference.html#silent-failure) like this are always hard to debug.
 
 This version pulls the processing of each file out of the loop into a function of its own.
 It also checks that `action` is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as `readings-05.R`:
@@ -555,14 +596,14 @@ main <- function() {
 }
 
 process <- function(filename, action) {
-  dat <- read.csv(file = filename, header = FALSE)
+  dat <- read.csv(file = filename, header = TRUE)
   
   if (action == "--min") {
-    values <- apply(dat, 1, min)
+    values <- apply(dat[,6:9], 1, min)
   } else if (action == "--mean") {
-    values <- apply(dat, 1, mean)
+    values <- apply(dat[,6:9], 1, mean)
   } else if (action == "--max") {
-    values <- apply(dat, 1, max)
+    values <- apply(dat[,6:9], 1, max)
   }
   cat(values, sep = "\n")
 }
@@ -662,14 +703,14 @@ main <- function() {
 }
 
 process <- function(filename, action) {
-  dat <- read.csv(file = filename, header = FALSE)
+  dat <- read.csv(file = filename, header = TRUE)
   
   if (action == "--min") {
-    values <- apply(dat, 1, min)
+    values <- apply(dat[,6:9], 1, min)
   } else if (action == "--mean") {
-    values <- apply(dat, 1, mean)
+    values <- apply(dat[,6:9], 1, mean)
   } else if (action == "--max") {
-    values <- apply(dat, 1, max)
+    values <- apply(dat[,6:9], 1, max)
   }
   cat(values, sep = "\n")
 }
@@ -690,16 +731,15 @@ head data/inflammation-01.csv | Rscript readings-06.R --mean
 
 
 ~~~{.output}
-5.45
-5.425
-6.1
-5.9
-5.55
-6.225
-5.975
-6.65
-6.625
-6.525
+2
+3.75
+2.75
+2.75
+3.25
+3.5
+2.75
+5.25
+4
 
 ~~~
 

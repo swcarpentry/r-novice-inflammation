@@ -6,3 +6,8 @@ DESIGN.html
 *.pyc
 _site
 .DS_Store
+data/
+fig/
+output/
+.RData
+.Rhistory

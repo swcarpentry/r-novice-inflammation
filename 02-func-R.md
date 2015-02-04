@@ -17,7 +17,7 @@ minutes: 30
 > * Explain why we should divide programs into small, single-purpose functions.
 
 If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics. 
-But we have twelve files to check, and may have more in the future.
+But we have several files to check, and may have more in the future.
 In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.
 
 ### Defining a function
@@ -259,35 +259,36 @@ span <- function(a) {
   return(diff)
 }
 
-dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
-# span of inflammation data
-span(dat)
+dat <- read.csv(file = "data/Site-01.csv", header = TRUE)
+# span of aneurism data
+span(dat[,6:9])
 ~~~
 
 
 
 ~~~{.output}
-[1] 20
+[1] 258
 
 ~~~
 
-Notice `span` assigns a value to variable called `diff`. We might very well use a variable with the same name (`diff`) to hold the inflammation data:
+Notice `span` assigns a value to variable called `diff`. We might very well use a variable with the same name (`diff`) to hold the data:
 
 
 ~~~{.r}
-diff <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
-# span of inflammation data
-span(diff)
+diff <- read.csv(file = "data/Site-01.csv", header = TRUE)
+# span of aneurism data
+span(diff[,6:9])
 ~~~
 
 
 
 ~~~{.output}
-[1] 20
+[1] 258
 
 ~~~
 
-We don't expect the variable `diff` to have the value 20 after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
+
+We don't expect the variable `diff` to have the value 310.9 after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
 And yes, we could probably choose a different name than `diff` for our variable in this case, but we don't want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.
 
 The big idea here is [encapsulation](reference.html#encapsulation), and it's the key to writing correct, comprehensible programs.
@@ -357,11 +358,11 @@ center(z, 3)
 
 ~~~
 
-That looks right, so let's try center on our real data. We'll center the inflammation data from day 4 around 0:
+That looks right, so let's try center on our real data. We'll center the blood pressure data from all patients around 0:
 
 
 ~~~{.r}
-dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
+dat <- read.csv(file = "data/Site-01.csv", header = TRUE)
 centered <- center(dat[, 4], 0)
 head(centered)
 ~~~
@@ -369,7 +370,7 @@ head(centered)
 
 
 ~~~{.output}
-[1]  1.25 -0.75  1.25 -1.75  1.25  0.25
+[1]  13.39  20.39  11.39 -13.61   6.39  -6.61
 
 ~~~
 
@@ -384,7 +385,7 @@ min(dat[, 4])
 
 
 ~~~{.output}
-[1] 0
+[1] 62
 
 ~~~
 
@@ -398,7 +399,7 @@ mean(dat[, 4])
 
 
 ~~~{.output}
-[1] 1.75
+[1] 118.61
 
 ~~~
 
@@ -412,7 +413,7 @@ max(dat[, 4])
 
 
 ~~~{.output}
-[1] 3
+[1] 173
 
 ~~~
 
@@ -426,7 +427,7 @@ min(centered)
 
 
 ~~~{.output}
-[1] -1.75
+[1] -56.61
 
 ~~~
 
@@ -440,7 +441,7 @@ mean(centered)
 
 
 ~~~{.output}
-[1] 0
+[1] 5.680244e-16
 
 ~~~
 
@@ -454,12 +455,12 @@ max(centered)
 
 
 ~~~{.output}
-[1] 1.25
+[1] 54.39
 
 ~~~
 
-That seems almost right: the original mean was about 1.75, so the lower bound from zero is now about -1.75.
-The mean of the centered data is 0.
+That seems almost right: the original mean was about 118.61, so the lower bound from zero is now about -118.61.
+The mean of the centered data is 5.6802436 &times; 10<sup>-16</sup>.
 We can even go further and check that the standard deviation hasn't changed:
 
 
@@ -471,7 +472,7 @@ sd(dat[, 4])
 
 
 ~~~{.output}
-[1] 1.067628
+[1] 20.85636
 
 ~~~
 
@@ -485,7 +486,7 @@ sd(centered)
 
 
 ~~~{.output}
-[1] 1.067628
+[1] 20.85636
 
 ~~~
 
@@ -549,10 +550,10 @@ center <- function(data, desired) {
 [LaTeX]: http://www.latex-project.org/
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 
-> ## Challenges {.challenge}
->
->  + Write a function called `analyze` that takes a filename as a argument and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
->  `analyze("data/inflammation-01.csv")` should produce the graphs already shown, while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
+#### Challenges
+
+  + Write a function called `analyze` that takes a filename as a argument and displays the four boxplots produced in the [previous lesson][01] (aneurism count given treatment for each quadrant).
+  `analyze("data/Site-01.csv")` should produce the graphs already shown, while `analyze("data/Site-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
 
 [01]: 01-starting-with-data.html
 
@@ -570,20 +571,20 @@ center <- function(data, desired) {
 
 ### Defining Defaults
 
-We have passed arguments to functions in two ways: directly, as in `dim(dat)`, and by name, as in `read.csv(file = "data/inflammation-01.csv", header = FALSE)`.
+We have passed arguments to functions in two ways: directly, as in `dim(dat)`, and by name, as in `read.csv(file = "data/Site-01.csv", header = TRUE)`.
 In fact, we can pass the arguments to `read.csv` without naming them:
 
 
 ~~~{.r}
-dat <- read.csv("data/inflammation-01.csv", FALSE)
+dat <- read.csv("data/Site-01.csv", TRUE)
 ~~~
 
 However, the position of the arguments matters if they are not named.
 
 
 ~~~{.r}
-dat <- read.csv(header = FALSE, file = "data/inflammation-01.csv")
-dat <- read.csv(FALSE, "data/inflammation-01.csv")
+dat <- read.csv(header = TRUE, file = "data/Site-01.csv")
+dat <- read.csv(TRUE, "data/Site-01.csv")
 ~~~
 
 
@@ -769,7 +770,7 @@ Now we understand why the following gives an error:
 
 
 ~~~{.r}
-dat <- read.csv(FALSE, "data/inflammation-01.csv")
+dat <- read.csv(TRUE, "data/Site-01.csv")
 ~~~
 
 
@@ -803,15 +804,15 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 #### Next Steps
 
 We now have a function called analyze to visualize a single data set.
-We could use it to explore all 12 of our current data sets like this:
+We could use it to explore all of our current data sets like this:
 
 
 ~~~{.r}
-analyze("data/inflammation-01.csv")
-analyze("data/inflammation-02.csv")
+analyze("data/Site-01.csv")
+analyze("data/Site-02.csv")
 #...
-analyze("data/inflammation-12.csv")
+analyze("data/Site-05.csv")
 ~~~
 
-but the chances of us typing all 12 filenames correctly aren't great, and we'll be even worse off if we get another hundred files.
+but the chances of us typing all filenames correctly aren't great, and we'll be even worse off if we get another hundred files.
 What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.
