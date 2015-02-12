@@ -197,7 +197,7 @@ weight_kg
 
 
 ~~~{.r}
-# ...and in weight pounds still
+# ...and weight in pounds is still
 weight_lb
 ~~~
 
