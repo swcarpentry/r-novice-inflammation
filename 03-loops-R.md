@@ -16,11 +16,11 @@ minutes: 30
 > * Use a function to get a list of filenames that match a simple pattern.
 > * Use a `for` loop to process multiple files.
 
-We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
+We have created a function called `daily.rates` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
 
 
 ~~~{.r}
-analyze <- function(filename) {
+daily.rates <- function(filename) {
   # Plots the average, min, and max inflammation over time.
   # Input is character string of a csv file.
   dat <- read.csv(file = filename, header = FALSE)
@@ -32,7 +32,7 @@ analyze <- function(filename) {
   plot(min_day_inflammation)
 }
 
-analyze("data/inflammation-01.csv")
+daily.rates("data/inflammation-01.csv")
 ~~~
 
 <img src="fig/03-loops-R-inflammation-01-1.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-01-2.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-01-3.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" />
@@ -41,7 +41,7 @@ We can use it to analyze other data sets one by one:
 
 
 ~~~{.r}
-analyze("data/inflammation-02.csv")
+daily.rates("data/inflammation-02.csv")
 ~~~
 
 <img src="fig/03-loops-R-inflammation-02-1.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-02-2.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-02-3.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" />
@@ -410,7 +410,7 @@ list.files(path = "data", pattern = "inflammation")
 
 
 As these examples show, `list.files` result is a vector of strings, which means we can loop over it to do something with each filename in turn.
-In our case, the "something" we want is our `analyze` function.
+In our case, the "something" we want is our `daily.rates` function.
 
 Because we have put our data in separate subdirectory, if we want to access these files
 using the output of `list.files` we also need to include the "path" portion of the file name.
@@ -455,7 +455,7 @@ list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 ~~~
 
 
-Let's test out running our `analyze` function by using it on the first three files in the vector returned by `list.files`:
+Let's test out running our `daily.rates` function by using it on the first three files in the vector returned by `list.files`:
 
 
 
@@ -464,7 +464,7 @@ filenames <- list.files(path = "data", pattern = "inflammation", full.names = TR
 filenames <- filenames[1:3]
 for (f in filenames) {
   print(f)
-  analyze(f)
+  daily.rates(f)
 }
 ~~~
 
@@ -505,7 +505,7 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 
 > ## Challenges {.challenge}
 >
-> 1. Write a function called `analyze_all` that takes a filename pattern as its sole argument and runs `analyze` for each file whose name matches the pattern.
+> 1. Write a function called `daily.rates.all` that takes a filename pattern as its sole argument and runs `daily.rates` for each file whose name matches the pattern.
 
 
 
