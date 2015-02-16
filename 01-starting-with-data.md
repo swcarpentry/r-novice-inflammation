@@ -12,27 +12,28 @@ minutes: 30
 > * Assign values to variables.
 > * Select individual values and subsections from data.
 > * Perform operations on a data frame of data.
-> * Display simple graphs.
+> * Understand Factors
 
-We are studying inflammation in patients who have been given a new treatment for arthritis,
-and need to analyze the first dozen data sets. 
-The data sets are stored in [comma-separated values](reference.html#comma-separated-values-(csv)) (CSV) format: each row holds information for a single patient, and the columns represent successive days. 
+We are studying micro-aneurisms in the eyes of people with diabetes,
+100 patients have been sampled anually. 
+The data sets are stored in [comma-separated values](../../gloss.html#comma-separeted-values) (CSV) format: each row holds information for a single patient, and the columns represent different observations. 
 The first few rows of our first file look like this:
 
 
 ~~~{.output}
-0,0,1,3,1,2,4,7,8,3,3,3,10,5,7,4,7,7,12,18,6,13,11,11,7,7,4,6,8,8,4,4,5,7,3,4,2,3,0,0
-0,1,2,1,2,1,3,2,2,6,10,11,5,9,4,4,7,16,8,6,18,4,12,5,12,7,11,5,11,3,3,5,4,4,5,5,1,1,0,1
-0,1,1,3,3,2,6,2,5,9,5,7,4,5,4,15,5,11,9,10,19,14,12,17,7,12,11,7,4,2,10,5,4,2,2,3,2,2,1,1
-0,0,2,0,4,2,2,1,6,7,10,7,9,13,8,8,15,10,10,7,17,4,4,7,6,15,6,4,9,11,3,5,6,3,3,4,2,3,2,1
-0,1,1,3,3,1,3,5,2,4,4,7,6,5,3,10,8,10,6,17,9,14,9,7,13,9,12,6,7,7,9,6,3,2,2,4,2,0,1,1
+ID,Gender,Group,BloodPressure,Age,Aneurisms_q1,Aneurisms_q2,Aneurisms_q3,Aneurisms_q4
+Sub001,m,Control,132,16,114,140,202,237
+Sub002,m,Treatment2,139,17.2,148,209,248,248
+Sub003,m,Treatment2,130,19.5,196,251,122,177
+Sub004,f,Treatment1,105,15.7,199,140,233,220
+Sub005,m,Treatment1,125,19.9,188,120,222,228
 
 ~~~
 
 We want to:
 
 * load that data into memory,
-* calculate the average inflammation per day across all patients, and
+* calculate the average number of aneurisms per eye across all patients, and
 * plot the result.
 
 To do all that, we'll have to learn a little bit about programming.
@@ -45,7 +46,7 @@ For example, if the CSV files are located in a directory named `swc` in our home
 
 
 ~~~{.r}
-setwd("~/swc")
+setwd("~/swc/")
 ~~~
 
 Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
@@ -55,15 +56,15 @@ Now we could load the data into R using `read.csv`:
 
 
 ~~~{.r}
-read.csv(file = "data/inflammation-01.csv", header = FALSE)
+read.csv(file = "data/Site-01.csv", header = TRUE)
 ~~~
 
 The expression `read.csv(...)` is a [function call](reference.html#function-call) that asks R to run the function `read.csv`. 
 
-`read.csv` has two [arguments](reference.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
-The filename needs to be a character string (or [string](reference.html#string) for short), so we put it in quotes.
-Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers.
-We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
+`read.csv` has two [arguments](../../gloss.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
+The filename needs to be a character string (or [string](../../gloss.html#string) for short), so we put it in quotes.
+Assigning the second argument, `header`, to be `TRUE` indicates that the data file does have column headers.
+We'll talk more about the value `TRUE`, and its converse `FALSE`, in lesson 04.
 
 > ## Tip {.callout} 
 > 
@@ -217,7 +218,7 @@ Now that we know how to assign things to variables, let's re-run `read.csv` and 
 
 
 ~~~{.r}
-dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
+dat <- read.csv(file = "data/Site-01.csv", header = TRUE)
 ~~~
 
 This statement doesn't produce any output because assignment doesn't display anything.
@@ -232,27 +233,20 @@ head(dat)
 
 
 ~~~{.output}
-  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20
-1  0  0  1  3  1  2  4  7  8   3   3   3  10   5   7   4   7   7  12  18
-2  0  1  2  1  2  1  3  2  2   6  10  11   5   9   4   4   7  16   8   6
-3  0  1  1  3  3  2  6  2  5   9   5   7   4   5   4  15   5  11   9  10
-4  0  0  2  0  4  2  2  1  6   7  10   7   9  13   8   8  15  10  10   7
-5  0  1  1  3  3  1  3  5  2   4   4   7   6   5   3  10   8  10   6  17
-6  0  0  1  2  2  4  2  1  6   4   7   6   6   9   9  15   4  16  18  12
-  V21 V22 V23 V24 V25 V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38
-1   6  13  11  11   7   7   4   6   8   8   4   4   5   7   3   4   2   3
-2  18   4  12   5  12   7  11   5  11   3   3   5   4   4   5   5   1   1
-3  19  14  12  17   7  12  11   7   4   2  10   5   4   2   2   3   2   2
-4  17   4   4   7   6  15   6   4   9  11   3   5   6   3   3   4   2   3
-5   9  14   9   7  13   9  12   6   7   7   9   6   3   2   2   4   2   0
-6  12   5  18   9   5   3  10   3  12   7   8   4   7   3   5   4   4   3
-  V39 V40
-1   0   0
-2   0   1
-3   1   1
-4   2   1
-5   1   1
-6   2   1
+      ID Gender      Group BloodPressure  Age Aneurisms_q1 Aneurisms_q2
+1 Sub001      m    Control           132 16.0          114          140
+2 Sub002      m Treatment2           139 17.2          148          209
+3 Sub003      m Treatment2           130 19.5          196          251
+4 Sub004      f Treatment1           105 15.7          199          140
+5 Sub005      m Treatment1           125 19.9          188          120
+6 Sub006      M Treatment2           112 14.3          260          266
+  Aneurisms_q3 Aneurisms_q4
+1          202          237
+2          248          248
+3          122          177
+4          233          220
+5          222          228
+6          320          294
 
 ~~~
 
@@ -267,7 +261,7 @@ mass <- mass * 2.0
 age <- age - 20
 ~~~
 
-### Manipulating Data
+### Examining the data structure
 
 Now that our data is in memory, we can start doing things with it. 
 First, let's ask what type of thing `dat` *is*:
@@ -288,7 +282,58 @@ The output tells us that data currently is a data frame in R.
 This is similar to a spreadsheet in MS Excel that many of us are familiar with using.
 Data frames are very useful for storing data because you can have a continuous variable, e.g. rainfall, in one column and a categorical variable, e.g. month, in another.
 
-We can see the dimensions, or [shape](reference.html#shape-(of-an-array)), of the data frame like this:
+### Column types
+
+A data frame is made up of columns of data. The columns do not have to have the same type.
+
+We can use the `class()` function to examine a single column.
+
+
+~~~{.r}
+class(dat[,1])
+~~~
+
+
+
+~~~{.output}
+[1] "factor"
+
+~~~
+The type `factor` is a very useful column type in R.
+
+The function `str()` gives information about all the columns in a dataframe.
+
+
+~~~{.r}
+str(dat)
+~~~
+
+
+
+~~~{.output}
+'data.frame':	100 obs. of  9 variables:
+ $ ID           : Factor w/ 100 levels "Sub001","Sub002",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ Gender       : Factor w/ 4 levels "F","f","M","m": 4 4 4 2 4 3 2 4 4 2 ...
+ $ Group        : Factor w/ 3 levels "Control","Treatment1",..: 1 3 3 2 2 3 1 3 3 1 ...
+ $ BloodPressure: int  132 139 130 105 125 112 173 108 131 129 ...
+ $ Age          : num  16 17.2 19.5 15.7 19.9 14.3 17.7 19.8 19.4 18.8 ...
+ $ Aneurisms_q1 : int  114 148 196 199 188 260 135 216 117 188 ...
+ $ Aneurisms_q2 : int  140 209 251 140 120 266 98 238 215 144 ...
+ $ Aneurisms_q3 : int  202 248 122 233 222 320 154 279 181 192 ...
+ $ Aneurisms_q4 : int  237 248 177 220 228 294 245 251 272 185 ...
+
+~~~
+
+We see the first two columns (ID and Gender) are type factor. Factors are a very useful datatype in R and we will look at them in detail next. The Group column is a logical datatype (values are True or False). 5 columns (BloodPressure, Aneurisms_q1-4) are all type integer. One column is type num (Age).
+
+### Addressing data
+There are 3 main ways to address data in a data frame:
+* By Index
+* By Logical vector
+* By Name (columns only)
+
+#### By Index
+We can see the dimensions, or [shape](../../gloss.html#shape), of the data frame like this:
 
 
 ~~~{.r}
@@ -298,11 +343,11 @@ dim(dat)
 
 
 ~~~{.output}
-[1] 60 40
+[1] 100   9
 
 ~~~
 
-This tells us that our data frame, `dat`, has 60 rows and 40 columns.
+This tells us that our data frame, `dat`, has 100 rows and 9 columns.
 
 If we want to get a single value from the data frame, we can provide an [index](reference.html#index) in square brackets, just as we do in math:
 
@@ -315,7 +360,8 @@ dat[1, 1]
 
 
 ~~~{.output}
-[1] 0
+[1] Sub001
+100 Levels: Sub001 Sub002 Sub003 Sub004 Sub005 Sub006 Sub007 ... Sub100
 
 ~~~
 
@@ -323,32 +369,38 @@ dat[1, 1]
 
 ~~~{.r}
 # middle value in dat
-dat[30, 20]
+dat[30, 4]
 ~~~
 
 
 
 ~~~{.output}
-[1] 16
+[1] 108
 
 ~~~
 
-An index like `[30, 20]` selects a single element of a data frame, but we can select whole sections as well. 
-For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:
+An index like `[30, 4]` selects a single element of a data frame, but we can select whole sections as well. 
+For example, we can select the first ten patients (rows) of values for the first four observations (columns) like this:
 
 
 ~~~{.r}
-dat[1:4, 1:10]
+dat[1:10, 1:4]
 ~~~
 
 
 
 ~~~{.output}
-  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
-1  0  0  1  3  1  2  4  7  8   3
-2  0  1  2  1  2  1  3  2  2   6
-3  0  1  1  3  3  2  6  2  5   9
-4  0  0  2  0  4  2  2  1  6   7
+       ID Gender      Group BloodPressure
+1  Sub001      m    Control           132
+2  Sub002      m Treatment2           139
+3  Sub003      m Treatment2           130
+4  Sub004      f Treatment1           105
+5  Sub005      m Treatment1           125
+6  Sub006      M Treatment2           112
+7  Sub007      f    Control           173
+8  Sub008      m Treatment2           108
+9  Sub009      m Treatment2           131
+10 Sub010      f    Control           129
 
 ~~~
 
@@ -358,36 +410,36 @@ The slice does not need to start at 1, e.g. the line below selects rows 5 throug
 
 
 ~~~{.r}
-dat[5:10, 1:10]
+dat[5:10, 1:4]
 ~~~
 
 
 
 ~~~{.output}
-   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
-5   0  1  1  3  3  1  3  5  2   4
-6   0  0  1  2  2  4  2  1  6   4
-7   0  0  2  2  4  2  2  5  5   8
-8   0  0  1  2  3  1  2  3  5   3
-9   0  0  0  3  1  5  6  5  5   8
-10  0  1  1  2  1  3  5  3  5   8
+       ID Gender      Group BloodPressure
+5  Sub005      m Treatment1           125
+6  Sub006      M Treatment2           112
+7  Sub007      f    Control           173
+8  Sub008      m Treatment2           108
+9  Sub009      m Treatment2           131
+10 Sub010      f    Control           129
 
 ~~~
 We can use the function `c`, which stands for **c**ombine, to select non-contiguous values:
 
 
 ~~~{.r}
-dat[c(3, 8, 37, 56), c(10, 14, 29)]
+dat[c(3, 8, 37, 56), c(1, 3, 6)]
 ~~~
 
 
 
 ~~~{.output}
-   V10 V14 V29
-3    9   5   4
-8    3   5   6
-37   6   9  10
-56   7  11   9
+       ID      Group Aneurisms_q1
+3  Sub003 Treatment2          196
+8  Sub008 Treatment2          216
+37 Sub037 Treatment2          161
+56 Sub056 Treatment2          199
 
 ~~~
 
@@ -404,165 +456,103 @@ dat[5, ]
 
 
 ~~~{.output}
-  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20
-5  0  1  1  3  3  1  3  5  2   4   4   7   6   5   3  10   8  10   6  17
-  V21 V22 V23 V24 V25 V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38
-5   9  14   9   7  13   9  12   6   7   7   9   6   3   2   2   4   2   0
-  V39 V40
-5   1   1
+      ID Gender      Group BloodPressure  Age Aneurisms_q1 Aneurisms_q2
+5 Sub005      m Treatment1           125 19.9          188          120
+  Aneurisms_q3 Aneurisms_q4
+5          222          228
 
 ~~~
 
 
 
 ~~~{.r}
-# All rows from column 16
-dat[, 16]
+# All rows from column 4
+dat[, 4]
 ~~~
 
 
 
 ~~~{.output}
- [1]  4  4 15  8 10 15 13  9 11  6  3  8 12  3  5 10 11  4 11 13 15  5 14
-[24] 13  4  9 13  6  7  6 14  3 15  4 15 11  7 10 15  6  5  6 15 11 15  6
-[47] 11 15 14  4 10 15 11  6 13  8  4 13 12  9
+  [1] 132 139 130 105 125 112 173 108 131 129 126  96  77 158  81 137 147
+ [18] 130 105  92 111 122  97 118  82 123 126  94 135 108 133 108 122 134
+ [35] 145 133  90 118 113 115 142 114 139  90 126 109 125  99 122 111 109
+ [52] 134 113 105 125 123 155 117 116 133  94 106 144 149 108 116 136  98
+ [69] 148  74 147 116 133  97 132 153 151 121 116 104 111  62 124 124 109
+ [86] 117  90 158 113 150 115  83 116 141 108 102  90 133  83 122
 
 ~~~
 
-Now let's perform some common mathematical operations to learn about our inflammation data.
-When analyzing data we often want to look at partial statistics, such as the maximum value per patient or the average value per day. 
-One way to do this is to select the data we want to create a new temporary data frame, and then perform the calculation on this subset:
+#### Logical adressing
+
+We have seen how to address data structures using an index. Logical addressing is another useful approach.
 
 
 ~~~{.r}
-# first row, all of the columns
-patient_1 <- dat[1, ]
-# max inflammation for patient 1
-max(patient_1)
+x <- c(5,3,7,10,15,13,17)
+
+x[c(TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE)]
 ~~~
 
 
 
 ~~~{.output}
-[1] 18
+[1] 5 3 7
 
 ~~~
 
-We don't actually need to store the row in a variable of its own. 
-Instead, we can combine the selection and the function call:
-
+Logical vectors can be created using `Relational Operators` e.g. `< , > ,  == , !=`.
 
 ~~~{.r}
-# max inflammation for patient 2
-max(dat[2, ])
+x > 10
 ~~~
 
 
 
 ~~~{.output}
-[1] 18
+[1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
 
 ~~~
 
-R also has functions for other commons calculations, e.g. finding the minimum, mean, median, and standard deviation of the data:
+#### By Name
+Columns in a dataframe can be named. In our case these names came from the header row of the csv file. Column names can be listed with the `names()` command.
 
 
 ~~~{.r}
-# minimum inflammation on day 7
-min(dat[, 7])
+names(dat)
 ~~~
 
 
 
 ~~~{.output}
-[1] 1
+[1] "ID"            "Gender"        "Group"         "BloodPressure"
+[5] "Age"           "Aneurisms_q1"  "Aneurisms_q2"  "Aneurisms_q3" 
+[9] "Aneurisms_q4" 
 
 ~~~
 
+Columns can be addressed using the `$` operator
 
 
 ~~~{.r}
-# mean inflammation on day 7
-mean(dat[, 7])
+dat$Gender
 ~~~
 
 
 
 ~~~{.output}
-[1] 3.8
+  [1] m m m f m M f m m f m f f m m m f m m F f m f f m M M f m f f m m m m
+ [36] f f m M m f m m m f f M M m m m f f f m f m m m f f f f M f m f f M m
+ [71] m m F m m f M M M f m M M m m f f f m m f m F f m m F m M M
+Levels: F f M m
 
 ~~~
 
 
+#### Challenge
 
-~~~{.r}
-# median inflammation on day 7
-median(dat[, 7])
-~~~
+A subsection of a data frame is called a [slice](../../gloss.html#slice).
+We can take slices of character vectors as well:
 
-
-
-~~~{.output}
-[1] 4
-
-~~~
-
-
-
-~~~{.r}
-# standard deviation of inflammation on day 7
-sd(dat[, 7])
-~~~
-
-
-
-~~~{.output}
-[1] 1.725187
-
-~~~
-
-What if we need the maximum inflammation for all patients, or the average for each day?
-As the diagram below shows, we want to perform the operation across a margin of the data frame:
-
-<img src="fig/r-operations-across-axes.svg" alt="Operations Across Axes" />
-
-To support this, we can use the `apply` function.
-
-> ## Tip {.callout} 
->
-> To learn about a function in R, e.g. `apply`, we can read its help 
-> documention by running `help(apply)` or `?apply`.
-
-`apply` allows us to repeat a function on all of the rows (`MARGIN = 1`) or columns (`MARGIN = 2`) of a data frame.
-
-Thus, to obtain the average inflammation of each patient we will need to calculate the mean of all of the rows (`MARGIN = 1`) of the data frame.
-
-
-~~~{.r}
-avg_patient_inflammation <- apply(dat, 1, mean)
-~~~
-
-And to obtain the average inflammation of each day we will need to calculate the mean of all of the columns (`MARGIN = 2`) of the data frame.
-
-
-~~~{.r}
-avg_day_inflammation <- apply(dat, 2, mean)
-~~~
-
-Since the second argument to `apply` is `MARGIN`, the above command is equivalent to `apply(dat, MARGIN = 2, mean)`.
-We'll learn why this is so in the next lesson.
-
-> ## Tip {.callout}
->
-> Some common operations have more efficient alternatives. For example, you 
-> can calculate the row-wise or column-wise means with `rowMeans` and 
-> `colMeans`, respectively.
-
-> ## Challenge {.challenge}
->
-> A subsection of a data frame is called a [slice](reference.html#slice).
-> We can take slices of character vectors as well:
->
 
 ~~~{.r}
 element <- c("o", "x", "y", "g", "e", "n")
@@ -590,58 +580,454 @@ element[4:6]
 [1] "g" "e" "n"
 
 ~~~
->
-> 1.  If the first four characters are selected using the slice `element[1:4]`, how can we obtain the first four characters in reverse order?
->    
-> 1.  What is `element[-1]`?
->    What is `element[-4]`?
->    Given those answers,
->    explain what `element[-1:-4]` does.
->
-> 1.  Use a slice of `element` to create a new character vector that spells the word "eon", e.g. `c("e", "o", "n")`.
 
-### Plotting
+1.  If the first four characters are selected using the slice `element[1:4]`, how can we obtain the first four characters in reverse order?
+    
+2.  What is `element[-1]`?
+    What is `element[-4]`?
+    Given those answers,
+    explain what `element[-1:-4]` does.
 
-The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and the best way to develop insight is often to visualize data.
-Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R's plotting features. 
+Index addressing and Logical addressing can be combined. 
 
-Let's take a look at the average inflammation over time.
-Recall that we already calculated these values above using `apply(dat, 2, mean)` and saved them in the variable `avg_day_inflammation`.
-Plotting the values is done with the function `plot`.
+3. Using Index addressing for the columns and Logical addressing for the rows, select all the rows with lower case "m" for gender.
 
 
 ~~~{.r}
-plot(avg_day_inflammation)
+#Create an index vector for the lower case "m"
+index<-dat$Gender=="m"
+head(dat[index,]) #N.B, using head function to limit output
 ~~~
 
-<img src="fig/01-starting-with-data-plot-avg-inflammation-1.png" title="plot of chunk plot-avg-inflammation" alt="plot of chunk plot-avg-inflammation" style="display: block; margin: auto;" />
 
-Above, we gave the function `plot` a vector of numbers corresponding to the average inflammation per day across all patients.
-`plot` created a scatter plot where the y-axis is the average inflammation level and the x-axis is the order, or index, of the values in the vector, which in this case correspond to the 40 days of treatment.
-The result is roughly a linear rise and fall, which is suspicious: based on other studies, we expect a sharper rise and slower fall.
-Let's have a look at two other statistics: the maximum and minimum inflammation per day.
+
+~~~{.output}
+      ID Gender      Group BloodPressure  Age Aneurisms_q1 Aneurisms_q2
+1 Sub001      m    Control           132 16.0          114          140
+2 Sub002      m Treatment2           139 17.2          148          209
+3 Sub003      m Treatment2           130 19.5          196          251
+5 Sub005      m Treatment1           125 19.9          188          120
+8 Sub008      m Treatment2           108 19.8          216          238
+9 Sub009      m Treatment2           131 19.4          117          215
+  Aneurisms_q3 Aneurisms_q4
+1          202          237
+2          248          248
+3          122          177
+5          222          228
+8          279          251
+9          181          272
+
+~~~
+
+### Combining indexing and assignment
+
+We have seen how we slice data using indexing and how we can assign values to variables using the assignment operator.
+We can combine these two operations:
 
 
 ~~~{.r}
-max_day_inflammation <- apply(dat, 2, max)
-plot(max_day_inflammation)
+x <- c(5,3,7,10,15,13,17)
+x[x>10] <- 0
+
+x
 ~~~
 
-<img src="fig/01-starting-with-data-plot-max-inflammation-1.png" title="plot of chunk plot-max-inflammation" alt="plot of chunk plot-max-inflammation" style="display: block; margin: auto;" />
+
+
+~~~{.output}
+[1]  5  3  7 10  0  0  0
+
+~~~
+
+### Challenge
+
+1. Combine indexing and assigment to correct the Gender column so that all values are uppercase
 
 
 ~~~{.r}
-min_day_inflammation <- apply(dat, 2, min)
-plot(min_day_inflammation)
+index_m<-dat$Gender=='m'
+index_f<-dat$Gender=='f'
+
+dat[index_m,2]<-'M'
+dat[index_f,2]<-'F'
 ~~~
 
-<img src="fig/01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" />
 
-The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.
+### Factors
 
-> ## Challenge {.challenge}
->
-> Create a plot showing the standard deviation of the inflammation data for each day across all patients.
+This section is taken from the datacarpentry lessons git@github.com:datacarpentry/datacarpentry.git
+
+
+
+Factors are used to represent categorical data. Factors can be ordered or
+unordered and are an important class for statistical analysis and for plotting.
+
+Factors are stored as integers, and have labels associated with these unique
+integers. While factors look (and often behave) like character vectors, they are
+actually integers under the hood, and you need to be careful when treating them
+like strings.
+
+Once created, factors can only contain a pre-defined set values, known as
+*levels*. By default, R always sorts *levels* in alphabetical order. For
+instance, if you have a factor with 2 levels:
+
+
+~~~{.r}
+sex <- factor(c("male", "female", "female", "male"))
+~~~
+
+R will assign `1` to the level `"female"` and `2` to the level `"male"` (because
+`f` comes before `m`, even though the first element in this vector is
+`"male"`). You can check this by using the function `levels()`, and check the
+number of levels using `nlevels()`:
+
+
+~~~{.r}
+levels(sex)
+~~~
+
+
+
+~~~{.output}
+[1] "female" "male"  
+
+~~~
+
+
+
+~~~{.r}
+nlevels(sex)
+~~~
+
+
+
+~~~{.output}
+[1] 2
+
+~~~
+
+Sometimes, the order of the factors does not matter, other times you might want
+to specify the order because it is meaningful (e.g., "low", "medium", "high") or
+it is required by particular type of analysis. Additionally, specifying the
+order of the levels allows to compare levels:
+
+
+~~~{.r}
+food <- factor(c("low", "high", "medium", "high", "low", "medium", "high"))
+levels(food)
+~~~
+
+
+
+~~~{.output}
+[1] "high"   "low"    "medium"
+
+~~~
+
+
+
+~~~{.r}
+food <- factor(food, levels=c("low", "medium", "high"))
+levels(food)
+~~~
+
+
+
+~~~{.output}
+[1] "low"    "medium" "high"  
+
+~~~
+
+
+
+~~~{.r}
+min(food) ## doesn't work
+~~~
+
+
+
+~~~{.output}
+Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), .Label = c("low", : 'min' not meaningful for factors
+
+~~~
+
+
+
+~~~{.r}
+food <- factor(food, levels=c("low", "medium", "high"), ordered=TRUE)
+levels(food)
+~~~
+
+
+
+~~~{.output}
+[1] "low"    "medium" "high"  
+
+~~~
+
+
+
+~~~{.r}
+min(food) ## works!
+~~~
+
+
+
+~~~{.output}
+[1] low
+Levels: low < medium < high
+
+~~~
+
+In R's memory, these factors are represented by numbers (1, 2, 3). They are
+better than using simple integer labels because factors are self describing:
+`"low"`, `"medium"`, and `"high"`" is more descriptive than `1`, `2`, `3`. Which
+is low?  You wouldn't be able to tell with just integer data. Factors have this
+information built in. It is particularly helpful when there are many levels
+(like the subjects in our example data set).
+
+### Converting factors
+
+If you need to convert a factor to a character vector, simply use
+`as.character(x)`.
+
+Converting a factor to a numeric vector is however a little trickier, and you
+have to go via a character vector. Compare:
+
+
+~~~{.r}
+f <- factor(c(1, 5, 10, 2))
+as.numeric(f)               ## wrong! and there is no warning...
+~~~
+
+
+
+~~~{.output}
+[1] 1 3 4 2
+
+~~~
+
+
+
+~~~{.r}
+as.numeric(as.character(f)) ## works...
+~~~
+
+
+
+~~~{.output}
+[1]  1  5 10  2
+
+~~~
+
+
+
+~~~{.r}
+as.numeric(levels(f))[f]    ## The recommended way.
+~~~
+
+
+
+~~~{.output}
+[1]  1  5 10  2
+
+~~~
+
+### Challenge
+
+The function `table()` tabulates observations and can be used to create
+bar plots quickly. For instance:
+
+
+~~~{.r}
+## Question: How can you recreate this plot but by having "control"
+## being listed last instead of first?
+exprmt <- factor(c("treat1", "treat2", "treat1", "treat3", "treat1", "control",
+                   "treat1", "treat2", "treat3"))
+table(exprmt)
+~~~
+
+
+
+~~~{.output}
+exprmt
+control  treat1  treat2  treat3 
+      1       4       2       2 
+
+~~~
+
+
+
+~~~{.r}
+barplot(table(exprmt))
+~~~
+
+<img src="fig/01-starting-with-data-unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" style="display: block; margin: auto;" />
+
+<!---
+
+~~~{.r}
+exprmt <- factor(exprmt, levels=c("treat1", "treat2", "treat3", "control"))
+barplot(table(exprmt))
+~~~
+
+<img src="fig/01-starting-with-data-unnamed-chunk-36-1.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" style="display: block; margin: auto;" />
+--->
+
+### Removing levels from a factor
+
+In the previous challenge we updated the data for Gender. R still thinks the levels "m" and "f" are valid for the Gender data.
+
+~~~{.r}
+levels(dat$Gender)
+~~~
+
+
+
+~~~{.output}
+[1] "F" "f" "M" "m"
+
+~~~
+
+The `droplevels` function will remove any unused levels
+
+~~~{.r}
+dat<-droplevels(dat)
+levels(dat$Gender)
+~~~
+
+
+
+~~~{.output}
+[1] "F" "M"
+
+~~~
+
+### Manipulating Data
+
+Now let's perform some common mathematical operations to learn about our inflammation data.
+When analyzing data we often want to look at partial statistics, such as the maximum value per patient or the average value per eye. 
+One way to do this is to select the data we want to create a new temporary data frame, and then perform the calculation on this subset:
+
+
+~~~{.r}
+# first row, columns 6 to 9
+patient_1 <- dat[1, 6:9]
+# max aneurism for patient 1
+max(patient_1)
+~~~
+
+
+
+~~~{.output}
+[1] 237
+
+~~~
+
+We don't actually need to store the row in a variable of its own. 
+Instead, we can combine the selection and the function call:
+
+
+~~~{.r}
+# max inflammation for patient 2
+max(dat[2, 6:9])
+~~~
+
+
+
+~~~{.output}
+[1] 248
+
+~~~
+
+R also has functions for other commons calculations, e.g. finding the minimum, mean, median, and standard deviation of the data:
+
+
+~~~{.r}
+# minimum number of aneurisms in quadrant 1
+min(dat[, 6])
+~~~
+
+
+
+~~~{.output}
+[1] 65
+
+~~~
+
+
+
+~~~{.r}
+# mean number of aneurisms in quadrant 1
+mean(dat[,6])
+~~~
+
+
+
+~~~{.output}
+[1] 158.84
+
+~~~
+
+
+
+~~~{.r}
+# median number of aneurisms in quadrant 1
+median(dat[, 6])
+~~~
+
+
+
+~~~{.output}
+[1] 158
+
+~~~
+
+
+
+~~~{.r}
+# standard number of aneurisms in quadrant 1
+sd(dat[, 6])
+~~~
+
+
+
+~~~{.output}
+[1] 41.52952
+
+~~~
+
+What if we need the maximum aneurisms for all patients, or the average for each eye?
+As the diagram below shows, we want to perform the operation across a margin of the data frame:
+
+<img src="fig/r-operations-across-axes.svg" alt="Operations Across Axes" />
+
+To support this, we can use the `apply` function.
+
+> **Tip:** To learn about a function in R, e.g. `apply`, we can read its help documention by running `help(apply)` or `?apply`.
+
+`apply` allows us to repeat a function on all of the rows (`MARGIN = 1`) or columns (`MARGIN = 2`) of a data frame.
+
+Thus, to obtain the average inflammation of each patient we will need to calculate the mean of all of the rows (`MARGIN = 1`) of the data frame.
+
+
+~~~{.r}
+avg_patient_aneurisms <- apply(dat[,6:9], 1, mean)
+~~~
+
+And to obtain the average inflammation of each eye we will need to calculate the mean of all of the columns (`MARGIN = 2`) of the data frame.
+
+
+~~~{.r}
+avg_eye_aneurisms <- apply(dat[,6:9], 2, mean)
+~~~
+
+Since the second argument to `apply` is `MARGIN`, the above command is equivalent to `apply(dat, MARGIN = 2, mean)`.
+We'll learn why this is so in the next lesson.
+
+> **Tip:** Some common operations have more efficient alternatives.
+For example, you can calculate the row-wise or column-wise means with `rowMeans` and `colMeans`, respectively.
+
 
 #### Key Points
 
@@ -654,11 +1040,11 @@ The maximum value rises and falls perfectly smoothly, while the minimum seems to
 * Use `#` to add comments to programs.
 * Use `mean`, `max`, `min` and `sd` to calculate simple statistics.
 * Use `apply` to calculate statistics across the rows or columns of a data frame.
-* Use `plot` to create simple visualizations.
+
 
 #### Next Steps
 
-Our work so far has convinced us that something's wrong with our first data file.
-We would like to check the other 11 the same way, but typing in the same commands repeatedly is tedious and error-prone.
+Our work so far has looked at the data from the first site, we have 4 samples from other locations.
+We would like to check the others the same way, but typing in the same commands repeatedly is tedious and error-prone.
 Since computers don't get bored (that we know of), we should create a way to do a complete analysis with a single command, and then figure out how to repeat that step once for each file.
 These operations are the subjects of the next two lessons.
