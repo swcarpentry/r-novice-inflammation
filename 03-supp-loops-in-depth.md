@@ -7,6 +7,10 @@ minutes: 30
 
 
 
+> ## Objectives {.objectives}
+>
+> FIXME: Write these
+
 ### To loop or not to loop...?
 
 In R you have multiple options when repeating calculations: vectorized operations, `for` loops, and `apply` functions.
@@ -139,7 +143,7 @@ system.time(avg2 <- analyze2(filenames))
 
 ~~~{.output}
    user  system elapsed 
-  0.048   0.003   0.071 
+    0.1     0.0     0.1 
 
 ~~~
 
@@ -168,7 +172,7 @@ system.time(avg3 <- analyze3(filenames))
 
 ~~~{.output}
    user  system elapsed 
-  0.042   0.001   0.043 
+  0.092   0.000   0.092 
 
 ~~~
 

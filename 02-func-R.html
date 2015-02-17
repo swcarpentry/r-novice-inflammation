@@ -160,11 +160,9 @@ dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="
 <li>We previously wrote functions called <code>fence</code> and <code>outside</code>. Draw a diagram showing how the call stack changes when we run the following:</li>
 </ul>
 </div>
-<pre class="sourceCode r"><code class="sourceCode r">inside &lt;-<span class="st"> &quot;carbon&quot;</span>
-outside &lt;-<span class="st"> &quot;+&quot;</span>
-result &lt;-<span class="st"> </span><span class="kw">outside</span>(<span class="kw">fence</span>(inside, outside))</code></pre>
-<pre class="output"><code>Error in eval(expr, envir, enclos): could not find function &quot;outside&quot;
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">inner_vec &lt;-<span class="st"> &quot;carbon&quot;</span>
+outer_vec &lt;-<span class="st"> &quot;+&quot;</span>
+result &lt;-<span class="st"> </span><span class="kw">outside</span>(<span class="kw">fence</span>(inner_vec, outer_vec))</code></pre>
 <h3 id="testing-and-documenting">Testing and Documenting</h3>
 <p>Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly. To see how to do this, let's write a function to center a dataset around a particular value:</p>
 <pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, desired) {

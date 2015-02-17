@@ -302,16 +302,9 @@ That only works if functions don't interfere with each other; if they do, we hav
 
 
 ~~~{.r}
-inside <- "carbon"
-outside <- "+"
-result <- outside(fence(inside, outside))
-~~~
-
-
-
-~~~{.output}
-Error in eval(expr, envir, enclos): could not find function "outside"
-
+inner_vec <- "carbon"
+outer_vec <- "+"
+result <- outside(fence(inner_vec, outer_vec))
 ~~~
 
 ### Testing and Documenting
