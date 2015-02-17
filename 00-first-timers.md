@@ -1041,7 +1041,8 @@ y <- sum(x)
 
 All functions come with a help screen. 
 It is critical that you learn to read the help screens since they provide important information on what the function does, 
-how it works, and usually sample examples at the very bottom.
+how it works, and usually sample examples at the very bottom. In RStudio the help screen to a function can be a accessed by
+clicking F1 while the cursor is on the function name.
 
 ### Get new functions
 
