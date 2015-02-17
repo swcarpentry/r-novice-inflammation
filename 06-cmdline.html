@@ -5,10 +5,12 @@
     <meta name="generator" content="pandoc">
     <title>Software Carpentry: Programming with R</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc-workshop-and-lesson.css" />
+    <link rel="stylesheet" type="text/css" href="css/lesson.css" />
     <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
     <meta charset="UTF-8" />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -16,8 +18,8 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <div class="container">
+  <body class="lesson">
+    <div class="container container-full-width card">
       <div class="banner">
         <a href="http://software-carpentry.org" title="Software Carpentry">
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
@@ -50,7 +52,7 @@
 <pre><code>$ Rscript readings.R --max data/inflammation-*.csv</code></pre>
 <p>Our overall requirements are:</p>
 <ol style="list-style-type: decimal">
-<li>If no filename is given on the command line, read data from <a href="../../gloss.html#standard-input">standard input</a>.</li>
+<li>If no filename is given on the command line, read data from <a href="reference.html#standard-input-(stdin)">standard input</a>.</li>
 <li>If one or more filenames are given, read data from them and report statistics for each file separately.</li>
 <li>Use the <code>--min</code>, <code>--mean</code>, or <code>--max</code> flag to determine what statistic to print.</li>
 </ol>
@@ -84,9 +86,9 @@ attached base packages:
 <pre class="output"><code>args &lt;- commandArgs()
 cat(args, sep = &quot;\n&quot;)
 </code></pre>
-<p>The function <code>commandArgs</code> extracts all the command line arguments and returns them as a vector. The function <code>cat</code>, similar to the <code>cat</code> of the Unix Shell, outputs the contents of the variable. Since we did not specify a filename for writing, <code>cat</code> sends the output to <a href="../../gloss.html#standard-output">standard output</a>, which we can then pipe to other Unix functions. Because we set the argument <code>sep</code> to <code>&quot;\n&quot;</code>, which is the symbol to start a new line, each element of the vector is printed on its own line. Let's see what happens when we run this program in the Unix Shell:</p>
+<p>The function <code>commandArgs</code> extracts all the command line arguments and returns them as a vector. The function <code>cat</code>, similar to the <code>cat</code> of the Unix Shell, outputs the contents of the variable. Since we did not specify a filename for writing, <code>cat</code> sends the output to <a href="reference.html#standard-output-(stdout)">standard output</a>, which we can then pipe to other Unix functions. Because we set the argument <code>sep</code> to <code>&quot;\n&quot;</code>, which is the symbol to start a new line, each element of the vector is printed on its own line. Let's see what happens when we run this program in the Unix Shell:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript print-args.R</code></pre>
-<pre class="output"><code>/usr/lib64/R/bin/exec/R
+<pre class="output"><code>/usr/lib/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -100,7 +102,7 @@ cat(args, sep = &quot;\n&quot;)
 </ul>
 <p>Thus running a file with Rscript is an easier way to run the following:</p>
 <pre class="sourceCode r"><code class="sourceCode r">R --slave --no-restore --file=print-args.R --args</code></pre>
-<pre class="output"><code>/usr/lib64/R/bin/exec/R
+<pre class="output"><code>/usr/lib/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -108,7 +110,7 @@ cat(args, sep = &quot;\n&quot;)
 </code></pre>
 <p>If we run it with a few arguments, however:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript print-args.R first second third</code></pre>
-<pre class="output"><code>/usr/lib64/R/bin/exec/R
+<pre class="output"><code>/usr/lib/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -215,7 +217,7 @@ main()
 <div id="challenges" class="challenge">
 <h2>Challenges</h2>
 <ul>
-<li>Write a command-line program that does addition and subtraction. <strong>Hint:</strong> Everything argument read from the command-line is interpreted as a character <a href="../../gloss.html#string">string</a>. You can convert from a string to a number using the function <code>as.numeric</code>.</li>
+<li>Write a command-line program that does addition and subtraction. <strong>Hint:</strong> Everything argument read from the command-line is interpreted as a character <a href="reference.html#string">string</a>. You can convert from a string to a number using the function <code>as.numeric</code>.</li>
 </ul>
 </div>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript arith.R <span class="dv">1</span> +<span class="st"> </span><span class="dv">2</span></code></pre>
@@ -314,7 +316,7 @@ main()
 <p>but there are several things wrong with it:</p>
 <ol style="list-style-type: decimal">
 <li><p><code>main</code> is too large to read comfortably.</p></li>
-<li><p>If <code>action</code> isn't one of the three recognized flags, the program loads each file but does nothing with it (because none of the branches in the conditional match). <a href="../../gloss.html#silent-failure">Silent failures</a> like this are always hard to debug.</p></li>
+<li><p>If <code>action</code> isn't one of the three recognized flags, the program loads each file but does nothing with it (because none of the branches in the conditional match). <a href="reference.html#silent-failure">Silent failures</a> like this are always hard to debug.</p></li>
 </ol>
 <p>This version pulls the processing of each file out of the loop into a function of its own. It also checks that <code>action</code> is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as <code>readings-05.R</code>:</p>
 <pre class="output"><code>main &lt;- function() {
@@ -424,16 +426,14 @@ main()
 </ul>
 </div>
 <div class="keypoints" markdown="1">
-<h4 id="key-points">Key Points</h4>
+<h4>Key Points</h4>
 <ul>
 <li>Use <code>commandArgs(trailingOnly = TRUE)</code> to obtain a vector of the command-line arguments that a program was run with.</li>
 <li>Avoid silent failures.</li>
 <li>Use <code>file(&quot;stdin&quot;)</code> to connect to a program's standard input.</li>
-<li>Use <code>cat(vec, sep = &quot;\n&quot;)</code> to write the elements of <code>vec</code> to standard output, one per line.
-</div>
-
-</li>
+<li>Use <code>cat(vec, sep = &quot;\n&quot;)</code> to write the elements of <code>vec</code> to standard output, one per line.</li>
 </ul>
+</div>
         </div>
       </div>
       <div class="footer">

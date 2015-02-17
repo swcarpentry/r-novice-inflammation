@@ -5,10 +5,12 @@
     <meta name="generator" content="pandoc">
     <title>Software Carpentry: Programming with R</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc-workshop-and-lesson.css" />
+    <link rel="stylesheet" type="text/css" href="css/lesson.css" />
     <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
     <meta charset="UTF-8" />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -16,8 +18,8 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <div class="container">
+  <body class="lesson">
+    <div class="container container-full-width card">
       <div class="banner">
         <a href="http://software-carpentry.org" title="Software Carpentry">
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
@@ -268,15 +270,14 @@ for (f in filenames) {
 </ol>
 </div>
 <div class="keypoints" markdown="1">
-<h4 id="key-points">Key Points</h4>
+<h4>Key Points</h4>
 <ul>
 <li>Use <code>for (variable in collection)</code> to process the elements of a collection one at a time.</li>
 <li>The body of a <code>for</code> loop is surrounded by curly braces (<code>{ }</code>).</li>
 <li>Use <code>length(thing)</code> to determine the length of something that contains other values.</li>
-<li>Use <code>list.files(pattern = &quot;pattern&quot;)</code> to create a list of files whose names match a pattern.
-</div>
-</li>
+<li>Use <code>list.files(pattern = &quot;pattern&quot;)</code> to create a list of files whose names match a pattern.</li>
 </ul>
+</div>
 <h4 id="next-steps">Next Steps</h4>
 <p>We have now solved our original problem: we can analyze any number of data files with a single command. More importantly, we have met two of the most important ideas in programming:</p>
 <ul>

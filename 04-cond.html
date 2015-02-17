@@ -5,10 +5,12 @@
     <meta name="generator" content="pandoc">
     <title>Software Carpentry: Programming with R</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc-workshop-and-lesson.css" />
+    <link rel="stylesheet" type="text/css" href="css/lesson.css" />
     <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
     <meta charset="UTF-8" />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -16,8 +18,8 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <div class="container">
+  <body class="lesson">
+    <div class="container container-full-width card">
       <div class="banner">
         <a href="http://software-carpentry.org" title="Software Carpentry">
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
@@ -220,17 +222,16 @@ if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
 </ul>
 </div>
 <div class="keypoints" markdown="1">
-<h4 id="key-points">Key Points</h4>
+<h4>Key Points</h4>
 <ul>
 <li>Save a plot in a pdf file using <code>pdf(&quot;name.pdf&quot;)</code> and stop writing to the pdf file with <code>dev.off()</code>.</li>
 <li>Use <code>if (condition)</code> to start a conditional statement, <code>else if (condition)</code> to provide additional tests, and <code>else</code> to provide a default.</li>
 <li>The bodies of conditional statements must be surrounded by curly braces <code>{ }</code>.</li>
 <li>Use <code>==</code> to test for equality.</li>
 <li><code>X &amp; Y</code> is only true if both X and Y are true.</li>
-<li><code>X | Y</code> is true if either X or Y, or both, are true.
-</div>
-</li>
+<li><code>X | Y</code> is true if either X or Y, or both, are true.</li>
 </ul>
+</div>
 <h4 id="next-steps">Next Steps</h4>
 <p>We have now seen the basics of interactively building R code. The last thing we need to learn is how to build command-line programs that we can use in pipelines and shell scripts, so that we can integrate our tools with other people's work. This will be the subject of our next and final lesson.</p>
         </div>
