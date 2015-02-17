@@ -645,6 +645,7 @@ The maximum value rises and falls perfectly smoothly, while the minimum seems to
 
 #### Key Points
 
+* Use `read.csv()` to read an input data file in csv format.
 * Use `variable <- value` to assign a value to a variable in order to record it in memory.
 * Objects are created on demand whenever a value is assigned to them.
 * The function `dim` gives the dimensions of a data frame.
