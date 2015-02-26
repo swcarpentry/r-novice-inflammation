@@ -276,6 +276,16 @@ element[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <li><p>Use a slice of <code>element</code> to create a new character vector that spells the word &quot;eon&quot;, e.g. <code>c(&quot;e&quot;, &quot;o&quot;, &quot;n&quot;)</code>.</p></li>
 </ol>
 </blockquote>
+<div id="challenge-2" class="challenge">
+<h2>Challenge</h2>
+<p>Supose you want to determine the maximum inflamation for patient 5 across days three to seven. To do this you would extract the relevant slice from the data frame and calculate the maximum value.<br />Which of the following lines of R code gives the correct answer?</p>
+<ol style="list-style-type: lower-alpha">
+<li><code>max(dat[5, ])</code></li>
+<li><code>max(dat[3:7, 5])</code></li>
+<li><code>max(dat[5, 3:7])</code></li>
+<li><code>max(dat[5, 3, 7])</code></li>
+</ol>
+</div>
 <h3 id="plotting">Plotting</h3>
 <p>The mathematician Richard Hamming once said, &quot;The purpose of computing is insight, not numbers,&quot; and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R's plotting features.</p>
 <p>Let's take a look at the average inflammation over time. Recall that we already calculated these values above using <code>apply(dat, 2, mean)</code> and saved them in the variable <code>avg_day_inflammation</code>. Plotting the values is done with the function <code>plot</code>.</p>
@@ -289,7 +299,7 @@ element[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <span class="kw">plot</span>(min_day_inflammation)</code></pre>
 <p><img src="fig/01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" /></p>
 <p>The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.</p>
-<div id="challenge-2" class="challenge">
+<div id="challenge-3" class="challenge">
 <h2>Challenge</h2>
 <p>Create a plot showing the standard deviation of the inflammation data for each day across all patients.</p>
 </div>
