@@ -66,6 +66,29 @@ res</code></pre>
 <span class="kw">all.equal</span>(res, res2)</code></pre>
 <pre class="output"><code>[1] TRUE
 </code></pre>
+<h5 id="vector-recycling">Vector recycling</h5>
+<p>When performing vector operations in R, it is important to know about <em>recycling</em>. If you perform an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector. For example:</p>
+<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+b &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">5</span>
+a +<span class="st"> </span>b</code></pre>
+<pre class="output"><code> [1]  2  4  6  8 10  7  9 11 13 15
+</code></pre>
+<p>The elements of <code>a</code> and <code>b</code> are added together starting from the first element of both vectors. When R reaches the end of the shorter vector <code>b</code>, it starts again at the first element of <code>b</code> and contines until it reaches the last element of the longest vector <code>a</code>. This behaviour may seem crazy at first glance, but it is very useful when you want to perform the same operation on every element of a vector. For example, say we want to multiply every element of our vector <code>a</code> by 5:</p>
+<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+b &lt;-<span class="st"> </span><span class="dv">5</span>
+a *<span class="st"> </span>b</code></pre>
+<pre class="output"><code> [1]  5 10 15 20 25 30 35 40 45 50
+</code></pre>
+<p>Remember there are no scalars in R, so <code>b</code> is actually a vector of length 1; in order to add its value to every element of <code>a</code>, it is <em>recycled</em> to match the length of <code>a</code>.</p>
+<p>When the length of the longer object is a multiple of the shorter object length (as in our example above), the recycling occurs silently. When the longer object length is not a multiple of the shorter object length, a warning is given:</p>
+<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+b &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">7</span>
+a +<span class="st"> </span>b</code></pre>
+<pre class="output"><code>Warning in a + b: longer object length is not a multiple of shorter object
+length
+</code></pre>
+<pre class="output"><code> [1]  2  4  6  8 10 12 14  9 11 13
+</code></pre>
 <h4 id="for-or-apply"><code>for</code> or <code>apply</code>?</h4>
 <p>A <code>for</code> loop is used to apply the same function calls to a collection of objects. R has a family of functions, the <code>apply</code> family, which can be used in much the same way. You've already used one of the family, <code>apply</code> in the first <a href="../01-starting-with-data.html">lesson</a>. The <code>apply</code> family members include</p>
 <ul>
@@ -101,7 +124,7 @@ res</code></pre>
 
 <span class="kw">system.time</span>(avg2 &lt;-<span class="st"> </span><span class="kw">analyze2</span>(filenames))</code></pre>
 <pre class="output"><code>   user  system elapsed 
-    0.1     0.0     0.1 
+  0.048   0.002   0.050 
 </code></pre>
 <p>Note how we add a new column to <code>out</code> at each iteration? This is a cardinal sin of writing a <code>for</code> loop in R.</p>
 <p>Instead, we can create an empty matrix with the right dimensions (rows/columns) to hold the results. Then we loop over the files but this time we fill in the <code>f</code>th column of our results matrix <code>out</code>. This time there is no copying/growing for R to deal with.</p>
@@ -116,7 +139,7 @@ res</code></pre>
 
 <span class="kw">system.time</span>(avg3 &lt;-<span class="st"> </span><span class="kw">analyze3</span>(filenames))</code></pre>
 <pre class="output"><code>   user  system elapsed 
-  0.092   0.000   0.092 
+  0.043   0.002   0.044 
 </code></pre>
 <p>In this simple example there is little difference in the compute time of <code>analyze2</code> and <code>analyze3</code>. This is because we are only iterating over 12 files and hence we only incur 12 copy/grow operations. If we were doing this over more files or the data objects we were growing were larger, the penalty for copying/growing would be much larger.</p>
 <p>Note that <code>apply</code> handles these memory allocation issues for you, but then you have to write the loop part as a function to pass to <code>apply</code>. At its heart, <code>apply</code> is just a <code>for</code> loop with extra convenience.</p>
