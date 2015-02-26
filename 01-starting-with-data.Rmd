@@ -319,16 +319,18 @@ element[4:6]
 >    explain what `element[-1:-4]` does.
 >
 > 1.  Use a slice of `element` to create a new character vector that spells the word "eon", e.g. `c("e", "o", "n")`.
->
+
+
 > ## Challenge {.challenge}
 >
 > Supose you want to determine the maximum inflamation for patient 5 across days three to seven.
 > To do this you would extract the relevant slice from the data frame and calculate the maximum value.  
 > Which of the following lines of R code gives the correct answer?
-> (a) max(dat[5,])
-> (b) max(dat[3:7,5])
-> (c) max(dat[5,3:7])
-> (d) max(dat[5,3,7])
+>
+> (a) `max(dat[5, ])`
+> (b) `max(dat[3:7, 5])`
+> (c) `max(dat[5, 3:7])`
+> (d) `max(dat[5, 3, 7])`
 
 ### Plotting
 
