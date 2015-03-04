@@ -12,7 +12,8 @@ source('tools/chunk-options.R')
 
 > ## Objectives {.objectives}
 >
-> Understand the 3 different ways R can address data inside a data frame
+> Understand the 3 different ways R can address data inside a data frame.
+>
 > Combine different methods for addressing data with the assignment operator to update subsets of data
 
 R is a powerful language for data manipulation. There are 3 main ways for addressing data inside R objects.
@@ -30,7 +31,7 @@ dat<-read.csv(file='data/sample.csv',header=TRUE, stringsAsFactors=FALSE)
 > ## Tip {.callout} 
 >
 > The first row of this csv file is a list of column names. We used the *header=TRUE* argument to `read.csv` so that R can interpret the file correctly.
-> For now, ignore the `stringsAsFactors` argument. This will probably be covered later.
+> For now, ignore the *stringsAsFactors* argument. This will probably be covered later.
 
 Lets take a look at this data.
 
@@ -97,9 +98,10 @@ Returns the first 5 columns for patients in rows 1,5,7 & 9
 ### Addressing by name
 Columns in an R data frame are named.
 
-```{R column_names}
+```{r column_names}
 names(dat)
 ```
+
 > ## Tip {.callout} 
 >
 > If names are not specified e.g. using `headers=FALSE` in a `read.csv()` function, R assigns default names `V1,V2,...,Vn`
@@ -112,7 +114,7 @@ dat$Gender
 
 Named addressing can also be used in square brackets.
 ```{r names_addressing_2}
-dat[,c('Age','Gender')]
+head(dat[,c('Age','Gender')])
 ```
 
 > ## Best Practice {.callout} 
