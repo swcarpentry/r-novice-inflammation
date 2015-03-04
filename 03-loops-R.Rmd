@@ -158,7 +158,7 @@ length(vowels)
 
 `length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](00-first-timers.html) to learn more about the different ways to store data in R).
 
-> ## Challenges {.challenge}
+> ## Challenge - Using loops {.challenge}
 >
 > 1. R has a built-in function called `seq` that creates a list of numbers:
 
@@ -292,7 +292,7 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 > [lesson](03-supp-loops-in-depth.html) that demonstrates how to properly repeat 
 > operations in R.
 
-> ## Challenges {.challenge}
+> ## Challenge - Using loops to analyze multiple files {.challenge}
 >
 > 1. Write a function called `analyze_all` that takes a filename pattern as its sole argument and runs `analyze` for each file whose name matches the pattern.
 
