@@ -57,7 +57,7 @@ The data is the results of an (not real) experiment, looking at the number of an
 
 We have already seen how square brackets `[` can be used to subset (slice) data. The generic format is `dat[row_numbers,column_numbers]`.
 
-> ## Challenge {.challenge}
+> ## Challenge - Selecting values 1 {.challenge}
 >
 > What will be returned by `dat[1,1]`?
 
@@ -67,7 +67,7 @@ dat[1,1]
 
 If we leave out a dimension R will interpret this as a request for all values in that dimension.
 
-> ## Challenge {.challenge}
+> ## Challenge - Selecting values 2 {.challenge}
 >
 > What will be returned by `dat[,2]`?
 
@@ -81,7 +81,7 @@ Creates a vector of numbers from 6 to 9.
 
 This can be very useful for addressing data. 
 
-> ## Challenge {.challenge}
+> ## Challenge - Subsetting with sequences {.challenge}
 > Use the colon operator to index just the aneurism count data (columns 6 to 9).
 
 Finally we can use the `c()` (combine) function to address non-sequential rows and columns.
@@ -92,7 +92,7 @@ dat[c(1,5,7,9),1:5]
 
 Returns the first 5 columns for patients in rows 1,5,7 & 9
 
-> ## Challenge {.challenge}
+> ## Challenge - Subsetting non-sequential data {.challenge}
 > Return the Age and Gender values for the first 5 patients.
 
 ### Addressing by name
@@ -163,6 +163,6 @@ x[x < 10] <- 0
 x
 ```
 
-> ## Challenge {.challenge}
+> ## Challenge - Updating a subset of values {.challenge}
 > In this dataset, values for Gender have been recorded as both uppercase `M, F` and lowercase `m,f`. 
 > Combine the indexing and assignment operations to convert all values to lowercase.
