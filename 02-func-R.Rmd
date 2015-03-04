@@ -94,7 +94,7 @@ fahr_to_celsius(32.0)
 This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want. 
 Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
 
-> ## Challenges {.challenge}
+> ## Challenge - Create a function {.challenge}
 >
 >  + In the last lesson, we learned to **c**oncatenate elements into a vector using the `c` function, e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
 >  Furthermore, we can extend that vector again using `c`, e.g. `y <- c(x, "D")` creates a vector `y` with four elements.
@@ -230,7 +230,7 @@ The big idea here is [encapsulation](reference.html#encapsulation), and it's the
 A function's job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something.
 That only works if functions don't interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.
 
-> ## Challenges {.challenge}
+> ## Challenge - Following the call stack {.challenge}
 >
 >  + We previously wrote functions called `fence` and `outside`.
 >    Draw a diagram showing how the call stack changes when we run the
@@ -343,7 +343,7 @@ center <- function(data, desired) {
 [LaTeX]: http://www.latex-project.org/
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 
-> ## Challenges {.challenge}
+> ## Challenge - A more advanced function {.challenge}
 >
 >  + Write a function called `analyze` that takes a filename as a argument and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
 >  `analyze("data/inflammation-01.csv")` should produce the graphs already shown, while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
@@ -497,7 +497,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 It fails because `FALSE` is assigned to `file` and the filename is assigned to the argument `header`.
 
-> ## Challenges {.challenge}
+> ## Challenge - A function with default argument values {.challenge}
 >
 >  + Rewrite the `rescale` function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want.
 >  Compare your implementation to your neighbor's: do the two functions always behave the same way?
