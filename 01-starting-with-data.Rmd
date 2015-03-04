@@ -159,7 +159,7 @@ However, for large data sets it is convenient to use the function `head` to disp
 head(dat)
 ```
 
-> ## Challenge {.challenge}
+> ## Challenge - Assigning values to variables {.challenge}
 >
 > Draw diagrams showing what variables refer to what values after each statement in the following program:
 >
@@ -298,7 +298,7 @@ We'll learn why this is so in the next lesson.
 > can calculate the row-wise or column-wise means with `rowMeans` and 
 > `colMeans`, respectively.
 
-> ## Challenge {.challenge}
+> ## Challenge - Slicing (subsetting) data {.challenge}
 >
 > A subsection of a data frame is called a [slice](reference.html#slice).
 > We can take slices of character vectors as well:
@@ -321,9 +321,9 @@ element[4:6]
 > 1.  Use a slice of `element` to create a new character vector that spells the word "eon", e.g. `c("e", "o", "n")`.
 
 
-> ## Challenge {.challenge}
+> ## Challenge - Subsetting data 2 {.challenge}
 >
-> Supose you want to determine the maximum inflamation for patient 5 across days three to seven.
+> Suppose you want to determine the maximum inflamation for patient 5 across days three to seven.
 > To do this you would extract the relevant slice from the data frame and calculate the maximum value.  
 > Which of the following lines of R code gives the correct answer?
 >
@@ -362,7 +362,7 @@ plot(min_day_inflammation)
 
 The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.
 
-> ## Challenge {.challenge}
+> ## Challenge - Plotting data {.challenge}
 >
 > Create a plot showing the standard deviation of the inflammation data for each day across all patients.
 
