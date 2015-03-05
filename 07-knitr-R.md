@@ -47,7 +47,7 @@ summary(cars)
 
 ~~~
 
-> ## Challenge {.challenge}
+> ## Challenge - Using KnitR to produce a report {.challenge}
 >
 > 1. Open an new .Rmd script and save it as inflammation_report.Rmd
 > 2. Copy and paste the code as embedded R chunks to read in the data and plot average inflammation, or the heat map that we created.
