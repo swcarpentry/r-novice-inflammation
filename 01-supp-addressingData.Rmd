@@ -133,11 +133,13 @@ c(TRUE,TRUE,FALSE,FALSE,TRUE)
 >
 > Note the values `TRUE` and `FALSE` are all capital letters and are not quoted.
 
-Logical vectors can be created using `relational operators` e.g. `<, >, ==, !=`.
+Logical vectors can be created using `relational operators` e.g. `<, >, ==, !=, %in%`.
 
 ```{r logical_vectors_example}
 x<-c(1,2,3,11,12,13)
 x < 10
+
+x %in% 1:10
 ```
 
 We can use logical vectors to select data from a data frame.
@@ -152,6 +154,10 @@ Often this operation is written as one line of code:
 ```{r logical_vectors_indexing2}
 plot(dat[dat$Group=='Control',]$BloodPressure)
 ```
+
+> ## Challenge - Using logical indexes {.challenge}
+> 1. Create a scatterplot showing BloodPressure for subjects not in the control group.
+> 2. How many ways are there to index this set of subjects?
 
 ### Combining indexing and assignment
 
