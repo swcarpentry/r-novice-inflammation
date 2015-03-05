@@ -86,8 +86,8 @@
 <pre class="output"><code>[1] 0
 </code></pre>
 <p>This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want. Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.</p>
-<div id="challenges" class="challenge">
-<h2>Challenges</h2>
+<div id="challenge---create-a-function" class="challenge">
+<h2>Challenge - Create a function</h2>
 <ul>
 <li>In the last lesson, we learned to <strong>c</strong>oncatenate elements into a vector using the <code>c</code> function, e.g. <code>x &lt;- c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)</code> creates a vector <code>x</code> with three elements. Furthermore, we can extend that vector again using <code>c</code>, e.g. <code>y &lt;- c(x, &quot;D&quot;)</code> creates a vector <code>y</code> with four elements. Write a function called <code>fence</code> that takes two vectors as arguments, called <code>original</code> and <code>wrapper</code>, and returns a new vector that has the wrapper vector at the beginning and end of the original:</li>
 </ul>
@@ -154,8 +154,8 @@ dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="
 </code></pre>
 <p>We don't expect the variable <code>diff</code> to have the value 20 after this function call, so the name <code>diff</code> cannot refer to the same variable defined inside <code>span</code> as it does in as it does in the main body of our program (which R refers to as the global environment). And yes, we could probably choose a different name than <code>diff</code> for our variable in this case, but we don't want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.</p>
 <p>The big idea here is <a href="reference.html#encapsulation">encapsulation</a>, and it's the key to writing correct, comprehensible programs. A function's job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something. That only works if functions don't interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.</p>
-<div id="challenges-1" class="challenge">
-<h2>Challenges</h2>
+<div id="challenge---following-the-call-stack" class="challenge">
+<h2>Challenge - Following the call stack</h2>
 <ul>
 <li>We previously wrote functions called <code>fence</code> and <code>outside</code>. Draw a diagram showing how the call stack changes when we run the following:</li>
 </ul>
@@ -239,8 +239,8 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 <h2>Tip</h2>
 <p>Formal documentation for R functions is written in separate <code>.Rd</code> using a markup language similar to <a href="http://www.latex-project.org/">LaTeX</a>. You see the result of this documentation when you look at the help file for a given function, e.g. <code>?read.csv</code>. The <a href="http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html">roxygen2</a> package allows R coders to write documentation alongside the function code and then process it into the appropriate <code>.Rd</code> files. You will want to switch to this more formal method of writing documentation when you start writing more complicated R projects.</p>
 </div>
-<div id="challenges-2" class="challenge">
-<h2>Challenges</h2>
+<div id="challenge---a-more-advanced-function" class="challenge">
+<h2>Challenge - A more advanced function</h2>
 <ul>
 <li>Write a function called <code>analyze</code> that takes a filename as a argument and displays the three graphs produced in the <a href="01-starting-with-data.html">previous lesson</a> (average, min and max inflammation over time). <code>analyze(&quot;data/inflammation-01.csv&quot;)</code> should produce the graphs already shown, while <code>analyze(&quot;data/inflammation-02.csv&quot;)</code> should produce corresponding graphs for the second data set. Be sure to document your function with comments.</li>
 </ul>
@@ -339,8 +339,8 @@ more_data</code></pre>
 <pre class="output"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : &#39;file&#39; must be a character string or connection
 </code></pre>
 <p>It fails because <code>FALSE</code> is assigned to <code>file</code> and the filename is assigned to the argument <code>header</code>.</p>
-<div id="challenges-3" class="challenge">
-<h2>Challenges</h2>
+<div id="challenge---a-function-with-default-argument-values" class="challenge">
+<h2>Challenge - A function with default argument values</h2>
 <ul>
 <li>Rewrite the <code>rescale</code> function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want. Compare your implementation to your neighbor's: do the two functions always behave the same way?</li>
 </ul>

@@ -224,7 +224,7 @@ carSpeeds$State
 
 ~~~
 
-> ## Challenge {.challenge}
+> ## Challenge - Updating values in a factor {.challenge}
 > Suppose we want to keep the colors of cars as factors for some other operations we want to perform. Write code for replacing 'Blue' with 'Green' in the `$Color` column of the cars dataset without importing the data with `stringsAsFactors=FALSE`.
 
 
@@ -295,7 +295,7 @@ This argument allows us to set the names of the rows in the output data file. R'
 write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE)
 ~~~
 
-Now we see: 
+Now we see:
 
 <img src="fig/CSV_WithoutRowNums.png" alt="csv written with row.names argument" />
 

@@ -139,8 +139,8 @@ weight_lb</code></pre>
 5   1   1
 6   2   1
 </code></pre>
-<div id="challenge" class="challenge">
-<h2>Challenge</h2>
+<div id="challenge---assigning-values-to-variables" class="challenge">
+<h2>Challenge - Assigning values to variables</h2>
 <p>Draw diagrams showing what variables refer to what values after each statement in the following program:</p>
 <pre class="sourceCode r"><code class="sourceCode r">mass &lt;-<span class="st"> </span><span class="fl">47.5</span>
 age &lt;-<span class="st"> </span><span class="dv">122</span>
@@ -256,8 +256,8 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 <h2>Tip</h2>
 <p>Some common operations have more efficient alternatives. For example, you can calculate the row-wise or column-wise means with <code>rowMeans</code> and <code>colMeans</code>, respectively.</p>
 </div>
-<div id="challenge-1" class="challenge">
-<h2>Challenge</h2>
+<div id="challenge---slicing-subsetting-data" class="challenge">
+<h2>Challenge - Slicing (subsetting) data</h2>
 <p>A subsection of a data frame is called a <a href="reference.html#slice">slice</a>. We can take slices of character vectors as well:</p>
 </div>
 <pre class="sourceCode r"><code class="sourceCode r">element &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;o&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;n&quot;</span>)
@@ -276,9 +276,9 @@ element[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <li><p>Use a slice of <code>element</code> to create a new character vector that spells the word &quot;eon&quot;, e.g. <code>c(&quot;e&quot;, &quot;o&quot;, &quot;n&quot;)</code>.</p></li>
 </ol>
 </blockquote>
-<div id="challenge-2" class="challenge">
-<h2>Challenge</h2>
-<p>Supose you want to determine the maximum inflamation for patient 5 across days three to seven. To do this you would extract the relevant slice from the data frame and calculate the maximum value.<br />Which of the following lines of R code gives the correct answer?</p>
+<div id="challenge---subsetting-data-2" class="challenge">
+<h2>Challenge - Subsetting data 2</h2>
+<p>Suppose you want to determine the maximum inflamation for patient 5 across days three to seven. To do this you would extract the relevant slice from the data frame and calculate the maximum value.<br />Which of the following lines of R code gives the correct answer?</p>
 <ol style="list-style-type: lower-alpha">
 <li><code>max(dat[5, ])</code></li>
 <li><code>max(dat[3:7, 5])</code></li>
@@ -299,8 +299,8 @@ element[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <span class="kw">plot</span>(min_day_inflammation)</code></pre>
 <p><img src="fig/01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" /></p>
 <p>The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.</p>
-<div id="challenge-3" class="challenge">
-<h2>Challenge</h2>
+<div id="challenge---plotting-data" class="challenge">
+<h2>Challenge - Plotting data</h2>
 <p>Create a plot showing the standard deviation of the inflammation data for each day across all patients.</p>
 </div>
 <h4 id="key-points">Key Points</h4>
