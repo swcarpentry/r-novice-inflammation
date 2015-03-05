@@ -185,7 +185,7 @@ You can create an empty vector with `vector()`. (By default the mode is `logical
 
 ```{r}
 vector() # an empty 'logical' (the default) vector
-vector("character", length = 10) # a vector of mode 'character' with 5 elements
+vector("character", length = 5) # a vector of mode 'character' with 5 elements
 character(5) # the same thing, but using the constructor directly
 numeric(5)   # a numeric vector with 5 elements
 logical(5)   # a logical vector with 5 elements
@@ -308,7 +308,8 @@ xx <- c(TRUE, 2)
 xx <- c("a", TRUE)
 ```
 
-You can also control how vectors are coerced explicitly using the `as.<class_name>`:
+You can also control how vectors are coerced explicitly using the
+`as.<class_name>()` functions:
 
 ```{r}
 as.numeric("1")
