@@ -20,7 +20,7 @@ R is a powerful language for data manipulation. There are 3 main ways for addres
 
 * By index (slicing)
 * By logical vector
-* By name (columns and lists only)
+* By name (columns only)
 
 Lets start by loading some sample data:
 
