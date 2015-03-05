@@ -31,7 +31,7 @@ dat<-read.csv(file='data/sample.csv',header=TRUE, stringsAsFactors=FALSE)
 > ## Tip {.callout} 
 >
 > The first row of this csv file is a list of column names. We used the *header=TRUE* argument to `read.csv` so that R can interpret the file correctly.
-> For now, ignore the *stringsAsFactors* argument. This will probably be covered later.
+> We are using the *stringsAsFactors=FALSE* argument to override the default behaviour for R. Using factors in R is covered in a separate lesson.
 
 Lets take a look at this data.
 
