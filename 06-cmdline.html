@@ -214,8 +214,8 @@ main()
 7.05
 5.9
 </code></pre>
-<div id="challenges" class="challenge">
-<h2>Challenges</h2>
+<div id="challenge---a-simple-command-line-program" class="challenge">
+<h2>Challenge - A simple command line program</h2>
 <ul>
 <li>Write a command-line program that does addition and subtraction. <strong>Hint:</strong> Everything argument read from the command-line is interpreted as a character <a href="reference.html#string">string</a>. You can convert from a string to a number using the function <code>as.numeric</code>.</li>
 </ul>
@@ -279,8 +279,8 @@ main()
 11
 </code></pre>
 <p><strong>Note</strong>: at this point, we have created three versions of our script called <code>readings-01.R</code>, <code>readings-02.R</code>, and <code>readings-03.R</code>. We wouldn't do this in real life: instead, we would have one file called <code>readings.R</code> that we committed to version control every time we got an enhancement working. For teaching, though, we need all the successive versions side by side.</p>
-<div id="challenges-1" class="challenge">
-<h2>Challenges</h2>
+<div id="challenge---a-command-line-program-with-arguments" class="challenge">
+<h2>Challenge - A command line program with arguments</h2>
 <ul>
 <li>Write a program called <code>check.R</code> that takes the names of one or more inflammation data files as arguments and checks that all the files have the same number of rows and columns. What is the best way to test your program?</li>
 </ul>
@@ -350,8 +350,8 @@ main()
 <h2>Tip</h2>
 <p>R has a package named <a href="http://cran.r-project.org/web/packages/argparse/index.html">argparse</a> that helps handle complex command-line flags (it utilizes a <a href="http://docs.python.org/dev/library/argparse.html">Python module</a> of the same name). We will not cover this package in this lesson but when you start writing programs with multiple parameters you'll want to read through the package's <a href="http://cran.r-project.org/web/packages/argparse/vignettes/argparse.pdf">vignette</a>.</p>
 </div>
-<div id="challenges-2" class="challenge">
-<h2>Challenges</h2>
+<div id="challenge---shorter-command-line-arguments" class="challenge">
+<h2>Challenge - Shorter command line arguments</h2>
 <ul>
 <li><p>Rewrite this program so that it uses <code>-n</code>, <code>-m</code>, and <code>-x</code> instead of <code>--min</code>, <code>--mean</code>, and <code>--max</code> respectively. Is the code easier to read? Is the program easier to understand?</p></li>
 <li><p>Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.</p></li>
@@ -417,8 +417,8 @@ main()
 6.525
 </code></pre>
 <p>And now we're done: the program now does everything we set out to do.</p>
-<div id="challenges-3" class="challenge">
-<h2>Challenges</h2>
+<div id="challenge---implementing-wc-in-r" class="challenge">
+<h2>Challenge - Implementing wc in R</h2>
 <ul>
 <li>Write a program called <code>line-count.R</code> that works like the Unix <code>wc</code> command:</li>
 <li>If no filenames are given, it reports the number of lines in standard input.</li>

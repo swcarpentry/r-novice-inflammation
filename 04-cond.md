@@ -249,7 +249,7 @@ if (1 > 0 | -1 > 0) {
 
 In this case, "either" means "either or both", not "either one or the other but not both".
 
-> ## Challenges {.challenge}
+> ## Challenge - Using conditions to change behaviour {.challenge}
 >
 >  + Write a function, `plot_dist`, that plots a boxplot if the length of the vector is greater than a specified threshold and a stripchart otherwise.
 >  To do this you'll use the R functions `boxplot` and `stripchart`.
@@ -410,7 +410,7 @@ analyze_all("inflammation")
 
 Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analzye_all`.
 
-> ## Challenges {.challenge}
+> ## Challenge - Changing the behaviour of the plot command {.challenge}
 >
 >  + One of your collaborators asks if you can recreate the figures with lines instead of points.
 >  Find the relevant argument to `plot` by reading the documentation (`?plot`), update `analyze`, and then recreate all the figures with `analyze_all`.
