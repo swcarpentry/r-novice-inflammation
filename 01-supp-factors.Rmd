@@ -107,7 +107,7 @@ levels(f)[f]
 Lets load our example data:
 
 ```{r load_example_data}
-dat<-read.csv(file='data/sample.csv', header=TRUE, stringsAsFactors=TRUE)
+dat<-read.csv(file='data/sample.csv', stringsAsFactors=TRUE)
 ```
 
 ## Tip {.callout}
