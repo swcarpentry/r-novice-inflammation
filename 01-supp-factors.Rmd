@@ -15,7 +15,7 @@ source('tools/chunk-options.R')
 >   * Know the difference between ordered and unordered factors
 >   * Be aware of some of the problems encountered when using factors
 
-This section is taken from the datacarpentry lessons git@github.com:datacarpentry/datacarpentry.git
+This section is modeled after the datacarpentry lessons datacarpentry.org
 
 Factors are used to represent categorical data. Factors can be ordered or
 unordered and are an important class for statistical analysis and for plotting.
