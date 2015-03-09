@@ -15,7 +15,7 @@ source('tools/chunk-options.R')
 >   * Know the difference between ordered and unordered factors
 >   * Be aware of some of the problems encountered when using factors
 
-This section is modeled after the datacarpentry lessons datacarpentry.org
+This section is modeled after the [datacarpentry lessons](http://datacarpentry.org).
 
 Factors are used to represent categorical data. Factors can be ordered or
 unordered and are an important class for statistical analysis and for plotting.
@@ -101,6 +101,13 @@ The recommended way is to use the integer vector to index the factor levels:
 ```{r converting_factors_correctly}
 levels(f)[f]
 ```
+
+This returns a character vector, the `as.numeric()` function is still required to convert the values to the proper type (numeric).
+
+```{r converting_to_numeric}
+as.numeric(levels(f)[f])
+```
+
 
 ### Using factors
 
