@@ -105,7 +105,8 @@ levels(f)[f]
 This returns a character vector, the `as.numeric()` function is still required to convert the values to the proper type (numeric).
 
 ```{r converting_to_numeric}
-as.numeric(levels(f))[f]
+f<-levels(f)[f]
+f<-as.numeric(f)
 ```
 
 
