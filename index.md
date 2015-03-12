@@ -30,6 +30,7 @@ and to use that language *well*.
 ## Other Resources
 
 *   [Reference](reference.html)
+*	[Discussion](DISCUSSION.html)
 
 # Supplemental lessons
 
