@@ -7,10 +7,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
     <link rel="stylesheet" type="text/css" href="css/swc.css" />
-    <link rel="stylesheet" type="text/css" href="css/swc-workshop-and-lesson.css" />
-    <link rel="stylesheet" type="text/css" href="css/lesson.css" />
     <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
     <meta charset="UTF-8" />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -19,22 +17,26 @@
     <![endif]-->
   </head>
   <body class="lesson">
-    <div class="container container-full-width card">
+    <div class="container card">
       <div class="banner">
         <a href="http://software-carpentry.org" title="Software Carpentry">
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
-      <div class="row-fluid">
-        <div class="span10 offset1">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
           <h1 class="title">Programming with R</h1>
           <h2 class="subtitle">Reading and writing .csv</h2>
-<div id="objectives" class="objectives">
-<h2>Objectives</h2>
+<div id="objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
+</div>
+<div class="panel-body">
 <ul>
 <li>Read in a .csv, and explore the arguments of the csv reader</li>
 <li>Write the altered data set to a new .csv, and explore the arguments</li>
 </ul>
+</div>
 </div>
 <p>The most common way that scientists store data is in Excel spreadsheets. While there are R packages designed to access data from Excel spreadsheets (e.g., gdata, RODBC, XLConnect, xlsx, RExcel), users often find it easier to save their spreadsheets in <a href="reference.html#comma-separated-values-(csv)">comma-separated values</a> files (CSV) and then use R's built in functionality to read and manipulate the data. In this short lesson, we'll learn how to read data from a .csv and write to a new .csv, and explore the <a href="reference.html#argument">arguments</a> that allow you read and write the data correctly for your needs.</p>
 <h3 id="read-a-.csv-and-explore-the-arguments">Read a .csv and explore the arguments</h3>
@@ -52,9 +54,13 @@ carSpeeds &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span c
 5   Red    25   Arizona
 6  Blue    41   Arizona
 </code></pre>
-<div id="tip" class="callout">
-<h2>Tip</h2>
+<div id="tip" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
 <p>The default delimiter of the <code>read.csv()</code> function is a comma, but you can use other delimiters by supplying the 'sep' argument to the function (e.g., typing <code>sep = ';'</code> allows a semi-colon separated file to be correctly imported -see <code>?read.csv()</code> for more information on this and other options for working with different file types).</p>
+</div>
 </div>
 <p>The call above will import the data, but we have not taken advantage of several handy arguments that can be helpful in loading the data in the format we want. Let's explore some of these arguments.</p>
 <h4 id="the-header-argument">The header argument</h4>
@@ -153,9 +159,13 @@ carSpeeds$State</code></pre>
  [81] &quot;4&quot;    &quot;2&quot;    &quot;2&quot;    &quot;Ohio&quot; &quot;Ohio&quot; &quot;Ohio&quot; &quot;4&quot;    &quot;Ohio&quot; &quot;4&quot;    &quot;4&quot;   
  [91] &quot;4&quot;    &quot;Ohio&quot; &quot;Ohio&quot; &quot;3&quot;    &quot;2&quot;    &quot;2&quot;    &quot;4&quot;    &quot;3&quot;    &quot;Ohio&quot; &quot;4&quot;   
 </code></pre>
-<div id="challenge---updating-values-in-a-factor" class="challenge">
-<h2>Challenge - Updating values in a factor</h2>
+<div id="challenge---updating-values-in-a-factor" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Updating values in a factor</h2>
+</div>
+<div class="panel-body">
 <p>Suppose we want to keep the colors of cars as factors for some other operations we want to perform. Write code for replacing 'Blue' with 'Green' in the <code>$Color</code> column of the cars dataset without importing the data with <code>stringsAsFactors=FALSE</code>.</p>
+</div>
 </div>
 <h4 id="the-strip.white-argument">The strip.white argument</h4>
 <p>It is not uncommon for mistakes to have been made when the data were recorded, for example a space (whitespace) may have been inserted before a data value. By default this whitespace will be kept in the R environment, such that ' Red' will be recognized as a different value than 'Red'. In order to avoid this type of error, use the <code>strip.white</code> argument. Let's see how this works by checking for the unique values in the <code>$Color</code> column of our dataset:</p>
@@ -186,9 +196,13 @@ Levels: Black Green Red  Red White
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(carSpeeds, <span class="dt">file=</span><span class="st">&#39;data/car-speeds-cleaned.csv&#39;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>)</code></pre>
 <p>Now we see:</p>
 <p><img src="fig/CSV_WithoutRowNums.png" alt="csv written with row.names argument" /></p>
-<div id="tip-1" class="callout">
-<h2>Tip</h2>
+<div id="tip-1" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
 <p>there is also a <code>col.names</code> argument, which can be used to set the column names for a data set without headers. If the data set already has headers (e.g., we used the <code>headers = TRUE</code> argument when importing the data) then a <code>col.names</code> argument will be ignored.</p>
+</div>
 </div>
 <h4 id="the-na-argument">The na argument</h4>
 <p>There are times when we want to specify certain values for <code>NA</code>s in the data set (e.g., we are going to pass the data to a program that only accepts -9999 as a nodata value). In this case, we want to set the <code>NA</code> value of our output file to the desired value, using the <code>na</code> argument. Let's see how this works:</p>
@@ -240,6 +254,6 @@ carSpeeds$Speed[<span class="dv">3</span>]&lt;-<span class="ot">NA</span>
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
-    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>
