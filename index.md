@@ -30,3 +30,10 @@ and to use that language *well*.
 ## Other Resources
 
 *   [Reference](reference.html)
+*   [Discussion](discussion.html)
+
+## Supplemental lessons
+
+*   [Addressing data](01-supp-addressing-data.html)
+*   [Working with factors](01-supp-factors.html)
+
