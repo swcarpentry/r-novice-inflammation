@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Programming with R</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">Programming with R</h1>
+          <h2 class="subtitle">Data types and structures</h2>
+<div id="objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
+</div>
+<div class="panel-body">
+<p>Expose learners to the different data types in R</p>
+<p>Learn how to create vectors of different types</p>
+<p>Be able to check the type of vector</p>
+<p>Learn about missing data and other special values</p>
+<p>Getting familiar with the different data structures (lists, matrices, data frames)</p>
+</div>
+</div>
+<h3 id="understanding-basic-data-types-in-r">Understanding basic data types in R</h3>
+<p>To make the best of the R language, you'll need a strong understanding of the basic data types and data structures and how to operate on those.</p>
+<p>Very important to understand because these are the objects you will manipulate on a day-to-day basis in R. Dealing with object conversions is one of the most common sources of frustration for beginners.</p>
+<p><strong>Everything</strong> in R is an object.</p>
+<p>R has 6 (although we will not discuss the raw class for this workshop) atomic vector types.</p>
+<ul>
+<li>character</li>
+<li>numeric (real or decimal)</li>
+<li>integer</li>
+<li>logical</li>
+<li>complex</li>
+</ul>
+<p>By <em>atomic</em>, we mean the vector only holds data of a single type.</p>
+<ul>
+<li><strong>character</strong>: <code>&quot;a&quot;</code>, <code>&quot;swc&quot;</code></li>
+<li><strong>numeric</strong>: <code>2</code>, <code>15.5</code></li>
+<li><strong>integer</strong>: <code>2L</code> (the <code>L</code> tells R to store this as an integer)</li>
+<li><strong>logical</strong>: <code>TRUE</code>, <code>FALSE</code></li>
+<li><strong>complex</strong>: <code>1+4i</code> (complex numbers with real and imaginary parts)</li>
+</ul>
+<p>R provides many functions to examine features of vectors and other objects, for example</p>
+<ul>
+<li><code>class()</code> - what kind of object is it (high-level)?</li>
+<li><code>typeof()</code> - what is the object's data type (low-level)?</li>
+<li><code>length()</code> - how long is it? What about two dimensional objects?</li>
+<li><code>attributes()</code> - does it have any metadata?</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Example</span>
+x &lt;-<span class="st"> &quot;dataset&quot;</span>
+<span class="kw">typeof</span>(x)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(x)</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+y</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(y)</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(y)</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(y)
+z</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(z)</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<p>R has many <strong>data structures</strong>. These include</p>
+<ul>
+<li>atomic vector</li>
+<li>list</li>
+<li>matrix</li>
+<li>data frame</li>
+<li>factors</li>
+</ul>
+<h3 id="atomic-vectors">Atomic Vectors</h3>
+<p>A vector is the most common and basic data structure in R and is pretty much the workhorse of R. Technically, vectors can be one of two types:</p>
+<ul>
+<li>atomic vectors</li>
+<li>lists</li>
+</ul>
+<p>although the term &quot;vector&quot; most commonly refers to the atomic types not to lists.</p>
+<h4 id="the-different-vector-modes">The different vector modes</h4>
+<p>A vector is a collection of elements that are most commonly of mode <code>character</code>, <code>logical</code>, <code>integer</code> or <code>numeric</code>.</p>
+<p>You can create an empty vector with <code>vector()</code>. (By default the mode is <code>logical</code>. You can be more explicit as shown in the examples below.) It is more common to use direct constructors such as <code>character()</code>, <code>numeric()</code>, etc.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">vector</span>() <span class="co"># an empty &#39;logical&#39; (the default) vector</span></code></pre>
+<pre><code>## logical(0)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>, <span class="dt">length =</span> <span class="dv">5</span>) <span class="co"># a vector of mode &#39;character&#39; with 5 elements</span></code></pre>
+<pre><code>## [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">character</span>(<span class="dv">5</span>) <span class="co"># the same thing, but using the constructor directly</span></code></pre>
+<pre><code>## [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">numeric</span>(<span class="dv">5</span>)   <span class="co"># a numeric vector with 5 elements</span></code></pre>
+<pre><code>## [1] 0 0 0 0 0</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">logical</span>(<span class="dv">5</span>)   <span class="co"># a logical vector with 5 elements</span></code></pre>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE</code></pre>
+<p>You can also create vectors by directly specifying their content. R will then guess the appropriate mode of storage for the vector. For instance:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</code></pre>
+<p>will create a vector <code>x</code> of mode <code>numeric</code>. These are the most common kind, and are treated as double precision real numbers. If you wanted to explicitly create integers, you need to add an <code>L</code> to each element (or <em>coerce</em> to the integer type using <code>as.integer()</code>).</p>
+<pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 2L, 3L)</code></pre>
+<p>Using <code>TRUE</code> and <code>FALSE</code> will create a vector of mode <code>logical</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)</code></pre>
+<p>While using quoted text will create a vector of mode <code>character</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sarah&quot;</span>, <span class="st">&quot;Tracy&quot;</span>, <span class="st">&quot;Jon&quot;</span>)</code></pre>
+<h4 id="examining-vectors">Examining vectors</h4>
+<p>The functions <code>typeof()</code>, <code>length()</code>, <code>class()</code> and <code>str()</code> provide useful information about your vectors and R objects in general.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(z)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(z)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(z)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(z)</code></pre>
+<pre><code>##  chr [1:3] &quot;Sarah&quot; &quot;Tracy&quot; &quot;Jon&quot;</code></pre>
+<div id="challenge---finding-commonalities" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Finding commonalities</h2>
+</div>
+<div class="panel-body">
+<p>Do you see a property that's common to all these vectors above?</p>
+</div>
+</div>
+<h4 id="adding-elements">Adding elements</h4>
+<p>The function <code>c()</code> (for combine) can also be used to add elements to a vector.</p>
+<pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">c</span>(z, <span class="st">&quot;Annette&quot;</span>)
+z</code></pre>
+<pre><code>## [1] &quot;Sarah&quot;   &quot;Tracy&quot;   &quot;Jon&quot;     &quot;Annette&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Greg&quot;</span>, z)
+z</code></pre>
+<pre><code>## [1] &quot;Greg&quot;    &quot;Sarah&quot;   &quot;Tracy&quot;   &quot;Jon&quot;     &quot;Annette&quot;</code></pre>
+<h4 id="vectors-from-a-sequence-of-numbers">Vectors from a sequence of numbers</h4>
+<p>You can create vectors as a sequence of numbers.</p>
+<pre class="sourceCode r"><code class="sourceCode r">series &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+<span class="kw">seq</span>(<span class="dv">10</span>)</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="fl">0.1</span>)</code></pre>
+<pre><code>##  [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3
+## [15]  2.4  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7
+## [29]  3.8  3.9  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1
+## [43]  5.2  5.3  5.4  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5
+## [57]  6.6  6.7  6.8  6.9  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9
+## [71]  8.0  8.1  8.2  8.3  8.4  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3
+## [85]  9.4  9.5  9.6  9.7  9.8  9.9 10.0</code></pre>
+<h4 id="missing-data">Missing data</h4>
+<p>R supports missing data in vectors. They are represented as <code>NA</code> (Not Available) and can be used for all the vector types covered in this lesson:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="ot">NA</span>, <span class="fl">0.7</span>)
+x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">NA</span>)
+x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="ot">NA</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>)
+x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>+5i, <span class="dv">2</span>-3i, <span class="ot">NA</span>)</code></pre>
+<p>The function <code>is.na()</code> indicates the elements of the vectors that represent missing data, and the function <code>anyNA()</code> returns <code>TRUE</code> if the vector contains any missing values:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="ot">NA</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="ot">NA</span>)
+y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>)
+<span class="kw">is.na</span>(x)</code></pre>
+<pre><code>## [1] FALSE  TRUE FALSE FALSE  TRUE</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.na</span>(y)</code></pre>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anyNA</span>(x)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anyNA</span>(y)</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<h4 id="other-special-values">Other special values</h4>
+<p><code>Inf</code> is infinity. You can have either positive or negative infinity.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>/<span class="dv">0</span></code></pre>
+<pre><code>## [1] Inf</code></pre>
+<p><code>NaN</code> means Not a Number. It's an undefined value.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">0</span>/<span class="dv">0</span></code></pre>
+<pre><code>## [1] NaN</code></pre>
+<h4 id="what-happens-when-you-mix-types-inside-a-vector">What happens when you mix types inside a vector?</h4>
+<p>R will create a resulting vector with a mode that can most easily accommodate all the elements it contains. This conversion between modes of storage is called &quot;coercion&quot;. When R converts the mode of storage based on its content, it is referred to as &quot;implicit coercion&quot;. For instance, can you guess what the following do (without running them first)?</p>
+<pre class="sourceCode r"><code class="sourceCode r">xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.7</span>, <span class="st">&quot;a&quot;</span>)
+xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="dv">2</span>)
+xx &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>)</code></pre>
+<p>You can also control how vectors are coerced explicitly using the <code>as.&lt;class_name&gt;()</code> functions:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.numeric</span>(<span class="st">&quot;1&quot;</span>)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.character</span>(<span class="dv">1</span>:<span class="dv">2</span>)</code></pre>
+<pre><code>## [1] &quot;1&quot; &quot;2&quot;</code></pre>
+<h4 id="object-attributes">Object attributes</h4>
+<p>Objects can have <strong>attributes</strong>. Attributes are part of the object. These include:</p>
+<ul>
+<li>names</li>
+<li>dimnames</li>
+<li>dim</li>
+<li>class</li>
+<li>attributes (contain metadata)</li>
+</ul>
+<p>You can also glean other attribute-like information such as length (works on vectors and lists) or number of characters (for character strings).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(<span class="dv">1</span>:<span class="dv">10</span>)</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nchar</span>(<span class="st">&quot;Software Carpentry&quot;</span>)</code></pre>
+<pre><code>## [1] 18</code></pre>
+<h3 id="matrix">Matrix</h3>
+<p>In R matrices are an extension of the numeric or character vectors. They are not a separate type of object but simply an atomic vector with dimensions; the number of rows and columns.</p>
+<pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)
+m</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]   NA   NA
+## [2,]   NA   NA</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(m)</code></pre>
+<pre><code>## [1] 2 2</code></pre>
+<p>Matrices in R are filled column-wise.</p>
+<pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</code></pre>
+<p>Other ways to construct a matrix</p>
+<pre class="sourceCode r"><code class="sourceCode r">m      &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+<span class="kw">dim</span>(m) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)</code></pre>
+<p>This takes a vector and transform into a matrix with 2 rows and 5 columns.</p>
+<p>Another way is to bind columns or rows using <code>cbind()</code> and <code>rbind()</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">3</span>
+y &lt;-<span class="st"> </span><span class="dv">10</span>:<span class="dv">12</span>
+<span class="kw">cbind</span>(x, y)</code></pre>
+<pre><code>##      x  y
+## [1,] 1 10
+## [2,] 2 11
+## [3,] 3 12</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbind</span>(x, y)</code></pre>
+<pre><code>##   [,1] [,2] [,3]
+## x    1    2    3
+## y   10   11   12</code></pre>
+<p>You can also use the <code>byrow</code> argument to specify how the matrix is filled. From R's own documentation:</p>
+<pre class="sourceCode r"><code class="sourceCode r">mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)
+mdat</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]   11   12   13</code></pre>
+<h3 id="list">List</h3>
+<p>In R lists act as containers. Unlike atomic vectors, the contents of a list are not restricted to a single mode and can encompass any mixture of data types. Lists are sometimes called generic vectors, because the elements of a list can by of any type of R object, even lists containing further lists. This property makes them fundamentally different from atomic vectors.</p>
+<p>A list is a special type of vector. Each element can be a different type.</p>
+<p>Create lists using <code>list()</code> or coerce other objects using <code>as.list()</code>. An empty list of the required length can be created using <code>vector()</code></p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>, <span class="dv">1</span>+4i)
+x</code></pre>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] &quot;a&quot;
+## 
+## [[3]]
+## [1] TRUE
+## 
+## [[4]]
+## [1] 1+4i</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="dv">5</span>) ## empty list
+<span class="kw">length</span>(x)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x[[<span class="dv">1</span>]]</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+x &lt;-<span class="st"> </span><span class="kw">as.list</span>(x)
+<span class="kw">length</span>(x)</code></pre>
+<pre><code>## [1] 10</code></pre>
+<ol style="list-style-type: decimal">
+<li>What is the class of <code>x[1]</code>?</li>
+<li>What about <code>x[[1]]</code>?</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">xlist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="st">&quot;Karthik Ram&quot;</span>, <span class="dt">b =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">data =</span> <span class="kw">head</span>(iris))
+xlist</code></pre>
+<pre><code>## $a
+## [1] &quot;Karthik Ram&quot;
+## 
+## $b
+##  [1]  1  2  3  4  5  6  7  8  9 10
+## 
+## $data
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<ol style="list-style-type: decimal">
+<li>What is the length of this object? What about its structure?</li>
+</ol>
+<p>Lists can be extremely useful inside functions. You can “staple” together lots of different kinds of results into a single object that a function can return.</p>
+<p>A list does not print to the console like a vector. Instead, each element of the list starts on a new line.</p>
+<p>Elements are indexed by double brackets. Single brackets will still return a(nother) list.</p>
+<h3 id="data-frame">Data frame</h3>
+<p>A data frame is a very important data type in R. It's pretty much the <em>de facto</em> data structure for most tabular data and what we use for statistics.</p>
+<p>A data frame is a special type of list where every element of the list has same length.</p>
+<p>Data frames can have additional attributes such as <code>rownames()</code>, which can be useful for annotating data, like <code>subject_id</code> or <code>sample_id</code>. But most of the time they are not used.</p>
+<p>Some additional information on data frames:</p>
+<ul>
+<li>Usually created by <code>read.csv()</code> and <code>read.table()</code>.</li>
+<li>Can convert to matrix with <code>data.matrix()</code> (preferred) or <code>as.matrix()</code></li>
+<li>Coercion will be forced and not always what you expect.</li>
+<li>Can also create with <code>data.frame()</code> function.</li>
+<li>Find the number of rows and columns with <code>nrow(dat)</code> and <code>ncol(dat)</code>, respectively.</li>
+<li>Rownames are usually 1, 2, ..., n.</li>
+</ul>
+<h4 id="creating-data-frames-by-hand">Creating data frames by hand</h4>
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> letters[<span class="dv">1</span>:<span class="dv">10</span>], <span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">y =</span> <span class="dv">11</span>:<span class="dv">20</span>)
+dat</code></pre>
+<pre><code>##    id  x  y
+## 1   a  1 11
+## 2   b  2 12
+## 3   c  3 13
+## 4   d  4 14
+## 5   e  5 15
+## 6   f  6 16
+## 7   g  7 17
+## 8   h  8 18
+## 9   i  9 19
+## 10  j 10 20</code></pre>
+<h4 id="useful-data-frame-functions">Useful data frame functions</h4>
+<ul>
+<li><code>head()</code> - shown first 6 rows</li>
+<li><code>tail()</code> - show last 6 rows</li>
+<li><code>dim()</code> - returns the dimensions</li>
+<li><code>nrow()</code> - number of rows</li>
+<li><code>ncol()</code> - number of columns</li>
+<li><code>str()</code> - structure of each column</li>
+<li><code>names()</code> - shows the <code>names</code> attribute for a data frame, which gives the column names.</li>
+</ul>
+<p>See that it is actually a special list:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.list</span>(iris)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(iris)</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Dimensions</th>
+<th align="left">Homogenous</th>
+<th align="left">Heterogeneous</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1-D</td>
+<td align="left">atomic vector</td>
+<td align="left">list</td>
+</tr>
+<tr class="even">
+<td align="left">2-D</td>
+<td align="left">matrix</td>
+<td align="left">data frame</td>
+</tr>
+</tbody>
+</table>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/r-novice-inflammation">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
