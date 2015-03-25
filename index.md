@@ -35,6 +35,6 @@ and to use that language *well*.
 ## Supplemental lessons
 
 *   [Introduction to RStudio](01-supp-intro-rstudio.html)
-*   [Data types and data structures](01-supp-data-structures.html)
 *   [Addressing data](01-supp-addressing-data.html)
 *   [Working with factors](01-supp-factors.html)
+*   [Data types and data structures](01-supp-data-structures.html)
