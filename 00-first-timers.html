@@ -5,9 +5,9 @@
     <meta name="generator" content="pandoc">
     <title>Software Carpentry: Programming with R</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
     <link rel="stylesheet" type="text/css" href="css/swc.css" />
     <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
     <meta charset="UTF-8" />
@@ -16,24 +16,32 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <div class="container">
+  <body class="lesson">
+    <div class="container card">
       <div class="banner">
         <a href="http://software-carpentry.org" title="Software Carpentry">
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
-      <div class="row-fluid">
-        <div class="span10 offset1">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
           <h1 class="title">Programming with R</h1>
           <h2 class="subtitle">First timers</h2>
+<div id="objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
+</div>
+<div class="panel-body">
+<p>FIXME: Write these</p>
+</div>
+</div>
 <h1 id="novice-r-materials---following-python-examples">Novice R materials - following Python examples</h1>
 <ul>
 <li>Draw concept map of where we are headed towards best scientific practices, and reproducibility.</li>
-<li>Its really important that you know what you did. More journals/grants/etc. are also making it important for them to know what you did.</li>
+<li>It's really important that you know what you did. More journals/grants/etc. are also making it important for them to know what you did.</li>
 <li>A lot of scientific code is <em>not</em> reproducible.</li>
 <li>If you keep a lab notebook, why are we not as careful with our code?</li>
-<li>We edit each others manuscripts, but we don't edit each other's code.</li>
+<li>We edit each other's manuscripts, but we don't edit each other's code.</li>
 <li>If you write your code with &quot;future you&quot; in mind, you will save yourself and others a lot of time.</li>
 </ul>
 <h1 id="very-basics-of-r">Very basics of R</h1>
@@ -109,7 +117,8 @@ hours &lt;-<span class="st"> </span><span class="dv">365</span> *<span class="st
 </ul>
 <p>R provides many functions to examine features of vectors and other objects, for example</p>
 <ul>
-<li><code>typeof()</code> - what is it?<br /></li>
+<li><code>class()</code> - what kind of object is it (high-level)?</li>
+<li><code>typeof()</code> - what is the object's data type (low-level)?</li>
 <li><code>length()</code> - how long is it? What about two dimensional objects?<br /></li>
 <li><code>attributes()</code> - does it have any metadata?</li>
 </ul>
@@ -465,7 +474,7 @@ dat</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
 y &lt;-<span class="st"> </span><span class="kw">sum</span>(x)</code></pre>
 <h3 id="help">Help</h3>
-<p>All functions come with a help screen. It is critical that you learn to read the help screens since they provide important information on what the function does, how it works, and usually sample examples at the very bottom.</p>
+<p>All functions come with a help screen. It is critical that you learn to read the help screens since they provide important information on what the function does, how it works, and usually sample examples at the very bottom. In RStudio the help screen to a function can be a accessed by clicking F1 while the cursor is on the function name.</p>
 <h3 id="get-new-functions">Get new functions</h3>
 <p>To install any package use <code>install.packages()</code></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)  ## install the ggplot2 package</code></pre>
@@ -482,6 +491,6 @@ y &lt;-<span class="st"> </span><span class="kw">sum</span>(x)</code></pre>
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
-    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>

@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
-    <title>Software Carpentry: </title>
+    <title>Software Carpentry: Programming with R</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
     <link rel="stylesheet" type="text/css" href="css/swc.css" />
     <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
     <meta charset="UTF-8" />
@@ -16,19 +16,32 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <div class="container">
+  <body class="lesson">
+    <div class="container card">
       <div class="banner">
         <a href="http://software-carpentry.org" title="Software Carpentry">
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
-      <div class="row-fluid">
-        <div class="span10 offset1">
-          <h1 class="title"></h1>
-          
-<h2 id="analyzing-patient-data">Analyzing Patient Data</h2>
-<p>We are studying inflammation in patients who have been given a new treatment for arthritis, and need to analyze the first dozen data sets. The data sets are stored in <a href="../../gloss.html#comma-separeted-values">comma-separated values</a> (CSV) format: each row holds information for a single patient, and the columns represent successive days. The first few rows of our first file look like this:</p>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">Programming with R</h1>
+          <h2 class="subtitle">Analyzing patient data</h2>
+<div id="objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
+</div>
+<div class="panel-body">
+<ul>
+<li>Read tabular data from a file into a program.</li>
+<li>Assign values to variables.</li>
+<li>Select individual values and subsections from data.</li>
+<li>Perform operations on a data frame of data.</li>
+<li>Display simple graphs.</li>
+</ul>
+</div>
+</div>
+<p>We are studying inflammation in patients who have been given a new treatment for arthritis, and need to analyze the first dozen data sets. The data sets are stored in <a href="reference.html#comma-separated-values-(csv)">comma-separated values</a> (CSV) format: each row holds information for a single patient, and the columns represent successive days. The first few rows of our first file look like this:</p>
 <pre class="output"><code>0,0,1,3,1,2,4,7,8,3,3,3,10,5,7,4,7,7,12,18,6,13,11,11,7,7,4,6,8,8,4,4,5,7,3,4,2,3,0,0
 0,1,2,1,2,1,3,2,2,6,10,11,5,9,4,4,7,16,8,6,18,4,12,5,12,7,11,5,11,3,3,5,4,4,5,5,1,1,0,1
 0,1,1,3,3,2,6,2,5,9,5,7,4,5,4,15,5,11,9,10,19,14,12,17,7,12,11,7,4,2,10,5,4,2,2,3,2,2,1,1
@@ -42,25 +55,22 @@
 <li>plot the result.</li>
 </ul>
 <p>To do all that, we'll have to learn a little bit about programming.</p>
-<h4 id="objectives">Objectives</h4>
-<ul>
-<li>Read tabular data from a file into a program.</li>
-<li>Assign values to variables.</li>
-<li>Select individual values and subsections from data.</li>
-<li>Perform operations on a data frame of data.</li>
-<li>Display simple graphs.</li>
-</ul>
 <h3 id="loading-data">Loading Data</h3>
 <p>To load our inflammation data, first we need to locate our data. We can change the current working directory to the location of the CSV files using the function <code>setwd</code>. For example, if the CSV files are located in a directory named <code>swc</code> in our home directory, we would change the working directory using the following command:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;~/swc&quot;</span>)</code></pre>
 <p>Just like in the Unix Shell, we type the command and then press <code>Enter</code> (or <code>return</code>). Alternatively you can change the working directory using the RStudio GUI using the menu option <code>Session</code> -&gt; <code>Set Working Directory</code> -&gt; <code>Choose Directory...</code></p>
 <p>Now we could load the data into R using <code>read.csv</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)</code></pre>
-<p>The expression <code>read.csv(...)</code> is a <a href="../../gloss.html#function-call">function call</a> that asks R to run the function <code>read.csv</code>.</p>
-<p><code>read.csv</code> has two <a href="../../gloss.html#argument">arguments</a>: the name of the file we want to read, and whether the first line of the file contains names for the columns of data. The filename needs to be a character string (or <a href="../../gloss.html#string">string</a> for short), so we put it in quotes. Assigning the second argument, <code>header</code>, to be <code>FALSE</code> indicates that the data file does not have column headers. We'll talk more about the value <code>FALSE</code>, and its converse <code>TRUE</code>, in lesson 04.</p>
-<blockquote>
-<p><strong>Tip:</strong> <code>read.csv</code> actually has many more arguments that you may find useful when importing your own data in the future. You can learn more about these options in this supplementary <a href="01-supp-ReadWriteCsv.html">lesson</a>.</p>
-</blockquote>
+<p>The expression <code>read.csv(...)</code> is a <a href="reference.html#function-call">function call</a> that asks R to run the function <code>read.csv</code>.</p>
+<p><code>read.csv</code> has two <a href="reference.html#argument">arguments</a>: the name of the file we want to read, and whether the first line of the file contains names for the columns of data. The filename needs to be a character string (or <a href="reference.html#string">string</a> for short), so we put it in quotes. Assigning the second argument, <code>header</code>, to be <code>FALSE</code> indicates that the data file does not have column headers. We'll talk more about the value <code>FALSE</code>, and its converse <code>TRUE</code>, in lesson 04.</p>
+<div id="tip" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
+<p><code>read.csv</code> actually has many more arguments that you may find useful when importing your own data in the future. You can learn more about these options in this supplementary <a href="01-supp-read-write-csv.html">lesson</a>.</p>
+</div>
+</div>
 <p>The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s). For example, in this case if we provided the name of a different file to the argument <code>file</code>, <code>read.csv</code> would read it instead. We'll learn more of the details about functions and their arguments in the next lesson.</p>
 <p>Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file <code>inflammation-01.csv</code>. Try it out.</p>
 <p><code>read.csv</code> read the file, but didn't save the data in memory. To do that, we need to assign the data frame to a variable. A variable is just a name for a value, such as <code>x</code>, <code>current_temperature</code>, or <code>subject_id</code>. We can create a new variable simply by assigning a value to it using <code>&lt;-</code></p>
@@ -74,9 +84,14 @@
 <span class="fl">2.2</span> *<span class="st"> </span>weight_kg</code></pre>
 <pre class="output"><code>[1] 121
 </code></pre>
-<blockquote>
-<p><strong>Tip:</strong> We can add comments to our code using the <code>#</code> character. It is useful to document our code in this way so that others (and us the next time we read it) have an easier time following what the code is doing.</p>
-</blockquote>
+<div id="tip-1" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
+<p>We can add comments to our code using the <code>#</code> character. It is useful to document our code in this way so that others (and us the next time we read it) have an easier time following what the code is doing.</p>
+</div>
+</div>
 <p>We can also change an object's value by assigning it a new value:</p>
 <pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="fl">57.5</span>
 <span class="co"># weight in kilograms is now</span>
@@ -102,7 +117,7 @@ weight_lb</code></pre>
 weight_kg</code></pre>
 <pre class="output"><code>[1] 100
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ...and in weight pounds still</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ...and weight in pounds still</span>
 weight_lb</code></pre>
 <pre class="output"><code>[1] 126.5
 </code></pre>
@@ -134,24 +149,30 @@ weight_lb</code></pre>
 5   1   1
 6   2   1
 </code></pre>
-<h4 id="challenge">Challenge</h4>
+<div id="challenge---assigning-values-to-variables" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Assigning values to variables</h2>
+</div>
+<div class="panel-body">
 <p>Draw diagrams showing what variables refer to what values after each statement in the following program:</p>
-<pre><code>mass &lt;- 47.5
-age &lt;- 122
-mass &lt;- mass * 2.0
-age &lt;- age - 20</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">mass &lt;-<span class="st"> </span><span class="fl">47.5</span>
+age &lt;-<span class="st"> </span><span class="dv">122</span>
+mass &lt;-<span class="st"> </span>mass *<span class="st"> </span><span class="fl">2.0</span>
+age &lt;-<span class="st"> </span>age -<span class="st"> </span><span class="dv">20</span></code></pre>
+</div>
+</div>
 <h3 id="manipulating-data">Manipulating Data</h3>
 <p>Now that our data is in memory, we can start doing things with it. First, let's ask what type of thing <code>dat</code> <em>is</em>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(dat)</code></pre>
 <pre class="output"><code>[1] &quot;data.frame&quot;
 </code></pre>
 <p>The output tells us that data currently is a data frame in R. This is similar to a spreadsheet in MS Excel that many of us are familiar with using. Data frames are very useful for storing data because you can have a continuous variable, e.g. rainfall, in one column and a categorical variable, e.g. month, in another.</p>
-<p>We can see the dimensions, or <a href="../../gloss.html#shape">shape</a>, of the data frame like this:</p>
+<p>We can see the dimensions, or <a href="reference.html#shape-(of-an-array)">shape</a>, of the data frame like this:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(dat)</code></pre>
 <pre class="output"><code>[1] 60 40
 </code></pre>
 <p>This tells us that our data frame, <code>dat</code>, has 60 rows and 40 columns.</p>
-<p>If we want to get a single value from the data frame, we can provide an <a href="../../gloss.html#index">index</a> in square brackets, just as we do in math:</p>
+<p>If we want to get a single value from the data frame, we can provide an <a href="reference.html#index">index</a> in square brackets, just as we do in math:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># first value in dat</span>
 dat[<span class="dv">1</span>, <span class="dv">1</span>]</code></pre>
 <pre class="output"><code>[1] 0
@@ -168,7 +189,7 @@ dat[<span class="dv">30</span>, <span class="dv">20</span>]</code></pre>
 3  0  1  1  3  3  2  6  2  5   9
 4  0  0  2  0  4  2  2  1  6   7
 </code></pre>
-<p>The <a href="../../gloss.html#slice">slice</a> <code>1:4</code> means, &quot;Start at index 1 and go to index 4.&quot;</p>
+<p>The <a href="reference.html#slice">slice</a> <code>1:4</code> means, &quot;Start at index 1 and go to index 4.&quot;</p>
 <p>The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat[<span class="dv">5</span>:<span class="dv">10</span>, <span class="dv">1</span>:<span class="dv">10</span>]</code></pre>
 <pre class="output"><code>   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
@@ -235,20 +256,36 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 <p>What if we need the maximum inflammation for all patients, or the average for each day? As the diagram below shows, we want to perform the operation across a margin of the data frame:</p>
 <p><img src="fig/r-operations-across-axes.svg" alt="Operations Across Axes" /></p>
 <p>To support this, we can use the <code>apply</code> function.</p>
-<blockquote>
-<p><strong>Tip:</strong> To learn about a function in R, e.g. <code>apply</code>, we can read its help documention by running <code>help(apply)</code> or <code>?apply</code>.</p>
-</blockquote>
+<div id="tip-2" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
+<p>To learn about a function in R, e.g. <code>apply</code>, we can read its help documention by running <code>help(apply)</code> or <code>?apply</code>.</p>
+</div>
+</div>
 <p><code>apply</code> allows us to repeat a function on all of the rows (<code>MARGIN = 1</code>) or columns (<code>MARGIN = 2</code>) of a data frame.</p>
 <p>Thus, to obtain the average inflammation of each patient we will need to calculate the mean of all of the rows (<code>MARGIN = 1</code>) of the data frame.</p>
 <pre class="sourceCode r"><code class="sourceCode r">avg_patient_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">1</span>, mean)</code></pre>
 <p>And to obtain the average inflammation of each day we will need to calculate the mean of all of the columns (<code>MARGIN = 2</code>) of the data frame.</p>
 <pre class="sourceCode r"><code class="sourceCode r">avg_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, mean)</code></pre>
 <p>Since the second argument to <code>apply</code> is <code>MARGIN</code>, the above command is equivalent to <code>apply(dat, MARGIN = 2, mean)</code>. We'll learn why this is so in the next lesson.</p>
-<blockquote>
-<p><strong>Tip:</strong> Some common operations have more efficient alternatives. For example, you can calculate the row-wise or column-wise means with <code>rowMeans</code> and <code>colMeans</code>, respectively.</p>
-</blockquote>
-<h4 id="challenge-1">Challenge</h4>
-<p>A subsection of a data frame is called a <a href="../../gloss.html#slice">slice</a>. We can take slices of character vectors as well:</p>
+<div id="tip-3" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
+<p>Some common operations have more efficient alternatives. For example, you can calculate the row-wise or column-wise means with <code>rowMeans</code> and <code>colMeans</code>, respectively.</p>
+</div>
+</div>
+<div id="challenge---slicing-subsetting-data" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Slicing (subsetting) data</h2>
+</div>
+<div class="panel-body">
+<p>A subsection of a data frame is called a <a href="reference.html#slice">slice</a>. We can take slices of character vectors as well:</p>
+</div>
+</div>
 <pre class="sourceCode r"><code class="sourceCode r">element &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;o&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;n&quot;</span>)
 <span class="co"># first three characters</span>
 element[<span class="dv">1</span>:<span class="dv">3</span>]</code></pre>
@@ -258,11 +295,27 @@ element[<span class="dv">1</span>:<span class="dv">3</span>]</code></pre>
 element[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <pre class="output"><code>[1] &quot;g&quot; &quot;e&quot; &quot;n&quot;
 </code></pre>
+<blockquote>
 <ol style="list-style-type: decimal">
 <li><p>If the first four characters are selected using the slice <code>element[1:4]</code>, how can we obtain the first four characters in reverse order?</p></li>
 <li><p>What is <code>element[-1]</code>? What is <code>element[-4]</code>? Given those answers, explain what <code>element[-1:-4]</code> does.</p></li>
 <li><p>Use a slice of <code>element</code> to create a new character vector that spells the word &quot;eon&quot;, e.g. <code>c(&quot;e&quot;, &quot;o&quot;, &quot;n&quot;)</code>.</p></li>
 </ol>
+</blockquote>
+<div id="challenge---subsetting-data-2" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Subsetting data 2</h2>
+</div>
+<div class="panel-body">
+<p>Suppose you want to determine the maximum inflamation for patient 5 across days three to seven. To do this you would extract the relevant slice from the data frame and calculate the maximum value.<br />Which of the following lines of R code gives the correct answer?</p>
+<ol style="list-style-type: lower-alpha">
+<li><code>max(dat[5, ])</code></li>
+<li><code>max(dat[3:7, 5])</code></li>
+<li><code>max(dat[5, 3:7])</code></li>
+<li><code>max(dat[5, 3, 7])</code></li>
+</ol>
+</div>
+</div>
 <h3 id="plotting">Plotting</h3>
 <p>The mathematician Richard Hamming once said, &quot;The purpose of computing is insight, not numbers,&quot; and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R's plotting features.</p>
 <p>Let's take a look at the average inflammation over time. Recall that we already calculated these values above using <code>apply(dat, 2, mean)</code> and saved them in the variable <code>avg_day_inflammation</code>. Plotting the values is done with the function <code>plot</code>.</p>
@@ -276,10 +329,17 @@ element[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <span class="kw">plot</span>(min_day_inflammation)</code></pre>
 <p><img src="fig/01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" /></p>
 <p>The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.</p>
-<h4 id="challenge-2">Challenge</h4>
+<div id="challenge---plotting-data" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Plotting data</h2>
+</div>
+<div class="panel-body">
 <p>Create a plot showing the standard deviation of the inflammation data for each day across all patients.</p>
+</div>
+</div>
 <h4 id="key-points">Key Points</h4>
 <ul>
+<li></li>
 <li>Use <code>variable &lt;- value</code> to assign a value to a variable in order to record it in memory.</li>
 <li>Objects are created on demand whenever a value is assigned to them.</li>
 <li>The function <code>dim</code> gives the dimensions of a data frame.</li>
@@ -304,6 +364,6 @@ element[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
-    <script src="http://software-carpentry.org/v5/js/bootstrap/bootstrap.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>

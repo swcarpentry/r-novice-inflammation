@@ -1,26 +1,26 @@
 ---
-layout: lesson
-root: ../..
+layout: page
+title: Programming with R
+subtitle: Making choices
+minutes: 30
 ---
 
 
 
-# Making Choices
+> ## Objectives {.objectives}
+> 
+> * Create a simple "image" made out of colored blocks.
+> * Explain how the RGB model represents colors.
+> * Explain the similarities and differences between tuples and lists.
+> * Write conditional statements including if, else if, and else branches.
+> * Correctly evaluate expressions containing and and or.
+> * Correctly write and interpret code containing nested loops and conditionals.
+> * Explain the advantages of putting frequently-modified code in a function.
 
 Our previous lessons have shown us how to manipulate data, define our own functions, and repeat things. 
 However, the programs we have written so far always do the same things, regardless of what data they're given. 
 We want programs to make choices based on the values they are manipulating. 
 To help us see what decisions they're making, we'll start by looking at how computers manipulate images.
-
-## Objectives
-
-* Create a simple "image" made out of colored blocks.
-* Explain how the RGB model represents colors.
-* Explain the similarities and differences between tuples and lists.
-* Write conditional statements including if, else if, and else branches.
-* Correctly evaluate expressions containing and and or.
-* Correctly write and interpret code containing nested loops and conditionals.
-* Explain the advantages of putting frequently-modified code in a function.
 
 # Image Grids
 
@@ -370,9 +370,9 @@ if (1 < 0 | 'left' < 'right') {
 
 In this case, "either" means "either or both", not "either one or the other but not both".
 
-### Challenges
-
-1. Write a function called `near` that returns `TRUE` if its first parameter is within 10% of its second and `FALSE` otherwise. Compare your implementation with your neighbor's: do you return the same answer for all possible pairs of numbers? How might you make a simple test for your function?
+> ## Challenge - Using conditional operators {.challenge}
+>
+> 1. Write a function called `near` that returns `TRUE` if its first parameter is within 10% of its second and `FALSE` otherwise. Compare your implementation with your neighbor's: do you return the same answer for all possible pairs of numbers? How might you make a simple test for your function?
 
 
 ~~~{.r}
@@ -493,9 +493,9 @@ square
 
 This is our first hand-made data visualization: the colors show where x is less than, equal to, or greater than y.
 
-### Challenges
-
-1. Will changing the nesting of the loops in the code above—i.e., wrapping the Y-axis loop around the X-axis loop—change the final image? Why or why not?
+> ## Challenge - Changing the order of loops {.challenge}
+>
+> 1. Will changing the nesting of the loops in the code above—i.e., wrapping the Y-axis loop around the X-axis loop—change the final image? Why or why not?
 
 	
 ## Creating a Heat Map
@@ -691,13 +691,13 @@ h
 
 We can now explore our data with just a few keystrokes, which means we can concentrate on our science and not on our programming.
 
-### Challenges
-
-1. Why did we transpose our data outside our heat map function? 
-2. Why not have the function perform the transpose?
-3. Why does the heat map function return the grid rather than displaying it immediately? 
-4. Do you think this is a good or bad design choice?
-5. Explain what the overall effect of this code is: `temp = left left = right right = temp`
+> ## Challenge - Understanding the make_heatmap() function  {.challenge}
+>
+> 1. Why did we transpose our data outside our heat map function? 
+> 2. Why not have the function perform the transpose?
+> 3. Why does the heat map function return the grid rather than displaying it immediately? 
+> 4. Do you think this is a good or bad design choice?
+> 5. Explain what the overall effect of this code is: `temp = left left = right right = temp`
 
 ## Key Points
 

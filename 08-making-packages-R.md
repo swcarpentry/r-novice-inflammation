@@ -7,9 +7,9 @@ minutes: 30
 
 
 
-
-Making packages in R
-====================
+> ## Objectives {.objectives}
+>
+> FIXME: Write these
 
 Why should you make your own R packages?
 
@@ -190,6 +190,7 @@ kelvin_to_celsius(273.15)
 
 ~~~
 
-## Challenges
-- Create some new functions for your tempConvert package to convert from Kelvin to Fahrenheit or from Celsius to Kelvin or Fahrenheit.
-- Create a package for our `analyze` function so that it will be easy to load when more data arrives.
+> ## Challenge - Creating a package for distribution {.challenge}
+
+> - Create some new functions for your tempConvert package to convert from Kelvin to Fahrenheit or from Celsius to Kelvin or Fahrenheit.
+> - Create a package for our `analyze` function so that it will be easy to load when more data arrives.

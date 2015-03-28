@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: Programming with R</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title">Programming with R</h1>
+          <h2 class="subtitle">Addressing data</h2>
+<div id="objectives" class="objectives panel panel-warning">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
+</div>
+<div class="panel-body">
+<p>Understand the 3 different ways R can address data inside a data frame.</p>
+<p>Combine different methods for addressing data with the assignment operator to update subsets of data</p>
+</div>
+</div>
+<p>R is a powerful language for data manipulation. There are 3 main ways for addressing data inside R objects.</p>
+<ul>
+<li>By index (slicing)</li>
+<li>By logical vector</li>
+<li>By name (columns only)</li>
+</ul>
+<p>Lets start by loading some sample data:</p>
+<pre class="sourceCode r"><code class="sourceCode r">dat&lt;-<span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&#39;data/sample.csv&#39;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</code></pre>
+<div id="tip" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
+<p>The first row of this csv file is a list of column names. We used the <em>header=TRUE</em> argument to <code>read.csv</code> so that R can interpret the file correctly. We are using the <em>stringsAsFactors=FALSE</em> argument to override the default behaviour for R. Using factors in R is covered in a separate lesson.</p>
+</div>
+</div>
+<p>Lets take a look at this data.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(dat)</code></pre>
+<pre class="output"><code>[1] &quot;data.frame&quot;
+</code></pre>
+<p>R has loaded the contents of the .csv file into a variable called <code>dat</code> which is a <code>data frame</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(dat)</code></pre>
+<pre class="output"><code>[1] 100   9
+</code></pre>
+<p>The data has 100 rows and 9 columns.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(dat)</code></pre>
+<pre class="output"><code>      ID Gender      Group BloodPressure  Age Aneurisms_q1 Aneurisms_q2
+1 Sub001      m    Control           132 16.0          114          140
+2 Sub002      m Treatment2           139 17.2          148          209
+3 Sub003      m Treatment2           130 19.5          196          251
+4 Sub004      f Treatment1           105 15.7          199          140
+5 Sub005      m Treatment1           125 19.9          188          120
+6 Sub006      M Treatment2           112 14.3          260          266
+  Aneurisms_q3 Aneurisms_q4
+1          202          237
+2          248          248
+3          122          177
+4          233          220
+5          222          228
+6          320          294
+</code></pre>
+<p>The data is the results of an (not real) experiment, looking at the number of aneurisms that formed in the eyes of patients who undertook 3 different treatments.</p>
+<h3 id="addressing-by-index">Addressing by index</h3>
+<p>We have already seen how square brackets <code>[</code> can be used to subset (slice) data. The generic format is <code>dat[row_numbers,column_numbers]</code>.</p>
+<div id="challenge---selecting-values-1" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Selecting values 1</h2>
+</div>
+<div class="panel-body">
+<p>What will be returned by <code>dat[1,1]</code>?</p>
+</div>
+</div>
+<pre class="sourceCode r"><code class="sourceCode r">dat[<span class="dv">1</span>,<span class="dv">1</span>]</code></pre>
+<pre class="output"><code>[1] &quot;Sub001&quot;
+</code></pre>
+<p>If we leave out a dimension R will interpret this as a request for all values in that dimension.</p>
+<div id="challenge---selecting-values-2" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Selecting values 2</h2>
+</div>
+<div class="panel-body">
+<p>What will be returned by <code>dat[,2]</code>?</p>
+</div>
+</div>
+<p>The colon <code>:</code> can be used to create a sequence of integers.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">6</span>:<span class="dv">9</span></code></pre>
+<pre class="output"><code>[1] 6 7 8 9
+</code></pre>
+<p>Creates a vector of numbers from 6 to 9.</p>
+<p>This can be very useful for addressing data.</p>
+<div id="challenge---subsetting-with-sequences" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Subsetting with sequences</h2>
+</div>
+<div class="panel-body">
+<p>Use the colon operator to index just the aneurism count data (columns 6 to 9).</p>
+</div>
+</div>
+<p>Finally we can use the <code>c()</code> (combine) function to address non-sequential rows and columns.</p>
+<pre class="sourceCode r"><code class="sourceCode r">dat[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>),<span class="dv">1</span>:<span class="dv">5</span>]</code></pre>
+<pre class="output"><code>      ID Gender      Group BloodPressure  Age
+1 Sub001      m    Control           132 16.0
+5 Sub005      m Treatment1           125 19.9
+7 Sub007      f    Control           173 17.7
+9 Sub009      m Treatment2           131 19.4
+</code></pre>
+<p>Returns the first 5 columns for patients in rows 1,5,7 &amp; 9</p>
+<div id="challenge---subsetting-non-sequential-data" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Subsetting non-sequential data</h2>
+</div>
+<div class="panel-body">
+<p>Return the Age and Gender values for the first 5 patients.</p>
+</div>
+</div>
+<h3 id="addressing-by-name">Addressing by name</h3>
+<p>Columns in an R data frame are named.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(dat)</code></pre>
+<pre class="output"><code>[1] &quot;ID&quot;            &quot;Gender&quot;        &quot;Group&quot;         &quot;BloodPressure&quot;
+[5] &quot;Age&quot;           &quot;Aneurisms_q1&quot;  &quot;Aneurisms_q2&quot;  &quot;Aneurisms_q3&quot; 
+[9] &quot;Aneurisms_q4&quot; 
+</code></pre>
+<div id="tip-1" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
+<p>If names are not specified e.g. using <code>headers=FALSE</code> in a <code>read.csv()</code> function, R assigns default names <code>V1,V2,...,Vn</code></p>
+</div>
+</div>
+<p>We usually use the <code>$</code> operator to address a column by name</p>
+<pre class="sourceCode r"><code class="sourceCode r">dat$Gender</code></pre>
+<pre class="output"><code>  [1] &quot;m&quot; &quot;m&quot; &quot;m&quot; &quot;f&quot; &quot;m&quot; &quot;M&quot; &quot;f&quot; &quot;m&quot; &quot;m&quot; &quot;f&quot; &quot;m&quot; &quot;f&quot; &quot;f&quot; &quot;m&quot; &quot;m&quot; &quot;m&quot; &quot;f&quot;
+ [18] &quot;m&quot; &quot;m&quot; &quot;F&quot; &quot;f&quot; &quot;m&quot; &quot;f&quot; &quot;f&quot; &quot;m&quot; &quot;M&quot; &quot;M&quot; &quot;f&quot; &quot;m&quot; &quot;f&quot; &quot;f&quot; &quot;m&quot; &quot;m&quot; &quot;m&quot;
+ [35] &quot;m&quot; &quot;f&quot; &quot;f&quot; &quot;m&quot; &quot;M&quot; &quot;m&quot; &quot;f&quot; &quot;m&quot; &quot;m&quot; &quot;m&quot; &quot;f&quot; &quot;f&quot; &quot;M&quot; &quot;M&quot; &quot;m&quot; &quot;m&quot; &quot;m&quot;
+ [52] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;m&quot; &quot;f&quot; &quot;m&quot; &quot;m&quot; &quot;m&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;M&quot; &quot;f&quot; &quot;m&quot; &quot;f&quot; &quot;f&quot;
+ [69] &quot;M&quot; &quot;m&quot; &quot;m&quot; &quot;m&quot; &quot;F&quot; &quot;m&quot; &quot;m&quot; &quot;f&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;f&quot; &quot;m&quot; &quot;M&quot; &quot;M&quot; &quot;m&quot; &quot;m&quot;
+ [86] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;m&quot; &quot;m&quot; &quot;f&quot; &quot;m&quot; &quot;F&quot; &quot;f&quot; &quot;m&quot; &quot;m&quot; &quot;F&quot; &quot;m&quot; &quot;M&quot; &quot;M&quot;
+</code></pre>
+<p>Named addressing can also be used in square brackets.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(dat[,<span class="kw">c</span>(<span class="st">&#39;Age&#39;</span>,<span class="st">&#39;Gender&#39;</span>)])</code></pre>
+<pre class="output"><code>   Age Gender
+1 16.0      m
+2 17.2      m
+3 19.5      m
+4 15.7      f
+5 19.9      m
+6 14.3      M
+</code></pre>
+<div id="best-practice" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Best Practice</h2>
+</div>
+<div class="panel-body">
+<p>Best practice is to address columns by name, often you will create or delete columns and the column position will change.</p>
+</div>
+</div>
+<h3 id="logical-indexing">Logical indexing</h3>
+<p>A logical vector contains only the special values <code>TRUE</code> &amp; <code>FALSE</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">TRUE</span>,<span class="ot">FALSE</span>,<span class="ot">FALSE</span>,<span class="ot">TRUE</span>)</code></pre>
+<pre class="output"><code>[1]  TRUE  TRUE FALSE FALSE  TRUE
+</code></pre>
+<div id="tip-2" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
+<p>Note the values <code>TRUE</code> and <code>FALSE</code> are all capital letters and are not quoted.</p>
+</div>
+</div>
+<p>Logical vectors can be created using <code>relational operators</code> e.g. <code>&lt;, &gt;, ==, !=, %in%</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>)
+x &lt;<span class="st"> </span><span class="dv">10</span></code></pre>
+<pre class="output"><code>[1]  TRUE  TRUE  TRUE FALSE FALSE FALSE
+</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x %in%<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span></code></pre>
+<pre class="output"><code>[1]  TRUE  TRUE  TRUE FALSE FALSE FALSE
+</code></pre>
+<p>We can use logical vectors to select data from a data frame.</p>
+<pre class="sourceCode r"><code class="sourceCode r">index &lt;-<span class="st"> </span>dat$Group ==<span class="st"> &#39;Control&#39;</span>
+dat[index,]$BloodPressure</code></pre>
+<pre class="output"><code> [1] 132 173 129  77 158  81 137 111 135 108 133 139 126 125  99 122 155
+[18] 133  94  98  74 116  97 104 117  90 150 116 108 102
+</code></pre>
+<p>Often this operation is written as one line of code:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(dat[dat$Group==<span class="st">&#39;Control&#39;</span>,]$BloodPressure)</code></pre>
+<p><img src="fig/logical_vectors_indexing2-1.png" title="plot of chunk logical_vectors_indexing2" alt="plot of chunk logical_vectors_indexing2" style="display: block; margin: auto;" /></p>
+<div id="challenge---using-logical-indexes" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Using logical indexes</h2>
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Create a scatterplot showing BloodPressure for subjects not in the control group.</li>
+<li>How many ways are there to index this set of subjects?</li>
+</ol>
+</div>
+</div>
+<h3 id="combining-indexing-and-assignment">Combining indexing and assignment</h3>
+<p>The assignment operator <code>&lt;-</code> can be combined with indexing.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>)
+x[x &lt;<span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+x</code></pre>
+<pre class="output"><code>[1]  0  0  0 11 12 13
+</code></pre>
+<div id="challenge---updating-a-subset-of-values" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Updating a subset of values</h2>
+</div>
+<div class="panel-body">
+<p>In this dataset, values for Gender have been recorded as both uppercase <code>M, F</code> and lowercase <code>m,f</code>. Combine the indexing and assignment operations to convert all values to lowercase.</p>
+</div>
+</div>
+        </div>
+      </div>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/r-novice-inflammation">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>

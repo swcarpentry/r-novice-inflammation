@@ -1,11 +1,17 @@
 ---
-layout: lesson
-root: ../..
+layout: page
+title: Programming with R
+subtitle: Command-Line Programs
+minutes: 30
 ---
 
 
 
-## Command-Line Programs
+> ## Objectives {.objectives}
+> 
+> *   Use the values of command-line arguments in a program.
+> *   Handle flags and files separately in a command-line program.
+> *   Read data from standard input in a program so that it can be used in a pipeline.
 
 The R Console and other interactive tools like RStudio are great for prototyping code and exploring data, but sooner or later we will want to use our program in a pipeline or run it in a shell script to process thousands of data files.
 In order to do that, we need to make our programs work like other Unix command-line tools.
@@ -36,20 +42,12 @@ $ Rscript readings.R --max data/inflammation-*.csv
 
 Our overall requirements are:
 
-1. If no filename is given on the command line, read data from [standard input](../../gloss.html#standard-input).
+1. If no filename is given on the command line, read data from [standard input](reference.html#standard-input-(stdin)).
 2. If one or more filenames are given, read data from them and report statistics for each file separately.
 3. Use the `--min`, `--mean`, or `--max` flag to determine what statistic to print.
 
 To make this work, we need to know how to handle command-line arguments in a program, and how to get at standard input.
 We'll tackle these questions in turn below.
-
-<div class="objectives" markdown="1">
-#### Objectives
-
-*   Use the values of command-line arguments in a program.
-*   Handle flags and files separately in a command-line program.
-*   Read data from standard input in a program so that it can be used in a pipeline.
-</div>
 
 ### Command-Line Arguments
 
@@ -79,21 +77,23 @@ R version 3.1.2 (2014-10-31)
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 locale:
- [1] LC_CTYPE=fr_FR.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=fr_CA.UTF-8        LC_COLLATE=fr_FR.UTF-8    
- [5] LC_MONETARY=fr_CA.UTF-8    LC_MESSAGES=fr_FR.UTF-8   
- [7] LC_PAPER=fr_CA.UTF-8       LC_NAME=C                 
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=fr_CA.UTF-8 LC_IDENTIFICATION=C       
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 
 ~~~
 
-> **Tip:** If that did not work, remember that you must be in the correct directory.
-You can determine which directory you are currently in using `pwd` and change to a different directory using `cd`.
-For a review, see this [lesson](../shell/01-filedir.html) or the [Unix Shell Reference](../ref/01-shell.html).
+> ## Tip {.callout} 
+>
+> If that did not work, remember that you must be in the correct directory.
+> You can determine which directory you are currently in using `pwd` and change to a different directory using `cd`.
+> For a review, see this [lesson](../shell/01-filedir.html) or the [Unix Shell Reference](../ref/01-shell.html).
 
 Now let's create another script that does something more interesting. Write the following lines in a file named `print-args.R`:
 
@@ -106,7 +106,7 @@ cat(args, sep = "\n")
 
 The function `commandArgs` extracts all the command line arguments and returns them as a vector.
 The function `cat`, similar to the `cat` of the Unix Shell, outputs the contents of the variable.
-Since we did not specify a filename for writing, `cat` sends the output to [standard output](../../gloss.html#standard-output), which we can then pipe to other Unix functions.
+Since we did not specify a filename for writing, `cat` sends the output to [standard output](reference.html#standard-output-(stdout)), which we can then pipe to other Unix functions.
 Because we set the argument `sep` to `"\n"`, which is the symbol to start a new line, each element of the vector is printed on its own line.
 Let's see what happens when we run this program in the Unix Shell:
 
@@ -322,11 +322,11 @@ Rscript readings-02.R data/inflammation-01.csv
 
 ~~~
 
-#### Challenges
-
-  + Write a command-line program that does addition and subtraction.
-  **Hint:** Everything argument read from the command-line is interpreted as a character [string](../../gloss.html#string).
-  You can convert from a string to a number using the function `as.numeric`.
+> ## Challenge - A simple command line program {.challenge}
+>
+>  + Write a command-line program that does addition and subtraction.
+>  **Hint:** Everything argument read from the command-line is interpreted as a character [string](reference.html#string).
+>  You can convert from a string to a number using the function `as.numeric`.
 
 
 ~~~{.r}
@@ -355,13 +355,13 @@ Rscript arith.R 3 - 4
 ~~~
 
 
+>
+>  + What goes wrong if you try to add multiplication using `*` to the program?
+>
 
-  + What goes wrong if you try to add multiplication using `*` to the program?
-  
-
-
-  + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program, `find-pattern.R`, that lists all the files in the current directory that contain a specific pattern:
-
+>
+>  + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program, `find-pattern.R`, that lists all the files in the current directory that contain a specific pattern:
+>
 
 ~~~{.r}
 # For example, searching for the pattern "print-args" returns the two scripts we
@@ -476,10 +476,10 @@ Rscript readings-03.R data/small-01.csv data/small-02.csv
 We wouldn't do this in real life: instead, we would have one file called `readings.R` that we committed to version control every time we got an enhancement working.
 For teaching, though, we need all the successive versions side by side.
 
-#### Challenges
-
-  + Write a program called `check.R` that takes the names of one or more inflammation data files as arguments and checks that all the files have the same number of rows and columns.
-  What is the best way to test your program?
+> ## Challenge - A command line program with arguments  {.challenge}
+>
+>  + Write a program called `check.R` that takes the names of one or more inflammation data files as arguments and checks that all the files have the same number of rows and columns.
+>  What is the best way to test your program?
 
 
 
@@ -536,7 +536,7 @@ but there are several things wrong with it:
 1.  `main` is too large to read comfortably.
 
 2.  If `action` isn't one of the three recognized flags, the program loads each file but does nothing with it (because none of the branches in the conditional match).
-    [Silent failures](../../gloss.html#silent-failure) like this are always hard to debug.
+    [Silent failures](reference.html#silent-failure) like this are always hard to debug.
 
 This version pulls the processing of each file out of the loop into a function of its own.
 It also checks that `action` is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as `readings-05.R`:
@@ -573,20 +573,22 @@ main()
 
 This is four lines longer than its predecessor, but broken into more digestible chunks of 8 and 12 lines.
 
-> **Tip:** R has a package named [argparse][argparse-r] that helps handle complex command-line flags (it utilizes a [Python module][argparse-py] of the same name).
-We will not cover this package in this lesson but when you start writing programs with multiple parameters you'll want to read through the package's [vignette][].
+> ## Tip {.callout} 
+>
+> R has a package named [argparse][argparse-r] that helps handle complex command-line flags (it utilizes a [Python module][argparse-py] of the same name). 
+> We will not cover this package in this lesson but when you start writing programs with multiple parameters you'll want to read through the package's [vignette][].
 
 [argparse-r]: http://cran.r-project.org/web/packages/argparse/index.html
 [argparse-py]: http://docs.python.org/dev/library/argparse.html
 [vignette]: http://cran.r-project.org/web/packages/argparse/vignettes/argparse.pdf
 
-#### Challenges
-
-  + Rewrite this program so that it uses `-n`, `-m`, and `-x` instead of `--min`, `--mean`, and `--max` respectively.
-    Is the code easier to read?
-    Is the program easier to understand?
-
-  + Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.
+> ## Challenge - Shorter command line arguments {.challenge}
+>
+>  + Rewrite this program so that it uses `-n`, `-m`, and `-x` instead of `--min`, `--mean`, and `--max` respectively.
+>    Is the code easier to read?
+>    Is the program easier to understand?
+>
+>  + Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.
 
 
 
@@ -703,11 +705,11 @@ head data/inflammation-01.csv | Rscript readings-06.R --mean
 
 And now we're done: the program now does everything we set out to do.
 
-#### Challenges
-
-  + Write a program called `line-count.R` that works like the Unix `wc` command:
-    *   If no filenames are given, it reports the number of lines in standard input.
-    *   If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.
+> ## Challenge - Implementing wc in R {.challenge}
+>
+>  + Write a program called `line-count.R` that works like the Unix `wc` command:
+>    *   If no filenames are given, it reports the number of lines in standard input.
+>    *   If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.
 
 
 

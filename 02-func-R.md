@@ -1,24 +1,24 @@
 ---
-layout: lesson
-root: ../..
+layout: page
+title: Programming with R
+subtitle: Creating functions
+minutes: 30
 ---
 
 
 
-## Creating Functions
+> ## Objectives {.objectives}
+>
+> * Define a function that takes arguments.
+> * Return a value from a function.
+> * Test a function.
+> * Explain what a call stack is, and trace changes to the call stack as functions are called.
+> * Set default values for function arguments.
+> * Explain why we should divide programs into small, single-purpose functions.
 
 If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics. 
 But we have twelve files to check, and may have more in the future.
 In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.
-
-#### Objectives
-
-* Define a function that takes arguments.
-* Return a value from a function.
-* Test a function.
-* Explain what a call stack is, and trace changes to the call stack as functions are called.
-* Set default values for function arguments.
-* Explain why we should divide programs into small, single-purpose functions.
 
 ### Defining a function
 
@@ -34,16 +34,19 @@ fahr_to_kelvin <- function(temp) {
 
 We define `fahr_to_kelvin` by assigning it to the output of `function`.
 The list of argument names are containted within parentheses.
-Next, the [body](../../gloss.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
+Next, the [body](reference.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
 The statements in the body are indented by two spaces.
 This makes the code easier to read but does not affect how the code operates. 
 
 When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
-Inside the function, we use a [return statement](../../gloss.html#return-statement) to send a result back to whoever asked for it.
+Inside the function, we use a [return statement](reference.html#return-statement) to send a result back to whoever asked for it.
 
-> **Tip:** One feature unique to R is that the return statement is not required.
-R automatically returns whichever variable is on the last line of the body of the function.
-Since we are just learning, we will explicitly define the return statement.
+> ## Tip {.callout} 
+> 
+> One feature unique to R is that the return statement is not required.
+> R automatically returns whichever variable is on the last line of the body 
+> of the function. Since we are just learning, we will explicitly define the 
+> return statement.
 
 Let's try running our function.
 Calling our own function is no different from calling any other function:
@@ -101,7 +104,7 @@ kelvin_to_celsius(0)
 
 What about converting Fahrenheit to Celsius?
 We could write out the formula, but we don't need to.
-Instead, we can [compose](../../gloss.html#function-composition) the two functions we have already created:
+Instead, we can [compose](reference.html#function-composition) the two functions we have already created:
 
 
 ~~~{.r}
@@ -125,14 +128,16 @@ fahr_to_celsius(32.0)
 This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want. 
 Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
 
-#### Challenges
+> ## Challenge - Create a function {.challenge}
+>
+>  + In the last lesson, we learned to **c**oncatenate elements into a vector using the `c` function, e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
+>  Furthermore, we can extend that vector again using `c`, e.g. `y <- c(x, "D")` creates a vector `y` with four elements.
+>  Write a function called `fence` that takes two vectors as arguments, called
+>`original` and `wrapper`, and returns a new vector that has the wrapper vector
+>at the beginning and end of the original:
+>
 
-  + In the last lesson, we learned to **c**oncatenate elements into a vector using the `c` function, e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
-  Furthermore, we can extend that vector again using `c`, e.g. `y <- c(x, "D")` creates a vector `y` with four elements.
-  Write a function called `fence` that takes two vectors as arguments, called `original` and `wrapper`, and returns a new vector that has the wrapper vector at the beginning and end of the original:
-  
 
-  
 
 ~~~{.r}
 best_practice <- c("Write", "programs", "for", "people", "not", "computers")
@@ -149,15 +154,15 @@ fence(best_practice, asterisk)
 
 ~~~
 
-  + If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
-    Write a function called `outer` that returns a vector made up of just the first and last elements of its input:
-    
+>  + If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
+>    Write a function called `outside` that returns a vector made up of just the first and last elements of its input:
+
 
 
 
 ~~~{.r}
 dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
-outer(dry_principle)
+outside(dry_principle)
 ~~~
 
 
@@ -166,6 +171,7 @@ outer(dry_principle)
 [1] "Don't"  "others"
 
 ~~~
+
 
 ### The Call Stack
 
@@ -182,7 +188,7 @@ The diagram below shows what memory looks like after the first line has been exe
 <img src="fig/python-call-stack-01.svg" alt="Call Stack (Initial State)" />
 
 When we call `fahr_to_celsius`, R *doesn't* create the variable `temp` right away.
-Instead, it creates something called a [stack frame](../../gloss.html#stack-frame) to keep track of the variables defined by `fahr_to_kelvin`.
+Instead, it creates something called a [stack frame](reference.html#stack-frame) to keep track of the variables defined by `fahr_to_kelvin`.
 Initially, this stack frame only holds the value of `temp`:
 
 <img src="fig/python-call-stack-02.svg" alt="Call Stack Immediately After First Function Call" />
@@ -224,15 +230,21 @@ temp
 
 
 ~~~{.output}
-Error in eval(expr, envir, enclos): objet 'temp' introuvable
+Error in eval(expr, envir, enclos): object 'temp' not found
 
 ~~~
 
-> **Tip:** The explanation of the stack frame above was very general and the basic concept will help you understand most languages you try to program with.
-However, R has some unique aspects that can be exploited when performing more complicated operations.
-We will not be writing anything that requires knowledge of these more advanced concepts.
-In the future when you are comfortable writing functions in R, you can learn more by reading the [R Language Manual][man] or this [chapter][] from [Advanced R Programming][adv-r] by Hadley Wickham.
-For context, R uses the terminology "environments" instead of frames.
+> ## Tip {.callout} 
+> 
+> The explanation of the stack frame above was very general and the basic 
+> concept will help you understand most languages you try to program with.
+> However, R has some unique aspects that can be exploited when performing 
+> more complicated operations. We will not be writing anything that requires 
+> knowledge of these more advanced concepts. In the future when you are 
+> comfortable writing functions in R, you can learn more by reading the 
+> [R Language Manual][man] or this [chapter][] from 
+> [Advanced R Programming][adv-r] by Hadley Wickham. For context, R uses the 
+> terminology "environments" instead of frames.
 
 [man]: http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
 [chapter]: http://adv-r.had.co.nz/Environments.html
@@ -278,20 +290,21 @@ span(diff)
 We don't expect the variable `diff` to have the value 20 after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
 And yes, we could probably choose a different name than `diff` for our variable in this case, but we don't want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.
 
-The big idea here is [encapsulation](../../gloss.html#encapsulation), and it's the key to writing correct, comprehensible programs.
+The big idea here is [encapsulation](reference.html#encapsulation), and it's the key to writing correct, comprehensible programs.
 A function's job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something.
 That only works if functions don't interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.
 
-#### Challenges
-
-  + We previously wrote functions called `fence` and `outer`.
-    Draw a diagram showing how the call stack changes when we run the following:
+> ## Challenge - Following the call stack {.challenge}
+>
+>  + We previously wrote functions called `fence` and `outside`.
+>    Draw a diagram showing how the call stack changes when we run the
+>following:
 
 
 ~~~{.r}
-inside <- "carbon"
-outside <- "+"
-result <- outer(fence(inside, outside))
+inner_vec <- "carbon"
+outer_vec <- "+"
+result <- outside(fence(inner_vec, outer_vec))
 ~~~
 
 ### Testing and Documenting
@@ -501,9 +514,9 @@ all.equal(sd(dat[, 4]), sd(centered))
 ~~~
 
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
-We have one more task first, though: we should write some [documentation](../../gloss.html#documentation) for our function to remind ourselves later what it's for and how to use it.
+We have one more task first, though: we should write some [documentation](reference.html#documentation) for our function to remind ourselves later what it's for and how to use it.
 
-A common way to put documentation in software is to add [comments](../../gloss.html#comment) like this:
+A common way to put documentation in software is to add [comments](reference.html#comment) like this:
 
 
 ~~~{.r}
@@ -516,30 +529,35 @@ center <- function(data, desired) {
 }
 ~~~
 
-> **Tip:** Formal documentation for R functions is written in separate `.Rd` using a markup language similar to [LaTeX][].
-You see the result of this documentation when you look at the help file for a given function, e.g. `?read.csv`.
-The [roxygen2][] package allows R coders to write documentation alongside the function code and then process it into the appropriate `.Rd` files.
-You will want to switch to this more formal method of writing documentation when you start writing more complicated R projects.
+> ## Tip {.callout} 
+> 
+> Formal documentation for R functions is written in separate `.Rd` using a 
+> markup language similar to [LaTeX][]. You see the result of this documentation 
+> when you look at the help file for a given function, e.g. `?read.csv`.
+> The [roxygen2][] package allows R coders to write documentation alongside 
+> the function code and then process it into the appropriate `.Rd` files.
+> You will want to switch to this more formal method of writing documentation 
+> when you start writing more complicated R projects.
 
 [LaTeX]: http://www.latex-project.org/
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 
-#### Challenges
-
-  + Write a function called `analyze` that takes a filename as a argument and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
-  `analyze("data/inflammation-01.csv")` should produce the graphs already shown, while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
+> ## Challenge - A more advanced function {.challenge}
+>
+>  + Write a function called `analyze` that takes a filename as a argument and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
+>  `analyze("data/inflammation-01.csv")` should produce the graphs already shown, while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
 
 [01]: 01-starting-with-data.html
 
 
 
-  + Write a function `rescale` that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1.
-  (If $L$ and $H$ are the lowest and highest values in the original vector, then the replacement for a value $v$ should be $(v-L) / (H-L)$.)
-  Be sure to document your function with comments.
+>  + Write a function `rescale` that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1.
+>  (If $L$ and $H$ are the lowest and highest values in the original vector, then the replacement for a value $v$ should be $(v-L) / (H-L)$.)
+>  Be sure to document your function with comments.
 
 
 
-  + Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
+>  + Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
 
 
 
@@ -711,13 +729,18 @@ display(c = 77)
 
 ~~~
 
-> **Tip:** To be precise, R has three ways that arguments supplied by you are matched to the *formal arguments* of the function definition
+> ## Tip {.callout}
+>
+> To be precise, R has three ways that arguments supplied 
+>
+> by you are matched to the *formal arguments* of the function definition
 >
 > 1. by complete name, 
 > 2. by partial name (matching on initial *n* characters of the argument name), and
 > 3. by position.
 >
-> Arguments are matched in the manner outlined above in *that order*: by complete name, then by partial matching of names, and finally by position.
+> Arguments are matched in the manner outlined above in *that order*: by 
+> complete name, then by partial matching of names, and finally by position.
 
 With that in hand, let's look at the help for `read.csv()`:
 
@@ -751,10 +774,10 @@ Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'f
 
 It fails because `FALSE` is assigned to `file` and the filename is assigned to the argument `header`.
 
-#### Challenges
-
-  + Rewrite the `rescale` function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want.
-  Compare your implementation to your neighbor's: do the two functions always behave the same way?
+> ## Challenge - A function with default argument values {.challenge}
+>
+>  + Rewrite the `rescale` function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want.
+>  Compare your implementation to your neighbor's: do the two functions always behave the same way?
 
 
 
@@ -762,7 +785,7 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 
 * Define a function using `name <- function(...args...) {...body...}`.
 * Call a function using `name(...values...)`.
-* Each time a function is called, a new stack frame is created on the [call stack](../../gloss.html#call-stack) to hold its arguments and local variables.
+* Each time a function is called, a new stack frame is created on the [call stack](reference.html#call-stack) to hold its arguments and local variables.
 * R looks for variables in the current stack frame before looking for them at the top level.
 * Use `help(thing)` to view help for something.
 * Put comments at the beginning of functions to provide help for that function.

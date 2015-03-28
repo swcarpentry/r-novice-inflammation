@@ -1,14 +1,22 @@
 ---
-layout: lesson
+layout: page
+title: Programming with R
+subtitle: Analyzing patient data
+minutes: 30
 ---
 
 
 
-## Analyzing Patient Data
+> ## Objectives {.objectives}
+> * Read tabular data from a file into a program.
+> * Assign values to variables.
+> * Select individual values and subsections from data.
+> * Perform operations on a data frame of data.
+> * Display simple graphs.
 
 We are studying inflammation in patients who have been given a new treatment for arthritis,
 and need to analyze the first dozen data sets. 
-The data sets are stored in [comma-separated values](../../gloss.html#comma-separeted-values) (CSV) format: each row holds information for a single patient, and the columns represent successive days. 
+The data sets are stored in [comma-separated values](reference.html#comma-separated-values-(csv)) (CSV) format: each row holds information for a single patient, and the columns represent successive days. 
 The first few rows of our first file look like this:
 
 
@@ -28,14 +36,6 @@ We want to:
 * plot the result.
 
 To do all that, we'll have to learn a little bit about programming.
-
-#### Objectives
-
-* Read tabular data from a file into a program.
-* Assign values to variables.
-* Select individual values and subsections from data.
-* Perform operations on a data frame of data.
-* Display simple graphs.
 
 ### Loading Data
 
@@ -58,15 +58,18 @@ Now we could load the data into R using `read.csv`:
 read.csv(file = "data/inflammation-01.csv", header = FALSE)
 ~~~
 
-The expression `read.csv(...)` is a [function call](../../gloss.html#function-call) that asks R to run the function `read.csv`. 
+The expression `read.csv(...)` is a [function call](reference.html#function-call) that asks R to run the function `read.csv`. 
 
-`read.csv` has two [arguments](../../gloss.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
-The filename needs to be a character string (or [string](../../gloss.html#string) for short), so we put it in quotes.
+`read.csv` has two [arguments](reference.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
+The filename needs to be a character string (or [string](reference.html#string) for short), so we put it in quotes.
 Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers.
 We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
 
-> **Tip:** `read.csv` actually has many more arguments that you may find useful when importing your own data in the future.
-You can learn more about these options in this supplementary [lesson](01-supp-ReadWriteCsv.html).
+> ## Tip {.callout} 
+> 
+> `read.csv` actually has many more arguments that you may find useful when 
+> importing your own data in the future. You can learn more about these 
+> options in this supplementary [lesson](01-supp-read-write-csv.html).
 
 The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s).
 For example, in this case if we provided the name of a different file to the argument `file`, `read.csv` would read it instead.
@@ -115,8 +118,11 @@ We can do arithmetic with the variable:
 
 ~~~
 
-> **Tip:** We can add comments to our code using the `#` character.
-It is useful to document our code in this way so that others (and us the next time we read it) have an easier time following what the code is doing.
+> ## Tip {.callout}
+>
+> We can add comments to our code using the `#` character. It is useful to 
+> document our code in this way so that others (and us the next time we 
+> read it) have an easier time following what the code is doing.
 
 We can also change an object's value by assigning it a new value:
 
@@ -191,7 +197,7 @@ weight_kg
 
 
 ~~~{.r}
-# ...and in weight pounds still
+# ...and weight in pounds still
 weight_lb
 ~~~
 
@@ -250,14 +256,16 @@ head(dat)
 
 ~~~
 
-#### Challenge
-
-Draw diagrams showing what variables refer to what values after each statement in the following program:
-
-	mass <- 47.5
-	age <- 122
-	mass <- mass * 2.0
-	age <- age - 20
+> ## Challenge - Assigning values to variables {.challenge}
+>
+> Draw diagrams showing what variables refer to what values after each statement in the following program:
+>
+~~~{.r}
+mass <- 47.5
+age <- 122
+mass <- mass * 2.0
+age <- age - 20
+~~~
 
 ### Manipulating Data
 
@@ -280,7 +288,7 @@ The output tells us that data currently is a data frame in R.
 This is similar to a spreadsheet in MS Excel that many of us are familiar with using.
 Data frames are very useful for storing data because you can have a continuous variable, e.g. rainfall, in one column and a categorical variable, e.g. month, in another.
 
-We can see the dimensions, or [shape](../../gloss.html#shape), of the data frame like this:
+We can see the dimensions, or [shape](reference.html#shape-(of-an-array)), of the data frame like this:
 
 
 ~~~{.r}
@@ -296,7 +304,7 @@ dim(dat)
 
 This tells us that our data frame, `dat`, has 60 rows and 40 columns.
 
-If we want to get a single value from the data frame, we can provide an [index](../../gloss.html#index) in square brackets, just as we do in math:
+If we want to get a single value from the data frame, we can provide an [index](reference.html#index) in square brackets, just as we do in math:
 
 
 ~~~{.r}
@@ -344,7 +352,7 @@ dat[1:4, 1:10]
 
 ~~~
 
-The [slice](../../gloss.html#slice) `1:4` means, "Start at index 1 and go to index 4."
+The [slice](reference.html#slice) `1:4` means, "Start at index 1 and go to index 4."
 
 The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
 
@@ -520,7 +528,10 @@ As the diagram below shows, we want to perform the operation across a margin of 
 
 To support this, we can use the `apply` function.
 
-> **Tip:** To learn about a function in R, e.g. `apply`, we can read its help documention by running `help(apply)` or `?apply`.
+> ## Tip {.callout} 
+>
+> To learn about a function in R, e.g. `apply`, we can read its help 
+> documention by running `help(apply)` or `?apply`.
 
 `apply` allows us to repeat a function on all of the rows (`MARGIN = 1`) or columns (`MARGIN = 2`) of a data frame.
 
@@ -541,14 +552,17 @@ avg_day_inflammation <- apply(dat, 2, mean)
 Since the second argument to `apply` is `MARGIN`, the above command is equivalent to `apply(dat, MARGIN = 2, mean)`.
 We'll learn why this is so in the next lesson.
 
-> **Tip:** Some common operations have more efficient alternatives.
-For example, you can calculate the row-wise or column-wise means with `rowMeans` and `colMeans`, respectively.
+> ## Tip {.callout}
+>
+> Some common operations have more efficient alternatives. For example, you 
+> can calculate the row-wise or column-wise means with `rowMeans` and 
+> `colMeans`, respectively.
 
-#### Challenge
-
-A subsection of a data frame is called a [slice](../../gloss.html#slice).
-We can take slices of character vectors as well:
-
+> ## Challenge - Slicing (subsetting) data {.challenge}
+>
+> A subsection of a data frame is called a [slice](reference.html#slice).
+> We can take slices of character vectors as well:
+>
 
 ~~~{.r}
 element <- c("o", "x", "y", "g", "e", "n")
@@ -576,15 +590,27 @@ element[4:6]
 [1] "g" "e" "n"
 
 ~~~
+>
+> 1.  If the first four characters are selected using the slice `element[1:4]`, how can we obtain the first four characters in reverse order?
+>    
+> 1.  What is `element[-1]`?
+>    What is `element[-4]`?
+>    Given those answers,
+>    explain what `element[-1:-4]` does.
+>
+> 1.  Use a slice of `element` to create a new character vector that spells the word "eon", e.g. `c("e", "o", "n")`.
 
-1.  If the first four characters are selected using the slice `element[1:4]`, how can we obtain the first four characters in reverse order?
-    
-1.  What is `element[-1]`?
-    What is `element[-4]`?
-    Given those answers,
-    explain what `element[-1:-4]` does.
 
-1.  Use a slice of `element` to create a new character vector that spells the word "eon", e.g. `c("e", "o", "n")`.
+> ## Challenge - Subsetting data 2 {.challenge}
+>
+> Suppose you want to determine the maximum inflamation for patient 5 across days three to seven.
+> To do this you would extract the relevant slice from the data frame and calculate the maximum value.  
+> Which of the following lines of R code gives the correct answer?
+>
+> (a) `max(dat[5, ])`
+> (b) `max(dat[3:7, 5])`
+> (c) `max(dat[5, 3:7])`
+> (d) `max(dat[5, 3, 7])`
 
 ### Plotting
 
@@ -625,13 +651,13 @@ plot(min_day_inflammation)
 
 The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.
 
-#### Challenge
-
-Create a plot showing the standard deviation of the inflammation data 
-for each day across all patients.
+> ## Challenge - Plotting data {.challenge}
+>
+> Create a plot showing the standard deviation of the inflammation data for each day across all patients.
 
 #### Key Points
 
+* 
 * Use `variable <- value` to assign a value to a variable in order to record it in memory.
 * Objects are created on demand whenever a value is assigned to them.
 * The function `dim` gives the dimensions of a data frame.

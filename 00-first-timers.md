@@ -7,13 +7,17 @@ minutes: 30
 
 
 
+> ## Objectives {.objectives}
+>
+> FIXME: Write these
+
 # Novice R materials - following Python examples
 
 * Draw concept map of where we are headed towards best scientific practices, and reproducibility.
-* Its really important that you know what you did. More journals/grants/etc. are also making it important for them to know what you did.
+* It's really important that you know what you did. More journals/grants/etc. are also making it important for them to know what you did.
 * A lot of scientific code is *not* reproducible.
 * If you keep a lab notebook, why are we not as careful with our code? 
-* We edit each others manuscripts, but we don't edit each other's code. 
+* We edit each other's manuscripts, but we don't edit each other's code. 
 * If you write your code with "future you" in mind, you will save yourself and others a lot of time.
 
 # Very basics of R
@@ -173,7 +177,8 @@ By *atomic*, we mean the vector only holds data of a single type.
 
 R provides many functions to examine features of vectors and other objects, for example
 
-* `typeof()` - what is it?  
+* `class()` - what kind of object is it (high-level)?
+* `typeof()` - what is the object's data type (low-level)? 
 * `length()` - how long is it? What about two dimensional objects?  
 * `attributes()` - does it have any metadata?  
 
@@ -1037,7 +1042,8 @@ y <- sum(x)
 
 All functions come with a help screen. 
 It is critical that you learn to read the help screens since they provide important information on what the function does, 
-how it works, and usually sample examples at the very bottom.
+how it works, and usually sample examples at the very bottom. In RStudio the help screen to a function can be a accessed by
+clicking F1 while the cursor is on the function name.
 
 ### Get new functions
 

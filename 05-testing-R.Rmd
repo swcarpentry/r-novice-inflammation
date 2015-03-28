@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Programming with R
-subtitle: Defensive programming
+subtitle: Basic defensive programming
 minutes: 30
 ---
 
@@ -9,7 +9,13 @@ minutes: 30
 source("tools/chunk-options.R")
 ```
 
-# Basic Defensive Programming
+> ## Objectives {.objectives}
+> 
+> * Learn how to defensively program for potential errors
+> * `stop`
+> * `break`
+> * `continue`
+> * Programming with version control
 
 Our previous lessons have introduced the basic tools of programming: variables and lists, finding files, loops, conditionals, and functions. What they haven't done is show us how to tell whether a program is getting the right answer, and how to tell if it's still getting the right answer as we make changes to it.
 
@@ -20,14 +26,6 @@ To achieve that, we need to:
 * make sure we know what "correct" actually means.
 
 The good news is, doing these things will speed up our programming, not slow it down. As in real carpentry—the kind done with lumber—the time saved by measuring carefully before cutting a piece of wood is much greater than the time that measuring takes.
-
-## Objectives
-
-* Learn how to defensively program for potential errors
-* `stop`
-* `break`
-* `continue`
-* Programming with version control
 
 ## Debugging
 
