@@ -145,6 +145,14 @@ weight_lb
 Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes. 
 This is different from the way spreadsheets work.
 
+An alternative way to print the value of a variable is to use () around the assignment statement. Here is an example:
+
+```{r}
+(total_weight <- weight_kg + weight_lb)
+```
+
+The above command adds the values of `weight_kg` and `weight_lb`, assigns the result to the `total_weight`, and finally prints the assigned value of the variable “total_weight”.
+
 Now that we know how to assign things to variables, let's re-run `read.csv` and save its result:
 
 ```{r}
