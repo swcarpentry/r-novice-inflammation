@@ -33,7 +33,6 @@ Tools like `grep` might be more sophisticated than the programs our learners can
 write at this point in their careers, but it's crucial they realize this is a
 difference of scale rather than kind.
 
-
 ## [First Timers](00-first-timers.html)
 
 ## [Analyzing Patient Data](01-starting-with-data.html)
@@ -68,19 +67,3 @@ difference of scale rather than kind.
 
 ## [Making Packages in R](08-making-packages-R.html)
 
-## Teaching Notes
-
-*   Watching the instructor grow programs step by step
-    is as helpful to learners as anything to do with Python.
-    Resist the urge to update a single cell repeatedly
-    (which is what you'd probably do in real life).
-    Instead,
-    clone the previous cell and write the update in the new copy
-    so that learners have a complete record of how the program grew.
-    Once you've done this,
-    you can say,
-    "Now why don't we just breaks things into small functions right from the start?"
-
-*   The discussion of command-line scripts
-    assumes that students understand standard I/O and building filters,
-    which are covered in the lesson on the shell.
