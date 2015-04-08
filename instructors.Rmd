@@ -4,6 +4,11 @@ title: Programming with R
 subtitle: Instructor's Guide
 minutes: 0
 ---
+
+```{r, include = FALSE}
+source("tools/chunk-options.R")
+```
+
 ## Legend
 
 
