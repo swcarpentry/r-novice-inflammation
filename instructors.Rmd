@@ -4,7 +4,10 @@ title: Programming with R
 subtitle: Instructor's Guide
 minutes: 0
 ---
+## Legend
 
+
+## Overall
 
 This lesson is written as an introduction to R,
 but its real purpose is to introduce the single most important idea in programming:
@@ -32,6 +35,41 @@ and because it helps learners see that the software they use isn't magical.
 Tools like `grep` might be more sophisticated than
 the programs our learners can write at this point in their careers,
 but it's crucial they realize this is a difference of scale rather than kind.
+
+
+## [First Timers](00-first-timers.html)
+
+## [Analyzing Patient Data](01-starting-with-data.html)
+
+## [Addressing Data](01-supp-addressing-data.html)
+
+## [Data Types and Structure](01-supp-data-structures.html)
+
+## [Understanding Factors](01-supp-factors.html)
+
+## [Introduction to RStudio](01-supp-intro-rstudio.html)
+
+## [Reading and Writing .csv](01-supp-read-write-csv.html)
+
+## [Creating Functions](02-func-R.html)
+
+## [Analyzing Multiple Data Sets](03-loops-R.html)
+
+## [Loops in R](03-supp-loops-in-depth.html)
+
+## [Making Choices](04-cond-colors-R.html)
+
+## [Making Choices](04-cond.html)
+
+## [Basic Defensive Programming](05-testing-R.html)
+
+## [Best Practices for Using R and Designing Programs](06-best-practices-R.html)
+
+## [Command-Line Programs](06-cmdline.html)
+
+## [Dynamic Reports with knitr](07-knitr-R.html)
+
+## [Making Packages in R](08-making-packages-R.html)
 
 ## Teaching Notes
 
