@@ -35,6 +35,10 @@ difference of scale rather than kind.
 
 ## [First Timers](00-first-timers.html)
 
+* Introduction to R: basics, data types and structures
+
+* No challenges proposed
+
 ## [Analyzing Patient Data](01-starting-with-data.html)
 
 ## [Addressing Data](01-supp-addressing-data.html)
