@@ -196,6 +196,48 @@ analyze_all <- function(pattern) {
 
 ## [Making Choices](04-cond.html)
 
+```{r}
+# Challenge - Using conditions to change behaviour
+plot_dist <- function(x, threshold) {
+  if (length(x) > threshold) {
+    boxplot(x)
+  } else {
+    stripchart(x)
+  }
+}
+
+plot_dist <- function(x, threshold, use_boxplot = TRUE) {
+  if (length(x) > threshold & use_boxplot) {
+    boxplot(x)
+  } else if (length(x) > threshold & !use_boxplot) {
+    hist(x)
+  } else {
+    stripchart(x)
+  }
+}
+
+# Challenge - Changing behaviour of the plot command
+analyze <- function(filename, output = NULL) {
+  # Plots the average, min, and max inflammation over time.
+  # Input:
+  #    filename: character string of a csv file
+  #    output: character string of pdf file for saving
+  if (!is.null(output)) {
+    pdf(output)
+  }
+  dat <- read.csv(file = filename, header = FALSE)
+  avg_day_inflammation <- apply(dat, 2, mean)
+  plot(avg_day_inflammation, type = "l")
+  max_day_inflammation <- apply(dat, 2, max)
+  plot(max_day_inflammation, type = "l")
+  min_day_inflammation <- apply(dat, 2, min)
+  plot(min_day_inflammation, type = "l")
+  if (!is.null(output)) {
+    dev.off()
+  }
+}
+```
+
 ## [Basic Defensive Programming](05-testing-R.html)
 
 ## [Best Practices for Using R and Designing Programs](06-best-practices-R.html)
