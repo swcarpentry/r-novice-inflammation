@@ -37,9 +37,11 @@ difference of scale rather than kind.
 
 * Introduction to R: basics, data types and structures
 
-* No challenges proposed
+* Note that some of the info are also available as supplementary lessons
 
 ## [Analyzing Patient Data](01-starting-with-data.html)
+
+* 
 
 ## [Addressing Data](01-supp-addressing-data.html)
 
