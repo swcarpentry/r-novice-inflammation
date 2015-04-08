@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Programming with R
-subtitle: Guide
+subtitle: Instructor's Guide
 minutes: 0
 ---
 
