@@ -244,6 +244,22 @@ analyze <- function(filename, output = NULL) {
 
 ## [Command-Line Programs](06-cmdline.html)
 
+```{r engine='bash'}
+# Challenge - A simple command line program
+cat arith.R
+
+cat find-pattern.R
+
+## Challenge - A command line program with arguments
+cat check.R
+
+# Challenge - Shorter command line arguments
+cat readings-usage.R
+
+# Challenge - Implementing wc in R
+cat line-count.R
+```
+
 ## [Dynamic Reports with knitr](07-knitr-R.html)
 
 ## [Making Packages in R](08-making-packages-R.html)
