@@ -75,6 +75,8 @@ plot(sd_day_inflammation)
 
 ## [Addressing Data](01-supp-addressing-data.html)
 
+* Note that the data frame `dat` is not the same set of data as in other lessons
+
 ## [Data Types and Structure](01-supp-data-structures.html)
 
 ## [Understanding Factors](01-supp-factors.html)
