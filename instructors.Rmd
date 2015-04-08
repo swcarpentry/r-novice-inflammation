@@ -190,8 +190,20 @@ analyze_all <- function(pattern) {
 }
 ```
 
-
 ## [Loops in R](03-supp-loops-in-depth.html)
+
+```{r}
+# Challenge
+near <- function(param1, param2) {
+    #returns True if its first parameter is within 10% of its second and False otherwise.
+	ten_percent <- param2 * 0.1
+	if (param1 >= (param2 - ten_percent) & param1 <= (param2 + ten_percent)) {
+	    TRUE
+	} else {
+		FALSE
+	}
+}
+```
 
 ## [Making Choices](04-cond-colors-R.html)
 
