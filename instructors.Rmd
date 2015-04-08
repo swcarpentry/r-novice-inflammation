@@ -146,6 +146,51 @@ max(answer)
 
 ## [Analyzing Multiple Data Sets](03-loops-R.html)
 
+* The transition from the previous lesson to this one might be challenging for
+  a very novice audience. Do not rush through the challenges, maybe drop some.
+
+```{r}
+# Challenge - Using loops
+print_N <- function(N) {
+  nseq <- seq(N)
+  for (num in nseq) {
+    print(num)
+  }
+}
+print_N(3)
+
+expo <- function(base, power) {
+  result <- 1
+  for (i in seq(power)) {
+    result <- result * base
+  }
+  return(result)
+}
+expo(2, 4)
+
+total <- function(vec) {
+  #calculates the sum of the values in a vector
+  vec_sum <- 0
+  for (num in vec) {
+    vec_sum <- vec_sum + num
+  }
+  return(vec_sum)
+}
+ex_vec <- c(4, 8, 15, 16, 23, 42)
+total(ex_vec)
+
+# Challenge - Using loops to analyze multiple files
+analyze_all <- function(pattern) {
+  # Runs the function analyze for each file in the current working directory
+  # that contains the given pattern.
+  filenames <- list.files(pattern = pattern)
+  for (f in filenames) {
+    analyze(f)
+  }
+}
+```
+
+
 ## [Loops in R](03-supp-loops-in-depth.html)
 
 ## [Making Choices](04-cond-colors-R.html)
