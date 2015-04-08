@@ -52,12 +52,9 @@ difference of scale rather than kind.
 * Provide shortcut for the assignment operator (`<-`) (RStudio: Alt+- on
   Windows/Linux; Option+- on Mac)
 
-```{r echo = FALSE}
+```{r}
 dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 element <- c("o", "x", "y", "g", "e", "n")
-```
-
-```{r}
 # Challenge - Slicing (subsetting data)
 element[4:1]  # first 4 characters in reverse order
 element[-1]  # remove first character
