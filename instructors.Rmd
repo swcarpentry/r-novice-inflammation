@@ -68,7 +68,7 @@ element[c(5, 1, 6)]  # new character vector
 max(dat[5, 3:7])
 ```
 
-```{r eval=FALSE}
+```{r, eval=FALSE}
 sd_day_inflammation <- apply(dat, 2, sd)
 plot(sd_day_inflammation)
 ```
@@ -85,7 +85,7 @@ plot(sd_day_inflammation)
 
 ## [Reading and Writing .csv](01-supp-read-write-csv.html)
 
-```{r include = FALSE}
+```{r, include = FALSE}
 # Challenge - Updating values in a factor
 carSpeeds <- read.csv(file = 'data/car-speeds.csv')
 # Replace 'Blue' with 'Green' in cars$Color without using the stringsAsFactors or as.is arguments
@@ -96,8 +96,56 @@ carSpeeds$Color <- ifelse(as.character(carSpeeds$Color) == 'Blue',
 carSpeeds$Color <- as.factor(carSpeeds$Color)
 ```
 
-
 ## [Creating Functions](02-func-R.html)
+
+```{r}
+# Challenge - Create a function
+fence <- function(original, wrapper) {
+  answer <- c(wrapper, original, wrapper)
+  return(answer)
+}
+```
+
+```{r, eval=FALSE}
+# Challenge - A more advanced function
+analyze <- function(filename) {
+  # Plots the average, min, and max inflammation over time.
+  # Input is character string of a csv file.
+  dat <- read.csv(file = filename, header = FALSE)
+  avg_day_inflammation <- apply(dat, 2, mean)
+  plot(avg_day_inflammation)
+  max_day_inflammation <- apply(dat, 2, max)
+  plot(max_day_inflammation)
+  min_day_inflammation <- apply(dat, 2, min)
+  plot(min_day_inflammation)
+}
+
+# Challenge - rescale
+rescale <- function(v) {
+  # Rescales a vector, v, to lie in the range 0 to 1.
+  L <- min(v)
+  H <- max(v)
+  result <- (v - L) / (H - L)
+  return(result)
+}
+```
+
+```{r}
+# Challenge - A function with default argument values
+rescale <- function(v, lower = 0, upper = 1) {
+  # Rescales a vector, v, to lie in the range lower to upper.
+  L <- min(v)
+  H <- max(v)
+  result <- (v - L) / (H - L) * (upper - lower) + lower
+  return(result)
+}
+answer <- rescale(dat[, 4], lower = 2, upper = 5)
+min(answer)
+max(answer)
+answer <- rescale(dat[, 4], lower = -5, upper = -2)
+min(answer)
+max(answer)
+```
 
 ## [Analyzing Multiple Data Sets](03-loops-R.html)
 
