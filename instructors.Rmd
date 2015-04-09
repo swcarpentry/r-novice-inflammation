@@ -49,7 +49,7 @@ A typical, half-day, lesson will use the following material:
 6. [Command-Line Programs](06-cmdline.html)
 
 It is already a lot of material to cover.
-Remember this typical lesson do not spend a lot of time on data types, data
+Remember this typical lesson does not spend a lot of time on data types, data
 structure, etc.
 It is also on par with the similar lesson on Python.
 The objective is to explain modular programming with the concepts of functions,
