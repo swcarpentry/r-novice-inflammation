@@ -42,31 +42,41 @@ However, most of our datasets won't come organized in R packages! Instead, we wi
 
 To do all that, we'll have to learn a little bit about programming.
 
-### Loading Data
+### Loading Data and using Rstudio Projects
 
-To load our inflammation data, first we need to locate our data.
-We can change the current working directory to the location of the CSV files using the function `setwd`.
-For example, if the CSV files are located in a directory named `swc` in our home directory, we would change the working directory using the following command:
+To practice loading data, we are going to download the gapminder data as a text file. The data is available at [tiny.cc/gapminder](tiny.cc/gapminder). Download the file and save it to a new folder on your computer.
 
-```{r, eval=FALSE}
-setwd("~/swc")
+Then open Rstudio. Select *File > New Project > Existing Directory* and select the folder you just created.
+_screencap goes here_
+
+Using [Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) is one way that Rstudio helps you organize your work. You can open a project in three ways: by finding it under *File > Recent Projects*, by clicking the `.Rproj` file in *File > Open Project ...* or by clicking on the `.Rproj` file in your finder window. 
+
+When we open a project, Rstudio launches R in the directory containing that project's work. This is called the "working directory". For example, if we saved the gapminder file in a directory named `swc` in our home directory, we could view the working directory using the following command:
+
+```r
+getwd()
+[1] "~/swc"
 ```
 
 Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
-Alternatively you can change the working directory using the RStudio GUI using the menu option `Session` -> `Set Working Directory` -> `Choose Directory...`
 
-Now we could load the data into R using `read.csv`:
+> ## Tip {.callout} 
+> 
+> Alternatively you can change the working directory using the RStudio GUI using the menu 
+> option `Session` -> `Set Working Directory` -> `Choose Directory...`. However, manually 
+> changing your working directory makes your code harder to read, both for other people 
+> and for yourself later!
 
-```{r, results="hide"}
-read.csv(file = "data/inflammation-01.csv", header = FALSE)
+Now we could load the data into R using `read.delim`:
+
+```{r, results="hide", eval=FALSE}
+read.delim(file = "data/gapminderDataFiveYear.txt", header = FALSE)
 ```
 
 The expression `read.csv(...)` is a [function call](reference.html#function-call) that asks R to run the function `read.csv`. 
 
 `read.csv` has two [arguments](reference.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
 The filename needs to be a character string (or [string](reference.html#string) for short), so we put it in quotes.
-Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers.
-We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
 
 > ## Tip {.callout} 
 > 
@@ -78,10 +88,10 @@ The utility of a function is that it will perform its given action on whatever v
 For example, in this case if we provided the name of a different file to the argument `file`, `read.csv` would read it instead.
 We'll learn more of the details about functions and their arguments in the next lesson.
 
-Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `inflammation-01.csv`.
+Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `gapminderDataFiveYear.txt`.
 Try it out.
 
-`read.csv` read the file, but didn't save the data in memory.
+`read.csv` brought the data into R, but didn't save the data in memory.
 To do that, we need to assign the data frame to a variable.
 A variable is just a name for a value, such as `x`, `current_temperature`, or `subject_id`.
 We can create a new variable simply by assigning a value to it using `<-`
@@ -151,10 +161,10 @@ weight_lb
 Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes. 
 This is different from the way spreadsheets work.
 
-Now that we know how to assign things to variables, let's re-run `read.csv` and save its result:
+Now that we know how to assign things to variables, let's re-run `read.delim` and save its result:
 
 ```{r}
-dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
+dat <- read.delim(file = "data/gapminderDataFiveYear.txt")
 ```
 
 This statement doesn't produce any output because assignment doesn't display anything.
