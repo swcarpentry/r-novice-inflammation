@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Programming with R
-subtitle: Analyzing patient data
+subtitle: Exploring the gapminder dataset
 minutes: 30
 ---
 
@@ -17,21 +17,27 @@ opts_chunk$set(fig.path = "fig/01-starting-with-data-")
 > * Perform operations on a data frame of data.
 > * Display simple graphs.
 
-We are studying inflammation in patients who have been given a new treatment for arthritis,
-and need to analyze the first dozen data sets. 
-The data sets are stored in [comma-separated values](reference.html#comma-separated-values-(csv)) (CSV) format: each row holds information for a single patient, and the columns represent successive days. 
-The first few rows of our first file look like this:
+We will be using a dataset from the [gapminder project](http://www.gapminder.org/ignorance/), which contains information about life expectancy, population size and GDP per capita for all the world's countries. Both the R package and the data were edited into their current form by [Jenny Bryan](https://github.com/jennybc/)
 
-```{r echo = FALSE}
-tmp <- read.csv("data/inflammation-01.csv", header = FALSE, nrows = 5)
-write.table(tmp, quote = FALSE, sep = ",", row.names = FALSE, col.names = FALSE)
-rm(tmp)
+## Introduction to the dataset
+
+We can obtain the gapminder data in two ways. The easiest way is to install gapminder directly from CRAN (the [Comprehensive R Archive Network](http://cran.r-project.org/), or CRAN, is a central repository for R packages):
+
+```r
+install.packages("gapminder")
 ```
 
-We want to:
+When the package is installed, the gapminder data is already available to us. We can look at the first few lines of the data like this:
+
+```{r}
+library(gapminder)
+head(gapminder)
+```
+
+However, most of our datasets won't come organized in R packages! Instead, we will normally have data stored  in a standard format, such as [comma-separated values](reference.html#comma-separated-values-(csv)). When we are using R to analyze data, we will usually want to:
 
 * load that data into memory,
-* calculate the average inflammation per day across all patients, and
+* calculate some summary statistics, and
 * plot the result.
 
 To do all that, we'll have to learn a little bit about programming.
