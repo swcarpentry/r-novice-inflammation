@@ -20,7 +20,7 @@ opts_chunk$set(fig.path = "fig/03-loops-R-")
 > * Use a `for` loop to process multiple files.
 
 We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
-
+ 
 ```{r inflammation-01}
 analyze <- function(filename) {
   # Plots the average, min, and max inflammation over time.
