@@ -220,7 +220,7 @@ An index like `[30, 20]` selects a single element of a data frame, but we can se
 For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:
 
 ```{r}
-dat[1:4, 1:10]
+dat[1:4, 1:6]
 ```
 
 The [slice](reference.html#slice) `1:4` means, "Start at index 1 and go to index 4."
@@ -228,12 +228,12 @@ The [slice](reference.html#slice) `1:4` means, "Start at index 1 and go to index
 The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
 
 ```{r}
-dat[5:10, 1:10]
+dat[5:10, 1:6]
 ```
 We can use the function `c`, which stands for **c**ombine, to select non-contiguous values:
 
 ```{r}
-dat[c(3, 8, 37, 56), c(10, 14, 29)]
+dat[c(3, 8, 37, 56), c(6, 4, 5)]
 ```
 
 We also don't have to provide a slice for either the rows or the columns.
@@ -243,8 +243,8 @@ If we don't provide a slice for either rows or columns, e.g. `dat[, ]`, R return
 ```{r}
 # All columns from row 5
 dat[5, ]
-# All rows from column 16
-dat[, 16]
+# All rows from column 6
+dat[, 6]
 ```
 
 Now let's perform some common mathematical operations to learn about our inflammation data.
@@ -253,7 +253,7 @@ One way to do this is to select the data we want to create a new temporary data 
 
 ```{r}
 # first row, all of the columns
-patient_1 <- dat[1, ]
+patient_1 <- dat[ ,6]
 # max inflammation for patient 1
 max(patient_1)
 ```
@@ -263,20 +263,20 @@ Instead, we can combine the selection and the function call:
 
 ```{r}
 # max inflammation for patient 2
-max(dat[2, ])
+max(dat[ ,6])
 ```
 
 R also has functions for other commons calculations, e.g. finding the minimum, mean, median, and standard deviation of the data:
 
 ```{r}
 # minimum inflammation on day 7
-min(dat[, 7])
+min(dat[, 6])
 # mean inflammation on day 7
-mean(dat[, 7])
+mean(dat[, 6])
 # median inflammation on day 7
-median(dat[, 7])
+median(dat[, 6])
 # standard deviation of inflammation on day 7
-sd(dat[, 7])
+sd(dat[, 6])
 ```
 
 What if we need the maximum inflammation for all patients, or the average for each day?
@@ -296,13 +296,13 @@ To support this, we can use the `apply` function.
 Thus, to obtain the average inflammation of each patient we will need to calculate the mean of all of the rows (`MARGIN = 1`) of the data frame.
 
 ```{r}
-avg_patient_inflammation <- apply(dat, 1, mean)
+avg_patient_inflammation <- apply(dat[ ,5:6], 1, mean)
 ```
 
 And to obtain the average inflammation of each day we will need to calculate the mean of all of the columns (`MARGIN = 2`) of the data frame.
 
 ```{r}
-avg_day_inflammation <- apply(dat, 2, mean)
+avg_day_inflammation <- apply(dat[, 5:6], 2, mean)
 ```
 
 Since the second argument to `apply` is `MARGIN`, the above command is equivalent to `apply(dat, MARGIN = 2, mean)`.
@@ -357,7 +357,7 @@ Let's take a look at the average inflammation over time.
 Recall that we already calculated these values above using `apply(dat, 2, mean)` and saved them in the variable `avg_day_inflammation`.
 Plotting the values is done with the function `plot`.
 
-```{r plot-avg-inflammation}
+```{r plot-avg-inflammation, eval=FALSE}
 plot(avg_day_inflammation)
 ```
 
@@ -366,12 +366,12 @@ Above, we gave the function `plot` a vector of numbers corresponding to the aver
 The result is roughly a linear rise and fall, which is suspicious: based on other studies, we expect a sharper rise and slower fall.
 Let's have a look at two other statistics: the maximum and minimum inflammation per day.
 
-```{r plot-max-inflammation}
+```{r plot-max-inflammation, eval=FALSE}
 max_day_inflammation <- apply(dat, 2, max)
 plot(max_day_inflammation)
 ```
 
-```{r plot-min-inflammation}
+```{r plot-min-inflammation, eval=FALSE}
 min_day_inflammation <- apply(dat, 2, min)
 plot(min_day_inflammation)
 ```
