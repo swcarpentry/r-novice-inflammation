@@ -21,7 +21,7 @@ to use whatever language your colleagues are using,
 so that you can share you work with them easily,
 and to use that language *well*.
 
-1.  [Analyzing Patient Data](01-starting-with-data.html)
+1.  [Reading and Using Data](01-starting-with-data.html)
 2.  [Creating Functions](02-func-R.html)
 3.  [Analyzing Multiple Data Sets](03-loops-R.html)
 4.  [Making Choices](04-cond.html)

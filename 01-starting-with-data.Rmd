@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Programming with R
-subtitle: Analyzing patient data
+subtitle: Exploring the gapminder dataset
 minutes: 30
 ---
 
@@ -17,50 +17,66 @@ opts_chunk$set(fig.path = "fig/01-starting-with-data-")
 > * Perform operations on a data frame of data.
 > * Display simple graphs.
 
-We are studying inflammation in patients who have been given a new treatment for arthritis,
-and need to analyze the first dozen data sets. 
-The data sets are stored in [comma-separated values](reference.html#comma-separated-values-(csv)) (CSV) format: each row holds information for a single patient, and the columns represent successive days. 
-The first few rows of our first file look like this:
+We will be using a dataset from the [gapminder project](http://www.gapminder.org/ignorance/), which contains information about life expectancy, population size and GDP per capita for all the world's countries. Both the R package and the data were edited into their current form by [Jenny Bryan](https://github.com/jennybc/)
 
-```{r echo = FALSE}
-tmp <- read.csv("data/inflammation-01.csv", header = FALSE, nrows = 5)
-write.table(tmp, quote = FALSE, sep = ",", row.names = FALSE, col.names = FALSE)
-rm(tmp)
+## Introduction to the dataset
+
+We can obtain the gapminder data in two ways. The easiest way is to install gapminder directly from CRAN (the [Comprehensive R Archive Network](http://cran.r-project.org/), or CRAN, is a central repository for R packages):
+
+```r
+install.packages("gapminder")
 ```
 
-We want to:
+When the package is installed, the gapminder data is already available to us. We can look at the first few lines of the data like this:
+
+```{r}
+library(gapminder)
+head(gapminder)
+```
+
+However, most of our datasets won't come organized in R packages! Instead, we will normally have data stored  in a standard format, such as [comma-separated values](reference.html#comma-separated-values-(csv)). When we are using R to analyze data, we will usually want to:
 
 * load that data into memory,
-* calculate the average inflammation per day across all patients, and
+* calculate some summary statistics, and
 * plot the result.
 
 To do all that, we'll have to learn a little bit about programming.
 
-### Loading Data
+### Loading Data and using Rstudio Projects
 
-To load our inflammation data, first we need to locate our data.
-We can change the current working directory to the location of the CSV files using the function `setwd`.
-For example, if the CSV files are located in a directory named `swc` in our home directory, we would change the working directory using the following command:
+To practice loading data, we are going to download the gapminder data as a text file. The data is available at [tiny.cc/gapminder](tiny.cc/gapminder). Download the file and save it to a new folder on your computer.
 
-```{r, eval=FALSE}
-setwd("~/swc")
+Then open Rstudio. Select *File > New Project > Existing Directory* and select the folder you just created.
+_screencap goes here_
+
+Using [Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) is one way that Rstudio helps you organize your work. You can open a project in three ways: by finding it under *File > Recent Projects*, by clicking the `.Rproj` file in *File > Open Project ...* or by clicking on the `.Rproj` file in your finder window. 
+
+When we open a project, Rstudio launches R in the directory containing that project's work. This is called the "working directory". For example, if we saved the gapminder file in a directory named `swc` in our home directory, we could view the working directory using the following command:
+
+```r
+getwd()
+[1] "~/swc"
 ```
 
 Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
-Alternatively you can change the working directory using the RStudio GUI using the menu option `Session` -> `Set Working Directory` -> `Choose Directory...`
 
-Now we could load the data into R using `read.csv`:
+> ## Tip {.callout} 
+> 
+> Alternatively you can change the working directory using the RStudio GUI using the menu 
+> option `Session` -> `Set Working Directory` -> `Choose Directory...`. However, manually 
+> changing your working directory makes your code harder to read, both for other people 
+> and for yourself later!
 
-```{r, results="hide"}
-read.csv(file = "data/inflammation-01.csv", header = FALSE)
+Now we could load the data into R using `read.delim`:
+
+```{r, results="hide", eval=FALSE}
+read.delim(file = "data/gapminderDataFiveYear.txt", header = FALSE)
 ```
 
 The expression `read.csv(...)` is a [function call](reference.html#function-call) that asks R to run the function `read.csv`. 
 
 `read.csv` has two [arguments](reference.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
 The filename needs to be a character string (or [string](reference.html#string) for short), so we put it in quotes.
-Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers.
-We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
 
 > ## Tip {.callout} 
 > 
@@ -72,10 +88,10 @@ The utility of a function is that it will perform its given action on whatever v
 For example, in this case if we provided the name of a different file to the argument `file`, `read.csv` would read it instead.
 We'll learn more of the details about functions and their arguments in the next lesson.
 
-Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `inflammation-01.csv`.
+Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `gapminderDataFiveYear.txt`.
 Try it out.
 
-`read.csv` read the file, but didn't save the data in memory.
+`read.csv` brought the data into R, but didn't save the data in memory.
 To do that, we need to assign the data frame to a variable.
 A variable is just a name for a value, such as `x`, `current_temperature`, or `subject_id`.
 We can create a new variable simply by assigning a value to it using `<-`
@@ -145,10 +161,10 @@ weight_lb
 Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes. 
 This is different from the way spreadsheets work.
 
-Now that we know how to assign things to variables, let's re-run `read.csv` and save its result:
+Now that we know how to assign things to variables, let's re-run `read.delim` and save its result:
 
 ```{r}
-dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
+dat <- read.delim(file = "data/gapminderDataFiveYear.txt")
 ```
 
 This statement doesn't produce any output because assignment doesn't display anything.
@@ -204,7 +220,7 @@ An index like `[30, 20]` selects a single element of a data frame, but we can se
 For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:
 
 ```{r}
-dat[1:4, 1:10]
+dat[1:4, 1:6]
 ```
 
 The [slice](reference.html#slice) `1:4` means, "Start at index 1 and go to index 4."
@@ -212,12 +228,12 @@ The [slice](reference.html#slice) `1:4` means, "Start at index 1 and go to index
 The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
 
 ```{r}
-dat[5:10, 1:10]
+dat[5:10, 1:6]
 ```
 We can use the function `c`, which stands for **c**ombine, to select non-contiguous values:
 
 ```{r}
-dat[c(3, 8, 37, 56), c(10, 14, 29)]
+dat[c(3, 8, 37, 56), c(6, 4, 5)]
 ```
 
 We also don't have to provide a slice for either the rows or the columns.
@@ -227,8 +243,8 @@ If we don't provide a slice for either rows or columns, e.g. `dat[, ]`, R return
 ```{r}
 # All columns from row 5
 dat[5, ]
-# All rows from column 16
-dat[, 16]
+# All rows from column 6
+dat[, 6]
 ```
 
 Now let's perform some common mathematical operations to learn about our inflammation data.
@@ -237,7 +253,7 @@ One way to do this is to select the data we want to create a new temporary data 
 
 ```{r}
 # first row, all of the columns
-patient_1 <- dat[1, ]
+patient_1 <- dat[ ,6]
 # max inflammation for patient 1
 max(patient_1)
 ```
@@ -247,20 +263,20 @@ Instead, we can combine the selection and the function call:
 
 ```{r}
 # max inflammation for patient 2
-max(dat[2, ])
+max(dat[ ,6])
 ```
 
 R also has functions for other commons calculations, e.g. finding the minimum, mean, median, and standard deviation of the data:
 
 ```{r}
 # minimum inflammation on day 7
-min(dat[, 7])
+min(dat[, 6])
 # mean inflammation on day 7
-mean(dat[, 7])
+mean(dat[, 6])
 # median inflammation on day 7
-median(dat[, 7])
+median(dat[, 6])
 # standard deviation of inflammation on day 7
-sd(dat[, 7])
+sd(dat[, 6])
 ```
 
 What if we need the maximum inflammation for all patients, or the average for each day?
@@ -280,13 +296,13 @@ To support this, we can use the `apply` function.
 Thus, to obtain the average inflammation of each patient we will need to calculate the mean of all of the rows (`MARGIN = 1`) of the data frame.
 
 ```{r}
-avg_patient_inflammation <- apply(dat, 1, mean)
+avg_patient_inflammation <- apply(dat[ ,5:6], 1, mean)
 ```
 
 And to obtain the average inflammation of each day we will need to calculate the mean of all of the columns (`MARGIN = 2`) of the data frame.
 
 ```{r}
-avg_day_inflammation <- apply(dat, 2, mean)
+avg_day_inflammation <- apply(dat[, 5:6], 2, mean)
 ```
 
 Since the second argument to `apply` is `MARGIN`, the above command is equivalent to `apply(dat, MARGIN = 2, mean)`.
@@ -341,7 +357,7 @@ Let's take a look at the average inflammation over time.
 Recall that we already calculated these values above using `apply(dat, 2, mean)` and saved them in the variable `avg_day_inflammation`.
 Plotting the values is done with the function `plot`.
 
-```{r plot-avg-inflammation}
+```{r plot-avg-inflammation, eval=FALSE}
 plot(avg_day_inflammation)
 ```
 
@@ -350,12 +366,12 @@ Above, we gave the function `plot` a vector of numbers corresponding to the aver
 The result is roughly a linear rise and fall, which is suspicious: based on other studies, we expect a sharper rise and slower fall.
 Let's have a look at two other statistics: the maximum and minimum inflammation per day.
 
-```{r plot-max-inflammation}
+```{r plot-max-inflammation, eval=FALSE}
 max_day_inflammation <- apply(dat, 2, max)
 plot(max_day_inflammation)
 ```
 
-```{r plot-min-inflammation}
+```{r plot-min-inflammation, eval=FALSE}
 min_day_inflammation <- apply(dat, 2, min)
 plot(min_day_inflammation)
 ```
