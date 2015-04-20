@@ -14,7 +14,7 @@ minutes: 30
 > * Perform operations on a data frame of data.
 > * Display simple graphs.
 
-We are studying inflammation in patients who have been given a new treatment for arthritis,
+We are studying inflammation in patients undergoing a new treatment for arthritis,
 and need to analyze the first dozen data sets. 
 The data sets are stored in [comma-separated values](reference.html#comma-separated-values-(csv)) (CSV) format: each row holds information for a single patient, and the columns represent successive days. 
 The first few rows of our first file look like this:
@@ -31,7 +31,7 @@ The first few rows of our first file look like this:
 
 We want to:
 
-* load that data into memory,
+* load data into memory,
 * calculate the average inflammation per day across all patients, and
 * plot the result.
 
@@ -58,21 +58,21 @@ Now we could load the data into R using `read.csv`:
 read.csv(file = "data/inflammation-01.csv", header = FALSE)
 ~~~
 
-The expression `read.csv(...)` is a [function call](reference.html#function-call) that asks R to run the function `read.csv`. 
+The expression `read.csv(...)` is a [function call](reference.html#function-call) asking R to run the function `read.csv`. 
 
-`read.csv` has two [arguments](reference.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
+`read.csv` has two [arguments](reference.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data (a header row).
 The filename needs to be a character string (or [string](reference.html#string) for short), so we put it in quotes.
 Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers.
-We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
+We'll talk more about the value `FALSE`, and its converse `TRUE`, in [lesson 04](https://swcarpentry.github.io/r-novice-inflammation/04-cond.html).
 
 > ## Tip {.callout} 
 > 
-> `read.csv` actually has many more arguments that you may find useful when 
+> `read.csv` actually has many additional arguments you may find useful when 
 > importing your own data in the future. You can learn more about these 
 > options in this supplementary [lesson](01-supp-read-write-csv.html).
 
-The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s).
-For example, in this case if we provided the name of a different file to the argument `file`, `read.csv` would read it instead.
+The utility of a function is it will perform its given action on whatever value is passed to the named argument(s).
+For example, in this case if we provided the name of a different file to the argument `file`, `read.csv` would read the new file instead.
 We'll learn more of the details about functions and their arguments in the next lesson.
 
 Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `inflammation-01.csv`.
@@ -121,8 +121,8 @@ We can do arithmetic with the variable:
 > ## Tip {.callout}
 >
 > We can add comments to our code using the `#` character. It is useful to 
-> document our code in this way so that others (and us the next time we 
-> read it) have an easier time following what the code is doing.
+> document our code in this way so others (and us the next time we 
+> read it) have an easier time following what the code does.
 
 We can also change an object's value by assigning it a new value:
 
@@ -220,8 +220,8 @@ Now that we know how to assign things to variables, let's re-run `read.csv` and 
 dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 ~~~
 
-This statement doesn't produce any output because assignment doesn't display anything.
-If we want to check that our data has been loaded, we can print the variable's value.
+This statement does not produce any output because assignment does not display anything.
+If we want to check and see if our data has been loaded, we can print the variable's value.
 However, for large data sets it is convenient to use the function `head` to display only the first few rows of data.
 
 
@@ -269,7 +269,7 @@ age <- age - 20
 
 ### Manipulating Data
 
-Now that our data is in memory, we can start doing things with it. 
+Now our data is in memory and we can start doing things with it. 
 First, let's ask what type of thing `dat` *is*:
 
 
@@ -284,8 +284,8 @@ class(dat)
 
 ~~~
 
-The output tells us that data currently is a data frame in R. 
-This is similar to a spreadsheet in MS Excel that many of us are familiar with using.
+The output tells us our data (dat) is currently a data frame in R. 
+This is similar to the spreadsheets in Microsoft Excel many of us are familiar with using.
 Data frames are very useful for storing data because you can have a continuous variable, e.g. rainfall, in one column and a categorical variable, e.g. month, in another.
 
 We can see the dimensions, or [shape](reference.html#shape-(of-an-array)), of the data frame like this:
@@ -302,7 +302,7 @@ dim(dat)
 
 ~~~
 
-This tells us that our data frame, `dat`, has 60 rows and 40 columns.
+This tells us our data frame, `dat`, has 60 rows and 40 columns.
 
 If we want to get a single value from the data frame, we can provide an [index](reference.html#index) in square brackets, just as we do in math:
 
@@ -391,9 +391,9 @@ dat[c(3, 8, 37, 56), c(10, 14, 29)]
 
 ~~~
 
-We also don't have to provide a slice for either the rows or the columns.
-If we don't include a slice for the rows, R returns all the rows; if we don't include a slice for the columns, R returns all the columns.
-If we don't provide a slice for either rows or columns, e.g. `dat[, ]`, R returns the full data frame.
+We also do not have to provide a slice for either the rows or the columns.
+If we do not include a slice for the rows, R returns all the rows; if we do not include a slice for the columns, R returns all the columns.
+If we do not provide a slice for either rows or columns, e.g. `dat[ , ]`, R returns the full data frame.
 
 
 ~~~{.r}
@@ -417,7 +417,7 @@ dat[5, ]
 
 ~~~{.r}
 # All rows from column 16
-dat[, 16]
+dat[ , 16]
 ~~~
 
 
@@ -431,7 +431,7 @@ dat[, 16]
 
 Now let's perform some common mathematical operations to learn about our inflammation data.
 When analyzing data we often want to look at partial statistics, such as the maximum value per patient or the average value per day. 
-One way to do this is to select the data we want to create a new temporary data frame, and then perform the calculation on this subset:
+One way to do this is to select the data we want, create a new temporary data frame, and perform the calculation on the subset:
 
 
 ~~~{.r}
@@ -448,7 +448,7 @@ max(patient_1)
 
 ~~~
 
-We don't actually need to store the row in a variable of its own. 
+We do not actually need to store the row in a variable of its own. 
 Instead, we can combine the selection and the function call:
 
 
@@ -542,7 +542,7 @@ Thus, to obtain the average inflammation of each patient we will need to calcula
 avg_patient_inflammation <- apply(dat, 1, mean)
 ~~~
 
-And to obtain the average inflammation of each day we will need to calculate the mean of all of the columns (`MARGIN = 2`) of the data frame.
+To obtain the average inflammation of each day we need to calculate the mean of all of the columns (`MARGIN = 2`) of the data frame.
 
 
 ~~~{.r}
@@ -550,7 +550,7 @@ avg_day_inflammation <- apply(dat, 2, mean)
 ~~~
 
 Since the second argument to `apply` is `MARGIN`, the above command is equivalent to `apply(dat, MARGIN = 2, mean)`.
-We'll learn why this is so in the next lesson.
+We will learn why this is so in the next lesson.
 
 > ## Tip {.callout}
 >
@@ -618,7 +618,7 @@ The mathematician Richard Hamming once said, "The purpose of computing is insigh
 Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R's plotting features. 
 
 Let's take a look at the average inflammation over time.
-Recall that we already calculated these values above using `apply(dat, 2, mean)` and saved them in the variable `avg_day_inflammation`.
+Recall we already calculated these values above using `apply(dat, 2, mean)` and saved them in the variable `avg_day_inflammation`.
 Plotting the values is done with the function `plot`.
 
 
