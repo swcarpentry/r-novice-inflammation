@@ -318,7 +318,7 @@ element[4:6]
 >    Given those answers,
 >    explain what `element[-1:-4]` does.
 >
-> 1.  Use a slice of `element` to create a new character vector that spells the word "eon", e.g. `c("e", "o", "n")`.
+> 1.  Use a slice of `element` to create a new character vector that spells the word "eon", i.e. `c("e", "o", "n")`.
 
 
 > ## Challenge - Subsetting data 2 {.challenge}
