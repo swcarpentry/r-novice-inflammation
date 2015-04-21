@@ -158,36 +158,6 @@ length(vowels)
 
 `length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](00-first-timers.html) to learn more about the different ways to store data in R).
 
-```{r, include=FALSE}
- print_N <- function(N) {
-   nseq <- seq(N)
-   for (num in nseq) {
-     print(num)
-   }
- }
-```
-
-
-```{r include=FALSE}
-expo <- function(base, power) {
-  result <- 1
-  for (i in seq(power)) {
-    result <- result * base
-  }
-  return(result)
-}
-```
-
-```{r include=FALSE}
-total <- function(vec) {
-  #calculates the sum of the values in a vector
-  vec_sum <- 0
-  for (num in vec) {
-    vec_sum <- vec_sum + num
-  }
-  return(vec_sum)
-}
-```
 
 > ## Challenge - Using loops {.challenge}
 >
@@ -199,7 +169,13 @@ total <- function(vec) {
 >
 > Using `seq`, write a function that prints the first **N** natural numbers, one per line:
 >
-> ```{r}
+> ```{r, echo=-1}
+> print_N <- function(N) {
+>   nseq <- seq(N)
+>   for (num in nseq) {
+>     print(num)
+>   }
+> }
 > print_N(3)
 > ```
 >
@@ -210,7 +186,14 @@ total <- function(vec) {
 > ```
 >
 > Write a function called `expo` that uses a loop to calculate the same result.
-> ```{r}
+> ```{r, echo=-1}
+> expo <- function(base, power) {
+>   result <- 1
+>   for (i in seq(power)) {
+>     result <- result * base
+>   }
+>   return(result)
+> }
 > expo(2, 4)
 > ```
 >
@@ -218,7 +201,15 @@ total <- function(vec) {
 > (R has a built-in function called `sum` that does this for you.
 > Please don't use it for this exercise.)
 >
-> ```{r}
+> ```{r, echo=-1}
+> total <- function(vec) {
+>   #calculates the sum of the values in a vector
+>   vec_sum <- 0
+>   for (num in vec) {
+>     vec_sum <- vec_sum + num
+>   }
+>   return(vec_sum)
+> }
 > ex_vec <- c(4, 8, 15, 16, 23, 42)
 > total(ex_vec)
 > ```
