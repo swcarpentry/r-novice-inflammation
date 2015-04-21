@@ -52,8 +52,7 @@ It is also on par with the similar lesson on Python.
 The objective is to explain modular programming with the concepts of functions,
 loops, flow control, and defensive programming (i.e. SWC best practices).
 Supplementary material is available for R specifics
-([First Timers](00-first-timers.html),
-[Addressing Data](01-supp-addressing-data.html),
+([Addressing Data](01-supp-addressing-data.html),
 [Data Types and Structure](01-supp-data-structures.html),
 [Understanding Factors](01-supp-factors.html),
 [Introduction to RStudio](01-supp-intro-rstudio.html),
@@ -62,12 +61,6 @@ Supplementary material is available for R specifics
 [Best Practices for Using R and Designing Programs](06-best-practices-R.html),
 [Dynamic Reports with knitr](07-knitr-R.html),
 [Making Packages in R](08-making-packages-R.html)).
-
-## [First Timers](00-first-timers.html)
-
-* Introduction to R: basics, data types and structures
-
-* Note that some of the info are also available as supplementary lessons
 
 ## [Analyzing Patient Data](01-starting-with-data.html)
 
@@ -100,6 +93,8 @@ plot(sd_day_inflammation)
 * Note that the data frame `dat` is not the same set of data as in other lessons
 
 ## [Data Types and Structure](01-supp-data-structures.html)
+
+* Lesson on data types and structures
 
 ## [Understanding Factors](01-supp-factors.html)
 
