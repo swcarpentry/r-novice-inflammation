@@ -39,16 +39,13 @@ Tools like `grep` might be more sophisticated than the programs our learners can
 write at this point in their careers, but it's crucial they realize this is a
 difference of scale rather than kind.
 
-A typical, half-day, lesson will use the following material:
+A typical, half-day, lesson would use the first three lessons:
 
 1. [Analyzing Patient Data](01-starting-with-data.html)
 2. [Creating Functions](02-func-R.html)
 3. [Analyzing Multiple Data Sets](03-loops-R.html)
-4. [Making Choices](04-cond.html)
-5. [Basic Defensive Programming](05-testing-R.html)
-6. [Command-Line Programs](06-cmdline.html)
 
-It is already a lot of material to cover.
+The `R` novice inflammation contains a lot of material to cover.
 Remember this typical lesson does not spend a lot of time on data types, data
 structure, etc.
 It is also on par with the similar lesson on Python.
