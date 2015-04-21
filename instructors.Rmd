@@ -263,8 +263,6 @@ analyze <- function(filename, output = NULL) {
 }
 ```
 
-## [Basic Defensive Programming](05-testing-R.html)
-
 ## [Best Practices for Using R and Designing Programs](06-best-practices-R.html)
 
 ## [Command-Line Programs](06-cmdline.html)
