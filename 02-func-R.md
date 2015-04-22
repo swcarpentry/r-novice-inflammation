@@ -16,7 +16,7 @@ minutes: 30
 > * Set default values for function arguments.
 > * Explain why we should divide programs into small, single-purpose functions.
 
-If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics. 
+If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics.
 But we have twelve files to check, and may have more in the future.
 In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.
 
@@ -36,16 +36,16 @@ We define `fahr_to_kelvin` by assigning it to the output of `function`.
 The list of argument names are containted within parentheses.
 Next, the [body](reference.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
 The statements in the body are indented by two spaces.
-This makes the code easier to read but does not affect how the code operates. 
+This makes the code easier to read but does not affect how the code operates.
 
 When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
 Inside the function, we use a [return statement](reference.html#return-statement) to send a result back to whoever asked for it.
 
-> ## Tip {.callout} 
-> 
+> ## Tip {.callout}
+>
 > One feature unique to R is that the return statement is not required.
-> R automatically returns whichever variable is on the last line of the body 
-> of the function. Since we are just learning, we will explicitly define the 
+> R automatically returns whichever variable is on the last line of the body
+> of the function. Since we are just learning, we will explicitly define the
 > return statement.
 
 Let's try running our function.
@@ -125,7 +125,7 @@ fahr_to_celsius(32.0)
 
 ~~~
 
-This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want. 
+This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want.
 Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
 
 > ## Challenge - Create a function {.challenge}
@@ -136,41 +136,35 @@ Real-life functions will usually be larger than the ones shown here--typically h
 >`original` and `wrapper`, and returns a new vector that has the wrapper vector
 >at the beginning and end of the original:
 >
-
-
-
-~~~{.r}
-best_practice <- c("Write", "programs", "for", "people", "not", "computers")
-asterisk <- "***"  # R interprets a variable with a single value as a vector
-                   # with one element.
-fence(best_practice, asterisk)
-~~~
-
-
-
-~~~{.output}
-[1] "***"       "Write"     "programs"  "for"       "people"    "not"      
-[7] "computers" "***"      
-
-~~~
-
+> 
+> ~~~{.r}
+> best_practice <- c("Write", "programs", "for", "people", "not", "computers")
+> asterisk <- "***"  # R interprets a variable with a single value as a vector
+>                    # with one element.
+> fence(best_practice, asterisk)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] "***"       "Write"     "programs"  "for"       "people"    "not"      
+> [7] "computers" "***"      
+> 
+> ~~~
 >  + If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
 >    Write a function called `outside` that returns a vector made up of just the first and last elements of its input:
-
-
-
-
-~~~{.r}
-dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
-outside(dry_principle)
-~~~
-
-
-
-~~~{.output}
-[1] "Don't"  "others"
-
-~~~
+> 
+> ~~~{.r}
+> dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
+> outside(dry_principle)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] "Don't"  "others"
+> 
+> ~~~
 
 
 ### The Call Stack
@@ -234,16 +228,16 @@ Error in eval(expr, envir, enclos): object 'temp' not found
 
 ~~~
 
-> ## Tip {.callout} 
-> 
-> The explanation of the stack frame above was very general and the basic 
+> ## Tip {.callout}
+>
+> The explanation of the stack frame above was very general and the basic
 > concept will help you understand most languages you try to program with.
-> However, R has some unique aspects that can be exploited when performing 
-> more complicated operations. We will not be writing anything that requires 
-> knowledge of these more advanced concepts. In the future when you are 
-> comfortable writing functions in R, you can learn more by reading the 
-> [R Language Manual][man] or this [chapter][] from 
-> [Advanced R Programming][adv-r] by Hadley Wickham. For context, R uses the 
+> However, R has some unique aspects that can be exploited when performing
+> more complicated operations. We will not be writing anything that requires
+> knowledge of these more advanced concepts. In the future when you are
+> comfortable writing functions in R, you can learn more by reading the
+> [R Language Manual][man] or this [chapter][] from
+> [Advanced R Programming][adv-r] by Hadley Wickham. For context, R uses the
 > terminology "environments" instead of frames.
 
 [man]: http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
@@ -298,14 +292,13 @@ That only works if functions don't interfere with each other; if they do, we hav
 >
 >  + We previously wrote functions called `fence` and `outside`.
 >    Draw a diagram showing how the call stack changes when we run the
->following:
-
-
-~~~{.r}
-inner_vec <- "carbon"
-outer_vec <- "+"
-result <- outside(fence(inner_vec, outer_vec))
-~~~
+>    following:
+> 
+> ~~~{.r}
+> inner_vec <- "carbon"
+> outer_vec <- "+"
+> result <- outside(fence(inner_vec, outer_vec))
+> ~~~
 
 ### Testing and Documenting
 
@@ -529,35 +522,33 @@ center <- function(data, desired) {
 }
 ~~~
 
-> ## Tip {.callout} 
-> 
-> Formal documentation for R functions is written in separate `.Rd` using a 
-> markup language similar to [LaTeX][]. You see the result of this documentation 
+> ## Tip {.callout}
+>
+> Formal documentation for R functions is written in separate `.Rd` using a
+> markup language similar to [LaTeX][]. You see the result of this documentation
 > when you look at the help file for a given function, e.g. `?read.csv`.
-> The [roxygen2][] package allows R coders to write documentation alongside 
+> The [roxygen2][] package allows R coders to write documentation alongside
 > the function code and then process it into the appropriate `.Rd` files.
-> You will want to switch to this more formal method of writing documentation 
+> You will want to switch to this more formal method of writing documentation
 > when you start writing more complicated R projects.
 
 [LaTeX]: http://www.latex-project.org/
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 
+
+
+
+
 > ## Challenge - A more advanced function {.challenge}
 >
 >  + Write a function called `analyze` that takes a filename as a argument and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
 >  `analyze("data/inflammation-01.csv")` should produce the graphs already shown, while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
-
-[01]: 01-starting-with-data.html
-
-
-
 >  + Write a function `rescale` that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1.
 >  (If $L$ and $H$ are the lowest and highest values in the original vector, then the replacement for a value $v$ should be $(v-L) / (H-L)$.)
 >  Be sure to document your function with comments.
-
-
-
 >  + Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
+
+[01]: 01-starting-with-data.html
 
 
 
@@ -731,15 +722,15 @@ display(c = 77)
 
 > ## Tip {.callout}
 >
-> To be precise, R has three ways that arguments supplied 
+> To be precise, R has three ways that arguments supplied
 >
 > by you are matched to the *formal arguments* of the function definition
 >
-> 1. by complete name, 
+> 1. by complete name,
 > 2. by partial name (matching on initial *n* characters of the argument name), and
 > 3. by position.
 >
-> Arguments are matched in the manner outlined above in *that order*: by 
+> Arguments are matched in the manner outlined above in *that order*: by
 > complete name, then by partial matching of names, and finally by position.
 
 With that in hand, let's look at the help for `read.csv()`:

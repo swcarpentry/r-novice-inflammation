@@ -15,8 +15,8 @@ minutes: 30
 > * Display simple graphs.
 
 We are studying inflammation in patients who have been given a new treatment for arthritis,
-and need to analyze the first dozen data sets. 
-The data sets are stored in [comma-separated values](reference.html#comma-separated-values-(csv)) (CSV) format: each row holds information for a single patient, and the columns represent successive days. 
+and need to analyze the first dozen data sets.
+The data sets are stored in [comma-separated values](reference.html#comma-separated-values-(csv)) (CSV) format: each row holds information for a single patient, and the columns represent successive days.
 The first few rows of our first file look like this:
 
 
@@ -58,17 +58,17 @@ Now we could load the data into R using `read.csv`:
 read.csv(file = "data/inflammation-01.csv", header = FALSE)
 ~~~
 
-The expression `read.csv(...)` is a [function call](reference.html#function-call) that asks R to run the function `read.csv`. 
+The expression `read.csv(...)` is a [function call](reference.html#function-call) that asks R to run the function `read.csv`.
 
 `read.csv` has two [arguments](reference.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
 The filename needs to be a character string (or [string](reference.html#string) for short), so we put it in quotes.
 Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers.
 We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
 
-> ## Tip {.callout} 
-> 
-> `read.csv` actually has many more arguments that you may find useful when 
-> importing your own data in the future. You can learn more about these 
+> ## Tip {.callout}
+>
+> `read.csv` actually has many more arguments that you may find useful when
+> importing your own data in the future. You can learn more about these
 > options in this supplementary [lesson](01-supp-read-write-csv.html).
 
 The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s).
@@ -120,8 +120,8 @@ We can do arithmetic with the variable:
 
 > ## Tip {.callout}
 >
-> We can add comments to our code using the `#` character. It is useful to 
-> document our code in this way so that others (and us the next time we 
+> We can add comments to our code using the `#` character. It is useful to
+> document our code in this way so that others (and us the next time we
 > read it) have an easier time following what the code is doing.
 
 We can also change an object's value by assigning it a new value:
@@ -140,12 +140,12 @@ weight_kg
 
 ~~~
 
-If we imagine the variable as a sticky note with a name written on it, 
+If we imagine the variable as a sticky note with a name written on it,
 assignment is like putting the sticky note on a particular value:
 
 <img src="fig/python-sticky-note-variables-01.svg" alt="Variables as Sticky Notes" />
 
-This means that assigning a value to one object does not change the values of other variables. 
+This means that assigning a value to one object does not change the values of other variables.
 For example, let's store the subject's weight in pounds in a variable:
 
 
@@ -210,7 +210,7 @@ weight_lb
 
 <img src="fig/python-sticky-note-variables-03.svg" alt="Updating a Variable" />
 
-Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes. 
+Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes.
 This is different from the way spreadsheets work.
 
 Now that we know how to assign things to variables, let's re-run `read.csv` and save its result:
@@ -269,7 +269,7 @@ age <- age - 20
 
 ### Manipulating Data
 
-Now that our data is in memory, we can start doing things with it. 
+Now that our data is in memory, we can start doing things with it.
 First, let's ask what type of thing `dat` *is*:
 
 
@@ -284,7 +284,7 @@ class(dat)
 
 ~~~
 
-The output tells us that data currently is a data frame in R. 
+The output tells us that data currently is a data frame in R.
 This is similar to a spreadsheet in MS Excel that many of us are familiar with using.
 Data frames are very useful for storing data because you can have a continuous variable, e.g. rainfall, in one column and a categorical variable, e.g. month, in another.
 
@@ -333,7 +333,7 @@ dat[30, 20]
 
 ~~~
 
-An index like `[30, 20]` selects a single element of a data frame, but we can select whole sections as well. 
+An index like `[30, 20]` selects a single element of a data frame, but we can select whole sections as well.
 For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:
 
 
@@ -430,7 +430,7 @@ dat[, 16]
 ~~~
 
 Now let's perform some common mathematical operations to learn about our inflammation data.
-When analyzing data we often want to look at partial statistics, such as the maximum value per patient or the average value per day. 
+When analyzing data we often want to look at partial statistics, such as the maximum value per patient or the average value per day.
 One way to do this is to select the data we want to create a new temporary data frame, and then perform the calculation on this subset:
 
 
@@ -448,7 +448,7 @@ max(patient_1)
 
 ~~~
 
-We don't actually need to store the row in a variable of its own. 
+We don't actually need to store the row in a variable of its own.
 Instead, we can combine the selection and the function call:
 
 
@@ -528,9 +528,9 @@ As the diagram below shows, we want to perform the operation across a margin of 
 
 To support this, we can use the `apply` function.
 
-> ## Tip {.callout} 
+> ## Tip {.callout}
 >
-> To learn about a function in R, e.g. `apply`, we can read its help 
+> To learn about a function in R, e.g. `apply`, we can read its help
 > documention by running `help(apply)` or `?apply`.
 
 `apply` allows us to repeat a function on all of the rows (`MARGIN = 1`) or columns (`MARGIN = 2`) of a data frame.
@@ -554,8 +554,8 @@ We'll learn why this is so in the next lesson.
 
 > ## Tip {.callout}
 >
-> Some common operations have more efficient alternatives. For example, you 
-> can calculate the row-wise or column-wise means with `rowMeans` and 
+> Some common operations have more efficient alternatives. For example, you
+> can calculate the row-wise or column-wise means with `rowMeans` and
 > `colMeans`, respectively.
 
 > ## Challenge - Slicing (subsetting) data {.challenge}
@@ -563,36 +563,36 @@ We'll learn why this is so in the next lesson.
 > A subsection of a data frame is called a [slice](reference.html#slice).
 > We can take slices of character vectors as well:
 >
-
-~~~{.r}
-element <- c("o", "x", "y", "g", "e", "n")
-# first three characters
-element[1:3]
-~~~
-
-
-
-~~~{.output}
-[1] "o" "x" "y"
-
-~~~
-
-
-
-~~~{.r}
-# last three characters
-element[4:6]
-~~~
-
-
-
-~~~{.output}
-[1] "g" "e" "n"
-
-~~~
+> 
+> ~~~{.r}
+> element <- c("o", "x", "y", "g", "e", "n")
+> # first three characters
+> element[1:3]
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] "o" "x" "y"
+> 
+> ~~~
+> 
+> 
+> 
+> ~~~{.r}
+> # last three characters
+> element[4:6]
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] "g" "e" "n"
+> 
+> ~~~
 >
 > 1.  If the first four characters are selected using the slice `element[1:4]`, how can we obtain the first four characters in reverse order?
->    
+>
 > 1.  What is `element[-1]`?
 >    What is `element[-4]`?
 >    Given those answers,
@@ -604,7 +604,7 @@ element[4:6]
 > ## Challenge - Subsetting data 2 {.challenge}
 >
 > Suppose you want to determine the maximum inflamation for patient 5 across days three to seven.
-> To do this you would extract the relevant slice from the data frame and calculate the maximum value.  
+> To do this you would extract the relevant slice from the data frame and calculate the maximum value.
 > Which of the following lines of R code gives the correct answer?
 >
 > (a) `max(dat[5, ])`
@@ -615,7 +615,7 @@ element[4:6]
 ### Plotting
 
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and the best way to develop insight is often to visualize data.
-Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R's plotting features. 
+Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R's plotting features.
 
 Let's take a look at the average inflammation over time.
 Recall that we already calculated these values above using `apply(dat, 2, mean)` and saved them in the variable `avg_day_inflammation`.
@@ -657,7 +657,7 @@ The maximum value rises and falls perfectly smoothly, while the minimum seems to
 
 #### Key Points
 
-* 
+*
 * Use `variable <- value` to assign a value to a variable in order to record it in memory.
 * Objects are created on demand whenever a value is assigned to them.
 * The function `dim` gives the dimensions of a data frame.
