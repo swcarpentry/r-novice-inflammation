@@ -11,7 +11,9 @@ source("tools/chunk-options.R")
 
 ## Legend
 
-FIXME
+We are using a dataset with records on inflammation from patients following an
+arthritis treatment. With it we explain `R` data structure, basic data
+manipulation and plotting, writing functions and loops.
 
 ## Overall
 
