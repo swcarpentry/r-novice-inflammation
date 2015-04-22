@@ -306,12 +306,12 @@ This tells us that our data frame, `dat`, has 60 rows and 40 columns.
 
 If we want to get a single value from the data frame, we can provide an [index](reference.html#index) in square brackets, just as we do in math:
 
+For R data.frames indexes are called by specifying the row and column seperated by a comma. For example if we wanted the value in row 1 column one, we would enter:
 
 ~~~{.r}
-# first value in dat
+# first row and column
 dat[1, 1]
 ~~~
-
 
 
 ~~~{.output}
@@ -319,10 +319,9 @@ dat[1, 1]
 
 ~~~
 
-
+You can index any combinations of rows and columns. Here we want only the value in the 30th row and the 20th column.
 
 ~~~{.r}
-# middle value in dat
 dat[30, 20]
 ~~~
 
@@ -333,15 +332,12 @@ dat[30, 20]
 
 ~~~
 
-An index like `[30, 20]` selects a single element of a data frame, but we can select whole sections as well. 
-For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:
+Each of these calls return single values. If we want all values in a row, but for a specific columns we can selection entire sections.
 
-
+For example, if i want values from rows 1-4 in columns 1-10:
 ~~~{.r}
 dat[1:4, 1:10]
 ~~~
-
-
 
 ~~~{.output}
   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
@@ -361,8 +357,6 @@ The slice does not need to start at 1, e.g. the line below selects rows 5 throug
 dat[5:10, 1:10]
 ~~~
 
-
-
 ~~~{.output}
    V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
 5   0  1  1  3  3  1  3  5  2   4
@@ -373,13 +367,29 @@ dat[5:10, 1:10]
 10  0  1  1  2  1  3  5  3  5   8
 
 ~~~
-We can use the function `c`, which stands for **c**ombine, to select non-contiguous values:
 
+We can use the function `c`, which stands for **c**ombine, to index data.frames in similiar ways.
+
+Recall that 1:4 is the sequence 1,2,3,4. The same can be called for any vector of numbers. The following call returns the same values as we called above.
+
+~~~{.r}
+dat[c(1,2,3,4), 1:10]
+~~~
+
+~~~{.output}
+  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
+1  0  0  1  3  1  2  4  7  8   3
+2  0  1  2  1  2  1  3  2  2   6
+3  0  1  1  3  3  2  6  2  5   9
+4  0  0  2  0  4  2  2  1  6   7
+
+~~~
+
+The advantage of c() is we can call non-contigious values. If we want the values for rows 3,8,37,56 and columns 10, 14, 29, we can place them inside c() vectors.
 
 ~~~{.r}
 dat[c(3, 8, 37, 56), c(10, 14, 29)]
 ~~~
-
 
 
 ~~~{.output}
