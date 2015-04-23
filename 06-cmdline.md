@@ -8,7 +8,7 @@ minutes: 30
 
 
 > ## Objectives {.objectives}
-> 
+>
 > *   Use the values of command-line arguments in a program.
 > *   Handle flags and files separately in a command-line program.
 > *   Read data from standard input in a program so that it can be used in a pipeline.
@@ -89,7 +89,7 @@ attached base packages:
 
 ~~~
 
-> ## Tip {.callout} 
+> ## Tip {.callout}
 >
 > If that did not work, remember that you must be in the correct directory.
 > You can determine which directory you are currently in using `pwd` and change to a different directory using `cd`.
@@ -327,57 +327,56 @@ Rscript readings-02.R data/inflammation-01.csv
 >  + Write a command-line program that does addition and subtraction.
 >  **Hint:** Everything argument read from the command-line is interpreted as a character [string](reference.html#string).
 >  You can convert from a string to a number using the function `as.numeric`.
-
-
-~~~{.r}
-Rscript arith.R 1 + 2
-~~~
-
-
-
-
-~~~{.output}
-3
-
-~~~
-
-
-~~~{.r}
-Rscript arith.R 3 - 4
-~~~
-
-
-
-
-~~~{.output}
--1
-
-~~~
-
-
+> 
+> ~~~{.r}
+> Rscript arith.R 1 + 2
+> ~~~
+> 
+> 
+> 
+> 
+> ~~~{.output}
+> 3
+> 
+> ~~~
+>
+> 
+> ~~~{.r}
+> Rscript arith.R 3 - 4
+> ~~~
+> 
+> 
+> 
+> 
+> ~~~{.output}
+> -1
+> 
+> ~~~
 >
 >  + What goes wrong if you try to add multiplication using `*` to the program?
 >
-
+> <!-- second-answer -->
+> <!-- The * is a wildcard character in the Unix Shell. -->
+> <!-- Thus all the files in the current working directory are included as arguments to  arith.R. -->
 >
 >  + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program, `find-pattern.R`, that lists all the files in the current directory that contain a specific pattern:
 >
-
-~~~{.r}
-# For example, searching for the pattern "print-args" returns the two scripts we
-# wrote earlier
-Rscript find-pattern.R print-args
-~~~
-
-
-
-
-~~~{.output}
-print-args.R
-print-args-trailing.R
-
-~~~
-
+> 
+> ~~~{.r}
+> # For example, searching for the pattern "print-args" returns the two scripts we
+> # wrote earlier
+> Rscript find-pattern.R print-args
+> ~~~
+> 
+> 
+> 
+> 
+> ~~~{.output}
+> print-args.R
+> print-args-trailing.R
+> 
+> ~~~
+>
 
 
 ### Handling Multiple Files
@@ -573,9 +572,9 @@ main()
 
 This is four lines longer than its predecessor, but broken into more digestible chunks of 8 and 12 lines.
 
-> ## Tip {.callout} 
+> ## Tip {.callout}
 >
-> R has a package named [argparse][argparse-r] that helps handle complex command-line flags (it utilizes a [Python module][argparse-py] of the same name). 
+> R has a package named [argparse][argparse-r] that helps handle complex command-line flags (it utilizes a [Python module][argparse-py] of the same name).
 > We will not cover this package in this lesson but when you start writing programs with multiple parameters you'll want to read through the package's [vignette][].
 
 [argparse-r]: http://cran.r-project.org/web/packages/argparse/index.html
