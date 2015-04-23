@@ -158,25 +158,23 @@ if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
 <ul>
 <li>Write a function, <code>plot_dist</code>, that plots a boxplot if the length of the vector is greater than a specified threshold and a stripchart otherwise. To do this you'll use the R functions <code>boxplot</code> and <code>stripchart</code>.</li>
 </ul>
-</div>
-</div>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)
-<span class="kw">plot_dist</span>(dat[, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>)  <span class="co"># day (column) 10</span></code></pre>
-<p><img src="fig/04-cond-conditional-challenge-1.png" title="plot of chunk conditional-challenge" alt="plot of chunk conditional-challenge" style="display: block; margin: auto;" /></p>
+<span class="kw">plot_dist</span>(dat[, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>)     <span class="co"># day (column) 10</span></code></pre>
+<p><img src="fig/04-cond-using-conditions-01-1.png" title="plot of chunk using-conditions-01" alt="plot of chunk using-conditions-01" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_dist</span>(dat[<span class="dv">1</span>:<span class="dv">5</span>, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>)  <span class="co"># samples (rows) 1-5 on day (column) 10</span></code></pre>
-<p><img src="fig/04-cond-conditional-challenge-2.png" title="plot of chunk conditional-challenge" alt="plot of chunk conditional-challenge" style="display: block; margin: auto;" /></p>
-<blockquote>
+<p><img src="fig/04-cond-using-conditions-01-2.png" title="plot of chunk using-conditions-01" alt="plot of chunk using-conditions-01" style="display: block; margin: auto;" /></p>
 <ul>
 <li>One of your collaborators prefers to see the distributions of the larger vectors as a histogram instead of as a boxplot. In order to choose between a histogram and a boxplot we will edit the function <code>plot_dist</code> and add an additional argument <code>use_boxplot</code>. By defualt we will set <code>use_boxplot</code> to <code>TRUE</code> which will create a boxplot when the vector is longer than <code>threshold</code>. When <code>use_boxplot</code> is set to <code>FALSE</code>, <code>plot_dist</code> will instead plot a histogram for the larger vectors. As before, if the length of the vector is shorter than <code>threshold</code>, <code>plot_dist</code> will create a stripchart. A histogram is made with the <code>hist</code> command in R.</li>
 </ul>
-</blockquote>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)
-<span class="kw">plot_dist</span>(dat[, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>, <span class="dt">use_boxplot =</span> <span class="ot">TRUE</span>)  <span class="co"># day (column) 10 - create boxplot</span></code></pre>
+<span class="kw">plot_dist</span>(dat[, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>, <span class="dt">use_boxplot =</span> <span class="ot">TRUE</span>)   <span class="co"># day (column) 10 - create boxplot</span></code></pre>
 <p><img src="fig/04-cond-conditional-challenge-hist-1.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_dist</span>(dat[, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>, <span class="dt">use_boxplot =</span> <span class="ot">FALSE</span>)  <span class="co"># day (column) 10 - create histogram</span></code></pre>
 <p><img src="fig/04-cond-conditional-challenge-hist-2.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_dist</span>(dat[<span class="dv">1</span>:<span class="dv">5</span>, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>)  <span class="co"># samples (rows) 1-5 on day (column) 10</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_dist</span>(dat[<span class="dv">1</span>:<span class="dv">5</span>, <span class="dv">10</span>], <span class="dt">threshold =</span> <span class="dv">10</span>)                    <span class="co"># samples (rows) 1-5 on day (column) 10</span></code></pre>
 <p><img src="fig/04-cond-conditional-challenge-hist-3.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" /></p>
+</div>
+</div>
 <h3 id="saving-automatically-generated-figures">Saving automatically generated figures</h3>
 <p>Now that we know how to have R make decisions based on input values, let's update <code>analyze</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">analyze &lt;-<span class="st"> </span>function(filename, <span class="dt">output =</span> <span class="ot">NULL</span>) {
