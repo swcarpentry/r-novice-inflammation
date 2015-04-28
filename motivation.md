@@ -14,7 +14,7 @@ analysis and graphics.
 - It's open-source,
 - It's a community!
 
-## Why learning R?
+## Why learn R?
 
 - More analytical methods: more than 6,000 packages extending R's capabilities
   are available. More than 1,000 packages are available from the
