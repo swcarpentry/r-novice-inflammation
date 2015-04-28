@@ -16,21 +16,25 @@ analysis and graphics.
 
 ## Why learn R?
 
-- More analytical methods: more than 6,000 packages extending R's capabilities
-  are available. More than 1,000 packages are available from the
-  [BioConductor Project](http://bioconductor.org/), making R the prime software
-  for genomic and genetic data analysis. Many new developments in statistics
-  appear first as R package,
+- More analytical methods: >6,000 packages extending R's capabilities; >1,000
+  packages available from the [BioConductor Project](http://bioconductor.org/).
+  Many new developments in statistics appear first as R package,
 - More flexible in the type of data it can analyze,
-- Powerful,
+- Powerful; full matrix capabilities similar to MATLAB.
+
+## Open
+
 - R's procedures (*functions*) are open: you can have a look under the hood and
   modify them,
+- Cross-platform (Windows, Mac, Linux, Unix).
+
+## Integration and Communication
+
 - Graphics capabilities, publication-level quality,
-- Cross-platform (Windows, Mac, Linux, Unix),
-- Full matrix capabilities similar to MATLAB,
 - Connect easily with other programming languages, 
-- Integration with document publishing, through LaTeX or Markdown,
-- FREE!
+- Integration with document publishing, through LaTeX or Markdown.
+
+And it's free!
 
 ## To Learn More
 
