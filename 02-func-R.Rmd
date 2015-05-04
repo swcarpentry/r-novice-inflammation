@@ -3,6 +3,9 @@ layout: page
 title: Programming with R
 subtitle: Creating functions
 minutes: 30
+output:
+  html_document:
+    keep_md: true
 ---
 
 ```{r, include = FALSE}
@@ -174,7 +177,7 @@ it holds the variables we defined outside the functions in our code.
 What it *doesn't* hold is the variables that were in the various stack frames.
 If we try to get the value of `temp` after our functions have finished running, R tells us that there's no such thing:
 
-```{r}
+```{r, error = TRUE }
 temp
 ```
 
@@ -389,7 +392,7 @@ dat <- read.csv("data/inflammation-01.csv", FALSE)
 
 However, the position of the arguments matters if they are not named.
 
-```{r}
+```{r, error = TRUE}
 dat <- read.csv(header = FALSE, file = "data/inflammation-01.csv")
 dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
@@ -480,7 +483,7 @@ read.csv(file, header = TRUE, sep = ",", quote = "\"",
 This tells us that `read.csv()` has one argument, `file`, that doesn't have a default value, and six others that do.
 Now we understand why the following gives an error:
 
-```{r, results="hide"}
+```{r, results="hide", error = TRUE}
 dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
 
