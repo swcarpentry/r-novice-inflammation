@@ -308,21 +308,21 @@ We'll learn why this is so in the next lesson.
 > We can take slices of character vectors as well:
 >
 > ```{r}
-> element <- c("o", "x", "y", "g", "e", "n")
+> animal <- c("m", "o", "n", "k", "e", "y")
 > # first three characters
-> element[1:3]
+> animal[1:3]
 > # last three characters
-> element[4:6]
+> animal[4:6]
 > ```
 >
-> 1.  If the first four characters are selected using the slice `element[1:4]`, how can we obtain the first four characters in reverse order?
+> 1.  If the first four characters are selected using the slice `animal[1:4]`, how can we obtain the first four characters in reverse order?
 >
-> 1.  What is `element[-1]`?
->    What is `element[-4]`?
+> 1.  What is `animal[-1]`?
+>    What is `animal[-4]`?
 >    Given those answers,
->    explain what `element[-1:-4]` does.
+>    explain what `animal[-1:-4]` does.
 >
-> 1.  Use a slice of `element` to create a new character vector that spells the word "eon", e.g. `c("e", "o", "n")`.
+> 1.  Use a slice of `animal` to create a new character vector that spells the word "eon", i.e. `c("e", "o", "n")`.
 
 
 > ## Challenge - Subsetting data 2 {.challenge}
