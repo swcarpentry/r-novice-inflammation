@@ -3,9 +3,7 @@ layout: page
 title: Programming with R
 subtitle: Basic defensive programming
 minutes: 30
-output:
-  html_document:
-    keep_md: true
+keep_md: true
 ---
 
 ```{r, include = FALSE}

@@ -3,9 +3,7 @@ layout: page
 title: Programming with R
 subtitle: Analyzing multiple data sets
 minutes: 30
-output:
-  html_document:
-    keep_md: true
+keep_md: true
 ---
 
 ```{r, include = FALSE}
@@ -265,7 +263,7 @@ list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 Let's test out running our `analyze` function by using it on the first three files in the vector returned by `list.files`:
 
 
-```{r loop-analyze, fig=FALSE}
+```{r loop-analyze, fig=FALSE, error = TRUE}
 filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 filenames <- filenames[1:3]
 for (f in filenames) {

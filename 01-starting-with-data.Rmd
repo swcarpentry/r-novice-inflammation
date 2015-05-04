@@ -3,9 +3,7 @@ layout: page
 title: Programming with R
 subtitle: Analyzing patient data
 minutes: 30
-output:
-  html_document:
-    keep_md: true
+keep_md: true
 ---
 
 ```{r, include = FALSE}

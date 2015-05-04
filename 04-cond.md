@@ -1,9 +1,4 @@
----
-layout: page
-title: Programming with R
-subtitle: Making choices
-minutes: 30
----
+# Programming with R
 
 
 
@@ -100,6 +95,12 @@ print("done")
 
 ~~~{.output}
 [1] "not greater"
+
+~~~
+
+
+
+~~~{.output}
 [1] "done"
 
 ~~~
@@ -255,41 +256,36 @@ In this case, "either" means "either or both", not "either one or the other but 
 >  + Write a function, `plot_dist`, that plots a boxplot if the length of the vector is greater than a specified threshold and a stripchart otherwise.
 >  To do this you'll use the R functions `boxplot` and `stripchart`.
 >
->
->~~~{.r}
+>```{r using-conditions-01, echo=-1}
+> plot_dist <- function(x, threshold) {
+>    if (length(x) > threshold) {
+>        boxplot(x)
+>    } else {
+>        stripchart(x)
+>    }
+> }
 > dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 > plot_dist(dat[, 10], threshold = 10)     # day (column) 10
->~~~
->
-><img src="fig/04-cond-using-conditions-01-1.png" title="plot of chunk using-conditions-01" alt="plot of chunk using-conditions-01" style="display: block; margin: auto;" />
->
->~~~{.r}
 > plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
->~~~
->
-><img src="fig/04-cond-using-conditions-01-2.png" title="plot of chunk using-conditions-01" alt="plot of chunk using-conditions-01" style="display: block; margin: auto;" />
+> ```
 >
 >  + One of your collaborators prefers to see the distributions of the larger vectors as a histogram instead of as a boxplot.  In order to choose between a histogram and a boxplot we will edit the function `plot_dist` and add an additional argument `use_boxplot`.  By defualt we will set `use_boxplot` to `TRUE` which will create a boxplot when the vector is longer than `threshold`.  When `use_boxplot` is set to `FALSE`, `plot_dist` will instead plot a histogram for the larger vectors.  As before, if the length of the vector is shorter than `threshold`, `plot_dist` will create a stripchart.  A histogram is made with the `hist` command in R.
 >
-> 
-> ~~~{.r}
+> ```{r conditional-challenge-hist, echo=-1}
+> plot_dist <- function(x, threshold, use_boxplot = TRUE) {
+>    if (length(x) > threshold & use_boxplot) {
+>        boxplot(x)
+>    } else if (length(x) > threshold & !use_boxplot) {
+>        hist(x)
+>    } else {
+>        stripchart(x)
+>    }
+> }
 > dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 > plot_dist(dat[, 10], threshold = 10, use_boxplot = TRUE)   # day (column) 10 - create boxplot
-> ~~~
-> 
-> <img src="fig/04-cond-conditional-challenge-hist-1.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
-> 
-> ~~~{.r}
 > plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
-> ~~~
-> 
-> <img src="fig/04-cond-conditional-challenge-hist-2.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
-> 
-> ~~~{.r}
 > plot_dist(dat[1:5, 10], threshold = 10)                    # samples (rows) 1-5 on day (column) 10
-> ~~~
-> 
-> <img src="fig/04-cond-conditional-challenge-hist-3.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
+> ```
 
 ### Saving automatically generated figures
 
@@ -358,7 +354,7 @@ Now we can use `analyze` both interactively:
 analyze("data/inflammation-01.csv")
 ~~~
 
-<img src="fig/04-cond-inflammation-01-1.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/04-cond-inflammation-01-2.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/04-cond-inflammation-01-3.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" />
+<img src="fig/04-cond-inflammation-011.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/04-cond-inflammation-012.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/04-cond-inflammation-013.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" />
 
 and to save plots:
 
@@ -403,6 +399,13 @@ Now we can save all of the results with just one line of code:
 
 ~~~{.r}
 analyze_all("inflammation")
+~~~
+
+
+
+~~~{.output}
+Error: no lines available in input
+
 ~~~
 
 Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analzye_all`.
