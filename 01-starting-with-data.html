@@ -284,8 +284,6 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 </div>
 <div class="panel-body">
 <p>A subsection of a data frame is called a <a href="reference.html#slice">slice</a>. We can take slices of character vectors as well:</p>
-</div>
-</div>
 <pre class="sourceCode r"><code class="sourceCode r">element &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;o&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;n&quot;</span>)
 <span class="co"># first three characters</span>
 element[<span class="dv">1</span>:<span class="dv">3</span>]</code></pre>
@@ -295,19 +293,19 @@ element[<span class="dv">1</span>:<span class="dv">3</span>]</code></pre>
 element[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <pre class="output"><code>[1] &quot;g&quot; &quot;e&quot; &quot;n&quot;
 </code></pre>
-<blockquote>
 <ol style="list-style-type: decimal">
 <li><p>If the first four characters are selected using the slice <code>element[1:4]</code>, how can we obtain the first four characters in reverse order?</p></li>
 <li><p>What is <code>element[-1]</code>? What is <code>element[-4]</code>? Given those answers, explain what <code>element[-1:-4]</code> does.</p></li>
 <li><p>Use a slice of <code>element</code> to create a new character vector that spells the word &quot;eon&quot;, e.g. <code>c(&quot;e&quot;, &quot;o&quot;, &quot;n&quot;)</code>.</p></li>
 </ol>
-</blockquote>
+</div>
+</div>
 <div id="challenge---subsetting-data-2" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Subsetting data 2</h2>
 </div>
 <div class="panel-body">
-<p>Suppose you want to determine the maximum inflamation for patient 5 across days three to seven. To do this you would extract the relevant slice from the data frame and calculate the maximum value.<br />Which of the following lines of R code gives the correct answer?</p>
+<p>Suppose you want to determine the maximum inflamation for patient 5 across days three to seven. To do this you would extract the relevant slice from the data frame and calculate the maximum value. Which of the following lines of R code gives the correct answer?</p>
 <ol style="list-style-type: lower-alpha">
 <li><code>max(dat[5, ])</code></li>
 <li><code>max(dat[3:7, 5])</code></li>

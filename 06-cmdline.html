@@ -228,30 +228,30 @@ main()
 <ul>
 <li>Write a command-line program that does addition and subtraction. <strong>Hint:</strong> Everything argument read from the command-line is interpreted as a character <a href="reference.html#string">string</a>. You can convert from a string to a number using the function <code>as.numeric</code>.</li>
 </ul>
-</div>
-</div>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript arith.R <span class="dv">1</span> +<span class="st"> </span><span class="dv">2</span></code></pre>
 <pre class="output"><code>3
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript arith.R <span class="dv">3</span> -<span class="st"> </span><span class="dv">4</span></code></pre>
 <pre class="output"><code>-1
 </code></pre>
-<blockquote>
 <ul>
 <li>What goes wrong if you try to add multiplication using <code>*</code> to the program?</li>
 </ul>
-</blockquote>
-<blockquote>
+<!-- second-answer -->
+<!-- The * is a wildcard character in the Unix Shell. -->
+<!-- Thus all the files in the current working directory are included as arguments to  arith.R. -->
+
 <ul>
 <li>Using the function <code>list.files</code> introduced in a previous <a href="03-loops-R.html">lesson</a>, write a command-line program, <code>find-pattern.R</code>, that lists all the files in the current directory that contain a specific pattern:</li>
 </ul>
-</blockquote>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For example, searching for the pattern &quot;print-args&quot; returns the two scripts we</span>
 <span class="co"># wrote earlier</span>
 Rscript find-pattern.R print-args</code></pre>
 <pre class="output"><code>print-args.R
 print-args-trailing.R
 </code></pre>
+</div>
+</div>
 <h3 id="handling-multiple-files">Handling Multiple Files</h3>
 <p>The next step is to teach our program how to handle multiple files. Since 60 lines of output per file is a lot to page through, we'll start by using three smaller files, each of which has three days of data for two patients. Let's investigate them from the Unix Shell:</p>
 <pre class="sourceCode r"><code class="sourceCode r">ls data/small-<span class="er">*</span>.csv</code></pre>

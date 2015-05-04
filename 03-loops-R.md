@@ -8,7 +8,7 @@ minutes: 30
 
 
 > ## Objectives {.objectives}
-> 
+>
 > * Explain what a `for` loop does.
 > * Correctly write `for` loops to repeat simple calculations.
 > * Trace changes to a loop variable as the loop runs.
@@ -118,10 +118,10 @@ print_words(best_practice[-6])
 
 ~~~
 
-> ## Tip {.callout} 
+> ## Tip {.callout}
 >
-> R has has a special variable, `NA`, for designating missing values that are 
-> **N**ot **A**vailable in a data set. See `?NA` and [An Introduction to R][na] 
+> R has has a special variable, `NA`, for designating missing values that are
+> **N**ot **A**vailable in a data set. See `?NA` and [An Introduction to R][na]
 > for more details.
 
 [na]: http://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values
@@ -263,92 +263,86 @@ length(vowels)
 
 `length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](00-first-timers.html) to learn more about the different ways to store data in R).
 
+
 > ## Challenge - Using loops {.challenge}
 >
 > 1. R has a built-in function called `seq` that creates a list of numbers:
-
-
-~~~{.r}
-seq(3)
-~~~
-
-
-
-~~~{.output}
-[1] 1 2 3
-
-~~~
-
+>
+> 
+> ~~~{.r}
+> seq(3)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] 1 2 3
+> 
+> ~~~
+>
 > Using `seq`, write a function that prints the first **N** natural numbers, one per line:
-
-
-
-
-~~~{.r}
-print_N(3)
-~~~
-
-
-
-~~~{.output}
-[1] 1
-[1] 2
-[1] 3
-
-~~~
-
+>
+> 
+> ~~~{.r}
+> print_N(3)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] 1
+> [1] 2
+> [1] 3
+> 
+> ~~~
+>
 > 2. Exponentiation is built into R:
-
-
-~~~{.r}
-2^4
-~~~
-
-
-
-~~~{.output}
-[1] 16
-
-~~~
-
+>
+> 
+> ~~~{.r}
+> 2^4
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] 16
+> 
+> ~~~
+>
 > Write a function called `expo` that uses a loop to calculate the same result.
-
-
-
-
-~~~{.r}
-expo(2, 4)
-~~~
-
-
-
-~~~{.output}
-[1] 16
-
-~~~
-
+> 
+> ~~~{.r}
+> expo(2, 4)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] 16
+> 
+> ~~~
+>
 > 3. Write a function called `total` that calculates the sum of the values in a vector.
 > (R has a built-in function called `sum` that does this for you.
 > Please don't use it for this exercise.)
-
-
-
-
-~~~{.r}
-ex_vec <- c(4, 8, 15, 16, 23, 42)
-total(ex_vec)
-~~~
-
-
-
-~~~{.output}
-[1] 108
-
-~~~
+>
+> 
+> ~~~{.r}
+> ex_vec <- c(4, 8, 15, 16, 23, 42)
+> total(ex_vec)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] 108
+> 
+> ~~~
 
 ### Processing Multiple Files
 
-We now have almost everything we need to process all our data files. 
+We now have almost everything we need to process all our data files.
 The only thing that's missing is a function that finds files whose names match a pattern.
 We do not need to write it ourselves because R already has a function to do this called `list.files`.
 
@@ -375,8 +369,8 @@ list.files(path = "data", pattern = "csv")
  [9] "inflammation-07.csv"    "inflammation-08.csv"   
 [11] "inflammation-09.csv"    "inflammation-10.csv"   
 [13] "inflammation-11.csv"    "inflammation-12.csv"   
-[15] "small-01.csv"           "small-02.csv"          
-[17] "small-03.csv"          
+[15] "sample.csv"             "small-01.csv"          
+[17] "small-02.csv"           "small-03.csv"          
 
 ~~~
 
@@ -397,13 +391,13 @@ list.files(path = "data", pattern = "inflammation")
 ~~~
 
 
-> ## Tip {.callout} 
+> ## Tip {.callout}
 >
-> For larger projects, it is recommended to organize separate parts of the 
-> analysis into multiple subdirectories, e.g. one subdirectory for the raw data, 
-> one for the code, and one for the results like figures. We have done that here 
+> For larger projects, it is recommended to organize separate parts of the
+> analysis into multiple subdirectories, e.g. one subdirectory for the raw data,
+> one for the code, and one for the results like figures. We have done that here
 > to some extent, putting all of our data files into the subdirectory "data".
-> For more advice on this topic, you can read [A quick guide to organizing 
+> For more advice on this topic, you can read [A quick guide to organizing
 > computational biology projects][Noble2009] by William Stafford Noble.
 
 [Noble2009]: http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
@@ -431,8 +425,8 @@ list.files(path = "data", pattern = "csv", full.names = TRUE)
  [9] "data/inflammation-07.csv"    "data/inflammation-08.csv"   
 [11] "data/inflammation-09.csv"    "data/inflammation-10.csv"   
 [13] "data/inflammation-11.csv"    "data/inflammation-12.csv"   
-[15] "data/small-01.csv"           "data/small-02.csv"          
-[17] "data/small-03.csv"          
+[15] "data/sample.csv"             "data/small-01.csv"          
+[17] "data/small-02.csv"           "data/small-03.csv"          
 
 ~~~
 
@@ -493,14 +487,14 @@ for (f in filenames) {
 
 Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.
 
-> ## Tip {.callout} 
+> ## Tip {.callout}
 >
 > In this lesson we saw how to use a simple `for` loop to repeat an operation.
-> As you progress with R, you will learn that there are multiple ways to 
-> accomplish this. Sometimes the choice of one method over another is more a 
-> matter of personal style, but other times it can have consequences for the 
-> speed of your code. For instruction on best practices, see this supplementary 
-> [lesson](03-supp-loops-in-depth.html) that demonstrates how to properly repeat 
+> As you progress with R, you will learn that there are multiple ways to
+> accomplish this. Sometimes the choice of one method over another is more a
+> matter of personal style, but other times it can have consequences for the
+> speed of your code. For instruction on best practices, see this supplementary
+> [lesson](03-supp-loops-in-depth.html) that demonstrates how to properly repeat
 > operations in R.
 
 > ## Challenge - Using loops to analyze multiple files {.challenge}

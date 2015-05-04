@@ -170,42 +170,34 @@ letter</code></pre>
 <ol style="list-style-type: decimal">
 <li>R has a built-in function called <code>seq</code> that creates a list of numbers:</li>
 </ol>
-</div>
-</div>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">3</span>)</code></pre>
 <pre class="output"><code>[1] 1 2 3
 </code></pre>
-<blockquote>
 <p>Using <code>seq</code>, write a function that prints the first <strong>N</strong> natural numbers, one per line:</p>
-</blockquote>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print_N</span>(<span class="dv">3</span>)</code></pre>
 <pre class="output"><code>[1] 1
 [1] 2
 [1] 3
 </code></pre>
-<blockquote>
 <ol start="2" style="list-style-type: decimal">
 <li>Exponentiation is built into R:</li>
 </ol>
-</blockquote>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span>^<span class="dv">4</span></code></pre>
 <pre class="output"><code>[1] 16
 </code></pre>
-<blockquote>
 <p>Write a function called <code>expo</code> that uses a loop to calculate the same result.</p>
-</blockquote>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">expo</span>(<span class="dv">2</span>, <span class="dv">4</span>)</code></pre>
 <pre class="output"><code>[1] 16
 </code></pre>
-<blockquote>
 <ol start="3" style="list-style-type: decimal">
 <li>Write a function called <code>total</code> that calculates the sum of the values in a vector. (R has a built-in function called <code>sum</code> that does this for you. Please don't use it for this exercise.)</li>
 </ol>
-</blockquote>
 <pre class="sourceCode r"><code class="sourceCode r">ex_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">23</span>, <span class="dv">42</span>)
 <span class="kw">total</span>(ex_vec)</code></pre>
 <pre class="output"><code>[1] 108
 </code></pre>
+</div>
+</div>
 <h3 id="processing-multiple-files">Processing Multiple Files</h3>
 <p>We now have almost everything we need to process all our data files. The only thing that's missing is a function that finds files whose names match a pattern. We do not need to write it ourselves because R already has a function to do this called <code>list.files</code>.</p>
 <p>If we run the function without any arguments, <code>list.files()</code>, it returns every file in the current working directory. We can understand this result by reading the help file (<code>?list.files</code>). The first argument, <code>path</code>, is the path to the directory to be searched, and it has the default value of <code>&quot;.&quot;</code> (recall from the <a href="../shell/01-filedir.html">lesson</a> on the Unix Shell that <code>&quot;.&quot;</code> is shorthand for the current working directory). The second argument, <code>pattern</code>, is the pattern being searched, and it has the default value of <code>NULL</code>. Since no pattern is specified to filter the files, all files are returned.</p>
@@ -218,8 +210,8 @@ letter</code></pre>
  [9] &quot;inflammation-07.csv&quot;    &quot;inflammation-08.csv&quot;   
 [11] &quot;inflammation-09.csv&quot;    &quot;inflammation-10.csv&quot;   
 [13] &quot;inflammation-11.csv&quot;    &quot;inflammation-12.csv&quot;   
-[15] &quot;small-01.csv&quot;           &quot;small-02.csv&quot;          
-[17] &quot;small-03.csv&quot;          
+[15] &quot;sample.csv&quot;             &quot;small-01.csv&quot;          
+[17] &quot;small-02.csv&quot;           &quot;small-03.csv&quot;          
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;inflammation&quot;</span>)</code></pre>
 <pre class="output"><code> [1] &quot;inflammation-01.csv&quot; &quot;inflammation-02.csv&quot; &quot;inflammation-03.csv&quot;
@@ -245,8 +237,8 @@ letter</code></pre>
  [9] &quot;data/inflammation-07.csv&quot;    &quot;data/inflammation-08.csv&quot;   
 [11] &quot;data/inflammation-09.csv&quot;    &quot;data/inflammation-10.csv&quot;   
 [13] &quot;data/inflammation-11.csv&quot;    &quot;data/inflammation-12.csv&quot;   
-[15] &quot;data/small-01.csv&quot;           &quot;data/small-02.csv&quot;          
-[17] &quot;data/small-03.csv&quot;          
+[15] &quot;data/sample.csv&quot;             &quot;data/small-01.csv&quot;          
+[17] &quot;data/small-02.csv&quot;           &quot;data/small-03.csv&quot;          
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;inflammation&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre class="output"><code> [1] &quot;data/inflammation-01.csv&quot; &quot;data/inflammation-02.csv&quot;

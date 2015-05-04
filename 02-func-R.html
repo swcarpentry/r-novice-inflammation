@@ -100,8 +100,6 @@
 <ul>
 <li>In the last lesson, we learned to <strong>c</strong>oncatenate elements into a vector using the <code>c</code> function, e.g. <code>x &lt;- c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)</code> creates a vector <code>x</code> with three elements. Furthermore, we can extend that vector again using <code>c</code>, e.g. <code>y &lt;- c(x, &quot;D&quot;)</code> creates a vector <code>y</code> with four elements. Write a function called <code>fence</code> that takes two vectors as arguments, called <code>original</code> and <code>wrapper</code>, and returns a new vector that has the wrapper vector at the beginning and end of the original:</li>
 </ul>
-</div>
-</div>
 <pre class="sourceCode r"><code class="sourceCode r">best_practice &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Write&quot;</span>, <span class="st">&quot;programs&quot;</span>, <span class="st">&quot;for&quot;</span>, <span class="st">&quot;people&quot;</span>, <span class="st">&quot;not&quot;</span>, <span class="st">&quot;computers&quot;</span>)
 asterisk &lt;-<span class="st"> &quot;***&quot;</span>  <span class="co"># R interprets a variable with a single value as a vector</span>
                    <span class="co"># with one element.</span>
@@ -109,15 +107,15 @@ asterisk &lt;-<span class="st"> &quot;***&quot;</span>  <span class="co"># R int
 <pre class="output"><code>[1] &quot;***&quot;       &quot;Write&quot;     &quot;programs&quot;  &quot;for&quot;       &quot;people&quot;    &quot;not&quot;      
 [7] &quot;computers&quot; &quot;***&quot;      
 </code></pre>
-<blockquote>
 <ul>
 <li>If the variable <code>v</code> refers to a vector, then <code>v[1]</code> is the vector's first element and <code>v[length(v)]</code> is its last (the function <code>length</code> returns the number of elements in a vector). Write a function called <code>outside</code> that returns a vector made up of just the first and last elements of its input:</li>
 </ul>
-</blockquote>
 <pre class="sourceCode r"><code class="sourceCode r">dry_principle &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Don&#39;t&quot;</span>, <span class="st">&quot;repeat&quot;</span>, <span class="st">&quot;yourself&quot;</span>, <span class="st">&quot;or&quot;</span>, <span class="st">&quot;others&quot;</span>)
 <span class="kw">outside</span>(dry_principle)</code></pre>
 <pre class="output"><code>[1] &quot;Don&#39;t&quot;  &quot;others&quot;
 </code></pre>
+</div>
+</div>
 <h3 id="the-call-stack">The Call Stack</h3>
 <p>Let's take a closer look at what happens when we call <code>fahr_to_celsius(32)</code>. To make things clearer, we'll start by putting the initial value 32 in a variable and store the final result in one as well:</p>
 <pre class="sourceCode r"><code class="sourceCode r">original &lt;-<span class="st"> </span><span class="dv">32</span>
@@ -176,11 +174,11 @@ dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="
 <ul>
 <li>We previously wrote functions called <code>fence</code> and <code>outside</code>. Draw a diagram showing how the call stack changes when we run the following:</li>
 </ul>
-</div>
-</div>
 <pre class="sourceCode r"><code class="sourceCode r">inner_vec &lt;-<span class="st"> &quot;carbon&quot;</span>
 outer_vec &lt;-<span class="st"> &quot;+&quot;</span>
 result &lt;-<span class="st"> </span><span class="kw">outside</span>(<span class="kw">fence</span>(inner_vec, outer_vec))</code></pre>
+</div>
+</div>
 <h3 id="testing-and-documenting">Testing and Documenting</h3>
 <p>Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly. To see how to do this, let's write a function to center a dataset around a particular value:</p>
 <pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, desired) {
@@ -268,19 +266,11 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 <div class="panel-body">
 <ul>
 <li>Write a function called <code>analyze</code> that takes a filename as a argument and displays the three graphs produced in the <a href="01-starting-with-data.html">previous lesson</a> (average, min and max inflammation over time). <code>analyze(&quot;data/inflammation-01.csv&quot;)</code> should produce the graphs already shown, while <code>analyze(&quot;data/inflammation-02.csv&quot;)</code> should produce corresponding graphs for the second data set. Be sure to document your function with comments.</li>
-</ul>
-</div>
-</div>
-<blockquote>
-<ul>
 <li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>)/(<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
 <li>Test that your <code>rescale</code> function is working properly using <code>min</code>, <code>max</code>, and <code>plot</code>.</li>
 </ul>
-</blockquote>
+</div>
+</div>
 <h3 id="defining-defaults">Defining Defaults</h3>
 <p>We have passed arguments to functions in two ways: directly, as in <code>dim(dat)</code>, and by name, as in <code>read.csv(file = &quot;data/inflammation-01.csv&quot;, header = FALSE)</code>. In fact, we can pass the arguments to <code>read.csv</code> without naming them:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="ot">FALSE</span>)</code></pre>
