@@ -3,6 +3,7 @@ layout: page
 title: Programming with R
 subtitle: Making choices
 minutes: 30
+keep_md: true
 ---
 
 ```{r, include = FALSE}
@@ -287,7 +288,7 @@ analyze_all <- function(pattern) {
 
 Now we can save all of the results with just one line of code:
 
-```{r}
+```{r,  error = TRUE }
 analyze_all("inflammation")
 ```
 

@@ -1,9 +1,4 @@
----
-layout: page
-title: Programming with R
-subtitle: Creating functions
-minutes: 30
----
+# Programming with R
 
 
 
@@ -60,7 +55,7 @@ fahr_to_kelvin(32)
 
 
 ~~~{.output}
-[1] 273.15
+[1] 273.1
 
 ~~~
 
@@ -74,7 +69,7 @@ fahr_to_kelvin(212)
 
 
 ~~~{.output}
-[1] 373.15
+[1] 373.1
 
 ~~~
 
@@ -98,7 +93,7 @@ kelvin_to_celsius(0)
 
 
 ~~~{.output}
-[1] -273.15
+[1] -273.1
 
 ~~~
 
@@ -136,35 +131,28 @@ Real-life functions will usually be larger than the ones shown here--typically h
 >`original` and `wrapper`, and returns a new vector that has the wrapper vector
 >at the beginning and end of the original:
 >
-> 
-> ~~~{.r}
+> ```{r, echo=-1}
+> fence <- function(original, wrapper) {
+>    answer <- c(wrapper, original, wrapper)
+>    return(answer)
+> }
 > best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 > asterisk <- "***"  # R interprets a variable with a single value as a vector
 >                    # with one element.
 > fence(best_practice, asterisk)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] "***"       "Write"     "programs"  "for"       "people"    "not"      
-> [7] "computers" "***"      
-> 
-> ~~~
+> ```
 >  + If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
 >    Write a function called `outside` that returns a vector made up of just the first and last elements of its input:
-> 
-> ~~~{.r}
+> ```{r, echo=-1}
+> outside <- function(v) {
+>   first <- v[1]
+>    last <- v[length(v)]
+>    answer <- c(first, last)
+>    return(answer)
+> }
 > dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
 > outside(dry_principle)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] "Don't"  "others"
-> 
-> ~~~
+> ```
 
 
 ### The Call Stack
@@ -224,7 +212,7 @@ temp
 
 
 ~~~{.output}
-Error in eval(expr, envir, enclos): object 'temp' not found
+Error: objeto 'temp' no encontrado
 
 ~~~
 
@@ -293,12 +281,11 @@ That only works if functions don't interfere with each other; if they do, we hav
 >  + We previously wrote functions called `fence` and `outside`.
 >    Draw a diagram showing how the call stack changes when we run the
 >    following:
-> 
-> ~~~{.r}
+> ```{r, results="hide"}
 > inner_vec <- "carbon"
 > outer_vec <- "+"
 > result <- outside(fence(inner_vec, outer_vec))
-> ~~~
+> ```
 
 ### Testing and Documenting
 
@@ -457,7 +444,7 @@ sd(dat[, 4])
 
 
 ~~~{.output}
-[1] 1.067628
+[1] 1.068
 
 ~~~
 
@@ -471,7 +458,7 @@ sd(centered)
 
 
 ~~~{.output}
-[1] 1.067628
+[1] 1.068
 
 ~~~
 
@@ -573,7 +560,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 
 ~~~{.output}
-Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
+Error: 'file' must be a character string or connection
 
 ~~~
 
@@ -759,7 +746,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 
 ~~~{.output}
-Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
+Error: 'file' must be a character string or connection
 
 ~~~
 

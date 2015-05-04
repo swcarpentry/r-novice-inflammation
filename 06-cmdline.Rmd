@@ -3,6 +3,7 @@ layout: page
 title: Programming with R
 subtitle: Command-Line Programs
 minutes: 30
+keep_md: true
 ---
 
 ```{r, include = FALSE}

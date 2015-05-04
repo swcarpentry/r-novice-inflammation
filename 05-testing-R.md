@@ -1,9 +1,4 @@
----
-layout: page
-title: Programming with R
-subtitle: Basic defensive programming
-minutes: 30
----
+# Programming with R
 
 
 
@@ -23,7 +18,7 @@ To achieve that, we need to:
 * write and run tests for widely-used functions, and
 * make sure we know what "correct" actually means.
 
-The good news is, doing these things will speed up our programming, not slow it down. As in real carpentry—the kind done with lumber—the time saved by measuring carefully before cutting a piece of wood is much greater than the time that measuring takes.
+The good news is, doing these things will speed up our programming, not slow it down. As in real carpentryâthe kind done with lumberâthe time saved by measuring carefully before cutting a piece of wood is much greater than the time that measuring takes.
 
 ## Debugging
 
@@ -32,7 +27,7 @@ Once testing has uncovered problems, the next step is to fix them. Many novices 
 ## Know What It's Supposed to Do
 
 The first step in debugging something is to know what it's supposed to do. "My program doesn't work" isn't good enough: in order to diagnose and fix problems, we need to be able to tell correct output from incorrect. 
-If we can write a test case for the failing case—i.e., if we can assert that with these inputs, the function should produce that result— then we're ready to start debugging. If we can't, then we need to figure out how we're going to know when we've fixed things.
+If we can write a test case for the failing caseâi.e., if we can assert that with these inputs, the function should produce that resultâ then we're ready to start debugging. If we can't, then we need to figure out how we're going to know when we've fixed things.
 
 But writing test cases for scientific software is frequently harder than writing test cases for commercial applications, because if we knew what the output of the scientific code was supposed to be, we wouldn't be running the software: we'd be writing up our results and moving on to the next program. In practice, scientists tend to do the following:
 
@@ -40,7 +35,7 @@ __Test with simplified data.__ Before doing statistics on a real data set, we sh
 
 __Test a simplified case.__ If our program is supposed to simulate magnetic eddies in rapidly-rotating blobs of supercooled helium, our first test should be a blob of helium that isn't rotating, and isn't being subjected to any external electromagnetic fields. Similarly, if we're looking at the effects of climate change on speciation, our first test should hold temperature, precipitation, and other factors constant.
 
-__Compare to an oracle.__ A test oracle is something—experimental data, an older program whose results are trusted, or even a human expert—against which we can compare the results of our new program. If we have a test oracle, we should store its output for particular cases so that we can compare it with our new results as often as we like without re-running that program.
+__Compare to an oracle.__ A test oracle is something experimental data, an older program whose results are trusted, or even a human expert against which we can compare the results of our new program. If we have a test oracle, we should store its output for particular cases so that we can compare it with our new results as often as we like without re-running that program.
 
 __Check conservation laws.__ Mass, energy, and other quantitites are conserved in physical systems, so they should be in programs as well. Similarly, if we are analyzing patient data, the number of records should either stay the same or decrease as we move from one analysis to the next (since we might throw away outliers or records with missing values). If "new" patients start appearing out of nowhere as we move through our pipeline, it's probably a sign that something is wrong.
 
@@ -60,7 +55,7 @@ As well as making the program fail fast in time, we want to make it fail fast in
 
 The smaller the gap between cause and effect, the easier the connection is to find. Many programmers therefore use a divide and conquer strategy to find bugs, i.e., if the output of a function is wrong, they check whether things are OK in the middle, then concentrate on either the first or second half, and so on.
 
-N things can interact in N2/2 different ways, so every line of code that isn't run as part of a test means more than one thing we don't need to worry about.
+N things can interact in N^2/2 different ways, so every line of code that isn't run as part of a test means more than one thing we don't need to worry about.
 
 ## Change One Thing at a Time, For a Reason
 

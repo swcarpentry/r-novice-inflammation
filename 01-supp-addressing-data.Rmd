@@ -112,7 +112,7 @@ We usually use the `$` operator to address a column by name
 dat$Gender
 ```
 
-Named addressing can also be used in square brackets.
+We can also use named addressing to slice the data frame with the square brackets notation we have learnt.
 ```{r names_addressing_2}
 head(dat[,c('Age','Gender')])
 ```

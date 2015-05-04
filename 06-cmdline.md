@@ -1,9 +1,4 @@
----
-layout: page
-title: Programming with R
-subtitle: Command-Line Programs
-minutes: 30
----
+# Programming with R
 
 
 
@@ -73,16 +68,13 @@ Rscript session-info.R
 
 
 ~~~{.output}
-R version 3.1.2 (2014-10-31)
-Platform: x86_64-pc-linux-gnu (64-bit)
+R version 3.0.3 (2014-03-06)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
 
 locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
- [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[1] LC_COLLATE=Spanish_Spain.1252  LC_CTYPE=Spanish_Spain.1252   
+[3] LC_MONETARY=Spanish_Spain.1252 LC_NUMERIC=C                  
+[5] LC_TIME=Spanish_Spain.1252    
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
@@ -119,10 +111,11 @@ Rscript print-args.R
 
 
 ~~~{.output}
-/usr/lib/R/bin/exec/R
+c:\Program Files\R\R-3.0.3\bin\x64\Rterm.exe
 --slave
 --no-restore
 --file=print-args.R
+--args
 
 ~~~
 
@@ -147,7 +140,7 @@ R --slave --no-restore --file=print-args.R --args
 
 
 ~~~{.output}
-/usr/lib/R/bin/exec/R
+c:\PROGRA~1\R\R-30~1.3/bin/x64/Rterm.exe
 --slave
 --no-restore
 --file=print-args.R
@@ -166,7 +159,7 @@ Rscript print-args.R first second third
 
 
 ~~~{.output}
-/usr/lib/R/bin/exec/R
+c:\Program Files\R\R-3.0.3\bin\x64\Rterm.exe
 --slave
 --no-restore
 --file=print-args.R
@@ -327,31 +320,13 @@ Rscript readings-02.R data/inflammation-01.csv
 >  + Write a command-line program that does addition and subtraction.
 >  **Hint:** Everything argument read from the command-line is interpreted as a character [string](reference.html#string).
 >  You can convert from a string to a number using the function `as.numeric`.
-> 
-> ~~~{.r}
+> ```{r, engine='bash'}
 > Rscript arith.R 1 + 2
-> ~~~
-> 
-> 
-> 
-> 
-> ~~~{.output}
-> 3
-> 
-> ~~~
+> ```
 >
-> 
-> ~~~{.r}
+> ```{r, engine='bash'}
 > Rscript arith.R 3 - 4
-> ~~~
-> 
-> 
-> 
-> 
-> ~~~{.output}
-> -1
-> 
-> ~~~
+> ```
 >
 >  + What goes wrong if you try to add multiplication using `*` to the program?
 >
@@ -361,23 +336,15 @@ Rscript readings-02.R data/inflammation-01.csv
 >
 >  + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program, `find-pattern.R`, that lists all the files in the current directory that contain a specific pattern:
 >
-> 
-> ~~~{.r}
+> ```{r, engine='bash'}
 > # For example, searching for the pattern "print-args" returns the two scripts we
 > # wrote earlier
 > Rscript find-pattern.R print-args
-> ~~~
-> 
-> 
-> 
-> 
-> ~~~{.output}
-> print-args.R
-> print-args-trailing.R
-> 
-> ~~~
+> ```
 >
-
+> ```{r third-answer, include=FALSE, engine='bash'}
+> cat find-pattern.R
+> ```
 
 ### Handling Multiple Files
 
