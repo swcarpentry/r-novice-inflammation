@@ -3,6 +3,9 @@ layout: page
 title: Programming with R
 subtitle: Basic defensive programming
 minutes: 30
+output:
+  html_document:
+    keep_md: true
 ---
 
 ```{r, include = FALSE}
@@ -42,7 +45,7 @@ __Test with simplified data.__ Before doing statistics on a real data set, we sh
 
 __Test a simplified case.__ If our program is supposed to simulate magnetic eddies in rapidly-rotating blobs of supercooled helium, our first test should be a blob of helium that isn't rotating, and isn't being subjected to any external electromagnetic fields. Similarly, if we're looking at the effects of climate change on speciation, our first test should hold temperature, precipitation, and other factors constant.
 
-__Compare to an oracle.__ A test oracle is somethingâ€”experimental data, an older program whose results are trusted, or even a human expertâ€”against which we can compare the results of our new program. If we have a test oracle, we should store its output for particular cases so that we can compare it with our new results as often as we like without re-running that program.
+__Compare to an oracle.__ A test oracle is something €”experimental data, an older program whose results are trusted, or even a human expert €”against which we can compare the results of our new program. If we have a test oracle, we should store its output for particular cases so that we can compare it with our new results as often as we like without re-running that program.
 
 __Check conservation laws.__ Mass, energy, and other quantitites are conserved in physical systems, so they should be in programs as well. Similarly, if we are analyzing patient data, the number of records should either stay the same or decrease as we move from one analysis to the next (since we might throw away outliers or records with missing values). If "new" patients start appearing out of nowhere as we move through our pipeline, it's probably a sign that something is wrong.
 
@@ -62,7 +65,7 @@ As well as making the program fail fast in time, we want to make it fail fast in
 
 The smaller the gap between cause and effect, the easier the connection is to find. Many programmers therefore use a divide and conquer strategy to find bugs, i.e., if the output of a function is wrong, they check whether things are OK in the middle, then concentrate on either the first or second half, and so on.
 
-N things can interact in N2/2 different ways, so every line of code that isn't run as part of a test means more than one thing we don't need to worry about.
+N things can interact in N^2/2 different ways, so every line of code that isn't run as part of a test means more than one thing we don't need to worry about.
 
 ## Change One Thing at a Time, For a Reason
 
