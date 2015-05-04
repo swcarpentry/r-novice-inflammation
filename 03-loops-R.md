@@ -1,9 +1,4 @@
----
-layout: page
-title: Programming with R
-subtitle: Analyzing multiple data sets
-minutes: 30
----
+# Programming with R
 
 
 
@@ -35,7 +30,7 @@ analyze <- function(filename) {
 analyze("data/inflammation-01.csv")
 ~~~
 
-<img src="fig/03-loops-R-inflammation-01-1.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-01-2.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-01-3.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" />
+<img src="fig/03-loops-R-inflammation-011.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-012.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-013.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" />
 
 We can use it to analyze other data sets one by one:
 
@@ -44,7 +39,7 @@ We can use it to analyze other data sets one by one:
 analyze("data/inflammation-02.csv")
 ~~~
 
-<img src="fig/03-loops-R-inflammation-02-1.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-02-2.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-02-3.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" />
+<img src="fig/03-loops-R-inflammation-021.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-022.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-023.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" />
 
 but we have a dozen data sets right now and more on the way.
 We want to create plots for all our data sets with a single statement.
@@ -268,77 +263,56 @@ length(vowels)
 >
 > 1. R has a built-in function called `seq` that creates a list of numbers:
 >
-> 
-> ~~~{.r}
+> ```{r}
 > seq(3)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] 1 2 3
-> 
-> ~~~
+> ```
 >
 > Using `seq`, write a function that prints the first **N** natural numbers, one per line:
 >
-> 
-> ~~~{.r}
+> ```{r, echo=-1}
+> print_N <- function(N) {
+>   nseq <- seq(N)
+>   for (num in nseq) {
+>     print(num)
+>   }
+> }
 > print_N(3)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] 1
-> [1] 2
-> [1] 3
-> 
-> ~~~
+> ```
 >
 > 2. Exponentiation is built into R:
 >
-> 
-> ~~~{.r}
+> ```{r}
 > 2^4
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] 16
-> 
-> ~~~
+> ```
 >
 > Write a function called `expo` that uses a loop to calculate the same result.
-> 
-> ~~~{.r}
+> ```{r, echo=-1}
+> expo <- function(base, power) {
+>   result <- 1
+>   for (i in seq(power)) {
+>     result <- result * base
+>   }
+>   return(result)
+> }
 > expo(2, 4)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] 16
-> 
-> ~~~
+> ```
 >
 > 3. Write a function called `total` that calculates the sum of the values in a vector.
 > (R has a built-in function called `sum` that does this for you.
 > Please don't use it for this exercise.)
 >
-> 
-> ~~~{.r}
+> ```{r, echo=-1}
+> total <- function(vec) {
+>   #calculates the sum of the values in a vector
+>   vec_sum <- 0
+>   for (num in vec) {
+>     vec_sum <- vec_sum + num
+>   }
+>   return(vec_sum)
+> }
 > ex_vec <- c(4, 8, 15, 16, 23, 42)
 > total(ex_vec)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] 108
-> 
-> ~~~
+> ```
 
 ### Processing Multiple Files
 
@@ -469,21 +443,21 @@ for (f in filenames) {
 
 ~~~
 
-<img src="fig/03-loops-R-loop-analyze-1.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-2.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-3.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
+<img src="fig/03-loops-R-loop-analyze1.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze2.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze3.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
 
 ~~~{.output}
 [1] "data/inflammation-02.csv"
 
 ~~~
 
-<img src="fig/03-loops-R-loop-analyze-4.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-5.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-6.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
+<img src="fig/03-loops-R-loop-analyze4.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze5.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze6.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
 
 ~~~{.output}
 [1] "data/inflammation-03.csv"
 
 ~~~
 
-<img src="fig/03-loops-R-loop-analyze-7.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-8.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-9.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
+<img src="fig/03-loops-R-loop-analyze7.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze8.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze9.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
 
 Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.
 

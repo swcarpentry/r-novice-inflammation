@@ -3,6 +3,9 @@ layout: page
 title: Programming with R
 subtitle: Analyzing multiple data sets
 minutes: 30
+output:
+  html_document:
+    keep_md: true
 ---
 
 ```{r, include = FALSE}
@@ -43,7 +46,7 @@ We can use it to analyze other data sets one by one:
 analyze("data/inflammation-02.csv")
 ```
 
-but we have a dozen data sets right now and more on the way.
+But we have a dozen data sets right now and more on the way.
 We want to create plots for all our data sets with a single statement.
 To do that, we'll have to teach the computer how to repeat things.
 
