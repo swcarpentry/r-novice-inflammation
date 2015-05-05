@@ -183,7 +183,7 @@ First, let's ask what type of thing `dat` *is*:
 class(dat)
 ```
 
-The output tells us that data currently is a data frame in R.
+The output tells us that `dat` currently is a data frame in R.
 This is similar to a spreadsheet in MS Excel that many of us are familiar with using.
 Data frames are very useful for storing data because you can have a continuous variable, e.g. rainfall, in one column and a categorical variable, e.g. month, in another.
 
@@ -254,7 +254,7 @@ Instead, we can combine the selection and the function call:
 max(dat[2, ])
 ```
 
-R also has functions for other commons calculations, e.g. finding the minimum, mean, median, and standard deviation of the data:
+R also has functions for other common calculations, e.g. finding the minimum, mean, median, and standard deviation of the data:
 
 ```{r}
 # minimum inflammation on day 7
