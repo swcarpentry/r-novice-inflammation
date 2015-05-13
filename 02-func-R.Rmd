@@ -10,7 +10,7 @@ source("tools/chunk-options.R")
 opts_chunk$set(fig.path = "fig/02-func-R-")
 ```
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * Define a function that takes arguments.
 > * Return a value from a function.
