@@ -30,10 +30,10 @@ and to use that language *well*.
 
 ## Topics
 
-1.  [Analyzing Patient Data](01-starting-with-data.html)
-2.  [Creating Functions](02-func-R.html)
-3.  [Analyzing Multiple Data Sets](03-loops-R.html)
-4.  [Making Choices](04-cond.html)
+1.  [Analyzing patient data](01-starting-with-data.html)
+2.  [Creating functions](02-func-R.html)
+3.  [Analyzing multiple data sets](03-loops-R.html)
+4.  [Making choices](04-cond.html)
 5.  [Command-Line Programs](06-cmdline.html)
 
 ## Other Resources
@@ -47,5 +47,5 @@ and to use that language *well*.
 
 *   [Introduction to RStudio](01-supp-intro-rstudio.html)
 *   [Addressing data](01-supp-addressing-data.html)
-*   [Working with factors](01-supp-factors.html)
-*   [Data types and data structures](01-supp-data-structures.html)
+*   [Understanding factors](01-supp-factors.html)
+*   [Data types and structures](01-supp-data-structures.html)
