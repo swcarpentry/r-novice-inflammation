@@ -489,21 +489,21 @@ We can now explore our data with just a few keystrokes, which means we can conce
 > 4. Do you think this is a good or bad design choice?
 > 5. Explain what the overall effect of this code is: `temp = left left = right right = temp`
 
-## Key Points
+> ## Key Points {.callout}
+>
+> * Learn how to source code
+> * Use the `block_grid` class from the rblocks source code to create simple "images" made of colored blocks.
+> * Specify colors use (red, green, blue) triples, each component of which is an integer in the range 0..255.
+> * Use `if` condition to start a conditional statement, `else if` condition to provide additional tests, and `else` to provide a default.
+> * The bodies of the branches of conditional statements must be indented.
+> * Use `==` to test for equality.
+> * X and Y is only true if both X and Y are true.
+> * X or Y is true if either X or Y, or both, are true.
+> * Nest loops to operate on multi-dimensional data.
+> * Put code whose parameters change frequently in a function, then call it with different parameter values to customize its behavior.
 
-* Learn how to source code
-* Use the `block_grid` class from the rblocks source code to create simple "images" made of colored blocks.
-* Specify colors use (red, green, blue) triples, each component of which is an integer in the range 0..255.
-* Use `if` condition to start a conditional statement, `else if` condition to provide additional tests, and `else` to provide a default.
-* The bodies of the branches of conditional statements must be indented.
-* Use `==` to test for equality.
-* X and Y is only true if both X and Y are true.
-* X or Y is true if either X or Y, or both, are true.
-* Nest loops to operate on multi-dimensional data.
-* Put code whose parameters change frequently in a function, then call it with different parameter values to customize its behavior.
-
-## Next Steps
-
-Let's store the functions for our code in another script, which we can name `project_functions.R`. We can source these functions using `source` at the beginning of our main script. Keeping functions in one place, at the top of our code or in a separate file, helps keep our programs more organized and can make debugging easier.
- 
-Our final heatmap function is 17 lines long, which means that if there's a 95% chance of each line being correct, the odds of the whole function being right are only 41%. Before we go any further, we need to learn how to test whether our code is doing what we want it to do, and that will be the subject of the next lesson.
+> ## Next Steps {.callout}
+>
+> Let's store the functions for our code in another script, which we can name `project_functions.R`. We can source these functions using `source` at the beginning of our main script. Keeping functions in one place, at the top of our code or in a separate file, helps keep our programs more organized and can make debugging easier.
+>
+> Our final heatmap function is 17 lines long, which means that if there's a 95% chance of each line being correct, the odds of the whole function being right are only 41%. Before we go any further, we need to learn how to test whether our code is doing what we want it to do, and that will be the subject of the next lesson.
