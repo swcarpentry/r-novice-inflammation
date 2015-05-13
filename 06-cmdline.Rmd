@@ -9,7 +9,7 @@ minutes: 30
 source("tools/chunk-options.R")
 ```
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > *   Use the values of command-line arguments in a program.
 > *   Handle flags and files separately in a command-line program.
