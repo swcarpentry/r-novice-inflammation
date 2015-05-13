@@ -10,7 +10,7 @@ source("tools/chunk-options.R")
 opts_chunk$set(fig.path = "fig/04-cond-colors-R-")
 ```
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 > 
 > * Create a simple "image" made out of colored blocks.
 > * Explain how the RGB model represents colors.
@@ -24,8 +24,6 @@ Our previous lessons have shown us how to manipulate data, define our own functi
 However, the programs we have written so far always do the same things, regardless of what data they're given. 
 We want programs to make choices based on the values they are manipulating. 
 To help us see what decisions they're making, we'll start by looking at how computers manipulate images.
-
-# Image Grids
 
 Let's start by creating some simple heat maps using a source code from a package that is being developed called `rblocks`. 
 
@@ -93,9 +91,7 @@ R has lots of ways to refer to colors:
 * [skittles theme colors](http://alyssafrazee.com/RSkittleBrewer.html)
 * [i want hue](http://tools.medialab.sciences-po.fr/iwanthue/)
 
-## Control Structures
-
-rBlocks can be used to motivate users to learn about basic control structures. For this example, we will create a matrix and write a for loop to set elements on the diagonal to the color `firebrick` (thanks to Alyssa Frazee and the RSkittleBrewer package for making me more color aware).
+rBlocks can be used to motivate users to learn about basic **control structures**. For this example, we will create a matrix and write a for loop to set elements on the diagonal to the color `firebrick` (thanks to Alyssa Frazee and the RSkittleBrewer package for making me more color aware).
 
 ```{r}
 grid5 <- block_grid(5, 5, type = "matrix")
@@ -172,9 +168,7 @@ grid10 <- grid9[, 1]
 display(grid10)
 ```	
 	
-# Conditionals (Control flow)
-
-The other thing we need in order to create a heat map of our own is a way to pick a color based on a data value. The tool R gives us for doing this is called a conditional statement, and looks like this:
+The other thing we need in order to create a heat map of our own is a way to pick a color based on a data value. The tool R gives us for doing this is called a **conditional statement**, and looks like this:
 
 ```{r}
 num <- 37
@@ -254,8 +248,6 @@ near <- function(param1, param2) {
 ```
 
 
-# Nesting
-
 Another thing to realize is that if statements can be combined with loops just as easily as they can be combined with functions. For example, if we want to sum the positive numbers in a list, we can write this:
 
 ```{r}
@@ -299,7 +291,7 @@ for(consonant in 1:nchar('bcd')) {
 The inner loop runs from start to finish each time the outer loop runs once:
 _draw a diagram with boxes and arrows for what is happening_
 
-We can combine nesting and conditionals to create patterns in an image:
+We can combine **nesting** and conditionals to create patterns in an image:
 
 ```{r}
 height <- 5
@@ -331,8 +323,6 @@ This is our first hand-made data visualization: the colors show where x is less 
 > 1. Will changing the nesting of the loops in the code above—i.e., wrapping the Y-axis loop around the X-axis loop—change the final image? Why or why not?
 
 	
-## Creating a Heat Map
-
 The last step is to turn our data into something we can see. As in previous lessons, the first step is to get the data into memory:
 
 ```{r}
