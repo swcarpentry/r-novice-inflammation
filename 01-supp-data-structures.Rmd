@@ -5,16 +5,13 @@ subtitle: Data types and structures
 minutes: 45
 ---
 
-> ## Objectives {.objectives}
-> Expose learners to the different data types in R
+> ## Learning Objectives {.objectives}
 >
-> Learn how to create vectors of different types
->
-> Be able to check the type of vector
->
-> Learn about missing data and other special values
->
-> Getting familiar with the different data structures (lists, matrices, data frames)
+> * Expose learners to the different data types in R
+> * Learn how to create vectors of different types
+> * Be able to check the type of vector
+> * Learn about missing data and other special values
+> * Getting familiar with the different data structures (lists, matrices, data frames)
 
 ### Understanding basic data types in R
 
