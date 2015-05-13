@@ -84,7 +84,7 @@ carSpeeds$Color
 That's better!
 
 
-The **as.is argument* is an extension of the `stringsAsFactors` argument, but gives you control over individual columns. For example, if we want the colors of cars imported as strings, but we want the names of the states imported as factors, we would load the data set as:
+The **as.is argument** is an extension of the `stringsAsFactors` argument, but gives you control over individual columns. For example, if we want the colors of cars imported as strings, but we want the names of the states imported as factors, we would load the data set as:
 
 ```{r as.is1}
 carSpeeds <- read.csv(file='data/car-speeds.csv', as.is = 1) 
@@ -151,7 +151,7 @@ If you open the file, you'll see that it has header names, because the data had 
 <img src="fig/CSV_WithRowNums.png" alt="csv written without row.names argument" />
 
 
-The **row.names argument* allows us to set the names of the rows in the output data file. R's default for this argument is `TRUE`, and since it does not know what else to name the rows for the cars data set, it resorts to using row numbers. To correct this, we can set `row.names` to `FALSE`:
+The **row.names argument** allows us to set the names of the rows in the output data file. R's default for this argument is `TRUE`, and since it does not know what else to name the rows for the cars data set, it resorts to using row numbers. To correct this, we can set `row.names` to `FALSE`:
 
 ```{r row.namesFALSE}
 write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE)
