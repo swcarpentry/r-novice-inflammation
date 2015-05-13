@@ -13,10 +13,8 @@ minutes: 45
 > * Learn about missing data and other special values
 > * Getting familiar with the different data structures (lists, matrices, data frames)
 
-### Understanding basic data types in R
-
-To make the best of the R language, you'll need a strong understanding of the
-basic data types and data structures and how to operate on those.
+To make the best of the R language, you'll need a strong **understanding of the
+basic data types and data structures** and how to operate on those.
 
 Very important to understand because these are the objects you will manipulate
 on a day-to-day basis in R. Dealing with object conversions is one of the most
@@ -73,9 +71,7 @@ R has many __data structures__. These include
 * data frame
 * factors
 
-### Atomic Vectors
-
-A vector is the most common and basic data structure in R and is pretty much the
+A **vector** is the most common and basic data structure in R and is pretty much the
 workhorse of R. Technically, vectors can be one of two types:
 
 * atomic vectors
@@ -84,9 +80,7 @@ workhorse of R. Technically, vectors can be one of two types:
 although the term "vector" most commonly refers to the atomic types not to lists.
 
 
-#### The different vector modes
-
-A vector is a collection of elements that are most commonly of mode `character`,
+A vector is a collection of elements that are most commonly of **mode** `character`,
 `logical`, `integer` or `numeric`.
 
 You can create an empty vector with `vector()`. (By default the mode is
@@ -129,8 +123,6 @@ While using quoted text will create a vector of mode `character`:
 z <- c("Sarah", "Tracy", "Jon")
 ```
 
-#### Examining vectors
-
 The functions `typeof()`, `length()`, `class()` and `str()` provide useful
 information about your vectors and R objects in general.
 
@@ -145,9 +137,7 @@ str(z)
 >
 > Do you see a property that's common to all these vectors above?
 
-#### Adding elements
-
-The function `c()` (for combine) can also be used to add elements to a vector.
+The function `c()` (for combine) can also be used to **add elements** to a vector.
 
 ```{r}
 z <- c(z, "Annette")
@@ -156,9 +146,7 @@ z <- c("Greg", z)
 z
 ```
 
-#### Vectors from a sequence of numbers
-
-You can create vectors as a sequence of numbers.
+You can create vectors as a **sequence of numbers**.
 
 ```{r}
 series <- 1:10
@@ -166,9 +154,7 @@ seq(10)
 seq(from = 1, to = 10, by = 0.1)
 ```
 
-#### Missing data
-
-R supports missing data in vectors. They are represented as `NA` (Not Available)
+R supports **missing data** in vectors. They are represented as `NA` (Not Available)
 and can be used for all the vector types covered in this lesson:
 
 ```{r}
@@ -191,9 +177,7 @@ anyNA(x)
 anyNA(y)
 ```
 
-#### Other special values
-
-
+R also offers some **special values**.
 `Inf` is infinity. You can have either positive or negative infinity.
 
 ```{r}
@@ -206,11 +190,10 @@ anyNA(y)
 0/0
 ```
 
-#### What happens when you mix types inside a vector?
-
+What happens when you mix types inside a vector?
 R will create a resulting vector with a mode that can most easily accommodate
 all the elements it contains. This conversion between modes of storage is called
-"coercion". When R converts the mode of storage based on its content, it is
+**"coercion"**. When R converts the mode of storage based on its content, it is
 referred to as "implicit coercion". For instance, can you guess what the
 following do (without running them first)?
 
@@ -228,8 +211,6 @@ as.numeric("1")
 as.character(1:2)
 ```
 
-#### Object attributes
-
 Objects can have __attributes__. Attributes are part of the object. These include:
 
 * names
@@ -246,9 +227,7 @@ length(1:10)
 nchar("Software Carpentry")
 ```
 
-### Matrix
-
-In R matrices are an extension of the numeric or character vectors. They are not
+In R **matrices** are an extension of the numeric or character vectors. They are not
 a separate type of object but simply an atomic vector with dimensions; the
 number of rows and columns.
 
@@ -289,9 +268,7 @@ mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE)
 mdat
 ```
 
-### List
-
-In R lists act as containers. Unlike atomic vectors, the contents of a list are
+In R **lists** act as containers. Unlike atomic vectors, the contents of a list are
 not restricted to a single mode and can encompass any mixture of data
 types. Lists are sometimes called generic vectors, because the elements of a
 list can by of any type of R object, even lists containing further lists. This
@@ -335,9 +312,7 @@ Elements are indexed by double brackets. Single brackets will still return
 a(nother) list.
 
 
-### Data frame
-
-A data frame is a very important data type in R. It's pretty much the *de facto*
+A **data frame** is a very important data type in R. It's pretty much the *de facto*
 data structure for most tabular data and what we use for statistics.
 
 A data frame is a special type of list where every element of the list has same length.
@@ -355,23 +330,23 @@ Some additional information on data frames:
 * Find the number of rows and columns with `nrow(dat)` and `ncol(dat)`, respectively.
 * Rownames are usually 1, 2, ..., n.
 
-#### Creating data frames by hand
+To create data frames by hand:
 
 ```{r}
 dat <- data.frame(id = letters[1:10], x = 1:10, y = 11:20)
 dat
 ```
 
-#### Useful data frame functions
-
-* `head()` - shown first 6 rows
-* `tail()` - show last 6 rows
-* `dim()` - returns the dimensions
-* `nrow()` - number of rows
-* `ncol()` - number of columns
-* `str()` - structure of each column
-* `names()` - shows the `names` attribute for a data frame, which gives the
-  column names.
+> ## Useful data frame functions {.callout}
+>
+> * `head()` - shown first 6 rows
+> * `tail()` - show last 6 rows
+> * `dim()` - returns the dimensions
+> * `nrow()` - number of rows
+> * `ncol()` - number of columns
+> * `str()` - structure of each column
+> * `names()` - shows the `names` attribute for a data frame, which gives the
+>column names.
 
 See that it is actually a special list:
 
