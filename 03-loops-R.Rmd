@@ -296,21 +296,19 @@ analyze_all <- function(pattern) {
 # analyze_all("csv")
 ```
 
-<div class="keypoints" markdown="1">
-#### Key Points
+> ## Key Points {.callout}
+>
+> * Use `for (variable in collection)` to process the elements of a collection one at a time.
+> * The body of a `for` loop is surrounded by curly braces (`{ }`).
+> * Use `length(thing)` to determine the length of something that contains other values.
+> * Use `list.files(pattern = "pattern")` to create a list of files whose names match a pattern.
 
-* Use `for (variable in collection)` to process the elements of a collection one at a time.
-* The body of a `for` loop is surrounded by curly braces (`{ }`).
-* Use `length(thing)` to determine the length of something that contains other values.
-* Use `list.files(pattern = "pattern")` to create a list of files whose names match a pattern.
-</div>
-
-#### Next Steps
-
-We have now solved our original problem: we can analyze any number of data files with a single command.
-More importantly, we have met two of the most important ideas in programming:
-
-* Use functions to make code easier to re-use and easier to understand.
-* Use vectors and data frames to store related values, and loops to repeat operations on them.
-
-We have one more big idea to introduce...
+> ## Next Steps {.callout}
+>
+> We have now solved our original problem: we can analyze any number of data files with a single command.
+> More importantly, we have met two of the most important ideas in programming:
+>
+> * Use functions to make code easier to re-use and easier to understand.
+> * Use vectors and data frames to store related values, and loops to repeat operations on them.
+>
+> We have one more big idea to introduce...
