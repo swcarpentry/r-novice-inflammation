@@ -191,20 +191,20 @@ And we see:
 <img src="fig/CSV_WithSpecialNA.png" alt="csv written with -9999 as NA" />
 
 
-#### Key Points
+> ## Key Points {.callout}
+>
+>  * Import data from a .csv file using the  `read.csv(...)` function.
+>  * Understand some of the key arguments available for importing the data properly
+>    + `header`
+>    + `stringsAsFactors`
+>    + `as.is`
+>    + `strip.white`
+>  * Write data to a new .csv file using the `write.csv(...)` function
+>  * Understand some of the key arguments available for exporting the data properly
+>    + `row.names` / `col.names`
+>    + `na`
 
-  * Import data from a .csv file using the  `read.csv(...)` function.
-  * Understand some of the key arguments available for importing the data properly
-    + `header`
-    + `stringsAsFactors`
-    + `as.is`
-    + `strip.white`
-  * Write data to a new .csv file using the `write.csv(...)` function
-  * Understand some of the key arguments available for exporting the data properly
-    + `row.names` / `col.names`
-    + `na`
-
-#### Next Steps
-We have now explored data import and export from .csv files. There are several more arguments available for both the `read.csv(...)` and `write.csv(...)` functions, as well as similar options for working with data that are stored in other text formats (e.g., .txt).  To find out more, use the R help commands '?read.csv()' and '?write.csv()'.
-
-In the next lessons, we'll explore how to work with and analyze data in the R environment.
+> ## Next Steps {.callout}
+>We have now explored data import and export from .csv files. There are several more arguments available for both the `read.csv(...)` and `write.csv(...)` functions, as well as similar options for working with data that are stored in other text formats (e.g., .txt).  To find out more, use the R help commands '?read.csv()' and '?write.csv()'.
+>
+> In the next lessons, we'll explore how to work with and analyze data in the R environment.
