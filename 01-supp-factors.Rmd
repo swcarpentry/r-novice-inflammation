@@ -86,8 +86,6 @@ information built in. It is particularly helpful when there are many levels
 >
 > d) exercise<-factor(c("l","n","n","i","l"), levels=c("n","l","i"), ordered=TRUE)
 
-### Converting factors
-
 Converting from a factor to a number can cause problems:
 
 ```{r converting_factors}
@@ -110,10 +108,7 @@ f<-levels(f)[f]
 f<-as.numeric(f)
 ```
 
-
-### Using factors
-
-Lets load our example data:
+Lets load our example data to see the use of factors:
 
 ```{r load_example_data}
 dat<-read.csv(file='data/sample.csv', stringsAsFactors=TRUE)
@@ -149,9 +144,8 @@ barplot(table(dat$Group))
 ~~~
 > Use the `factor()` command to modify the column dat$Group so that the *control* group is plotted last
 
-### Removing levels from a factor
-
 Some of the Gender values in our dataset have been coded incorrectly.
+Let's remove factors.
 
 ```{r gender_counts}
 barplot(table(dat$Gender))
