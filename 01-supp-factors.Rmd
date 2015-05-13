@@ -185,7 +185,8 @@ levels(dat$Gender)[1] <- 'f'
 plot(x = dat$Gender, y = dat$BloodPressure)
 ~~~
 
-### Key Points
- * Factors are used to represent catagorical data
- * Factors can be *ordered* or *unordered*
- * Some R functions have special methods for handling functions
+> ## Key Points {.callout}
+>
+> * Factors are used to represent catagorical data
+> * Factors can be *ordered* or *unordered*
+> * Some R functions have special methods for handling functions
