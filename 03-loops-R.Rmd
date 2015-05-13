@@ -154,7 +154,7 @@ Note also that finding the length of a vector is such a common operation that R 
 length(vowels)
 ```
 
-`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](00-first-timers.html) to learn more about the different ways to store data in R).
+`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](01-supp-data-structures.html) to learn more about the different ways to store data in R).
 
 
 > ## Challenge - Using loops {.challenge}
