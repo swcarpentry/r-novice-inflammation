@@ -36,9 +36,7 @@ We want to:
 
 To do all that, we'll have to learn a little bit about programming.
 
-### Loading Data
-
-To load our inflammation data, first we need to locate our data.
+**To load our inflammation data**, first we need to locate our data.
 We can change the current working directory to the location of the CSV files using the function `setwd`.
 For example, if the CSV files are located in a directory named `swc` in our home directory, we would change the working directory using the following command:
 
@@ -173,8 +171,6 @@ age <- 122
 mass <- mass * 2.0
 age <- age - 20
 ~~~
-
-### Manipulating Data
 
 Now that our data is in memory, we can start doing things with it.
 First, let's ask what type of thing `dat` *is*:
@@ -336,10 +332,8 @@ We'll learn why this is so in the next lesson.
 > (c) `max(dat[5, 3:7])`
 > (d) `max(dat[5, 3, 7])`
 
-### Plotting
-
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and the best way to develop insight is often to visualize data.
-Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R's plotting features.
+Visualization deserves an entire lecture (or course) of its own, but we can explore a few of **R's plotting features**.
 
 Let's take a look at the average inflammation over time.
 Recall that we already calculated these values above using `apply(dat, 2, mean)` and saved them in the variable `avg_day_inflammation`.
