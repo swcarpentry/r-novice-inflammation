@@ -10,7 +10,7 @@ source("tools/chunk-options.R")
 opts_chunk$set(fig.path = "fig/01-starting-with-data-")
 ```
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 > * Read tabular data from a file into a program.
 > * Assign values to variables.
 > * Select individual values and subsections from data.
