@@ -21,6 +21,16 @@ to use whatever language your colleagues are using,
 so that you can share you work with them easily,
 and to use that language *well*.
 
+> ## Prerequisites {.prereq}
+>
+> An understanding of the concepts of files and directories (including working
+>directory) is required.
+>
+> Though not required, we often use RStudio when teaching this lesson.
+> You can find our introduction to RStudio [here](01-supp-intro-rstudio.html).
+
+## Topics
+
 1.  [Analyzing Patient Data](01-starting-with-data.html)
 2.  [Creating Functions](02-func-R.html)
 3.  [Analyzing Multiple Data Sets](03-loops-R.html)
@@ -29,8 +39,10 @@ and to use that language *well*.
 
 ## Other Resources
 
+*   [Motivation](motivation.html)
 *   [Reference](reference.html)
 *   [Discussion](discussion.html)
+*   [Instructor's Guide](instructors.html)
 
 ## Supplemental lessons
 
