@@ -10,11 +10,10 @@ minutes: 20
 source('tools/chunk-options.R')
 ```
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
-> Understand the 3 different ways R can address data inside a data frame.
->
-> Combine different methods for addressing data with the assignment operator to update subsets of data
+> * Understand the 3 different ways R can address data inside a data frame.
+> * Combine different methods for addressing data with the assignment operator to update subsets of data
 
 R is a powerful language for data manipulation. There are 3 main ways for addressing data inside R objects.
 
