@@ -10,7 +10,7 @@ source("tools/chunk-options.R")
 opts_chunk$set(fig.path = "fig/03-loops-R-")
 ```
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * Explain what a `for` loop does.
 > * Correctly write `for` loops to repeat simple calculations.
