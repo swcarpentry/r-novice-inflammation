@@ -9,9 +9,10 @@ minutes: 30
 source("tools/chunk-options.R")
 ```
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
-> FIXME: Write these
+> * Compare loops and vectorized operations
+> * Use the apply family of functions
 
 ### To loop or not to loop...?
 
