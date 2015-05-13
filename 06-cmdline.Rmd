@@ -48,10 +48,8 @@ Our overall requirements are:
 2. If one or more filenames are given, read data from them and report statistics for each file separately.
 3. Use the `--min`, `--mean`, or `--max` flag to determine what statistic to print.
 
-To make this work, we need to know how to handle command-line arguments in a program, and how to get at standard input.
+To make this work, we need to know how to handle **command-line arguments** in a program, and how to get at standard input.
 We'll tackle these questions in turn below.
-
-### Command-Line Arguments
 
 Using the text editor of your choice, save the following line of code in a text file called `session-info.R`:
 
@@ -187,9 +185,7 @@ Rscript readings-02.R data/inflammation-01.csv
 > cat find-pattern.R
 > ```
 
-### Handling Multiple Files
-
-The next step is to teach our program how to handle multiple files.
+The next step is to teach our program how to **handle multiple files**.
 Since 60 lines of output per file is a lot to page through, we'll start by using three smaller files, each of which has three days of data for two patients.
 Let's investigate them from the Unix Shell:
 
@@ -247,9 +243,7 @@ Rscript check.R data/inflammation-*
 Rscript check.R data/small-0* data/inflammation-*
 ```
 
-### Handling Command-Line Flags
-
-The next step is to teach our program to pay attention to the `--min`, `--mean`, and `--max` flags.
+The next step is to teach our program to pay attention to the `--min`, `--mean`, and `--max` **flags**.
 These always appear before the names of the files, so let's save the following in `readings-04.R`:
 
 ```{r echo=FALSE, engine='bash'}
@@ -299,9 +293,7 @@ This is four lines longer than its predecessor, but broken into more digestible 
 cat readings-usage.R
 ```
 
-### Handling Standard Input
-
-The next thing our program has to do is read data from standard input if no filenames are given so that we can put it in a pipeline, redirect input to it, and so on.
+The next thing our program has to do is read data from **standard input** if no filenames are given so that we can put it in a pipeline, redirect input to it, and so on.
 Let's experiment in another script, which we'll save as `count-stdin.R`:
 
 ```{r echo=FALSE, engine='bash'}
