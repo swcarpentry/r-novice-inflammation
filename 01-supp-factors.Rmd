@@ -9,7 +9,7 @@ minutes: 20
 source('tools/chunk-options.R')
 ```
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 >   * Understand how to represent catagorical data in R
 >   * Know the difference between ordered and unordered factors
