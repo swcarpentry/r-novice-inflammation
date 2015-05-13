@@ -23,9 +23,7 @@ If we only had one data set to analyze, it would probably be faster to load the 
 But we have twelve files to check, and may have more in the future.
 In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.
 
-### Defining a function
-
-Let's start by defining a function `fahr_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
+Let's start by **defining a function** `fahr_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
 
 ```{r}
 fahr_to_kelvin <- function(temp) {
@@ -61,8 +59,6 @@ fahr_to_kelvin(212)
 ```
 
 We've successfully called the function that we defined, and we have access to the value that we returned.
-
-### Composing Functions
 
 Now that we've seen how to turn Fahrenheit into Kelvin, it's easy to turn Kelvin into Celsius:
 
@@ -125,8 +121,6 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > outside(dry_principle)
 > ```
 
-
-### The Call Stack
 
 Let's take a closer look at what happens when we call `fahr_to_celsius(32)`. To make things clearer, we'll start by putting the initial value 32 in a variable and store the final result in one as well:
 
@@ -233,9 +227,7 @@ That only works if functions don't interfere with each other; if they do, we hav
 > result <- outside(fence(inner_vec, outer_vec))
 > ```
 
-### Testing and Documenting
-
-Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly.
+Once we start putting things in functions so that we can re-use them, we need to start **testing** that those functions are working correctly.
 To see how to do this, let's write a function to center a dataset around a particular value:
 
 ```{r}
@@ -309,7 +301,7 @@ all.equal(sd(dat[, 4]), sd(centered))
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
 We have one more task first, though: we should write some [documentation](reference.html#documentation) for our function to remind ourselves later what it's for and how to use it.
 
-A common way to put documentation in software is to add [comments](reference.html#comment) like this:
+A common way to put **documentation** in software is to add [comments](reference.html#comment) like this:
 
 ```{r}
 center <- function(data, desired) {
@@ -378,8 +370,6 @@ plot(dat[, 4], answer)  # This hasn't been introduced yet, but it may be
                         # useful to show when explaining the answer.
 ```
 
-### Defining Defaults
-
 We have passed arguments to functions in two ways: directly, as in `dim(dat)`, and by name, as in `read.csv(file = "data/inflammation-01.csv", header = FALSE)`.
 In fact, we can pass the arguments to `read.csv` without naming them:
 
@@ -422,7 +412,7 @@ more_data
 center(more_data)
 ```
 
-This is handy: if we usually want a function to work one way, but occasionally need it to do something else, we can allow people to pass an argument when they need to but provide a default to make the normal case easier.
+This is handy: if we usually want a function to work one way, but occasionally need it to do something else, we can allow people to pass an argument when they need to but provide a **default** to make the normal case easier.
 
 The example below shows how R matches values to arguments
 
