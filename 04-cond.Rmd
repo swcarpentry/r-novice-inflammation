@@ -10,7 +10,7 @@ source("tools/chunk-options.R")
 opts_chunk$set(fig.path = "fig/04-cond-")
 ```
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > *   Save plot(s) in a pdf file.
 > *   Write conditional statements with `if` and `else`.
