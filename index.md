@@ -1,6 +1,5 @@
 ---
 layout: lesson
-root: ../..
 title: Programming with R
 ---
 The best way to learn how to program is to do something useful,
@@ -21,20 +20,32 @@ to use whatever language your colleagues are using,
 so you can share you work with them easily,
 and to use that language *well*.
 
-1.  [Analyzing Patient Data](01-starting-with-data.html)
-2.  [Creating Functions](02-func-R.html)
-3.  [Analyzing Multiple Data Sets](03-loops-R.html)
-4.  [Making Choices](04-cond.html)
+> ## Prerequisites {.prereq}
+>
+> An understanding of the concepts of files and directories (including working
+>directory) is required.
+>
+> Though not required, we often use RStudio when teaching this lesson.
+> You can find our introduction to RStudio [here](01-supp-intro-rstudio.html).
+
+## Topics
+
+1.  [Analyzing patient data](01-starting-with-data.html)
+2.  [Creating functions](02-func-R.html)
+3.  [Analyzing multiple data sets](03-loops-R.html)
+4.  [Making choices](04-cond.html)
 5.  [Command-Line Programs](06-cmdline.html)
 
 ## Other Resources
 
+*   [Motivation](motivation.html)
 *   [Reference](reference.html)
 *   [Discussion](discussion.html)
+*   [Instructor's Guide](instructors.html)
 
 ## Supplemental lessons
 
 *   [Introduction to RStudio](01-supp-intro-rstudio.html)
 *   [Addressing data](01-supp-addressing-data.html)
-*   [Working with factors](01-supp-factors.html)
-*   [Data types and data structures](01-supp-data-structures.html)
+*   [Understanding factors](01-supp-factors.html)
+*   [Data types and structures](01-supp-data-structures.html)
