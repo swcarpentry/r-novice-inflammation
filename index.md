@@ -34,7 +34,7 @@ and to use that language *well*.
 2.  [Creating functions](02-func-R.html)
 3.  [Analyzing multiple data sets](03-loops-R.html)
 4.  [Making choices](04-cond.html)
-5.  [Command-Line Programs](06-cmdline.html)
+5.  [Command-Line Programs](05-cmdline.html)
 
 ## Other Resources
 
