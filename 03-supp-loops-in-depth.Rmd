@@ -37,7 +37,9 @@ analyze <- function(filename) {
 filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 ```
 
-A key difference between R and many other languages is a topic known as **vectorization**.
+### Vectorized Operations
+
+A key difference between R and many other languages is a topic known as vectorization.
 When you wrote the `total` function, we mentioned that R already has `sum` to do this; `sum` is *much* faster than the interpreted `for` loop because `sum` is coded in C to work with a vector of numbers.
 Many of R's functions work this way; the loop is hidden from you in C.
 Learning to use vectorized operations is a key skill in R.
@@ -66,7 +68,9 @@ res2 <- a + b
 all.equal(res, res2)
 ```
 
-When performing vector operations in R, it is important to know about **recycling**. If you perform an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector.  For example:
+### Vector Recycling
+
+When performing vector operations in R, it is important to know about recycling. If you perform an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector.  For example:
 
 ```{r}
 a <- 1:10
@@ -92,8 +96,10 @@ b <- 1:7
 a + b
 ```
 
+### `for` or `apply`?
+
 A `for` loop is used to apply the same function calls to a collection of objects.
-R has a family of functions, the **apply** family, which can be used in much the same way.
+R has a family of functions, the `apply` family, which can be used in much the same way.
 You've already used one of the family, `apply` in the first [lesson](01-starting-with-data.html).
 The `apply` family members include
 
@@ -113,7 +119,9 @@ Deciding whether to use `for` or one of the `apply` family is really personal pr
 Using an `apply` family function forces to you encapsulate your operations as a function rather than separate calls with `for`.
 `for` loops are often more natural in some circumstances; for several related operations, a `for` loop will avoid you having to pass in a lot of extra arguments to your function.
 
-Loops in R are said to be **slow**. But not necessarily. *If* you follow some golden rules:
+### Loops in R Are Slow
+
+No, they are not! *If* you follow some golden rules:
 
  1. Don't use a loop when a vectorised alternative exists
  2. Don't grow objects (via `c`, `cbind`, etc) during the loop - R has to create a new object and copy across the information just to add a new element or row/column
