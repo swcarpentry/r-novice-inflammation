@@ -138,10 +138,10 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 > 
 > The function `table()` tabulates observations and can be used to create bar plots quickly. For instance:
 >
-~~~{.r}
-table(dat$Group)
-barplot(table(dat$Group))
-~~~
+> ```{r}
+> table(dat$Group)
+> barplot(table(dat$Group))
+> ```
 > Use the `factor()` command to modify the column dat$Group so that the *control* group is plotted last
 
 Some of the Gender values in our dataset have been coded incorrectly.
@@ -159,9 +159,9 @@ dat$Gender[dat$Gender=='M']<-'m'
 
 > ## Challenge - Updating factors {.challenge}
 >
-~~~{.r}
-plot(x=dat$Gender,y=dat$BloodPressure)
-~~~
+> ```{r}
+> plot(x=dat$Gender,y=dat$BloodPressure)
+> ```
 >
 > Why does this plot show 4 levels?
 >
