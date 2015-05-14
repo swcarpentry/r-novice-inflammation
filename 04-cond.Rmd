@@ -20,6 +20,8 @@ Our previous lessons have shown us how to manipulate data, define our own functi
 However, the programs we have written so far always do the same things, regardless of what data they're given.
 We want programs to make choices based on the values they are manipulating.
 
+### Saving Plots to a File
+
 So far, we have built a function `analyze` to plot summary statistics of the inflammation data:
 
 ```{r analyze}
@@ -77,6 +79,8 @@ After we are done generating the plots to be saved in the pdf file, we stop R fr
 We can update the `analyze` function so that it always saves the plots in a pdf.
 But that would make it more difficult to interactively test out new changes.
 It would be ideal if `analyze` would either save or not save the plots based on its input.
+
+### Conditionals
 
 In order to update our function to decide between saving or not, we need to write code that automatically decides between multiple options.
 The tool R gives us for doing this is called a [conditional statement](reference.html#conditional-statement), and looks like this:
@@ -207,6 +211,8 @@ In this case, "either" means "either or both", not "either one or the other but 
 > plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
 > plot_dist(dat[1:5, 10], threshold = 10)                    # samples (rows) 1-5 on day (column) 10
 > ```
+
+### Saving Automatically Generated Figures
 
 Now that we know how to have R make decisions based on input values, let's update `analyze`:
 
