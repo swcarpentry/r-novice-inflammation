@@ -186,10 +186,10 @@ plot(x=dat$Gender,y=dat$BloodPressure)
 >
 > Adjusting the `levels()` of a factor provides a useful shortcut for reassigning values in this case.
 >
-~~~{.r}
-levels(dat$Gender)[1] <- 'f'
-plot(x = dat$Gender, y = dat$BloodPressure)
-~~~
+> ```{r}
+> levels(dat$Gender)[1] <- 'f'
+> plot(x = dat$Gender, y = dat$BloodPressure)
+> ```
 
 > ## Key Points {.callout}
 >
