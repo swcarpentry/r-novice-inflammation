@@ -17,7 +17,7 @@ We use R in our lessons because:
 
 But the two most important things are
 to use whatever language your colleagues are using,
-so you can share you work with them easily,
+so you can share your work with them easily,
 and to use that language *well*.
 
 > ## Prerequisites {.prereq}
