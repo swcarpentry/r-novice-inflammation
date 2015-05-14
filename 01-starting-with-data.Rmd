@@ -10,7 +10,7 @@ source("tools/chunk-options.R")
 opts_chunk$set(fig.path = "fig/01-starting-with-data-")
 ```
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 > * Read tabular data from a file into a program.
 > * Assign values to variables.
 > * Select individual values and subsections from data.
@@ -364,22 +364,23 @@ The maximum value rises and falls perfectly smoothly, while the minimum seems to
 >
 > Create a plot showing the standard deviation of the inflammation data for each day across all patients.
 
-#### Key Points
+> ## Key Points {.callout}
+>
+> * Use `variable <- value` to assign a value to a variable in order to record it in memory.
+> * Objects are created on demand whenever a value is assigned to them.
+> * The function `dim` gives the dimensions of a data frame.
+> * Use `object[x, y]` to select a single element from a data frame.
+> * Use `from:to` to specify a sequence that includes the indices from `from` to
+>`to`. 
+> * All the indexing and slicing that works on data frames also works on vectors.
+> * Use `#` to add comments to programs.
+> * Use `mean`, `max`, `min` and `sd` to calculate simple statistics.
+> * Use `apply` to calculate statistics across the rows or columns of a data frame.
+> * Use `plot` to create simple visualizations.
 
-* Use `variable <- value` to assign a value to a variable in order to record it in memory.
-* Objects are created on demand whenever a value is assigned to them.
-* The function `dim` gives the dimensions of a data frame.
-* Use `object[x, y]` to select a single element from a data frame.
-* Use `from:to` to specify a sequence that includes the indices from `from` to `to`.
-* All the indexing and slicing that works on data frames also works on vectors.
-* Use `#` to add comments to programs.
-* Use `mean`, `max`, `min` and `sd` to calculate simple statistics.
-* Use `apply` to calculate statistics across the rows or columns of a data frame.
-* Use `plot` to create simple visualizations.
-
-#### Next Steps
-
-Our work so far has convinced us that something's wrong with our first data file.
-We would like to check the other 11 the same way, but typing in the same commands repeatedly is tedious and error-prone.
-Since computers don't get bored (that we know of), we should create a way to do a complete analysis with a single command, and then figure out how to repeat that step once for each file.
-These operations are the subjects of the next two lessons.
+> ## Next Steps {.callout}
+>
+> Our work so far has convinced us that something's wrong with our first data file.
+> We would like to check the other 11 the same way, but typing in the same commands repeatedly is tedious and error-prone.
+> Since computers don't get bored (that we know of), we should create a way to do a complete analysis with a single command, and then figure out how to repeat that step once for each file.
+> These operations are the subjects of the next two lessons.
