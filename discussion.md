@@ -4,7 +4,7 @@ title: Programming with R
 subtitle: Discussion
 ---
 
-### Error returned when attempting to calculate mean of data.frame rows
+## Error returned when attempting to calculate mean of data.frame rows
 
 As of R version 3.0.0 one cannot use functions such as `mean()`, `max()`,
 `min()`, etc., on `data.frame` rows. This can be a problem
