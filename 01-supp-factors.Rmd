@@ -9,7 +9,7 @@ minutes: 20
 source('tools/chunk-options.R')
 ```
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 >   * Understand how to represent catagorical data in R
 >   * Know the difference between ordered and unordered factors
@@ -29,7 +29,8 @@ Once created, factors can only contain a pre-defined set values, known as
 *levels*. By default, R always sorts *levels* in alphabetical order. For
 instance, if you have a factor with 2 levels:
 
-## Tip {.callout}
+> ## Tip {.callout}
+>
 > The `factor()` command is used to create and modify factors in R
 
 ```{r intro_to_factors}
@@ -69,7 +70,7 @@ is low?  You wouldn't be able to tell with just integer data. Factors have this
 information built in. It is particularly helpful when there are many levels
 (like the subjects in our example data set).
 
-## Challenge - Representing data in R {.challenge}
+> ## Challenge - Representing data in R {.challenge}
 >
 > You have a vector representing levels of exercise undertaken by 5 subjects
 >
@@ -85,7 +86,7 @@ information built in. It is particularly helpful when there are many levels
 >
 > d) exercise<-factor(c("l","n","n","i","l"), levels=c("n","l","i"), ordered=TRUE)
 
-### Converting factors
+###  Converting Factors
 
 Converting from a factor to a number can cause problems:
 
@@ -109,17 +110,16 @@ f<-levels(f)[f]
 f<-as.numeric(f)
 ```
 
+### Using Factors
 
-### Using factors
-
-Lets load our example data:
+Lets load our example data to see the use of factors:
 
 ```{r load_example_data}
 dat<-read.csv(file='data/sample.csv', stringsAsFactors=TRUE)
 ```
 
-## Tip {.callout}
-> 
+> ## Tip {.callout}
+>
 > `stringsAsFactors=TRUE` is the default behaviour for R. We could leave this argument out. It is included here for clarity.
 
 ```{r examine_example_data}
@@ -134,24 +134,24 @@ summary(dat)
 
 Notice the `summary()` function handles factors differently to numbers (and strings), the occurence counts for each value is often more useful information.
 
-### Tip {.callout}
+> ## Tip {.callout}
 > 
 > The `summary()` function is a great way of spotting errors in your data, look at the *dat$Gender* column. It's also a great way for spotting missing data.
 
-### Challenge - Reordering factors {.challenge}
+> ## Challenge - Reordering factors {.challenge}
 > 
 > The function `table()` tabulates observations and can be used to create bar plots quickly. For instance:
-
-```{r using_factors}
-table(dat$Group)
-barplot(table(dat$Group))
-```
-
+>
+> ```{r}
+> table(dat$Group)
+> barplot(table(dat$Group))
+> ```
 > Use the `factor()` command to modify the column dat$Group so that the *control* group is plotted last
 
-### Removing levels from a factor
+### Removing Levels from a Factor
 
 Some of the Gender values in our dataset have been coded incorrectly.
+Let's remove factors.
 
 ```{r gender_counts}
 barplot(table(dat$Gender))
@@ -163,14 +163,14 @@ Values should have been recorded as lowercase 'm' & 'f'. We should correct this.
 dat$Gender[dat$Gender=='M']<-'m'
 ```
 
-### Challenge - Updating factors {.challenge}
-
-```{r updating_factors}
-plot(x=dat$Gender,y=dat$BloodPressure)
-```
-
+> ## Challenge - Updating factors {.challenge}
+>
+> ```{r}
+> plot(x=dat$Gender,y=dat$BloodPressure)
+> ```
 >
 > Why does this plot show 4 levels?
+>
 > *Hint* how many levels does dat$Gender have?
 
 
@@ -182,16 +182,17 @@ dat$Gender<-droplevels(dat$Gender)
 plot(x=dat$Gender,y=dat$BloodPressure)
 ```
 
-## Tip {.callout}
+> ## Tip {.callout}
 >
-> Adjusting the `levels()` of a factor provides a useful shortcut for reassining values in this case.
+> Adjusting the `levels()` of a factor provides a useful shortcut for reassigning values in this case.
+>
+> ```{r}
+> levels(dat$Gender)[1] <- 'f'
+> plot(x = dat$Gender, y = dat$BloodPressure)
+> ```
 
-```{r reassigning_levels_shortcut}
-levels(dat$Gender)[1]<-'f'
-plot(x=dat$Gender,y=dat$BloodPressure)
-```
-
-### Key Points
- * Factors are used to represent catagorical data
- * Factors can be *ordered* or *unordered*
- * Some R functions have special methods for handling functions
+> ## Key Points {.callout}
+>
+> * Factors are used to represent catagorical data
+> * Factors can be *ordered* or *unordered*
+> * Some R functions have special methods for handling functions
