@@ -30,7 +30,7 @@ rm(tmp)
 
 We want to:
 
-* Load that data into memory,
+* Load data into memory,
 * Calculate the average value of inflammation per day across all patients, and
 * Plot the results.
 
@@ -47,7 +47,7 @@ setwd("~/swc")
 Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
 Alternatively you can change the working directory using the RStudio GUI using the menu option `Session` -> `Set Working Directory` -> `Choose Directory...`
 
-We also know that experimental data files are located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
+We also know that experimental files are located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
 
 ```{r, results="hide"}
 read.csv(file = "data/inflammation-01.csv", header = FALSE)
@@ -71,7 +71,7 @@ We'll learn more of the details about functions and their arguments in the next 
 Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `inflammation-01.csv`.
 Try it out.
 
-`read.csv` read the file, but we can't use the data unless we assign them to a variable.
+`read.csv` read the file, but we can't use data unless we assign it to a variable.
 A variable is just a name for a value, such as `x`, `current_temperature`, or `subject_id`.
 We can create a new variable simply by assigning a value to it using `<-`
 
@@ -171,7 +171,7 @@ age <- age - 20
 
 ### Manipulating Data
 
-Now that our data are loaded in memory, we can start doing things with them.
+Now that our data is loaded in memory, we can start doing things with them.
 First, let's ask what type of thing `dat` is:
 
 ```{r}
