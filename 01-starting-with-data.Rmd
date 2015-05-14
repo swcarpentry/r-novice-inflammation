@@ -171,7 +171,7 @@ age <- age - 20
 
 ### Manipulating Data
 
-Now that our data is loaded in memory, we can start doing things with them.
+Now that our data is loaded in memory, we can start doing things with it.
 First, let's ask what type of thing `dat` is:
 
 ```{r}
