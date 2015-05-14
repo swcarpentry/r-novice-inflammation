@@ -10,11 +10,10 @@ minutes: 20
 source('tools/chunk-options.R')
 ```
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
-> Understand the 3 different ways R can address data inside a data frame.
->
-> Combine different methods for addressing data with the assignment operator to update subsets of data
+> * Understand the 3 different ways R can address data inside a data frame.
+> * Combine different methods for addressing data with the assignment operator to update subsets of data
 
 R is a powerful language for data manipulation. There are 3 main ways for addressing data inside R objects.
 
@@ -53,9 +52,9 @@ head(dat)
 
 The data is the results of an (not real) experiment, looking at the number of aneurisms that formed in the eyes of patients who undertook 3 different treatments.
 
-### Addressing by index
+### Addressing by Index
 
-We have already seen how square brackets `[` can be used to subset (slice) data. The generic format is `dat[row_numbers,column_numbers]`.
+Data can be accessed by index. We have already seen how square brackets `[` can be used to subset (slice) data. The generic format is `dat[row_numbers,column_numbers]`.
 
 > ## Challenge - Selecting values 1 {.challenge}
 >
@@ -95,7 +94,8 @@ Returns the first 5 columns for patients in rows 1,5,7 & 9
 > ## Challenge - Subsetting non-sequential data {.challenge}
 > Return the Age and Gender values for the first 5 patients.
 
-### Addressing by name
+### Addressing by Name
+
 Columns in an R data frame are named.
 
 ```{r column_names}
@@ -121,8 +121,7 @@ head(dat[,c('Age','Gender')])
 >
 > Best practice is to address columns by name, often you will create or delete columns and the column position will change.
 
-
-### Logical indexing
+### Logical Indexing
 
 A logical vector contains only the special values `TRUE` & `FALSE`.
 
@@ -159,7 +158,7 @@ plot(dat[dat$Group=='Control',]$BloodPressure)
 > 1. Create a scatterplot showing BloodPressure for subjects not in the control group.
 > 2. How many ways are there to index this set of subjects?
 
-### Combining indexing and assignment
+### Combining Indexing and Assignment
 
 The assignment operator `<-` can be combined with indexing.
 
