@@ -179,7 +179,24 @@ length(vowels)
 > print_N(3)
 > ```
 >
-> 2. Exponentiation is built into R:
+> 2. Write a function called `total` that calculates the sum of the values in a vector.
+> (R has a built-in function called `sum` that does this for you.
+> Please don't use it for this exercise.)
+>
+> ```{r, echo=-1}
+> total <- function(vec) {
+>   #calculates the sum of the values in a vector
+>   vec_sum <- 0
+>   for (num in vec) {
+>     vec_sum <- vec_sum + num
+>   }
+>   return(vec_sum)
+> }
+> ex_vec <- c(4, 8, 15, 16, 23, 42)
+> total(ex_vec)
+> ```
+>
+> 3. Exponentiation is built into R:
 >
 > ```{r}
 > 2^4
@@ -197,22 +214,6 @@ length(vowels)
 > expo(2, 4)
 > ```
 >
-> 3. Write a function called `total` that calculates the sum of the values in a vector.
-> (R has a built-in function called `sum` that does this for you.
-> Please don't use it for this exercise.)
->
-> ```{r, echo=-1}
-> total <- function(vec) {
->   #calculates the sum of the values in a vector
->   vec_sum <- 0
->   for (num in vec) {
->     vec_sum <- vec_sum + num
->   }
->   return(vec_sum)
-> }
-> ex_vec <- c(4, 8, 15, 16, 23, 42)
-> total(ex_vec)
-> ```
 
 ### Processing Multiple Files
 
