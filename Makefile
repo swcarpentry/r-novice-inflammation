@@ -2,7 +2,7 @@ PANDOC ?= pandoc
 PANDOC_FLAGS = --smart
 
 # R Markdown files.
-SRC_RMD = $(wildcard ??-*.Rmd)
+SRC_RMD = $(wildcard ??-*.Rmd) instructors.Rmd
 DST_RMD = $(patsubst %.Rmd,%.md,$(SRC_RMD))
 
 # All Markdown files (hand-written and generated).
