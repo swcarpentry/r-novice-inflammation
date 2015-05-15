@@ -35,6 +35,9 @@ and to use that language *well*.
 3.  [Analyzing multiple data sets](03-loops-R.html)
 4.  [Making choices](04-cond.html)
 5.  [Command-Line Programs](05-cmdline.html)
+6.  [Best practices for using R and designing programs](06-best-practices.html)
+7.  [Dynamic reports with knitr](07-knitr-R.html)
+8.  [Making packages in R](08-making-packages-R.html)
 
 ## Other Resources
 

@@ -41,14 +41,8 @@ Tools like `grep` might be more sophisticated than the programs our learners can
 write at this point in their careers, but it's crucial they realize this is a
 difference of scale rather than kind.
 
-A typical, half-day, lesson would use the first three lessons:
-
-1. [Analyzing Patient Data](01-starting-with-data.html)
-2. [Creating Functions](02-func-R.html)
-3. [Analyzing Multiple Data Sets](03-loops-R.html)
-
 The `R` novice inflammation contains a lot of material to cover.
-Remember this typical lesson does not spend a lot of time on data types, data
+Remember this lesson does not spend a lot of time on data types, data
 structure, etc.
 It is also on par with the similar lesson on Python.
 The objective is to explain modular programming with the concepts of functions,
@@ -63,6 +57,23 @@ Supplementary material is available for R specifics
 [Best Practices for Using R and Designing Programs](06-best-practices-R.html),
 [Dynamic Reports with knitr](07-knitr-R.html),
 [Making Packages in R](08-making-packages-R.html)).
+
+A typical, half-day, lesson would use the first three lessons:
+
+1. [Analyzing Patient Data](01-starting-with-data.html)
+2. [Creating Functions](02-func-R.html)
+3. [Analyzing Multiple Data Sets](03-loops-R.html)
+
+An additional half-day could add the next two lessons:
+
+4.  [Making choices](04-cond.html)
+5.  [Command-Line Programs](05-cmdline.html)
+
+Time-permitting, you can fit in one of these shorter lessons that cover bigger picture ideas like best practices for organizing code, reproducible research, and creating packages:
+
+6.  [Best practices for using R and designing programs](06-best-practices.html)
+7.  [Dynamic reports with knitr](07-knitr-R.html)
+8.  [Making packages in R](08-making-packages-R.html)
 
 ## [Analyzing Patient Data](01-starting-with-data.html)
 
@@ -267,15 +278,23 @@ analyze <- function(filename, output = NULL) {
 ```{r engine='bash'}
 # Challenge - A simple command line program
 cat arith.R
+```
 
+```{r engine='bash'}
 cat find-pattern.R
+```
 
+```{r engine='bash'}
 ## Challenge - A command line program with arguments
 cat check.R
+```
 
+```{r engine='bash'}
 # Challenge - Shorter command line arguments
 cat readings-usage.R
+```
 
+```{r engine='bash'}
 # Challenge - Implementing wc in R
 cat line-count.R
 ```
