@@ -292,7 +292,7 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 analyze_all <- function(pattern) {
   # Runs the function analyze for each file in the current working directory
   # that contains the given pattern.
-  filenames <- list.files(pattern = pattern)
+  filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
   for (f in filenames) {
     analyze(f)
   }
@@ -306,7 +306,7 @@ analyze_all <- function(pattern) {
 > * Use `for (variable in collection)` to process the elements of a collection one at a time.
 > * The body of a `for` loop is surrounded by curly braces (`{ }`).
 > * Use `length(thing)` to determine the length of something that contains other values.
-> * Use `list.files(pattern = "pattern")` to create a list of files whose names match a pattern.
+> * Use `list.files(path = "path", pattern = "pattern", full.names = TRUE)` to create a list of files whose names match a pattern.
 
 > ## Next Steps {.callout}
 >
