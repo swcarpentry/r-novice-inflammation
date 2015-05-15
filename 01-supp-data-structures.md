@@ -5,18 +5,15 @@ subtitle: Data types and structures
 minutes: 45
 ---
 
-> ## Objectives {.objectives}
-> Expose learners to the different data types in R
+> ## Learning Objectives {.objectives}
 >
-> Learn how to create vectors of different types
->
-> Be able to check the type of vector
->
-> Learn about missing data and other special values
->
-> Getting familiar with the different data structures (lists, matrices, data frames)
+> * Expose learners to the different data types in R
+> * Learn how to create vectors of different types
+> * Be able to check the type of vector
+> * Learn about missing data and other special values
+> * Getting familiar with the different data structures (lists, matrices, data frames)
 
-### Understanding basic data types in R
+### Understanding Basic Data Types in R
 
 To make the best of the R language, you'll need a strong understanding of the
 basic data types and data structures and how to operate on those.
@@ -131,8 +128,7 @@ workhorse of R. Technically, vectors can be one of two types:
 
 although the term "vector" most commonly refers to the atomic types not to lists.
 
-
-#### The different vector modes
+### The Different Vector Modes
 
 A vector is a collection of elements that are most commonly of mode `character`,
 `logical`, `integer` or `numeric`.
@@ -214,7 +210,7 @@ While using quoted text will create a vector of mode `character`:
 z <- c("Sarah", "Tracy", "Jon")
 ```
 
-#### Examining vectors
+### Examining Vectors
 
 The functions `typeof()`, `length()`, `class()` and `str()` provide useful
 information about your vectors and R objects in general.
@@ -256,7 +252,7 @@ str(z)
 >
 > Do you see a property that's common to all these vectors above?
 
-#### Adding elements
+### Adding Elements
 
 The function `c()` (for combine) can also be used to add elements to a vector.
 
@@ -279,7 +275,7 @@ z
 ## [1] "Greg"    "Sarah"   "Tracy"   "Jon"     "Annette"
 ```
 
-#### Vectors from a sequence of numbers
+### Vectors from a Sequence of Numbers
 
 You can create vectors as a sequence of numbers.
 
@@ -307,7 +303,7 @@ seq(from = 1, to = 10, by = 0.1)
 ## [85]  9.4  9.5  9.6  9.7  9.8  9.9 10.0
 ```
 
-#### Missing data
+### Missing Data
 
 R supports missing data in vectors. They are represented as `NA` (Not Available)
 and can be used for all the vector types covered in this lesson:
@@ -359,8 +355,7 @@ anyNA(y)
 ## [1] FALSE
 ```
 
-#### Other special values
-
+### Other Special Values
 
 `Inf` is infinity. You can have either positive or negative infinity.
 
@@ -384,7 +379,7 @@ anyNA(y)
 ## [1] NaN
 ```
 
-#### What happens when you mix types inside a vector?
+### What Happens When You Mix Types Inside a Vector?
 
 R will create a resulting vector with a mode that can most easily accommodate
 all the elements it contains. This conversion between modes of storage is called
@@ -419,7 +414,7 @@ as.character(1:2)
 ## [1] "1" "2"
 ```
 
-#### Object attributes
+### Objects Attributes
 
 Objects can have __attributes__. Attributes are part of the object. These include:
 
@@ -630,7 +625,7 @@ Elements are indexed by double brackets. Single brackets will still return
 a(nother) list.
 
 
-### Data frame
+### Data Frame
 
 A data frame is a very important data type in R. It's pretty much the *de facto*
 data structure for most tabular data and what we use for statistics.
@@ -650,7 +645,9 @@ Some additional information on data frames:
 * Find the number of rows and columns with `nrow(dat)` and `ncol(dat)`, respectively.
 * Rownames are usually 1, 2, ..., n.
 
-#### Creating data frames by hand
+### Creating Data Frames by Hand
+
+To create data frames by hand:
 
 
 ```r
@@ -672,16 +669,16 @@ dat
 ## 10  j 10 20
 ```
 
-#### Useful data frame functions
-
-* `head()` - shown first 6 rows
-* `tail()` - show last 6 rows
-* `dim()` - returns the dimensions
-* `nrow()` - number of rows
-* `ncol()` - number of columns
-* `str()` - structure of each column
-* `names()` - shows the `names` attribute for a data frame, which gives the
-  column names.
+> ## Useful data frame functions {.callout}
+>
+> * `head()` - shown first 6 rows
+> * `tail()` - show last 6 rows
+> * `dim()` - returns the dimensions
+> * `nrow()` - number of rows
+> * `ncol()` - number of columns
+> * `str()` - structure of each column
+> * `names()` - shows the `names` attribute for a data frame, which gives the
+>column names.
 
 See that it is actually a special list:
 

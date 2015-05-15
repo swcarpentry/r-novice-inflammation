@@ -7,12 +7,11 @@ minutes: 15
 
 
 
-> ## Objectives {.objectives}
-> Get familiar with RStudio interface
+> ## Learning Objectives {.objectives}
 >
-> Understand the difference between script file and console
->
-> Demonstrate useful shortcuts
+> * Get familiar with RStudio interface
+> * Understand the difference between script file and console
+> * Demonstrate useful shortcuts
 
 Let's start by learning about our tool.
 
@@ -22,7 +21,6 @@ Let's start by learning about our tool.
   easily and exactly replicate our workflow and results.
 * The best way to achieve this is to write scripts. RStudio provides an
   environment that allows you to
-
 
 ### Interacting with R
 
@@ -61,7 +59,7 @@ window and press `Esc`; this should help you out of trouble.
 Use `#` signs to comment. Comment liberally in your R scripts. Anything to the
 right of a `#` is ignored by R.
 
-### Assignment operator
+### Assignment Operator
 
 `<-` is the assignment operator. It assigns values on the right to objects on
 the left. So, after executing `x <- 3`, the value of `x` is `3`. The arrow can

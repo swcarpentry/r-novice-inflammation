@@ -7,11 +7,10 @@ minutes: 30
 
 
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
-> FIXME: Write these
-
-### To loop or not to loop...?
+> * Compare loops and vectorized operations
+> * Use the apply family of functions
 
 In R you have multiple options when repeating calculations: vectorized operations, `for` loops, and `apply` functions.
 
@@ -38,9 +37,9 @@ analyze <- function(filename) {
 filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 ~~~
 
-#### Vectorized operations
+### Vectorized Operations
 
-A key difference between R and many other languages is a topic known as *vectorization*.
+A key difference between R and many other languages is a topic known as vectorization.
 When you wrote the `total` function, we mentioned that R already has `sum` to do this; `sum` is *much* faster than the interpreted `for` loop because `sum` is coded in C to work with a vector of numbers.
 Many of R's functions work this way; the loop is hidden from you in C.
 Learning to use vectorized operations is a key skill in R.
@@ -86,9 +85,9 @@ all.equal(res, res2)
 
 ~~~
 
-##### Vector recycling
+### Vector Recycling
 
-When performing vector operations in R, it is important to know about *recycling*. If you perform an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector.  For example:
+When performing vector operations in R, it is important to know about recycling. If you perform an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector.  For example:
 
 
 ~~~{.r}
@@ -146,11 +145,11 @@ length
 
 ~~~
 
-#### `for` or `apply`?
+### `for` or `apply`?
 
 A `for` loop is used to apply the same function calls to a collection of objects.
 R has a family of functions, the `apply` family, which can be used in much the same way.
-You've already used one of the family, `apply` in the first [lesson](../01-starting-with-data.html).
+You've already used one of the family, `apply` in the first [lesson](01-starting-with-data.html).
 The `apply` family members include
 
  * `apply`  - apply over the margins of an array (e.g. the rows or columns of a matrix)
@@ -170,7 +169,7 @@ Deciding whether to use `for` or one of the `apply` family is really personal pr
 Using an `apply` family function forces to you encapsulate your operations as a function rather than separate calls with `for`.
 `for` loops are often more natural in some circumstances; for several related operations, a `for` loop will avoid you having to pass in a lot of extra arguments to your function.
 
-#### Loops in R are slow
+### Loops in R Are Slow
 
 No, they are not! *If* you follow some golden rules:
 
@@ -203,7 +202,7 @@ system.time(avg2 <- analyze2(filenames))
 
 ~~~{.output}
    user  system elapsed 
-  0.040   0.004   0.045 
+  0.059   0.000   0.060 
 
 ~~~
 
@@ -232,7 +231,7 @@ system.time(avg3 <- analyze3(filenames))
 
 ~~~{.output}
    user  system elapsed 
-  0.048   0.000   0.047 
+  0.059   0.000   0.060 
 
 ~~~
 

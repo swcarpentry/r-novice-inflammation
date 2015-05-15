@@ -7,7 +7,7 @@ minutes: 30
 
 
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * Explain what a `for` loop does.
 > * Correctly write `for` loops to repeat simple calculations.
@@ -261,7 +261,7 @@ length(vowels)
 
 ~~~
 
-`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](00-first-timers.html) to learn more about the different ways to store data in R).
+`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](01-supp-data-structures.html) to learn more about the different ways to store data in R).
 
 
 > ## Challenge - Using loops {.challenge}
@@ -296,7 +296,24 @@ length(vowels)
 > 
 > ~~~
 >
-> 2. Exponentiation is built into R:
+> 2. Write a function called `total` that calculates the sum of the values in a vector.
+> (R has a built-in function called `sum` that does this for you.
+> Please don't use it for this exercise.)
+>
+> 
+> ~~~{.r}
+> ex_vec <- c(4, 8, 15, 16, 23, 42)
+> total(ex_vec)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> [1] 108
+> 
+> ~~~
+>
+> 3. Exponentiation is built into R:
 >
 > 
 > ~~~{.r}
@@ -323,22 +340,6 @@ length(vowels)
 > 
 > ~~~
 >
-> 3. Write a function called `total` that calculates the sum of the values in a vector.
-> (R has a built-in function called `sum` that does this for you.
-> Please don't use it for this exercise.)
->
-> 
-> ~~~{.r}
-> ex_vec <- c(4, 8, 15, 16, 23, 42)
-> total(ex_vec)
-> ~~~
-> 
-> 
-> 
-> ~~~{.output}
-> [1] 108
-> 
-> ~~~
 
 ### Processing Multiple Files
 
@@ -348,7 +349,7 @@ We do not need to write it ourselves because R already has a function to do this
 
 If we run the function without any arguments, `list.files()`, it returns every file in the current working directory.
 We can understand this result by reading the help file (`?list.files`).
-The first argument, `path`, is the path to the directory to be searched, and it has the default value of `"."` (recall from the [lesson](../shell/01-filedir.html) on the Unix Shell that `"."` is shorthand for the current working directory).
+The first argument, `path`, is the path to the directory to be searched, and it has the default value of `"."` (recall from the [lesson](http://swcarpentry.github.io/shell-novice/01-filedir.html) on the Unix Shell that `"."` is shorthand for the current working directory).
 The second argument, `pattern`, is the pattern being searched, and it has the default value of `NULL`.
 Since no pattern is specified to filter the files, all files are returned.
 
@@ -503,21 +504,19 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 
 
 
-<div class="keypoints" markdown="1">
-#### Key Points
+> ## Key Points {.callout}
+>
+> * Use `for (variable in collection)` to process the elements of a collection one at a time.
+> * The body of a `for` loop is surrounded by curly braces (`{ }`).
+> * Use `length(thing)` to determine the length of something that contains other values.
+> * Use `list.files(path = "path", pattern = "pattern", full.names = TRUE)` to create a list of files whose names match a pattern.
 
-* Use `for (variable in collection)` to process the elements of a collection one at a time.
-* The body of a `for` loop is surrounded by curly braces (`{ }`).
-* Use `length(thing)` to determine the length of something that contains other values.
-* Use `list.files(pattern = "pattern")` to create a list of files whose names match a pattern.
-</div>
-
-#### Next Steps
-
-We have now solved our original problem: we can analyze any number of data files with a single command.
-More importantly, we have met two of the most important ideas in programming:
-
-* Use functions to make code easier to re-use and easier to understand.
-* Use vectors and data frames to store related values, and loops to repeat operations on them.
-
-We have one more big idea to introduce...
+> ## Next Steps {.callout}
+>
+> We have now solved our original problem: we can analyze any number of data files with a single command.
+> More importantly, we have met two of the most important ideas in programming:
+>
+> * Use functions to make code easier to re-use and easier to understand.
+> * Use vectors and data frames to store related values, and loops to repeat operations on them.
+>
+> We have one more big idea to introduce...

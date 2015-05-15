@@ -7,9 +7,9 @@ minutes: 30
 
 
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
-> FIXME: Write these
+> * To discover `knitr` and the generation of dynamic reports
 
 `Knitr` is an R package that makes your code neat, pretty, and shows your notes, code, and output simultaneously in an `html` document. You create these documents in `.Rmd` files. You can write in `LateX` or `md`. 
 

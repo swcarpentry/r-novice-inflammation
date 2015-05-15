@@ -7,7 +7,7 @@ minutes: 20
 
 
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 >   * Understand how to represent catagorical data in R
 >   * Know the difference between ordered and unordered factors
@@ -27,7 +27,8 @@ Once created, factors can only contain a pre-defined set values, known as
 *levels*. By default, R always sorts *levels* in alphabetical order. For
 instance, if you have a factor with 2 levels:
 
-## Tip {.callout}
+> ## Tip {.callout}
+>
 > The `factor()` command is used to create and modify factors in R
 
 
@@ -145,7 +146,7 @@ is low?  You wouldn't be able to tell with just integer data. Factors have this
 information built in. It is particularly helpful when there are many levels
 (like the subjects in our example data set).
 
-## Challenge - Representing data in R {.challenge}
+> ## Challenge - Representing data in R {.challenge}
 >
 > You have a vector representing levels of exercise undertaken by 5 subjects
 >
@@ -161,7 +162,7 @@ information built in. It is particularly helpful when there are many levels
 >
 > d) exercise<-factor(c("l","n","n","i","l"), levels=c("n","l","i"), ordered=TRUE)
 
-### Converting factors
+###  Converting Factors
 
 Converting from a factor to a number can cause problems:
 
@@ -202,18 +203,17 @@ f<-levels(f)[f]
 f<-as.numeric(f)
 ~~~
 
+### Using Factors
 
-### Using factors
-
-Lets load our example data:
+Lets load our example data to see the use of factors:
 
 
 ~~~{.r}
 dat<-read.csv(file='data/sample.csv', stringsAsFactors=TRUE)
 ~~~
 
-## Tip {.callout}
-> 
+> ## Tip {.callout}
+>
 > `stringsAsFactors=TRUE` is the default behaviour for R. We could leave this argument out. It is included here for clarity.
 
 
@@ -268,48 +268,48 @@ summary(dat)
 
 Notice the `summary()` function handles factors differently to numbers (and strings), the occurence counts for each value is often more useful information.
 
-### Tip {.callout}
+> ## Tip {.callout}
 > 
 > The `summary()` function is a great way of spotting errors in your data, look at the *dat$Gender* column. It's also a great way for spotting missing data.
 
-### Challenge - Reordering factors {.challenge}
+> ## Challenge - Reordering factors {.challenge}
 > 
 > The function `table()` tabulates observations and can be used to create bar plots quickly. For instance:
-
-
-~~~{.r}
-table(dat$Group)
-~~~
-
-
-
-~~~{.output}
-
-   Control Treatment1 Treatment2 
-        30         35         35 
-
-~~~
-
-
-
-~~~{.r}
-barplot(table(dat$Group))
-~~~
-
-<img src="fig/using_factors-1.png" title="plot of chunk using_factors" alt="plot of chunk using_factors" style="display: block; margin: auto;" />
-
+>
+> 
+> ~~~{.r}
+> table(dat$Group)
+> ~~~
+> 
+> 
+> 
+> ~~~{.output}
+> 
+>    Control Treatment1 Treatment2 
+>         30         35         35 
+> 
+> ~~~
+> 
+> 
+> 
+> ~~~{.r}
+> barplot(table(dat$Group))
+> ~~~
+> 
+> <img src="fig/01-supp-factors-reordering-factors-1.png" title="plot of chunk reordering-factors" alt="plot of chunk reordering-factors" style="display: block; margin: auto;" />
 > Use the `factor()` command to modify the column dat$Group so that the *control* group is plotted last
 
-### Removing levels from a factor
+### Removing Levels from a Factor
 
 Some of the Gender values in our dataset have been coded incorrectly.
+Let's remove factors.
 
 
 ~~~{.r}
 barplot(table(dat$Gender))
 ~~~
 
-<img src="fig/gender_counts-1.png" title="plot of chunk gender_counts" alt="plot of chunk gender_counts" style="display: block; margin: auto;" />
+<img src="fig/01-supp-factors-gender-counts-1.png" title="plot of chunk gender-counts" alt="plot of chunk gender-counts" style="display: block; margin: auto;" />
 
 Values should have been recorded as lowercase 'm' & 'f'. We should correct this.
 
@@ -318,17 +318,17 @@ Values should have been recorded as lowercase 'm' & 'f'. We should correct this.
 dat$Gender[dat$Gender=='M']<-'m'
 ~~~
 
-### Challenge - Updating factors {.challenge}
-
-
-~~~{.r}
-plot(x=dat$Gender,y=dat$BloodPressure)
-~~~
-
-<img src="fig/updating_factors-1.png" title="plot of chunk updating_factors" alt="plot of chunk updating_factors" style="display: block; margin: auto;" />
-
+> ## Challenge - Updating factors {.challenge}
+>
+> 
+> ~~~{.r}
+> plot(x=dat$Gender,y=dat$BloodPressure)
+> ~~~
+> 
+> <img src="fig/01-supp-factors-updating-factors-1.png" title="plot of chunk updating-factors" alt="plot of chunk updating-factors" style="display: block; margin: auto;" />
 >
 > Why does this plot show 4 levels?
+>
 > *Hint* how many levels does dat$Gender have?
 
 
@@ -341,21 +341,22 @@ dat$Gender<-droplevels(dat$Gender)
 plot(x=dat$Gender,y=dat$BloodPressure)
 ~~~
 
-<img src="fig/dropping_levels-1.png" title="plot of chunk dropping_levels" alt="plot of chunk dropping_levels" style="display: block; margin: auto;" />
+<img src="fig/01-supp-factors-dropping-levels-1.png" title="plot of chunk dropping-levels" alt="plot of chunk dropping-levels" style="display: block; margin: auto;" />
 
-## Tip {.callout}
+> ## Tip {.callout}
 >
-> Adjusting the `levels()` of a factor provides a useful shortcut for reassining values in this case.
+> Adjusting the `levels()` of a factor provides a useful shortcut for reassigning values in this case.
+>
+> 
+> ~~~{.r}
+> levels(dat$Gender)[1] <- 'f'
+> plot(x = dat$Gender, y = dat$BloodPressure)
+> ~~~
+> 
+> <img src="fig/01-supp-factors-adjusting-levels-1.png" title="plot of chunk adjusting-levels" alt="plot of chunk adjusting-levels" style="display: block; margin: auto;" />
 
-
-~~~{.r}
-levels(dat$Gender)[1]<-'f'
-plot(x=dat$Gender,y=dat$BloodPressure)
-~~~
-
-<img src="fig/reassigning_levels_shortcut-1.png" title="plot of chunk reassigning_levels_shortcut" alt="plot of chunk reassigning_levels_shortcut" style="display: block; margin: auto;" />
-
-### Key Points
- * Factors are used to represent catagorical data
- * Factors can be *ordered* or *unordered*
- * Some R functions have special methods for handling functions
+> ## Key Points {.callout}
+>
+> * Factors are used to represent catagorical data
+> * Factors can be *ordered* or *unordered*
+> * Some R functions have special methods for handling functions

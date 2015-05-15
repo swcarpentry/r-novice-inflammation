@@ -7,9 +7,9 @@ minutes: 30
 
 
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
-> FIXME: Write these
+> Quick summary on how (and why) making R packages
 
 Why should you make your own R packages?
 
