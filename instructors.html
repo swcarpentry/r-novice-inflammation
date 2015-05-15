@@ -48,7 +48,7 @@
 </ol>
 <p>Time-permitting, you can fit in one of these shorter lessons that cover bigger picture ideas like best practices for organizing code, reproducible research, and creating packages:</p>
 <ol start="6" style="list-style-type: decimal">
-<li><a href="06-best-practices.html">Best practices for using R and designing programs</a></li>
+<li><a href="06-best-practices-R.html">Best practices for using R and designing programs</a></li>
 <li><a href="07-knitr-R.html">Dynamic reports with knitr</a></li>
 <li><a href="08-making-packages-R.html">Making packages in R</a></li>
 </ol>
@@ -58,21 +58,21 @@
 <li><p>Provide shortcut for the assignment operator (<code>&lt;-</code>) (RStudio: Alt+- on Windows/Linux; Option+- on Mac)</p></li>
 </ul>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)
-element &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;o&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;n&quot;</span>)
+animal &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;n&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;y&quot;</span>)
 <span class="co"># Challenge - Slicing (subsetting data)</span>
-element[<span class="dv">4</span>:<span class="dv">1</span>]  <span class="co"># first 4 characters in reverse order</span></code></pre>
-<pre class="output"><code>[1] &quot;g&quot; &quot;y&quot; &quot;x&quot; &quot;o&quot;
+animal[<span class="dv">4</span>:<span class="dv">1</span>]  <span class="co"># first 4 characters in reverse order</span></code></pre>
+<pre class="output"><code>[1] &quot;k&quot; &quot;n&quot; &quot;o&quot; &quot;m&quot;
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">element[-<span class="dv">1</span>]  <span class="co"># remove first character</span></code></pre>
-<pre class="output"><code>[1] &quot;x&quot; &quot;y&quot; &quot;g&quot; &quot;e&quot; &quot;n&quot;
+<pre class="sourceCode r"><code class="sourceCode r">animal[-<span class="dv">1</span>]  <span class="co"># remove first character</span></code></pre>
+<pre class="output"><code>[1] &quot;o&quot; &quot;n&quot; &quot;k&quot; &quot;e&quot; &quot;y&quot;
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">element[-<span class="dv">4</span>]  <span class="co"># remove fourth character</span></code></pre>
-<pre class="output"><code>[1] &quot;o&quot; &quot;x&quot; &quot;y&quot; &quot;e&quot; &quot;n&quot;
+<pre class="sourceCode r"><code class="sourceCode r">animal[-<span class="dv">4</span>]  <span class="co"># remove fourth character</span></code></pre>
+<pre class="output"><code>[1] &quot;m&quot; &quot;o&quot; &quot;n&quot; &quot;e&quot; &quot;y&quot;
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">element[-<span class="dv">1</span>:-<span class="dv">4</span>]  <span class="co"># remove firts to fourth characters</span></code></pre>
-<pre class="output"><code>[1] &quot;e&quot; &quot;n&quot;
+<pre class="sourceCode r"><code class="sourceCode r">animal[-<span class="dv">1</span>:-<span class="dv">4</span>]  <span class="co"># remove first to fourth characters</span></code></pre>
+<pre class="output"><code>[1] &quot;e&quot; &quot;y&quot;
 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">element[<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">6</span>)]  <span class="co"># new character vector</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">animal[<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>)]  <span class="co"># new character vector</span></code></pre>
 <pre class="output"><code>[1] &quot;e&quot; &quot;o&quot; &quot;n&quot;
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Challenge - Subsetting data</span>
