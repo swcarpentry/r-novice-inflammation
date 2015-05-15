@@ -181,15 +181,6 @@ print_N <- function(N) {
 }
 print_N(3)
 
-expo <- function(base, power) {
-  result <- 1
-  for (i in seq(power)) {
-    result <- result * base
-  }
-  return(result)
-}
-expo(2, 4)
-
 total <- function(vec) {
   #calculates the sum of the values in a vector
   vec_sum <- 0
@@ -200,6 +191,15 @@ total <- function(vec) {
 }
 ex_vec <- c(4, 8, 15, 16, 23, 42)
 total(ex_vec)
+
+expo <- function(base, power) {
+  result <- 1
+  for (i in seq(power)) {
+    result <- result * base
+  }
+  return(result)
+}
+expo(2, 4)
 
 # Challenge - Using loops to analyze multiple files
 analyze_all <- function(pattern) {
