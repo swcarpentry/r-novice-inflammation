@@ -7,7 +7,7 @@ minutes: 30
 
 
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 > * Read tabular data from a file into a program.
 > * Assign values to variables.
 > * Select individual values and subsections from data.
@@ -16,7 +16,7 @@ minutes: 30
 
 We are studying inflammation in patients who have been given a new treatment for arthritis,
 and need to analyze the first dozen data sets.
-The data sets are stored in [comma-separated values](reference.html#comma-separated-values-(csv)) (CSV) format: each row holds information for a single patient, and the columns represent successive days.
+The data sets are stored in [comma-separated values](reference.html#comma-separated-values-(csv)) (CSV) format. Each row holds the observations for just one patient. Each column holds the inflammation measured in a day, so we have a set of values in succesive days.
 The first few rows of our first file look like this:
 
 
@@ -31,17 +31,15 @@ The first few rows of our first file look like this:
 
 We want to:
 
-* load that data into memory,
-* calculate the average inflammation per day across all patients, and
-* plot the result.
+* Load data into memory,
+* Calculate the average value of inflammation per day across all patients, and
+* Plot the results.
 
 To do all that, we'll have to learn a little bit about programming.
 
 ### Loading Data
 
-To load our inflammation data, first we need to locate our data.
-We can change the current working directory to the location of the CSV files using the function `setwd`.
-For example, if the CSV files are located in a directory named `swc` in our home directory, we would change the working directory using the following command:
+To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is `inflammation-01.csv`. This is very important in R, if we forget this step we'll get an error message when trying to read. We can change the current working directory using the function `setwd`. For this example, we change the path to the working directory where our scripts are stored that is named `swc`:
 
 
 ~~~{.r}
@@ -51,7 +49,7 @@ setwd("~/swc")
 Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
 Alternatively you can change the working directory using the RStudio GUI using the menu option `Session` -> `Set Working Directory` -> `Choose Directory...`
 
-Now we could load the data into R using `read.csv`:
+We also know that experimental files are located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
 
 
 ~~~{.r}
@@ -61,9 +59,7 @@ read.csv(file = "data/inflammation-01.csv", header = FALSE)
 The expression `read.csv(...)` is a [function call](reference.html#function-call) that asks R to run the function `read.csv`.
 
 `read.csv` has two [arguments](reference.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
-The filename needs to be a character string (or [string](reference.html#string) for short), so we put it in quotes.
-Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers.
-We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
+The filename needs to be a character string (or [string](reference.html#string) for short), so we put it in quotes. Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers. We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
 
 > ## Tip {.callout}
 >
@@ -78,8 +74,7 @@ We'll learn more of the details about functions and their arguments in the next 
 Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `inflammation-01.csv`.
 Try it out.
 
-`read.csv` read the file, but didn't save the data in memory.
-To do that, we need to assign the data frame to a variable.
+`read.csv` read the file, but we can't use data unless we assign it to a variable.
 A variable is just a name for a value, such as `x`, `current_temperature`, or `subject_id`.
 We can create a new variable simply by assigning a value to it using `<-`
 
@@ -213,6 +208,10 @@ weight_lb
 Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes.
 This is different from the way spreadsheets work.
 
+> ## Tip {.callout} 
+>An alternative way to print the value of a variable is to use () around the assignment statement. As an example: `(total_weight <- weight_kg + weight_lb)`, adds the values of `weight_kg` and `weight_lb`, assigns the result to the `total_weight`, and finally prints the assigned value of the variable `total_weight`.
+
+
 Now that we know how to assign things to variables, let's re-run `read.csv` and save its result:
 
 
@@ -269,8 +268,8 @@ age <- age - 20
 
 ### Manipulating Data
 
-Now that our data is in memory, we can start doing things with it.
-First, let's ask what type of thing `dat` *is*:
+Now that our data is loaded in memory, we can start doing things with it.
+First, let's ask what type of thing `dat` is:
 
 
 ~~~{.r}
@@ -284,11 +283,10 @@ class(dat)
 
 ~~~
 
-The output tells us that data currently is a data frame in R.
-This is similar to a spreadsheet in MS Excel that many of us are familiar with using.
-Data frames are very useful for storing data because you can have a continuous variable, e.g. rainfall, in one column and a categorical variable, e.g. month, in another.
+The output tells us that is a data frame. Think of this structure as a spreadsheet in MS Excel that many of us are familiar with.
+Data frames are very useful for storing data and you will find them elsewhere when programming in R. A typical data frame of experimental data contains individual observations in rows and variables in columns.
 
-We can see the dimensions, or [shape](reference.html#shape-(of-an-array)), of the data frame like this:
+We can see the dimensions, or [shape](reference.html#shape-(of-an-array)), of the data frame with the function `dim`:
 
 
 ~~~{.r}
@@ -464,7 +462,7 @@ max(dat[2, ])
 
 ~~~
 
-R also has functions for other commons calculations, e.g. finding the minimum, mean, median, and standard deviation of the data:
+R also has functions for other common calculations, e.g. finding the minimum, mean, median, and standard deviation of the data:
 
 
 ~~~{.r}
@@ -565,15 +563,15 @@ We'll learn why this is so in the next lesson.
 >
 > 
 > ~~~{.r}
-> element <- c("o", "x", "y", "g", "e", "n")
+> animal <- c("m", "o", "n", "k", "e", "y")
 > # first three characters
-> element[1:3]
+> animal[1:3]
 > ~~~
 > 
 > 
 > 
 > ~~~{.output}
-> [1] "o" "x" "y"
+> [1] "m" "o" "n"
 > 
 > ~~~
 > 
@@ -581,24 +579,24 @@ We'll learn why this is so in the next lesson.
 > 
 > ~~~{.r}
 > # last three characters
-> element[4:6]
+> animal[4:6]
 > ~~~
 > 
 > 
 > 
 > ~~~{.output}
-> [1] "g" "e" "n"
+> [1] "k" "e" "y"
 > 
 > ~~~
 >
-> 1.  If the first four characters are selected using the slice `element[1:4]`, how can we obtain the first four characters in reverse order?
+> 1.  If the first four characters are selected using the slice `animal[1:4]`, how can we obtain the first four characters in reverse order?
 >
-> 1.  What is `element[-1]`?
->    What is `element[-4]`?
+> 1.  What is `animal[-1]`?
+>    What is `animal[-4]`?
 >    Given those answers,
->    explain what `element[-1:-4]` does.
+>    explain what `animal[-1:-4]` does.
 >
-> 1.  Use a slice of `element` to create a new character vector that spells the word "eon", e.g. `c("e", "o", "n")`.
+> 1.  Use a slice of `animal` to create a new character vector that spells the word "eon", i.e. `c("e", "o", "n")`.
 
 
 > ## Challenge - Subsetting data 2 {.challenge}
@@ -655,22 +653,23 @@ The maximum value rises and falls perfectly smoothly, while the minimum seems to
 >
 > Create a plot showing the standard deviation of the inflammation data for each day across all patients.
 
-#### Key Points
+> ## Key Points {.callout}
+>
+> * Use `variable <- value` to assign a value to a variable in order to record it in memory.
+> * Objects are created on demand whenever a value is assigned to them.
+> * The function `dim` gives the dimensions of a data frame.
+> * Use `object[x, y]` to select a single element from a data frame.
+> * Use `from:to` to specify a sequence that includes the indices from `from` to
+>`to`. 
+> * All the indexing and slicing that works on data frames also works on vectors.
+> * Use `#` to add comments to programs.
+> * Use `mean`, `max`, `min` and `sd` to calculate simple statistics.
+> * Use `apply` to calculate statistics across the rows or columns of a data frame.
+> * Use `plot` to create simple visualizations.
 
-* Use `variable <- value` to assign a value to a variable in order to record it in memory.
-* Objects are created on demand whenever a value is assigned to them.
-* The function `dim` gives the dimensions of a data frame.
-* Use `object[x, y]` to select a single element from a data frame.
-* Use `from:to` to specify a sequence that includes the indices from `from` to `to`.
-* All the indexing and slicing that works on data frames also works on vectors.
-* Use `#` to add comments to programs.
-* Use `mean`, `max`, `min` and `sd` to calculate simple statistics.
-* Use `apply` to calculate statistics across the rows or columns of a data frame.
-* Use `plot` to create simple visualizations.
-
-#### Next Steps
-
-Our work so far has convinced us that something's wrong with our first data file.
-We would like to check the other 11 the same way, but typing in the same commands repeatedly is tedious and error-prone.
-Since computers don't get bored (that we know of), we should create a way to do a complete analysis with a single command, and then figure out how to repeat that step once for each file.
-These operations are the subjects of the next two lessons.
+> ## Next Steps {.callout}
+>
+> Our work so far has convinced us that something's wrong with our first data file.
+> We would like to check the other 11 the same way, but typing in the same commands repeatedly is tedious and error-prone.
+> Since computers don't get bored (that we know of), we should create a way to do a complete analysis with a single command, and then figure out how to repeat that step once for each file.
+> These operations are the subjects of the next two lessons.

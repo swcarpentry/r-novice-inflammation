@@ -23,19 +23,22 @@
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
+      <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <h1 class="title">Programming with R</h1>
           <h2 class="subtitle">Loops in R</h2>
-<div id="objectives" class="objectives panel panel-warning">
+<div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
-<p>FIXME: Write these</p>
+<ul>
+<li>Compare loops and vectorized operations</li>
+<li>Use the apply family of functions</li>
+</ul>
 </div>
 </div>
-<h3 id="to-loop-or-not-to-loop...">To loop or not to loop...?</h3>
 <p>In R you have multiple options when repeating calculations: vectorized operations, <code>for</code> loops, and <code>apply</code> functions.</p>
 <p>This lesson is an extension of <a href="03-loops-R.html">Analyzing Multiple Data Sets</a>. In that lesson, we introduced how to run a custom function, <code>analyze</code>, over multiple data files:</p>
 <pre class="sourceCode r"><code class="sourceCode r">analyze &lt;-<span class="st"> </span>function(filename) {
@@ -50,8 +53,8 @@
   <span class="kw">plot</span>(min_day_inflammation)
 }</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">filenames &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;inflammation&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</code></pre>
-<h4 id="vectorized-operations">Vectorized operations</h4>
-<p>A key difference between R and many other languages is a topic known as <em>vectorization</em>. When you wrote the <code>total</code> function, we mentioned that R already has <code>sum</code> to do this; <code>sum</code> is <em>much</em> faster than the interpreted <code>for</code> loop because <code>sum</code> is coded in C to work with a vector of numbers. Many of R's functions work this way; the loop is hidden from you in C. Learning to use vectorized operations is a key skill in R.</p>
+<h3 id="vectorized-operations">Vectorized Operations</h3>
+<p>A key difference between R and many other languages is a topic known as vectorization. When you wrote the <code>total</code> function, we mentioned that R already has <code>sum</code> to do this; <code>sum</code> is <em>much</em> faster than the interpreted <code>for</code> loop because <code>sum</code> is coded in C to work with a vector of numbers. Many of R’s functions work this way; the loop is hidden from you in C. Learning to use vectorized operations is a key skill in R.</p>
 <p>For example, to add pairs of numbers contained in two vectors</p>
 <pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
 b &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span></code></pre>
@@ -68,8 +71,8 @@ res</code></pre>
 <span class="kw">all.equal</span>(res, res2)</code></pre>
 <pre class="output"><code>[1] TRUE
 </code></pre>
-<h5 id="vector-recycling">Vector recycling</h5>
-<p>When performing vector operations in R, it is important to know about <em>recycling</em>. If you perform an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector. For example:</p>
+<h3 id="vector-recycling">Vector Recycling</h3>
+<p>When performing vector operations in R, it is important to know about recycling. If you perform an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector. For example:</p>
 <pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
 b &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">5</span>
 a +<span class="st"> </span>b</code></pre>
@@ -91,10 +94,10 @@ length
 </code></pre>
 <pre class="output"><code> [1]  2  4  6  8 10 12 14  9 11 13
 </code></pre>
-<h4 id="for-or-apply"><code>for</code> or <code>apply</code>?</h4>
-<p>A <code>for</code> loop is used to apply the same function calls to a collection of objects. R has a family of functions, the <code>apply</code> family, which can be used in much the same way. You've already used one of the family, <code>apply</code> in the first <a href="../01-starting-with-data.html">lesson</a>. The <code>apply</code> family members include</p>
+<h3 id="for-or-apply"><code>for</code> or <code>apply</code>?</h3>
+<p>A <code>for</code> loop is used to apply the same function calls to a collection of objects. R has a family of functions, the <code>apply</code> family, which can be used in much the same way. You’ve already used one of the family, <code>apply</code> in the first <a href="01-starting-with-data.html">lesson</a>. The <code>apply</code> family members include</p>
 <ul>
-<li><code>apply</code> - apply over the margins of an array (e.g. the rows or columns of a matrix)</li>
+<li><code>apply</code> - apply over the margins of an array (e.g. the rows or columns of a matrix)</li>
 <li><code>lapply</code> - apply over an object and return list</li>
 <li><code>sapply</code> - apply over an object and return a simplified object (an array) if possible</li>
 <li><code>vapply</code> - similar to <code>sapply</code> but you specify the type of object returned by the iterations</li>
@@ -102,14 +105,14 @@ length
 <p>Each of these has an argument <code>FUN</code> which takes a function to apply to each element of the object. Instead of looping over <code>filenames</code> and calling <code>analyze</code>, as you did earlier, you could <code>sapply</code> over <code>filenames</code> with <code>FUN = analyze</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(filenames, <span class="dt">FUN =</span> analyze)</code></pre>
 <p>Deciding whether to use <code>for</code> or one of the <code>apply</code> family is really personal preference. Using an <code>apply</code> family function forces to you encapsulate your operations as a function rather than separate calls with <code>for</code>. <code>for</code> loops are often more natural in some circumstances; for several related operations, a <code>for</code> loop will avoid you having to pass in a lot of extra arguments to your function.</p>
-<h4 id="loops-in-r-are-slow">Loops in R are slow</h4>
+<h3 id="loops-in-r-are-slow">Loops in R Are Slow</h3>
 <p>No, they are not! <em>If</em> you follow some golden rules:</p>
 <ol style="list-style-type: decimal">
-<li>Don't use a loop when a vectorised alternative exists</li>
-<li>Don't grow objects (via <code>c</code>, <code>cbind</code>, etc) during the loop - R has to create a new object and copy across the information just to add a new element or row/column</li>
+<li>Don’t use a loop when a vectorised alternative exists</li>
+<li>Don’t grow objects (via <code>c</code>, <code>cbind</code>, etc) during the loop - R has to create a new object and copy across the information just to add a new element or row/column</li>
 <li>Allocate an object to hold the results and fill it in during the loop</li>
 </ol>
-<p>As an example, we'll create a new version of <code>analyze</code> that will return the mean inflammation per day (column) of each file.</p>
+<p>As an example, we’ll create a new version of <code>analyze</code> that will return the mean inflammation per day (column) of each file.</p>
 <pre class="sourceCode r"><code class="sourceCode r">analyze2 &lt;-<span class="st"> </span>function(filenames) {
   for (f in <span class="kw">seq_along</span>(filenames)) {
     fdata &lt;-<span class="st"> </span><span class="kw">read.csv</span>(filenames[f], <span class="dt">header =</span> <span class="ot">FALSE</span>)
@@ -126,7 +129,7 @@ length
 
 <span class="kw">system.time</span>(avg2 &lt;-<span class="st"> </span><span class="kw">analyze2</span>(filenames))</code></pre>
 <pre class="output"><code>   user  system elapsed 
-  0.040   0.004   0.045 
+  0.059   0.000   0.060 
 </code></pre>
 <p>Note how we add a new column to <code>out</code> at each iteration? This is a cardinal sin of writing a <code>for</code> loop in R.</p>
 <p>Instead, we can create an empty matrix with the right dimensions (rows/columns) to hold the results. Then we loop over the files but this time we fill in the <code>f</code>th column of our results matrix <code>out</code>. This time there is no copying/growing for R to deal with.</p>
@@ -141,12 +144,13 @@ length
 
 <span class="kw">system.time</span>(avg3 &lt;-<span class="st"> </span><span class="kw">analyze3</span>(filenames))</code></pre>
 <pre class="output"><code>   user  system elapsed 
-  0.048   0.000   0.047 
+  0.059   0.000   0.060 
 </code></pre>
 <p>In this simple example there is little difference in the compute time of <code>analyze2</code> and <code>analyze3</code>. This is because we are only iterating over 12 files and hence we only incur 12 copy/grow operations. If we were doing this over more files or the data objects we were growing were larger, the penalty for copying/growing would be much larger.</p>
 <p>Note that <code>apply</code> handles these memory allocation issues for you, but then you have to write the loop part as a function to pass to <code>apply</code>. At its heart, <code>apply</code> is just a <code>for</code> loop with extra convenience.</p>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/r-novice-inflammation">Source</a>

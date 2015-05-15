@@ -7,7 +7,7 @@ minutes: 30
 
 
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > * Define a function that takes arguments.
 > * Return a value from a function.
@@ -20,7 +20,7 @@ If we only had one data set to analyze, it would probably be faster to load the 
 But we have twelve files to check, and may have more in the future.
 In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.
 
-### Defining a function
+### Defining a Function
 
 Let's start by defining a function `fahr_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
 
@@ -772,30 +772,30 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 
 
 
-#### Key Points
+> ## Key Points {.callout}
+>
+> * Define a function using `name <- function(...args...) {...body...}`.
+> * Call a function using `name(...values...)`.
+> * Each time a function is called, a new stack frame is created on the [call stack](reference.html#call-stack) to hold its arguments and local variables.
+> * R looks for variables in the current stack frame before looking for them at the top level.
+> * Use `help(thing)` to view help for something.
+> * Put comments at the beginning of functions to provide help for that function.
+> * Annotate your code!
+> * Specify default values for arguments when defining a function using `name = value` in the argument list.
+> * Arguments can be passed by matching based on name, by position, or by omitting them (in which case the default value is used).
 
-* Define a function using `name <- function(...args...) {...body...}`.
-* Call a function using `name(...values...)`.
-* Each time a function is called, a new stack frame is created on the [call stack](reference.html#call-stack) to hold its arguments and local variables.
-* R looks for variables in the current stack frame before looking for them at the top level.
-* Use `help(thing)` to view help for something.
-* Put comments at the beginning of functions to provide help for that function.
-* Annotate your code!
-* Specify default values for arguments when defining a function using `name = value` in the argument list.
-* Arguments can be passed by matching based on name, by position, or by omitting them (in which case the default value is used).
-
-#### Next Steps
-
-We now have a function called analyze to visualize a single data set.
-We could use it to explore all 12 of our current data sets like this:
-
-
-~~~{.r}
-analyze("data/inflammation-01.csv")
-analyze("data/inflammation-02.csv")
-#...
-analyze("data/inflammation-12.csv")
-~~~
-
-but the chances of us typing all 12 filenames correctly aren't great, and we'll be even worse off if we get another hundred files.
-What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.
+> ## Next Steps {.callout}
+>
+> We now have a function called analyze to visualize a single data set.
+> We could use it to explore all 12 of our current data sets like this:
+> 
+> 
+> ~~~{.r}
+> analyze("data/inflammation-01.csv")
+> analyze("data/inflammation-02.csv")
+> #...
+> analyze("data/inflammation-12.csv")
+> ~~~
+>
+> but the chances of us typing all 12 filenames correctly aren't great, and we'll be even worse off if we get another hundred files.
+> What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.

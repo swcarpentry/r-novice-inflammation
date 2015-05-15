@@ -23,13 +23,14 @@
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
+      <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <h1 class="title">Programming with R</h1>
           <h2 class="subtitle">Creating functions</h2>
-<div id="objectives" class="objectives panel panel-warning">
+<div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -42,14 +43,14 @@
 </ul>
 </div>
 </div>
-<p>If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics. But we have twelve files to check, and may have more in the future. In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.</p>
-<h3 id="defining-a-function">Defining a function</h3>
-<p>Let's start by defining a function <code>fahr_to_kelvin</code> that converts temperatures from Fahrenheit to Kelvin:</p>
+<p>If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics. But we have twelve files to check, and may have more in the future. In this lesson, we’ll learn how to write a function so that we can repeat several operations with a single command.</p>
+<h3 id="defining-a-function">Defining a Function</h3>
+<p>Let’s start by defining a function <code>fahr_to_kelvin</code> that converts temperatures from Fahrenheit to Kelvin:</p>
 <pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
   kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span> /<span class="st"> </span><span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
   <span class="kw">return</span>(kelvin)
 }</code></pre>
-<p>We define <code>fahr_to_kelvin</code> by assigning it to the output of <code>function</code>. The list of argument names are containted within parentheses. Next, the <a href="reference.html#function-body">body</a> of the function--the statements that are executed when it runs--is contained within curly braces (<code>{}</code>). The statements in the body are indented by two spaces. This makes the code easier to read but does not affect how the code operates.</p>
+<p>We define <code>fahr_to_kelvin</code> by assigning it to the output of <code>function</code>. The list of argument names are containted within parentheses. Next, the <a href="reference.html#function-body">body</a> of the function–the statements that are executed when it runs–is contained within curly braces (<code>{}</code>). The statements in the body are indented by two spaces. This makes the code easier to read but does not affect how the code operates.</p>
 <p>When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function. Inside the function, we use a <a href="reference.html#return-statement">return statement</a> to send a result back to whoever asked for it.</p>
 <div id="tip" class="callout panel panel-info">
 <div class="panel-heading">
@@ -59,7 +60,7 @@
 <p>One feature unique to R is that the return statement is not required. R automatically returns whichever variable is on the last line of the body of the function. Since we are just learning, we will explicitly define the return statement.</p>
 </div>
 </div>
-<p>Let's try running our function. Calling our own function is no different from calling any other function:</p>
+<p>Let’s try running our function. Calling our own function is no different from calling any other function:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freezing point of water</span>
 <span class="kw">fahr_to_kelvin</span>(<span class="dv">32</span>)</code></pre>
 <pre class="output"><code>[1] 273.15
@@ -68,9 +69,9 @@
 <span class="kw">fahr_to_kelvin</span>(<span class="dv">212</span>)</code></pre>
 <pre class="output"><code>[1] 373.15
 </code></pre>
-<p>We've successfully called the function that we defined, and we have access to the value that we returned.</p>
+<p>We’ve successfully called the function that we defined, and we have access to the value that we returned.</p>
 <h3 id="composing-functions">Composing Functions</h3>
-<p>Now that we've seen how to turn Fahrenheit into Kelvin, it's easy to turn Kelvin into Celsius:</p>
+<p>Now that we’ve seen how to turn Fahrenheit into Kelvin, it’s easy to turn Kelvin into Celsius:</p>
 <pre class="sourceCode r"><code class="sourceCode r">kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
   celsius &lt;-<span class="st"> </span>temp -<span class="st"> </span><span class="fl">273.15</span>
   <span class="kw">return</span>(celsius)
@@ -80,7 +81,7 @@
 <span class="kw">kelvin_to_celsius</span>(<span class="dv">0</span>)</code></pre>
 <pre class="output"><code>[1] -273.15
 </code></pre>
-<p>What about converting Fahrenheit to Celsius? We could write out the formula, but we don't need to. Instead, we can <a href="reference.html#function-composition">compose</a> the two functions we have already created:</p>
+<p>What about converting Fahrenheit to Celsius? We could write out the formula, but we don’t need to. Instead, we can <a href="reference.html#function-composition">compose</a> the two functions we have already created:</p>
 <pre class="sourceCode r"><code class="sourceCode r">fahr_to_celsius &lt;-<span class="st"> </span>function(temp) {
   temp_k &lt;-<span class="st"> </span><span class="kw">fahr_to_kelvin</span>(temp)
   result &lt;-<span class="st"> </span><span class="kw">kelvin_to_celsius</span>(temp_k)
@@ -91,7 +92,7 @@
 <span class="kw">fahr_to_celsius</span>(<span class="fl">32.0</span>)</code></pre>
 <pre class="output"><code>[1] 0
 </code></pre>
-<p>This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want. Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.</p>
+<p>This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want. Real-life functions will usually be larger than the ones shown here–typically half a dozen to a few dozen lines–but they shouldn’t ever be much longer than that, or the next person who reads it won’t be able to understand what’s going on.</p>
 <div id="challenge---create-a-function" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Create a function</h2>
@@ -108,7 +109,7 @@ asterisk &lt;-<span class="st"> &quot;***&quot;</span>  <span class="co"># R int
 [7] &quot;computers&quot; &quot;***&quot;      
 </code></pre>
 <ul>
-<li>If the variable <code>v</code> refers to a vector, then <code>v[1]</code> is the vector's first element and <code>v[length(v)]</code> is its last (the function <code>length</code> returns the number of elements in a vector). Write a function called <code>outside</code> that returns a vector made up of just the first and last elements of its input:</li>
+<li>If the variable <code>v</code> refers to a vector, then <code>v[1]</code> is the vector’s first element and <code>v[length(v)]</code> is its last (the function <code>length</code> returns the number of elements in a vector). Write a function called <code>outside</code> that returns a vector made up of just the first and last elements of its input:</li>
 </ul>
 <pre class="sourceCode r"><code class="sourceCode r">dry_principle &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Don&#39;t&quot;</span>, <span class="st">&quot;repeat&quot;</span>, <span class="st">&quot;yourself&quot;</span>, <span class="st">&quot;or&quot;</span>, <span class="st">&quot;others&quot;</span>)
 <span class="kw">outside</span>(dry_principle)</code></pre>
@@ -117,25 +118,25 @@ asterisk &lt;-<span class="st"> &quot;***&quot;</span>  <span class="co"># R int
 </div>
 </div>
 <h3 id="the-call-stack">The Call Stack</h3>
-<p>Let's take a closer look at what happens when we call <code>fahr_to_celsius(32)</code>. To make things clearer, we'll start by putting the initial value 32 in a variable and store the final result in one as well:</p>
+<p>Let’s take a closer look at what happens when we call <code>fahr_to_celsius(32)</code>. To make things clearer, we’ll start by putting the initial value 32 in a variable and store the final result in one as well:</p>
 <pre class="sourceCode r"><code class="sourceCode r">original &lt;-<span class="st"> </span><span class="dv">32</span>
 final &lt;-<span class="st"> </span><span class="kw">fahr_to_celsius</span>(original)</code></pre>
 <p>The diagram below shows what memory looks like after the first line has been executed:</p>
 <p><img src="fig/python-call-stack-01.svg" alt="Call Stack (Initial State)" /></p>
-<p>When we call <code>fahr_to_celsius</code>, R <em>doesn't</em> create the variable <code>temp</code> right away. Instead, it creates something called a <a href="reference.html#stack-frame">stack frame</a> to keep track of the variables defined by <code>fahr_to_kelvin</code>. Initially, this stack frame only holds the value of <code>temp</code>:</p>
+<p>When we call <code>fahr_to_celsius</code>, R <em>doesn’t</em> create the variable <code>temp</code> right away. Instead, it creates something called a <a href="reference.html#stack-frame">stack frame</a> to keep track of the variables defined by <code>fahr_to_kelvin</code>. Initially, this stack frame only holds the value of <code>temp</code>:</p>
 <p><img src="fig/python-call-stack-02.svg" alt="Call Stack Immediately After First Function Call" /></p>
-<p>When we call <code>fahr_to_kelvin</code> inside <code>fahr_to_celsius</code>, R creates another stack frame to hold <code>fahr_to_kelvin</code>'s variables:</p>
+<p>When we call <code>fahr_to_kelvin</code> inside <code>fahr_to_celsius</code>, R creates another stack frame to hold <code>fahr_to_kelvin</code>’s variables:</p>
 <p><img src="fig/python-call-stack-03.svg" alt="Call Stack During First Nested Function Call" /></p>
-<p>It does this because there are now two variables in play called <code>temp</code>: the argument to <code>fahr_to_celsius</code>, and the argument to <code>fahr_to_kelvin</code>. Having two variables with the same name in the same part of the program would be ambiguous, so R (and every other modern programming language) creates a new stack frame for each function call to keep that function's variables separate from those defined by other functions.</p>
-<p>When the call to <code>fahr_to_kelvin</code> returns a value, R throws away <code>fahr_to_kelvin</code>'s stack frame and creates a new variable in the stack frame for <code>fahr_to_celsius</code> to hold the temperature in Kelvin:</p>
+<p>It does this because there are now two variables in play called <code>temp</code>: the argument to <code>fahr_to_celsius</code>, and the argument to <code>fahr_to_kelvin</code>. Having two variables with the same name in the same part of the program would be ambiguous, so R (and every other modern programming language) creates a new stack frame for each function call to keep that function’s variables separate from those defined by other functions.</p>
+<p>When the call to <code>fahr_to_kelvin</code> returns a value, R throws away <code>fahr_to_kelvin</code>’s stack frame and creates a new variable in the stack frame for <code>fahr_to_celsius</code> to hold the temperature in Kelvin:</p>
 <p><img src="fig/python-call-stack-04.svg" alt="Call Stack After Return From First Nested Function Call" /></p>
-<p>It then calls <code>kelvin_to_celsius</code>, which means it creates a stack frame to hold that function's variables:</p>
+<p>It then calls <code>kelvin_to_celsius</code>, which means it creates a stack frame to hold that function’s variables:</p>
 <p><img src="fig/python-call-stack-05.svg" alt="Call Stack During Call to Second Nested Function" /></p>
 <p>Once again, R throws away that stack frame when <code>kelvin_to_celsius</code> is done and creates the variable <code>result</code> in the stack frame for <code>fahr_to_celsius</code>:</p>
 <p><img src="fig/python-call-stack-06.svg" alt="Call Stack After Second Nested Function Returns" /></p>
 <p>Finally, when <code>fahr_to_celsius</code> is done, R throws away <em>its</em> stack frame and puts its result in a new variable called <code>final</code> that lives in the stack frame we started with:</p>
 <p><img src="fig/python-call-stack-07.svg" alt="Call Stack After All Functions Have Finished" /></p>
-<p>This final stack frame is always there; it holds the variables we defined outside the functions in our code. What it <em>doesn't</em> hold is the variables that were in the various stack frames. If we try to get the value of <code>temp</code> after our functions have finished running, R tells us that there's no such thing:</p>
+<p>This final stack frame is always there; it holds the variables we defined outside the functions in our code. What it <em>doesn’t</em> hold is the variables that were in the various stack frames. If we try to get the value of <code>temp</code> after our functions have finished running, R tells us that there’s no such thing:</p>
 <pre class="sourceCode r"><code class="sourceCode r">temp</code></pre>
 <pre class="output"><code>Error in eval(expr, envir, enclos): object &#39;temp&#39; not found
 </code></pre>
@@ -144,10 +145,10 @@ final &lt;-<span class="st"> </span><span class="kw">fahr_to_celsius</span>(orig
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
-<p>The explanation of the stack frame above was very general and the basic concept will help you understand most languages you try to program with. However, R has some unique aspects that can be exploited when performing more complicated operations. We will not be writing anything that requires knowledge of these more advanced concepts. In the future when you are comfortable writing functions in R, you can learn more by reading the <a href="http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects">R Language Manual</a> or this <a href="http://adv-r.had.co.nz/Environments.html">chapter</a> from <a href="http://adv-r.had.co.nz/">Advanced R Programming</a> by Hadley Wickham. For context, R uses the terminology &quot;environments&quot; instead of frames.</p>
+<p>The explanation of the stack frame above was very general and the basic concept will help you understand most languages you try to program with. However, R has some unique aspects that can be exploited when performing more complicated operations. We will not be writing anything that requires knowledge of these more advanced concepts. In the future when you are comfortable writing functions in R, you can learn more by reading the <a href="http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects">R Language Manual</a> or this <a href="http://adv-r.had.co.nz/Environments.html">chapter</a> from <a href="http://adv-r.had.co.nz/">Advanced R Programming</a> by Hadley Wickham. For context, R uses the terminology “environments” instead of frames.</p>
 </div>
 </div>
-<p>Why go to all this trouble? Well, here's a function called <code>span</code> that calculates the difference between the mininum and maximum values in an array:</p>
+<p>Why go to all this trouble? Well, here’s a function called <code>span</code> that calculates the difference between the mininum and maximum values in an array:</p>
 <pre class="sourceCode r"><code class="sourceCode r">span &lt;-<span class="st"> </span>function(a) {
   diff &lt;-<span class="st"> </span><span class="kw">max</span>(a) -<span class="st"> </span><span class="kw">min</span>(a)
   <span class="kw">return</span>(diff)
@@ -164,8 +165,8 @@ dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="
 <span class="kw">span</span>(diff)</code></pre>
 <pre class="output"><code>[1] 20
 </code></pre>
-<p>We don't expect the variable <code>diff</code> to have the value 20 after this function call, so the name <code>diff</code> cannot refer to the same variable defined inside <code>span</code> as it does in as it does in the main body of our program (which R refers to as the global environment). And yes, we could probably choose a different name than <code>diff</code> for our variable in this case, but we don't want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.</p>
-<p>The big idea here is <a href="reference.html#encapsulation">encapsulation</a>, and it's the key to writing correct, comprehensible programs. A function's job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something. That only works if functions don't interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.</p>
+<p>We don’t expect the variable <code>diff</code> to have the value 20 after this function call, so the name <code>diff</code> cannot refer to the same variable defined inside <code>span</code> as it does in as it does in the main body of our program (which R refers to as the global environment). And yes, we could probably choose a different name than <code>diff</code> for our variable in this case, but we don’t want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.</p>
+<p>The big idea here is <a href="reference.html#encapsulation">encapsulation</a>, and it’s the key to writing correct, comprehensible programs. A function’s job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something. That only works if functions don’t interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.</p>
 <div id="challenge---following-the-call-stack" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Following the call stack</h2>
@@ -180,12 +181,12 @@ result &lt;-<span class="st"> </span><span class="kw">outside</span>(<span class
 </div>
 </div>
 <h3 id="testing-and-documenting">Testing and Documenting</h3>
-<p>Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly. To see how to do this, let's write a function to center a dataset around a particular value:</p>
+<p>Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly. To see how to do this, let’s write a function to center a dataset around a particular value:</p>
 <pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, desired) {
   new_data &lt;-<span class="st"> </span>(data -<span class="st"> </span><span class="kw">mean</span>(data)) +<span class="st"> </span>desired
   <span class="kw">return</span>(new_data)
 }</code></pre>
-<p>We could test this on our actual data, but since we don't know what the values ought to be, it will be hard to tell if the result was correct. Instead, let's create a vector of 0s and then center that around 3. This will make it simple to see if our function is working as expected:</p>
+<p>We could test this on our actual data, but since we don’t know what the values ought to be, it will be hard to tell if the result was correct. Instead, let’s create a vector of 0s and then center that around 3. This will make it simple to see if our function is working as expected:</p>
 <pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)
 z</code></pre>
 <pre class="output"><code>[1] 0 0 0 0
@@ -193,13 +194,13 @@ z</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">center</span>(z, <span class="dv">3</span>)</code></pre>
 <pre class="output"><code>[1] 3 3 3 3
 </code></pre>
-<p>That looks right, so let's try center on our real data. We'll center the inflammation data from day 4 around 0:</p>
+<p>That looks right, so let’s try center on our real data. We’ll center the inflammation data from day 4 around 0:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)
 centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <span class="dv">4</span>], <span class="dv">0</span>)
 <span class="kw">head</span>(centered)</code></pre>
 <pre class="output"><code>[1]  1.25 -0.75  1.25 -1.75  1.25  0.25
 </code></pre>
-<p>It's hard to tell from the default output whether the result is correct, but there are a few simple tests that will reassure us:</p>
+<p>It’s hard to tell from the default output whether the result is correct, but there are a few simple tests that will reassure us:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># original min</span>
 <span class="kw">min</span>(dat[, <span class="dv">4</span>])</code></pre>
 <pre class="output"><code>[1] 0
@@ -224,7 +225,7 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 <span class="kw">max</span>(centered)</code></pre>
 <pre class="output"><code>[1] 1.25
 </code></pre>
-<p>That seems almost right: the original mean was about 1.75, so the lower bound from zero is now about -1.75. The mean of the centered data is 0. We can even go further and check that the standard deviation hasn't changed:</p>
+<p>That seems almost right: the original mean was about 1.75, so the lower bound from zero is now about -1.75. The mean of the centered data is 0. We can even go further and check that the standard deviation hasn’t changed:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># original standard deviation</span>
 <span class="kw">sd</span>(dat[, <span class="dv">4</span>])</code></pre>
 <pre class="output"><code>[1] 1.067628
@@ -233,7 +234,7 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 <span class="kw">sd</span>(centered)</code></pre>
 <pre class="output"><code>[1] 1.067628
 </code></pre>
-<p>Those values look the same, but we probably wouldn't notice if they were different in the sixth decimal place. Let's do this instead:</p>
+<p>Those values look the same, but we probably wouldn’t notice if they were different in the sixth decimal place. Let’s do this instead:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># difference in standard deviations before and after</span>
 <span class="kw">sd</span>(dat[, <span class="dv">4</span>]) -<span class="st"> </span><span class="kw">sd</span>(centered)</code></pre>
 <pre class="output"><code>[1] 0
@@ -242,7 +243,7 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">all.equal</span>(<span class="kw">sd</span>(dat[, <span class="dv">4</span>]), <span class="kw">sd</span>(centered))</code></pre>
 <pre class="output"><code>[1] TRUE
 </code></pre>
-<p>It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis. We have one more task first, though: we should write some <a href="reference.html#documentation">documentation</a> for our function to remind ourselves later what it's for and how to use it.</p>
+<p>It’s still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis. We have one more task first, though: we should write some <a href="reference.html#documentation">documentation</a> for our function to remind ourselves later what it’s for and how to use it.</p>
 <p>A common way to put documentation in software is to add <a href="reference.html#comment">comments</a> like this:</p>
 <pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, desired) {
   <span class="co"># return a new vector containing the original data centered around the</span>
@@ -266,7 +267,7 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 <div class="panel-body">
 <ul>
 <li>Write a function called <code>analyze</code> that takes a filename as a argument and displays the three graphs produced in the <a href="01-starting-with-data.html">previous lesson</a> (average, min and max inflammation over time). <code>analyze(&quot;data/inflammation-01.csv&quot;)</code> should produce the graphs already shown, while <code>analyze(&quot;data/inflammation-02.csv&quot;)</code> should produce corresponding graphs for the second data set. Be sure to document your function with comments.</li>
-<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>)/(<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</li>
+<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>) / (<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</li>
 <li>Test that your <code>rescale</code> function is working properly using <code>min</code>, <code>max</code>, and <code>plot</code>.</li>
 </ul>
 </div>
@@ -279,7 +280,7 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="ot">FALSE</span>, <span class="st">&quot;data/inflammation-01.csv&quot;</span>)</code></pre>
 <pre class="output"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : &#39;file&#39; must be a character string or connection
 </code></pre>
-<p>To understand what's going on, and make our own functions easier to use, let's re-define our <code>center</code> function like this:</p>
+<p>To understand what’s going on, and make our own functions easier to use, let’s re-define our <code>center</code> function like this:</p>
 <pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, <span class="dt">desired =</span> <span class="dv">0</span>) {
   <span class="co"># return a new vector containing the original data centered around the</span>
   <span class="co"># desired value (0 by default).</span>
@@ -328,7 +329,7 @@ more_data</code></pre>
 <pre class="output"><code> a  b  c 
 55 66 77 
 </code></pre>
-<p>As this example shows, arguments are matched from left to right, and any that haven't been given a value explicitly get their default value. We can override this behavior by naming the value as we pass it in:</p>
+<p>As this example shows, arguments are matched from left to right, and any that haven’t been given a value explicitly get their default value. We can override this behavior by naming the value as we pass it in:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># only setting the value of c</span>
 <span class="kw">display</span>(<span class="dt">c =</span> <span class="dv">77</span>)</code></pre>
 <pre class="output"><code> a  b  c 
@@ -349,12 +350,12 @@ more_data</code></pre>
 <p>Arguments are matched in the manner outlined above in <em>that order</em>: by complete name, then by partial matching of names, and finally by position.</p>
 </div>
 </div>
-<p>With that in hand, let's look at the help for <code>read.csv()</code>:</p>
+<p>With that in hand, let’s look at the help for <code>read.csv()</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">?read.csv</code></pre>
-<p>There's a lot of information there, but the most important part is the first couple of lines:</p>
+<p>There’s a lot of information there, but the most important part is the first couple of lines:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,
          <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">fill =</span> <span class="ot">TRUE</span>, <span class="dt">comment.char =</span> <span class="st">&quot;&quot;</span>, ...)</code></pre>
-<p>This tells us that <code>read.csv()</code> has one argument, <code>file</code>, that doesn't have a default value, and six others that do. Now we understand why the following gives an error:</p>
+<p>This tells us that <code>read.csv()</code> has one argument, <code>file</code>, that doesn’t have a default value, and six others that do. Now we understand why the following gives an error:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="ot">FALSE</span>, <span class="st">&quot;data/inflammation-01.csv&quot;</span>)</code></pre>
 <pre class="output"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : &#39;file&#39; must be a character string or connection
 </code></pre>
@@ -365,11 +366,15 @@ more_data</code></pre>
 </div>
 <div class="panel-body">
 <ul>
-<li>Rewrite the <code>rescale</code> function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want. Compare your implementation to your neighbor's: do the two functions always behave the same way?</li>
+<li>Rewrite the <code>rescale</code> function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want. Compare your implementation to your neighbor’s: do the two functions always behave the same way?</li>
 </ul>
 </div>
 </div>
-<h4 id="key-points">Key Points</h4>
+<div id="key-points" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
+</div>
+<div class="panel-body">
 <ul>
 <li>Define a function using <code>name &lt;- function(...args...) {...body...}</code>.</li>
 <li>Call a function using <code>name(...values...)</code>.</li>
@@ -381,15 +386,24 @@ more_data</code></pre>
 <li>Specify default values for arguments when defining a function using <code>name = value</code> in the argument list.</li>
 <li>Arguments can be passed by matching based on name, by position, or by omitting them (in which case the default value is used).</li>
 </ul>
-<h4 id="next-steps">Next Steps</h4>
+</div>
+</div>
+<div id="next-steps" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Next Steps</h2>
+</div>
+<div class="panel-body">
 <p>We now have a function called analyze to visualize a single data set. We could use it to explore all 12 of our current data sets like this:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>)
 <span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-02.csv&quot;</span>)
 <span class="co">#...</span>
 <span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-12.csv&quot;</span>)</code></pre>
-<p>but the chances of us typing all 12 filenames correctly aren't great, and we'll be even worse off if we get another hundred files. What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.</p>
+<p>but the chances of us typing all 12 filenames correctly aren’t great, and we’ll be even worse off if we get another hundred files. What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.</p>
+</div>
+</div>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/r-novice-inflammation">Source</a>

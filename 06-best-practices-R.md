@@ -7,9 +7,9 @@ minutes: 30
 
 
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
-> FIXME: Write these
+> Define some best practices when working with R
 
 1. Start your code with a description of what it is:
 

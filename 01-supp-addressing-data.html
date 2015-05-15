@@ -23,17 +23,20 @@
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
+      <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <h1 class="title">Programming with R</h1>
           <h2 class="subtitle">Addressing data</h2>
-<div id="objectives" class="objectives panel panel-warning">
+<div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
-<p>Understand the 3 different ways R can address data inside a data frame.</p>
-<p>Combine different methods for addressing data with the assignment operator to update subsets of data</p>
+<ul>
+<li>Understand the 3 different ways R can address data inside a data frame.</li>
+<li>Combine different methods for addressing data with the assignment operator to update subsets of data</li>
+</ul>
 </div>
 </div>
 <p>R is a powerful language for data manipulation. There are 3 main ways for addressing data inside R objects.</p>
@@ -78,8 +81,8 @@
 6          320          294
 </code></pre>
 <p>The data is the results of an (not real) experiment, looking at the number of aneurisms that formed in the eyes of patients who undertook 3 different treatments.</p>
-<h3 id="addressing-by-index">Addressing by index</h3>
-<p>We have already seen how square brackets <code>[</code> can be used to subset (slice) data. The generic format is <code>dat[row_numbers,column_numbers]</code>.</p>
+<h3 id="addressing-by-index">Addressing by Index</h3>
+<p>Data can be accessed by index. We have already seen how square brackets <code>[</code> can be used to subset (slice) data. The generic format is <code>dat[row_numbers,column_numbers]</code>.</p>
 <div id="challenge---selecting-values-1" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Selecting values 1</h2>
@@ -131,7 +134,7 @@
 <p>Return the Age and Gender values for the first 5 patients.</p>
 </div>
 </div>
-<h3 id="addressing-by-name">Addressing by name</h3>
+<h3 id="addressing-by-name">Addressing by Name</h3>
 <p>Columns in an R data frame are named.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(dat)</code></pre>
 <pre class="output"><code>[1] &quot;ID&quot;            &quot;Gender&quot;        &quot;Group&quot;         &quot;BloodPressure&quot;
@@ -143,7 +146,7 @@
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
-<p>If names are not specified e.g. using <code>headers=FALSE</code> in a <code>read.csv()</code> function, R assigns default names <code>V1,V2,...,Vn</code></p>
+<p>If names are not specified e.g. using <code>headers=FALSE</code> in a <code>read.csv()</code> function, R assigns default names <code>V1,V2,...,Vn</code></p>
 </div>
 </div>
 <p>We usually use the <code>$</code> operator to address a column by name</p>
@@ -173,7 +176,7 @@
 <p>Best practice is to address columns by name, often you will create or delete columns and the column position will change.</p>
 </div>
 </div>
-<h3 id="logical-indexing">Logical indexing</h3>
+<h3 id="logical-indexing">Logical Indexing</h3>
 <p>A logical vector contains only the special values <code>TRUE</code> &amp; <code>FALSE</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">TRUE</span>,<span class="ot">FALSE</span>,<span class="ot">FALSE</span>,<span class="ot">TRUE</span>)</code></pre>
 <pre class="output"><code>[1]  TRUE  TRUE FALSE FALSE  TRUE
@@ -214,7 +217,7 @@ dat[index,]$BloodPressure</code></pre>
 </ol>
 </div>
 </div>
-<h3 id="combining-indexing-and-assignment">Combining indexing and assignment</h3>
+<h3 id="combining-indexing-and-assignment">Combining Indexing and Assignment</h3>
 <p>The assignment operator <code>&lt;-</code> can be combined with indexing.</p>
 <pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>)
 x[x &lt;<span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
@@ -231,6 +234,7 @@ x</code></pre>
 </div>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/r-novice-inflammation">Source</a>

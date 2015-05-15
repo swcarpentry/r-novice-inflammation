@@ -23,13 +23,14 @@
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
+      <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <h1 class="title">Programming with R</h1>
           <h2 class="subtitle">Analyzing multiple data sets</h2>
-<div id="objectives" class="objectives panel panel-warning">
+<div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -60,7 +61,7 @@
 <p>We can use it to analyze other data sets one by one:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-02.csv&quot;</span>)</code></pre>
 <p><img src="fig/03-loops-R-inflammation-02-1.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-02-2.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="fig/03-loops-R-inflammation-02-3.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /></p>
-<p>but we have a dozen data sets right now and more on the way. We want to create plots for all our data sets with a single statement. To do that, we'll have to teach the computer how to repeat things.</p>
+<p>but we have a dozen data sets right now and more on the way. We want to create plots for all our data sets with a single statement. To do that, we’ll have to teach the computer how to repeat things.</p>
 <h3 id="for-loops">For Loops</h3>
 <p>Suppose we want to print each word in a sentence. One way is to use six <code>print</code> statements:</p>
 <pre class="sourceCode r"><code class="sourceCode r">best_practice &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Let&quot;</span>, <span class="st">&quot;the&quot;</span>, <span class="st">&quot;computer&quot;</span>, <span class="st">&quot;do&quot;</span>, <span class="st">&quot;the&quot;</span>, <span class="st">&quot;work&quot;</span>)
@@ -81,10 +82,10 @@ print_words &lt;-<span class="st"> </span>function(sentence) {
 [1] &quot;the&quot;
 [1] &quot;work&quot;
 </code></pre>
-<p>but that's a bad approach for two reasons:</p>
+<p>but that’s a bad approach for two reasons:</p>
 <ol style="list-style-type: decimal">
-<li><p>It doesn't scale: if we want to print the elements in a vector that's hundreds long, we'd be better off just typing them in.</p></li>
-<li><p>It's fragile: if we give it a longer vector, it only prints part of the data, and if we give it a shorter input, it returns <code>NA</code> values because we're asking for elements that don't exist!</p></li>
+<li><p>It doesn’t scale: if we want to print the elements in a vector that’s hundreds long, we’d be better off just typing them in.</p></li>
+<li><p>It’s fragile: if we give it a longer vector, it only prints part of the data, and if we give it a shorter input, it returns <code>NA</code> values because we’re asking for elements that don’t exist!</p></li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r">best_practice[-<span class="dv">6</span>]</code></pre>
 <pre class="output"><code>[1] &quot;Let&quot;      &quot;the&quot;      &quot;computer&quot; &quot;do&quot;       &quot;the&quot;     
@@ -105,7 +106,7 @@ print_words &lt;-<span class="st"> </span>function(sentence) {
 <p>R has has a special variable, <code>NA</code>, for designating missing values that are <strong>N</strong>ot <strong>A</strong>vailable in a data set. See <code>?NA</code> and <a href="http://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values">An Introduction to R</a> for more details.</p>
 </div>
 </div>
-<p>Here's a better approach:</p>
+<p>Here’s a better approach:</p>
 <pre class="sourceCode r"><code class="sourceCode r">print_words &lt;-<span class="st"> </span>function(sentence) {
   for (word in sentence) {
     <span class="kw">print</span>(word)
@@ -120,7 +121,7 @@ print_words &lt;-<span class="st"> </span>function(sentence) {
 [1] &quot;the&quot;
 [1] &quot;work&quot;
 </code></pre>
-<p>This is shorter---certainly shorter than something that prints every character in a hundred-letter string---and more robust as well:</p>
+<p>This is shorter—certainly shorter than something that prints every character in a hundred-letter string—and more robust as well:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print_words</span>(best_practice[-<span class="dv">6</span>])</code></pre>
 <pre class="output"><code>[1] &quot;Let&quot;
 [1] &quot;the&quot;
@@ -128,12 +129,12 @@ print_words &lt;-<span class="st"> </span>function(sentence) {
 [1] &quot;do&quot;
 [1] &quot;the&quot;
 </code></pre>
-<p>The improved version of <code>print_words</code> uses a <a href="reference.html#for-loop">for loop</a> to repeat an operation---in this case, printing---once for each thing in a collection. The general form of a loop is:</p>
+<p>The improved version of <code>print_words</code> uses a <a href="reference.html#for-loop">for loop</a> to repeat an operation—in this case, printing—once for each thing in a collection. The general form of a loop is:</p>
 <pre class="sourceCode r"><code class="sourceCode r">for (variable in collection) {
   do things with variable
 }</code></pre>
-<p>We can name the <a href="reference.html#loop-variable">loop variable</a> anything we like (with a few <a href="http://cran.r-project.org/doc/manuals/R-intro.html#R-commands_003b-case-sensitivity-etc">restrictions</a>, e.g. the name of the variable cannot start with a digit). <code>in</code> is part of the <code>for</code> syntax. Note that the body of the loop is enclosed in curly braces <code>{ }</code>. For a single-line loop body, as here, the braces aren't needed, but it is good practice to include them as we did.</p>
-<p>Here's another loop that repeatedly updates a variable:</p>
+<p>We can name the <a href="reference.html#loop-variable">loop variable</a> anything we like (with a few <a href="http://cran.r-project.org/doc/manuals/R-intro.html#R-commands_003b-case-sensitivity-etc">restrictions</a>, e.g. the name of the variable cannot start with a digit). <code>in</code> is part of the <code>for</code> syntax. Note that the body of the loop is enclosed in curly braces <code>{ }</code>. For a single-line loop body, as here, the braces aren’t needed, but it is good practice to include them as we did.</p>
+<p>Here’s another loop that repeatedly updates a variable:</p>
 <pre class="sourceCode r"><code class="sourceCode r">len &lt;-<span class="st"> </span><span class="dv">0</span>
 vowels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;u&quot;</span>)
 for (v in vowels) {
@@ -143,8 +144,8 @@ for (v in vowels) {
 len</code></pre>
 <pre class="output"><code>[1] 5
 </code></pre>
-<p>It's worth tracing the execution of this little program step by step. Since there are five elements in the vector <code>vowels</code>, the statement inside the loop will be executed five times. The first time around, <code>len</code> is zero (the value assigned to it on line 1) and <code>v</code> is <code>&quot;a&quot;</code>. The statement adds 1 to the old value of <code>len</code>, producing 1, and updates <code>len</code> to refer to that new value. The next time around, <code>v</code> is <code>&quot;e&quot;</code> and <code>len</code> is 1, so <code>len</code> is updated to be 2. After three more updates, <code>len</code> is 5; since there is nothing left in the vector <code>vowels</code> for R to process, the loop finishes.</p>
-<p>Note that a loop variable is just a variable that's being used to record progress in a loop. It still exists after the loop is over, and we can re-use variables previously defined as loop variables as well:</p>
+<p>It’s worth tracing the execution of this little program step by step. Since there are five elements in the vector <code>vowels</code>, the statement inside the loop will be executed five times. The first time around, <code>len</code> is zero (the value assigned to it on line 1) and <code>v</code> is <code>&quot;a&quot;</code>. The statement adds 1 to the old value of <code>len</code>, producing 1, and updates <code>len</code> to refer to that new value. The next time around, <code>v</code> is <code>&quot;e&quot;</code> and <code>len</code> is 1, so <code>len</code> is updated to be 2. After three more updates, <code>len</code> is 5; since there is nothing left in the vector <code>vowels</code> for R to process, the loop finishes.</p>
+<p>Note that a loop variable is just a variable that’s being used to record progress in a loop. It still exists after the loop is over, and we can re-use variables previously defined as loop variables as well:</p>
 <pre class="sourceCode r"><code class="sourceCode r">letter &lt;-<span class="st"> &quot;z&quot;</span>
 for (letter in <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)) {
   <span class="kw">print</span>(letter)
@@ -161,7 +162,7 @@ letter</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(vowels)</code></pre>
 <pre class="output"><code>[1] 5
 </code></pre>
-<p><code>length</code> is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this <a href="00-first-timers.html">lesson</a> to learn more about the different ways to store data in R).</p>
+<p><code>length</code> is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven’t met yet, so we should always use it when we can (see this <a href="01-supp-data-structures.html">lesson</a> to learn more about the different ways to store data in R).</p>
 <div id="challenge---using-loops" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Using loops</h2>
@@ -180,6 +181,13 @@ letter</code></pre>
 [1] 3
 </code></pre>
 <ol start="2" style="list-style-type: decimal">
+<li>Write a function called <code>total</code> that calculates the sum of the values in a vector. (R has a built-in function called <code>sum</code> that does this for you. Please don’t use it for this exercise.)</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">ex_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">23</span>, <span class="dv">42</span>)
+<span class="kw">total</span>(ex_vec)</code></pre>
+<pre class="output"><code>[1] 108
+</code></pre>
+<ol start="3" style="list-style-type: decimal">
 <li>Exponentiation is built into R:</li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span>^<span class="dv">4</span></code></pre>
@@ -189,18 +197,11 @@ letter</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">expo</span>(<span class="dv">2</span>, <span class="dv">4</span>)</code></pre>
 <pre class="output"><code>[1] 16
 </code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Write a function called <code>total</code> that calculates the sum of the values in a vector. (R has a built-in function called <code>sum</code> that does this for you. Please don't use it for this exercise.)</li>
-</ol>
-<pre class="sourceCode r"><code class="sourceCode r">ex_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">23</span>, <span class="dv">42</span>)
-<span class="kw">total</span>(ex_vec)</code></pre>
-<pre class="output"><code>[1] 108
-</code></pre>
 </div>
 </div>
 <h3 id="processing-multiple-files">Processing Multiple Files</h3>
-<p>We now have almost everything we need to process all our data files. The only thing that's missing is a function that finds files whose names match a pattern. We do not need to write it ourselves because R already has a function to do this called <code>list.files</code>.</p>
-<p>If we run the function without any arguments, <code>list.files()</code>, it returns every file in the current working directory. We can understand this result by reading the help file (<code>?list.files</code>). The first argument, <code>path</code>, is the path to the directory to be searched, and it has the default value of <code>&quot;.&quot;</code> (recall from the <a href="../shell/01-filedir.html">lesson</a> on the Unix Shell that <code>&quot;.&quot;</code> is shorthand for the current working directory). The second argument, <code>pattern</code>, is the pattern being searched, and it has the default value of <code>NULL</code>. Since no pattern is specified to filter the files, all files are returned.</p>
+<p>We now have almost everything we need to process all our data files. The only thing that’s missing is a function that finds files whose names match a pattern. We do not need to write it ourselves because R already has a function to do this called <code>list.files</code>.</p>
+<p>If we run the function without any arguments, <code>list.files()</code>, it returns every file in the current working directory. We can understand this result by reading the help file (<code>?list.files</code>). The first argument, <code>path</code>, is the path to the directory to be searched, and it has the default value of <code>&quot;.&quot;</code> (recall from the <a href="http://swcarpentry.github.io/shell-novice/01-filedir.html">lesson</a> on the Unix Shell that <code>&quot;.&quot;</code> is shorthand for the current working directory). The second argument, <code>pattern</code>, is the pattern being searched, and it has the default value of <code>NULL</code>. Since no pattern is specified to filter the files, all files are returned.</p>
 <p>So to list all the csv files, we could run either of the following:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;csv&quot;</span>)</code></pre>
 <pre class="output"><code> [1] &quot;car-speeds-cleaned.csv&quot; &quot;car-speeds.csv&quot;        
@@ -224,11 +225,11 @@ letter</code></pre>
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
-<p>For larger projects, it is recommended to organize separate parts of the analysis into multiple subdirectories, e.g. one subdirectory for the raw data, one for the code, and one for the results like figures. We have done that here to some extent, putting all of our data files into the subdirectory &quot;data&quot;. For more advice on this topic, you can read <a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424">A quick guide to organizing computational biology projects</a> by William Stafford Noble.</p>
+<p>For larger projects, it is recommended to organize separate parts of the analysis into multiple subdirectories, e.g. one subdirectory for the raw data, one for the code, and one for the results like figures. We have done that here to some extent, putting all of our data files into the subdirectory “data”. For more advice on this topic, you can read <a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424">A quick guide to organizing computational biology projects</a> by William Stafford Noble.</p>
 </div>
 </div>
-<p>As these examples show, <code>list.files</code> result is a vector of strings, which means we can loop over it to do something with each filename in turn. In our case, the &quot;something&quot; we want is our <code>analyze</code> function.</p>
-<p>Because we have put our data in separate subdirectory, if we want to access these files using the output of <code>list.files</code> we also need to include the &quot;path&quot; portion of the file name. We can do that by using the argument <code>full.names = TRUE</code>.</p>
+<p>As these examples show, <code>list.files</code> result is a vector of strings, which means we can loop over it to do something with each filename in turn. In our case, the “something” we want is our <code>analyze</code> function.</p>
+<p>Because we have put our data in separate subdirectory, if we want to access these files using the output of <code>list.files</code> we also need to include the “path” portion of the file name. We can do that by using the argument <code>full.names = TRUE</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;csv&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre class="output"><code> [1] &quot;data/car-speeds-cleaned.csv&quot; &quot;data/car-speeds.csv&quot;        
  [3] &quot;data/inflammation-01.csv&quot;    &quot;data/inflammation-02.csv&quot;   
@@ -248,7 +249,7 @@ letter</code></pre>
  [9] &quot;data/inflammation-09.csv&quot; &quot;data/inflammation-10.csv&quot;
 [11] &quot;data/inflammation-11.csv&quot; &quot;data/inflammation-12.csv&quot;
 </code></pre>
-<p>Let's test out running our <code>analyze</code> function by using it on the first three files in the vector returned by <code>list.files</code>:</p>
+<p>Let’s test out running our <code>analyze</code> function by using it on the first three files in the vector returned by <code>list.files</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">filenames &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;inflammation&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)
 filenames &lt;-<span class="st"> </span>filenames[<span class="dv">1</span>:<span class="dv">3</span>]
 for (f in filenames) {
@@ -283,24 +284,35 @@ for (f in filenames) {
 </ol>
 </div>
 </div>
-<div class="keypoints" markdown="1">
-<h4>Key Points</h4>
+<div id="key-points" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
+</div>
+<div class="panel-body">
 <ul>
 <li>Use <code>for (variable in collection)</code> to process the elements of a collection one at a time.</li>
 <li>The body of a <code>for</code> loop is surrounded by curly braces (<code>{ }</code>).</li>
 <li>Use <code>length(thing)</code> to determine the length of something that contains other values.</li>
-<li>Use <code>list.files(pattern = &quot;pattern&quot;)</code> to create a list of files whose names match a pattern.</li>
+<li>Use <code>list.files(path = &quot;path&quot;, pattern = &quot;pattern&quot;, full.names = TRUE)</code> to create a list of files whose names match a pattern.</li>
 </ul>
 </div>
-<h4 id="next-steps">Next Steps</h4>
+</div>
+<div id="next-steps" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Next Steps</h2>
+</div>
+<div class="panel-body">
 <p>We have now solved our original problem: we can analyze any number of data files with a single command. More importantly, we have met two of the most important ideas in programming:</p>
 <ul>
 <li>Use functions to make code easier to re-use and easier to understand.</li>
 <li>Use vectors and data frames to store related values, and loops to repeat operations on them.</li>
 </ul>
-<p>We have one more big idea to introduce...</p>
+<p>We have one more big idea to introduce…</p>
+</div>
+</div>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/r-novice-inflammation">Source</a>

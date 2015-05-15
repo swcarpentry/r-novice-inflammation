@@ -7,7 +7,7 @@ minutes: 30
 
 
 
-> ## Objectives {.objectives}
+> ## Learning Objectives {.objectives}
 >
 > *   Save plot(s) in a pdf file.
 > *   Write conditional statements with `if` and `else`.
@@ -17,7 +17,7 @@ Our previous lessons have shown us how to manipulate data, define our own functi
 However, the programs we have written so far always do the same things, regardless of what data they're given.
 We want programs to make choices based on the values they are manipulating.
 
-### Saving plots to a file
+### Saving Plots to a File
 
 So far, we have built a function `analyze` to plot summary statistics of the inflammation data:
 
@@ -43,7 +43,7 @@ And also built the function `analyze_all` to automate the processing of each dat
 analyze_all <- function(pattern) {
   # Runs the function analyze for each file in the current working directory
   # that contains the given pattern.
-  filenames <- list.files(pattern = pattern)
+  filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
   for (f in filenames) {
     analyze(f)
   }
@@ -83,7 +83,7 @@ It would be ideal if `analyze` would either save or not save the plots based on 
 ### Conditionals
 
 In order to update our function to decide between saving or not, we need to write code that automatically decides between multiple options.
-The tool R gives us for doing this is called a [conditional statement](../../gloss.html#conditional-statement), and looks like this:
+The tool R gives us for doing this is called a [conditional statement](reference.html#conditional-statement), and looks like this:
 
 
 ~~~{.r}
@@ -291,7 +291,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > 
 > <img src="fig/04-cond-conditional-challenge-hist-3.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
 
-### Saving automatically generated figures
+### Saving Automatically Generated Figures
 
 Now that we know how to have R make decisions based on input values, let's update `analyze`:
 
@@ -414,19 +414,17 @@ Now if we need to make any changes to our analysis, we can edit the `analyze` fu
 
 
 
-<div class="keypoints" markdown="1">
-#### Key Points
+> ## Key Points {.callout}
+>
+> *   Save a plot in a pdf file using `pdf("name.pdf")` and stop writing to the pdf file with `dev.off()`.
+> *   Use `if (condition)` to start a conditional statement, `else if (condition)` to provide additional tests, and `else` to provide a default.
+> *   The bodies of conditional statements must be surrounded by curly braces `{ }`.
+> *   Use `==` to test for equality.
+> *   `X & Y` is only true if both X and Y are true.
+> *   `X | Y` is true if either X or Y, or both, are true.
 
-*   Save a plot in a pdf file using `pdf("name.pdf")` and stop writing to the pdf file with `dev.off()`.
-*   Use `if (condition)` to start a conditional statement, `else if (condition)` to provide additional tests, and `else` to provide a default.
-*   The bodies of conditional statements must be surrounded by curly braces `{ }`.
-*   Use `==` to test for equality.
-*   `X & Y` is only true if both X and Y are true.
-*   `X | Y` is true if either X or Y, or both, are true.
-</div>
-
-#### Next Steps
-
-We have now seen the basics of interactively building R code.
-The last thing we need to learn is how to build command-line programs that we can use in pipelines and shell scripts, so that we can integrate our tools with other people's work.
-This will be the subject of our next and final lesson.
+> ## Next Steps {.callout}
+>
+> We have now seen the basics of interactively building R code.
+> The last thing we need to learn is how to build command-line programs that we can use in pipelines and shell scripts, so that we can integrate our tools with other people's work.
+> This will be the subject of our next and final lesson.

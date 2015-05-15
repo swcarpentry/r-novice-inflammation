@@ -23,13 +23,14 @@
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
+      <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <h1 class="title">Programming with R</h1>
           <h2 class="subtitle">Understanding factors</h2>
-<div id="objectives" class="objectives panel panel-warning">
+<div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Objectives</h2>
+<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -43,10 +44,14 @@
 <p>Factors are used to represent categorical data. Factors can be ordered or unordered and are an important class for statistical analysis and for plotting.</p>
 <p>Factors are stored as integers, and have labels associated with these unique integers. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.</p>
 <p>Once created, factors can only contain a pre-defined set values, known as <em>levels</em>. By default, R always sorts <em>levels</em> in alphabetical order. For instance, if you have a factor with 2 levels:</p>
-<h2 id="tip" class="callout">Tip</h2>
-<blockquote>
+<div id="tip" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
 <p>The <code>factor()</code> command is used to create and modify factors in R</p>
-</blockquote>
+</div>
+</div>
 <pre class="sourceCode r"><code class="sourceCode r">sex &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>))</code></pre>
 <p>R will assign <code>1</code> to the level <code>&quot;female&quot;</code> and <code>2</code> to the level <code>&quot;male&quot;</code> (because <code>f</code> comes before <code>m</code>, even though the first element in this vector is <code>&quot;male&quot;</code>). You can check this by using the function <code>levels()</code>, and check the number of levels using <code>nlevels()</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(sex)</code></pre>
@@ -55,7 +60,7 @@
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nlevels</span>(sex)</code></pre>
 <pre class="output"><code>[1] 2
 </code></pre>
-<p>Sometimes, the order of the factors does not matter, other times you might want to specify the order because it is meaningful (e.g., &quot;low&quot;, &quot;medium&quot;, &quot;high&quot;) or it is required by particular type of analysis. Additionally, specifying the order of the levels allows us to compare levels:</p>
+<p>Sometimes, the order of the factors does not matter, other times you might want to specify the order because it is meaningful (e.g., “low”, “medium”, “high”) or it is required by particular type of analysis. Additionally, specifying the order of the levels allows us to compare levels:</p>
 <pre class="sourceCode r"><code class="sourceCode r">food &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>))
 <span class="kw">levels</span>(food)</code></pre>
 <pre class="output"><code>[1] &quot;high&quot;   &quot;low&quot;    &quot;medium&quot;
@@ -75,20 +80,24 @@
 <pre class="output"><code>[1] low
 Levels: low &lt; medium &lt; high
 </code></pre>
-<p>In R's memory, these factors are represented by numbers (1, 2, 3). They are better than using simple integer labels because factors are self describing: <code>&quot;low&quot;</code>, <code>&quot;medium&quot;</code>, and <code>&quot;high&quot;</code>&quot; is more descriptive than <code>1</code>, <code>2</code>, <code>3</code>. Which is low? You wouldn't be able to tell with just integer data. Factors have this information built in. It is particularly helpful when there are many levels (like the subjects in our example data set).</p>
-<h2 id="challenge---representing-data-in-r" class="challenge">Challenge - Representing data in R</h2>
-<blockquote>
+<p>In R’s memory, these factors are represented by numbers (1, 2, 3). They are better than using simple integer labels because factors are self describing: <code>&quot;low&quot;</code>, <code>&quot;medium&quot;</code>, and <code>&quot;high&quot;</code>&quot; is more descriptive than <code>1</code>, <code>2</code>, <code>3</code>. Which is low? You wouldn’t be able to tell with just integer data. Factors have this information built in. It is particularly helpful when there are many levels (like the subjects in our example data set).</p>
+<div id="challenge---representing-data-in-r" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Representing data in R</h2>
+</div>
+<div class="panel-body">
 <p>You have a vector representing levels of exercise undertaken by 5 subjects</p>
-<p><strong>&quot;l&quot;,&quot;n&quot;,&quot;n&quot;,&quot;i&quot;,&quot;l&quot;</strong> ; n=none, l=light, i=intense</p>
+<p><strong>“l”,“n”,“n”,“i”,“l”</strong> ; n=none, l=light, i=intense</p>
 <p>What is the best way to represent this in R?</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>exercise&lt;-c(&quot;l&quot;,&quot;n&quot;,&quot;n&quot;,&quot;i&quot;,&quot;l&quot;)</p></li>
-<li><p>exercise&lt;-factor(c(&quot;l&quot;,&quot;n&quot;,&quot;n&quot;,&quot;i&quot;,&quot;l&quot;), ordered=TRUE)</p></li>
-<li><p>exercise&lt;-factor(c(&quot;l&quot;,&quot;n&quot;,&quot;n&quot;,&quot;i&quot;,&quot;l&quot;), levels=c(&quot;n&quot;,&quot;l&quot;,&quot;i&quot;), ordered=FALSE)</p></li>
-<li><p>exercise&lt;-factor(c(&quot;l&quot;,&quot;n&quot;,&quot;n&quot;,&quot;i&quot;,&quot;l&quot;), levels=c(&quot;n&quot;,&quot;l&quot;,&quot;i&quot;), ordered=TRUE)</p></li>
+<li><p>exercise&lt;-c(“l”,“n”,“n”,“i”,“l”)</p></li>
+<li><p>exercise&lt;-factor(c(“l”,“n”,“n”,“i”,“l”), ordered=TRUE)</p></li>
+<li><p>exercise&lt;-factor(c(“l”,“n”,“n”,“i”,“l”), levels=c(“n”,“l”,“i”), ordered=FALSE)</p></li>
+<li><p>exercise&lt;-factor(c(“l”,“n”,“n”,“i”,“l”), levels=c(“n”,“l”,“i”), ordered=TRUE)</p></li>
 </ol>
-</blockquote>
-<h3 id="converting-factors">Converting factors</h3>
+</div>
+</div>
+<h3 id="converting-factors">Converting Factors</h3>
 <p>Converting from a factor to a number can cause problems:</p>
 <pre class="sourceCode r"><code class="sourceCode r">f&lt;-<span class="kw">factor</span>(<span class="kw">c</span>(<span class="fl">3.4</span>, <span class="fl">1.2</span>, <span class="dv">5</span>))
 <span class="kw">as.numeric</span>(f)</code></pre>
@@ -102,13 +111,17 @@ Levels: low &lt; medium &lt; high
 <p>This returns a character vector, the <code>as.numeric()</code> function is still required to convert the values to the proper type (numeric).</p>
 <pre class="sourceCode r"><code class="sourceCode r">f&lt;-<span class="kw">levels</span>(f)[f]
 f&lt;-<span class="kw">as.numeric</span>(f)</code></pre>
-<h3 id="using-factors">Using factors</h3>
-<p>Lets load our example data:</p>
+<h3 id="using-factors">Using Factors</h3>
+<p>Lets load our example data to see the use of factors:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat&lt;-<span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&#39;data/sample.csv&#39;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">TRUE</span>)</code></pre>
-<h2 id="tip-1" class="callout">Tip</h2>
-<blockquote>
+<div id="tip-1" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
 <p><code>stringsAsFactors=TRUE</code> is the default behaviour for R. We could leave this argument out. It is included here for clarity.</p>
-</blockquote>
+</div>
+</div>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(dat)</code></pre>
 <pre class="output"><code>&#39;data.frame&#39;:   100 obs. of  9 variables:
  $ ID           : Factor w/ 100 levels &quot;Sub001&quot;,&quot;Sub002&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
@@ -141,55 +154,76 @@ f&lt;-<span class="kw">as.numeric</span>(f)</code></pre>
                                                                 
 </code></pre>
 <p>Notice the <code>summary()</code> function handles factors differently to numbers (and strings), the occurence counts for each value is often more useful information.</p>
-<h3 id="tip-2" class="callout">Tip</h3>
-<blockquote>
-<p>The <code>summary()</code> function is a great way of spotting errors in your data, look at the <em>dat$Gender</em> column. It's also a great way for spotting missing data.</p>
-</blockquote>
-<h3 id="challenge---reordering-factors" class="challenge">Challenge - Reordering factors</h3>
-<blockquote>
+<div id="tip-2" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
+<p>The <code>summary()</code> function is a great way of spotting errors in your data, look at the <em>dat$Gender</em> column. It’s also a great way for spotting missing data.</p>
+</div>
+</div>
+<div id="challenge---reordering-factors" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Reordering factors</h2>
+</div>
+<div class="panel-body">
 <p>The function <code>table()</code> tabulates observations and can be used to create bar plots quickly. For instance:</p>
-</blockquote>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(dat$Group)</code></pre>
 <pre class="output"><code>
    Control Treatment1 Treatment2 
         30         35         35 
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">table</span>(dat$Group))</code></pre>
-<p><img src="fig/using_factors-1.png" title="plot of chunk using_factors" alt="plot of chunk using_factors" style="display: block; margin: auto;" /></p>
-<blockquote>
-<p>Use the <code>factor()</code> command to modify the column dat$Group so that the <em>control</em> group is plotted last</p>
-</blockquote>
-<h3 id="removing-levels-from-a-factor">Removing levels from a factor</h3>
-<p>Some of the Gender values in our dataset have been coded incorrectly.</p>
+<p><img src="fig/01-supp-factors-reordering-factors-1.png" title="plot of chunk reordering-factors" alt="plot of chunk reordering-factors" style="display: block; margin: auto;" /> Use the <code>factor()</code> command to modify the column dat$Group so that the <em>control</em> group is plotted last</p>
+</div>
+</div>
+<h3 id="removing-levels-from-a-factor">Removing Levels from a Factor</h3>
+<p>Some of the Gender values in our dataset have been coded incorrectly. Let’s remove factors.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">table</span>(dat$Gender))</code></pre>
-<p><img src="fig/gender_counts-1.png" title="plot of chunk gender_counts" alt="plot of chunk gender_counts" style="display: block; margin: auto;" /></p>
-<p>Values should have been recorded as lowercase 'm' &amp; 'f'. We should correct this.</p>
+<p><img src="fig/01-supp-factors-gender-counts-1.png" title="plot of chunk gender-counts" alt="plot of chunk gender-counts" style="display: block; margin: auto;" /></p>
+<p>Values should have been recorded as lowercase ‘m’ &amp; ‘f’. We should correct this.</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat$Gender[dat$Gender==<span class="st">&#39;M&#39;</span>]&lt;-<span class="st">&#39;m&#39;</span></code></pre>
-<h3 id="challenge---updating-factors" class="challenge">Challenge - Updating factors</h3>
+<div id="challenge---updating-factors" class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Updating factors</h2>
+</div>
+<div class="panel-body">
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x=</span>dat$Gender,<span class="dt">y=</span>dat$BloodPressure)</code></pre>
-<p><img src="fig/updating_factors-1.png" title="plot of chunk updating_factors" alt="plot of chunk updating_factors" style="display: block; margin: auto;" /></p>
-<blockquote>
-<p>Why does this plot show 4 levels? <em>Hint</em> how many levels does dat$Gender have?</p>
-</blockquote>
-<p>We need to tell R that &quot;M&quot; is no longer a valid value for this column. We use the <code>droplevels()</code> function to remove extra levels.</p>
+<p><img src="fig/01-supp-factors-updating-factors-1.png" title="plot of chunk updating-factors" alt="plot of chunk updating-factors" style="display: block; margin: auto;" /></p>
+<p>Why does this plot show 4 levels?</p>
+<p><em>Hint</em> how many levels does dat$Gender have?</p>
+</div>
+</div>
+<p>We need to tell R that “M” is no longer a valid value for this column. We use the <code>droplevels()</code> function to remove extra levels.</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat$Gender&lt;-<span class="kw">droplevels</span>(dat$Gender)
 <span class="kw">plot</span>(<span class="dt">x=</span>dat$Gender,<span class="dt">y=</span>dat$BloodPressure)</code></pre>
-<p><img src="fig/dropping_levels-1.png" title="plot of chunk dropping_levels" alt="plot of chunk dropping_levels" style="display: block; margin: auto;" /></p>
-<h2 id="tip-3" class="callout">Tip</h2>
-<blockquote>
-<p>Adjusting the <code>levels()</code> of a factor provides a useful shortcut for reassining values in this case.</p>
-</blockquote>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(dat$Gender)[<span class="dv">1</span>]&lt;-<span class="st">&#39;f&#39;</span>
-<span class="kw">plot</span>(<span class="dt">x=</span>dat$Gender,<span class="dt">y=</span>dat$BloodPressure)</code></pre>
-<p><img src="fig/reassigning_levels_shortcut-1.png" title="plot of chunk reassigning_levels_shortcut" alt="plot of chunk reassigning_levels_shortcut" style="display: block; margin: auto;" /></p>
-<h3 id="key-points">Key Points</h3>
+<p><img src="fig/01-supp-factors-dropping-levels-1.png" title="plot of chunk dropping-levels" alt="plot of chunk dropping-levels" style="display: block; margin: auto;" /></p>
+<div id="tip-3" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
+<p>Adjusting the <code>levels()</code> of a factor provides a useful shortcut for reassigning values in this case.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(dat$Gender)[<span class="dv">1</span>] &lt;-<span class="st"> &#39;f&#39;</span>
+<span class="kw">plot</span>(<span class="dt">x =</span> dat$Gender, <span class="dt">y =</span> dat$BloodPressure)</code></pre>
+<p><img src="fig/01-supp-factors-adjusting-levels-1.png" title="plot of chunk adjusting-levels" alt="plot of chunk adjusting-levels" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="key-points" class="callout panel panel-info">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
+</div>
+<div class="panel-body">
 <ul>
 <li>Factors are used to represent catagorical data</li>
 <li>Factors can be <em>ordered</em> or <em>unordered</em></li>
 <li>Some R functions have special methods for handling functions</li>
 </ul>
+</div>
+</div>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/r-novice-inflammation">Source</a>
