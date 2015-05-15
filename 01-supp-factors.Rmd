@@ -7,6 +7,7 @@ minutes: 20
 
 ```{r, include = FALSE}
 source('tools/chunk-options.R')
+opts_chunk$set(fig.path = "fig/01-supp-factors-")
 ```
 
 > ## Learning Objectives {.objectives}
@@ -33,7 +34,7 @@ instance, if you have a factor with 2 levels:
 >
 > The `factor()` command is used to create and modify factors in R
 
-```{r intro_to_factors}
+```{r intro-to-factors}
 sex <- factor(c("male", "female", "female", "male"))
 ```
 
@@ -42,7 +43,7 @@ R will assign `1` to the level `"female"` and `2` to the level `"male"` (because
 `"male"`). You can check this by using the function `levels()`, and check the
 number of levels using `nlevels()`:
 
-```{r examining_factors}
+```{r examining-factors}
 levels(sex)
 nlevels(sex)
 ```
@@ -90,7 +91,7 @@ information built in. It is particularly helpful when there are many levels
 
 Converting from a factor to a number can cause problems:
 
-```{r converting_factors}
+```{r converting-factors}
 f<-factor(c(3.4, 1.2, 5))
 as.numeric(f)
 ```
@@ -99,13 +100,13 @@ This does not behave as expected (and there is no warning).
 
 The recommended way is to use the integer vector to index the factor levels:
 
-```{r converting_factors_correctly}
+```{r converting-factors-correctly}
 levels(f)[f]
 ```
 
 This returns a character vector, the `as.numeric()` function is still required to convert the values to the proper type (numeric).
 
-```{r converting_to_numeric}
+```{r converting-to-numeric}
 f<-levels(f)[f]
 f<-as.numeric(f)
 ```
@@ -114,7 +115,7 @@ f<-as.numeric(f)
 
 Lets load our example data to see the use of factors:
 
-```{r load_example_data}
+```{r load-example-data}
 dat<-read.csv(file='data/sample.csv', stringsAsFactors=TRUE)
 ```
 
@@ -122,13 +123,13 @@ dat<-read.csv(file='data/sample.csv', stringsAsFactors=TRUE)
 >
 > `stringsAsFactors=TRUE` is the default behaviour for R. We could leave this argument out. It is included here for clarity.
 
-```{r examine_example_data}
+```{r examine-example-data}
 str(dat)
 ```
 
 Notice the first 3 columns have been converted to factors. These values were text in the data file so R automatically interpreted them as catagorical variables.
 
-```{r examine_example_data2}
+```{r examine-example-data2}
 summary(dat)
 ```
 
@@ -142,7 +143,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 > 
 > The function `table()` tabulates observations and can be used to create bar plots quickly. For instance:
 >
-> ```{r}
+> ```{r reordering-factors}
 > table(dat$Group)
 > barplot(table(dat$Group))
 > ```
@@ -153,19 +154,19 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 Some of the Gender values in our dataset have been coded incorrectly.
 Let's remove factors.
 
-```{r gender_counts}
+```{r gender-counts}
 barplot(table(dat$Gender))
 ```
 
 Values should have been recorded as lowercase 'm' & 'f'. We should correct this.
 
-```{r recoding_gender}
+```{r recoding-gender}
 dat$Gender[dat$Gender=='M']<-'m'
 ```
 
 > ## Challenge - Updating factors {.challenge}
 >
-> ```{r}
+> ```{r updating-factors}
 > plot(x=dat$Gender,y=dat$BloodPressure)
 > ```
 >
@@ -177,7 +178,7 @@ dat$Gender[dat$Gender=='M']<-'m'
 We need to tell R that "M" is no longer a valid value for this column.
 We use the `droplevels()` function to remove extra levels.
 
-```{r dropping_levels}
+```{r dropping-levels}
 dat$Gender<-droplevels(dat$Gender)
 plot(x=dat$Gender,y=dat$BloodPressure)
 ```
@@ -186,7 +187,7 @@ plot(x=dat$Gender,y=dat$BloodPressure)
 >
 > Adjusting the `levels()` of a factor provides a useful shortcut for reassigning values in this case.
 >
-> ```{r}
+> ```{r adjusting-levels}
 > levels(dat$Gender)[1] <- 'f'
 > plot(x = dat$Gender, y = dat$BloodPressure)
 > ```
