@@ -205,7 +205,7 @@ expo(2, 4)
 analyze_all <- function(pattern) {
   # Runs the function analyze for each file in the current working directory
   # that contains the given pattern.
-  filenames <- list.files(pattern = pattern)
+  filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
   for (f in filenames) {
     analyze(f)
   }
