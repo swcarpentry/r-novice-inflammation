@@ -69,7 +69,7 @@ An additional half-day could add the next two lessons:
 
 Time-permitting, you can fit in one of these shorter lessons that cover bigger picture ideas like best practices for organizing code, reproducible research, and creating packages:
 
-6.  [Best practices for using R and designing programs](06-best-practices.html)
+6.  [Best practices for using R and designing programs](06-best-practices-R.html)
 7.  [Dynamic reports with knitr](07-knitr-R.html)
 8.  [Making packages in R](08-making-packages-R.html)
 
@@ -84,61 +84,61 @@ Time-permitting, you can fit in one of these shorter lessons that cover bigger p
 
 ~~~{.r}
 dat <- read.csv("data/inflammation-01.csv", header = FALSE)
-element <- c("o", "x", "y", "g", "e", "n")
+animal <- c("m", "o", "n", "k", "e", "y")
 # Challenge - Slicing (subsetting data)
-element[4:1]  # first 4 characters in reverse order
+animal[4:1]  # first 4 characters in reverse order
 ~~~
 
 
 
 ~~~{.output}
-[1] "g" "y" "x" "o"
+[1] "k" "n" "o" "m"
 
 ~~~
 
 
 
 ~~~{.r}
-element[-1]  # remove first character
+animal[-1]  # remove first character
 ~~~
 
 
 
 ~~~{.output}
-[1] "x" "y" "g" "e" "n"
+[1] "o" "n" "k" "e" "y"
 
 ~~~
 
 
 
 ~~~{.r}
-element[-4]  # remove fourth character
+animal[-4]  # remove fourth character
 ~~~
 
 
 
 ~~~{.output}
-[1] "o" "x" "y" "e" "n"
+[1] "m" "o" "n" "e" "y"
 
 ~~~
 
 
 
 ~~~{.r}
-element[-1:-4]  # remove firts to fourth characters
+animal[-1:-4]  # remove first to fourth characters
 ~~~
 
 
 
 ~~~{.output}
-[1] "e" "n"
+[1] "e" "y"
 
 ~~~
 
 
 
 ~~~{.r}
-element[c(5, 1, 6)]  # new character vector
+animal[c(5, 2, 3)]  # new character vector
 ~~~
 
 
