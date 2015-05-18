@@ -196,4 +196,4 @@ plot(x=dat$Gender,y=dat$BloodPressure)
 >
 > * Factors are used to represent catagorical data
 > * Factors can be *ordered* or *unordered*
-> * Some R functions have special methods for handling functions
+> * Some R functions have special methods for handling factors
