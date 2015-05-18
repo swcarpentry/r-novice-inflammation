@@ -38,7 +38,7 @@ To do all that, we'll have to learn a little bit about programming.
 
 ### Loading Data
 
-To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is `inflammation-01.csv`. This is very important in R, if we forget this step we'll get an error message when trying to read. We can change the current working directory using the function `setwd`. For this example, we change the path to the working directory where our scripts are stored that is named `swc`:
+To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is `inflammation-01.csv`. This is very important in R, if we forget this step we'll get an error message when trying to read the file. We can change the current working directory using the function `setwd`. For this example, we change the path to the working directory where our scripts are stored that is named `swc`:
 
 ```{r, eval=FALSE}
 setwd("~/swc")
@@ -208,6 +208,10 @@ dat[1:4, 1:10]
 The [slice](reference.html#slice) `1:4` means, "Start at index 1 and go to index 4."
 
 The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
+
+> ## Tip {.callout} 
+> R indexes are 1-based, not 0-based. That means that first element has an index of 1 instead of 0.
+
 
 ```{r}
 dat[5:10, 1:10]
