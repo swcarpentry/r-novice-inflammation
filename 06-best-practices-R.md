@@ -41,7 +41,7 @@ The following error message indicates that R has failed to set the working direc
 Error in setwd("~/path/to/working/directory") : cannot change working directory
 ```
 
-Note that using `~` for the home directory is a convention on Unix systems and will allow others to run your code more easily on their machines than if the path specified your username.  Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths (see below).
+Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths (see below).
 
 4. Use `#` or `#-` to set off sections of your code so you can easily scroll through it and find things.
 
