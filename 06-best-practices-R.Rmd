@@ -41,11 +41,11 @@ The following error message indicates that R has failed to set the working direc
 Error in setwd("~/path/to/working/directory") : cannot change working directory
 ```
 
-Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths (see below). 
+Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths (see below).
 
 4. Use `#` or `#-` to set off sections of your code so you can easily scroll through it and find things.
 
-5. If you have only one or a few functions, put them at the top of your code, so they are among the first things run. If you written many functions, put them all in their own .R file, and `source` them. Source will run all of these functions so that you can use them as you need them.
+5. If you have only one or a few functions, put them at the top of your code, so they are among the first things run. If you have written many functions, put them all in their own .R file, and `source` them. Source will define all of these functions so that you can use them as you need them. For the reasons listed above, try to avoid using `setwd()` (or other functions that have side-effects in the user's workspace) in scripts you `source`.
 
 ```{r, eval=FALSE}
 source("my_genius_fxns.R")
