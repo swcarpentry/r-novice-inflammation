@@ -244,7 +244,7 @@ Error in eval(expr, envir, enclos): object 'temp' not found
 [chapter]: http://adv-r.had.co.nz/Environments.html
 [adv-r]: http://adv-r.had.co.nz/
 
-Why go to all this trouble? Well, here's a function called `span` that calculates the difference between the mininum and maximum values in an array:
+Why go to all this trouble? Well, here's a function called `span` that calculates the difference between the minimum and maximum values in an array:
 
 
 ~~~{.r}

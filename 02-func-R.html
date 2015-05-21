@@ -148,7 +148,7 @@ final &lt;-<span class="st"> </span><span class="kw">fahr_to_celsius</span>(orig
 <p>The explanation of the stack frame above was very general and the basic concept will help you understand most languages you try to program with. However, R has some unique aspects that can be exploited when performing more complicated operations. We will not be writing anything that requires knowledge of these more advanced concepts. In the future when you are comfortable writing functions in R, you can learn more by reading the <a href="http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects">R Language Manual</a> or this <a href="http://adv-r.had.co.nz/Environments.html">chapter</a> from <a href="http://adv-r.had.co.nz/">Advanced R Programming</a> by Hadley Wickham. For context, R uses the terminology “environments” instead of frames.</p>
 </div>
 </div>
-<p>Why go to all this trouble? Well, here’s a function called <code>span</code> that calculates the difference between the mininum and maximum values in an array:</p>
+<p>Why go to all this trouble? Well, here’s a function called <code>span</code> that calculates the difference between the minimum and maximum values in an array:</p>
 <pre class="sourceCode r"><code class="sourceCode r">span &lt;-<span class="st"> </span>function(a) {
   diff &lt;-<span class="st"> </span><span class="kw">max</span>(a) -<span class="st"> </span><span class="kw">min</span>(a)
   <span class="kw">return</span>(diff)

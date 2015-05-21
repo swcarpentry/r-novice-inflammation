@@ -60,7 +60,7 @@
 <p>Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths (see below).</p>
 <ol start="4" style="list-style-type: decimal">
 <li><p>Use <code>#</code> or <code>#-</code> to set off sections of your code so you can easily scroll through it and find things.</p></li>
-<li><p>If you have only one or a few functions, put them at the top of your code, so they are among the first things run. If you written many functions, put them all in their own .R file, and <code>source</code> them. Source will run all of these functions so that you can use them as you need them.</p></li>
+<li><p>If you have only one or a few functions, put them at the top of your code, so they are among the first things run. If you have written many functions, put them all in their own .R file, and <code>source</code> them. Source will define all of these functions so that you can use them as you need them. For the reasons listed above, try to avoid using <code>setwd()</code> (or other functions that have side-effects in the user’s workspace) in scripts you <code>source</code>.</p></li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;my_genius_fxns.R&quot;</span>)</code></pre>
 <ol start="6" style="list-style-type: decimal">
