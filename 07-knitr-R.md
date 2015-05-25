@@ -11,7 +11,7 @@ minutes: 30
 >
 > * To discover `knitr` and the generation of dynamic reports
 
-`Knitr` is an R package that makes your code neat, pretty, and shows your notes, code, and output simultaneously in an `html` document. You create these documents in `.Rmd` files. You can write in `LateX` or `md`. 
+`Knitr` is an R package that makes your code neat, pretty, and shows your notes, code, and output simultaneously in an `html`, `Word`, or `PDF` document. You create these documents in `.Rmd` files. You can write in `LateX` or `md`. 
 
 knitr extracts R code in the input document (.Rmd), evaluates it and writes the results to the output document (html). There are two types of R code: chunks (code as separate paragraphs) and inline R code.
 
