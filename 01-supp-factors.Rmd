@@ -188,7 +188,7 @@ plot(x=dat$Gender,y=dat$BloodPressure)
 > Adjusting the `levels()` of a factor provides a useful shortcut for reassigning values in this case.
 >
 > ```{r adjusting-levels}
-> levels(dat$Gender)[1] <- 'f'
+> levels(dat$Gender)[2] <- 'f'
 > plot(x = dat$Gender, y = dat$BloodPressure)
 > ```
 
@@ -196,4 +196,4 @@ plot(x=dat$Gender,y=dat$BloodPressure)
 >
 > * Factors are used to represent catagorical data
 > * Factors can be *ordered* or *unordered*
-> * Some R functions have special methods for handling functions
+> * Some R functions have special methods for handling factors
