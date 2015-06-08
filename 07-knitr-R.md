@@ -13,7 +13,9 @@ minutes: 30
 
 `Knitr` is an R package that makes your code neat, pretty, and shows your notes, code, and output simultaneously in an `html` document. You create these documents in `.Rmd` files. You can write in `LateX` or `md`. 
 
-knitr extracts R code in the input document (.Rmd), evaluates it and writes the results to the output document (html). There are two types of R code: chunks (code as separate paragraphs) and inline R code.
+knitr extracts R code in the input document (.Rmd), evaluates it and writes the results to the output document (html) like the page you're looking at right now! 
+
+To begin, you will need to install and load the `knitr` package:
 
 
 ~~~{.r}
@@ -27,7 +29,9 @@ library(knitr)
 Restart RStudio. 
 Open a new `Rmd` file. 
 
-In Rmd, anything between lines that start and end with triple quotes ``` will be run as R code.
+The file that opens will already have some formatting demonstrating the basic syntax for r-markdown. 
+In Rmd, anything between lines that start with triple quotes and {r} and end with triple quotes will be run as R code. This is called a `chunk`.
+
 
 
 ~~~{.r}
@@ -47,9 +51,33 @@ summary(cars)
 
 ~~~
 
+There are many chunk options. To view them, place your cursor inside of the curly braces and hit tab. One of the more useful options is `echo` which when set to FALSE will hide all the code in the chunk and only show the evaluated output in the rendered html document. You can also use fig.height and fig.width to adjust the output size of figures created in the chunk. 
+
+
+In addition to r code that can be executed in a `chunk`, r code can be evaluated outside of a chunk by enclosing it in single quotes with an r before it. For example:
+
+
+~~~{.r}
+maxspeed <- max(cars$speed)
+~~~
+
+We can now evaluate maxspeed outside of a chunk using the following syntax:    
+The max car speed is \` r maxspeed \`       
+
+to produce:    
+the max car speed is 25
+
+> ## Tip {.callout}
+> There is a chunks dropdown menu in the top right hand corner of the editor window. 
+> In this menu you will find useful shortcuts for running chunks of code and navigating between chunks
+
+
+
 > ## Challenge - Using KnitR to produce a report {.challenge}
 >
 > 1. Open an new .Rmd script and save it as inflammation_report.Rmd
 > 2. Copy and paste the code as embedded R chunks to read in the data and plot average inflammation, or the heat map that we created.
 > 3. Add a few notes describing what the code does and what the main findings are.
 > 4. `KNIT` and view the html
+
+
