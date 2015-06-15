@@ -26,9 +26,9 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title">Programming with R</h1>
+                    <a href="index.html"><h1 class="title">Programming with R</h1></a>
           <h2 class="subtitle">Creating functions</h2>
-<div id="learning-objectives" class="objectives panel panel-warning">
+          <section class="objectives panel panel-warning">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
@@ -42,7 +42,7 @@
 <li>Explain why we should divide programs into small, single-purpose functions.</li>
 </ul>
 </div>
-</div>
+</section>
 <p>If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics. But we have twelve files to check, and may have more in the future. In this lesson, we’ll learn how to write a function so that we can repeat several operations with a single command.</p>
 <h3 id="defining-a-function">Defining a Function</h3>
 <p>Let’s start by defining a function <code>fahr_to_kelvin</code> that converts temperatures from Fahrenheit to Kelvin:</p>
@@ -52,14 +52,14 @@
 }</code></pre>
 <p>We define <code>fahr_to_kelvin</code> by assigning it to the output of <code>function</code>. The list of argument names are containted within parentheses. Next, the <a href="reference.html#function-body">body</a> of the function–the statements that are executed when it runs–is contained within curly braces (<code>{}</code>). The statements in the body are indented by two spaces. This makes the code easier to read but does not affect how the code operates.</p>
 <p>When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function. Inside the function, we use a <a href="reference.html#return-statement">return statement</a> to send a result back to whoever asked for it.</p>
-<div id="tip" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>One feature unique to R is that the return statement is not required. R automatically returns whichever variable is on the last line of the body of the function. Since we are just learning, we will explicitly define the return statement.</p>
 </div>
-</div>
+</aside>
 <p>Let’s try running our function. Calling our own function is no different from calling any other function:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freezing point of water</span>
 <span class="kw">fahr_to_kelvin</span>(<span class="dv">32</span>)</code></pre>
@@ -93,7 +93,7 @@
 <pre class="output"><code>[1] 0
 </code></pre>
 <p>This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want. Real-life functions will usually be larger than the ones shown here–typically half a dozen to a few dozen lines–but they shouldn’t ever be much longer than that, or the next person who reads it won’t be able to understand what’s going on.</p>
-<div id="challenge---create-a-function" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Create a function</h2>
 </div>
@@ -116,7 +116,7 @@ asterisk &lt;-<span class="st"> &quot;***&quot;</span>  <span class="co"># R int
 <pre class="output"><code>[1] &quot;Don&#39;t&quot;  &quot;others&quot;
 </code></pre>
 </div>
-</div>
+</section>
 <h3 id="the-call-stack">The Call Stack</h3>
 <p>Let’s take a closer look at what happens when we call <code>fahr_to_celsius(32)</code>. To make things clearer, we’ll start by putting the initial value 32 in a variable and store the final result in one as well:</p>
 <pre class="sourceCode r"><code class="sourceCode r">original &lt;-<span class="st"> </span><span class="dv">32</span>
@@ -140,14 +140,14 @@ final &lt;-<span class="st"> </span><span class="kw">fahr_to_celsius</span>(orig
 <pre class="sourceCode r"><code class="sourceCode r">temp</code></pre>
 <pre class="output"><code>Error in eval(expr, envir, enclos): object &#39;temp&#39; not found
 </code></pre>
-<div id="tip-1" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>The explanation of the stack frame above was very general and the basic concept will help you understand most languages you try to program with. However, R has some unique aspects that can be exploited when performing more complicated operations. We will not be writing anything that requires knowledge of these more advanced concepts. In the future when you are comfortable writing functions in R, you can learn more by reading the <a href="http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects">R Language Manual</a> or this <a href="http://adv-r.had.co.nz/Environments.html">chapter</a> from <a href="http://adv-r.had.co.nz/">Advanced R Programming</a> by Hadley Wickham. For context, R uses the terminology “environments” instead of frames.</p>
 </div>
-</div>
+</aside>
 <p>Why go to all this trouble? Well, here’s a function called <code>span</code> that calculates the difference between the minimum and maximum values in an array:</p>
 <pre class="sourceCode r"><code class="sourceCode r">span &lt;-<span class="st"> </span>function(a) {
   diff &lt;-<span class="st"> </span><span class="kw">max</span>(a) -<span class="st"> </span><span class="kw">min</span>(a)
@@ -167,7 +167,7 @@ dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="
 </code></pre>
 <p>We don’t expect the variable <code>diff</code> to have the value 20 after this function call, so the name <code>diff</code> cannot refer to the same variable defined inside <code>span</code> as it does in as it does in the main body of our program (which R refers to as the global environment). And yes, we could probably choose a different name than <code>diff</code> for our variable in this case, but we don’t want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.</p>
 <p>The big idea here is <a href="reference.html#encapsulation">encapsulation</a>, and it’s the key to writing correct, comprehensible programs. A function’s job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something. That only works if functions don’t interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.</p>
-<div id="challenge---following-the-call-stack" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Following the call stack</h2>
 </div>
@@ -179,7 +179,7 @@ dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="
 outer_vec &lt;-<span class="st"> &quot;+&quot;</span>
 result &lt;-<span class="st"> </span><span class="kw">outside</span>(<span class="kw">fence</span>(inner_vec, outer_vec))</code></pre>
 </div>
-</div>
+</section>
 <h3 id="testing-and-documenting">Testing and Documenting</h3>
 <p>Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly. To see how to do this, let’s write a function to center a dataset around a particular value:</p>
 <pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, desired) {
@@ -252,26 +252,26 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
   new_data &lt;-<span class="st"> </span>(data -<span class="st"> </span><span class="kw">mean</span>(data)) +<span class="st"> </span>desired
   <span class="kw">return</span>(new_data)
 }</code></pre>
-<div id="tip-2" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>Formal documentation for R functions is written in separate <code>.Rd</code> using a markup language similar to <a href="http://www.latex-project.org/">LaTeX</a>. You see the result of this documentation when you look at the help file for a given function, e.g. <code>?read.csv</code>. The <a href="http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html">roxygen2</a> package allows R coders to write documentation alongside the function code and then process it into the appropriate <code>.Rd</code> files. You will want to switch to this more formal method of writing documentation when you start writing more complicated R projects.</p>
 </div>
-</div>
-<div id="challenge---a-more-advanced-function" class="challenge panel panel-success">
+</aside>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - A more advanced function</h2>
 </div>
 <div class="panel-body">
 <ul>
 <li>Write a function called <code>analyze</code> that takes a filename as a argument and displays the three graphs produced in the <a href="01-starting-with-data.html">previous lesson</a> (average, min and max inflammation over time). <code>analyze(&quot;data/inflammation-01.csv&quot;)</code> should produce the graphs already shown, while <code>analyze(&quot;data/inflammation-02.csv&quot;)</code> should produce corresponding graphs for the second data set. Be sure to document your function with comments.</li>
-<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>) / (<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</li>
+<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>)/(<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</li>
 <li>Test that your <code>rescale</code> function is working properly using <code>min</code>, <code>max</code>, and <code>plot</code>.</li>
 </ul>
 </div>
-</div>
+</section>
 <h3 id="defining-defaults">Defining Defaults</h3>
 <p>We have passed arguments to functions in two ways: directly, as in <code>dim(dat)</code>, and by name, as in <code>read.csv(file = &quot;data/inflammation-01.csv&quot;, header = FALSE)</code>. In fact, we can pass the arguments to <code>read.csv</code> without naming them:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="ot">FALSE</span>)</code></pre>
@@ -335,7 +335,7 @@ more_data</code></pre>
 <pre class="output"><code> a  b  c 
  1  2 77 
 </code></pre>
-<div id="tip-3" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
@@ -349,7 +349,7 @@ more_data</code></pre>
 </ol>
 <p>Arguments are matched in the manner outlined above in <em>that order</em>: by complete name, then by partial matching of names, and finally by position.</p>
 </div>
-</div>
+</aside>
 <p>With that in hand, let’s look at the help for <code>read.csv()</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">?read.csv</code></pre>
 <p>There’s a lot of information there, but the most important part is the first couple of lines:</p>
@@ -360,7 +360,7 @@ more_data</code></pre>
 <pre class="output"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : &#39;file&#39; must be a character string or connection
 </code></pre>
 <p>It fails because <code>FALSE</code> is assigned to <code>file</code> and the filename is assigned to the argument <code>header</code>.</p>
-<div id="challenge---a-function-with-default-argument-values" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - A function with default argument values</h2>
 </div>
@@ -369,8 +369,8 @@ more_data</code></pre>
 <li>Rewrite the <code>rescale</code> function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want. Compare your implementation to your neighbor’s: do the two functions always behave the same way?</li>
 </ul>
 </div>
-</div>
-<div id="key-points" class="callout panel panel-info">
+</section>
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
 </div>
@@ -387,8 +387,8 @@ more_data</code></pre>
 <li>Arguments can be passed by matching based on name, by position, or by omitting them (in which case the default value is used).</li>
 </ul>
 </div>
-</div>
-<div id="next-steps" class="callout panel panel-info">
+</aside>
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Next Steps</h2>
 </div>
@@ -400,7 +400,7 @@ more_data</code></pre>
 <span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-12.csv&quot;</span>)</code></pre>
 <p>but the chances of us typing all 12 filenames correctly aren’t great, and we’ll be even worse off if we get another hundred files. What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.</p>
 </div>
-</div>
+</aside>
         </div>
       </div>
       </article>

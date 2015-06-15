@@ -26,9 +26,9 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title">Programming with R</h1>
+                    <a href="index.html"><h1 class="title">Programming with R</h1></a>
           <h2 class="subtitle">Analyzing patient data</h2>
-<div id="learning-objectives" class="objectives panel panel-warning">
+          <section class="objectives panel panel-warning">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
@@ -41,7 +41,7 @@
 <li>Display simple graphs.</li>
 </ul>
 </div>
-</div>
+</section>
 <p>We are studying inflammation in patients who have been given a new treatment for arthritis, and need to analyze the first dozen data sets. The data sets are stored in <a href="reference.html#comma-separated-values-(csv)">comma-separated values</a> (CSV) format. Each row holds the observations for just one patient. Each column holds the inflammation measured in a day, so we have a set of values in successive days. The first few rows of our first file look like this:</p>
 <pre class="output"><code>0,0,1,3,1,2,4,7,8,3,3,3,10,5,7,4,7,7,12,18,6,13,11,11,7,7,4,6,8,8,4,4,5,7,3,4,2,3,0,0
 0,1,2,1,2,1,3,2,2,6,10,11,5,9,4,4,7,16,8,6,18,4,12,5,12,7,11,5,11,3,3,5,4,4,5,5,1,1,0,1
@@ -64,14 +64,14 @@
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)</code></pre>
 <p>The expression <code>read.csv(...)</code> is a <a href="reference.html#function-call">function call</a> that asks R to run the function <code>read.csv</code>.</p>
 <p><code>read.csv</code> has two <a href="reference.html#argument">arguments</a>: the name of the file we want to read, and whether the first line of the file contains names for the columns of data. The filename needs to be a character string (or <a href="reference.html#string">string</a> for short), so we put it in quotes. Assigning the second argument, <code>header</code>, to be <code>FALSE</code> indicates that the data file does not have column headers. We’ll talk more about the value <code>FALSE</code>, and its converse <code>TRUE</code>, in lesson 04.</p>
-<div id="tip" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p><code>read.csv</code> actually has many more arguments that you may find useful when importing your own data in the future. You can learn more about these options in this supplementary <a href="01-supp-read-write-csv.html">lesson</a>.</p>
 </div>
-</div>
+</aside>
 <p>The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s). For example, in this case if we provided the name of a different file to the argument <code>file</code>, <code>read.csv</code> would read it instead. We’ll learn more of the details about functions and their arguments in the next lesson.</p>
 <p>Since we didn’t tell it to do anything else with the function’s output, the console will display the full contents of the file <code>inflammation-01.csv</code>. Try it out.</p>
 <p><code>read.csv</code> read the file, but we can’t use data unless we assign it to a variable. A variable is just a name for a value, such as <code>x</code>, <code>current_temperature</code>, or <code>subject_id</code>. We can create a new variable simply by assigning a value to it using <code>&lt;-</code></p>
@@ -85,14 +85,14 @@
 <span class="fl">2.2</span> *<span class="st"> </span>weight_kg</code></pre>
 <pre class="output"><code>[1] 121
 </code></pre>
-<div id="tip-1" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>We can add comments to our code using the <code>#</code> character. It is useful to document our code in this way so that others (and us the next time we read it) have an easier time following what the code is doing.</p>
 </div>
-</div>
+</aside>
 <p>We can also change an object’s value by assigning it a new value:</p>
 <pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="fl">57.5</span>
 <span class="co"># weight in kilograms is now</span>
@@ -124,14 +124,14 @@ weight_lb</code></pre>
 </code></pre>
 <p><img src="fig/python-sticky-note-variables-03.svg" alt="Updating a Variable" /></p>
 <p>Since <code>weight_lb</code> doesn’t “remember” where its value came from, it isn’t automatically updated when <code>weight_kg</code> changes. This is different from the way spreadsheets work.</p>
-<div id="tip-2" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>An alternative way to print the value of a variable is to use () around the assignment statement. As an example: <code>(total_weight &lt;- weight_kg + weight_lb)</code>, adds the values of <code>weight_kg</code> and <code>weight_lb</code>, assigns the result to the <code>total_weight</code>, and finally prints the assigned value of the variable <code>total_weight</code>.</p>
 </div>
-</div>
+</aside>
 <p>Now that we know how to assign things to variables, let’s re-run <code>read.csv</code> and save its result:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)</code></pre>
 <p>This statement doesn’t produce any output because assignment doesn’t display anything. If we want to check that our data has been loaded, we can print the variable’s value. However, for large data sets it is convenient to use the function <code>head</code> to display only the first few rows of data.</p>
@@ -158,7 +158,7 @@ weight_lb</code></pre>
 5   1   1
 6   2   1
 </code></pre>
-<div id="challenge---assigning-values-to-variables" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Assigning values to variables</h2>
 </div>
@@ -169,7 +169,7 @@ age &lt;-<span class="st"> </span><span class="dv">122</span>
 mass &lt;-<span class="st"> </span>mass *<span class="st"> </span><span class="fl">2.0</span>
 age &lt;-<span class="st"> </span>age -<span class="st"> </span><span class="dv">20</span></code></pre>
 </div>
-</div>
+</section>
 <h3 id="manipulating-data">Manipulating Data</h3>
 <p>Now that our data is loaded in memory, we can start doing things with it. First, let’s ask what type of thing <code>dat</code> is:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(dat)</code></pre>
@@ -265,29 +265,29 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 <p>What if we need the maximum inflammation for all patients, or the average for each day? As the diagram below shows, we want to perform the operation across a margin of the data frame:</p>
 <p><img src="fig/r-operations-across-axes.svg" alt="Operations Across Axes" /></p>
 <p>To support this, we can use the <code>apply</code> function.</p>
-<div id="tip-3" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>To learn about a function in R, e.g. <code>apply</code>, we can read its help documention by running <code>help(apply)</code> or <code>?apply</code>.</p>
 </div>
-</div>
+</aside>
 <p><code>apply</code> allows us to repeat a function on all of the rows (<code>MARGIN = 1</code>) or columns (<code>MARGIN = 2</code>) of a data frame.</p>
 <p>Thus, to obtain the average inflammation of each patient we will need to calculate the mean of all of the rows (<code>MARGIN = 1</code>) of the data frame.</p>
 <pre class="sourceCode r"><code class="sourceCode r">avg_patient_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">1</span>, mean)</code></pre>
 <p>And to obtain the average inflammation of each day we will need to calculate the mean of all of the columns (<code>MARGIN = 2</code>) of the data frame.</p>
 <pre class="sourceCode r"><code class="sourceCode r">avg_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, mean)</code></pre>
 <p>Since the second argument to <code>apply</code> is <code>MARGIN</code>, the above command is equivalent to <code>apply(dat, MARGIN = 2, mean)</code>. We’ll learn why this is so in the next lesson.</p>
-<div id="tip-4" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>Some common operations have more efficient alternatives. For example, you can calculate the row-wise or column-wise means with <code>rowMeans</code> and <code>colMeans</code>, respectively.</p>
 </div>
-</div>
-<div id="challenge---slicing-subsetting-data" class="challenge panel panel-success">
+</aside>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Slicing (subsetting) data</h2>
 </div>
@@ -308,8 +308,8 @@ animal[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <li><p>Use a slice of <code>animal</code> to create a new character vector that spells the word “eon”, i.e. <code>c(&quot;e&quot;, &quot;o&quot;, &quot;n&quot;)</code>.</p></li>
 </ol>
 </div>
-</div>
-<div id="challenge---subsetting-data-2" class="challenge panel panel-success">
+</section>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Subsetting data 2</h2>
 </div>
@@ -322,7 +322,7 @@ animal[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <li><code>max(dat[5, 3, 7])</code></li>
 </ol>
 </div>
-</div>
+</section>
 <h3 id="plotting">Plotting</h3>
 <p>The mathematician Richard Hamming once said, “The purpose of computing is insight, not numbers,” and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R’s plotting features.</p>
 <p>Let’s take a look at the average inflammation over time. Recall that we already calculated these values above using <code>apply(dat, 2, mean)</code> and saved them in the variable <code>avg_day_inflammation</code>. Plotting the values is done with the function <code>plot</code>.</p>
@@ -336,15 +336,15 @@ animal[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <span class="kw">plot</span>(min_day_inflammation)</code></pre>
 <p><img src="fig/01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" /></p>
 <p>The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there’s a mistake in our calculations or something is wrong with our data.</p>
-<div id="challenge---plotting-data" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Plotting data</h2>
 </div>
 <div class="panel-body">
 <p>Create a plot showing the standard deviation of the inflammation data for each day across all patients.</p>
 </div>
-</div>
-<div id="key-points" class="callout panel panel-info">
+</section>
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
 </div>
@@ -362,15 +362,15 @@ animal[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <li>Use <code>plot</code> to create simple visualizations.</li>
 </ul>
 </div>
-</div>
-<div id="next-steps" class="callout panel panel-info">
+</aside>
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Next Steps</h2>
 </div>
 <div class="panel-body">
 <p>Our work so far has convinced us that something’s wrong with our first data file. We would like to check the other 11 the same way, but typing in the same commands repeatedly is tedious and error-prone. Since computers don’t get bored (that we know of), we should create a way to do a complete analysis with a single command, and then figure out how to repeat that step once for each file. These operations are the subjects of the next two lessons.</p>
 </div>
-</div>
+</aside>
         </div>
       </div>
       </article>
