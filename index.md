@@ -41,7 +41,6 @@ and to use that language *well*.
 
 ## Other Resources
 
-*   [Motivation](motivation.html)
 *   [Reference](reference.html)
 *   [Discussion](discussion.html)
 *   [Instructor's Guide](instructors.html)
