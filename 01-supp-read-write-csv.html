@@ -26,9 +26,9 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title">Programming with R</h1>
+                    <a href="index.html"><h1 class="title">Programming with R</h1></a>
           <h2 class="subtitle">Reading and writing .csv</h2>
-<div id="learning-objectives" class="objectives panel panel-warning">
+          <section class="objectives panel panel-warning">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
@@ -38,7 +38,7 @@
 <li>Write the altered data set to a new .csv, and explore the arguments</li>
 </ul>
 </div>
-</div>
+</section>
 <p>The most common way that scientists store data is in Excel spreadsheets. While there are R packages designed to access data from Excel spreadsheets (e.g., gdata, RODBC, XLConnect, xlsx, RExcel), users often find it easier to save their spreadsheets in <a href="reference.html#comma-separated-values-(csv)">comma-separated values</a> files (CSV) and then use R’s built in functionality to read and manipulate the data. In this short lesson, we’ll learn how to read data from a .csv and write to a new .csv, and explore the <a href="reference.html#argument">arguments</a> that allow you read and write the data correctly for your needs.</p>
 <h3 id="tread-a-.csv-and-explore-the-arguments">TRead a .csv and Explore the Arguments</h3>
 <p>Let’s start by opening a .csv file containing information on the speeds at which cars of different colors were clocked in 45 mph zones in the four-corners states (<code>CarSpeeds.csv</code>). We will use the built in <code>read.csv(...)</code> <a href="reference.html#function-call">function call</a>, which reads the data in as a data frame, and assign the data frame to a variable (using <code>&lt;-</code>) so that it is stored in R’s memory. Then we will explore some of the basic arguments that can be supplied to the function.</p>
@@ -55,14 +55,14 @@ carSpeeds &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span c
 5   Red    25   Arizona
 6  Blue    41   Arizona
 </code></pre>
-<div id="tip" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>The default delimiter of the <code>read.csv()</code> function is a comma, but you can use other delimiters by supplying the ‘sep’ argument to the function (e.g., typing <code>sep = ';'</code> allows a semi-colon separated file to be correctly imported -see <code>?read.csv()</code> for more information on this and other options for working with different file types).</p>
 </div>
-</div>
+</aside>
 <p>The call above will import the data, but we have not taken advantage of several handy arguments that can be helpful in loading the data in the format we want. Let’s explore some of these arguments.</p>
 <h3 id="the-header-argument">The <code>header</code> Argument</h3>
 <p>The default for <code>read.csv(...)</code> is to set the <code>header</code> argument to <code>TRUE</code>. This means that the first row of values in the .csv is set as header information (column names). If your data set does not have a header, set the <code>header</code> argument to <code>FALSE</code>:</p>
@@ -160,14 +160,14 @@ carSpeeds$State</code></pre>
  [81] &quot;4&quot;    &quot;2&quot;    &quot;2&quot;    &quot;Ohio&quot; &quot;Ohio&quot; &quot;Ohio&quot; &quot;4&quot;    &quot;Ohio&quot; &quot;4&quot;    &quot;4&quot;   
  [91] &quot;4&quot;    &quot;Ohio&quot; &quot;Ohio&quot; &quot;3&quot;    &quot;2&quot;    &quot;2&quot;    &quot;4&quot;    &quot;3&quot;    &quot;Ohio&quot; &quot;4&quot;   
 </code></pre>
-<div id="challenge---updating-values-in-a-factor" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Updating values in a factor</h2>
 </div>
 <div class="panel-body">
 <p>Suppose we want to keep the colors of cars as factors for some other operations we want to perform. Write code for replacing ‘Blue’ with ‘Green’ in the <code>$Color</code> column of the cars dataset without importing the data with <code>stringsAsFactors=FALSE</code>.</p>
 </div>
-</div>
+</section>
 <h3 id="the-strip.white-argument">The <code>strip.white</code> Argument</h3>
 <p>It is not uncommon for mistakes to have been made when the data were recorded, for example a space (whitespace) may have been inserted before a data value. By default this whitespace will be kept in the R environment, such that ‘Red’ will be recognized as a different value than ‘Red’. In order to avoid this type of error, use the <code>strip.white</code> argument. Let’s see how this works by checking for the unique values in the <code>$Color</code> column of our dataset:</p>
 <p>Here, the data recorder added a space before the color of the car in one of the cells:</p>
@@ -197,14 +197,14 @@ Levels: Black Green Red  Red White
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(carSpeeds, <span class="dt">file=</span><span class="st">&#39;data/car-speeds-cleaned.csv&#39;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>)</code></pre>
 <p>Now we see:</p>
 <p><img src="fig/CSV_WithoutRowNums.png" alt="csv written with row.names argument" /></p>
-<div id="tip-1" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>there is also a <code>col.names</code> argument, which can be used to set the column names for a data set without headers. If the data set already has headers (e.g., we used the <code>headers = TRUE</code> argument when importing the data) then a <code>col.names</code> argument will be ignored.</p>
 </div>
-</div>
+</aside>
 <h3 id="the-na-argument">The <code>na</code> Argument</h3>
 <p>There are times when we want to specify certain values for <code>NA</code>s in the data set (e.g., we are going to pass the data to a program that only accepts -9999 as a nodata value). In this case, we want to set the <code>NA</code> value of our output file to the desired value, using the na argument. Let’s see how this works:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#First, replace the speed in the 3rd row with NA, by using an index (square brackets to indicate the position of the value we want to replace)</span>
@@ -224,7 +224,7 @@ carSpeeds$Speed[<span class="dv">3</span>]&lt;-<span class="ot">NA</span>
 <span class="kw">write.csv</span>(carSpeeds, <span class="dt">file=</span><span class="st">&#39;data/car-speeds-cleaned.csv&#39;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>, <span class="dt">na=</span> <span class="st">&#39;-9999&#39;</span>)</code></pre>
 <p>And we see:</p>
 <p><img src="fig/CSV_WithSpecialNA.png" alt="csv written with -9999 as NA" /></p>
-<div id="key-points" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
 </div>
@@ -242,8 +242,8 @@ carSpeeds$Speed[<span class="dv">3</span>]&lt;-<span class="ot">NA</span>
 <li><code>na</code></li>
 </ul>
 </div>
-</div>
-<div id="next-steps" class="callout panel panel-info">
+</aside>
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Next Steps</h2>
 </div>
@@ -251,7 +251,7 @@ carSpeeds$Speed[<span class="dv">3</span>]&lt;-<span class="ot">NA</span>
 <p>We have now explored data import and export from .csv files. There are several more arguments available for both the <code>read.csv(...)</code> and <code>write.csv(...)</code> functions, as well as similar options for working with data that are stored in other text formats (e.g., .txt). To find out more, use the R help commands ‘?read.csv()’ and ‘?write.csv()’.</p>
 <p>In the next lessons, we’ll explore how to work with and analyze data in the R environment.</p>
 </div>
-</div>
+</aside>
         </div>
       </div>
       </article>
