@@ -120,9 +120,9 @@ print_words(best_practice[-6])
 
 > ## Tip {.callout} 
 >
-> R has has a special variable, `NA`, for designating missing values that are 
-> **N**ot **A**vailable in a data set. See `?NA` and [An Introduction to R][na] 
-> for more details.
+> R uses a reserved word, `NA`, for designating missing values that are 
+> **N**ot **A**vailable in a data set. See `?NA`, `?Reserved` and [An Introduction to R][na] 
+> for more details. 
 
 [na]: http://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values
 
