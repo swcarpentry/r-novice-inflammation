@@ -23,7 +23,7 @@ minutes: 0
     *   Cross-platform (Windows, Mac, Linux, Unix).
 *   Integration and Communication
     *   Graphics capabilities, publication-level quality,
-    *   Connect easily with other programming languages, 
+    *   Connect easily with other programming languages,
     *   Integration with document publishing, through LaTeX or Markdown.
     *   And it's free!
 *   To Learn More
