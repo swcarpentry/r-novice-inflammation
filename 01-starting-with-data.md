@@ -39,7 +39,7 @@ To do all that, we'll have to learn a little bit about programming.
 
 ### Loading Data
 
-To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is `inflammation-01.csv`. This is very important in R, if we forget this step we'll get an error message when trying to read. We can change the current working directory using the function `setwd`. For this example, we change the path to the working directory where our scripts are stored that is named `swc`:
+To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is `inflammation-01.csv`. This is very important in R, if we forget this step we'll get an error message when trying to read the file. We can change the current working directory using the function `setwd`. For this example, we change the path to the working directory where our scripts are stored that is named `swc`:
 
 
 ~~~{.r}
