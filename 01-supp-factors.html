@@ -204,7 +204,7 @@ f&lt;-<span class="kw">as.numeric</span>(f)</code></pre>
 </div>
 <div class="panel-body">
 <p>Adjusting the <code>levels()</code> of a factor provides a useful shortcut for reassigning values in this case.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(dat$Gender)[<span class="dv">1</span>] &lt;-<span class="st"> &#39;f&#39;</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(dat$Gender)[<span class="dv">2</span>] &lt;-<span class="st"> &#39;f&#39;</span>
 <span class="kw">plot</span>(<span class="dt">x =</span> dat$Gender, <span class="dt">y =</span> dat$BloodPressure)</code></pre>
 <p><img src="fig/01-supp-factors-adjusting-levels-1.png" title="plot of chunk adjusting-levels" alt="plot of chunk adjusting-levels" style="display: block; margin: auto;" /></p>
 </div>
@@ -217,7 +217,7 @@ f&lt;-<span class="kw">as.numeric</span>(f)</code></pre>
 <ul>
 <li>Factors are used to represent catagorical data</li>
 <li>Factors can be <em>ordered</em> or <em>unordered</em></li>
-<li>Some R functions have special methods for handling functions</li>
+<li>Some R functions have special methods for handling factors</li>
 </ul>
 </div>
 </aside>

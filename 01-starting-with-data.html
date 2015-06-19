@@ -57,7 +57,7 @@
 </ul>
 <p>To do all that, we’ll have to learn a little bit about programming.</p>
 <h3 id="loading-data">Loading Data</h3>
-<p>To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is <code>inflammation-01.csv</code>. This is very important in R, if we forget this step we’ll get an error message when trying to read. We can change the current working directory using the function <code>setwd</code>. For this example, we change the path to the working directory where our scripts are stored that is named <code>swc</code>:</p>
+<p>To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is <code>inflammation-01.csv</code>. This is very important in R, if we forget this step we’ll get an error message when trying to read the file. We can change the current working directory using the function <code>setwd</code>. For this example, we change the path to the working directory where our scripts are stored that is named <code>swc</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;~/swc&quot;</span>)</code></pre>
 <p>Just like in the Unix Shell, we type the command and then press <code>Enter</code> (or <code>return</code>). Alternatively you can change the working directory using the RStudio GUI using the menu option <code>Session</code> -&gt; <code>Set Working Directory</code> -&gt; <code>Choose Directory...</code></p>
 <p>We also know that experimental files are located in the directory <code>data</code> inside the working directory. Now we can load the data into R using <code>read.csv</code>:</p>
