@@ -72,13 +72,23 @@ rather than:
 dat <- read.csv(file = "/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv", header = TRUE)
 ~~~
 
-10. Don't save a session history (the default option in R, when it asks if you want an `RData` file). Instead, start in a clean environment so that older objects don't contaminate your current environment. This can lead to unexpected results, especially if the code were to be run on someone else's machine.
+10. R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. In order to inspect your R session objects, you can list the objects, search current packages and remove objects that are currently not in use. A good practice when running long lines of computationally intensive sequential code is to remove temporary objects after they have served their purpose in.
 
-11. Where possible keep track of `sessionInfo()` somewhere in your project folder. Session information is invaluable since it captures all of the packages used in the current project. If a newer version of a project changes the way a function behaves, you can always go back and reinstall the version that worked (Note: At least on CRAN all older versions of packages are permanently archived).
+~~~{.r}
+interim_object <- data.frame(rep(1:100,10),rep(101:200,10),rep(201:300,10)) # Sample dataset of 1000 rows
+object.size(interim_object) # Reports the memory size allocated to the object
+rm(interim_object) # Removes only the particular object
+ls()  # Lists all the objects in your current workspace
+rm(list = ls()) # If you want to delete all the objects in the workspace and start with a new slate
+~~~
 
-12. Collaborate. Grab a buddy and practice "code review". We do it for methods and papers, why not code? Our code is a major scientific product and the result of a lot of hard work!
+11. Don't save a session history (the default option in R, when it asks if you want an `RData` file). Instead, start in a clean environment so that older objects don't contaminate your current environment. This can lead to unexpected results, especially if the code were to be run on someone else's machine.
 
-13. Develop your code using version control and frequent updates!
+12. Where possible keep track of `sessionInfo()` somewhere in your project folder. Session information is invaluable since it captures all of the packages used in the current project. If a newer version of a project changes the way a function behaves, you can always go back and reinstall the version that worked (Note: At least on CRAN all older versions of packages are permanently archived).
+
+13. Collaborate. Grab a buddy and practice "code review". We do it for methods and papers, why not code? Our code is a major scientific product and the result of a lot of hard work!
+
+14. Develop your code using version control and frequent updates!
 
 > ## Discussion - Best practice {.challenge}
 >
