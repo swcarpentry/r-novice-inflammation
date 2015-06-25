@@ -20,8 +20,8 @@ You also agree to abide by our
 2.  For our lessons,
     you should branch from and submit pull requests against the `gh-pages` branch.
 
-3.  When editing lessons, please only commit changes to the Markdown
-    files, *not* the generated HTML.  We will re-create the HTML after
+3.  When editing lessons, please only commit changes to the R Markdown (.Rmd file extension)
+    files, *not* the generated Markdown or HTML.  We will re-create the Markdown and HTML after
     your pull request is merged.  (Working this way ensures that each
     change only needs to be reviewed once, in one place.)
 
