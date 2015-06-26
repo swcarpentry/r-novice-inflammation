@@ -39,6 +39,12 @@ on if needed. You can copy-paste into the R console, but the Rstudio script
 editor allows you to 'send' the current line or the currently selected text to
 the R console using the `Ctrl-Enter` shortcut.
 
+> ## Tip {.callout}
+>
+> Rstudio is pretty smart when it comes to recognizing commands.
+> You can start typing the name of a function and use tab-completion as you would at the shell. This works in both the script **and** console windows.
+> Recent versions will even offer you reminders of which arguments the function expects to take.
+
 At some point in your analysis you may want to check the content of variable or
 the structure of an object, without necessarily keep a record of it in your
 script. You can type these commands directly in the console. RStudio provides
