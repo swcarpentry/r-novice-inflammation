@@ -616,3 +616,21 @@ main()
 
 ## [Making Packages in R](08-making-packages-R.html)
 
+## Using Git in RStudio
+
+Some instructors will demo RStudio's git integration at some point during the
+workshop. This often goes over very well, but there can be a few snags with the
+setup. First, RStudio may not know where to find git. You can specify where git
+is located in _Tools > Global Options > Git/SVN_; on Mac/Linux git is often in
+`usr/bin/git` or `usr/local/bin/git` and on Windows it is often in
+`C:/Program Files (x86)/Git/bin/git.exe`. If you don't know where git is
+installed on someone's computer, open a terminal and try `which git` on
+Mac/Linux, or `where git` or `whereis git.exe` on Windows. See
+[Jenny Bryan's instructions](http://stat545-ubc.github.io/git03_rstudio-meet-git.html)
+for more detail.
+
+Another common gotcha is that the push/pull buttons in RStudio are grayed out,
+even after you have added a remote and pushed to it from the command line. You
+need to add an upstream tracking reference before you can push and pull directly
+from RStudio; have your learners do `git push -u origin master` from the command
+line and this should resolve the issue.
