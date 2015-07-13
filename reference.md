@@ -70,7 +70,7 @@ This will print:
 
 In R, the last executed line of a function is automatically returned
 
-- Specifying a default value for a function argrment
+- Specifying a default value for a function argument
 
 		increment_me <- function(value_to_increment, value_to_increment_by = 1){
 			value_to_increment + value_to_increment_by
