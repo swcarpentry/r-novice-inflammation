@@ -28,8 +28,38 @@
         <div class="col-md-10 col-md-offset-1">
                     <a href="index.html"><h1 class="title">Programming with R</h1></a>
           <h2 class="subtitle">Instructor’s Guide</h2>
-          <h2 id="legend">Legend</h2>
-<p>We are using a dataset with records on inflammation from patients following an arthritis treatment. With it we explain <code>R</code> data structure, basic data manipulation and plotting, writing functions and loops.</p>
+          <ul>
+<li>R is an open source implementation of S, a programming environment for data analysis and graphics.
+<ul>
+<li>It is a data analysis software,</li>
+<li>A programming language,</li>
+<li>An environment for statistical analysis,</li>
+<li>It’s open-source,</li>
+<li>It’s a community!</li>
+</ul></li>
+<li>Why learn R?
+<ul>
+<li>More analytical methods: &gt;6,000 packages extending R’s capabilities; &gt;1,000 packages available from the <a href="http://bioconductor.org/">BioConductor Project</a>. Many new developments in statistics appear first as R package,</li>
+<li>More flexible in the type of data it can analyze,</li>
+<li>Powerful; full matrix capabilities similar to MATLAB.</li>
+</ul></li>
+<li>Open
+<ul>
+<li>R’s procedures (<em>functions</em>) are open: you can have a look under the hood and modify them,</li>
+<li>Cross-platform (Windows, Mac, Linux, Unix).</li>
+</ul></li>
+<li>Integration and Communication
+<ul>
+<li>Graphics capabilities, publication-level quality,</li>
+<li>Connect easily with other programming languages,</li>
+<li>Integration with document publishing, through LaTeX or Markdown.</li>
+<li>And it’s free!</li>
+</ul></li>
+<li>To Learn More
+<ul>
+<li><a href="http://www.r-project.org/">The R Project</a></li>
+</ul></li>
+</ul>
 <h2 id="overall">Overall</h2>
 <p>This lesson is written as an introduction to R, but its real purpose is to introduce the single most important idea in programming: how to solve problems by building functions, each of which can fit in a programmer’s working memory. In order to teach that, we must teach people a little about the mechanics of manipulating data with lists and file I/O so that their functions can do things they actually care about. Our teaching order tries to show practical uses of every idea as soon as it is introduced; instructors should resist the temptation to explain the “other 90%” of the language as well.</p>
 <p>The secondary goal of this lesson is to give them a usable mental model of how programs run (what computer science educators call a <a href="reference.html#notional-machine">notional machine</a> so that they can debug things when they go wrong. In particular, they must understand how function call stacks work.</p>
@@ -364,6 +394,10 @@ main()
 </code></pre>
 <h2 id="dynamic-reports-with-knitr"><a href="07-knitr-R.html">Dynamic Reports with knitr</a></h2>
 <h2 id="making-packages-in-r"><a href="08-making-packages-R.html">Making Packages in R</a></h2>
+<h2 id="using-git-in-rstudio">Using Git in RStudio</h2>
+<p>Some instructors will demo RStudio’s git integration at some point during the workshop. This often goes over very well, but there can be a few snags with the setup. First, RStudio may not know where to find git. You can specify where git is located in <em>Tools &gt; Global Options &gt; Git/SVN</em>; on Mac/Linux git is often in <code>usr/bin/git</code> or <code>usr/local/bin/git</code> and on Windows it is often in <code>C:/Program Files (x86)/Git/bin/git.exe</code>. If you don’t know where git is installed on someone’s computer, open a terminal and try <code>which git</code> on Mac/Linux, or <code>where git</code> or <code>whereis git.exe</code> on Windows. See <a href="http://stat545-ubc.github.io/git03_rstudio-meet-git.html">Jenny Bryan’s instructions</a> for more detail.</p>
+<p>If Windows users select the option “Run Git from the Windows command prompt” while setting up Git Bash, RStudio will automatically find the git executable. If you plan to demo git in RStudio during your workshop, you should edit the workshop setup instructions to have the Windows users choose this option during setup.</p>
+<p>Another common gotcha is that the push/pull buttons in RStudio are grayed out, even after you have added a remote and pushed to it from the command line. You need to add an upstream tracking reference before you can push and pull directly from RStudio; have your learners do <code>git push -u origin master</code> from the command line and this should resolve the issue.</p>
         </div>
       </div>
       </article>
