@@ -79,7 +79,7 @@ In R, the last executed line of a function is automatically returned
 
 `increment_me(4)`, will return 5
 
-`intrement_me(4, 6)`, will return 10
+`increment_me(4, 6)`, will return 10
 
 - Call a function by using `function_name(function_arguments)`
 
