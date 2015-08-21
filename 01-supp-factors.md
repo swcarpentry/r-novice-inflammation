@@ -349,7 +349,7 @@ plot(x=dat$Gender,y=dat$BloodPressure)
 >
 > 
 > ~~~{.r}
-> levels(dat$Gender)[1] <- 'f'
+> levels(dat$Gender)[2] <- 'f'
 > plot(x = dat$Gender, y = dat$BloodPressure)
 > ~~~
 > 
@@ -359,4 +359,4 @@ plot(x=dat$Gender,y=dat$BloodPressure)
 >
 > * Factors are used to represent catagorical data
 > * Factors can be *ordered* or *unordered*
-> * Some R functions have special methods for handling functions
+> * Some R functions have special methods for handling factors

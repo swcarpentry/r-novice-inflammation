@@ -485,7 +485,7 @@ m      <- 1:10
 dim(m) <- c(2, 5)
 ```
 
-This takes a vector and transform into a matrix with 2 rows and 5 columns.
+This takes a vector and transforms it into a matrix with 2 rows and 5 columns.
 
 Another way is to bind columns or rows using `cbind()` and `rbind()`.
 
