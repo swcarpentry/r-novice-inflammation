@@ -4,14 +4,30 @@ title: Programming with R
 subtitle: Instructor's Guide
 minutes: 0
 ---
-
-
-
-## Legend
-
-We are using a dataset with records on inflammation from patients following an
-arthritis treatment. With it we explain `R` data structure, basic data
-manipulation and plotting, writing functions and loops.
+*   R is an open source implementation of S,
+    a programming environment for data analysis and graphics.
+    *   It is a data analysis software,
+    *   A programming language,
+    *   An environment for statistical analysis,
+    *   It's open-source,
+    *   It's a community!
+*   Why learn R?
+    *   More analytical methods: >6,000 packages extending R's capabilities; >1,000
+        packages available from the [BioConductor Project](http://bioconductor.org/).
+        Many new developments in statistics appear first as R package,
+    *   More flexible in the type of data it can analyze,
+    *   Powerful; full matrix capabilities similar to MATLAB.
+*   Open
+    *   R's procedures (*functions*) are open: you can have a look under the hood and
+        modify them,
+    *   Cross-platform (Windows, Mac, Linux, Unix).
+*   Integration and Communication
+    *   Graphics capabilities, publication-level quality,
+    *   Connect easily with other programming languages,
+    *   Integration with document publishing, through LaTeX or Markdown.
+    *   And it's free!
+*   To Learn More
+    *   [The R Project](http://www.r-project.org/)
 
 ## Overall
 
@@ -600,3 +616,27 @@ main()
 
 ## [Making Packages in R](08-making-packages-R.html)
 
+## Using Git in RStudio
+
+Some instructors will demo RStudio's git integration at some point during the
+workshop. This often goes over very well, but there can be a few snags with the
+setup. First, RStudio may not know where to find git. You can specify where git
+is located in _Tools > Global Options > Git/SVN_; on Mac/Linux git is often in
+`usr/bin/git` or `usr/local/bin/git` and on Windows it is often in
+`C:/Program Files (x86)/Git/bin/git.exe`. If you don't know where git is
+installed on someone's computer, open a terminal and try `which git` on
+Mac/Linux, or `where git` or `whereis git.exe` on Windows. See
+[Jenny Bryan's instructions](http://stat545-ubc.github.io/git03_rstudio-meet-git.html)
+for more detail.
+
+If Windows users select the option "Run Git from the Windows command prompt"
+while setting up Git Bash, RStudio will automatically find the git executable.
+If you plan to demo git in RStudio during your workshop, you should edit the
+workshop setup instructions to have the Windows users choose this option during
+setup.
+
+Another common gotcha is that the push/pull buttons in RStudio are grayed out,
+even after you have added a remote and pushed to it from the command line. You
+need to add an upstream tracking reference before you can push and pull directly
+from RStudio; have your learners do `git push -u origin master` from the command
+line and this should resolve the issue.

@@ -26,16 +26,16 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title">Programming with R</h1>
+                    <a href="index.html"><h1 class="title">Programming with R</h1></a>
           <h2 class="subtitle">Best practices for using R and designing programs</h2>
-<div id="learning-objectives" class="objectives panel panel-warning">
+          <section class="objectives panel panel-warning">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <p>Define some best practices when working with R</p>
 </div>
-</div>
+</section>
 <ol style="list-style-type: decimal">
 <li>Start your code with a description of what it is:</li>
 </ol>
@@ -73,12 +73,20 @@
 <p>rather than:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</code></pre>
 <ol start="10" style="list-style-type: decimal">
+<li>R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. In order to inspect your R session objects, you can list the objects, search current packages and remove objects that are currently not in use. A good practice when running long lines of computationally intensive sequential code is to remove temporary objects after they have served their purpose in.</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">interim_object &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">100</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="dv">101</span>:<span class="dv">200</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="dv">201</span>:<span class="dv">300</span>,<span class="dv">10</span>)) <span class="co"># Sample dataset of 1000 rows</span>
+<span class="kw">object.size</span>(interim_object) <span class="co"># Reports the memory size allocated to the object</span>
+<span class="kw">rm</span>(interim_object) <span class="co"># Removes only the particular object</span>
+<span class="kw">ls</span>()  <span class="co"># Lists all the objects in your current workspace</span>
+<span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>()) <span class="co"># If you want to delete all the objects in the workspace and start with a new slate</span></code></pre>
+<ol start="11" style="list-style-type: decimal">
 <li><p>Don’t save a session history (the default option in R, when it asks if you want an <code>RData</code> file). Instead, start in a clean environment so that older objects don’t contaminate your current environment. This can lead to unexpected results, especially if the code were to be run on someone else’s machine.</p></li>
 <li><p>Where possible keep track of <code>sessionInfo()</code> somewhere in your project folder. Session information is invaluable since it captures all of the packages used in the current project. If a newer version of a project changes the way a function behaves, you can always go back and reinstall the version that worked (Note: At least on CRAN all older versions of packages are permanently archived).</p></li>
 <li><p>Collaborate. Grab a buddy and practice “code review”. We do it for methods and papers, why not code? Our code is a major scientific product and the result of a lot of hard work!</p></li>
 <li><p>Develop your code using version control and frequent updates!</p></li>
 </ol>
-<div id="discussion---best-practice" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Discussion - Best practice</h2>
 </div>
@@ -90,7 +98,7 @@
 <li>Copy and paste the code so that inflammation.R “does stuff” and inflammation_fxns.R holds all of your functions. <strong>Hint</strong>: you will need to add <code>source</code> code to one of the files.</li>
 </ol>
 </div>
-</div>
+</section>
         </div>
       </div>
       </article>

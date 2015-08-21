@@ -26,9 +26,9 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title">Programming with R</h1>
+                    <a href="index.html"><h1 class="title">Programming with R</h1></a>
           <h2 class="subtitle">Analyzing multiple data sets</h2>
-<div id="learning-objectives" class="objectives panel panel-warning">
+          <section class="objectives panel panel-warning">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
@@ -42,7 +42,7 @@
 <li>Use a <code>for</code> loop to process multiple files.</li>
 </ul>
 </div>
-</div>
+</section>
 <p>We have created a function called <code>analyze</code> that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:</p>
 <pre class="sourceCode r"><code class="sourceCode r">analyze &lt;-<span class="st"> </span>function(filename) {
   <span class="co"># Plots the average, min, and max inflammation over time.</span>
@@ -98,14 +98,14 @@ print_words &lt;-<span class="st"> </span>function(sentence) {
 [1] &quot;the&quot;
 [1] NA
 </code></pre>
-<div id="tip" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>R has has a special variable, <code>NA</code>, for designating missing values that are <strong>N</strong>ot <strong>A</strong>vailable in a data set. See <code>?NA</code> and <a href="http://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values">An Introduction to R</a> for more details.</p>
 </div>
-</div>
+</aside>
 <p>Here’s a better approach:</p>
 <pre class="sourceCode r"><code class="sourceCode r">print_words &lt;-<span class="st"> </span>function(sentence) {
   for (word in sentence) {
@@ -163,7 +163,7 @@ letter</code></pre>
 <pre class="output"><code>[1] 5
 </code></pre>
 <p><code>length</code> is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven’t met yet, so we should always use it when we can (see this <a href="01-supp-data-structures.html">lesson</a> to learn more about the different ways to store data in R).</p>
-<div id="challenge---using-loops" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Using loops</h2>
 </div>
@@ -198,7 +198,7 @@ letter</code></pre>
 <pre class="output"><code>[1] 16
 </code></pre>
 </div>
-</div>
+</section>
 <h3 id="processing-multiple-files">Processing Multiple Files</h3>
 <p>We now have almost everything we need to process all our data files. The only thing that’s missing is a function that finds files whose names match a pattern. We do not need to write it ourselves because R already has a function to do this called <code>list.files</code>.</p>
 <p>If we run the function without any arguments, <code>list.files()</code>, it returns every file in the current working directory. We can understand this result by reading the help file (<code>?list.files</code>). The first argument, <code>path</code>, is the path to the directory to be searched, and it has the default value of <code>&quot;.&quot;</code> (recall from the <a href="http://swcarpentry.github.io/shell-novice/01-filedir.html">lesson</a> on the Unix Shell that <code>&quot;.&quot;</code> is shorthand for the current working directory). The second argument, <code>pattern</code>, is the pattern being searched, and it has the default value of <code>NULL</code>. Since no pattern is specified to filter the files, all files are returned.</p>
@@ -220,14 +220,14 @@ letter</code></pre>
  [7] &quot;inflammation-07.csv&quot; &quot;inflammation-08.csv&quot; &quot;inflammation-09.csv&quot;
 [10] &quot;inflammation-10.csv&quot; &quot;inflammation-11.csv&quot; &quot;inflammation-12.csv&quot;
 </code></pre>
-<div id="tip-1" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>For larger projects, it is recommended to organize separate parts of the analysis into multiple subdirectories, e.g. one subdirectory for the raw data, one for the code, and one for the results like figures. We have done that here to some extent, putting all of our data files into the subdirectory “data”. For more advice on this topic, you can read <a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424">A quick guide to organizing computational biology projects</a> by William Stafford Noble.</p>
 </div>
-</div>
+</aside>
 <p>As these examples show, <code>list.files</code> result is a vector of strings, which means we can loop over it to do something with each filename in turn. In our case, the “something” we want is our <code>analyze</code> function.</p>
 <p>Because we have put our data in separate subdirectory, if we want to access these files using the output of <code>list.files</code> we also need to include the “path” portion of the file name. We can do that by using the argument <code>full.names = TRUE</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;csv&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</code></pre>
@@ -266,15 +266,15 @@ for (f in filenames) {
 </code></pre>
 <p><img src="fig/03-loops-R-loop-analyze-7.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-8.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-9.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
 <p>Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.</p>
-<div id="tip-2" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>In this lesson we saw how to use a simple <code>for</code> loop to repeat an operation. As you progress with R, you will learn that there are multiple ways to accomplish this. Sometimes the choice of one method over another is more a matter of personal style, but other times it can have consequences for the speed of your code. For instruction on best practices, see this supplementary <a href="03-supp-loops-in-depth.html">lesson</a> that demonstrates how to properly repeat operations in R.</p>
 </div>
-</div>
-<div id="challenge---using-loops-to-analyze-multiple-files" class="challenge panel panel-success">
+</aside>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Using loops to analyze multiple files</h2>
 </div>
@@ -283,8 +283,8 @@ for (f in filenames) {
 <li>Write a function called <code>analyze_all</code> that takes a filename pattern as its sole argument and runs <code>analyze</code> for each file whose name matches the pattern.</li>
 </ol>
 </div>
-</div>
-<div id="key-points" class="callout panel panel-info">
+</section>
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
 </div>
@@ -296,8 +296,8 @@ for (f in filenames) {
 <li>Use <code>list.files(path = &quot;path&quot;, pattern = &quot;pattern&quot;, full.names = TRUE)</code> to create a list of files whose names match a pattern.</li>
 </ul>
 </div>
-</div>
-<div id="next-steps" class="callout panel panel-info">
+</aside>
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Next Steps</h2>
 </div>
@@ -309,7 +309,7 @@ for (f in filenames) {
 </ul>
 <p>We have one more big idea to introduce…</p>
 </div>
-</div>
+</aside>
         </div>
       </div>
       </article>

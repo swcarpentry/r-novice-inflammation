@@ -63,6 +63,7 @@ This will print:
 		is_positive <- function(integer_value){
 			if(integer_value > 0){
 			   TRUE
+			} 
 			else{
 			   FALSE
 			{
@@ -70,7 +71,7 @@ This will print:
 
 In R, the last executed line of a function is automatically returned
 
-- Specifying a default value for a function argrment
+- Specifying a default value for a function argument
 
 		increment_me <- function(value_to_increment, value_to_increment_by = 1){
 			value_to_increment + value_to_increment_by
@@ -78,7 +79,7 @@ In R, the last executed line of a function is automatically returned
 
 `increment_me(4)`, will return 5
 
-`intrement_me(4, 6)`, will return 10
+`increment_me(4, 6)`, will return 10
 
 - Call a function by using `function_name(function_arguments)`
 

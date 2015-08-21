@@ -26,9 +26,9 @@
       <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h1 class="title">Programming with R</h1>
+                    <a href="index.html"><h1 class="title">Programming with R</h1></a>
           <h2 class="subtitle">Command-Line Programs</h2>
-<div id="learning-objectives" class="objectives panel panel-warning">
+          <section class="objectives panel panel-warning">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
@@ -39,7 +39,7 @@
 <li>Read data from standard input in a program so that it can be used in a pipeline.</li>
 </ul>
 </div>
-</div>
+</section>
 <p>The R Console and other interactive tools like RStudio are great for prototyping code and exploring data, but sooner or later we will want to use our program in a pipeline or run it in a shell script to process thousands of data files. In order to do that, we need to make our programs work like other Unix command-line tools. For example, we may want a program that reads a data set and prints the average inflammation per patient:</p>
 <pre><code>$ Rscript readings.R --mean data/inflammation-01.csv
 5.45
@@ -82,14 +82,14 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 </code></pre>
-<div id="tip" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>If that did not work, remember that you must be in the correct directory. You can determine which directory you are currently in using <code>pwd</code> and change to a different directory using <code>cd</code>. For a review, see this <a href="https://swcarpentry.github.io/shell-novice/01-filedir.html">lesson</a>.</p>
 </div>
-</div>
+</aside>
 <p>Now let’s create another script that does something more interesting. Write the following lines in a file named <code>print-args.R</code>:</p>
 <pre class="output"><code>args &lt;- commandArgs()
 cat(args, sep = &quot;\n&quot;)
@@ -222,7 +222,7 @@ main()
 7.05
 5.9
 </code></pre>
-<div id="challenge---a-simple-command-line-program" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - A simple command line program</h2>
 </div>
@@ -242,7 +242,6 @@ main()
 <!-- second-answer -->
 <!-- The * is a wildcard character in the Unix Shell. -->
 <!-- Thus all the files in the current working directory are included as arguments to  arith.R. -->
-
 <ul>
 <li>Using the function <code>list.files</code> introduced in a previous <a href="03-loops-R.html">lesson</a>, write a command-line program, <code>find-pattern.R</code>, that lists all the files in the current directory that contain a specific pattern:</li>
 </ul>
@@ -253,7 +252,7 @@ Rscript find-pattern.R print-args</code></pre>
 print-args-trailing.R
 </code></pre>
 </div>
-</div>
+</section>
 <h3 id="handling-multiple-files">Handling Multiple Files</h3>
 <p>The next step is to teach our program how to handle multiple files. Since 60 lines of output per file is a lot to page through, we’ll start by using three smaller files, each of which has three days of data for two patients. Let’s investigate them from the Unix Shell:</p>
 <pre class="sourceCode r"><code class="sourceCode r">ls data/small-<span class="er">*</span>.csv</code></pre>
@@ -291,7 +290,7 @@ main()
 11
 </code></pre>
 <p><strong>Note</strong>: at this point, we have created three versions of our script called <code>readings-01.R</code>, <code>readings-02.R</code>, and <code>readings-03.R</code>. We wouldn’t do this in real life: instead, we would have one file called <code>readings.R</code> that we committed to version control every time we got an enhancement working. For teaching, though, we need all the successive versions side by side.</p>
-<div id="challenge---a-command-line-program-with-arguments" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - A command line program with arguments</h2>
 </div>
@@ -300,7 +299,7 @@ main()
 <li>Write a program called <code>check.R</code> that takes the names of one or more inflammation data files as arguments and checks that all the files have the same number of rows and columns. What is the best way to test your program?</li>
 </ul>
 </div>
-</div>
+</section>
 <h3 id="handling-command-line-flags">Handling Command-Line Flags</h3>
 <p>The next step is to teach our program to pay attention to the <code>--min</code>, <code>--mean</code>, and <code>--max</code> flags. These always appear before the names of the files, so let’s save the following in <code>readings-04.R</code>:</p>
 <pre class="output"><code>main &lt;- function() {
@@ -362,15 +361,15 @@ process &lt;- function(filename, action) {
 main()
 </code></pre>
 <p>This is four lines longer than its predecessor, but broken into more digestible chunks of 8 and 12 lines.</p>
-<div id="tip-1" class="callout panel panel-info">
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>R has a package named <a href="http://cran.r-project.org/web/packages/argparse/index.html">argparse</a> that helps handle complex command-line flags (it utilizes a <a href="http://docs.python.org/dev/library/argparse.html">Python module</a> of the same name). We will not cover this package in this lesson but when you start writing programs with multiple parameters you’ll want to read through the package’s <a href="http://cran.r-project.org/web/packages/argparse/vignettes/argparse.pdf">vignette</a>.</p>
 </div>
-</div>
-<div id="challenge---shorter-command-line-arguments" class="challenge panel panel-success">
+</aside>
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Shorter command line arguments</h2>
 </div>
@@ -380,7 +379,7 @@ main()
 <li><p>Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.</p></li>
 </ul>
 </div>
-</div>
+</section>
 <h3 id="handling-standard-input">Handling Standard Input</h3>
 <p>The next thing our program has to do is read data from standard input if no filenames are given so that we can put it in a pipeline, redirect input to it, and so on. Let’s experiment in another script, which we’ll save as <code>count-stdin.R</code>:</p>
 <pre class="output"><code>lines &lt;- readLines(con = file(&quot;stdin&quot;))
@@ -441,7 +440,7 @@ main()
 6.525
 </code></pre>
 <p>And now we’re done: the program now does everything we set out to do.</p>
-<div id="challenge---implementing-wc-in-r" class="challenge panel panel-success">
+<section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Implementing wc in R</h2>
 </div>
@@ -452,8 +451,8 @@ main()
 <li>If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.</li>
 </ul>
 </div>
-</div>
-<div id="key-points" class="callout panel panel-info">
+</section>
+<aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
 </div>
@@ -465,7 +464,7 @@ main()
 <li>Use <code>cat(vec, sep = &quot;\n&quot;)</code> to write the elements of <code>vec</code> to standard output, one per line.</li>
 </ul>
 </div>
-</div>
+</aside>
         </div>
       </div>
       </article>

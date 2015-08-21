@@ -20,7 +20,7 @@ Let's start by learning about our tool.
 * Our end goal is not just to "do stuff" but to do it in a way that anyone can
   easily and exactly replicate our workflow and results.
 * The best way to achieve this is to write scripts. RStudio provides an
-  environment that allows you to
+  environment that allows you to do that
 
 ### Interacting with R
 

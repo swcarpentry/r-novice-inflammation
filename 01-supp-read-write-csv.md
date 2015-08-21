@@ -15,7 +15,7 @@ minutes: 30
 The most common way that scientists store data is in Excel spreadsheets. While there are R packages designed to access data from Excel spreadsheets (e.g., gdata, RODBC, XLConnect, xlsx, RExcel), users often find it easier to save their spreadsheets in [comma-separated values](reference.html#comma-separated-values-(csv)) files (CSV) and then use R's built in functionality to read and manipulate the data. In this short lesson, we'll learn how to read data from a .csv and write to a new .csv, and explore the [arguments](reference.html#argument) that allow you read and write the data correctly for your needs.
 
 
-### TRead a .csv and Explore the Arguments
+### Read a .csv and Explore the Arguments
 
 Let's start by opening a .csv file containing information on the speeds at which cars of different colors were clocked in 45 mph zones in the four-corners states (`CarSpeeds.csv`). We will use the built in `read.csv(...)` [function call](reference.html#function-call), which reads the data in as a data frame, and assign the data frame to a variable (using `<-`) so that it is stored in R's memory. Then we will explore some of the basic arguments that can be supplied to the function.
 
@@ -230,7 +230,7 @@ carSpeeds$State
 
 ### The `strip.white` Argument 
 
-It is not uncommon for mistakes to have been made when the data were recorded, for example a space (whitespace) may have been inserted before a data value. By default this whitespace will be kept in the R environment, such that ' Red' will be recognized as a different value than 'Red'. In order to avoid this type of error, use the `strip.white` argument. Let's see how this works by checking for the unique values in the `$Color` column of our dataset:
+It is not uncommon for mistakes to have been made when the data were recorded, for example a space (whitespace) may have been inserted before a data value. By default this whitespace will be kept in the R environment, such that '\ Red' will be recognized as a different value than 'Red'. In order to avoid this type of error, use the `strip.white` argument. Let's see how this works by checking for the unique values in the `$Color` column of our dataset:
 
 Here, the data recorder added a space before the color of the car in one of the cells:
 
@@ -282,7 +282,7 @@ write.csv(carSpeeds, file='data/car-speeds-cleaned.csv')
 
 If you open the file, you'll see that it has header names, because the data had headers within R, but that there are numbers in the first column.
 
-<img src="fig/CSV_WithRowNums.png" alt="csv written without row.names argument" />
+<img src="fig/01-supp-csv-with-row-nums.png" alt="csv written without row.names argument" />
 
 
 ### The `row.names` Argument
@@ -296,7 +296,7 @@ write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE)
 
 Now we see:
 
-<img src="fig/CSV_WithoutRowNums.png" alt="csv written with row.names argument" />
+<img src="fig/01-supp-csv-without-row-nums.png" alt="csv written with row.names argument" />
 
 > ## Tip {.callout}
 > 
@@ -345,7 +345,7 @@ write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE, na= '-
 
 And we see:
 
-<img src="fig/CSV_WithSpecialNA.png" alt="csv written with -9999 as NA" />
+<img src="fig/01-supp-csv-with-special-NA.png" alt="csv written with -9999 as NA" />
 
 
 > ## Key Points {.callout}
