@@ -53,9 +53,8 @@ To do all that, we'll have to learn a little bit about programming.
 > ## Getting ready {.getready}
 >
 > You need to download some files to follow this lesson:
-> NOTE: If you have done the Python lesson, then you should have the same inflammation data. If so, ignore this step.
 >
-> 1. Make a new folder in your Desktop called `R-novice-inflammation`.
+> 1. Make a new folder in your Desktop called `r-novice-inflammation`.
 > 2. Download [R-novice-inflammation-data.zip](./R-novice-inflammation-data.zip) and move the file to this folder.
 > 3. If it's not unzipped yet, double-click on it to unzip it. You should end up with a new folder called `data`.
 
