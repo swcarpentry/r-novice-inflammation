@@ -20,6 +20,18 @@ to use whatever language your colleagues are using,
 so you can share your work with them easily,
 and to use that language *well*.
 
+
+>##Getting ready{.getready}
+>You need to download some files to follow this lesson:
+>
+>1. Make a new folder in your Desktop called ```r-novice-inflammation```.
+>2. Download [r-novice-inflammation-data.zip](./r-novice-inflammation-data.zip) and move the file to this folder.
+>3. If it’s not unzipped yet, double-click on it to unzip it. You should end up with a new folder called ```data```
+>4. You can access this folder from the Unix shell with:
+>```
+>cd &amp;&amp; cd Desktop/r-novice-inflammation/data
+>```
+
 > ## Prerequisites {.prereq}
 >
 > An understanding of the concepts of files and directories (including working
