@@ -286,7 +286,7 @@ class(dat)
 The output tells us that is a data frame. Think of this structure as a spreadsheet in MS Excel that many of us are familiar with.
 Data frames are very useful for storing data and you will find them elsewhere when programming in R. A typical data frame of experimental data contains individual observations in rows and variables in columns.
 
-We can see the shape, or [dimensions](reference.html#dimensions-(of-an-array)), of the data frame with the function `dim`:
+We can see the dimensions, or [shape](reference.html#shape-(of-an-array)), of the data frame with the function `dim`:
 
 
 ~~~{.r}
