@@ -115,6 +115,9 @@ comment
 conditional statement
 :   A statement in a program that might or might not be executed depending on whether a test is true or false.
 
+dimensions (of an array)
+:   An array's extent, represented as a vector. For example, an array with 5 rows and 3 columns has dimensions `(5,3)`.
+
 documentation
 :   Human-language text written to explain what software does, how it works, or how to use it.
 
@@ -150,9 +153,6 @@ pipe
 
 return statement
 :   A statement that causes a function to stop executing and return a value to its caller immediately.
-
-shape (of an array)
-:   An array's dimensions, represented as a vector. For example, a 5&times;3 array's shape is `(5,3)`.
 
 silent failure
 :   Failing without producing any warning messages. Silent failures are hard to detect and debug.
