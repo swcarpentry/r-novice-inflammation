@@ -192,14 +192,13 @@ This tells us that our data frame, `dat`, has `r nrow(dat)` rows and `r ncol(dat
 If we want to get a single value from the data frame, we can provide an [index](reference.html#index) in square brackets, just as we do in math:
 
 ```{r}
-# first value in dat
+# Get the value in the first row and first column
 dat[1, 1]
-# middle value in dat
+# Get the value in the 30th row and 20th column
 dat[30, 20]
 ```
 
-An index like `[30, 20]` selects a single element of a data frame, but we can select whole sections as well.
-For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:
+Using this approach, we can select specific values in a data.frame. We can also select the first ten days (columns) of values for the first four patients (rows) like this:
 
 ```{r}
 dat[1:4, 1:10]
@@ -212,7 +211,8 @@ The slice does not need to start at 1, e.g. the line below selects rows 5 throug
 ```{r}
 dat[5:10, 1:10]
 ```
-We can use the function `c`, which stands for **c**ombine, to select non-contiguous values:
+
+To select non-contiguous values, we can use the function `c`, which stands for **c**ombine.
 
 ```{r}
 dat[c(3, 8, 37, 56), c(10, 14, 29)]
@@ -223,10 +223,36 @@ If we don't include a slice for the rows, R returns all the rows; if we don't in
 If we don't provide a slice for either rows or columns, e.g. `dat[, ]`, R returns the full data frame.
 
 ```{r}
-# All columns from row 5
+# Values from row 5 and all columns
 dat[5, ]
-# All rows from column 16
+# Values from alls rows for column 16
 dat[, 16]
+```
+
+We can also remove rows and columns using the negative sign.
+
+Recall that our data frame, `dat`, has `r nrow(dat)` rows and `r ncol(dat)` columns.
+
+```{r}
+#remove 5th row
+a5<-dat[-5, ]
+```
+
+Now the object `a5`, has `r nrow(a5)` rows and `r ncol(a5)` columns. Nothing has been removed from our original data.
+
+For columns, we can use the same approach:
+```{r}
+#remove 16th column
+a16<-dat[, -16]
+```
+
+Now the object `a16`, has `r nrow(a16)` rows and `r ncol(a16)` columns.
+
+Similiarly, if we want to remove multiple rows and columns, just add the engative sign to the c() vector we used before.
+
+```{r}
+a<-dat[-c(3, 8, 37, 56), -c(10, 14, 29)]
+dim(a)
 ```
 
 Now let's perform some common mathematical operations to learn about our inflammation data.
