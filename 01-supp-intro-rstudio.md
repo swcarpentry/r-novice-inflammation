@@ -9,18 +9,18 @@ minutes: 15
 
 > ## Learning Objectives {.objectives}
 >
-> * Get familiar with RStudio interface
-> * Understand the difference between script file and console
-> * Demonstrate useful shortcuts
+> * Get familiar with RStudio interface.
+> * Understand the difference between script file and console.
+> * Demonstrate useful shortcuts.
 
 Let's start by learning about our tool.
 
-* Point to the different panels: Console, Scripts, Environments, Plots
+* Point to the different panels: Console, Scripts, Environments, Plots.
 * Code and workflow are more reproducible if we can document everything that we do.
 * Our end goal is not just to "do stuff" but to do it in a way that anyone can
   easily and exactly replicate our workflow and results.
 * The best way to achieve this is to write scripts. RStudio provides an
-  environment that allows you to do that
+  environment that allows you to do that.
 
 ### Interacting with R
 

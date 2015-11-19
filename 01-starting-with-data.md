@@ -39,17 +39,17 @@ To do all that, we'll have to learn a little bit about programming.
 
 ### Loading Data
 
-To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is `inflammation-01.csv`. This is very important in R, if we forget this step we'll get an error message when trying to read the file. We can change the current working directory using the function `setwd`. For this example, we change the path to the working directory where our scripts are stored that is named `swc`:
+To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is `inflammation-01.csv`. This is very important in R, if we forget this step we’ll get an error message when trying to read the file. We can change the current working directory using the function `setwd`. For this example, we change the path to the directory we just created:
 
 
 ~~~{.r}
-setwd("~/swc")
+setwd("~/Desktop/r-novice-inflammation/)
 ~~~
 
 Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
 Alternatively you can change the working directory using the RStudio GUI using the menu option `Session` -> `Set Working Directory` -> `Choose Directory...`
 
-We also know that experimental files are located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
+The data files are located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
 
 
 ~~~{.r}
@@ -286,7 +286,7 @@ class(dat)
 The output tells us that is a data frame. Think of this structure as a spreadsheet in MS Excel that many of us are familiar with.
 Data frames are very useful for storing data and you will find them elsewhere when programming in R. A typical data frame of experimental data contains individual observations in rows and variables in columns.
 
-We can see the dimensions, or [shape](reference.html#shape-(of-an-array)), of the data frame with the function `dim`:
+We can see the shape, or [dimensions](reference.html#dimensions-(of-an-array)), of the data frame with the function `dim`:
 
 
 ~~~{.r}

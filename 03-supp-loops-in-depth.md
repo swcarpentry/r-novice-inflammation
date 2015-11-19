@@ -132,7 +132,7 @@ a + b
 
 
 
-~~~{.output}
+~~~{.error}
 Warning in a + b: longer object length is not a multiple of shorter object
 length
 
@@ -202,7 +202,7 @@ system.time(avg2 <- analyze2(filenames))
 
 ~~~{.output}
    user  system elapsed 
-  0.059   0.000   0.060 
+   0.06    0.00    0.06 
 
 ~~~
 
@@ -231,7 +231,7 @@ system.time(avg3 <- analyze3(filenames))
 
 ~~~{.output}
    user  system elapsed 
-  0.059   0.000   0.060 
+  0.057   0.000   0.058 
 
 ~~~
 
