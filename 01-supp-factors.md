@@ -9,7 +9,7 @@ minutes: 20
 
 > ## Learning Objectives {.objectives}
 >
->   * Understand how to represent catagorical data in R
+>   * Understand how to represent categorical data in R
 >   * Know the difference between ordered and unordered factors
 >   * Be aware of some of the problems encountered when using factors
 
@@ -106,7 +106,7 @@ min(food) ## doesn't work
 
 
 
-~~~{.output}
+~~~{.error}
 Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), .Label = c("low", : 'min' not meaningful for factors
 
 ~~~
@@ -357,6 +357,6 @@ plot(x=dat$Gender,y=dat$BloodPressure)
 
 > ## Key Points {.callout}
 >
-> * Factors are used to represent catagorical data
+> * Factors are used to represent categorical data
 > * Factors can be *ordered* or *unordered*
 > * Some R functions have special methods for handling factors

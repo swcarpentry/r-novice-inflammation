@@ -35,15 +35,14 @@ fahr_to_kelvin <- function(temp) {
 We define `fahr_to_kelvin` by assigning it to the output of `function`.
 The list of argument names are containted within parentheses.
 Next, the [body](reference.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
-The statements in the body are indented by two spaces.
-This makes the code easier to read but does not affect how the code operates.
+The statements in the body are indented by two spaces, which makes the code easier to read but does not affect how the code operates.
 
 When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
 Inside the function, we use a [return statement](reference.html#return-statement) to send a result back to whoever asked for it.
 
 > ## Tip {.callout}
 >
-> One feature unique to R is that the return statement is not required.
+> In R, it is not necessary to include the return statement.
 > R automatically returns whichever variable is on the last line of the body
 > of the function. Since we are just learning, we will explicitly define the
 > return statement.
@@ -223,7 +222,7 @@ temp
 
 
 
-~~~{.output}
+~~~{.error}
 Error in eval(expr, envir, enclos): object 'temp' not found
 
 ~~~
@@ -572,7 +571,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 
 
-~~~{.output}
+~~~{.error}
 Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 
 ~~~
@@ -758,7 +757,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 
 
-~~~{.output}
+~~~{.error}
 Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 
 ~~~

@@ -89,7 +89,7 @@ a *<span class="st"> </span>b</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
 b &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">7</span>
 a +<span class="st"> </span>b</code></pre>
-<pre class="output"><code>Warning in a + b: longer object length is not a multiple of shorter object
+<pre class="error"><code>Warning in a + b: longer object length is not a multiple of shorter object
 length
 </code></pre>
 <pre class="output"><code> [1]  2  4  6  8 10 12 14  9 11 13
@@ -129,7 +129,7 @@ length
 
 <span class="kw">system.time</span>(avg2 &lt;-<span class="st"> </span><span class="kw">analyze2</span>(filenames))</code></pre>
 <pre class="output"><code>   user  system elapsed 
-  0.059   0.000   0.060 
+   0.06    0.00    0.06 
 </code></pre>
 <p>Note how we add a new column to <code>out</code> at each iteration? This is a cardinal sin of writing a <code>for</code> loop in R.</p>
 <p>Instead, we can create an empty matrix with the right dimensions (rows/columns) to hold the results. Then we loop over the files but this time we fill in the <code>f</code>th column of our results matrix <code>out</code>. This time there is no copying/growing for R to deal with.</p>
@@ -144,7 +144,7 @@ length
 
 <span class="kw">system.time</span>(avg3 &lt;-<span class="st"> </span><span class="kw">analyze3</span>(filenames))</code></pre>
 <pre class="output"><code>   user  system elapsed 
-  0.059   0.000   0.060 
+  0.057   0.000   0.058 
 </code></pre>
 <p>In this simple example there is little difference in the compute time of <code>analyze2</code> and <code>analyze3</code>. This is because we are only iterating over 12 files and hence we only incur 12 copy/grow operations. If we were doing this over more files or the data objects we were growing were larger, the penalty for copying/growing would be much larger.</p>
 <p>Note that <code>apply</code> handles these memory allocation issues for you, but then you have to write the loop part as a function to pass to <code>apply</code>. At its heart, <code>apply</code> is just a <code>for</code> loop with extra convenience.</p>
