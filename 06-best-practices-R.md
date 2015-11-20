@@ -72,12 +72,13 @@ rather than:
 dat <- read.csv(file = "/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv", header = TRUE)
 ~~~
 
-10. R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. In order to inspect your R session objects, you can list the objects, search current packages and remove objects that are currently not in use. A good practice when running long lines of computationally intensive sequential code is to remove temporary objects after they have served their purpose in.
+10. R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. In order to inspect your R session objects, you can list the objects, search current packages and remove objects that are currently not in use. A good practice when running long lines of computationally intensive sequential code is to remove temporary objects after they have served their purpose. Sometimes R will not clean up unused memory for a while after you delete objects. You can force R to tidy up its memory by using `gc()`.
 
 ~~~{.r}
 interim_object <- data.frame(rep(1:100,10),rep(101:200,10),rep(201:300,10)) # Sample dataset of 1000 rows
 object.size(interim_object) # Reports the memory size allocated to the object
 rm(interim_object) # Removes only the particular object
+gc() # Force R to release memory it is no longer using
 ls()  # Lists all the objects in your current workspace
 rm(list = ls()) # If you want to delete all the objects in the workspace and start with a new slate
 ~~~
