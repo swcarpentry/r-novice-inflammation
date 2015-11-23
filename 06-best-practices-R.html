@@ -73,11 +73,12 @@
 <p>rather than:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</code></pre>
 <ol start="10" style="list-style-type: decimal">
-<li>R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. In order to inspect your R session objects, you can list the objects, search current packages and remove objects that are currently not in use. A good practice when running long lines of computationally intensive sequential code is to remove temporary objects after they have served their purpose in.</li>
+<li>R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. In order to inspect your R session objects, you can list the objects, search current packages and remove objects that are currently not in use. A good practice when running long lines of computationally intensive sequential code is to remove temporary objects after they have served their purpose. Sometimes R will not clean up unused memory for a while after you delete objects. You can force R to tidy up its memory by using <code>gc()</code>.</li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r">interim_object &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">100</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="dv">101</span>:<span class="dv">200</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="dv">201</span>:<span class="dv">300</span>,<span class="dv">10</span>)) <span class="co"># Sample dataset of 1000 rows</span>
 <span class="kw">object.size</span>(interim_object) <span class="co"># Reports the memory size allocated to the object</span>
 <span class="kw">rm</span>(interim_object) <span class="co"># Removes only the particular object</span>
+<span class="kw">gc</span>() <span class="co"># Force R to release memory it is no longer using</span>
 <span class="kw">ls</span>()  <span class="co"># Lists all the objects in your current workspace</span>
 <span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>()) <span class="co"># If you want to delete all the objects in the workspace and start with a new slate</span></code></pre>
 <ol start="11" style="list-style-type: decimal">
