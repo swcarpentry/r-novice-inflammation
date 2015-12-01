@@ -38,16 +38,16 @@ To do all that, we'll have to learn a little bit about programming.
 
 ### Loading Data
 
-To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is `inflammation-01.csv`. This is very important in R, if we forget this step we'll get an error message when trying to read the file. We can change the current working directory using the function `setwd`. For this example, we change the path to the working directory where our scripts are stored that is named `swc`:
+To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is `inflammation-01.csv`. This is very important in R, if we forget this step we’ll get an error message when trying to read the file. We can change the current working directory using the function `setwd`. For this example, we change the path to the directory we just created:
 
-```{r, eval=FALSE}
-setwd("~/swc")
+```{r,eval=FALSE}
+setwd("~/Desktop/r-novice-inflammation/)
 ```
 
 Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
 Alternatively you can change the working directory using the RStudio GUI using the menu option `Session` -> `Set Working Directory` -> `Choose Directory...`
 
-We also know that experimental files are located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
+The data files are located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
 
 ```{r, results="hide"}
 read.csv(file = "data/inflammation-01.csv", header = FALSE)

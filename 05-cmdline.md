@@ -73,9 +73,9 @@ Rscript session-info.R
 
 
 ~~~{.output}
-R version 3.2.0 (2015-04-16)
+R version 3.2.2 (2015-08-14)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 14.04.2 LTS
+Running under: Ubuntu 14.04.3 LTS
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              

@@ -50,14 +50,14 @@
   kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span> /<span class="st"> </span><span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
   <span class="kw">return</span>(kelvin)
 }</code></pre>
-<p>We define <code>fahr_to_kelvin</code> by assigning it to the output of <code>function</code>. The list of argument names are containted within parentheses. Next, the <a href="reference.html#function-body">body</a> of the function–the statements that are executed when it runs–is contained within curly braces (<code>{}</code>). The statements in the body are indented by two spaces. This makes the code easier to read but does not affect how the code operates.</p>
+<p>We define <code>fahr_to_kelvin</code> by assigning it to the output of <code>function</code>. The list of argument names are containted within parentheses. Next, the <a href="reference.html#function-body">body</a> of the function–the statements that are executed when it runs–is contained within curly braces (<code>{}</code>). The statements in the body are indented by two spaces, which makes the code easier to read but does not affect how the code operates.</p>
 <p>When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function. Inside the function, we use a <a href="reference.html#return-statement">return statement</a> to send a result back to whoever asked for it.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
-<p>One feature unique to R is that the return statement is not required. R automatically returns whichever variable is on the last line of the body of the function. Since we are just learning, we will explicitly define the return statement.</p>
+<p>In R, it is not necessary to include the return statement. R automatically returns whichever variable is on the last line of the body of the function. Since we are just learning, we will explicitly define the return statement.</p>
 </div>
 </aside>
 <p>Let’s try running our function. Calling our own function is no different from calling any other function:</p>
@@ -138,7 +138,7 @@ final &lt;-<span class="st"> </span><span class="kw">fahr_to_celsius</span>(orig
 <p><img src="fig/python-call-stack-07.svg" alt="Call Stack After All Functions Have Finished" /></p>
 <p>This final stack frame is always there; it holds the variables we defined outside the functions in our code. What it <em>doesn’t</em> hold is the variables that were in the various stack frames. If we try to get the value of <code>temp</code> after our functions have finished running, R tells us that there’s no such thing:</p>
 <pre class="sourceCode r"><code class="sourceCode r">temp</code></pre>
-<pre class="output"><code>Error in eval(expr, envir, enclos): object &#39;temp&#39; not found
+<pre class="error"><code>Error in eval(expr, envir, enclos): object &#39;temp&#39; not found
 </code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
@@ -267,7 +267,7 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 <div class="panel-body">
 <ul>
 <li>Write a function called <code>analyze</code> that takes a filename as a argument and displays the three graphs produced in the <a href="01-starting-with-data.html">previous lesson</a> (average, min and max inflammation over time). <code>analyze(&quot;data/inflammation-01.csv&quot;)</code> should produce the graphs already shown, while <code>analyze(&quot;data/inflammation-02.csv&quot;)</code> should produce corresponding graphs for the second data set. Be sure to document your function with comments.</li>
-<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>)/(<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</li>
+<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>) / (<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</li>
 <li>Test that your <code>rescale</code> function is working properly using <code>min</code>, <code>max</code>, and <code>plot</code>.</li>
 </ul>
 </div>
@@ -278,7 +278,7 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 <p>However, the position of the arguments matters if they are not named.</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">header =</span> <span class="ot">FALSE</span>, <span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>)
 dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="ot">FALSE</span>, <span class="st">&quot;data/inflammation-01.csv&quot;</span>)</code></pre>
-<pre class="output"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : &#39;file&#39; must be a character string or connection
+<pre class="error"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : &#39;file&#39; must be a character string or connection
 </code></pre>
 <p>To understand what’s going on, and make our own functions easier to use, let’s re-define our <code>center</code> function like this:</p>
 <pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, <span class="dt">desired =</span> <span class="dv">0</span>) {
@@ -357,7 +357,7 @@ more_data</code></pre>
          <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">fill =</span> <span class="ot">TRUE</span>, <span class="dt">comment.char =</span> <span class="st">&quot;&quot;</span>, ...)</code></pre>
 <p>This tells us that <code>read.csv()</code> has one argument, <code>file</code>, that doesn’t have a default value, and six others that do. Now we understand why the following gives an error:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="ot">FALSE</span>, <span class="st">&quot;data/inflammation-01.csv&quot;</span>)</code></pre>
-<pre class="output"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : &#39;file&#39; must be a character string or connection
+<pre class="error"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : &#39;file&#39; must be a character string or connection
 </code></pre>
 <p>It fails because <code>FALSE</code> is assigned to <code>file</code> and the filename is assigned to the argument <code>header</code>.</p>
 <section class="challenge panel panel-success">

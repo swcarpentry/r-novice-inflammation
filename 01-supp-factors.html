@@ -34,7 +34,7 @@
 </div>
 <div class="panel-body">
 <ul>
-<li>Understand how to represent catagorical data in R</li>
+<li>Understand how to represent categorical data in R</li>
 <li>Know the difference between ordered and unordered factors</li>
 <li>Be aware of some of the problems encountered when using factors</li>
 </ul>
@@ -70,7 +70,7 @@
 <pre class="output"><code>[1] &quot;low&quot;    &quot;medium&quot; &quot;high&quot;  
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(food) ## doesn&#39;t work</code></pre>
-<pre class="output"><code>Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), .Label = c(&quot;low&quot;, : &#39;min&#39; not meaningful for factors
+<pre class="error"><code>Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), .Label = c(&quot;low&quot;, : &#39;min&#39; not meaningful for factors
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">food &lt;-<span class="st"> </span><span class="kw">factor</span>(food, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>), <span class="dt">ordered=</span><span class="ot">TRUE</span>)
 <span class="kw">levels</span>(food)</code></pre>
@@ -215,7 +215,7 @@ f&lt;-<span class="kw">as.numeric</span>(f)</code></pre>
 </div>
 <div class="panel-body">
 <ul>
-<li>Factors are used to represent catagorical data</li>
+<li>Factors are used to represent categorical data</li>
 <li>Factors can be <em>ordered</em> or <em>unordered</em></li>
 <li>Some R functions have special methods for handling factors</li>
 </ul>
