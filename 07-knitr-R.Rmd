@@ -1,9 +1,8 @@
 ---
-title: "Programming with R"
-minutes: 30
-output: html_document
-subtitle: Dynamic reports with knitr
 layout: page
+title: Programming with R
+subtitle: Dynamic reports with knitr
+minutes: 30
 ---
 
 ```{r, include = FALSE}
@@ -20,7 +19,7 @@ source("tools/chunk-options.R")
 
 You write `knitr` documents in a simple plain text-like format called markdown, which allows you to format text using intuitive notation, so that you can focus on the content you're writing. But you still get a well-formatted document out. In fact, you can turn your plain text (and R code and results) into an html file or, if you have an installation of LaTeX and Pandoc on your machine, a pdf, or even a Word document (if you must!).
 
-To get started, install the `knitr` package and re-start RStudio.
+To get started, install the `knitr` package, and if prompted, re-start your R session.
 
 ```{r, eval=FALSE}
 install.packages("knitr")
