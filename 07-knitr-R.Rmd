@@ -19,13 +19,13 @@ source("tools/chunk-options.R")
 
 You write `knitr` documents in a simple plain text-like format called markdown, which allows you to format text using intuitive notation, so that you can focus on the content you're writing. But you still get a well-formatted document out. In fact, you can turn your plain text (and R code and results) into an html file or, if you have an installation of LaTeX and Pandoc on your machine, a pdf, or even a Word document (if you must!).
 
-To get started, install the `knitr` package, and if prompted, re-start your R session.
+To get started, install the `knitr` package.
 
 ```{r, eval=FALSE}
 install.packages("knitr")
 ```	
 
-Now, when you click on File -> New File, there is an option for "R Markdown...". Choose this and accept the default options in the dialog box that follows (but note that you can also create presentations this way). Save the file and click on the "Knit HTML" button at the top of the script. Compare the output to the source.
+When you click on File -> New File, there is an option for "R Markdown...". Choose this and accept the default options in the dialog box that follows (but note that you can also create presentations this way). Save the file and click on the "Knit HTML" button at the top of the script. Compare the output to the source.
 
 > ## Challenge - Explore formatting text in markdown {.challenge}
 >
