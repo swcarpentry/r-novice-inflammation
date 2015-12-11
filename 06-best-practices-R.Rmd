@@ -60,7 +60,7 @@ source("my_genius_fxns.R")
 9. Manage all of your source files for a project in the same directory. Then use relative paths as necessary. For example, use
 
 ```{r, eval=FALSE}
-dat <- read.csv(file = "/files/dataset-2013-01.csv", header = TRUE)
+dat <- read.csv(file = "files/dataset-2013-01.csv", header = TRUE)
 ```
 
 rather than:
