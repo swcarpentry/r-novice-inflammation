@@ -62,7 +62,7 @@ source("my_genius_fxns.R")
 
 
 ~~~{.r}
-dat <- read.csv(file = "/files/dataset-2013-01.csv", header = TRUE)
+dat <- read.csv(file = "files/dataset-2013-01.csv", header = TRUE)
 ~~~
 
 rather than:
