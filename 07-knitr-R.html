@@ -34,35 +34,46 @@
 </div>
 <div class="panel-body">
 <ul>
-<li>To discover <code>knitr</code> and the generation of dynamic reports</li>
+<li>Understand the value of <code>knitr</code>: Generate dynamic documents that include text, code, and results.</li>
+<li>Control basic formatting using markdown syntax.</li>
+<li>Be able to create, edit, and compile an .Rmd document including code chunks and inline code.</li>
 </ul>
 </div>
 </section>
-<p><code>Knitr</code> is an R package that makes your code neat, pretty, and shows your notes, code, and output simultaneously in an <code>html</code> document. You create these documents in <code>.Rmd</code> files. You can write in <code>LateX</code> or <code>md</code>.</p>
-<p>knitr extracts R code in the input document (.Rmd), evaluates it and writes the results to the output document (html). There are two types of R code: chunks (code as separate paragraphs) and inline R code.</p>
+<p><code>knitr</code> is an R package that allows you to organize your notes, code, and results in a single document. It’s a great tool for “literate programming” – the idea that your code should be readable by humans as well as computers! It also keeps your writing and results together, so if you collect some new data or change how you clean the data, you just have to re-compile the document and you’re up to date!</p>
+<p>You write <code>knitr</code> documents in a simple plain text-like format called markdown, which allows you to format text using intuitive notation, so that you can focus on the content you’re writing. But you still get a well-formatted document out. In fact, you can turn your plain text (and R code and results) into an html file or, if you have an installation of LaTeX and Pandoc on your machine, a pdf, or even a Word document (if you must!).</p>
+<p>To get started, install the <code>knitr</code> package.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;knitr&quot;</span>)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)</code></pre>
-<p>Restart RStudio. Open a new <code>Rmd</code> file.</p>
-<p>In Rmd, anything between lines that start and end with triple quotes ``` will be run as R code.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)</code></pre>
-<pre class="output"><code>     speed           dist       
- Min.   : 4.0   Min.   :  2.00  
- 1st Qu.:12.0   1st Qu.: 26.00  
- Median :15.0   Median : 36.00  
- Mean   :15.4   Mean   : 42.98  
- 3rd Qu.:19.0   3rd Qu.: 56.00  
- Max.   :25.0   Max.   :120.00  
-</code></pre>
+<p>When you click on File -&gt; New File, there is an option for “R Markdown…”. Choose this and accept the default options in the dialog box that follows (but note that you can also create presentations this way). Save the file and click on the “Knit HTML” button at the top of the script. Compare the output to the source.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Using KnitR to produce a report</h2>
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Explore formatting text in markdown</h2>
+</div>
+<div class="panel-body">
+<p>Visit <a href="http://rmarkdown.rstudio.com/authoring_basics.html">http://rmarkdown.rstudio.com/authoring_basics.html</a> and briefly check out some of the formatting options.</p>
+<p>In the example document add</p>
+<ul>
+<li>Headers using <code>#</code></li>
+<li>Emphasis using astericks: *italics* and **bold**</li>
+<li>Lists using <code>*</code> and numbered lists using <code>1.</code>, <code>2.</code>, etc.</li>
+<li><strong>Bonus:</strong> Create a table</li>
+</ul>
+</div>
+</section>
+<p>Markdown also supports LaTeX equation editing. We can display pretty equations by enclosing them in <code>$</code>. E.g. <code>$\alpha = \dfrac{1}{(1 - \beta)^2}$</code> renders as: <span class="math">\(\alpha = \dfrac{1}{(1 - \beta)^2}\)</span>.</p>
+<p>The top of the source (.Rmd) file has some header material in YAML format (enclosed by triple dashes). Some of this gets displayed in the output header, other of it provides formatting information to the conversion engine.</p>
+<p>To distinguish R code from text, RMarkdown uses three back-ticks followed by <code>{r}</code> to distinguish a “code chunk”. In RStudio, the keyboard shortcut to create a code chunk is command-option-i or control-alt-i.</p>
+<p>A code chunk will set off the code and its results in the output document, but you can also print the results of code within a text block by enclosing code like so: <code>`r code-here`</code>.</p>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Use knitr to produce a report</h2>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
 <li>Open an new .Rmd script and save it as inflammation_report.Rmd</li>
-<li>Copy and paste the code as embedded R chunks to read in the data and plot average inflammation, or the heat map that we created.</li>
-<li>Add a few notes describing what the code does and what the main findings are.</li>
-<li><code>KNIT</code> and view the html</li>
+<li>Copy code from earlier into code chunks to read the inflamation data and plot average inflammation.</li>
+<li>Add a few notes describing what the code does and what the main findings are. Include an in-line calculation of the median inflamation level.</li>
+<li><code>knit</code> the document and view the html result.</li>
 </ol>
 </div>
 </section>
@@ -79,5 +90,6 @@
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
   </body>
 </html>

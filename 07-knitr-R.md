@@ -9,47 +9,45 @@ minutes: 30
 
 > ## Learning Objectives {.objectives}
 >
-> * To discover `knitr` and the generation of dynamic reports
+> * Understand the value of `knitr`: Generate dynamic documents that include text, code, and results.
+> * Control basic formatting using markdown syntax.
+> * Be able to create, edit, and compile an .Rmd document including code chunks and inline code.
 
-`Knitr` is an R package that makes your code neat, pretty, and shows your notes, code, and output simultaneously in an `html` document. You create these documents in `.Rmd` files. You can write in `LateX` or `md`. 
+`knitr` is an R package that allows you to organize your notes, code, and results in a single document. It's a great tool for "literate programming" -- the idea that your code should be readable by humans as well as computers! It also keeps your writing and results together, so if you collect some new data or change how you clean the data, you just have to re-compile the document and you're up to date!
 
-knitr extracts R code in the input document (.Rmd), evaluates it and writes the results to the output document (html). There are two types of R code: chunks (code as separate paragraphs) and inline R code.
+You write `knitr` documents in a simple plain text-like format called markdown, which allows you to format text using intuitive notation, so that you can focus on the content you're writing. But you still get a well-formatted document out. In fact, you can turn your plain text (and R code and results) into an html file or, if you have an installation of LaTeX and Pandoc on your machine, a pdf, or even a Word document (if you must!).
+
+To get started, install the `knitr` package.
 
 
 ~~~{.r}
 install.packages("knitr")
 ~~~
 
-~~~{.r}
-library(knitr)
-~~~
+When you click on File -> New File, there is an option for "R Markdown...". Choose this and accept the default options in the dialog box that follows (but note that you can also create presentations this way). Save the file and click on the "Knit HTML" button at the top of the script. Compare the output to the source.
 
-Restart RStudio. 
-Open a new `Rmd` file. 
+> ## Challenge - Explore formatting text in markdown {.challenge}
+>
+> Visit <http://rmarkdown.rstudio.com/authoring_basics.html> and briefly check out some of the formatting options. 
+>
+> In the example document add
+> 
+> * Headers using `#`
+> * Emphasis using astericks:  \*italics\* and \*\*bold\*\*
+> * Lists using `*` and numbered lists using `1.`, `2.`, etc.
+> * **Bonus:** Create a table
 
-In Rmd, anything between lines that start and end with triple quotes ``` will be run as R code.
+Markdown also supports LaTeX equation editing. We can display pretty equations by enclosing them in `$`. E.g. `$\alpha = \dfrac{1}{(1 - \beta)^2}$` renders as: $\alpha = \dfrac{1}{(1 - \beta)^2}$.
 
+The top of the source (.Rmd) file has some header material in YAML format (enclosed by triple dashes). Some of this gets displayed in the output header, other of it provides formatting information to the conversion engine. 
 
-~~~{.r}
-summary(cars)
-~~~
+To distinguish R code from text, RMarkdown uses three back-ticks followed by `{r}` to distinguish a "code chunk". In RStudio, the keyboard shortcut to create a code chunk is command-option-i or control-alt-i.
 
+A code chunk will set off the code and its results in the output document, but you can also print the results of code within a text block by enclosing code like so: `` `r code-here` ``.
 
-
-~~~{.output}
-     speed           dist       
- Min.   : 4.0   Min.   :  2.00  
- 1st Qu.:12.0   1st Qu.: 26.00  
- Median :15.0   Median : 36.00  
- Mean   :15.4   Mean   : 42.98  
- 3rd Qu.:19.0   3rd Qu.: 56.00  
- Max.   :25.0   Max.   :120.00  
-
-~~~
-
-> ## Challenge - Using KnitR to produce a report {.challenge}
+> ## Challenge - Use knitr to produce a report {.challenge}
 >
 > 1. Open an new .Rmd script and save it as inflammation_report.Rmd
-> 2. Copy and paste the code as embedded R chunks to read in the data and plot average inflammation, or the heat map that we created.
-> 3. Add a few notes describing what the code does and what the main findings are.
-> 4. `KNIT` and view the html
+> 2. Copy code from earlier into code chunks to read the inflamation data and plot average inflammation.
+> 3. Add a few notes describing what the code does and what the main findings are. Include an in-line calculation of the median inflamation level.
+> 4. `knit` the document and view the html result.
