@@ -532,3 +532,35 @@ max(answer)
 >
 > but the chances of us typing all 12 filenames correctly aren't great, and we'll be even worse off if we get another hundred files.
 > What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.
+
+
+> ## Sarah's Challenge - Another function {.challenge}
+>
+>  Below is an incomplete function that calculates some basic statistical descriptions of a vector, `x`. Add to the function so that it automatically creates a dataframe output that includes each of the variables calculated by the function. Be sure to give columns of the dataframe descriptive names. Use the `round` function to round each result of the output to 3 places.
+>  Be sure to document each step of the function with comments.
+
+```{r rescale-test, include=TRUE}
+describe = function(x)
++ {
++    m <- mean(x,na.rm=T)
++    s <- sd(x,na.rm=T)
++    N <- sum(is.na(x))
++    n <- length(x)-N
++    se <- s/sqrt(n)
+}
+```
+
+```{r rescale-test, include=FALSE}
+describe = function(x)
++ {
++    m=mean(x,na.rm=T)
++    s=sd(x,na.rm=T)
++    N=sum(is.na(x))
++    n=length(x)-N
++    se=s/sqrt(n)
++    out=c(m,s,se,n,N)
++    names(out)=c("mean","sd","sem","n","NAs")
++    out <- round(out, 3)
++    return(out)
++ }
+```
