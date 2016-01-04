@@ -211,6 +211,20 @@ In this case, "either" means "either or both", not "either one or the other but 
 > plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
 > plot_dist(dat[1:5, 10], threshold = 10)                    # samples (rows) 1-5 on day (column) 10
 > ```
+>   + As a further challenge, fill in the blanks of the function hist_max() below to create a function that does the following:  
+  
+>   1.For each patient in a given file, find the max inflammation value and store in a variable called 'max_patient_inflammation'.  
+    2.Plot the max values into a simple histogram using the function hist() if and only if the spread of the max values for all the patients is greater than your desired spread value.  
+
+
+>```
+>hist_max <- function(dat, spread) {
+>  max_patient_inflammation <- ______(dat, __, max)
+>  if (_____________ > spread) {
+>      hist(maxes)
+>  }
+>}
+>```
 
 ### Saving Automatically Generated Figures
 
