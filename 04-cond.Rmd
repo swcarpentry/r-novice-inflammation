@@ -221,7 +221,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 >hist_max <- function(dat, spread) {
 >  max_patient_inflammation <- ______(dat, __, max)
 >  if (_____________ > spread) {
->      hist(maxes)
+>      hist(max_patient_inflammation)
 >  }
 >}
 >```
