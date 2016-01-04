@@ -214,7 +214,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 >   + As a further challenge, fill in the blanks of the function hist_max() below to create a function that does the following:  
   
 >   1.For each patient in a given file, find the max inflammation value and store these in a variable called 'max_patient_inflammation'.  
-    2.Plot the max values into a simple histogram using the function hist() if and only if the spread (difference between largest and smallest) of the max values for all the patients is greater than your desired spread value.  
+    2.Plot the max values into a simple histogram using the function hist() if and only if the spread (difference between largest and smallest) of the max values for all the patients is greater than your desired spread value, otherwise, return the values.  
 
 
 >```
@@ -223,6 +223,8 @@ In this case, "either" means "either or both", not "either one or the other but 
 >  difference = ___(max_patient_inflammation) - ___(max_patient _inflammation)
 >  if (______ > ______) {
 >      hist(max_patient_inflammation)
+>  } else {
+>      return(max_patient_inflammation)
 >  }
 >}
 >```
