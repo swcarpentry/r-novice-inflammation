@@ -351,6 +351,7 @@ is.null(output)
 
 ~~~
 
+
 Now we can use `analyze` both interactively:
 
 
@@ -428,3 +429,17 @@ Now if we need to make any changes to our analysis, we can edit the `analyze` fu
 > We have now seen the basics of interactively building R code.
 > The last thing we need to learn is how to build command-line programs that we can use in pipelines and shell scripts, so that we can integrate our tools with other people's work.
 > This will be the subject of our next and final lesson.
+
+> ## Challenge - A case for caution when automatically saving data to a file {.challenge}
+>
+>  + The function WriteToFile opens a file and writes the new InputVector into the first line of that file. What is wrong with the function definition below?
+>  
+>
+>~~~{.r}
+> WriteToFile<-function(InputVector,out=NULL){
+> 	newInputVector<-InputVector-min(InputVector)
+> 	f1<-file(out)
+> 	write(newInputVector,f1)
+> 	close(f1)
+> }
+>~~~
