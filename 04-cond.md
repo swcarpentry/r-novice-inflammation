@@ -433,7 +433,7 @@ Now if we need to make any changes to our analysis, we can edit the `analyze` fu
 > ## Challenge - A case for caution when automatically saving data to a file {.challenge}
 >
 >  + The function WriteToFile opens a file and writes the new InputVector into the first line of that file. What is wrong with the function definition below?
->  
+>  To do this you will need the "write" function that writes the data from a vector to a file and the "file" function that opens a file >  for editing.
 >
 >~~~{.r}
 > WriteToFile<-function(InputVector,out=NULL){
