@@ -164,6 +164,8 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > [1] "Don't"  "others"
 > 
 > ~~~
+
+> ## Challenge - Label a function's return items {.challenge}
 > + As a further challenge in understanding function calls, fill in the blanks in the following function with ONE line of code, so that the function outputs the sumamtion, difference and product of the 2 numbers it takes as input along with the respective labels to clarify the result.
 > ~~~{.r}
 > Calculus<-function(x,y){
