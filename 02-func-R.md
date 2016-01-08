@@ -174,6 +174,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 >	r3<-x*y
 >	.........
 }
+> Answer: return(list(summation=r1,difference=r2,product=r3))  * the word "return" is optional
 > ~~~
 
 ### The Call Stack
