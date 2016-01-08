@@ -444,3 +444,5 @@ Now if we need to make any changes to our analysis, we can edit the `analyze` fu
 > 	close(f1)
 > }
 >~~~
+> Answer: An if condition is missing in case the out is not specified when the function is called, thus resulting to f1<-file(out) 
+> having null input, which would lead to the function call crashing.
