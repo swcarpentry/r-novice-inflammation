@@ -211,16 +211,20 @@ In this case, "either" means "either or both", not "either one or the other but 
 > plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
 > plot_dist(dat[1:5, 10], threshold = 10)                    # samples (rows) 1-5 on day (column) 10
 > ```
->   + As a further challenge, fill in the blanks of the function hist_max() below to create a function that does the following:  
+
+
+> ## Challenge - Putting together data analysis, conditionals, and plotting   {.challenge}
+>   + For this challenge, fill in the blanks of the function hist_max() below to create a function that does the following:  
   
->   1.For each patient in a given file, find the max inflammation value and store these in a variable called 'max_patient_inflammation'.  
-    2.Plot the max values into a simple histogram using the function hist() if and only if the spread (difference between largest and smallest) of the max values for all the patients is greater than your desired spread value, otherwise, return the values.  
+> ```{r, eval=FALSE}
+1.For each patient (row) in a given file, find the max inflammation value and store these in a variable called 'max_patient_inflammation'.  
+2.Plot the max values into a simple histogram using the function hist() if and only if the spread (difference between largest and smallest) of the max values for all the patients is greater than your desired spread value, otherwise, return the values.  
+```
 
-
->```
->hist_max <- function(dat, spread) {
+> ``` 
+> hist_max <- function(dat, spread) {
 >  max_patient_inflammation <- ______(dat, __, max)
->  difference = ___(max_patient_inflammation) - ___(max_patient _inflammation)
+>  difference <- ___(max_patient_inflammation) - ___(max_patient _inflammation)
 >  if (______ > ______) {
 >      hist(max_patient_inflammation)
 >  } else {
@@ -229,6 +233,17 @@ In this case, "either" means "either or both", not "either one or the other but 
 >}
 >```
 
+> ``` {r, include=FALSE}
+> hist_max <- function(dat, spread) {
+>  max_patient_inflammation <- apply(dat, 1, max)
+>  difference <- max(max_patient_inflammation) - min(max_patient_inflammation)
+>  if (difference > spread) {
+>      hist(max_patient_inflammation)
+>  } else {
+>      return(max_patient_inflammation)
+>  }
+> }
+> ```
 ### Saving Automatically Generated Figures
 
 Now that we know how to have R make decisions based on input values, let's update `analyze`:
