@@ -534,12 +534,14 @@ max(answer)
 > What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.
 
 
-> ## Sarah's Challenge - Another function {.challenge}
+> ## Challenge - Another function {.challenge}
 >
->  Below is an incomplete function that calculates some basic statistical descriptions of a vector, `x`. Add to the function so that it automatically creates a dataframe output that includes each of the variables calculated by the function. Be sure to give columns of the dataframe descriptive names. Use the `round` function to round each result of the output to 3 places.
+>  Below is an incomplete function that calculates some basic statistical descriptions of a vector, `x`. 
+> Add to the function so that it automatically creates a dataframe output that includes each of the variables calculated by the function. 
+> Be sure to give columns of the dataframe descriptive names. Use the `round` function to round each result of the output to 3 places.
 >  Be sure to document each step of the function with comments.
 
-```{r rescale-test, include=TRUE}
+```{r}
 describe = function(x)
 + {
 +    m <- mean(x,na.rm=T)
@@ -550,7 +552,7 @@ describe = function(x)
 }
 ```
 
-```{r rescale-test, include=FALSE}
+```{r, include=FALSE}
 describe = function(x)
 + {
 +    m=mean(x,na.rm=T)
