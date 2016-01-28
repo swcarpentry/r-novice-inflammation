@@ -24,7 +24,7 @@ R is a powerful language for data manipulation. There are 3 main ways for addres
 Lets start by loading some sample data:
 
 ```{r readData}
-dat<-read.csv(file='data/sample.csv',header=TRUE, stringsAsFactors=FALSE)
+dat <- read.csv(file = 'data/sample.csv', header = TRUE, stringsAsFactors = FALSE)
 ```
 
 > ## Tip {.callout} 
@@ -86,7 +86,7 @@ This can be very useful for addressing data.
 Finally we can use the `c()` (combine) function to address non-sequential rows and columns.
 
 ```{r nonsequential_indexing}
-dat[c(1,5,7,9),1:5]
+dat[c(1,5,7,9), 1:5]
 ```
 
 Returns the first 5 columns for patients in rows 1,5,7 & 9
@@ -114,7 +114,7 @@ dat$Gender
 
 Named addressing can also be used in square brackets.
 ```{r names_addressing_2}
-head(dat[,c('Age','Gender')])
+head(dat[,c('Age', 'Gender')])
 ```
 
 > ## Best Practice {.callout} 
@@ -126,7 +126,7 @@ head(dat[,c('Age','Gender')])
 A logical vector contains only the special values `TRUE` & `FALSE`.
 
 ```{r logical_vectors}
-c(TRUE,TRUE,FALSE,FALSE,TRUE)
+c(TRUE, TRUE, FALSE, FALSE, TRUE)
 ```
 > ## Tip {.callout} 
 >
@@ -135,7 +135,7 @@ c(TRUE,TRUE,FALSE,FALSE,TRUE)
 Logical vectors can be created using `relational operators` e.g. `<, >, ==, !=, %in%`.
 
 ```{r logical_vectors_example}
-x<-c(1,2,3,11,12,13)
+x <- c(1, 2, 3, 11, 12, 13)
 x < 10
 
 x %in% 1:10
@@ -151,7 +151,7 @@ dat[index,]$BloodPressure
 Often this operation is written as one line of code:
 
 ```{r logical_vectors_indexing2}
-plot(dat[dat$Group=='Control',]$BloodPressure)
+plot(dat[dat$Group == 'Control',]$BloodPressure)
 ```
 
 > ## Challenge - Using logical indexes {.challenge}
@@ -163,7 +163,7 @@ plot(dat[dat$Group=='Control',]$BloodPressure)
 The assignment operator `<-` can be combined with indexing.
 
 ```{r indexing and assignment}
-x<-c(1,2,3,11,12,13)
+x <- c(1, 2, 3, 11, 12, 13)
 x[x < 10] <- 0
 x
 ```
