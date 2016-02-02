@@ -214,6 +214,20 @@ length(vowels)
 > expo(2, 4)
 > ```
 >
+> 4. Solving the "Wheat and Chessboard" problem
+>
+> In the "Wheat and Chessboard" problem, a grain of wheat is placed on the first square of a chessboard, two grains on the second square, four grains on the third square, and so on, doubling the number of grains on each subsequent square. A chessboard has 64 squares, and we want to know how many grains will lie on it at the end. To solve this problem, write a loop using the `seq` function. One way to obtain the number of grains on any given square is the following expression, e.g., for square 14:
+> ```{r}
+> nsquare <- 14
+> ngrains <- 2^(nsquare-1)
+> print(ngrains)
+> ```
+> Compare your result with the mathematical solution:
+> ```{r}
+> ngrains_total <- 2^64 - 1
+> print(ngrains_total)
+> ```
+> Does the variable `ngrains_total` change if you simplify the mathematical solution to `2^64`?
 
 ### Processing Multiple Files
 
