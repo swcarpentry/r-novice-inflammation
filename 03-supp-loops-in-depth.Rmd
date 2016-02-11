@@ -51,7 +51,10 @@ a <- 1:10
 b <- 1:10
 ```
 
-you could loop over the pairs adding each in turn, but that would be very inefficient in R.
+You could loop over the pairs adding each in turn, but that would be very inefficient in R.
+
+Instead of using `i in a` to make our loop variable, we use the function `seq_along` to generate indices for each element `a` contains.
+
 
 ```{r}
 res <- numeric(length = length(a))
