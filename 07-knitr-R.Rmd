@@ -49,6 +49,6 @@ A code chunk will set off the code and its results in the output document, but y
 > ## Challenge - Use knitr to produce a report {.challenge}
 >
 > 1. Open an new .Rmd script and save it as inflammation_report.Rmd
-> 2. Copy code from earlier into code chunks to read the inflamation data and plot average inflammation.
-> 3. Add a few notes describing what the code does and what the main findings are. Include an in-line calculation of the median inflamation level.
+> 2. Copy code from earlier into code chunks to read the inflammation data and plot average inflammation.
+> 3. Add a few notes describing what the code does and what the main findings are. Include an in-line calculation of the median inflammation level.
 > 4. `knit` the document and view the html result.
