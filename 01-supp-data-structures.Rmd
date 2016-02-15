@@ -384,3 +384,14 @@ class(iris)
 | ------- | ---- | ---- |
 | 1-D | atomic vector | list |
 | 2-D | matrix | data frame |
+
+
+> ## Challenge - Data Frames {.challenge}
+>
+> Knowing that data frames are lists of lists, can columns be of different type?
+>
+> What type of structure do you expect on the iris data frame? Hint: Use str()
+
+
+
+
