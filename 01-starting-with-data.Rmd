@@ -366,6 +366,25 @@ We'll learn why this is so in the next lesson.
 > (c) `max(dat[5, 3:7])`
 > (d) `max(dat[5, 3, 7])`
 
+
+> ## Challenge - Slicing and re-assignment {.challenge}
+> 
+> Let's pretend there was something wrong with the instrument on the first five days for every second patient (#2, 4, 6, etc.), which resulted in the measurements being twice as large as they should be.
+>
+> 1. Write a vector containing each affected patient (hint: `? seq`)
+> 2. Halve the first five days' values in only those patients
+> 3. Print out the data frame to check that your code has fixed the problem
+>
+>> Solution:
+>> ```{r}
+>> whichPatients <- seq(2,40,2)
+>> whichDays <- c(1:5)
+>> dat[whichPatients,whichDays] <- dat[whichPatients,whichDays]/2
+>> (dat)
+>> ```
+>
+
+
 ### Plotting
 
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and the best way to develop insight is often to visualize data.
