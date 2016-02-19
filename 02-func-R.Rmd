@@ -123,9 +123,9 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > outside(dry_principle)
 > ```
 
-> ## Further details {.callout}
+> ## The call stack {.callout}
 >
-> For more details on the call stack, have a look at the [supplementary material](02-supp-call-stack.html).
+> For a deeper understanding of how functions work, you'll need to learn how they create their own environments and call other functions. Function calls are managed via the call stack. For more details on the call stack, have a look at the [supplementary material](02-supp-call-stack.html).
 
 
 ### Testing and Documenting
@@ -406,7 +406,6 @@ max(answer)
 >
 > * Define a function using `name <- function(...args...) {...body...}`.
 > * Call a function using `name(...values...)`.
-> * Each time a function is called, a new stack frame is created on the [call stack](reference.html#call-stack) to hold its arguments and local variables.
 > * R looks for variables in the current stack frame before looking for them at the top level.
 > * Use `help(thing)` to view help for something.
 > * Put comments at the beginning of functions to provide help for that function.
