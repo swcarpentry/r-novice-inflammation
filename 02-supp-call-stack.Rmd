@@ -1,3 +1,10 @@
+---
+layout: page
+title: Programming with R
+subtitle: The call stack
+minutes: 15
+---
+
 ### The Call Stack
 
 Let's take a closer look at what happens when we call `fahr_to_celsius(32)`. To make things clearer, we'll start by putting the initial value 32 in a variable and store the final result in one as well:
