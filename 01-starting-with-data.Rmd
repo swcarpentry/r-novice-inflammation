@@ -330,6 +330,47 @@ We'll learn why this is so in the next lesson.
 > (c) `max(dat[5, 3:7])`
 > (d) `max(dat[5, 3, 7])`
 
+
+> ## Challenge - Using the apply function on patient data {.challenge}
+
+> Challenge: the apply function can be used to summarize datasets (and subsets 
+> of data ) across rows and columns using the MARGIN argument. 
+> Suppose you want to calculate the mean inflammation across the patient dataset
+> (i.e. 60 patients across 40 days). Please assign the returned output of each 
+> of the following function calls to the four results (a-d):
+> apply(dat[2, ], 2, mean)
+> apply(dat[2, ], 1, mean)
+> apply(dat, 2, mean)
+> apply(dat, 1, mean)
+
+> a)   2 
+>    5.425 
+>    
+> b)   V1   V2   V3   V4   V5   V6   V7   V8   V9  V10  V11  V12  V13  V14  V15  V16  V17  V18  V19 
+>      0.0  0.6  1.4  2.0  2.6  1.6  3.6  3.4  4.6  5.8  6.4  7.0  6.8  7.4  5.2  8.2  8.4 10.8  9.0 
+> 
+>      V20  V21  V22  V23  V24  V25  V26  V27  V28  V29  V30  V31  V32  V33  V34  V35  V36  V37  V38 
+>      11.6 13.8  9.8  9.6  9.4  9.0 10.0  8.8  5.6  7.8  6.2  5.8  5.0  4.4  3.6  3.0  4.0  1.8  1.8 
+> 
+>      V39  V40 
+>      0.8  0.8
+>    
+> c)  5.450 5.425 6.100 5.900 5.550
+> 
+> d)  V1  V2  V3  V4  V5  V6  V7  V8  V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20 V21 V22 V23 V24 
+>      0   1   2   1   2   1   3   2   2   6  10  11   5   9   4   4   7  16   8   6  18   4  12   5 
+>  
+>     V25 V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38 V39 V40 
+>      12   7  11   5  11   3   3   5   4   4   5   5   1   1   0   1 
+
+
+
+
+
+
+
+
+
 ### Plotting
 
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and the best way to develop insight is often to visualize data.
