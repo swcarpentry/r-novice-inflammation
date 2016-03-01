@@ -201,7 +201,7 @@ sign(2/3)
 
 ~~~
 
-Note that the test for equality uses two equal signs, `==`.
+Note that when combining 'else' and 'if' in an 'else if' statement (similar to 'elif' in Python), the 'if' portion still requires a direct input condition.  This is never the case for the 'else' statement alone, which is only executed if all other conditions go unsatisfied.  Note that the test for equality uses two equal signs, `==`.
 
 > ## Tip {.callout}
 >
