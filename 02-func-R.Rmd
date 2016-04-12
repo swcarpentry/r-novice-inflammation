@@ -232,6 +232,29 @@ That only works if functions don't interfere with each other; if they do, we hav
 > result <- outside(fence(inner_vec, outer_vec))
 > ```
 
+> ## Challenge - named variables and the scope of variables {.challenge}
+>
+>  + Functions can accept arguments explicitly assigned to a variable name in
+>    in the function call `functionName(variable = value)`, as well as arguments by
+>    order:
+> ```{r}
+> a = 20
+> mySum = function(a, b = 10) {
+>   a = a + b
+>   return(a)
+> }
+> 
+> a = mySum(a = 1, 3)
+> ```
+> What is the value of `a` after running the above code:
+> 
+> 1) 2
+> 2) 3
+> 3) 4
+> 4) 11
+> 5) 20
+> 6) a is a function
+
 ### Testing and Documenting
 
 Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly.
