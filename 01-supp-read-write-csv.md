@@ -112,19 +112,19 @@ carSpeeds$Color
 
 
 ~~~{.output}
-  [1] "Green" "4"     "Green" "5"     "3"     "Green" "Green" "1"    
-  [9] "5"     "3"     "3"     "5"     "Green" "Green" "1"     "3"    
- [17] "Green" "Green" "5"     "Green" "Green" "Green" "3"     "Green"
- [25] "3"     "3"     "3"     "3"     "5"     "Green" "3"     "5"    
- [33] "1"     "3"     "1"     "1"     "Green" "3"     "1"     "3"    
- [41] "1"     "1"     "3"     "3"     "5"     "1"     "Green" "3"    
- [49] "3"     "1"     "1"     "3"     "5"     "3"     "Green" "Green"
- [57] "1"     "Green" "5"     "1"     "3"     "Green" "Green" "5"    
- [65] "1"     "3"     "3"     "1"     "Green" "5"     "Green" "3"    
+  [1] "Green" "1"     "Green" "5"     "4"     "Green" "Green" "2"    
+  [9] "5"     "4"     "4"     "5"     "Green" "Green" "2"     "4"    
+ [17] "Green" "Green" "5"     "Green" "Green" "Green" "4"     "Green"
+ [25] "4"     "4"     "4"     "4"     "5"     "Green" "4"     "5"    
+ [33] "2"     "4"     "2"     "2"     "Green" "4"     "2"     "4"    
+ [41] "2"     "2"     "4"     "4"     "5"     "2"     "Green" "4"    
+ [49] "4"     "2"     "2"     "4"     "5"     "4"     "Green" "Green"
+ [57] "2"     "Green" "5"     "2"     "4"     "Green" "Green" "5"    
+ [65] "2"     "4"     "4"     "2"     "Green" "5"     "Green" "4"    
  [73] "5"     "5"     "Green" "Green" "Green" "Green" "Green" "5"    
- [81] "1"     "Green" "5"     "1"     "1"     "3"     "3"     "5"    
- [89] "5"     "5"     "5"     "3"     "3"     "3"     "5"     "1"    
- [97] "5"     "1"     "1"     "5"    
+ [81] "2"     "Green" "5"     "2"     "2"     "4"     "4"     "5"    
+ [89] "5"     "5"     "5"     "4"     "4"     "4"     "5"     "2"    
+ [97] "5"     "2"     "2"     "5"    
 
 ~~~
 
@@ -245,7 +245,7 @@ unique(carSpeeds$Color)
 
 ~~~{.output}
 [1] Green  Red  White Red   Black
-Levels: Black Green Red  Red White
+Levels:  Red Black Green Red White
 
 ~~~
 
