@@ -267,7 +267,7 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 <div class="panel-body">
 <ul>
 <li>Write a function called <code>analyze</code> that takes a filename as a argument and displays the three graphs produced in the <a href="01-starting-with-data.html">previous lesson</a> (average, min and max inflammation over time). <code>analyze(&quot;data/inflammation-01.csv&quot;)</code> should produce the graphs already shown, while <code>analyze(&quot;data/inflammation-02.csv&quot;)</code> should produce corresponding graphs for the second data set. Be sure to document your function with comments.</li>
-<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math"><em>L</em></span> and <span class="math"><em>H</em></span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math"><em>v</em></span> should be <span class="math">(<em>v</em> − <em>L</em>) / (<em>H</em> − <em>L</em>)</span>.) Be sure to document your function with comments.</li>
+<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math">\(L\)</span> and <span class="math">\(H\)</span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math">\(v\)</span> should be <span class="math">\((v-L) / (H-L)\)</span>.) Be sure to document your function with comments.</li>
 <li>Test that your <code>rescale</code> function is working properly using <code>min</code>, <code>max</code>, and <code>plot</code>.</li>
 </ul>
 </div>
@@ -414,5 +414,16 @@ more_data</code></pre>
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>

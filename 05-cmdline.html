@@ -67,17 +67,11 @@
 <p>The function, <code>sessionInfo</code>, outputs the version of R you are running as well as the type of computer you are using (as well as the versions of the packages that have been loaded). This is very useful information to include when asking others for help with your R code.</p>
 <p>Now we can run the code in the file we created from the Unix Shell using <code>Rscript</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript session-info.R</code></pre>
-<pre class="output"><code>R version 3.2.2 (2015-08-14)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 14.04.3 LTS
+<pre class="output"><code>R version 3.1.2 (2014-10-31)
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
 
 locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
- [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[1] en_CA.UTF-8/en_CA.UTF-8/en_CA.UTF-8/C/en_CA.UTF-8/en_CA.UTF-8
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
@@ -96,7 +90,7 @@ cat(args, sep = &quot;\n&quot;)
 </code></pre>
 <p>The function <code>commandArgs</code> extracts all the command line arguments and returns them as a vector. The function <code>cat</code>, similar to the <code>cat</code> of the Unix Shell, outputs the contents of the variable. Since we did not specify a filename for writing, <code>cat</code> sends the output to <a href="reference.html#standard-output-(stdout)">standard output</a>, which we can then pipe to other Unix functions. Because we set the argument <code>sep</code> to <code>&quot;\n&quot;</code>, which is the symbol to start a new line, each element of the vector is printed on its own line. Let’s see what happens when we run this program in the Unix Shell:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript print-args.R</code></pre>
-<pre class="output"><code>/usr/lib/R/bin/exec/R
+<pre class="output"><code>/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -110,7 +104,7 @@ cat(args, sep = &quot;\n&quot;)
 </ul>
 <p>Thus running a file with Rscript is an easier way to run the following:</p>
 <pre class="sourceCode r"><code class="sourceCode r">R --slave --no-restore --file=print-args.R --args</code></pre>
-<pre class="output"><code>/usr/lib/R/bin/exec/R
+<pre class="output"><code>/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -118,7 +112,7 @@ cat(args, sep = &quot;\n&quot;)
 </code></pre>
 <p>If we run it with a few arguments, however:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript print-args.R first second third</code></pre>
-<pre class="output"><code>/usr/lib/R/bin/exec/R
+<pre class="output"><code>/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -242,15 +236,14 @@ main()
 <!-- second-answer -->
 <!-- The * is a wildcard character in the Unix Shell. -->
 <!-- Thus all the files in the current working directory are included as arguments to  arith.R. -->
-
 <ul>
 <li>Using the function <code>list.files</code> introduced in a previous <a href="03-loops-R.html">lesson</a>, write a command-line program, <code>find-pattern.R</code>, that lists all the files in the current directory that contain a specific pattern:</li>
 </ul>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For example, searching for the pattern &quot;print-args&quot; returns the two scripts we</span>
 <span class="co"># wrote earlier</span>
 Rscript find-pattern.R print-args</code></pre>
-<pre class="output"><code>print-args.R
-print-args-trailing.R
+<pre class="output"><code>print-args-trailing.R
+print-args.R
 </code></pre>
 </div>
 </section>
@@ -479,5 +472,16 @@ main()
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>

@@ -129,7 +129,7 @@ length
 
 <span class="kw">system.time</span>(avg2 &lt;-<span class="st"> </span><span class="kw">analyze2</span>(filenames))</code></pre>
 <pre class="output"><code>   user  system elapsed 
-   0.06    0.00    0.06 
+  0.078   0.006   0.152 
 </code></pre>
 <p>Note how we add a new column to <code>out</code> at each iteration? This is a cardinal sin of writing a <code>for</code> loop in R.</p>
 <p>Instead, we can create an empty matrix with the right dimensions (rows/columns) to hold the results. Then we loop over the files but this time we fill in the <code>f</code>th column of our results matrix <code>out</code>. This time there is no copying/growing for R to deal with.</p>
@@ -144,7 +144,7 @@ length
 
 <span class="kw">system.time</span>(avg3 &lt;-<span class="st"> </span><span class="kw">analyze3</span>(filenames))</code></pre>
 <pre class="output"><code>   user  system elapsed 
-  0.057   0.000   0.058 
+  0.048   0.002   0.052 
 </code></pre>
 <p>In this simple example there is little difference in the compute time of <code>analyze2</code> and <code>analyze3</code>. This is because we are only iterating over 12 files and hence we only incur 12 copy/grow operations. If we were doing this over more files or the data objects we were growing were larger, the penalty for copying/growing would be much larger.</p>
 <p>Note that <code>apply</code> handles these memory allocation issues for you, but then you have to write the loop part as a function to pass to <code>apply</code>. At its heart, <code>apply</code> is just a <code>for</code> loop with extra convenience.</p>
@@ -161,5 +161,16 @@ length
     <!-- Javascript placed at the end of the document so the pages load faster -->
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>
