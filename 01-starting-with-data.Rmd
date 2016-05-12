@@ -360,6 +360,19 @@ plot(min_day_inflammation)
 
 The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.
 
+
+
+> ## Challenge - Changing axis labels and plot type {.challenge}
+>
+> Change the title for the x axis to 'time[days]'.
+>
+> Change the type of the plot to the line plot (i.e., add lines between data points).
+>
+> Hint: you can check the parameters of the function plot() using the help documention by running help(plot) or ?plot
+
+
+
+
 > ## Challenge - Plotting data {.challenge}
 >
 > Create a plot showing the standard deviation of the inflammation data for each day across all patients.
