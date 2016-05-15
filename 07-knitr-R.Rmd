@@ -52,3 +52,15 @@ A code chunk will set off the code and its results in the output document, but y
 > 2. Copy code from earlier into code chunks to read the inflamation data and plot average inflammation.
 > 3. Add a few notes describing what the code does and what the main findings are. Include an in-line calculation of the median inflamation level.
 > 4. `knit` the document and view the html result.
+
+
+
+
+> ## Challenge - Use knitr to produce a slideshow {.challenge}
+>
+> 1. Create a new .Rmd file and select presentation for the type.
+> 2. Copy code from earlier into code chunks to read the inflamation data and plot average inflammation.
+> 3. Add an introduction slide that describes the data. 
+> 4. include a mathematical equation on one slide by enclosing it with \$$
+> 5. go to the [ioslides help page](http://rmarkdown.rstudio.com/ioslides_presentation_format.html) and try a few additional commands
+> 6. `knit` the document and view the html slideshow fullscreen by pressing `f`.
