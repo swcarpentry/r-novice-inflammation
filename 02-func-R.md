@@ -165,6 +165,17 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > 
 > ~~~
 
+> ## Challenge - Label a function's return items {.challenge}
+> + As a further challenge in understanding function calls, fill in the blanks in the following function with ONE line of code, so that the function outputs the sumamtion, difference and product of the 2 numbers it takes as input along with the respective labels to clarify the result.
+> ~~~{.r}
+> Calculus<-function(x,y){
+>	r1<-x+y
+>	r2<-x-y
+>	r3<-x*y
+>	.........
+}
+> Answer: return(list(summation=r1,difference=r2,product=r3))  * the word "return" is optional
+> ~~~
 
 ### The Call Stack
 
