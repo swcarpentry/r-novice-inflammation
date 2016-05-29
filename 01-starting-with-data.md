@@ -610,6 +610,15 @@ We'll learn why this is so in the next lesson.
 > (c) `max(dat[5, 3:7])`
 > (d) `max(dat[5, 3, 7])`
 
+> ## Challenge - Computing column max {.challenge}
+>
+> How do you find the max of every column?
+>
+> (a) max(dat)
+> (b) colMax(dat)
+> (c) apply(dat, 1, max)
+> (d) apply(dat, 2, max)
+
 ### Plotting
 
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and the best way to develop insight is often to visualize data.
