@@ -56,10 +56,10 @@ order of the levels allows us to compare levels:
 ```{r, error=TRUE}
 food <- factor(c("low", "high", "medium", "high", "low", "medium", "high"))
 levels(food)
-food <- factor(food, levels=c("low", "medium", "high"))
+food <- factor(food, levels = c("low", "medium", "high"))
 levels(food)
 min(food) ## doesn't work
-food <- factor(food, levels=c("low", "medium", "high"), ordered=TRUE)
+food <- factor(food, levels = c("low", "medium", "high"), ordered=TRUE)
 levels(food)
 min(food) ## works!
 ```
@@ -79,20 +79,20 @@ information built in. It is particularly helpful when there are many levels
 >
 > What is the best way to represent this in R?
 >
-> a) exercise<-c("l","n","n","i","l")
+> a) exercise <- c("l", "n", "n", "i", "l")
 >
-> b) exercise<-factor(c("l","n","n","i","l"), ordered=TRUE)
+> b) exercise <- factor(c("l", "n", "n", "i", "l"), ordered = TRUE)
 >
-> c) exercise<-factor(c("l","n","n","i","l"), levels=c("n","l","i"), ordered=FALSE)
+> c) exercise < -factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = FALSE)
 >
-> d) exercise<-factor(c("l","n","n","i","l"), levels=c("n","l","i"), ordered=TRUE)
+> d) exercise <- factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = TRUE)
 
 ###  Converting Factors
 
 Converting from a factor to a number can cause problems:
 
 ```{r converting-factors}
-f<-factor(c(3.4, 1.2, 5))
+f <- factor(c(3.4, 1.2, 5))
 as.numeric(f)
 ```
 
@@ -107,8 +107,8 @@ levels(f)[f]
 This returns a character vector, the `as.numeric()` function is still required to convert the values to the proper type (numeric).
 
 ```{r converting-to-numeric}
-f<-levels(f)[f]
-f<-as.numeric(f)
+f <- levels(f)[f]
+f <- as.numeric(f)
 ```
 
 ### Using Factors
@@ -116,7 +116,7 @@ f<-as.numeric(f)
 Lets load our example data to see the use of factors:
 
 ```{r load-example-data}
-dat<-read.csv(file='data/sample.csv', stringsAsFactors=TRUE)
+dat <- read.csv(file = 'data/sample.csv', stringsAsFactors = TRUE)
 ```
 
 > ## Tip {.callout}
@@ -161,13 +161,13 @@ barplot(table(dat$Gender))
 Values should have been recorded as lowercase 'm' & 'f'. We should correct this.
 
 ```{r recoding-gender}
-dat$Gender[dat$Gender=='M']<-'m'
+dat$Gender[dat$Gender == 'M'] <- 'm'
 ```
 
 > ## Challenge - Updating factors {.challenge}
 >
 > ```{r updating-factors}
-> plot(x=dat$Gender,y=dat$BloodPressure)
+> plot(x = dat$Gender, y = dat$BloodPressure)
 > ```
 >
 > Why does this plot show 4 levels?
@@ -179,8 +179,8 @@ We need to tell R that "M" is no longer a valid value for this column.
 We use the `droplevels()` function to remove extra levels.
 
 ```{r dropping-levels}
-dat$Gender<-droplevels(dat$Gender)
-plot(x=dat$Gender,y=dat$BloodPressure)
+dat$Gender <- droplevels(dat$Gender)
+plot(x = dat$Gender, y = dat$BloodPressure)
 ```
 
 > ## Tip {.callout}
