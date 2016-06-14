@@ -70,7 +70,8 @@ Rscript session-info.R
 
 > ## Tip {.callout}
 >
-> If that did not work, remember that you must be in the correct directory.
+> If that did not work, you might have seen an error message indicating that the file session-info.R does not exist.
+> Remember that you must be in the correct directory, the one in which you created your script file.
 > You can determine which directory you are currently in using `pwd` and change to a different directory using `cd`.
 > For a review, see this [lesson](https://swcarpentry.github.io/shell-novice/01-filedir.html).
 
