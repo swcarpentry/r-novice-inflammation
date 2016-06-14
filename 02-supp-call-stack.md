@@ -9,7 +9,8 @@ minutes: 15
 
 Let's take a closer look at what happens when we call `fahr_to_celsius(32)`. To make things clearer, we'll start by putting the initial value 32 in a variable and store the final result in one as well:
 
-```{r, eval = FALSE}
+
+```r
 original <- 32
 final <- fahr_to_celsius(original)
 ```
@@ -53,8 +54,13 @@ it holds the variables we defined outside the functions in our code.
 What it *doesn't* hold is the variables that were in the various stack frames.
 If we try to get the value of `temp` after our functions have finished running, R tells us that there's no such thing:
 
-```{r, error = TRUE}
+
+```r
 temp
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'temp' not found
 ```
 
 > ## Tip {.callout}
@@ -75,7 +81,8 @@ temp
 
 Why go to all this trouble? Well, here's a function called `span` that calculates the difference between the minimum and maximum values in an array:
 
-```{r}
+
+```r
 span <- function(a) {
   diff <- max(a) - min(a)
   return(diff)
@@ -86,15 +93,24 @@ dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 span(dat)
 ```
 
+```
+## [1] 20
+```
+
 Notice `span` assigns a value to variable called `diff`. We might very well use a variable with the same name (`diff`) to hold the inflammation data:
 
-```{r}
+
+```r
 diff <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 # span of inflammation data
 span(diff)
 ```
 
-We don't expect the variable `diff` to have the value `r span(diff)` after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
+```
+## [1] 20
+```
+
+We don't expect the variable `diff` to have the value 20 after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
 And yes, we could probably choose a different name than `diff` for our variable in this case, but we don't want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.
 
 The big idea here is [encapsulation](reference.html#encapsulation), and it's the key to writing correct, comprehensible programs.
@@ -106,7 +122,8 @@ That only works if functions don't interfere with each other; if they do, we hav
 >  + We previously wrote functions called `fence` and `outside`.
 >    Draw a diagram showing how the call stack changes when we run the
 >    following:
-> ```{r, results="hide", eval = FALSE}
+> 
+> ```r
 > inner_vec <- "carbon"
 > outer_vec <- "+"
 > result <- outside(fence(inner_vec, outer_vec))
