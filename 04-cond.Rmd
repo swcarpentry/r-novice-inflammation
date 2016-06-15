@@ -70,7 +70,7 @@ After we are done generating the plots to be saved in the pdf file, we stop R fr
 > ## Tip {.callout}
 >
 > If you run `pdf` multiple times without running `dev.off`, you will save plots to the most recently opened file.
-> However, you won't won't be able to open the previous pdf files because the connections were not closed.
+> However, you won't be able to open the previous pdf files because the connections were not closed.
 > In order to get out of this situation, you'll need to run `dev.off` until all the pdf connections are closed.
 > You can check your current status using the function `dev.cur`.
 > If it says "pdf", all your plots are being saved in the last pdf specified.
@@ -194,7 +194,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 > ```
 >
->  + One of your collaborators prefers to see the distributions of the larger vectors as a histogram instead of as a boxplot.  In order to choose between a histogram and a boxplot we will edit the function `plot_dist` and add an additional argument `use_boxplot`.  By defualt we will set `use_boxplot` to `TRUE` which will create a boxplot when the vector is longer than `threshold`.  When `use_boxplot` is set to `FALSE`, `plot_dist` will instead plot a histogram for the larger vectors.  As before, if the length of the vector is shorter than `threshold`, `plot_dist` will create a stripchart.  A histogram is made with the `hist` command in R.
+>  + One of your collaborators prefers to see the distributions of the larger vectors as a histogram instead of as a boxplot.  In order to choose between a histogram and a boxplot we will edit the function `plot_dist` and add an additional argument `use_boxplot`.  By default we will set `use_boxplot` to `TRUE` which will create a boxplot when the vector is longer than `threshold`.  When `use_boxplot` is set to `FALSE`, `plot_dist` will instead plot a histogram for the larger vectors.  As before, if the length of the vector is shorter than `threshold`, `plot_dist` will create a stripchart.  A histogram is made with the `hist` command in R.
 >
 > ```{r conditional-challenge-hist, echo=-1}
 > plot_dist <- function(x, threshold, use_boxplot = TRUE) {
@@ -291,7 +291,7 @@ Now we can save all of the results with just one line of code:
 analyze_all("inflammation")
 ```
 
-Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analzye_all`.
+Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analyze_all`.
 
 > ## Challenge - Changing the behaviour of the plot command {.challenge}
 >
@@ -332,5 +332,5 @@ analyze <- function(filename, output = NULL) {
 > ## Next Steps {.callout}
 >
 > We have now seen the basics of interactively building R code.
-> The last thing we need to learn is how to build command-line programs that we can use in pipelines and shell scripts, so that we can integrate our tools with other people's work.
-> This will be the subject of our next and final lesson.
+> The next thing we need to learn is how to build command-line programs that we can use in pipelines and shell scripts, so that we can integrate our tools with other people's work.
+> This will be the subject of our next lesson.
