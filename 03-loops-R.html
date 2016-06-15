@@ -30,7 +30,7 @@
           <h2 class="subtitle">Analyzing multiple data sets</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -100,7 +100,7 @@ print_words &lt;-<span class="st"> </span>function(sentence) {
 </code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>R has has a special variable, <code>NA</code>, for designating missing values that are <strong>N</strong>ot <strong>A</strong>vailable in a data set. See <code>?NA</code> and <a href="http://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values">An Introduction to R</a> for more details.</p>
@@ -165,7 +165,7 @@ letter</code></pre>
 <p><code>length</code> is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven’t met yet, so we should always use it when we can (see this <a href="01-supp-data-structures.html">lesson</a> to learn more about the different ways to store data in R).</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Using loops</h2>
+<h2 id="challenge---using-loops"><span class="glyphicon glyphicon-pencil"></span>Challenge - Using loops</h2>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
@@ -215,14 +215,18 @@ letter</code></pre>
 [17] &quot;small-02.csv&quot;           &quot;small-03.csv&quot;          
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;inflammation&quot;</span>)</code></pre>
-<pre class="output"><code> [1] &quot;inflammation-01.csv&quot; &quot;inflammation-02.csv&quot; &quot;inflammation-03.csv&quot;
- [4] &quot;inflammation-04.csv&quot; &quot;inflammation-05.csv&quot; &quot;inflammation-06.csv&quot;
- [7] &quot;inflammation-07.csv&quot; &quot;inflammation-08.csv&quot; &quot;inflammation-09.csv&quot;
-[10] &quot;inflammation-10.csv&quot; &quot;inflammation-11.csv&quot; &quot;inflammation-12.csv&quot;
+<pre class="output"><code> [1] &quot;inflammation-01.csv&quot; &quot;inflammation-01.pdf&quot; &quot;inflammation-02.csv&quot;
+ [4] &quot;inflammation-02.pdf&quot; &quot;inflammation-03.csv&quot; &quot;inflammation-03.pdf&quot;
+ [7] &quot;inflammation-04.csv&quot; &quot;inflammation-04.pdf&quot; &quot;inflammation-05.csv&quot;
+[10] &quot;inflammation-05.pdf&quot; &quot;inflammation-06.csv&quot; &quot;inflammation-06.pdf&quot;
+[13] &quot;inflammation-07.csv&quot; &quot;inflammation-07.pdf&quot; &quot;inflammation-08.csv&quot;
+[16] &quot;inflammation-08.pdf&quot; &quot;inflammation-09.csv&quot; &quot;inflammation-09.pdf&quot;
+[19] &quot;inflammation-10.csv&quot; &quot;inflammation-10.pdf&quot; &quot;inflammation-11.csv&quot;
+[22] &quot;inflammation-11.pdf&quot; &quot;inflammation-12.csv&quot; &quot;inflammation-12.pdf&quot;
 </code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip-1"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>For larger projects, it is recommended to organize separate parts of the analysis into multiple subdirectories, e.g. one subdirectory for the raw data, one for the code, and one for the results like figures. We have done that here to some extent, putting all of our data files into the subdirectory “data”. For more advice on this topic, you can read <a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424">A quick guide to organizing computational biology projects</a> by William Stafford Noble.</p>
@@ -242,12 +246,18 @@ letter</code></pre>
 [17] &quot;data/small-02.csv&quot;           &quot;data/small-03.csv&quot;          
 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;inflammation&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</code></pre>
-<pre class="output"><code> [1] &quot;data/inflammation-01.csv&quot; &quot;data/inflammation-02.csv&quot;
- [3] &quot;data/inflammation-03.csv&quot; &quot;data/inflammation-04.csv&quot;
- [5] &quot;data/inflammation-05.csv&quot; &quot;data/inflammation-06.csv&quot;
- [7] &quot;data/inflammation-07.csv&quot; &quot;data/inflammation-08.csv&quot;
- [9] &quot;data/inflammation-09.csv&quot; &quot;data/inflammation-10.csv&quot;
-[11] &quot;data/inflammation-11.csv&quot; &quot;data/inflammation-12.csv&quot;
+<pre class="output"><code> [1] &quot;data/inflammation-01.csv&quot; &quot;data/inflammation-01.pdf&quot;
+ [3] &quot;data/inflammation-02.csv&quot; &quot;data/inflammation-02.pdf&quot;
+ [5] &quot;data/inflammation-03.csv&quot; &quot;data/inflammation-03.pdf&quot;
+ [7] &quot;data/inflammation-04.csv&quot; &quot;data/inflammation-04.pdf&quot;
+ [9] &quot;data/inflammation-05.csv&quot; &quot;data/inflammation-05.pdf&quot;
+[11] &quot;data/inflammation-06.csv&quot; &quot;data/inflammation-06.pdf&quot;
+[13] &quot;data/inflammation-07.csv&quot; &quot;data/inflammation-07.pdf&quot;
+[15] &quot;data/inflammation-08.csv&quot; &quot;data/inflammation-08.pdf&quot;
+[17] &quot;data/inflammation-09.csv&quot; &quot;data/inflammation-09.pdf&quot;
+[19] &quot;data/inflammation-10.csv&quot; &quot;data/inflammation-10.pdf&quot;
+[21] &quot;data/inflammation-11.csv&quot; &quot;data/inflammation-11.pdf&quot;
+[23] &quot;data/inflammation-12.csv&quot; &quot;data/inflammation-12.pdf&quot;
 </code></pre>
 <p>Let’s test out running our <code>analyze</code> function by using it on the first three files in the vector returned by <code>list.files</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">filenames &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;inflammation&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)
@@ -258,17 +268,27 @@ for (f in filenames) {
 }</code></pre>
 <pre class="output"><code>[1] &quot;data/inflammation-01.csv&quot;
 </code></pre>
-<p><img src="fig/03-loops-R-loop-analyze-1.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-2.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-3.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
-<pre class="output"><code>[1] &quot;data/inflammation-02.csv&quot;
+<p><img src="fig/03-loops-R-loop-analyze-1.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-2.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
+<pre class="output"><code>[1] &quot;data/inflammation-01.pdf&quot;
 </code></pre>
-<p><img src="fig/03-loops-R-loop-analyze-4.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-5.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-6.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
-<pre class="output"><code>[1] &quot;data/inflammation-03.csv&quot;
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
 </code></pre>
-<p><img src="fig/03-loops-R-loop-analyze-7.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-8.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="fig/03-loops-R-loop-analyze-9.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in min(x): no non-missing arguments to min; returning Inf
+</code></pre>
+<pre class="error"><code>Warning in max(x): no non-missing arguments to max; returning -Inf
+</code></pre>
+<p><img src="fig/03-loops-R-loop-analyze-3.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
+<pre class="error"><code>Error in plot.window(...): need finite &#39;ylim&#39; values
+</code></pre>
+<p><img src="fig/03-loops-R-loop-analyze-4.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /></p>
 <p>Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip-2"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>In this lesson we saw how to use a simple <code>for</code> loop to repeat an operation. As you progress with R, you will learn that there are multiple ways to accomplish this. Sometimes the choice of one method over another is more a matter of personal style, but other times it can have consequences for the speed of your code. For instruction on best practices, see this supplementary <a href="03-supp-loops-in-depth.html">lesson</a> that demonstrates how to properly repeat operations in R.</p>
@@ -276,7 +296,7 @@ for (f in filenames) {
 </aside>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Using loops to analyze multiple files</h2>
+<h2 id="challenge---using-loops-to-analyze-multiple-files"><span class="glyphicon glyphicon-pencil"></span>Challenge - Using loops to analyze multiple files</h2>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
@@ -286,7 +306,7 @@ for (f in filenames) {
 </section>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
+<h2 id="key-points"><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -299,7 +319,7 @@ for (f in filenames) {
 </aside>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Next Steps</h2>
+<h2 id="next-steps"><span class="glyphicon glyphicon-pushpin"></span>Next Steps</h2>
 </div>
 <div class="panel-body">
 <p>We have now solved our original problem: we can analyze any number of data files with a single command. More importantly, we have met two of the most important ideas in programming:</p>

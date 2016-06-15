@@ -30,8 +30,8 @@
           <h2 class="subtitle">The call stack</h2>
           <h3 id="the-call-stack">The Call Stack</h3>
 <p>Let’s take a closer look at what happens when we call <code>fahr_to_celsius(32)</code>. To make things clearer, we’ll start by putting the initial value 32 in a variable and store the final result in one as well:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">original &lt;-<span class="st"> </span><span class="dv">32</span>
-final &lt;-<span class="st"> </span><span class="kw">fahr_to_celsius</span>(original)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">original &lt;-<span class="st"> </span><span class="dv">32</span>
+final &lt;-<span class="st"> </span><span class="kw">fahr_to_celsius</span>(original)</code></pre>
 <p>The diagram below shows what memory looks like after the first line has been executed:</p>
 <p><img src="fig/python-call-stack-01.svg" alt="Call Stack (Initial State)" /></p>
 <p>When we call <code>fahr_to_celsius</code>, R <em>doesn’t</em> create the variable <code>temp</code> right away. Instead, it creates something called a <a href="reference.html#stack-frame">stack frame</a> to keep track of the variables defined by <code>fahr_to_kelvin</code>. Initially, this stack frame only holds the value of <code>temp</code>:</p>
@@ -48,7 +48,7 @@ final &lt;-<span class="st"> </span><span class="kw">fahr_to_celsius</span>(orig
 <p>Finally, when <code>fahr_to_celsius</code> is done, R throws away <em>its</em> stack frame and puts its result in a new variable called <code>final</code> that lives in the stack frame we started with:</p>
 <p><img src="fig/python-call-stack-07.svg" alt="Call Stack After All Functions Have Finished" /></p>
 <p>This final stack frame is always there; it holds the variables we defined outside the functions in our code. What it <em>doesn’t</em> hold is the variables that were in the various stack frames. If we try to get the value of <code>temp</code> after our functions have finished running, R tells us that there’s no such thing:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">temp</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;temp&#39; not found</code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
@@ -59,19 +59,19 @@ final &lt;-<span class="st"> </span><span class="kw">fahr_to_celsius</span>(orig
 </div>
 </aside>
 <p>Why go to all this trouble? Well, here’s a function called <code>span</code> that calculates the difference between the minimum and maximum values in an array:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">span &lt;-<span class="st"> </span>function(a) {
+<pre class="sourceCode r"><code class="sourceCode r">span &lt;-<span class="st"> </span>function(a) {
   diff &lt;-<span class="st"> </span><span class="kw">max</span>(a) -<span class="st"> </span><span class="kw">min</span>(a)
   <span class="kw">return</span>(diff)
 }
 
 dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)
 <span class="co"># span of inflammation data</span>
-<span class="kw">span</span>(dat)</code></pre></div>
+<span class="kw">span</span>(dat)</code></pre>
 <pre><code>## [1] 20</code></pre>
 <p>Notice <code>span</code> assigns a value to variable called <code>diff</code>. We might very well use a variable with the same name (<code>diff</code>) to hold the inflammation data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diff &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">diff &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)
 <span class="co"># span of inflammation data</span>
-<span class="kw">span</span>(diff)</code></pre></div>
+<span class="kw">span</span>(diff)</code></pre>
 <pre><code>## [1] 20</code></pre>
 <p>We don’t expect the variable <code>diff</code> to have the value 20 after this function call, so the name <code>diff</code> cannot refer to the same variable defined inside <code>span</code> as it does in as it does in the main body of our program (which R refers to as the global environment). And yes, we could probably choose a different name than <code>diff</code> for our variable in this case, but we don’t want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.</p>
 <p>The big idea here is <a href="reference.html#encapsulation">encapsulation</a>, and it’s the key to writing correct, comprehensible programs. A function’s job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something. That only works if functions don’t interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.</p>
@@ -83,9 +83,9 @@ dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="
 <ul>
 <li>We previously wrote functions called <code>fence</code> and <code>outside</code>. Draw a diagram showing how the call stack changes when we run the following:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">inner_vec &lt;-<span class="st"> &quot;carbon&quot;</span>
+<pre class="sourceCode r"><code class="sourceCode r">inner_vec &lt;-<span class="st"> &quot;carbon&quot;</span>
 outer_vec &lt;-<span class="st"> &quot;+&quot;</span>
-result &lt;-<span class="st"> </span><span class="kw">outside</span>(<span class="kw">fence</span>(inner_vec, outer_vec))</code></pre></div>
+result &lt;-<span class="st"> </span><span class="kw">outside</span>(<span class="kw">fence</span>(inner_vec, outer_vec))</code></pre>
 </div>
 </section>
         </div>
@@ -102,5 +102,15 @@ result &lt;-<span class="st"> </span><span class="kw">outside</span>(<span class
     <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
     <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-37305346-2', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
   </body>
 </html>

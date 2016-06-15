@@ -23,7 +23,7 @@ Lets start by loading some sample data:
 
 
 ~~~{.r}
-dat<-read.csv(file='data/sample.csv',header=TRUE, stringsAsFactors=FALSE)
+dat <- read.csv(file = 'data/sample.csv', header = TRUE, stringsAsFactors = FALSE)
 ~~~
 
 > ## Tip {.callout} 
@@ -139,7 +139,7 @@ Finally we can use the `c()` (combine) function to address non-sequential rows a
 
 
 ~~~{.r}
-dat[c(1,5,7,9),1:5]
+dat[c(1,5,7,9), 1:5]
 ~~~
 
 
@@ -202,7 +202,7 @@ dat$Gender
 Named addressing can also be used in square brackets.
 
 ~~~{.r}
-head(dat[,c('Age','Gender')])
+head(dat[,c('Age', 'Gender')])
 ~~~
 
 
@@ -228,7 +228,7 @@ A logical vector contains only the special values `TRUE` & `FALSE`.
 
 
 ~~~{.r}
-c(TRUE,TRUE,FALSE,FALSE,TRUE)
+c(TRUE, TRUE, FALSE, FALSE, TRUE)
 ~~~
 
 
@@ -245,7 +245,7 @@ Logical vectors can be created using `relational operators` e.g. `<, >, ==, !=, 
 
 
 ~~~{.r}
-x<-c(1,2,3,11,12,13)
+x <- c(1, 2, 3, 11, 12, 13)
 x < 10
 ~~~
 
@@ -289,7 +289,7 @@ Often this operation is written as one line of code:
 
 
 ~~~{.r}
-plot(dat[dat$Group=='Control',]$BloodPressure)
+plot(dat[dat$Group == 'Control',]$BloodPressure)
 ~~~
 
 <img src="fig/logical_vectors_indexing2-1.png" title="plot of chunk logical_vectors_indexing2" alt="plot of chunk logical_vectors_indexing2" style="display: block; margin: auto;" />
@@ -304,7 +304,7 @@ The assignment operator `<-` can be combined with indexing.
 
 
 ~~~{.r}
-x<-c(1,2,3,11,12,13)
+x <- c(1, 2, 3, 11, 12, 13)
 x[x < 10] <- 0
 x
 ~~~

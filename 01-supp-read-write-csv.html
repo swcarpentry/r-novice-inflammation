@@ -30,7 +30,7 @@
           <h2 class="subtitle">Reading and writing .csv</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -57,7 +57,7 @@ carSpeeds &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span c
 </code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>The default delimiter of the <code>read.csv()</code> function is a comma, but you can use other delimiters by supplying the ‘sep’ argument to the function (e.g., typing <code>sep = ';'</code> allows a semi-colon separated file to be correctly imported -see <code>?read.csv()</code> for more information on this and other options for working with different file types).</p>
@@ -162,7 +162,7 @@ carSpeeds$State</code></pre>
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Updating values in a factor</h2>
+<h2 id="challenge---updating-values-in-a-factor"><span class="glyphicon glyphicon-pencil"></span>Challenge - Updating values in a factor</h2>
 </div>
 <div class="panel-body">
 <p>Suppose we want to keep the colors of cars as factors for some other operations we want to perform. Write code for replacing ‘Blue’ with ‘Green’ in the <code>$Color</code> column of the cars dataset without importing the data with <code>stringsAsFactors=FALSE</code>.</p>
@@ -199,7 +199,7 @@ Levels:  Red Black Green Red White
 <p><img src="fig/01-supp-csv-without-row-nums.png" alt="csv written with row.names argument" /></p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip-1"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>there is also a <code>col.names</code> argument, which can be used to set the column names for a data set without headers. If the data set already has headers (e.g., we used the <code>headers = TRUE</code> argument when importing the data) then a <code>col.names</code> argument will be ignored.</p>
@@ -226,7 +226,7 @@ carSpeeds$Speed[<span class="dv">3</span>]&lt;-<span class="ot">NA</span>
 <p><img src="fig/01-supp-csv-with-special-NA.png" alt="csv written with -9999 as NA" /></p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
+<h2 id="key-points"><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -245,7 +245,7 @@ carSpeeds$Speed[<span class="dv">3</span>]&lt;-<span class="ot">NA</span>
 </aside>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Next Steps</h2>
+<h2 id="next-steps"><span class="glyphicon glyphicon-pushpin"></span>Next Steps</h2>
 </div>
 <div class="panel-body">
 <p>We have now explored data import and export from .csv files. There are several more arguments available for both the <code>read.csv(...)</code> and <code>write.csv(...)</code> functions, as well as similar options for working with data that are stored in other text formats (e.g., .txt). To find out more, use the R help commands ‘?read.csv()’ and ‘?write.csv()’.</p>
