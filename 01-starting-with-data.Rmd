@@ -41,7 +41,7 @@ To do all that, we'll have to learn a little bit about programming.
 To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is `inflammation-01.csv`. This is very important in R, if we forget this step we’ll get an error message when trying to read the file. We can change the current working directory using the function `setwd`. For this example, we change the path to the directory we just created:
 
 ```{r,eval=FALSE}
-setwd("~/Desktop/r-novice-inflammation/)
+setwd("~/Desktop/r-novice-inflammation/")
 ```
 
 Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
@@ -150,7 +150,7 @@ weight_lb
 Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes.
 This is different from the way spreadsheets work.
 
-> ## Tip {.callout} 
+> ## Tip {.callout}
 >An alternative way to print the value of a variable is to use () around the assignment statement. As an example: `(total_weight <- weight_kg + weight_lb)`, adds the values of `weight_kg` and `weight_lb`, assigns the result to the `total_weight`, and finally prints the assigned value of the variable `total_weight`.
 
 
@@ -381,7 +381,7 @@ The maximum value rises and falls perfectly smoothly, while the minimum seems to
 > * The function `dim` gives the dimensions of a data frame.
 > * Use `object[x, y]` to select a single element from a data frame.
 > * Use `from:to` to specify a sequence that includes the indices from `from` to
->`to`. 
+>`to`.
 > * All the indexing and slicing that works on data frames also works on vectors.
 > * Use `#` to add comments to programs.
 > * Use `mean`, `max`, `min` and `sd` to calculate simple statistics.
