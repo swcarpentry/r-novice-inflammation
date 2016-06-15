@@ -456,6 +456,21 @@ max(patient_1)
 
 ~~~
 
+> ## Tip {.callout}
+>
+> On some installations of R, the code above may give you an error, since R does not automatically convert a sliced row of a `data.frame` to a vector. (Confusingly, sliced columns are automatically converted.)
+> If this happens, you can use the `as.numeric` command to convert the row of data to a numeric vector:
+> 
+> `patient_1 <- as.numeric(dat[1, ])`
+>
+> `max(patient_1)`
+>
+> You can also check the `class` of each object:
+>
+> `class(dat[1, ])`
+>
+> `class(as.numeric(dat[1, ]))`
+
 We don't actually need to store the row in a variable of its own.
 Instead, we can combine the selection and the function call:
 
