@@ -249,6 +249,19 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 <span class="kw">max</span>(patient_1)</code></pre></div>
 <pre class="output"><code>[1] 18
 </code></pre>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="tip-3"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
+<p>On some installations of R, the code above may give you an error, since R does not automatically convert a sliced row of a <code>data.frame</code> to a vector. (Confusingly, sliced columns are automatically converted.) If this happens, you can use the <code>as.numeric</code> command to convert the row of data to a numeric vector:</p>
+<p><code>patient_1 &lt;- as.numeric(dat[1, ])</code></p>
+<p><code>max(patient_1)</code></p>
+<p>You can also check the <code>class</code> of each object:</p>
+<p><code>class(dat[1, ])</code></p>
+<p><code>class(as.numeric(dat[1, ]))</code></p>
+</div>
+</aside>
 <p>We don’t actually need to store the row in a variable of its own. Instead, we can combine the selection and the function call:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># max inflammation for patient 2</span>
 <span class="kw">max</span>(dat[<span class="dv">2</span>, ])</code></pre></div>
@@ -276,7 +289,7 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 <p>To support this, we can use the <code>apply</code> function.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-3"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip-4"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>To learn about a function in R, e.g. <code>apply</code>, we can read its help documention by running <code>help(apply)</code> or <code>?apply</code>.</p>
@@ -290,7 +303,7 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 <p>Since the second argument to <code>apply</code> is <code>MARGIN</code>, the above command is equivalent to <code>apply(dat, MARGIN = 2, mean)</code>. We’ll learn why this is so in the next lesson.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-4"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip-5"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>Some common operations have more efficient alternatives. For example, you can calculate the row-wise or column-wise means with <code>rowMeans</code> and <code>colMeans</code>, respectively.</p>
