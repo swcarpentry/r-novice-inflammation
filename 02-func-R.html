@@ -91,7 +91,19 @@
 <span class="kw">fahr_to_celsius</span>(<span class="fl">32.0</span>)</code></pre></div>
 <pre class="output"><code>[1] 0
 </code></pre>
-<p>This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-large chunks to get the effect we want. Real-life functions will usually be larger than the ones shown here–typically half a dozen to a few dozen lines–but they shouldn’t ever be much longer than that, or the next person who reads it won’t be able to understand what’s going on.</p>
+<p>This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-larger chunks to get the effect we want. Real-life functions will usually be larger than the ones shown here–typically half a dozen to a few dozen lines–but they shouldn’t ever be much longer than that, or the next person who reads it won’t be able to understand what’s going on.</p>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="tip-1"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
+<p>This example showed the output of <code>fahr_to_kelvin</code> assigned to <code>temp_k</code>, which is then passed to <code>kelvin_to_celsius</code> to get the final result. It is also possible to perform this calculation in one line of code, by “chaining” functions together, like so:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freezing point of water in Celsius</span>
+<span class="kw">kelvin_to_celsius</span>(<span class="kw">fahr_to_kelvin</span>(<span class="fl">32.0</span>))</code></pre></div>
+<pre class="output"><code>[1] 0
+</code></pre>
+</div>
+</aside>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2 id="challenge---create-a-function"><span class="glyphicon glyphicon-pencil"></span>Challenge - Create a function</h2>
@@ -198,7 +210,7 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 }</code></pre></div>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-1"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip-2"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>Formal documentation for R functions is written in separate <code>.Rd</code> using a markup language similar to <a href="http://www.latex-project.org/">LaTeX</a>. You see the result of this documentation when you look at the help file for a given function, e.g. <code>?read.csv</code>. The <a href="http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html">roxygen2</a> package allows R coders to write documentation alongside the function code and then process it into the appropriate <code>.Rd</code> files. You will want to switch to this more formal method of writing documentation when you start writing more complicated R projects.</p>
@@ -281,7 +293,7 @@ more_data</code></pre></div>
 </code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-2"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip-3"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>To be precise, R has three ways that arguments supplied</p>
