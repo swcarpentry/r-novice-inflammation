@@ -58,7 +58,7 @@
 <p>To do all that, we’ll have to learn a little bit about programming.</p>
 <h3 id="loading-data">Loading Data</h3>
 <p>To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is <code>inflammation-01.csv</code>. This is very important in R, if we forget this step we’ll get an error message when trying to read the file. We can change the current working directory using the function <code>setwd</code>. For this example, we change the path to the directory we just created:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;~/Desktop/r-novice-inflammation/)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;~/Desktop/r-novice-inflammation/&quot;</span>)</code></pre></div>
 <p>Just like in the Unix Shell, we type the command and then press <code>Enter</code> (or <code>return</code>). Alternatively you can change the working directory using the RStudio GUI using the menu option <code>Session</code> -&gt; <code>Set Working Directory</code> -&gt; <code>Choose Directory...</code></p>
 <p>The data files are located in the directory <code>data</code> inside the working directory. Now we can load the data into R using <code>read.csv</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)</code></pre></div>
@@ -242,6 +242,14 @@ dat[, <span class="dv">16</span>]</code></pre></div>
 [24] 13  4  9 13  6  7  6 14  3 15  4 15 11  7 10 15  6  5  6 15 11 15  6
 [47] 11 15 14  4 10 15 11  6 13  8  4 13 12  9
 </code></pre>
+<aside class="callout panel panel-info">
+<div class="panel-heading">
+<h2 id="tip-3"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+</div>
+<div class="panel-body">
+<p>Columns can also be addressed by name, with either the <code>$</code> operator (ie. <code>dat$Age</code>) or square brackets (ie. <code>dat[,'Age']</code>). You can learn more about subsetting by column name in this supplementary <a href="01-supp-addressing-data.html">lesson</a>.</p>
+</div>
+</aside>
 <p>Now let’s perform some common mathematical operations to learn about our inflammation data. When analyzing data we often want to look at partial statistics, such as the maximum value per patient or the average value per day. One way to do this is to select the data we want to create a new temporary data frame, and then perform the calculation on this subset:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># first row, all of the columns</span>
 patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
@@ -251,7 +259,7 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 </code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-3"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip-4"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>On some installations of R, the code above may give you an error, since R does not automatically convert a sliced row of a <code>data.frame</code> to a vector. (Confusingly, sliced columns are automatically converted.) If this happens, you can use the <code>as.numeric</code> command to convert the row of data to a numeric vector:</p>
@@ -289,7 +297,7 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 <p>To support this, we can use the <code>apply</code> function.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-4"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip-5"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>To learn about a function in R, e.g. <code>apply</code>, we can read its help documention by running <code>help(apply)</code> or <code>?apply</code>.</p>
@@ -303,7 +311,7 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 <p>Since the second argument to <code>apply</code> is <code>MARGIN</code>, the above command is equivalent to <code>apply(dat, MARGIN = 2, mean)</code>. We’ll learn why this is so in the next lesson.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2 id="tip-5"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip-6"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>Some common operations have more efficient alternatives. For example, you can calculate the row-wise or column-wise means with <code>rowMeans</code> and <code>colMeans</code>, respectively.</p>
@@ -412,10 +420,10 @@ animal[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre></div>
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
+    
       ga('create', 'UA-37305346-2', 'auto');
       ga('send', 'pageview');
-
+    
     </script>
   </body>
 </html>

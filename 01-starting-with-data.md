@@ -43,7 +43,7 @@ To load our inflammation data, first we need to tell our computer where is the f
 
 
 ~~~{.r}
-setwd("~/Desktop/r-novice-inflammation/)
+setwd("~/Desktop/r-novice-inflammation/")
 ~~~
 
 Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
@@ -218,7 +218,7 @@ weight_lb
 Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes.
 This is different from the way spreadsheets work.
 
-> ## Tip {.callout} 
+> ## Tip {.callout}
 >An alternative way to print the value of a variable is to use () around the assignment statement. As an example: `(total_weight <- weight_kg + weight_lb)`, adds the values of `weight_kg` and `weight_lb`, assigns the result to the `total_weight`, and finally prints the assigned value of the variable `total_weight`.
 
 
@@ -436,6 +436,11 @@ dat[, 16]
 [47] 11 15 14  4 10 15 11  6 13  8  4 13 12  9
 
 ~~~
+
+> ## Tip {.callout}
+>
+> Columns can also be addressed by name, with either the `$` operator (ie. `dat$Age`) or square brackets (ie. `dat[,'Age']`).
+> You can learn more about subsetting by column name in this supplementary [lesson](01-supp-addressing-data.html).
 
 Now let's perform some common mathematical operations to learn about our inflammation data.
 When analyzing data we often want to look at partial statistics, such as the maximum value per patient or the average value per day.
@@ -685,7 +690,7 @@ The maximum value rises and falls perfectly smoothly, while the minimum seems to
 > * The function `dim` gives the dimensions of a data frame.
 > * Use `object[x, y]` to select a single element from a data frame.
 > * Use `from:to` to specify a sequence that includes the indices from `from` to
->`to`. 
+>`to`.
 > * All the indexing and slicing that works on data frames also works on vectors.
 > * Use `#` to add comments to programs.
 > * Use `mean`, `max`, `min` and `sd` to calculate simple statistics.
