@@ -256,11 +256,13 @@ max(patient_1)
 > If this happens, you can use the `as.numeric` command to convert the row of data to a numeric vector:
 > 
 > `patient_1 <- as.numeric(dat[1, ])`
+>
 > `max(patient_1)`
 >
 > You can also check the `class` of each object:
 >
 > `class(dat[1, ])`
+>
 > `class(as.numeric(dat[1, ]))`
 
 We don't actually need to store the row in a variable of its own.
