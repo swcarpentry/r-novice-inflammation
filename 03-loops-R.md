@@ -503,7 +503,7 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 >
 > Consider a vector with different words:
 >     ~~~
->     some_words <- c('Just', 'an', 'example','for', 'class') 
+>     words <- c('Just', 'an', 'example','for', 'class') 
 >     ~~~
 >
 > Which construction is a correct formulation of a loop to print TRUE if the 
