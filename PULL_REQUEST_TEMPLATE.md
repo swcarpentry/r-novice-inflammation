@@ -1,4 +1,4 @@
-Thank you for pull request! If you are proposing a change to one of the lesson,
+Thank you for submitting a pull request! If you are proposing a change to one of the lessons,
 please make sure that:
 
 [ ] You are only committing the `.Rmd` file (the `md` and `html` files will be
