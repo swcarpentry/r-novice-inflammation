@@ -498,11 +498,52 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 > [lesson](03-supp-loops-in-depth.html) that demonstrates how to properly repeat
 > operations in R.
 
+
+> ## Challenge - Review loops element {.challenge}
+>
+> Consider a vector with different words:
+>     ~~~
+>     some_words <- c('Just', 'an', 'example','for', 'class') 
+>     ~~~
+>
+> Which construction is a correct formulation of a loop to print TRUE if the 
+> number of letters in a word correspond to the position of the word in the 
+> vector?  e.g. words[1] should have length 1.
+> TIP: the nchar function returns the number of characters in a string. 
+> 
+> 1. 
+>
+>     ~~~
+>     for(i in 1:length(words)){
+>       print(nchar(words[i]) == i)
+>     }
+>     ~~~
+> 2. 
+>
+>     ~~~
+>     for(i in length(words)){
+>       print(nchar(words[i]) == i)
+>     }
+>     ~~~
+> 3. 
+>
+>     ~~~
+>     for(i:length(words)){
+>       print(nchar(words[i]) == i)
+>     }
+>     ~~~
+> 4. 
+>
+>     ~~~
+>     for(i in words){
+>       print(nchar(words[i]) == i)
+>     }
+>     ~~~
+>
+
 > ## Challenge - Using loops to analyze multiple files {.challenge}
 >
 > 1. Write a function called `analyze_all` that takes a filename pattern as its sole argument and runs `analyze` for each file whose name matches the pattern.
-
-
 
 > ## Key Points {.callout}
 >
