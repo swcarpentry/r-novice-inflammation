@@ -52,7 +52,10 @@ a <- 1:10
 b <- 1:10
 ~~~
 
-you could loop over the pairs adding each in turn, but that would be very inefficient in R.
+You could loop over the pairs adding each in turn, but that would be very inefficient in R.
+
+Instead of using `i in a` to make our loop variable, we use the function `seq_along` to generate indices for each element `a` contains.
+
 
 
 ~~~{.r}
@@ -200,9 +203,249 @@ system.time(avg2 <- analyze2(filenames))
 
 
 
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
 ~~~{.output}
    user  system elapsed 
-  0.078   0.006   0.152 
+  0.095   0.002   0.098 
 
 ~~~
 
@@ -229,9 +472,249 @@ system.time(avg3 <- analyze3(filenames))
 
 
 
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+
+~~~
+
+
+
+~~~{.error}
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+
+~~~
+
+
+
+~~~{.error}
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+
+~~~
+
+
+
 ~~~{.output}
    user  system elapsed 
-  0.048   0.002   0.052 
+  0.093   0.002   0.097 
 
 ~~~
 

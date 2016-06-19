@@ -45,10 +45,10 @@
 <p>If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics. But we have twelve files to check, and may have more in the future. In this lesson, we’ll learn how to write a function so that we can repeat several operations with a single command.</p>
 <h3 id="defining-a-function">Defining a Function</h3>
 <p>Let’s start by defining a function <code>fahr_to_kelvin</code> that converts temperatures from Fahrenheit to Kelvin:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
+<pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
   kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span> /<span class="st"> </span><span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
   <span class="kw">return</span>(kelvin)
-}</code></pre></div>
+}</code></pre>
 <p>We define <code>fahr_to_kelvin</code> by assigning it to the output of <code>function</code>. The list of argument names are containted within parentheses. Next, the <a href="reference.html#function-body">body</a> of the function–the statements that are executed when it runs–is contained within curly braces (<code>{}</code>). The statements in the body are indented by two spaces, which makes the code easier to read but does not affect how the code operates.</p>
 <p>When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function. Inside the function, we use a <a href="reference.html#return-statement">return statement</a> to send a result back to whoever asked for it.</p>
 <aside class="callout panel panel-info">
@@ -60,35 +60,35 @@
 </div>
 </aside>
 <p>Let’s try running our function. Calling our own function is no different from calling any other function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freezing point of water</span>
-<span class="kw">fahr_to_kelvin</span>(<span class="dv">32</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freezing point of water</span>
+<span class="kw">fahr_to_kelvin</span>(<span class="dv">32</span>)</code></pre>
 <pre class="output"><code>[1] 273.15
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># boiling point of water</span>
-<span class="kw">fahr_to_kelvin</span>(<span class="dv">212</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># boiling point of water</span>
+<span class="kw">fahr_to_kelvin</span>(<span class="dv">212</span>)</code></pre>
 <pre class="output"><code>[1] 373.15
 </code></pre>
 <p>We’ve successfully called the function that we defined, and we have access to the value that we returned.</p>
 <h3 id="composing-functions">Composing Functions</h3>
 <p>Now that we’ve seen how to turn Fahrenheit into Kelvin, it’s easy to turn Kelvin into Celsius:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
+<pre class="sourceCode r"><code class="sourceCode r">kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
   celsius &lt;-<span class="st"> </span>temp -<span class="st"> </span><span class="fl">273.15</span>
   <span class="kw">return</span>(celsius)
 }
 
 <span class="co">#absolute zero in Celsius</span>
-<span class="kw">kelvin_to_celsius</span>(<span class="dv">0</span>)</code></pre></div>
+<span class="kw">kelvin_to_celsius</span>(<span class="dv">0</span>)</code></pre>
 <pre class="output"><code>[1] -273.15
 </code></pre>
 <p>What about converting Fahrenheit to Celsius? We could write out the formula, but we don’t need to. Instead, we can <a href="reference.html#function-composition">compose</a> the two functions we have already created:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fahr_to_celsius &lt;-<span class="st"> </span>function(temp) {
+<pre class="sourceCode r"><code class="sourceCode r">fahr_to_celsius &lt;-<span class="st"> </span>function(temp) {
   temp_k &lt;-<span class="st"> </span><span class="kw">fahr_to_kelvin</span>(temp)
   result &lt;-<span class="st"> </span><span class="kw">kelvin_to_celsius</span>(temp_k)
   <span class="kw">return</span>(result)
 }
 
 <span class="co"># freezing point of water in Celsius</span>
-<span class="kw">fahr_to_celsius</span>(<span class="fl">32.0</span>)</code></pre></div>
+<span class="kw">fahr_to_celsius</span>(<span class="fl">32.0</span>)</code></pre>
 <pre class="output"><code>[1] 0
 </code></pre>
 <p>This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-larger chunks to get the effect we want. Real-life functions will usually be larger than the ones shown here–typically half a dozen to a few dozen lines–but they shouldn’t ever be much longer than that, or the next person who reads it won’t be able to understand what’s going on.</p>
@@ -98,8 +98,8 @@
 </div>
 <div class="panel-body">
 <p>This example showed the output of <code>fahr_to_kelvin</code> assigned to <code>temp_k</code>, which is then passed to <code>kelvin_to_celsius</code> to get the final result. It is also possible to perform this calculation in one line of code, by “chaining” functions together, like so:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freezing point of water in Celsius</span>
-<span class="kw">kelvin_to_celsius</span>(<span class="kw">fahr_to_kelvin</span>(<span class="fl">32.0</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freezing point of water in Celsius</span>
+<span class="kw">kelvin_to_celsius</span>(<span class="kw">fahr_to_kelvin</span>(<span class="fl">32.0</span>))</code></pre>
 <pre class="output"><code>[1] 0
 </code></pre>
 </div>
@@ -112,18 +112,18 @@
 <ul>
 <li>In the last lesson, we learned to <strong>c</strong>oncatenate elements into a vector using the <code>c</code> function, e.g. <code>x &lt;- c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)</code> creates a vector <code>x</code> with three elements. Furthermore, we can extend that vector again using <code>c</code>, e.g. <code>y &lt;- c(x, &quot;D&quot;)</code> creates a vector <code>y</code> with four elements. Write a function called <code>fence</code> that takes two vectors as arguments, called <code>original</code> and <code>wrapper</code>, and returns a new vector that has the wrapper vector at the beginning and end of the original:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">best_practice &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Write&quot;</span>, <span class="st">&quot;programs&quot;</span>, <span class="st">&quot;for&quot;</span>, <span class="st">&quot;people&quot;</span>, <span class="st">&quot;not&quot;</span>, <span class="st">&quot;computers&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">best_practice &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Write&quot;</span>, <span class="st">&quot;programs&quot;</span>, <span class="st">&quot;for&quot;</span>, <span class="st">&quot;people&quot;</span>, <span class="st">&quot;not&quot;</span>, <span class="st">&quot;computers&quot;</span>)
 asterisk &lt;-<span class="st"> &quot;***&quot;</span>  <span class="co"># R interprets a variable with a single value as a vector</span>
                    <span class="co"># with one element.</span>
-<span class="kw">fence</span>(best_practice, asterisk)</code></pre></div>
+<span class="kw">fence</span>(best_practice, asterisk)</code></pre>
 <pre class="output"><code>[1] &quot;***&quot;       &quot;Write&quot;     &quot;programs&quot;  &quot;for&quot;       &quot;people&quot;    &quot;not&quot;      
 [7] &quot;computers&quot; &quot;***&quot;      
 </code></pre>
 <ul>
 <li>If the variable <code>v</code> refers to a vector, then <code>v[1]</code> is the vector’s first element and <code>v[length(v)]</code> is its last (the function <code>length</code> returns the number of elements in a vector). Write a function called <code>outside</code> that returns a vector made up of just the first and last elements of its input:</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dry_principle &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Don&#39;t&quot;</span>, <span class="st">&quot;repeat&quot;</span>, <span class="st">&quot;yourself&quot;</span>, <span class="st">&quot;or&quot;</span>, <span class="st">&quot;others&quot;</span>)
-<span class="kw">outside</span>(dry_principle)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">dry_principle &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Don&#39;t&quot;</span>, <span class="st">&quot;repeat&quot;</span>, <span class="st">&quot;yourself&quot;</span>, <span class="st">&quot;or&quot;</span>, <span class="st">&quot;others&quot;</span>)
+<span class="kw">outside</span>(dry_principle)</code></pre>
 <pre class="output"><code>[1] &quot;Don&#39;t&quot;  &quot;others&quot;
 </code></pre>
 </div>
@@ -138,76 +138,76 @@ asterisk &lt;-<span class="st"> &quot;***&quot;</span>  <span class="co"># R int
 </aside>
 <h3 id="testing-and-documenting">Testing and Documenting</h3>
 <p>Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly. To see how to do this, let’s write a function to center a dataset around a particular value:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, desired) {
+<pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, desired) {
   new_data &lt;-<span class="st"> </span>(data -<span class="st"> </span><span class="kw">mean</span>(data)) +<span class="st"> </span>desired
   <span class="kw">return</span>(new_data)
-}</code></pre></div>
+}</code></pre>
 <p>We could test this on our actual data, but since we don’t know what the values ought to be, it will be hard to tell if the result was correct. Instead, let’s create a vector of 0s and then center that around 3. This will make it simple to see if our function is working as expected:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)
-z</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)
+z</code></pre>
 <pre class="output"><code>[1] 0 0 0 0
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">center</span>(z, <span class="dv">3</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">center</span>(z, <span class="dv">3</span>)</code></pre>
 <pre class="output"><code>[1] 3 3 3 3
 </code></pre>
 <p>That looks right, so let’s try center on our real data. We’ll center the inflammation data from day 4 around 0:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)
 centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <span class="dv">4</span>], <span class="dv">0</span>)
-<span class="kw">head</span>(centered)</code></pre></div>
+<span class="kw">head</span>(centered)</code></pre>
 <pre class="output"><code>[1]  1.25 -0.75  1.25 -1.75  1.25  0.25
 </code></pre>
 <p>It’s hard to tell from the default output whether the result is correct, but there are a few simple tests that will reassure us:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># original min</span>
-<span class="kw">min</span>(dat[, <span class="dv">4</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># original min</span>
+<span class="kw">min</span>(dat[, <span class="dv">4</span>])</code></pre>
 <pre class="output"><code>[1] 0
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># original mean</span>
-<span class="kw">mean</span>(dat[, <span class="dv">4</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># original mean</span>
+<span class="kw">mean</span>(dat[, <span class="dv">4</span>])</code></pre>
 <pre class="output"><code>[1] 1.75
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># original max</span>
-<span class="kw">max</span>(dat[, <span class="dv">4</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># original max</span>
+<span class="kw">max</span>(dat[, <span class="dv">4</span>])</code></pre>
 <pre class="output"><code>[1] 3
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># centered min</span>
-<span class="kw">min</span>(centered)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># centered min</span>
+<span class="kw">min</span>(centered)</code></pre>
 <pre class="output"><code>[1] -1.75
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># centered mean</span>
-<span class="kw">mean</span>(centered)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># centered mean</span>
+<span class="kw">mean</span>(centered)</code></pre>
 <pre class="output"><code>[1] 0
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># centered max</span>
-<span class="kw">max</span>(centered)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># centered max</span>
+<span class="kw">max</span>(centered)</code></pre>
 <pre class="output"><code>[1] 1.25
 </code></pre>
 <p>That seems almost right: the original mean was about 1.75, so the lower bound from zero is now about -1.75. The mean of the centered data is 0. We can even go further and check that the standard deviation hasn’t changed:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># original standard deviation</span>
-<span class="kw">sd</span>(dat[, <span class="dv">4</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># original standard deviation</span>
+<span class="kw">sd</span>(dat[, <span class="dv">4</span>])</code></pre>
 <pre class="output"><code>[1] 1.067628
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># centerted standard deviation</span>
-<span class="kw">sd</span>(centered)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># centerted standard deviation</span>
+<span class="kw">sd</span>(centered)</code></pre>
 <pre class="output"><code>[1] 1.067628
 </code></pre>
 <p>Those values look the same, but we probably wouldn’t notice if they were different in the sixth decimal place. Let’s do this instead:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># difference in standard deviations before and after</span>
-<span class="kw">sd</span>(dat[, <span class="dv">4</span>]) -<span class="st"> </span><span class="kw">sd</span>(centered)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># difference in standard deviations before and after</span>
+<span class="kw">sd</span>(dat[, <span class="dv">4</span>]) -<span class="st"> </span><span class="kw">sd</span>(centered)</code></pre>
 <pre class="output"><code>[1] 0
 </code></pre>
 <p>Sometimes, a very small difference can be detected due to rounding at very low decimal places. R has a useful function for comparing two objects allowing for rounding errors, <code>all.equal</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">all.equal</span>(<span class="kw">sd</span>(dat[, <span class="dv">4</span>]), <span class="kw">sd</span>(centered))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">all.equal</span>(<span class="kw">sd</span>(dat[, <span class="dv">4</span>]), <span class="kw">sd</span>(centered))</code></pre>
 <pre class="output"><code>[1] TRUE
 </code></pre>
 <p>It’s still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis. We have one more task first, though: we should write some <a href="reference.html#documentation">documentation</a> for our function to remind ourselves later what it’s for and how to use it.</p>
 <p>A common way to put documentation in software is to add <a href="reference.html#comment">comments</a> like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, desired) {
+<pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, desired) {
   <span class="co"># return a new vector containing the original data centered around the</span>
   <span class="co"># desired value.</span>
   <span class="co"># Example: center(c(1, 2, 3), 0) =&gt; c(-1, 0, 1)</span>
   new_data &lt;-<span class="st"> </span>(data -<span class="st"> </span><span class="kw">mean</span>(data)) +<span class="st"> </span>desired
   <span class="kw">return</span>(new_data)
-}</code></pre></div>
+}</code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2 id="tip-2"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
@@ -223,71 +223,71 @@ centered &lt;-<span class="st"> </span><span class="kw">center</span>(dat[, <spa
 <div class="panel-body">
 <ul>
 <li>Write a function called <code>analyze</code> that takes a filename as a argument and displays the three graphs produced in the <a href="01-starting-with-data.html">previous lesson</a> (average, min and max inflammation over time). <code>analyze(&quot;data/inflammation-01.csv&quot;)</code> should produce the graphs already shown, while <code>analyze(&quot;data/inflammation-02.csv&quot;)</code> should produce corresponding graphs for the second data set. Be sure to document your function with comments.</li>
-<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math inline">\(L\)</span> and <span class="math inline">\(H\)</span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math inline">\(v\)</span> should be <span class="math inline">\((v-L) / (H-L)\)</span>.) Be sure to document your function with comments.</li>
+<li>Write a function <code>rescale</code> that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. (If <span class="math">\(L\)</span> and <span class="math">\(H\)</span> are the lowest and highest values in the original vector, then the replacement for a value <span class="math">\(v\)</span> should be <span class="math">\((v-L) / (H-L)\)</span>.) Be sure to document your function with comments.</li>
 <li>Test that your <code>rescale</code> function is working properly using <code>min</code>, <code>max</code>, and <code>plot</code>.</li>
 </ul>
 </div>
 </section>
 <h3 id="defining-defaults">Defining Defaults</h3>
 <p>We have passed arguments to functions in two ways: directly, as in <code>dim(dat)</code>, and by name, as in <code>read.csv(file = &quot;data/inflammation-01.csv&quot;, header = FALSE)</code>. In fact, we can pass the arguments to <code>read.csv</code> without naming them:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="ot">FALSE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="ot">FALSE</span>)</code></pre>
 <p>However, the position of the arguments matters if they are not named.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">header =</span> <span class="ot">FALSE</span>, <span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>)
-dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="ot">FALSE</span>, <span class="st">&quot;data/inflammation-01.csv&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">header =</span> <span class="ot">FALSE</span>, <span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>)
+dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="ot">FALSE</span>, <span class="st">&quot;data/inflammation-01.csv&quot;</span>)</code></pre>
 <pre class="error"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : &#39;file&#39; must be a character string or connection
 </code></pre>
 <p>To understand what’s going on, and make our own functions easier to use, let’s re-define our <code>center</code> function like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, <span class="dt">desired =</span> <span class="dv">0</span>) {
+<pre class="sourceCode r"><code class="sourceCode r">center &lt;-<span class="st"> </span>function(data, <span class="dt">desired =</span> <span class="dv">0</span>) {
   <span class="co"># return a new vector containing the original data centered around the</span>
   <span class="co"># desired value (0 by default).</span>
   <span class="co"># Example: center(c(1, 2, 3), 0) =&gt; c(-1, 0, 1)</span>
   new_data &lt;-<span class="st"> </span>(data -<span class="st"> </span><span class="kw">mean</span>(data)) +<span class="st"> </span>desired
   <span class="kw">return</span>(new_data)
-}</code></pre></div>
+}</code></pre>
 <p>The key change is that the second argument is now written <code>desired = 0</code> instead of just <code>desired</code>. If we call the function with two arguments, it works as it did before:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test_data &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)
-<span class="kw">center</span>(test_data, <span class="dv">3</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">test_data &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)
+<span class="kw">center</span>(test_data, <span class="dv">3</span>)</code></pre>
 <pre class="output"><code>[1] 3 3 3 3
 </code></pre>
 <p>But we can also now call <code>center()</code> with just one argument, in which case <code>desired</code> is automatically assigned the default value of <code>0</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">more_data &lt;-<span class="st"> </span><span class="dv">5</span> +<span class="st"> </span>test_data
-more_data</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">more_data &lt;-<span class="st"> </span><span class="dv">5</span> +<span class="st"> </span>test_data
+more_data</code></pre>
 <pre class="output"><code>[1] 5 5 5 5
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">center</span>(more_data)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">center</span>(more_data)</code></pre>
 <pre class="output"><code>[1] 0 0 0 0
 </code></pre>
 <p>This is handy: if we usually want a function to work one way, but occasionally need it to do something else, we can allow people to pass an argument when they need to but provide a default to make the normal case easier.</p>
 <p>The example below shows how R matches values to arguments</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">display &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>, <span class="dt">c =</span> <span class="dv">3</span>) {
+<pre class="sourceCode r"><code class="sourceCode r">display &lt;-<span class="st"> </span>function(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>, <span class="dt">c =</span> <span class="dv">3</span>) {
   result &lt;-<span class="st"> </span><span class="kw">c</span>(a, b, c)
   <span class="kw">names</span>(result) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)  <span class="co"># This names each element of the vector</span>
   <span class="kw">return</span>(result)
 }
 
 <span class="co"># no arguments</span>
-<span class="kw">display</span>()</code></pre></div>
+<span class="kw">display</span>()</code></pre>
 <pre class="output"><code>a b c 
 1 2 3 
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># one argument</span>
-<span class="kw">display</span>(<span class="dv">55</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># one argument</span>
+<span class="kw">display</span>(<span class="dv">55</span>)</code></pre>
 <pre class="output"><code> a  b  c 
 55  2  3 
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># two arguments</span>
-<span class="kw">display</span>(<span class="dv">55</span>, <span class="dv">66</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># two arguments</span>
+<span class="kw">display</span>(<span class="dv">55</span>, <span class="dv">66</span>)</code></pre>
 <pre class="output"><code> a  b  c 
 55 66  3 
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># three arguments</span>
-<span class="kw">display</span> (<span class="dv">55</span>, <span class="dv">66</span>, <span class="dv">77</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># three arguments</span>
+<span class="kw">display</span> (<span class="dv">55</span>, <span class="dv">66</span>, <span class="dv">77</span>)</code></pre>
 <pre class="output"><code> a  b  c 
 55 66 77 
 </code></pre>
 <p>As this example shows, arguments are matched from left to right, and any that haven’t been given a value explicitly get their default value. We can override this behavior by naming the value as we pass it in:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># only setting the value of c</span>
-<span class="kw">display</span>(<span class="dt">c =</span> <span class="dv">77</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># only setting the value of c</span>
+<span class="kw">display</span>(<span class="dt">c =</span> <span class="dv">77</span>)</code></pre>
 <pre class="output"><code> a  b  c 
  1  2 77 
 </code></pre>
@@ -307,12 +307,12 @@ more_data</code></pre></div>
 </div>
 </aside>
 <p>With that in hand, let’s look at the help for <code>read.csv()</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?read.csv</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">?read.csv</code></pre>
 <p>There’s a lot of information there, but the most important part is the first couple of lines:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,
-         <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">fill =</span> <span class="ot">TRUE</span>, <span class="dt">comment.char =</span> <span class="st">&quot;&quot;</span>, ...)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(file, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">quote =</span> <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,
+         <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">fill =</span> <span class="ot">TRUE</span>, <span class="dt">comment.char =</span> <span class="st">&quot;&quot;</span>, ...)</code></pre>
 <p>This tells us that <code>read.csv()</code> has one argument, <code>file</code>, that doesn’t have a default value, and six others that do. Now we understand why the following gives an error:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="ot">FALSE</span>, <span class="st">&quot;data/inflammation-01.csv&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="ot">FALSE</span>, <span class="st">&quot;data/inflammation-01.csv&quot;</span>)</code></pre>
 <pre class="error"><code>Error in read.table(file = file, header = header, sep = sep, quote = quote, : &#39;file&#39; must be a character string or connection
 </code></pre>
 <p>It fails because <code>FALSE</code> is assigned to <code>file</code> and the filename is assigned to the argument <code>header</code>.</p>
@@ -349,10 +349,10 @@ more_data</code></pre></div>
 </div>
 <div class="panel-body">
 <p>We now have a function called analyze to visualize a single data set. We could use it to explore all 12 of our current data sets like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>)
 <span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-02.csv&quot;</span>)
 <span class="co">#...</span>
-<span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-12.csv&quot;</span>)</code></pre></div>
+<span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-12.csv&quot;</span>)</code></pre>
 <p>but the chances of us typing all 12 filenames correctly aren’t great, and we’ll be even worse off if we get another hundred files. What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.</p>
 </div>
 </aside>

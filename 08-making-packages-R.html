@@ -54,32 +54,32 @@ License: Abbreviation for an open source license</code></pre>
 <p>Functions don’t all have to be in one file or each in separate files. How you organize them is up to you. Suggestion: organize in a logical manner so that you know which file holds which functions.</p>
 <h2 id="making-your-first-r-package">Making your first R package</h2>
 <p>Let’s turn our temperature conversion functions into an R package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
+<pre class="sourceCode r"><code class="sourceCode r">fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
     <span class="co">#Converts Fahrenheit to Kelvin</span>
     kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span>/<span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
     kelvin
-}</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
+}</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">kelvin_to_celsius &lt;-<span class="st"> </span>function(temp) {
   <span class="co">#Converts Kelvin to Celsius</span>
   Celsius &lt;-<span class="st"> </span>temp -<span class="st"> </span><span class="fl">273.15</span>
   Celsius
-}</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fahr_to_celsius &lt;-<span class="st"> </span>function(temp) {
+}</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">fahr_to_celsius &lt;-<span class="st"> </span>function(temp) {
   <span class="co">#Converts Fahrenheit to Celsius using fahr_to_kelvin() and kelvin_to_celsius()</span>
   temp_k &lt;-<span class="st"> </span><span class="kw">fahr_to_kelvin</span>(temp)
     result &lt;-<span class="st"> </span><span class="kw">kelvin_to_celsius</span>(temp_k)
   result
-}</code></pre></div>
+}</code></pre>
 <p>We will use the <code>devtools</code> and <code>roxygen2</code> packages, which make creating packages in R relatively simple. First, install the <code>devtools</code> package, which will allow you to install the <code>roxygen2</code> package from GitHub (<a href="https://github.com/klutometis/roxygen">code</a>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;devtools&quot;</span>)
 <span class="kw">install_github</span>(<span class="st">&quot;klutometis/roxygen&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;roxygen2&quot;</span>)</code></pre></div>
+<span class="kw">library</span>(<span class="st">&quot;roxygen2&quot;</span>)</code></pre>
 <p>Set your working directory, and then use the <code>create</code> function to start making your package. Keep the name simple and unique. - package_to_convert_temperatures_between_kelvin_fahrenheit_and_celsius (BAD) - tempConvert (GOOD)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(parentDirectory)
-<span class="kw">create</span>(<span class="st">&quot;tempConvert&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(parentDirectory)
+<span class="kw">create</span>(<span class="st">&quot;tempConvert&quot;</span>)</code></pre>
 <p>Add our functions to the R directory. Place each function into a separate R script and add documentation like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Convert Fahrenheit to Kelvin</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Convert Fahrenheit to Kelvin</span>
 <span class="co">#&#39;</span>
 <span class="co">#&#39; This function converts input temperatures in Fahrenheit to Kelvin.</span>
 <span class="co">#&#39; @param temp The input temperature.</span>
@@ -91,26 +91,26 @@ fahr_to_kelvin &lt;-<span class="st"> </span>function(temp) {
   <span class="co">#Converts Fahrenheit to Kelvin</span>
   kelvin &lt;-<span class="st"> </span>((temp -<span class="st"> </span><span class="dv">32</span>) *<span class="st"> </span>(<span class="dv">5</span>/<span class="dv">9</span>)) +<span class="st"> </span><span class="fl">273.15</span>
   kelvin
-}</code></pre></div>
+}</code></pre>
 <p>The <code>roxygen2</code> package reads lines that begin with <code>#'</code> as comments to create the documentation for your package. Descriptive tags are preceded with the <code>@</code> symbol. For example, <code>@param</code> has information about the input parameters for the function. Now, we will use <code>roxygen2</code> to convert our documentation to the standard R format.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;./tempConvert&quot;</span>)
-<span class="kw">document</span>()</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;./tempConvert&quot;</span>)
+<span class="kw">document</span>()</code></pre>
 <p>Take a look at the package directory now. The /man directory has a .Rd file for each .R file with properly formatted documentation.</p>
 <p>Now, let’s load the package and take a look at the documentation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;..&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;..&quot;</span>)
 <span class="kw">install</span>(<span class="st">&quot;tempConvert&quot;</span>)
 
-?fahr_to_kelvin</code></pre></div>
+?fahr_to_kelvin</code></pre>
 <p>Notice there is now a tempConvert environment that is the parent environment to the global environment.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">search</span>()</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">search</span>()</code></pre>
 <p>Now that our package is loaded, let’s try out some of the functions.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fahr_to_celsius</span>(<span class="dv">32</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fahr_to_celsius</span>(<span class="dv">32</span>)</code></pre>
 <pre class="output"><code>[1] 0
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fahr_to_kelvin</span>(<span class="dv">212</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fahr_to_kelvin</span>(<span class="dv">212</span>)</code></pre>
 <pre class="output"><code>[1] 373.15
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kelvin_to_celsius</span>(<span class="fl">273.15</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kelvin_to_celsius</span>(<span class="fl">273.15</span>)</code></pre>
 <pre class="output"><code>[1] 0
 </code></pre>
 <section class="challenge panel panel-success">

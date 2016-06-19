@@ -58,10 +58,10 @@
 <p>To do all that, we’ll have to learn a little bit about programming.</p>
 <h3 id="loading-data">Loading Data</h3>
 <p>To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is <code>inflammation-01.csv</code>. This is very important in R, if we forget this step we’ll get an error message when trying to read the file. We can change the current working directory using the function <code>setwd</code>. For this example, we change the path to the directory we just created:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;~/Desktop/r-novice-inflammation/&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;~/Desktop/r-novice-inflammation/&quot;</span>)</code></pre>
 <p>Just like in the Unix Shell, we type the command and then press <code>Enter</code> (or <code>return</code>). Alternatively you can change the working directory using the RStudio GUI using the menu option <code>Session</code> -&gt; <code>Set Working Directory</code> -&gt; <code>Choose Directory...</code></p>
 <p>The data files are located in the directory <code>data</code> inside the working directory. Now we can load the data into R using <code>read.csv</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)</code></pre>
 <p>The expression <code>read.csv(...)</code> is a <a href="reference.html#function-call">function call</a> that asks R to run the function <code>read.csv</code>.</p>
 <p><code>read.csv</code> has two <a href="reference.html#argument">arguments</a>: the name of the file we want to read, and whether the first line of the file contains names for the columns of data. The filename needs to be a character string (or <a href="reference.html#string">string</a> for short), so we put it in quotes. Assigning the second argument, <code>header</code>, to be <code>FALSE</code> indicates that the data file does not have column headers. We’ll talk more about the value <code>FALSE</code>, and its converse <code>TRUE</code>, in lesson 04.</p>
 <aside class="callout panel panel-info">
@@ -78,20 +78,20 @@
 </div>
 <div class="panel-body">
 <p>What happens if you forget to put <code>header = FALSE</code>? The default value is <code>header = TRUE</code>, which you can check with <code>?read.csv</code> or <code>help(read.csv)</code>. What do you expect will happen if you leave the default value? Before you run any code, think about what will happen to the first few rows of your data frame, and its overall size. Then run the following code and see if your expectations agree:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>)</code></pre>
 </div>
 </section>
 <p>The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s). For example, in this case if we provided the name of a different file to the argument <code>file</code>, <code>read.csv</code> would read it instead. We’ll learn more of the details about functions and their arguments in the next lesson.</p>
 <p>Since we didn’t tell it to do anything else with the function’s output, the console will display the full contents of the file <code>inflammation-01.csv</code>. Try it out.</p>
 <p><code>read.csv</code> read the file, but we can’t use data unless we assign it to a variable. A variable is just a name for a value, such as <code>x</code>, <code>current_temperature</code>, or <code>subject_id</code>. We can create a new variable simply by assigning a value to it using <code>&lt;-</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">55</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="dv">55</span></code></pre>
 <p>Once a variable has a value, we can print it by typing the name of the variable and hitting <code>Enter</code> (or <code>return</code>). In general, R will print to the console any object returned by a function or operation <em>unless</em> we assign it to a variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">weight_kg</code></pre>
 <pre class="output"><code>[1] 55
 </code></pre>
 <p>We can do arithmetic with the variable:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># weight in pounds:</span>
-<span class="fl">2.2</span> *<span class="st"> </span>weight_kg</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># weight in pounds:</span>
+<span class="fl">2.2</span> *<span class="st"> </span>weight_kg</code></pre>
 <pre class="output"><code>[1] 121
 </code></pre>
 <aside class="callout panel panel-info">
@@ -103,32 +103,32 @@
 </div>
 </aside>
 <p>We can also change an object’s value by assigning it a new value:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="fl">57.5</span>
+<pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="fl">57.5</span>
 <span class="co"># weight in kilograms is now</span>
-weight_kg</code></pre></div>
+weight_kg</code></pre>
 <pre class="output"><code>[1] 57.5
 </code></pre>
 <p>If we imagine the variable as a sticky note with a name written on it, assignment is like putting the sticky note on a particular value:</p>
 <p><img src="fig/python-sticky-note-variables-01.svg" alt="Variables as Sticky Notes" /></p>
 <p>This means that assigning a value to one object does not change the values of other variables. For example, let’s store the subject’s weight in pounds in a variable:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_lb &lt;-<span class="st"> </span><span class="fl">2.2</span> *<span class="st"> </span>weight_kg
+<pre class="sourceCode r"><code class="sourceCode r">weight_lb &lt;-<span class="st"> </span><span class="fl">2.2</span> *<span class="st"> </span>weight_kg
 <span class="co"># weight in kg...</span>
-weight_kg</code></pre></div>
+weight_kg</code></pre>
 <pre class="output"><code>[1] 57.5
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ...and in pounds</span>
-weight_lb</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ...and in pounds</span>
+weight_lb</code></pre>
 <pre class="output"><code>[1] 126.5
 </code></pre>
 <p><img src="fig/python-sticky-note-variables-02.svg" alt="Creating Another Variable" /></p>
 <p>and then change <code>weight_kg</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="fl">100.0</span>
+<pre class="sourceCode r"><code class="sourceCode r">weight_kg &lt;-<span class="st"> </span><span class="fl">100.0</span>
 <span class="co"># weight in kg now...</span>
-weight_kg</code></pre></div>
+weight_kg</code></pre>
 <pre class="output"><code>[1] 100
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ...and weight in pounds still</span>
-weight_lb</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ...and weight in pounds still</span>
+weight_lb</code></pre>
 <pre class="output"><code>[1] 126.5
 </code></pre>
 <p><img src="fig/python-sticky-note-variables-03.svg" alt="Updating a Variable" /></p>
@@ -142,9 +142,9 @@ weight_lb</code></pre></div>
 </div>
 </aside>
 <p>Now that we know how to assign things to variables, let’s re-run <code>read.csv</code> and save its result:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">FALSE</span>)</code></pre>
 <p>This statement doesn’t produce any output because assignment doesn’t display anything. If we want to check that our data has been loaded, we can print the variable’s value. However, for large data sets it is convenient to use the function <code>head</code> to display only the first few rows of data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(dat)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(dat)</code></pre>
 <pre class="output"><code>  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20
 1  0  0  1  3  1  2  4  7  8   3   3   3  10   5   7   4   7   7  12  18
 2  0  1  2  1  2  1  3  2  2   6  10  11   5   9   4   4   7  16   8   6
@@ -173,34 +173,34 @@ weight_lb</code></pre></div>
 </div>
 <div class="panel-body">
 <p>Draw diagrams showing what variables refer to what values after each statement in the following program:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mass &lt;-<span class="st"> </span><span class="fl">47.5</span>
+<pre class="sourceCode r"><code class="sourceCode r">mass &lt;-<span class="st"> </span><span class="fl">47.5</span>
 age &lt;-<span class="st"> </span><span class="dv">122</span>
 mass &lt;-<span class="st"> </span>mass *<span class="st"> </span><span class="fl">2.0</span>
-age &lt;-<span class="st"> </span>age -<span class="st"> </span><span class="dv">20</span></code></pre></div>
+age &lt;-<span class="st"> </span>age -<span class="st"> </span><span class="dv">20</span></code></pre>
 </div>
 </section>
 <h3 id="manipulating-data">Manipulating Data</h3>
 <p>Now that our data is loaded in memory, we can start doing things with it. First, let’s ask what type of thing <code>dat</code> is:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(dat)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(dat)</code></pre>
 <pre class="output"><code>[1] &quot;data.frame&quot;
 </code></pre>
 <p>The output tells us that is a data frame. Think of this structure as a spreadsheet in MS Excel that many of us are familiar with. Data frames are very useful for storing data and you will find them elsewhere when programming in R. A typical data frame of experimental data contains individual observations in rows and variables in columns.</p>
 <p>We can see the shape, or <a href="reference.html#dimensions-(of-an-array)">dimensions</a>, of the data frame with the function <code>dim</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(dat)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(dat)</code></pre>
 <pre class="output"><code>[1] 60 40
 </code></pre>
 <p>This tells us that our data frame, <code>dat</code>, has 60 rows and 40 columns.</p>
 <p>If we want to get a single value from the data frame, we can provide an <a href="reference.html#index">index</a> in square brackets, just as we do in math:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># first value in dat</span>
-dat[<span class="dv">1</span>, <span class="dv">1</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># first value in dat</span>
+dat[<span class="dv">1</span>, <span class="dv">1</span>]</code></pre>
 <pre class="output"><code>[1] 0
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># middle value in dat</span>
-dat[<span class="dv">30</span>, <span class="dv">20</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># middle value in dat</span>
+dat[<span class="dv">30</span>, <span class="dv">20</span>]</code></pre>
 <pre class="output"><code>[1] 16
 </code></pre>
 <p>An index like <code>[30, 20]</code> selects a single element of a data frame, but we can select whole sections as well. For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat[<span class="dv">1</span>:<span class="dv">4</span>, <span class="dv">1</span>:<span class="dv">10</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">dat[<span class="dv">1</span>:<span class="dv">4</span>, <span class="dv">1</span>:<span class="dv">10</span>]</code></pre>
 <pre class="output"><code>  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
 1  0  0  1  3  1  2  4  7  8   3
 2  0  1  2  1  2  1  3  2  2   6
@@ -209,7 +209,7 @@ dat[<span class="dv">30</span>, <span class="dv">20</span>]</code></pre></div>
 </code></pre>
 <p>The <a href="reference.html#slice">slice</a> <code>1:4</code> means, “Start at index 1 and go to index 4.”</p>
 <p>The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat[<span class="dv">5</span>:<span class="dv">10</span>, <span class="dv">1</span>:<span class="dv">10</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">dat[<span class="dv">5</span>:<span class="dv">10</span>, <span class="dv">1</span>:<span class="dv">10</span>]</code></pre>
 <pre class="output"><code>   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
 5   0  1  1  3  3  1  3  5  2   4
 6   0  0  1  2  2  4  2  1  6   4
@@ -219,7 +219,7 @@ dat[<span class="dv">30</span>, <span class="dv">20</span>]</code></pre></div>
 10  0  1  1  2  1  3  5  3  5   8
 </code></pre>
 <p>We can use the function <code>c</code>, which stands for <strong>c</strong>ombine, to select non-contiguous values:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">37</span>, <span class="dv">56</span>), <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">14</span>, <span class="dv">29</span>)]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">dat[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">37</span>, <span class="dv">56</span>), <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">14</span>, <span class="dv">29</span>)]</code></pre>
 <pre class="output"><code>   V10 V14 V29
 3    9   5   4
 8    3   5   6
@@ -227,8 +227,8 @@ dat[<span class="dv">30</span>, <span class="dv">20</span>]</code></pre></div>
 56   7  11   9
 </code></pre>
 <p>We also don’t have to provide a slice for either the rows or the columns. If we don’t include a slice for the rows, R returns all the rows; if we don’t include a slice for the columns, R returns all the columns. If we don’t provide a slice for either rows or columns, e.g. <code>dat[, ]</code>, R returns the full data frame.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># All columns from row 5</span>
-dat[<span class="dv">5</span>, ]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># All columns from row 5</span>
+dat[<span class="dv">5</span>, ]</code></pre>
 <pre class="output"><code>  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20
 5  0  1  1  3  3  1  3  5  2   4   4   7   6   5   3  10   8  10   6  17
   V21 V22 V23 V24 V25 V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38
@@ -236,8 +236,8 @@ dat[<span class="dv">5</span>, ]</code></pre></div>
   V39 V40
 5   1   1
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># All rows from column 16</span>
-dat[, <span class="dv">16</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># All rows from column 16</span>
+dat[, <span class="dv">16</span>]</code></pre>
 <pre class="output"><code> [1]  4  4 15  8 10 15 13  9 11  6  3  8 12  3  5 10 11  4 11 13 15  5 14
 [24] 13  4  9 13  6  7  6 14  3 15  4 15 11  7 10 15  6  5  6 15 11 15  6
 [47] 11 15 14  4 10 15 11  6 13  8  4 13 12  9
@@ -251,10 +251,10 @@ dat[, <span class="dv">16</span>]</code></pre></div>
 </div>
 </aside>
 <p>Now let’s perform some common mathematical operations to learn about our inflammation data. When analyzing data we often want to look at partial statistics, such as the maximum value per patient or the average value per day. One way to do this is to select the data we want to create a new temporary data frame, and then perform the calculation on this subset:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># first row, all of the columns</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># first row, all of the columns</span>
 patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 <span class="co"># max inflammation for patient 1</span>
-<span class="kw">max</span>(patient_1)</code></pre></div>
+<span class="kw">max</span>(patient_1)</code></pre>
 <pre class="output"><code>[1] 18
 </code></pre>
 <aside class="callout panel panel-info">
@@ -271,25 +271,25 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 </div>
 </aside>
 <p>We don’t actually need to store the row in a variable of its own. Instead, we can combine the selection and the function call:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># max inflammation for patient 2</span>
-<span class="kw">max</span>(dat[<span class="dv">2</span>, ])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># max inflammation for patient 2</span>
+<span class="kw">max</span>(dat[<span class="dv">2</span>, ])</code></pre>
 <pre class="output"><code>[1] 18
 </code></pre>
 <p>R also has functions for other common calculations, e.g. finding the minimum, mean, median, and standard deviation of the data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># minimum inflammation on day 7</span>
-<span class="kw">min</span>(dat[, <span class="dv">7</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># minimum inflammation on day 7</span>
+<span class="kw">min</span>(dat[, <span class="dv">7</span>])</code></pre>
 <pre class="output"><code>[1] 1
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># mean inflammation on day 7</span>
-<span class="kw">mean</span>(dat[, <span class="dv">7</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># mean inflammation on day 7</span>
+<span class="kw">mean</span>(dat[, <span class="dv">7</span>])</code></pre>
 <pre class="output"><code>[1] 3.8
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># median inflammation on day 7</span>
-<span class="kw">median</span>(dat[, <span class="dv">7</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># median inflammation on day 7</span>
+<span class="kw">median</span>(dat[, <span class="dv">7</span>])</code></pre>
 <pre class="output"><code>[1] 4
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># standard deviation of inflammation on day 7</span>
-<span class="kw">sd</span>(dat[, <span class="dv">7</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># standard deviation of inflammation on day 7</span>
+<span class="kw">sd</span>(dat[, <span class="dv">7</span>])</code></pre>
 <pre class="output"><code>[1] 1.725187
 </code></pre>
 <p>What if we need the maximum inflammation for all patients, or the average for each day? As the diagram below shows, we want to perform the operation across a margin of the data frame:</p>
@@ -305,9 +305,9 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 </aside>
 <p><code>apply</code> allows us to repeat a function on all of the rows (<code>MARGIN = 1</code>) or columns (<code>MARGIN = 2</code>) of a data frame.</p>
 <p>Thus, to obtain the average inflammation of each patient we will need to calculate the mean of all of the rows (<code>MARGIN = 1</code>) of the data frame.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">avg_patient_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">1</span>, mean)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">avg_patient_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">1</span>, mean)</code></pre>
 <p>And to obtain the average inflammation of each day we will need to calculate the mean of all of the columns (<code>MARGIN = 2</code>) of the data frame.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">avg_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, mean)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">avg_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, mean)</code></pre>
 <p>Since the second argument to <code>apply</code> is <code>MARGIN</code>, the above command is equivalent to <code>apply(dat, MARGIN = 2, mean)</code>. We’ll learn why this is so in the next lesson.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
@@ -323,13 +323,13 @@ patient_1 &lt;-<span class="st"> </span>dat[<span class="dv">1</span>, ]
 </div>
 <div class="panel-body">
 <p>A subsection of a data frame is called a <a href="reference.html#slice">slice</a>. We can take slices of character vectors as well:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">animal &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;n&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;y&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">animal &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;n&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;y&quot;</span>)
 <span class="co"># first three characters</span>
-animal[<span class="dv">1</span>:<span class="dv">3</span>]</code></pre></div>
+animal[<span class="dv">1</span>:<span class="dv">3</span>]</code></pre>
 <pre class="output"><code>[1] &quot;m&quot; &quot;o&quot; &quot;n&quot;
 </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># last three characters</span>
-animal[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># last three characters</span>
+animal[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 <pre class="output"><code>[1] &quot;k&quot; &quot;e&quot; &quot;y&quot;
 </code></pre>
 <ol style="list-style-type: decimal">
@@ -356,14 +356,14 @@ animal[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre></div>
 <h3 id="plotting">Plotting</h3>
 <p>The mathematician Richard Hamming once said, “The purpose of computing is insight, not numbers,” and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R’s plotting features.</p>
 <p>Let’s take a look at the average inflammation over time. Recall that we already calculated these values above using <code>apply(dat, 2, mean)</code> and saved them in the variable <code>avg_day_inflammation</code>. Plotting the values is done with the function <code>plot</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(avg_day_inflammation)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(avg_day_inflammation)</code></pre>
 <p><img src="fig/01-starting-with-data-plot-avg-inflammation-1.png" title="plot of chunk plot-avg-inflammation" alt="plot of chunk plot-avg-inflammation" style="display: block; margin: auto;" /></p>
 <p>Above, we gave the function <code>plot</code> a vector of numbers corresponding to the average inflammation per day across all patients. <code>plot</code> created a scatter plot where the y-axis is the average inflammation level and the x-axis is the order, or index, of the values in the vector, which in this case correspond to the 40 days of treatment. The result is roughly a linear rise and fall, which is suspicious: based on other studies, we expect a sharper rise and slower fall. Let’s have a look at two other statistics: the maximum and minimum inflammation per day.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">max_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, max)
-<span class="kw">plot</span>(max_day_inflammation)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">max_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, max)
+<span class="kw">plot</span>(max_day_inflammation)</code></pre>
 <p><img src="fig/01-starting-with-data-plot-max-inflammation-1.png" title="plot of chunk plot-max-inflammation" alt="plot of chunk plot-max-inflammation" style="display: block; margin: auto;" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">min_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, min)
-<span class="kw">plot</span>(min_day_inflammation)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">min_day_inflammation &lt;-<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">2</span>, min)
+<span class="kw">plot</span>(min_day_inflammation)</code></pre>
 <p><img src="fig/01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" /></p>
 <p>The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there’s a mistake in our calculations or something is wrong with our data.</p>
 <section class="challenge panel panel-success">
