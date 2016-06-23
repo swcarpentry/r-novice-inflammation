@@ -27,22 +27,22 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
                     <a href="index.html"><h1 class="title">Programming with R</h1></a>
-          <h2 class="subtitle">Best practices for using R and designing programs</h2>
+          <h2 class="subtitle">Best practices for writing R code</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
 <h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
-<p>Define some best practices when working with R</p>
+<p>Define best formating practices when writing code in R scripts; Synthesize a consistent personal coding style to increase code readability, consistency, and repeatability; Apply this style to one’s own code</p>
 </div>
 </section>
 <ol style="list-style-type: decimal">
-<li>Start your code with a description of what it is:</li>
+<li>Start your code with an annotated description of what the code does when it is run:</li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#This is code to replicate the analyses and figures from my 2014 Science paper.</span>
 <span class="co">#Code developed by Sarah Supp, Tracy Teal, and Jon Borelli</span></code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Run all of your import statments (<code>library</code>):</li>
+<li>Next, load all of the packages that will be necessary to run your code (using <code>library</code>):</li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw">library</span>(reshape)
@@ -50,41 +50,41 @@
 <ol start="3" style="list-style-type: decimal">
 <li>Set your working directory before <code>source()</code>ing a script, or start <code>R</code> inside your project folder:</li>
 </ol>
-<p>One should exercise caution when using <code>setwd()</code>. Changing directories in your script can limit reproducibility:</p>
+<p>One should exercise caution when using <code>setwd()</code>. Changing directories in a script file can limit reproducibility:</p>
 <ul>
-<li><code>setwd()</code> will throw an error if the directory you’re trying to change to doesn’t exit, or the user doesn’t have the correct permissions to access it. This becomes a problem when sharing scripts between users who have organized their directories differently.</li>
-<li>If/when your script terminates with an error, you might leave the user in a different directory to where they started, and if they call the script again this will cause further problems. If you must use <code>setwd()</code>, it is best to put it at the top of the script to avoid this problem.</li>
+<li><code>setwd()</code> will return an error if the directory to which you’re trying to change doesn’t exit or if the user doesn’t have the correct permissions to access that directory. This becomes a problem when sharing scripts between users who have organized their directories differently.</li>
+<li>If/when your script terminates with an error, you might leave the user in a different directory than the one they started in, and if they then call the script again, this will cause further problems. If you must use <code>setwd()</code>, it is best to put it at the top of the script to avoid these problems.</li>
 </ul>
 <p>The following error message indicates that R has failed to set the working directory you specified:</p>
 <pre><code>Error in setwd(&quot;~/path/to/working/directory&quot;) : cannot change working directory</code></pre>
-<p>Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths (see below).</p>
+<p>It is best practice to have the user running the script begin in a consistent directory on their machine and then use relative file paths from that directory to access files (see below).</p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Use <code>#</code> or <code>#-</code> to set off sections of your code so you can easily scroll through it and find things.</p></li>
-<li><p>If you have only one or a few functions, put them at the top of your code, so they are among the first things run. If you have written many functions, put them all in their own .R file, and <code>source</code> them. Source will define all of these functions so that you can use them as you need them. For the reasons listed above, try to avoid using <code>setwd()</code> (or other functions that have side-effects in the user’s workspace) in scripts you <code>source</code>.</p></li>
+<li><p>Annotate and mark your code using <code>#</code> or <code>#-</code> to set off sections of your code and to make finding specific parts of your code easier.</p></li>
+<li><p>If you create only one or a few custom functions in your script, put them toward the top of your code so they are among the first objects created. If you have written many functions, put them all in their own .R file and then <code>source</code> those files. <code>source</code> will define all of these functions so that your code can make use of them as needed. For the reasons listed above, try to avoid using <code>setwd()</code> (or other functions that have side-effects in the user’s workspace) in scripts you <code>source</code>.</p></li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;my_genius_fxns.R&quot;</span>)</code></pre>
 <ol start="6" style="list-style-type: decimal">
-<li><p>Use consistent style within your code.</p></li>
-<li><p>Keep your code modular. If a single function or loop gets too long, consider breaking it into smaller pieces.</p></li>
-<li><p>Don’t repeat yourself. Automate! If you are repeating the same piece of code on multiple objects or files, use a loop or a function to do the same thing. The more you repeat yourself, the more likely you are to make a mistake.</p></li>
-<li><p>Manage all of your source files for a project in the same directory. Then use relative paths as necessary. For example, use</p></li>
+<li><p>Use a consistent style within your code. For example, name all matrices something ending in <code>.mat</code>. Consistency makes code easier to read and problems easier to spot.</p></li>
+<li><p>Keep your code in bite-sized chunks. If a single function or loop gets too long, consider looking for ways to break it into smaller pieces.</p></li>
+<li><p>Don’t repeat yourself–automate! If you are repeating the same code over and over, use a loop or a function to repeat that code for you. Needless repetition doesn’t just waste time–it also increases the likelihood you’ll make a costly mistake!</p></li>
+<li><p>Keep all of your source files for a project in the same directory, then use relative paths as necessary to access them. For example, use</p></li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;files/dataset-2013-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</code></pre>
 <p>rather than:</p>
 <pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</code></pre>
 <ol start="10" style="list-style-type: decimal">
-<li>R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. In order to inspect your R session objects, you can list the objects, search current packages and remove objects that are currently not in use. A good practice when running long lines of computationally intensive sequential code is to remove temporary objects after they have served their purpose. Sometimes R will not clean up unused memory for a while after you delete objects. You can force R to tidy up its memory by using <code>gc()</code>.</li>
+<li>R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. To inspect the objects in your current R environment, you can list the objects, search current packages, and remove objects that are currently not in use. A good practice when running long lines of computationally intensive code is to remove temporary objects after they have served their purpose. However, sometimes, R will not clean up unused memory for a while after you delete objects. You can force R to tidy up its memory by using <code>gc()</code>.</li>
 </ol>
 <pre class="sourceCode r"><code class="sourceCode r">interim_object &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">100</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="dv">101</span>:<span class="dv">200</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="dv">201</span>:<span class="dv">300</span>,<span class="dv">10</span>)) <span class="co"># Sample dataset of 1000 rows</span>
 <span class="kw">object.size</span>(interim_object) <span class="co"># Reports the memory size allocated to the object</span>
-<span class="kw">rm</span>(interim_object) <span class="co"># Removes only the particular object</span>
+<span class="kw">rm</span>(interim_object) <span class="co"># Removes only the object itself and not necessarily the memory alloted to it</span>
 <span class="kw">gc</span>() <span class="co"># Force R to release memory it is no longer using</span>
 <span class="kw">ls</span>()  <span class="co"># Lists all the objects in your current workspace</span>
-<span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>()) <span class="co"># If you want to delete all the objects in the workspace and start with a new slate</span></code></pre>
+<span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>()) <span class="co"># If you want to delete all the objects in the workspace and start with a clean slate</span></code></pre>
 <ol start="11" style="list-style-type: decimal">
-<li><p>Don’t save a session history (the default option in R, when it asks if you want an <code>RData</code> file). Instead, start in a clean environment so that older objects don’t contaminate your current environment. This can lead to unexpected results, especially if the code were to be run on someone else’s machine.</p></li>
-<li><p>Where possible keep track of <code>sessionInfo()</code> somewhere in your project folder. Session information is invaluable since it captures all of the packages used in the current project. If a newer version of a project changes the way a function behaves, you can always go back and reinstall the version that worked (Note: At least on CRAN all older versions of packages are permanently archived).</p></li>
-<li><p>Collaborate. Grab a buddy and practice “code review”. We do it for methods and papers, why not code? Our code is a major scientific product and the result of a lot of hard work!</p></li>
+<li><p>Don’t save a session history (the default option in R, when it asks if you want an <code>RData</code> file). Instead, start in a clean environment so that older objects don’t remain in your environment any longer than they need to. If that happens, it can lead to unexpected results.</p></li>
+<li><p>Wherever possible, keep track of <code>sessionInfo()</code> somewhere in your project folder. Session information is invaluable because it captures all of the packages used in the current project. If a newer version of a package changes the way a function behaves, you can always go back and reinstall the version that worked (Note: At least on CRAN, all older versions of packages are permanently archived).</p></li>
+<li><p>Collaborate. Grab a buddy and practice “code review”. Review is used for preparing experiments and manuscripts; why not use it for code as well? Our code is also a major scientific achievement and the product of lots of hard work!</p></li>
 <li><p>Develop your code using version control and frequent updates!</p></li>
 </ol>
 <section class="challenge panel panel-success">
@@ -93,10 +93,9 @@
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
-<li>What other suggestions do you have</li>
-<li>How could we restructure the code we worked on today, to make it easier to read? Discuss with your neighbor.</li>
-<li>Make two new R scripts called inflammation.R and inflammation_fxns.R</li>
-<li>Copy and paste the code so that inflammation.R “does stuff” and inflammation_fxns.R holds all of your functions. <strong>Hint</strong>: you will need to add <code>source</code> code to one of the files.</li>
+<li>What other suggestions do you have for coding best practices?</li>
+<li>What are some specific ways we could restructure the code we worked on today to make it easier for a new user to read? Discuss with your neighbor.</li>
+<li>Make two new R scripts called <code>inflammation.R</code> and <code>inflammation_fxns.R</code>. Copy and paste code into each script so that <code>inflammation.R</code> “does stuff” and <code>inflammation_fxns.R</code> holds all of your functions. <strong>Hint</strong>: you will need to add <code>source</code> to one of the files.</li>
 </ol>
 </div>
 </section>
