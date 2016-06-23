@@ -68,13 +68,19 @@ The filename needs to be a character string (or [string](reference.html#string) 
 > options in this supplementary [lesson](01-supp-read-write-csv.html).
 
 
-> ## Challenge - Loading data with headers {.challenge}
+> ## Loading data with headers {.challenge}
 >
 > What happens if you forget to put `header = FALSE`? The default value is `header = TRUE`, which you can check with `?read.csv` or `help(read.csv)`. What do you expect will happen if you leave the default value? Before you run any code, think about what will happen to the first few rows of your data frame, and its overall size. Then run the following code and see if your expectations agree:
 >
 ~~~{.r}
 read.csv(file = "data/inflammation-01.csv")
 ~~~
+
+
+> ## Reading different decimal point formats {.challenge}
+> Depending on the country you live in, your standard can use the dot or the comma as decimal mark.
+> Also, different devices or software can generate data with different decimal points.
+> Take a look at `?read.csv` and write the code to load a file called `commadec.txt` that has numeric values with commas as decimal mark, separated by semicolons.
 
 
 The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s).
@@ -465,7 +471,7 @@ max(patient_1)
 >
 > On some installations of R, the code above may give you an error, since R does not automatically convert a sliced row of a `data.frame` to a vector. (Confusingly, sliced columns are automatically converted.)
 > If this happens, you can use the `as.numeric` command to convert the row of data to a numeric vector:
-> 
+>
 > `patient_1 <- as.numeric(dat[1, ])`
 >
 > `max(patient_1)`
