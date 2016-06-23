@@ -87,7 +87,7 @@ levels(food)
 
 
 ~~~{.r}
-food <- factor(food, levels=c("low", "medium", "high"))
+food <- factor(food, levels = c("low", "medium", "high"))
 levels(food)
 ~~~
 
@@ -114,7 +114,7 @@ Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), .Label = c("low
 
 
 ~~~{.r}
-food <- factor(food, levels=c("low", "medium", "high"), ordered=TRUE)
+food <- factor(food, levels = c("low", "medium", "high"), ordered=TRUE)
 levels(food)
 ~~~
 
@@ -154,13 +154,13 @@ information built in. It is particularly helpful when there are many levels
 >
 > What is the best way to represent this in R?
 >
-> a) exercise<-c("l","n","n","i","l")
+> a) exercise <- c("l", "n", "n", "i", "l")
 >
-> b) exercise<-factor(c("l","n","n","i","l"), ordered=TRUE)
+> b) exercise <- factor(c("l", "n", "n", "i", "l"), ordered = TRUE)
 >
-> c) exercise<-factor(c("l","n","n","i","l"), levels=c("n","l","i"), ordered=FALSE)
+> c) exercise < -factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = FALSE)
 >
-> d) exercise<-factor(c("l","n","n","i","l"), levels=c("n","l","i"), ordered=TRUE)
+> d) exercise <- factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = TRUE)
 
 ###  Converting Factors
 
@@ -168,7 +168,7 @@ Converting from a factor to a number can cause problems:
 
 
 ~~~{.r}
-f<-factor(c(3.4, 1.2, 5))
+f <- factor(c(3.4, 1.2, 5))
 as.numeric(f)
 ~~~
 
@@ -199,8 +199,8 @@ This returns a character vector, the `as.numeric()` function is still required t
 
 
 ~~~{.r}
-f<-levels(f)[f]
-f<-as.numeric(f)
+f <- levels(f)[f]
+f <- as.numeric(f)
 ~~~
 
 ### Using Factors
@@ -209,7 +209,7 @@ Lets load our example data to see the use of factors:
 
 
 ~~~{.r}
-dat<-read.csv(file='data/sample.csv', stringsAsFactors=TRUE)
+dat <- read.csv(file = 'data/sample.csv', stringsAsFactors = TRUE)
 ~~~
 
 > ## Tip {.callout}
@@ -315,14 +315,14 @@ Values should have been recorded as lowercase 'm' & 'f'. We should correct this.
 
 
 ~~~{.r}
-dat$Gender[dat$Gender=='M']<-'m'
+dat$Gender[dat$Gender == 'M'] <- 'm'
 ~~~
 
 > ## Challenge - Updating factors {.challenge}
 >
 > 
 > ~~~{.r}
-> plot(x=dat$Gender,y=dat$BloodPressure)
+> plot(x = dat$Gender, y = dat$BloodPressure)
 > ~~~
 > 
 > <img src="fig/01-supp-factors-updating-factors-1.png" title="plot of chunk updating-factors" alt="plot of chunk updating-factors" style="display: block; margin: auto;" />
@@ -337,8 +337,8 @@ We use the `droplevels()` function to remove extra levels.
 
 
 ~~~{.r}
-dat$Gender<-droplevels(dat$Gender)
-plot(x=dat$Gender,y=dat$BloodPressure)
+dat$Gender <- droplevels(dat$Gender)
+plot(x = dat$Gender, y = dat$BloodPressure)
 ~~~
 
 <img src="fig/01-supp-factors-dropping-levels-1.png" title="plot of chunk dropping-levels" alt="plot of chunk dropping-levels" style="display: block; margin: auto;" />
