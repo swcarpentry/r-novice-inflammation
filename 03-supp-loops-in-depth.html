@@ -30,7 +30,7 @@
           <h2 class="subtitle">Loops in R</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -58,7 +58,8 @@
 <p>For example, to add pairs of numbers contained in two vectors</p>
 <pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
 b &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span></code></pre>
-<p>you could loop over the pairs adding each in turn, but that would be very inefficient in R.</p>
+<p>You could loop over the pairs adding each in turn, but that would be very inefficient in R.</p>
+<p>Instead of using <code>i in a</code> to make our loop variable, we use the function <code>seq_along</code> to generate indices for each element <code>a</code> contains.</p>
 <pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dt">length =</span> <span class="kw">length</span>(a))
 for (i in <span class="kw">seq_along</span>(a)) {
   res[i] &lt;-<span class="st"> </span>a[i] +<span class="st"> </span>b[i]
@@ -128,8 +129,98 @@ length
 }
 
 <span class="kw">system.time</span>(avg2 &lt;-<span class="st"> </span><span class="kw">analyze2</span>(filenames))</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
 <pre class="output"><code>   user  system elapsed 
-  0.078   0.006   0.152 
+  0.101   0.006   0.113 
 </code></pre>
 <p>Note how we add a new column to <code>out</code> at each iteration? This is a cardinal sin of writing a <code>for</code> loop in R.</p>
 <p>Instead, we can create an empty matrix with the right dimensions (rows/columns) to hold the results. Then we loop over the files but this time we fill in the <code>f</code>th column of our results matrix <code>out</code>. This time there is no copying/growing for R to deal with.</p>
@@ -143,8 +234,98 @@ length
 }
 
 <span class="kw">system.time</span>(avg3 &lt;-<span class="st"> </span><span class="kw">analyze3</span>(filenames))</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
+<pre class="error"><code>Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+na.strings, : EOF within quoted string
+</code></pre>
+<pre class="error"><code>Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+</code></pre>
+<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+</code></pre>
 <pre class="output"><code>   user  system elapsed 
-  0.048   0.002   0.052 
+  0.110   0.003   0.117 
 </code></pre>
 <p>In this simple example there is little difference in the compute time of <code>analyze2</code> and <code>analyze3</code>. This is because we are only iterating over 12 files and hence we only incur 12 copy/grow operations. If we were doing this over more files or the data objects we were growing were larger, the penalty for copying/growing would be much larger.</p>
 <p>Note that <code>apply</code> handles these memory allocation issues for you, but then you have to write the loop part as a function to pass to <code>apply</code>. At its heart, <code>apply</code> is just a <code>for</code> loop with extra convenience.</p>
