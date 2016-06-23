@@ -77,7 +77,7 @@ read.csv(file = "data/inflammation-01.csv")
 > ## Reading different decimal point formats {.challenge}
 > Depending on the country you live in, your standard can use the dot or the comma as decimal mark.
 > Also, different devices or software can generate data with different decimal points.
-> Take a look at '?read.csv' and write the code to load a file called commadec.txt that has numeric values with commas as decimal mark, separated by semicolons.
+> Take a look at `?read.csv` and write the code to load a file called `commadec.txt` that has numeric values with commas as decimal mark, separated by semicolons.
 
 
 The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s).
