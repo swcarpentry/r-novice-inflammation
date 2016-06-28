@@ -73,11 +73,12 @@ Rscript session-info.R
 
 
 ~~~{.output}
-R version 3.1.2 (2014-10-31)
+R version 3.2.4 (2016-03-10)
 Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Running under: OS X 10.11.5 (El Capitan)
 
 locale:
-[1] en_CA.UTF-8/en_CA.UTF-8/en_CA.UTF-8/C/en_CA.UTF-8/en_CA.UTF-8
+[1] en_AU.UTF-8/en_AU.UTF-8/en_AU.UTF-8/C/en_AU.UTF-8/en_AU.UTF-8
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
@@ -86,7 +87,8 @@ attached base packages:
 
 > ## Tip {.callout}
 >
-> If that did not work, remember that you must be in the correct directory.
+> If that did not work, you might have seen an error message indicating that the file `session-info.R` does not exist.
+> Remember that you must be in the correct directory, the one in which you created your script file.
 > You can determine which directory you are currently in using `pwd` and change to a different directory using `cd`.
 > For a review, see this [lesson](https://swcarpentry.github.io/shell-novice/01-filedir.html).
 
