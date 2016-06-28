@@ -30,7 +30,7 @@
           <h2 class="subtitle">Command-Line Programs</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -67,21 +67,22 @@
 <p>The function, <code>sessionInfo</code>, outputs the version of R you are running as well as the type of computer you are using (as well as the versions of the packages that have been loaded). This is very useful information to include when asking others for help with your R code.</p>
 <p>Now we can run the code in the file we created from the Unix Shell using <code>Rscript</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rscript session-info.R</code></pre>
-<pre class="output"><code>R version 3.1.2 (2014-10-31)
+<pre class="output"><code>R version 3.2.4 (2016-03-10)
 Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Running under: OS X 10.11.5 (El Capitan)
 
 locale:
-[1] en_CA.UTF-8/en_CA.UTF-8/en_CA.UTF-8/C/en_CA.UTF-8/en_CA.UTF-8
+[1] en_AU.UTF-8/en_AU.UTF-8/en_AU.UTF-8/C/en_AU.UTF-8/en_AU.UTF-8
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
 </code></pre>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
-<p>If that did not work, remember that you must be in the correct directory. You can determine which directory you are currently in using <code>pwd</code> and change to a different directory using <code>cd</code>. For a review, see this <a href="https://swcarpentry.github.io/shell-novice/01-filedir.html">lesson</a>.</p>
+<p>If that did not work, you might have seen an error message indicating that the file <code>session-info.R</code> does not exist. Remember that you must be in the correct directory, the one in which you created your script file. You can determine which directory you are currently in using <code>pwd</code> and change to a different directory using <code>cd</code>. For a review, see this <a href="https://swcarpentry.github.io/shell-novice/01-filedir.html">lesson</a>.</p>
 </div>
 </aside>
 <p>Now let’s create another script that does something more interesting. Write the following lines in a file named <code>print-args.R</code>:</p>
@@ -218,7 +219,7 @@ main()
 </code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - A simple command line program</h2>
+<h2 id="challenge---a-simple-command-line-program"><span class="glyphicon glyphicon-pencil"></span>Challenge - A simple command line program</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -286,7 +287,7 @@ main()
 <p><strong>Note</strong>: at this point, we have created three versions of our script called <code>readings-01.R</code>, <code>readings-02.R</code>, and <code>readings-03.R</code>. We wouldn’t do this in real life: instead, we would have one file called <code>readings.R</code> that we committed to version control every time we got an enhancement working. For teaching, though, we need all the successive versions side by side.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - A command line program with arguments</h2>
+<h2 id="challenge---a-command-line-program-with-arguments"><span class="glyphicon glyphicon-pencil"></span>Challenge - A command line program with arguments</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -357,7 +358,7 @@ main()
 <p>This is four lines longer than its predecessor, but broken into more digestible chunks of 8 and 12 lines.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
+<h2 id="tip-1"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
 </div>
 <div class="panel-body">
 <p>R has a package named <a href="http://cran.r-project.org/web/packages/argparse/index.html">argparse</a> that helps handle complex command-line flags (it utilizes a <a href="http://docs.python.org/dev/library/argparse.html">Python module</a> of the same name). We will not cover this package in this lesson but when you start writing programs with multiple parameters you’ll want to read through the package’s <a href="http://cran.r-project.org/web/packages/argparse/vignettes/argparse.pdf">vignette</a>.</p>
@@ -365,7 +366,7 @@ main()
 </aside>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Shorter command line arguments</h2>
+<h2 id="challenge---shorter-command-line-arguments"><span class="glyphicon glyphicon-pencil"></span>Challenge - Shorter command line arguments</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -436,7 +437,7 @@ main()
 <p>And now we’re done: the program now does everything we set out to do.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Challenge - Implementing wc in R</h2>
+<h2 id="challenge---implementing-wc-in-r"><span class="glyphicon glyphicon-pencil"></span>Challenge - Implementing wc in R</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -448,7 +449,7 @@ main()
 </section>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
+<h2 id="key-points"><span class="glyphicon glyphicon-pushpin"></span>Key Points</h2>
 </div>
 <div class="panel-body">
 <ul>
