@@ -349,15 +349,28 @@ animal[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="challenge---subsetting-data-2"><span class="glyphicon glyphicon-pencil"></span>Challenge - Subsetting data 2</h2>
+<h2 id="subsetting-data-2"><span class="glyphicon glyphicon-pencil"></span>Subsetting data 2</h2>
 </div>
 <div class="panel-body">
-<p>Suppose you want to determine the maximum inflamation for patient 5 across days three to seven. To do this you would extract the relevant slice from the data frame and calculate the maximum value. Which of the following lines of R code gives the correct answer?</p>
+<p>Suppose you want to determine the maximum inflammation for patient 5 across days three to seven. To do this you would extract the relevant slice from the data frame and calculate the maximum value. Which of the following lines of R code gives the correct answer?</p>
 <ol style="list-style-type: lower-alpha">
 <li><code>max(dat[5, ])</code></li>
 <li><code>max(dat[3:7, 5])</code></li>
 <li><code>max(dat[5, 3:7])</code></li>
 <li><code>max(dat[5, 3, 7])</code></li>
+</ol>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="slicing-and-re-assignment"><span class="glyphicon glyphicon-pencil"></span>Slicing and re-assignment</h2>
+</div>
+<div class="panel-body">
+<p>Using the inflammation data frame <code>dat</code> from above: Let’s pretend there was something wrong with the instrument on the first five days for every second patient (#2, 4, 6, etc.), which resulted in the measurements being twice as large as they should be.</p>
+<ol style="list-style-type: decimal">
+<li>Write a vector containing each affected patient (hint: <code>? seq</code>)</li>
+<li>Create a new data frame with in which you halve the first five days’ values in only those patients</li>
+<li>Print out the corrected data frame to check that your code has fixed the problem</li>
 </ol>
 </div>
 </section>
