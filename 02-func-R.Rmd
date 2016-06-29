@@ -286,7 +286,7 @@ We can even go further and check that the standard deviation hasn't changed:
 ```{r}
 # original standard deviation
 sd(dat[, 4])
-# centerted standard deviation
+# centered standard deviation
 sd(centered)
 ```
 
