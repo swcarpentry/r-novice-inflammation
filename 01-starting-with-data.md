@@ -635,9 +635,9 @@ We'll learn why this is so in the next lesson.
 > 1.  Use a slice of `animal` to create a new character vector that spells the word "eon", i.e. `c("e", "o", "n")`.
 
 
-> ## Challenge - Subsetting data 2 {.challenge}
+> ## Subsetting data 2 {.challenge}
 >
-> Suppose you want to determine the maximum inflamation for patient 5 across days three to seven.
+> Suppose you want to determine the maximum inflammation for patient 5 across days three to seven.
 > To do this you would extract the relevant slice from the data frame and calculate the maximum value.
 > Which of the following lines of R code gives the correct answer?
 >
@@ -645,6 +645,20 @@ We'll learn why this is so in the next lesson.
 > (b) `max(dat[3:7, 5])`
 > (c) `max(dat[5, 3:7])`
 > (d) `max(dat[5, 3, 7])`
+
+
+> ## Slicing and re-assignment {.challenge}
+>
+> Using the inflammation data frame `dat` from above:
+> Let's pretend there was something wrong with the instrument on the first five days for every second patient (#2, 4, 6, etc.), which resulted in the measurements being twice as large as they should be.
+>
+> 1. Write a vector containing each affected patient (hint: `? seq`)
+> 2. Create a new data frame with in which you halve the first five days' values in only those patients
+> 3. Print out the corrected data frame to check that your code has fixed the problem
+>
+
+
+
 
 ### Plotting
 
