@@ -355,9 +355,9 @@ We'll learn why this is so in the next lesson.
 > 1.  Use a slice of `animal` to create a new character vector that spells the word "eon", i.e. `c("e", "o", "n")`.
 
 
-> ## Challenge - Subsetting data 2 {.challenge}
+> ## Subsetting data 2 {.challenge}
 >
-> Suppose you want to determine the maximum inflamation for patient 5 across days three to seven.
+> Suppose you want to determine the maximum inflammation for patient 5 across days three to seven.
 > To do this you would extract the relevant slice from the data frame and calculate the maximum value.
 > Which of the following lines of R code gives the correct answer?
 >
