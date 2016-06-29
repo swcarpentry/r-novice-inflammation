@@ -452,7 +452,7 @@ display(c = 77)
 
 > ## Tip {.callout}
 >
-> To be precise, R has three ways that arguments supplied
+> To be precise, R has three ways that arguments are supplied
 >
 > by you are matched to the *formal arguments* of the function definition
 >
