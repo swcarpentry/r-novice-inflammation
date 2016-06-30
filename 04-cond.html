@@ -125,7 +125,7 @@ if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sign</span>(<span class="dv">2</span>/<span class="dv">3</span>)</code></pre>
 <pre class="output"><code>[1] 1
 </code></pre>
-<p>Note that when combining <code>else</code> and <code>if</code> in an <code>else if</code> statement (similar to <code>elif</code> in Python), the <code>if</code> portion still requires a direct input condition.  This is never the case for the <code>else</code> statement alone, which is only executed if all other conditions go unsatisfied.  Note that the test for equality uses two equal signs, <code>==</code>.</p>
+<p>Note that when combining <code>else</code> and <code>if</code> in an <code>else if</code> statement (similar to <code>elif</code> in Python), the <code>if</code> portion still requires a direct input condition. This is never the case for the <code>else</code> statement alone, which is only executed if all other conditions go unsatisfied. Note that the test for equality uses two equal signs, <code>==</code>.</p>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2 id="tip-1"><span class="glyphicon glyphicon-pushpin"></span>Tip</h2>
@@ -205,37 +205,45 @@ if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
 <pre class="sourceCode r"><code class="sourceCode r">!<span class="kw">is.null</span>(output)</code></pre>
 <pre class="output"><code>[1] FALSE
 </code></pre>
-<p>Now we can use <code>analyze</code> both interactively:</p>
+<p>Now we can use <code>analyze</code> interactively, as before,</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>)</code></pre>
 <p><img src="fig/04-cond-inflammation-01-1.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/04-cond-inflammation-01-2.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/04-cond-inflammation-01-3.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /></p>
-<p>and to save plots:</p>
+<p>but also use it to save plots,</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">output =</span> <span class="st">&quot;inflammation-01.pdf&quot;</span>)</code></pre>
-<p>This now works well when we want to process one data file at a time, but how can we specify the output file in <code>analyze_all</code>? We need to substitute the filename ending “csv” with “pdf”, which we can do using the function <code>sub</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> &quot;data/inflammation-01.csv&quot;</span>
+<p>Before going further, we will create a directory <code>results</code> for saving our plots. It is <a href="http://swcarpentry.github.io/good-enough-practices-in-scientific-computing/">good practice</a> in data analysis projects to save all output to a directory seperate from the data and analysis code. You can create this directory using the shell command <a href="http://swcarpentry.github.io/shell-novice/02-create.html">mkdir</a>, or the R function <code>dir.create()</code></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir.create</span>(<span class="st">&quot;results&quot;</span>)</code></pre>
+<p>Now run <code>analyze</code> and save the plot in the <code>results</code> directory,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze</span>(<span class="st">&quot;data/inflammation-01.csv&quot;</span>, <span class="dt">output =</span> <span class="st">&quot;results/inflammation-01.pdf&quot;</span>)</code></pre>
+<p>This now works well when we want to process one data file at a time, but how can we specify the output file in <code>analyze_all</code>? We need to do two things:</p>
+<ol style="list-style-type: decimal">
+<li>Substitute the filename ending “csv” with “pdf”.</li>
+<li>Save the plot to the <code>results</code> directory.</li>
+</ol>
+<p>To change the extension to “pdf”, we will use the function <code>sub</code>,</p>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> &quot;inflammation-01.csv&quot;</span>
 <span class="kw">sub</span>(<span class="st">&quot;csv&quot;</span>, <span class="st">&quot;pdf&quot;</span>, f)</code></pre>
-<pre class="output"><code>[1] &quot;data/inflammation-01.pdf&quot;
+<pre class="output"><code>[1] &quot;inflammation-01.pdf&quot;
+</code></pre>
+<p>To add the “data” directory to the filename use the function <code>file.path</code>,</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">file.path</span>(<span class="st">&quot;results&quot;</span>, <span class="kw">sub</span>(<span class="st">&quot;csv&quot;</span>, <span class="st">&quot;pdf&quot;</span>, f))</code></pre>
+<pre class="output"><code>[1] &quot;results/inflammation-01.pdf&quot;
 </code></pre>
 <p>Now let’s update <code>analyze_all</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">analyze_all &lt;-<span class="st"> </span>function(pattern) {
+  <span class="co"># Directory name containing the data</span>
+  data_dir &lt;-<span class="st"> &quot;data&quot;</span>
+  <span class="co"># Directory name for results</span>
+  results_dir &lt;-<span class="st"> &quot;results&quot;</span>
   <span class="co"># Runs the function analyze for each file in the current working directory</span>
   <span class="co"># that contains the given pattern.</span>
-  filenames &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> pattern, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)
+  filenames &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> data_dir, <span class="dt">pattern =</span> pattern)
   for (f in filenames) {
-    pdf_name &lt;-<span class="st"> </span><span class="kw">sub</span>(<span class="st">&quot;csv&quot;</span>, <span class="st">&quot;pdf&quot;</span>, f)
-    <span class="kw">analyze</span>(f, <span class="dt">output =</span> pdf_name)
+    pdf_name &lt;-<span class="st"> </span><span class="kw">file.path</span>(results_dir, <span class="kw">sub</span>(<span class="st">&quot;csv&quot;</span>, <span class="st">&quot;pdf&quot;</span>, f))
+    <span class="kw">analyze</span>(<span class="kw">file.path</span>(data_dir, f), <span class="dt">output =</span> pdf_name)
   }
 }</code></pre>
 <p>Now we can save all of the results with just one line of code:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze_all</span>(<span class="st">&quot;inflammation&quot;</span>)</code></pre>
-<pre class="error"><code>Warning in mean.default(newX[, i], ...): argument is not numeric or
-logical: returning NA
-</code></pre>
-<pre class="error"><code>Warning in min(x): no non-missing arguments to min; returning Inf
-</code></pre>
-<pre class="error"><code>Warning in max(x): no non-missing arguments to max; returning -Inf
-</code></pre>
-<pre class="error"><code>Error in plot.window(...): need finite &#39;ylim&#39; values
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">analyze_all</span>(<span class="st">&quot;inflammation*.csv&quot;</span>)</code></pre>
 <p>Now if we need to make any changes to our analysis, we can edit the <code>analyze</code> function and quickly regenerate all the figures with <code>analyze_all</code>.</p>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
