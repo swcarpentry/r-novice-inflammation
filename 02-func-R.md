@@ -130,9 +130,9 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > ## Tip {.callout}
 >
 > This example showed the output of `fahr_to_kelvin` assigned to `temp_k`, which
-> is then passed to `kelvin_to_celsius` to get the final result. It is also possible 
+> is then passed to `kelvin_to_celsius` to get the final result. It is also possible
 > to perform this calculation in one line of code, by "chaining" functions
-> together, like so: 
+> together, like so:
 >
 > 
 > ~~~{.r}
@@ -147,7 +147,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > 
 > ~~~
 
-> ## Challenge - Create a function {.challenge}
+> ## Create a function {.challenge}
 >
 >  + In the last lesson, we learned to **c**oncatenate elements into a vector using the `c` function, e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
 >  Furthermore, we can extend that vector again using `c`, e.g. `y <- c(x, "D")` creates a vector `y` with four elements.
@@ -189,6 +189,28 @@ Real-life functions will usually be larger than the ones shown here--typically h
 >
 > For a deeper understanding of how functions work, you'll need to learn how they create their own environments and call other functions. Function calls are managed via the call stack. For more details on the call stack, have a look at the [supplementary material](02-supp-call-stack.html).
 
+
+> ## Named variables and the scope of variables {.challenge}
+>
+>  + Functions can accept arguments explicitly assigned to a variable name in
+>    in the function call `functionName(variable = value)`, as well as arguments by
+>    order:
+> 
+> ~~~{.r}
+> input_1 = 20
+> mySum <- function(input_1, input_2 = 10) {
+>   output <- input_1 + input_2
+>   return(output)
+> }
+> ~~~
+> Q1 Given the above code was run, which value does `mySum(input_1 = 1, 3)` produce?
+>
+> 1) 4
+> 2) 11
+> 3) 23
+> 4) 30
+>
+> Q2. If mySum(3) == 13, why does mySum(b=3) return an error?
 
 ### Testing and Documenting
 
@@ -354,7 +376,7 @@ sd(dat[, 4])
 
 
 ~~~{.r}
-# centerted standard deviation
+# centered standard deviation
 sd(centered)
 ~~~
 
@@ -429,7 +451,7 @@ center <- function(data, desired) {
 
 
 
-> ## Challenge - A more advanced function {.challenge}
+> ## A more advanced function {.challenge}
 >
 >  + Write a function called `analyze` that takes a filename as a argument and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
 >  `analyze("data/inflammation-01.csv")` should produce the graphs already shown, while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
@@ -612,7 +634,7 @@ display(c = 77)
 
 > ## Tip {.callout}
 >
-> To be precise, R has three ways that arguments supplied
+> To be precise, R has three ways that arguments are supplied
 >
 > by you are matched to the *formal arguments* of the function definition
 >
@@ -655,7 +677,7 @@ Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'f
 
 It fails because `FALSE` is assigned to `file` and the filename is assigned to the argument `header`.
 
-> ## Challenge - A function with default argument values {.challenge}
+> ## A function with default argument values {.challenge}
 >
 >  + Rewrite the `rescale` function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want.
 >  Compare your implementation to your neighbor's: do the two functions always behave the same way?
