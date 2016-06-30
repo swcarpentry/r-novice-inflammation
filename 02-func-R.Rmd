@@ -195,7 +195,7 @@ We can even go further and check that the standard deviation hasn't changed:
 ```{r}
 # original standard deviation
 sd(dat[, 4])
-# centerted standard deviation
+# centered standard deviation
 sd(centered)
 ```
 
@@ -361,7 +361,7 @@ display(c = 77)
 
 > ## Tip {.callout}
 >
-> To be precise, R has three ways that arguments supplied
+> To be precise, R has three ways that arguments are supplied
 >
 > by you are matched to the *formal arguments* of the function definition
 >
