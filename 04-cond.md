@@ -201,7 +201,8 @@ sign(2/3)
 
 ~~~
 
-Note that when combining `else` and `if` in an `else if` statement (similar to `elif` in Python), the `if` portion still requires a direct input condition.  This is never the case for the `else` statement alone, which is only executed if all other conditions go unsatisfied.  Note that the test for equality uses two equal signs, `==`.
+Note that when combining `else` and `if` in an `else if` statement (similar to `elif` in Python), the `if` portion still requires a direct input condition.  This is never the case for the `else` statement alone, which is only executed if all other conditions go unsatisfied.
+Note that the test for equality uses two equal signs, `==`.
 
 > ## Tip {.callout}
 >
@@ -351,7 +352,7 @@ is.null(output)
 
 ~~~
 
-Now we can use `analyze` both interactively:
+Now we can use `analyze` interactively, as before,
 
 
 ~~~{.r}
@@ -360,40 +361,75 @@ analyze("data/inflammation-01.csv")
 
 <img src="fig/04-cond-inflammation-01-1.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/04-cond-inflammation-01-2.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="fig/04-cond-inflammation-01-3.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" />
 
-and to save plots:
+but also use it to save plots,
 
 
 ~~~{.r}
 analyze("data/inflammation-01.csv", output = "inflammation-01.pdf")
 ~~~
 
-This now works well when we want to process one data file at a time, but how can we specify the output file in `analyze_all`?
-We need to substitute the filename ending "csv" with "pdf", which we can do using the function `sub`:
-
+Before going further, we will create a directory `results` for saving our plots.
+It is [good practice](http://swcarpentry.github.io/good-enough-practices-in-scientific-computing/) in data analysis projects to save all output to a directory seperate from the data and analysis code.
+You can create this directory using the shell command [mkdir](http://swcarpentry.github.io/shell-novice/02-create.html), or the R function `dir.create()`
 
 ~~~{.r}
-f <- "data/inflammation-01.csv"
+dir.create("results")
+~~~
+
+Now run `analyze` and save the plot in the `results` directory,
+
+~~~{.r}
+analyze("data/inflammation-01.csv", output = "results/inflammation-01.pdf")
+~~~
+
+This now works well when we want to process one data file at a time, but how can we specify the output file in `analyze_all`?
+We need to do two things:
+
+1. Substitute the filename ending "csv" with "pdf".
+2. Save the plot to the `results` directory.
+
+To change the extension to "pdf", we will use the function `sub`,
+
+~~~{.r}
+f <- "inflammation-01.csv"
 sub("csv", "pdf", f)
 ~~~
 
 
 
 ~~~{.output}
-[1] "data/inflammation-01.pdf"
+[1] "inflammation-01.pdf"
 
 ~~~
+To add the "data" directory to the filename use the function `file.path`,
+
+~~~{.r}
+file.path("results", sub("csv", "pdf", f))
+~~~
+
+
+
+~~~{.output}
+[1] "results/inflammation-01.pdf"
+
+~~~
+
 
 Now let's update `analyze_all`:
 
 
 ~~~{.r}
 analyze_all <- function(pattern) {
+  # Directory name containing the data
+  data_dir <- "data"
+  # Directory name for results
+  results_dir <- "results"
   # Runs the function analyze for each file in the current working directory
   # that contains the given pattern.
-  filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
+  filenames <- list.files(path = data_dir, pattern = pattern)
   for (f in filenames) {
-    pdf_name <- sub("csv", "pdf", f)
-    analyze(f, output = pdf_name)
+    pdf_name <- file.path(results_dir, sub("csv", "pdf", f))
+    analyze(file.path(data_dir, f), output = pdf_name)
   }
 }
 ~~~
@@ -402,36 +438,7 @@ Now we can save all of the results with just one line of code:
 
 
 ~~~{.r}
-analyze_all("inflammation")
-~~~
-
-
-
-~~~{.error}
-Warning in mean.default(newX[, i], ...): argument is not numeric or
-logical: returning NA
-
-~~~
-
-
-
-~~~{.error}
-Warning in min(x): no non-missing arguments to min; returning Inf
-
-~~~
-
-
-
-~~~{.error}
-Warning in max(x): no non-missing arguments to max; returning -Inf
-
-~~~
-
-
-
-~~~{.error}
-Error in plot.window(...): need finite 'ylim' values
-
+analyze_all("inflammation*.csv")
 ~~~
 
 Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analyze_all`.
