@@ -252,36 +252,61 @@ is.null(output)
 !is.null(output)
 ```
 
-Now we can use `analyze` both interactively:
+Now we can use `analyze` interactively, as before,
 
 ```{r inflammation-01}
 analyze("data/inflammation-01.csv")
 ```
 
-and to save plots:
+but also use it to save plots,
 
 ```{r results='hide'}
 analyze("data/inflammation-01.csv", output = "inflammation-01.pdf")
 ```
 
-This now works well when we want to process one data file at a time, but how can we specify the output file in `analyze_all`?
-We need to substitute the filename ending "csv" with "pdf", which we can do using the function `sub`:
+Before going further, we will create a directory `results` for saving our plots.
+It is [good practice](http://swcarpentry.github.io/good-enough-practices-in-scientific-computing/) in data analysis projects to save all output to a directory seperate from the data and analysis code.
+You can create this directory using the shell command [mkdir](http://swcarpentry.github.io/shell-novice/02-create.html), or the R function `dir.create()`
+```{r warning=FALSE}
+dir.create("results")
+```
 
+Now run `analyze` and save the plot in the `results` directory,
+```{r results='hide'}
+analyze("data/inflammation-01.csv", output = "results/inflammation-01.pdf")
+```
+
+This now works well when we want to process one data file at a time, but how can we specify the output file in `analyze_all`?
+We need to do two things:
+
+1. Substitute the filename ending "csv" with "pdf".
+2. Save the plot to the `results` directory.
+
+To change the extension to "pdf", we will use the function `sub`,
 ```{r}
-f <- "data/inflammation-01.csv"
+f <- "inflammation-01.csv"
 sub("csv", "pdf", f)
 ```
+To add the "data" directory to the filename use the function `file.path`,
+```{r}
+file.path("results", sub("csv", "pdf", f))
+```
+
 
 Now let's update `analyze_all`:
 
 ```{r analyze_all-save}
 analyze_all <- function(pattern) {
+  # Directory name containing the data
+  data_dir <- "data"
+  # Directory name for results
+  results_dir <- "results"
   # Runs the function analyze for each file in the current working directory
   # that contains the given pattern.
-  filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
+  filenames <- list.files(path = data_dir, pattern = pattern)
   for (f in filenames) {
-    pdf_name <- sub("csv", "pdf", f)
-    analyze(f, output = pdf_name)
+    pdf_name <- file.path(results_dir, sub("csv", "pdf", f))
+    analyze(file.path(data_dir, f), output = pdf_name)
   }
 }
 ```
