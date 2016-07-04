@@ -400,7 +400,11 @@ dat2[whichPatients,whichDays] <- dat2[whichPatients,whichDays]/2
 >
 > Think about the number of rows and columns you would expect as the result before each
 > apply call and check your intuition by applying the mean function.
-
+>
+> Answers:
+> 1) apply(dat[1:5, ], 1, mean)
+> 2) apply(dat[, 1:10], 2, mean)
+> 3) apply(dat[, seq(1,40, by=2)], 2, mean)
 
 ### Plotting
 
