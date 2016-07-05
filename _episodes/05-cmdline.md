@@ -5,9 +5,7 @@ subtitle: Command-Line Programs
 minutes: 30
 ---
 
-```{r, include = FALSE}
-source("../bin/chunk-options.R")
-```
+
 
 > ## Learning Objectives {.objectives}
 >
@@ -55,18 +53,30 @@ We'll tackle these questions in turn below.
 
 Using the text editor of your choice, save the following line of code in a text file called `session-info.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat session-info.R
-```
+
+~~~
+cat: session-info.R: No such file or directory
+~~~
+{: .output}
 
 The function, `sessionInfo`, outputs the version of R you are running as well as the type of computer you are using (as well as the versions of the packages that have been loaded).
 This is very useful information to include when asking others for help with your R code.
 
 Now we can run the code in the file we created from the Unix Shell using `Rscript`:
 
-```{r engine='bash'}
+
+~~~
 Rscript session-info.R
-```
+~~~
+{: .r}
+
+
+
+
+~~~
+Fatal error: cannot open file 'session-info.R': No such file or directory
+~~~
+{: .output}
 
 > ## Tip {.callout}
 >
@@ -77,9 +87,11 @@ Rscript session-info.R
 
 Now let's create another script that does something more interesting. Write the following lines in a file named `print-args.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat print-args.R
-```
+
+~~~
+cat: print-args.R: No such file or directory
+~~~
+{: .output}
 
 The function `commandArgs` extracts all the command line arguments and returns them as a vector.
 The function `cat`, similar to the `cat` of the Unix Shell, outputs the contents of the variable.
@@ -87,9 +99,19 @@ Since we did not specify a filename for writing, `cat` sends the output to [stan
 Because we set the argument `sep` to `"\n"`, which is the symbol to start a new line, each element of the vector is printed on its own line.
 Let's see what happens when we run this program in the Unix Shell:
 
-```{r engine='bash'}
+
+~~~
 Rscript print-args.R
-```
+~~~
+{: .r}
+
+
+
+
+~~~
+Fatal error: cannot open file 'print-args.R': No such file or directory
+~~~
+{: .output}
 
 From this output, we learn that `Rscript` is just a convenience command for running R scripts.
 The first argument in the vector is the path to the `R` executable.
@@ -103,29 +125,61 @@ From the R help file:
 
 Thus running a file with Rscript is an easier way to run the following:
 
-```{r engine='bash'}
+
+~~~
 R --slave --no-restore --file=print-args.R --args
-```
+~~~
+{: .r}
+
+
+
+
+~~~
+Fatal error: cannot open file 'print-args.R': No such file or directory
+~~~
+{: .output}
 
 If we run it with a few arguments, however:
 
-```{r engine='bash'}
+
+~~~
 Rscript print-args.R first second third
-```
+~~~
+{: .r}
+
+
+
+
+~~~
+Fatal error: cannot open file 'print-args.R': No such file or directory
+~~~
+{: .output}
 
 then `commandArgs` adds each of those arguments to the vector it returns.
 Since the first elements of the vector are always the same, we can tell `commandArgs` to only return the arguments that come after `--args`.
 Let's update `print-args.R` and save it as `print-args-trailing.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat print-args-trailing.R
-```
+
+~~~
+cat: print-args-trailing.R: No such file or directory
+~~~
+{: .output}
 
 And then run `print-args-trailing` from the Unix Shell:
 
-```{r engine='bash'}
+
+~~~
 Rscript print-args-trailing.R first second third
-```
+~~~
+{: .r}
+
+
+
+
+~~~
+Fatal error: cannot open file 'print-args-trailing.R': No such file or directory
+~~~
+{: .output}
 
 Now `commandArgs` returns only the arguments that we listed after `print-args-trailing.R`.
 
@@ -134,41 +188,85 @@ The first step is to write a function that outlines our implementation, and a pl
 By convention this function is usually called `main`, though we can call it whatever we want.
 Write the following code in a file called `readings-01.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat readings-01.R
-```
+
+~~~
+cat: readings-01.R: No such file or directory
+~~~
+{: .output}
 
 
 This function gets the name of the file to process from the first element returned by `commandArgs`.
 Here's a simple test to run from the Unix Shell:
 
-```{r engine='bash'}
+
+~~~
 Rscript readings-01.R data/inflammation-01.csv
-```
+~~~
+{: .r}
+
+
+
+
+~~~
+Fatal error: cannot open file 'readings-01.R': No such file or directory
+~~~
+{: .output}
 
 There is no output because we have defined a function, but haven't actually called it.
 Let's add a call to `main` and save it as `readings-02.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat readings-02.R
-```
 
-```{r engine='bash'}
+~~~
+cat: readings-02.R: No such file or directory
+~~~
+{: .output}
+
+
+~~~
 Rscript readings-02.R data/inflammation-01.csv
-```
+~~~
+{: .r}
+
+
+
+
+~~~
+Fatal error: cannot open file 'readings-02.R': No such file or directory
+~~~
+{: .output}
 
 > ## Challenge - A simple command line program {.challenge}
 >
 >  + Write a command-line program that does addition and subtraction.
 >  **Hint:** Everything argument read from the command-line is interpreted as a character [string](reference.html#string).
 >  You can convert from a string to a number using the function `as.numeric`.
-> ```{r, engine='bash'}
+> 
+> ~~~
 > Rscript arith.R 1 + 2
-> ```
+> ~~~
+> {: .r}
+> 
+> 
+> 
+> 
+> ~~~
+> Fatal error: cannot open file 'arith.R': No such file or directory
+> ~~~
+> {: .output}
 >
-> ```{r, engine='bash'}
+> 
+> ~~~
 > Rscript arith.R 3 - 4
-> ```
+> ~~~
+> {: .r}
+> 
+> 
+> 
+> 
+> ~~~
+> Fatal error: cannot open file 'arith.R': No such file or directory
+> ~~~
+> {: .output}
 >
 >  + What goes wrong if you try to add multiplication using `*` to the program?
 >
@@ -178,15 +276,23 @@ Rscript readings-02.R data/inflammation-01.csv
 >
 >  + Using the function `list.files` introduced in a previous [lesson](03-loops-R.html), write a command-line program, `find-pattern.R`, that lists all the files in the current directory that contain a specific pattern:
 >
-> ```{r, engine='bash'}
+> 
+> ~~~
 > # For example, searching for the pattern "print-args" returns the two scripts we
 > # wrote earlier
 > Rscript find-pattern.R print-args
-> ```
+> ~~~
+> {: .r}
+> 
+> 
+> 
+> 
+> ~~~
+> Fatal error: cannot open file 'find-pattern.R': No such file or directory
+> ~~~
+> {: .output}
 >
-> ```{r third-answer, include=FALSE, engine='bash'}
-> cat find-pattern.R
-> ```
+
 
 ### Handling Multiple Files
 
@@ -194,17 +300,50 @@ The next step is to teach our program how to handle multiple files.
 Since 60 lines of output per file is a lot to page through, we'll start by using three smaller files, each of which has three days of data for two patients.
 Let's investigate them from the Unix Shell:
 
-```{r, engine='bash'}
+
+~~~
 ls data/small-*.csv
-```
+~~~
+{: .r}
 
-```{r, engine='bash'}
+
+
+
+~~~
+data/small-01.csv
+data/small-02.csv
+data/small-03.csv
+~~~
+{: .output}
+
+
+~~~
 cat data/small-01.csv
-```
+~~~
+{: .r}
 
-```{r, engine='bash'}
+
+
+
+~~~
+0,0,1
+0,1,2
+~~~
+{: .output}
+
+
+~~~
 Rscript readings-02.R data/small-01.csv
-```
+~~~
+{: .r}
+
+
+
+
+~~~
+Fatal error: cannot open file 'readings-02.R': No such file or directory
+~~~
+{: .output}
 
 Using small data files as input also allows us to check our results more easily: here, for example, we can see that our program is calculating the mean correctly for each line, whereas we were really taking it on faith before.
 This is yet another rule of programming: test the simple things first.
@@ -216,15 +355,27 @@ We'll need to handle an unknown number of filenames, since our program could be 
 The solution is to loop over the vector returned by `commandArgs(trailingOnly = TRUE)`.
 Here's our changed program, which we'll save as `readings-03.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat readings-03.R
-```
+
+~~~
+cat: readings-03.R: No such file or directory
+~~~
+{: .output}
 
 and here it is in action:
 
-```{r, engine='bash'}
+
+~~~
 Rscript readings-03.R data/small-01.csv data/small-02.csv
-```
+~~~
+{: .r}
+
+
+
+
+~~~
+Fatal error: cannot open file 'readings-03.R': No such file or directory
+~~~
+{: .output}
 
 **Note**: at this point, we have created three versions of our script called `readings-01.R`, `readings-02.R`, and `readings-03.R`.
 We wouldn't do this in real life: instead, we would have one file called `readings.R` that we committed to version control every time we got an enhancement working.
@@ -235,33 +386,36 @@ For teaching, though, we need all the successive versions side by side.
 >  + Write a program called `check.R` that takes the names of one or more inflammation data files as arguments and checks that all the files have the same number of rows and columns.
 >  What is the best way to test your program?
 
-```{r fourth-answer, include=FALSE, engine='bash'}
-cat check.R
-```
 
-```{r testing, include=FALSE, engine='bash'}
-# For testing that it works.
-# Should pass check:
-Rscript check.R data/small-0*
-Rscript check.R data/inflammation-*
-# Should fail check:
-Rscript check.R data/small-0* data/inflammation-*
-```
+
+
 
 ### Handling Command-Line Flags
 
 The next step is to teach our program to pay attention to the `--min`, `--mean`, and `--max` flags.
 These always appear before the names of the files, so let's save the following in `readings-04.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat readings-04.R
-```
+
+~~~
+cat: readings-04.R: No such file or directory
+~~~
+{: .output}
 
 And we can confirm this works by running it from the Unix Shell:
 
-```{r engine='bash'}
+
+~~~
 Rscript readings-04.R --max data/small-01.csv
-```
+~~~
+{: .r}
+
+
+
+
+~~~
+Fatal error: cannot open file 'readings-04.R': No such file or directory
+~~~
+{: .output}
 
 but there are several things wrong with it:
 
@@ -273,9 +427,11 @@ but there are several things wrong with it:
 This version pulls the processing of each file out of the loop into a function of its own.
 It also checks that `action` is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as `readings-05.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat readings-05.R
-```
+
+~~~
+cat: readings-05.R: No such file or directory
+~~~
+{: .output}
 
 This is four lines longer than its predecessor, but broken into more digestible chunks of 8 and 12 lines.
 
@@ -296,35 +452,47 @@ This is four lines longer than its predecessor, but broken into more digestible 
 >
 >  + Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.
 
-```{r usage-answer, include=FALSE, engine='bash'}
-cat readings-usage.R
-```
+
 
 ### Handling Standard Input
 
 The next thing our program has to do is read data from standard input if no filenames are given so that we can put it in a pipeline, redirect input to it, and so on.
 Let's experiment in another script, which we'll save as `count-stdin.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat count-stdin.R
-```
+
+~~~
+cat: count-stdin.R: No such file or directory
+~~~
+{: .output}
 
 This little program reads lines from the program's standard input using `file("stdin")`.
 This allows us to do almost anything with it that we could do to a regular file.
 In this example, we passed it as an argument to the function `readLines`, which stores each line as an element in a vector.
 Let's try running it from the Unix Shell as if it were a regular command-line program:
 
-```{r engine='bash'}
+
+~~~
 Rscript count-stdin.R < data/small-01.csv
-```
+~~~
+{: .r}
+
+
+
+
+~~~
+Fatal error: cannot open file 'count-stdin.R': No such file or directory
+~~~
+{: .output}
 
 Note that because we did not specify `sep = "\n"` when calling `cat`, the output is written on the same line.
 
 A common mistake is to try to run something that reads from standard input like this:
 
-```{r eval=FALSE, engine='bash'}
+
+~~~
 Rscript count-stdin.R data/small-01.csv
-```
+~~~
+{: .r}
 
 i.e., to forget the `<` character that redirect the file to standard input.
 In this case, there's nothing in standard input, so the program waits at the start of the loop for someone to type something on the keyboard.
@@ -337,16 +505,28 @@ We now need to rewrite the program so that it loads data from `file("stdin")` if
 Luckily, `read.csv` can handle either a filename or an open file as its first parameter, so we don't actually need to change `process`.
 That leaves `main`, which we'll update and save as `readings-06.R`:
 
-```{r echo=FALSE, engine='bash'}
-cat readings-06.R
-```
+
+~~~
+cat: readings-06.R: No such file or directory
+~~~
+{: .output}
 
 Let's try it out.
 Instead of calculating the mean inflammation of every patient, we'll only calculate the mean for the first 10 patients (rows):
 
-```{r engine='bash'}
+
+~~~
 head data/inflammation-01.csv | Rscript readings-06.R --mean
-```
+~~~
+{: .r}
+
+
+
+
+~~~
+Fatal error: cannot open file 'readings-06.R': No such file or directory
+~~~
+{: .output}
 
 And now we're done: the program now does everything we set out to do.
 
@@ -356,9 +536,7 @@ And now we're done: the program now does everything we set out to do.
 >    *   If no filenames are given, it reports the number of lines in standard input.
 >    *   If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.
 
-```{r line-count-answer, include=FALSE, engine='bash'}
-cat line-count.R
-```
+
 
 > ## Key Points {.callout}
 >

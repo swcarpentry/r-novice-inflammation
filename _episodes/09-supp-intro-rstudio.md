@@ -5,9 +5,7 @@ subtitle: Introduction to RStudio
 minutes: 15
 ---
 
-```{r, include= FALSE}
-source("../bin/chunk-options.R")
-```
+
 
 > ## Learning Objectives {.objectives}
 >

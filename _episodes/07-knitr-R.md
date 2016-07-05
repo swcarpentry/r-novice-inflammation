@@ -5,9 +5,7 @@ subtitle: Dynamic reports with knitr
 minutes: 30
 ---
 
-```{r, include = FALSE}
-source("../bin/chunk-options.R")
-```
+
 
 > ## Learning Objectives {.objectives}
 >
@@ -21,9 +19,11 @@ You write `knitr` documents in a simple plain text-like format called markdown, 
 
 To get started, install the `knitr` package.
 
-```{r, eval=FALSE}
+
+~~~
 install.packages("knitr")
-```	
+~~~
+{: .r}
 
 When you click on File -> New File, there is an option for "R Markdown...". Choose this and accept the default options in the dialog box that follows (but note that you can also create presentations this way). Save the file and click on the "Knit HTML" button at the top of the script. Compare the output to the source.
 
@@ -44,7 +44,7 @@ The top of the source (.Rmd) file has some header material in YAML format (enclo
 
 To distinguish R code from text, RMarkdown uses three back-ticks followed by `{r}` to distinguish a "code chunk". In RStudio, the keyboard shortcut to create a code chunk is command-option-i or control-alt-i.
 
-A code chunk will set off the code and its results in the output document, but you can also print the results of code within a text block by enclosing code like so: `` `r '\x60r code-here\x60'` ``.
+A code chunk will set off the code and its results in the output document, but you can also print the results of code within a text block by enclosing code like so: `` `r code-here` ``.
 
 > ## Challenge - Use knitr to produce a report {.challenge}
 >

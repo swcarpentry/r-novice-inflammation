@@ -5,10 +5,7 @@ subtitle: Analyzing multiple data sets
 minutes: 30
 ---
 
-```{r, include = FALSE}
-source("../bin/chunk-options.R")
-opts_chunk$set(fig.path = "fig/03-loops-R-")
-```
+
 
 > ## Learning Objectives {.objectives}
 >
@@ -21,7 +18,8 @@ opts_chunk$set(fig.path = "fig/03-loops-R-")
 
 We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
 
-```{r inflammation-01}
+
+~~~
 analyze <- function(filename) {
   # Plots the average, min, and max inflammation over time.
   # Input is character string of a csv file.
@@ -35,13 +33,20 @@ analyze <- function(filename) {
 }
 
 analyze("data/inflammation-01.csv")
-```
+~~~
+{: .r}
+
+<img src="../fig/03-loops-R-inflammation-01-1.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="../fig/03-loops-R-inflammation-01-2.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" /><img src="../fig/03-loops-R-inflammation-01-3.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" style="display: block; margin: auto;" />
 
 We can use it to analyze other data sets one by one:
 
-```{r inflammation-02}
+
+~~~
 analyze("data/inflammation-02.csv")
-```
+~~~
+{: .r}
+
+<img src="../fig/03-loops-R-inflammation-02-1.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="../fig/03-loops-R-inflammation-02-2.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" /><img src="../fig/03-loops-R-inflammation-02-3.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" style="display: block; margin: auto;" />
 
 but we have a dozen data sets right now and more on the way.
 We want to create plots for all our data sets with a single statement.
@@ -52,7 +57,8 @@ To do that, we'll have to teach the computer how to repeat things.
 Suppose we want to print each word in a sentence.
 One way is to use six `print` statements:
 
-```{r}
+
+~~~
 best_practice <- c("Let", "the", "computer", "do", "the", "work")
 print_words <- function(sentence) {
   print(sentence[1])
@@ -64,7 +70,20 @@ print_words <- function(sentence) {
 }
 
 print_words(best_practice)
-```
+~~~
+{: .r}
+
+
+
+~~~
+[1] "Let"
+[1] "the"
+[1] "computer"
+[1] "do"
+[1] "the"
+[1] "work"
+~~~
+{: .output}
 
 but that's a bad approach for two reasons:
 
@@ -72,10 +91,37 @@ but that's a bad approach for two reasons:
 
  2. It's fragile: if we give it a longer vector, it only prints part of the data, and if we give it a shorter input, it returns `NA` values because we're asking for elements that don't exist!
 
-```{r}
+
+~~~
 best_practice[-6]
+~~~
+{: .r}
+
+
+
+~~~
+[1] "Let"      "the"      "computer" "do"       "the"     
+~~~
+{: .output}
+
+
+
+~~~
 print_words(best_practice[-6])
-```
+~~~
+{: .r}
+
+
+
+~~~
+[1] "Let"
+[1] "the"
+[1] "computer"
+[1] "do"
+[1] "the"
+[1] NA
+~~~
+{: .output}
 
 > ## Tip {.callout}
 >
@@ -87,7 +133,8 @@ print_words(best_practice[-6])
 
 Here's a better approach:
 
-```{r}
+
+~~~
 print_words <- function(sentence) {
   for (word in sentence) {
     print(word)
@@ -95,22 +142,50 @@ print_words <- function(sentence) {
 }
 
 print_words(best_practice)
-```
+~~~
+{: .r}
+
+
+
+~~~
+[1] "Let"
+[1] "the"
+[1] "computer"
+[1] "do"
+[1] "the"
+[1] "work"
+~~~
+{: .output}
 
 This is shorter---certainly shorter than something that prints every character in a hundred-letter string---and more robust as well:
 
-```{r}
+
+~~~
 print_words(best_practice[-6])
-```
+~~~
+{: .r}
+
+
+
+~~~
+[1] "Let"
+[1] "the"
+[1] "computer"
+[1] "do"
+[1] "the"
+~~~
+{: .output}
 
 The improved version of `print_words` uses a [for loop](reference.html#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
 The general form of a loop is:
 
-```{r, eval=FALSE}
+
+~~~
 for (variable in collection) {
   do things with variable
 }
-```
+~~~
+{: .r}
 
 We can name the [loop variable](reference.html#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
 `in` is part of the `for` syntax.
@@ -121,7 +196,8 @@ For a single-line loop body, as here, the braces aren't needed, but it is good p
 
 Here's another loop that repeatedly updates a variable:
 
-```{r}
+
+~~~
 len <- 0
 vowels <- c("a", "e", "i", "o", "u")
 for (v in vowels) {
@@ -129,7 +205,15 @@ for (v in vowels) {
 }
 # Number of vowels
 len
-```
+~~~
+{: .r}
+
+
+
+~~~
+[1] 5
+~~~
+{: .output}
 
 It's worth tracing the execution of this little program step by step.
 Since there are five elements in the vector `vowels`, the statement inside the loop will be executed five times.
@@ -141,20 +225,53 @@ After three more updates, `len` is 5; since there is nothing left in the vector 
 Note that a loop variable is just a variable that's being used to record progress in a loop.
 It still exists after the loop is over, and we can re-use variables previously defined as loop variables as well:
 
-```{r}
+
+~~~
 letter <- "z"
 for (letter in c("a", "b", "c")) {
   print(letter)
 }
+~~~
+{: .r}
+
+
+
+~~~
+[1] "a"
+[1] "b"
+[1] "c"
+~~~
+{: .output}
+
+
+
+~~~
 # after the loop, letter is
 letter
-```
+~~~
+{: .r}
+
+
+
+~~~
+[1] "c"
+~~~
+{: .output}
 
 Note also that finding the length of a vector is such a common operation that R actually has a built-in function to do it called `length`:
 
-```{r}
+
+~~~
 length(vowels)
-```
+~~~
+{: .r}
+
+
+
+~~~
+[1] 5
+~~~
+{: .output}
 
 `length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](01-supp-data-structures.html) to learn more about the different ways to store data in R).
 
@@ -163,56 +280,82 @@ length(vowels)
 >
 > 1. R has a built-in function called `seq` that creates a list of numbers:
 >
-> ```{r}
+> 
+> ~~~
 > seq(3)
-> ```
+> ~~~
+> {: .r}
+> 
+> 
+> 
+> ~~~
+> [1] 1 2 3
+> ~~~
+> {: .output}
 >
 > Using `seq`, write a function that prints the first **N** natural numbers, one per line:
 >
-> ```{r, echo=-1}
-> print_N <- function(N) {
->   nseq <- seq(N)
->   for (num in nseq) {
->     print(num)
->   }
-> }
+> 
+> ~~~
 > print_N(3)
-> ```
+> ~~~
+> {: .r}
+> 
+> 
+> 
+> ~~~
+> [1] 1
+> [1] 2
+> [1] 3
+> ~~~
+> {: .output}
 >
 > 2. Write a function called `total` that calculates the sum of the values in a vector.
 > (R has a built-in function called `sum` that does this for you.
 > Please don't use it for this exercise.)
 >
-> ```{r, echo=-1}
-> total <- function(vec) {
->   #calculates the sum of the values in a vector
->   vec_sum <- 0
->   for (num in vec) {
->     vec_sum <- vec_sum + num
->   }
->   return(vec_sum)
-> }
+> 
+> ~~~
 > ex_vec <- c(4, 8, 15, 16, 23, 42)
 > total(ex_vec)
-> ```
+> ~~~
+> {: .r}
+> 
+> 
+> 
+> ~~~
+> [1] 108
+> ~~~
+> {: .output}
 >
 > 3. Exponentiation is built into R:
 >
-> ```{r}
+> 
+> ~~~
 > 2^4
-> ```
+> ~~~
+> {: .r}
+> 
+> 
+> 
+> ~~~
+> [1] 16
+> ~~~
+> {: .output}
 >
 > Write a function called `expo` that uses a loop to calculate the same result.
-> ```{r, echo=-1}
-> expo <- function(base, power) {
->   result <- 1
->   for (i in seq(power)) {
->     result <- result * base
->   }
->   return(result)
-> }
+> 
+> ~~~
 > expo(2, 4)
-> ```
+> ~~~
+> {: .r}
+> 
+> 
+> 
+> ~~~
+> [1] 16
+> ~~~
+> {: .output}
 >
 
 ### Processing Multiple Files
@@ -229,10 +372,47 @@ Since no pattern is specified to filter the files, all files are returned.
 
 So to list all the csv files, we could run either of the following:
 
-```{r}
+
+~~~
 list.files(path = "data", pattern = "csv")
+~~~
+{: .r}
+
+
+
+~~~
+ [1] "car-speeds-cleaned.csv" "car-speeds.csv"        
+ [3] "inflammation-01.csv"    "inflammation-02.csv"   
+ [5] "inflammation-03.csv"    "inflammation-04.csv"   
+ [7] "inflammation-05.csv"    "inflammation-06.csv"   
+ [9] "inflammation-07.csv"    "inflammation-08.csv"   
+[11] "inflammation-09.csv"    "inflammation-10.csv"   
+[13] "inflammation-11.csv"    "inflammation-12.csv"   
+[15] "sample.csv"             "small-01.csv"          
+[17] "small-02.csv"           "small-03.csv"          
+~~~
+{: .output}
+
+
+
+~~~
 list.files(path = "data", pattern = "inflammation")
-```
+~~~
+{: .r}
+
+
+
+~~~
+ [1] "inflammation-01.csv" "inflammation-01.pdf" "inflammation-02.csv"
+ [4] "inflammation-02.pdf" "inflammation-03.csv" "inflammation-03.pdf"
+ [7] "inflammation-04.csv" "inflammation-04.pdf" "inflammation-05.csv"
+[10] "inflammation-05.pdf" "inflammation-06.csv" "inflammation-06.pdf"
+[13] "inflammation-07.csv" "inflammation-07.pdf" "inflammation-08.csv"
+[16] "inflammation-08.pdf" "inflammation-09.csv" "inflammation-09.pdf"
+[19] "inflammation-10.csv" "inflammation-10.pdf" "inflammation-11.csv"
+[22] "inflammation-11.pdf" "inflammation-12.csv" "inflammation-12.pdf"
+~~~
+{: .output}
 
 
 > ## Tip {.callout}
@@ -254,23 +434,119 @@ Because we have put our data in separate subdirectory, if we want to access thes
 using the output of `list.files` we also need to include the "path" portion of the file name.
 We can do that by using the argument `full.names = TRUE`.
 
-```{r}
+
+~~~
 list.files(path = "data", pattern = "csv", full.names = TRUE)
+~~~
+{: .r}
+
+
+
+~~~
+ [1] "data/car-speeds-cleaned.csv" "data/car-speeds.csv"        
+ [3] "data/inflammation-01.csv"    "data/inflammation-02.csv"   
+ [5] "data/inflammation-03.csv"    "data/inflammation-04.csv"   
+ [7] "data/inflammation-05.csv"    "data/inflammation-06.csv"   
+ [9] "data/inflammation-07.csv"    "data/inflammation-08.csv"   
+[11] "data/inflammation-09.csv"    "data/inflammation-10.csv"   
+[13] "data/inflammation-11.csv"    "data/inflammation-12.csv"   
+[15] "data/sample.csv"             "data/small-01.csv"          
+[17] "data/small-02.csv"           "data/small-03.csv"          
+~~~
+{: .output}
+
+
+
+~~~
 list.files(path = "data", pattern = "inflammation", full.names = TRUE)
-```
+~~~
+{: .r}
+
+
+
+~~~
+ [1] "data/inflammation-01.csv" "data/inflammation-01.pdf"
+ [3] "data/inflammation-02.csv" "data/inflammation-02.pdf"
+ [5] "data/inflammation-03.csv" "data/inflammation-03.pdf"
+ [7] "data/inflammation-04.csv" "data/inflammation-04.pdf"
+ [9] "data/inflammation-05.csv" "data/inflammation-05.pdf"
+[11] "data/inflammation-06.csv" "data/inflammation-06.pdf"
+[13] "data/inflammation-07.csv" "data/inflammation-07.pdf"
+[15] "data/inflammation-08.csv" "data/inflammation-08.pdf"
+[17] "data/inflammation-09.csv" "data/inflammation-09.pdf"
+[19] "data/inflammation-10.csv" "data/inflammation-10.pdf"
+[21] "data/inflammation-11.csv" "data/inflammation-11.pdf"
+[23] "data/inflammation-12.csv" "data/inflammation-12.pdf"
+~~~
+{: .output}
 
 
 Let's test out running our `analyze` function by using it on the first three files in the vector returned by `list.files`:
 
 
-```{r loop-analyze, fig=FALSE}
+
+~~~
 filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 filenames <- filenames[1:3]
 for (f in filenames) {
   print(f)
   analyze(f)
 }
-```
+~~~
+{: .r}
+
+
+
+~~~
+[1] "data/inflammation-01.csv"
+~~~
+{: .output}
+
+<img src="../fig/03-loops-R-loop-analyze-1.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" /><img src="../fig/03-loops-R-loop-analyze-2.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
+
+~~~
+[1] "data/inflammation-01.pdf"
+~~~
+{: .output}
+
+
+
+~~~
+Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+dec, : embedded nul(s) found in input
+~~~
+{: .error}
+
+
+
+~~~
+Warning in mean.default(newX[, i], ...): argument is not numeric or
+logical: returning NA
+~~~
+{: .error}
+
+
+
+~~~
+Warning in min(x): no non-missing arguments to min; returning Inf
+~~~
+{: .error}
+
+
+
+~~~
+Warning in max(x): no non-missing arguments to max; returning -Inf
+~~~
+{: .error}
+
+<img src="../fig/03-loops-R-loop-analyze-3.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
+
+~~~
+Error in plot.window(...): need finite 'ylim' values
+~~~
+{: .error}
+
+<img src="../fig/03-loops-R-loop-analyze-4.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" style="display: block; margin: auto;" />
 
 Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.
 
@@ -288,18 +564,7 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 >
 > 1. Write a function called `analyze_all` that takes a filename pattern as its sole argument and runs `analyze` for each file whose name matches the pattern.
 
-```{r analyze_all, include=FALSE}
-analyze_all <- function(pattern) {
-  # Runs the function analyze for each file in the current working directory
-  # that contains the given pattern.
-  filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
-  for (f in filenames) {
-    analyze(f)
-  }
-}
 
-# analyze_all("csv")
-```
 
 > ## Key Points {.callout}
 >
