@@ -1,7 +1,6 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Reference
+layout: reference
+permalink: /reference/
 ---
 
 ## Basic Operation
@@ -27,27 +26,36 @@ Remove all objects from current environment
 
 - Create a contitional using `if`, `else if`, and `else`
 
-		if(x > 0){
-			print("value is positive")
-		} else if (x < 0){
-			print("value is negative")
-		} else{
-			print("value is neither positive nor negative")
-		}
+~~~
+if(x > 0){
+	print("value is positive")
+} else if (x < 0){
+	print("value is negative")
+} else{
+	print("value is neither positive nor negative")
+}
+~~~
+{: .r}
 
 - create a `for` loop to process elements in a collection one at a time
 
-		for (i in 1:5) {
-			print(i)
-		}
+~~~
+for (i in 1:5) {
+	print(i)
+}
+~~~
+{: .r}
 
 This will print:
 
-		1
-		2
-		3
-		4
-		5
+~~~
+1
+2
+3
+4
+5
+~~~
+{: .output}
 
 
 - Use `==` to test for equality
@@ -60,22 +68,28 @@ This will print:
 
 - Defining a function:
 
-		is_positive <- function(integer_value){
-			if(integer_value > 0){
-			   TRUE
-			} 
-			else{
-			   FALSE
-			{
-		}
+~~~
+is_positive <- function(integer_value){
+	if(integer_value > 0){
+	   TRUE
+	} 
+	else{
+	   FALSE
+	{
+}
+~~~
+{: .r}
 
 In R, the last executed line of a function is automatically returned
 
 - Specifying a default value for a function argument
 
-		increment_me <- function(value_to_increment, value_to_increment_by = 1){
-			value_to_increment + value_to_increment_by
-		}
+~~
+increment_me <- function(value_to_increment, value_to_increment_by = 1){
+	value_to_increment + value_to_increment_by
+}
+~~~
+{: .r}
 
 `increment_me(4)`, will return 5
 
@@ -83,17 +97,12 @@ In R, the last executed line of a function is automatically returned
 
 - Call a function by using `function_name(function_arguments)`
 
-	- apply family of functions:
+- apply family of functions: `apply()`, `sapply()`, `lapply()`, and `mapply()`
 
-			apply()
-			sapply()
-			lapply()
-			mapply()
-
-`apply(dat, MARGIN = 2, mean)`
-will return the average (`mean`) of each column in `dat`
+`apply(dat, MARGIN = 2, mean)` will return the average (`mean`) of each column in `dat`
 
 ## Packages
+
 - Install package by using `install.packages("package-name")`
 - Update packages by using `update.packages("package-name")`
 - Load packages by using `library("package-name")`
