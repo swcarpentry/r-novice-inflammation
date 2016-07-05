@@ -456,7 +456,7 @@ logical: returning NA
 
 ~~~
    user  system elapsed 
-  0.121   0.005   0.127 
+  0.120   0.003   0.126 
 ~~~
 {: .output}
 
@@ -726,7 +726,7 @@ logical: returning NA
 
 ~~~
    user  system elapsed 
-  0.127   0.004   0.134 
+  0.124   0.005   0.130 
 ~~~
 {: .output}
 
