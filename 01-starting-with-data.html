@@ -374,6 +374,21 @@ animal[<span class="dv">4</span>:<span class="dv">6</span>]</code></pre>
 </ol>
 </div>
 </section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="using-the-apply-function-on-patient-data"><span class="glyphicon glyphicon-pencil"></span>Using the apply function on patient data</h2>
+</div>
+<div class="panel-body">
+<p>Challenge: the apply function can be used to summarize datasets and subsets of data across rows and columns using the MARGIN argument. Suppose you want to calculate the mean inflammation for specific days and patients in the patient dataset (i.e. 60 patients across 40 days).</p>
+<p>Please use a combination of the apply function and indexing to:</p>
+<ol style="list-style-type: decimal">
+<li>calculate the mean inflammation for patients 1 to 5 over the whole 40 days</li>
+<li>calculate the mean inflammation for days 1 to 10 (across all patients).</li>
+<li>calculate the mean inflammation for every second day (across all patients).</li>
+</ol>
+<p>Think about the number of rows and columns you would expect as the result before each apply call and check your intuition by applying the mean function.</p>
+</div>
+</section>
 <h3 id="plotting">Plotting</h3>
 <p>The mathematician Richard Hamming once said, “The purpose of computing is insight, not numbers,” and the best way to develop insight is often to visualize data. Visualization deserves an entire lecture (or course) of its own, but we can explore a few of R’s plotting features.</p>
 <p>Let’s take a look at the average inflammation over time. Recall that we already calculated these values above using <code>apply(dat, 2, mean)</code> and saved them in the variable <code>avg_day_inflammation</code>. Plotting the values is done with the function <code>plot</code>.</p>
