@@ -292,6 +292,44 @@ In this case, "either" means "either or both", not "either one or the other but 
 > 
 > <img src="fig/04-cond-conditional-challenge-hist-3.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
 
+> ## Find the maximum inflammation score {.challenge}
+>
+> Find the file containing the patient with the highest average inflammation score. Print the file name, the patient number (row number) and the value of the maximum average inflammation score.
+>
+> Tips:
+>
+> 1. Use variables to store the maximum average and update it as you go through files and patients.
+> 1. You can use nested loops (one loop is inside the other) to go through the files as well as through the patients in each file (every row).
+>
+> Complete the code below:
+>
+> 
+> ~~~{.r}
+> filenames <- list.files(path = "data", pattern = "inflammation.*csv", full.names = TRUE)
+> filename_max <- "" # filename where the maximum average inflammation patient is found
+> patient_max <- 0 # index (row number) for this patient in this file
+> average_inf_max <- 0 # value of the average inflammation score for this patient
+> for (f in filenames) {
+>   dat <- read.csv(file = f, header = FALSE)
+>   dat.means = apply(dat, 1, mean)
+>   for (patient_index in length(dat.means)){
+>     patient_average_inf = dat.means[patient_index]
+> >
+>     # Add your code here ...
+> >
+>   }
+> }
+> print(filename_max)
+> print(patient_max)
+> print(average_inf_max)
+> ~~~
+>
+
+
+
+
+
+
 ### Saving Automatically Generated Figures
 
 Now that we know how to have R make decisions based on input values, let's update `analyze`:
@@ -447,6 +485,7 @@ Now if we need to make any changes to our analysis, we can edit the `analyze` fu
 >
 >  + One of your collaborators asks if you can recreate the figures with lines instead of points.
 >  Find the relevant argument to `plot` by reading the documentation (`?plot`), update `analyze`, and then recreate all the figures with `analyze_all`.
+
 
 
 
