@@ -1,21 +1,22 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Data types and structures
-minutes: 45
+title: "Data Types and Structures"
+teaching: 45
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Expose learners to the different data types in R."
+- "Learn how to create vectors of different types."
+- "Be able to check the type of vector."
+- "Learn about missing data and other special values."
+- "Getting familiar with the different data structures (lists, matrices, data frames)."
+keypoints:
+- "FIXME"
 ---
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
 ```
-
-> ## Learning Objectives {.objectives}
->
-> * Expose learners to the different data types in R
-> * Learn how to create vectors of different types
-> * Be able to check the type of vector
-> * Learn about missing data and other special values
-> * Getting familiar with the different data structures (lists, matrices, data frames)
 
 ### Understanding Basic Data Types in R
 
@@ -144,9 +145,10 @@ class(z)
 str(z)
 ```
 
-> ## Challenge - Finding commonalities {.challenge}
+> ## Finding Commonalities
 >
 > Do you see a property that's common to all these vectors above?
+{: .challenge}
 
 ### Adding Elements
 
@@ -366,7 +368,7 @@ dat <- data.frame(id = letters[1:10], x = 1:10, y = 11:20)
 dat
 ```
 
-> ## Useful data frame functions {.callout}
+> ## Useful Data Frame Functions
 >
 > * `head()` - shown first 6 rows
 > * `tail()` - show last 6 rows
@@ -374,8 +376,8 @@ dat
 > * `nrow()` - number of rows
 > * `ncol()` - number of columns
 > * `str()` - structure of each column
-> * `names()` - shows the `names` attribute for a data frame, which gives the
->column names.
+> * `names()` - shows the `names` attribute for a data frame, which gives the column names.
+{: .callout}
 
 See that it is actually a special list:
 
@@ -390,7 +392,7 @@ class(iris)
 | 2-D | matrix | data frame |
 
 
-> ## Column Types in Data Frames {.challenge}
+> ## Column Types in Data Frames
 >
 > Knowing that data frames are lists of lists, can columns be of different type?
 >
@@ -404,3 +406,4 @@ class(iris)
 # differing type (although, remember that type must be consistent within each column!).
 str(iris)
 ```
+{: .challenge}

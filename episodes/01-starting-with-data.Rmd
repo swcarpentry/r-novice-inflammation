@@ -1,21 +1,32 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Analyzing patient data
-minutes: 30
+title: "Analyzing Patient Data"
+teaching: 30
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Read tabular data from a file into a program."
+- "Assign values to variables."
+- "Select individual values and subsections from data."
+- "Perform operations on a data frame of data."
+- "Display simple graphs."
+keypoints:
+- "Use `variable <- value` to assign a value to a variable in order to record it in memory."
+- "Objects are created on demand whenever a value is assigned to them."
+- "The function `dim` gives the dimensions of a data frame."
+- "Use `object[x, y]` to select a single element from a data frame."
+- "Use `from:to` to specify a sequence that includes the indices from `from` to `to`."
+- "All the indexing and slicing that works on data frames also works on vectors."
+- "Use `#` to add comments to programs."
+- "Use `mean`, `max`, `min` and `sd` to calculate simple statistics."
+- "Use `apply` to calculate statistics across the rows or columns of a data frame."
+- "Use `plot` to create simple visualizations."
 ---
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
 opts_chunk$set(fig.path = "fig/01-starting-with-data-")
 ```
-
-> ## Learning Objectives {.objectives}
-> * Read tabular data from a file into a program.
-> * Assign values to variables.
-> * Select individual values and subsections from data.
-> * Perform operations on a data frame of data.
-> * Display simple graphs.
 
 We are studying inflammation in patients who have been given a new treatment for arthritis,
 and need to analyze the first dozen data sets.
@@ -58,27 +69,28 @@ The expression `read.csv(...)` is a [function call](reference.html#function-call
 `read.csv` has two [arguments](reference.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
 The filename needs to be a character string (or [string](reference.html#string) for short), so we put it in quotes. Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers. We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
 
-> ## Tip {.callout}
+> ## Other Options for Reading CSV Files
 >
 > `read.csv` actually has many more arguments that you may find useful when
 > importing your own data in the future. You can learn more about these
 > options in this supplementary [lesson](01-supp-read-write-csv.html).
+{: .callout}
 
-
-> ## Loading data with headers {.challenge}
+> ## Loading Data with Headers
 >
 > What happens if you forget to put `header = FALSE`? The default value is `header = TRUE`, which you can check with `?read.csv` or `help(read.csv)`. What do you expect will happen if you leave the default value? Before you run any code, think about what will happen to the first few rows of your data frame, and its overall size. Then run the following code and see if your expectations agree:
 >
-~~~{.r}
-read.csv(file = "data/inflammation-01.csv")
-~~~
+> ~~~{.r}
+> read.csv(file = "data/inflammation-01.csv")
+> ~~~
+{: .challenge}
 
-
-> ## Reading different decimal point formats {.challenge}
+> ## Reading Different Decimal Point Formats
+>
 > Depending on the country you live in, your standard can use the dot or the comma as decimal mark.
 > Also, different devices or software can generate data with different decimal points.
 > Take a look at `?read.csv` and write the code to load a file called `commadec.txt` that has numeric values with commas as decimal mark, separated by semicolons.
-
+{: .challenge}
 
 The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s).
 For example, in this case if we provided the name of a different file to the argument `file`, `read.csv` would read it instead.
@@ -109,11 +121,12 @@ We can do arithmetic with the variable:
 2.2 * weight_kg
 ```
 
-> ## Tip {.callout}
+> ## Commenting
 >
 > We can add comments to our code using the `#` character. It is useful to
 > document our code in this way so that others (and us the next time we
 > read it) have an easier time following what the code is doing.
+{: .callout}
 
 We can also change an object's value by assigning it a new value:
 
@@ -156,9 +169,13 @@ weight_lb
 Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes.
 This is different from the way spreadsheets work.
 
-> ## Tip {.callout}
->An alternative way to print the value of a variable is to use () around the assignment statement. As an example: `(total_weight <- weight_kg + weight_lb)`, adds the values of `weight_kg` and `weight_lb`, assigns the result to the `total_weight`, and finally prints the assigned value of the variable `total_weight`.
-
+> ## Printing with Parentheses
+>
+> An alternative way to print the value of a variable is to use () around the assignment statement.
+> As an example: `(total_weight <- weight_kg + weight_lb)` adds the values of `weight_kg` and `weight_lb`,
+> assigns the result to the `total_weight`,
+> and finally prints the assigned value of the variable `total_weight`.
+{: .callout}
 
 Now that we know how to assign things to variables, let's re-run `read.csv` and save its result:
 
@@ -174,16 +191,17 @@ However, for large data sets it is convenient to use the function `head` to disp
 head(dat)
 ```
 
-> ## Challenge - Assigning values to variables {.challenge}
+> ## Assigning Values to Variables
 >
 > Draw diagrams showing what variables refer to what values after each statement in the following program:
 >
-~~~{.r}
-mass <- 47.5
-age <- 122
-mass <- mass * 2.0
-age <- age - 20
-~~~
+> ~~~{.r}
+> mass <- 47.5
+> age <- 122
+> mass <- mass * 2.0
+> age <- age - 20
+> ~~~
+{: .challenge}
 
 ### Manipulating Data
 
@@ -245,10 +263,11 @@ dat[5, ]
 dat[, 16]
 ```
 
-> ## Tip {.callout}
+> ## Addressing Columns by Name
 >
 > Columns can also be addressed by name, with either the `$` operator (ie. `dat$Age`) or square brackets (ie. `dat[,'Age']`).
 > You can learn more about subsetting by column name in this supplementary [lesson](01-supp-addressing-data.html).
+{: .callout}
 
 Now let's perform some common mathematical operations to learn about our inflammation data.
 When analyzing data we often want to look at partial statistics, such as the maximum value per patient or the average value per day.
@@ -261,9 +280,11 @@ patient_1 <- dat[1, ]
 max(patient_1)
 ```
 
-> ## Tip {.callout}
+> ## Forcing Conversion
 >
-> On some installations of R, the code above may give you an error, since R does not automatically convert a sliced row of a `data.frame` to a vector. (Confusingly, sliced columns are automatically converted.)
+> The code above may give you an error in some R installations,
+> since R does not automatically convert a sliced row of a `data.frame` to a vector.
+> (Confusingly, sliced columns are automatically converted.)
 > If this happens, you can use the `as.numeric` command to convert the row of data to a numeric vector:
 >
 > `patient_1 <- as.numeric(dat[1, ])`
@@ -275,6 +296,7 @@ max(patient_1)
 > `class(dat[1, ])`
 >
 > `class(as.numeric(dat[1, ]))`
+{: .callout}
 
 We don't actually need to store the row in a variable of its own.
 Instead, we can combine the selection and the function call:
@@ -304,10 +326,11 @@ As the diagram below shows, we want to perform the operation across a margin of 
 
 To support this, we can use the `apply` function.
 
-> ## Tip {.callout}
+> ## Getting Help
 >
 > To learn about a function in R, e.g. `apply`, we can read its help
 > documention by running `help(apply)` or `?apply`.
+{: .callout}
 
 `apply` allows us to repeat a function on all of the rows (`MARGIN = 1`) or columns (`MARGIN = 2`) of a data frame.
 
@@ -326,13 +349,14 @@ avg_day_inflammation <- apply(dat, 2, mean)
 Since the second argument to `apply` is `MARGIN`, the above command is equivalent to `apply(dat, MARGIN = 2, mean)`.
 We'll learn why this is so in the next lesson.
 
-> ## Tip {.callout}
+> ## Efficient Alternatives
 >
 > Some common operations have more efficient alternatives. For example, you
 > can calculate the row-wise or column-wise means with `rowMeans` and
 > `colMeans`, respectively.
+{: .callout}
 
-> ## Challenge - Slicing (subsetting) data {.challenge}
+> ## Slicing (Subsetting) Data
 >
 > A subsection of a data frame is called a [slice](reference.html#slice).
 > We can take slices of character vectors as well:
@@ -353,21 +377,21 @@ We'll learn why this is so in the next lesson.
 >    explain what `animal[-1:-4]` does.
 >
 > 1.  Use a slice of `animal` to create a new character vector that spells the word "eon", i.e. `c("e", "o", "n")`.
+{: .challenge}
 
-
-> ## Subsetting data 2 {.challenge}
+> ## Subsetting More Data
 >
 > Suppose you want to determine the maximum inflammation for patient 5 across days three to seven.
 > To do this you would extract the relevant slice from the data frame and calculate the maximum value.
 > Which of the following lines of R code gives the correct answer?
 >
-> (a) `max(dat[5, ])`
-> (b) `max(dat[3:7, 5])`
-> (c) `max(dat[5, 3:7])`
-> (d) `max(dat[5, 3, 7])`
+> 1. `max(dat[5, ])`
+> 2. `max(dat[3:7, 5])`
+> 3. `max(dat[5, 3:7])`
+> 4. `max(dat[5, 3, 7])`
+{: .challenge}
 
-
-> ## Slicing and re-assignment {.challenge}
+> ## Slicing and Re-Assignment
 >
 > Using the inflammation data frame `dat` from above:
 > Let's pretend there was something wrong with the instrument on the first five days for every second patient (#2, 4, 6, etc.), which resulted in the measurements being twice as large as they should be.
@@ -375,7 +399,7 @@ We'll learn why this is so in the next lesson.
 > 1. Write a vector containing each affected patient (hint: `? seq`)
 > 2. Create a new data frame with in which you halve the first five days' values in only those patients
 > 3. Print out the corrected data frame to check that your code has fixed the problem
->
+{: .challenge}
 
 ```{r slicing-re-assignment-answer, eval=FALSE, include=FALSE}
 whichPatients <- seq(2,40,2)
@@ -385,8 +409,7 @@ dat2[whichPatients,whichDays] <- dat2[whichPatients,whichDays]/2
 (dat2)
 ```
 
-
-> ## Using the apply function on patient data {.challenge}
+> ## Using the Apply Function on Patient Data
 >
 > Challenge: the apply function can be used to summarize datasets and subsets
 > of data across rows and columns using the MARGIN argument.
@@ -401,7 +424,7 @@ dat2[whichPatients,whichDays] <- dat2[whichPatients,whichDays]/2
 >
 > Think about the number of rows and columns you would expect as the result before each
 > apply call and check your intuition by applying the mean function.
->
+{: .challenge}
 
 ```{r using-apply-answer, eval=FALSE, include=FALSE}
 # 1.
@@ -442,27 +465,7 @@ plot(min_day_inflammation)
 
 The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.
 
-> ## Challenge - Plotting data {.challenge}
+> ## Plotting Data
 >
 > Create a plot showing the standard deviation of the inflammation data for each day across all patients.
-
-> ## Key Points {.callout}
->
-> * Use `variable <- value` to assign a value to a variable in order to record it in memory.
-> * Objects are created on demand whenever a value is assigned to them.
-> * The function `dim` gives the dimensions of a data frame.
-> * Use `object[x, y]` to select a single element from a data frame.
-> * Use `from:to` to specify a sequence that includes the indices from `from` to
->`to`.
-> * All the indexing and slicing that works on data frames also works on vectors.
-> * Use `#` to add comments to programs.
-> * Use `mean`, `max`, `min` and `sd` to calculate simple statistics.
-> * Use `apply` to calculate statistics across the rows or columns of a data frame.
-> * Use `plot` to create simple visualizations.
-
-> ## Next Steps {.callout}
->
-> Our work so far has convinced us that something's wrong with our first data file.
-> We would like to check the other 11 the same way, but typing in the same commands repeatedly is tedious and error-prone.
-> Since computers don't get bored (that we know of), we should create a way to do a complete analysis with a single command, and then figure out how to repeat that step once for each file.
-> These operations are the subjects of the next two lessons.
+{: .challenge}

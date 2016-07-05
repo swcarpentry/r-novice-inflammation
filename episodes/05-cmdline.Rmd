@@ -1,19 +1,23 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Command-Line Programs
-minutes: 30
+title: "Command-Line Programs"
+teaching: 30
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Use the values of command-line arguments in a program."
+- "Handle flags and files separately in a command-line program."
+- "Read data from standard input in a program so that it can be used in a pipeline."
+keypoints:
+- "Use `commandArgs(trailingOnly = TRUE)` to obtain a vector of the command-line arguments that a program was run with."
+- "Avoid silent failures."
+- "Use `file(\"stdin\")` to connect to a program's standard input."
+- "Use `cat(vec, sep = \"\n\")` to write the elements of `vec` to standard output, one per line."
 ---
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
 ```
-
-> ## Learning Objectives {.objectives}
->
-> *   Use the values of command-line arguments in a program.
-> *   Handle flags and files separately in a command-line program.
-> *   Read data from standard input in a program so that it can be used in a pipeline.
 
 The R Console and other interactive tools like RStudio are great for prototyping code and exploring data, but sooner or later we will want to use our program in a pipeline or run it in a shell script to process thousands of data files.
 In order to do that, we need to make our programs work like other Unix command-line tools.
@@ -68,12 +72,13 @@ Now we can run the code in the file we created from the Unix Shell using `Rscrip
 Rscript session-info.R
 ```
 
-> ## Tip {.callout}
+> ## The Right Directory
 >
 > If that did not work, you might have seen an error message indicating that the file `session-info.R` does not exist.
 > Remember that you must be in the correct directory, the one in which you created your script file.
 > You can determine which directory you are currently in using `pwd` and change to a different directory using `cd`.
 > For a review, see this [lesson](https://swcarpentry.github.io/shell-novice/01-filedir.html).
+{: .callout}
 
 Now let's create another script that does something more interesting. Write the following lines in a file named `print-args.R`:
 
@@ -157,7 +162,7 @@ cat readings-02.R
 Rscript readings-02.R data/inflammation-01.csv
 ```
 
-> ## Challenge - A simple command line program {.challenge}
+> ## A Simple Command Line Program
 >
 >  + Write a command-line program that does addition and subtraction.
 >  **Hint:** Everything argument read from the command-line is interpreted as a character [string](reference.html#string).
@@ -187,6 +192,7 @@ Rscript readings-02.R data/inflammation-01.csv
 > ```{r third-answer, include=FALSE, engine='bash'}
 > cat find-pattern.R
 > ```
+{: .challenge}
 
 ### Handling Multiple Files
 
@@ -230,10 +236,11 @@ Rscript readings-03.R data/small-01.csv data/small-02.csv
 We wouldn't do this in real life: instead, we would have one file called `readings.R` that we committed to version control every time we got an enhancement working.
 For teaching, though, we need all the successive versions side by side.
 
-> ## Challenge - A command line program with arguments  {.challenge}
+> ## A Command Line Program with Arguments
 >
 >  + Write a program called `check.R` that takes the names of one or more inflammation data files as arguments and checks that all the files have the same number of rows and columns.
 >  What is the best way to test your program?
+{: .challenge}
 
 ```{r fourth-answer, include=FALSE, engine='bash'}
 cat check.R
@@ -279,22 +286,24 @@ cat readings-05.R
 
 This is four lines longer than its predecessor, but broken into more digestible chunks of 8 and 12 lines.
 
-> ## Tip {.callout}
+> ## Parsing Command-Line Flags
 >
 > R has a package named [argparse][argparse-r] that helps handle complex command-line flags (it utilizes a [Python module][argparse-py] of the same name).
 > We will not cover this package in this lesson but when you start writing programs with multiple parameters you'll want to read through the package's [vignette][].
+{: .callout}
 
 [argparse-r]: http://cran.r-project.org/web/packages/argparse/index.html
 [argparse-py]: http://docs.python.org/dev/library/argparse.html
 [vignette]: http://cran.r-project.org/web/packages/argparse/vignettes/argparse.pdf
 
-> ## Challenge - Shorter command line arguments {.challenge}
+> ## Shorter Command Line Arguments
 >
 >  + Rewrite this program so that it uses `-n`, `-m`, and `-x` instead of `--min`, `--mean`, and `--max` respectively.
 >    Is the code easier to read?
 >    Is the program easier to understand?
 >
 >  + Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.
+{: .challenge}
 
 ```{r usage-answer, include=FALSE, engine='bash'}
 cat readings-usage.R
@@ -350,19 +359,13 @@ head data/inflammation-01.csv | Rscript readings-06.R --mean
 
 And now we're done: the program now does everything we set out to do.
 
-> ## Challenge - Implementing wc in R {.challenge}
+> ## Implementing `wc` in R
 >
 >  + Write a program called `line-count.R` that works like the Unix `wc` command:
 >    *   If no filenames are given, it reports the number of lines in standard input.
 >    *   If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.
+{: .challenge}
 
 ```{r line-count-answer, include=FALSE, engine='bash'}
 cat line-count.R
 ```
-
-> ## Key Points {.callout}
->
-> *   Use `commandArgs(trailingOnly = TRUE)` to obtain a vector of the command-line arguments that a program was run with.
-> *   Avoid silent failures.
-> *   Use `file("stdin")` to connect to a program's standard input.
-> *   Use `cat(vec, sep = "\n")` to write the elements of `vec` to standard output, one per line.
