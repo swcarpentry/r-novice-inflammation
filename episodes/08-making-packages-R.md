@@ -1,15 +1,16 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Making packages in R
-minutes: 30
+title: "Making Packages in R"
+teaching: 30
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Quick summary on how (and why) making R packages."
+keypoints:
+- "FIXME"
 ---
 
 
-
-> ## Learning Objectives {.objectives}
->
-> Quick summary on how (and why) making R packages
 
 Why should you make your own R packages?
 
@@ -19,32 +20,36 @@ An R package is the **basic unit of reusable code**.
 If you want to reuse code later or want others to be able to use your code, you should put it in a package.
 
 An R package requires two components:
-  - a DESCRIPTION file with metadata about the package
-  - an R directory with the code
 
-  *There are other optional components. Go [here](http://adv-r.had.co.nz/Package-basics.html) for much more information.*
+*   a DESCRIPTION file with metadata about the package
+*   an R directory with the code
 
-DESCRIPTION file
-----------------
+*There are other optional components. Go [here][r-package-basics] for much more information.*
 
-    Package: Package name
-    Title: Brief package description
-    Description: Longer package description
-    Version: Version number(major.minor.patch)
-    Author: Name and email of package creator
-    Maintainer: Name and email of package maintainer (who to contact with issues)
-    License: Abbreviation for an open source license
+[r-package-basics]: http://adv-r.had.co.nz/Package-basics.html
+
+### DESCRIPTION file
+
+~~~
+Package: Package name
+Title: Brief package description
+Description: Longer package description
+Version: Version number(major.minor.patch)
+Author: Name and email of package creator
+Maintainer: Name and email of package maintainer (who to contact with issues)
+License: Abbreviation for an open source license
+~~~
+{: .source}
     
 The package name can only contain letters and numbers and has to start with a letter.
 
-.R files
---------
+### .R files
+
 Functions don't all have to be in one file or each in separate files.
 How you organize them is up to you.
 Suggestion: organize in a logical manner so that you know which file holds which functions.
 
-Making your first R package
----------------------------
+### Making your first R package
 
 Let's turn our temperature conversion functions into an R package.
 
@@ -202,7 +207,8 @@ kelvin_to_celsius(273.15)
 ~~~
 {: .output}
 
-> ## Challenge - Creating a package for distribution {.challenge}
+> ## Creating a Package for Distribution
 > 
-> - Create some new functions for your tempConvert package to convert from Kelvin to Fahrenheit or from Celsius to Kelvin or Fahrenheit.
-> - Create a package for our `analyze` function so that it will be easy to load when more data arrives.
+> 1. Create some new functions for your tempConvert package to convert from Kelvin to Fahrenheit or from Celsius to Kelvin or Fahrenheit.
+> 2. Create a package for our `analyze` function so that it will be easy to load when more data arrives.
+{: .challenge}

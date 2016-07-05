@@ -1,17 +1,18 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Introduction to RStudio
-minutes: 15
+title: "Introduction to RStudio"
+teaching: 15
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Get familiar with RStudio interface."
+- "Understand the difference between script file and console."
+- "Demonstrate useful shortcuts."
+keypoints:
+- "FIXME"
 ---
 
 
-
-> ## Learning Objectives {.objectives}
->
-> * Get familiar with RStudio interface.
-> * Understand the difference between script file and console.
-> * Demonstrate useful shortcuts.
 
 Let's start by learning about our tool.
 

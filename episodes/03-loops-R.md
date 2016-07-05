@@ -1,20 +1,24 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Analyzing multiple data sets
-minutes: 30
+title: "Analyzing Multiple Data Sets"
+teaching: 30
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Explain what a `for` loop does."
+- "Correctly write `for` loops to repeat simple calculations."
+- "Trace changes to a loop variable as the loop runs."
+- "Trace changes to other variables as they are updated by a `for` loop."
+- "Use a function to get a list of filenames that match a simple pattern."
+- "Use a `for` loop to process multiple files."
+keypoints:
+- "Use `for (variable in collection)` to process the elements of a collection one at a time."
+- "The body of a `for` loop is surrounded by curly braces (`{}`)."
+- "Use `length(thing)` to determine the length of something that contains other values."
+- "Use `list.files(path = \"path\", pattern = \"pattern\", full.names = TRUE)` to create a list of files whose names match a pattern."
 ---
 
 
-
-> ## Learning Objectives {.objectives}
->
-> * Explain what a `for` loop does.
-> * Correctly write `for` loops to repeat simple calculations.
-> * Trace changes to a loop variable as the loop runs.
-> * Trace changes to other variables as they are updated by a `for` loop.
-> * Use a function to get a list of filenames that match a simple pattern.
-> * Use a `for` loop to process multiple files.
 
 We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
 
@@ -123,11 +127,12 @@ print_words(best_practice[-6])
 ~~~
 {: .output}
 
-> ## Tip {.callout}
+> ## Not Available
 >
 > R has has a special variable, `NA`, for designating missing values that are
 > **N**ot **A**vailable in a data set. See `?NA` and [An Introduction to R][na]
 > for more details.
+{: .callout}
 
 [na]: http://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values
 
@@ -176,7 +181,7 @@ print_words(best_practice[-6])
 ~~~
 {: .output}
 
-The improved version of `print_words` uses a [for loop](reference.html#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
+The improved version of `print_words` uses a [for loop]({{ site.root }}/reference/#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
 The general form of a loop is:
 
 
@@ -187,7 +192,7 @@ for (variable in collection) {
 ~~~
 {: .r}
 
-We can name the [loop variable](reference.html#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
+We can name the [loop variable]({{ site.root }}/reference/#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
 `in` is part of the `for` syntax.
 Note that the body of the loop is enclosed in curly braces `{ }`.
 For a single-line loop body, as here, the braces aren't needed, but it is good practice to include them as we did.
@@ -273,10 +278,10 @@ length(vowels)
 ~~~
 {: .output}
 
-`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](01-supp-data-structures.html) to learn more about the different ways to store data in R).
+`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson]({{ site.root }}/01-supp-data-structures/) to learn more about the different ways to store data in R).
 
 
-> ## Challenge - Using loops {.challenge}
+> ## Using Loops
 >
 > 1. R has a built-in function called `seq` that creates a list of numbers:
 >
@@ -357,6 +362,7 @@ length(vowels)
 > ~~~
 > {: .output}
 >
+{: .challenge}
 
 ### Processing Multiple Files
 
@@ -366,7 +372,8 @@ We do not need to write it ourselves because R already has a function to do this
 
 If we run the function without any arguments, `list.files()`, it returns every file in the current working directory.
 We can understand this result by reading the help file (`?list.files`).
-The first argument, `path`, is the path to the directory to be searched, and it has the default value of `"."` (recall from the [lesson](http://swcarpentry.github.io/shell-novice/01-filedir.html) on the Unix Shell that `"."` is shorthand for the current working directory).
+The first argument, `path`, is the path to the directory to be searched, and it has the default value of `"."`
+(recall from the [lesson](http://swcarpentry.github.io/shell-novice/01-filedir.html) on the Unix Shell that `"."` is shorthand for the current working directory).
 The second argument, `pattern`, is the pattern being searched, and it has the default value of `NULL`.
 Since no pattern is specified to filter the files, all files are returned.
 
@@ -414,8 +421,7 @@ list.files(path = "data", pattern = "inflammation")
 ~~~
 {: .output}
 
-
-> ## Tip {.callout}
+> ## Organizing Larger Projects
 >
 > For larger projects, it is recommended to organize separate parts of the
 > analysis into multiple subdirectories, e.g. one subdirectory for the raw data,
@@ -423,6 +429,7 @@ list.files(path = "data", pattern = "inflammation")
 > to some extent, putting all of our data files into the subdirectory "data".
 > For more advice on this topic, you can read [A quick guide to organizing
 > computational biology projects][Noble2009] by William Stafford Noble.
+{: .callout}
 
 [Noble2009]: http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
 
@@ -550,35 +557,21 @@ Error in plot.window(...): need finite 'ylim' values
 
 Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.
 
-> ## Tip {.callout}
+> ## Other Ways to Do It
 >
 > In this lesson we saw how to use a simple `for` loop to repeat an operation.
 > As you progress with R, you will learn that there are multiple ways to
 > accomplish this. Sometimes the choice of one method over another is more a
 > matter of personal style, but other times it can have consequences for the
 > speed of your code. For instruction on best practices, see this supplementary
-> [lesson](03-supp-loops-in-depth.html) that demonstrates how to properly repeat
+> [lesson]({{ site.root }}/03-supp-loops-in-depth/) that demonstrates how to properly repeat
 > operations in R.
+{: .callout}
 
-> ## Challenge - Using loops to analyze multiple files {.challenge}
+> ## Using Loops to Analyze Multiple Files
 >
-> 1. Write a function called `analyze_all` that takes a filename pattern as its sole argument and runs `analyze` for each file whose name matches the pattern.
+> Write a function called `analyze_all` that takes a filename pattern as its sole argument
+> and runs `analyze` for each file whose name matches the pattern.
+{: .challenge}
 
 
-
-> ## Key Points {.callout}
->
-> * Use `for (variable in collection)` to process the elements of a collection one at a time.
-> * The body of a `for` loop is surrounded by curly braces (`{ }`).
-> * Use `length(thing)` to determine the length of something that contains other values.
-> * Use `list.files(path = "path", pattern = "pattern", full.names = TRUE)` to create a list of files whose names match a pattern.
-
-> ## Next Steps {.callout}
->
-> We have now solved our original problem: we can analyze any number of data files with a single command.
-> More importantly, we have met two of the most important ideas in programming:
->
-> * Use functions to make code easier to re-use and easier to understand.
-> * Use vectors and data frames to store related values, and loops to repeat operations on them.
->
-> We have one more big idea to introduce...

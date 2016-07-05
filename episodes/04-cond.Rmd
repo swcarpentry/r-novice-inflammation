@@ -90,7 +90,7 @@ It would be ideal if `analyze` would either save or not save the plots based on 
 ### Conditionals
 
 In order to update our function to decide between saving or not, we need to write code that automatically decides between multiple options.
-The tool R gives us for doing this is called a [conditional statement](reference.html#conditional-statement), and looks like this:
+The tool R gives us for doing this is called a [conditional statement]({{ site.root }}/reference/#conditional-statement), and looks like this:
 
 ```{r, results='hold'}
 num <- 37

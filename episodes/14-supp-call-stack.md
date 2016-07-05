@@ -1,8 +1,15 @@
 ---
-layout: page
-title: Programming with R
-subtitle: The call stack
-minutes: 15
+title: "The Call Stack"
+teaching: 15
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Explain how stack frames are created and destroyed as functions are called."
+- "Correctly identify the scope of a function's local variables."
+- "Explain variable scope in terms of the call stack."
+keypoints:
+- "FIXME"
 ---
 
 
@@ -23,7 +30,7 @@ The diagram below shows what memory looks like after the first line has been exe
 <img src="{{ site.root }}/fig/python-call-stack-01.svg" alt="Call Stack (Initial State)" />
 
 When we call `fahr_to_celsius`, R *doesn't* create the variable `temp` right away.
-Instead, it creates something called a [stack frame](reference.html#stack-frame) to keep track of the variables defined by `fahr_to_kelvin`.
+Instead, it creates something called a [stack frame]({{ site.root }}/reference/#stack-frame) to keep track of the variables defined by `fahr_to_kelvin`.
 Initially, this stack frame only holds the value of `temp`:
 
 <img src="{{ site.root }}/fig/python-call-stack-02.svg" alt="Call Stack Immediately After First Function Call" />
@@ -70,7 +77,7 @@ Error in eval(expr, envir, enclos): object 'temp' not found
 ~~~
 {: .error}
 
-> ## Tip {.callout}
+> ## Where to Learn More
 >
 > The explanation of the stack frame above was very general and the basic
 > concept will help you understand most languages you try to program with.
@@ -81,6 +88,7 @@ Error in eval(expr, envir, enclos): object 'temp' not found
 > [R Language Manual][man] or this [chapter][] from
 > [Advanced R Programming][adv-r] by Hadley Wickham. For context, R uses the
 > terminology "environments" instead of frames.
+{: .callout}
 
 [man]: http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
 [chapter]: http://adv-r.had.co.nz/Environments.html
@@ -128,11 +136,11 @@ span(diff)
 We don't expect the variable `diff` to have the value 20 after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
 And yes, we could probably choose a different name than `diff` for our variable in this case, but we don't want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.
 
-The big idea here is [encapsulation](reference.html#encapsulation), and it's the key to writing correct, comprehensible programs.
+The big idea here is [encapsulation]({{ site.root }}/reference/#encapsulation), and it's the key to writing correct, comprehensible programs.
 A function's job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something.
 That only works if functions don't interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.
 
-> ## Challenge - Following the call stack {.challenge}
+> ## Following the Call Stack
 >
 >  + We previously wrote functions called `fence` and `outside`.
 >    Draw a diagram showing how the call stack changes when we run the
@@ -144,3 +152,4 @@ That only works if functions don't interfere with each other; if they do, we hav
 > result <- outside(fence(inner_vec, outer_vec))
 > ~~~
 > {: .r}
+{: .challenge}
