@@ -176,6 +176,37 @@ if (num &gt;<span class="st"> </span><span class="dv">100</span>) {
 <p><img src="fig/04-cond-conditional-challenge-hist-3.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" /></p>
 </div>
 </section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="find-the-maximum-inflammation-score"><span class="glyphicon glyphicon-pencil"></span>Find the maximum inflammation score</h2>
+</div>
+<div class="panel-body">
+<p>Find the file containing the patient with the highest average inflammation score. Print the file name, the patient number (row number) and the value of the maximum average inflammation score.</p>
+<p>Tips:</p>
+<ol style="list-style-type: decimal">
+<li>Use variables to store the maximum average and update it as you go through files and patients.</li>
+<li>You can use nested loops (one loop is inside the other) to go through the files as well as through the patients in each file (every row).</li>
+</ol>
+<p>Complete the code below:</p>
+<pre class="sourceCode r"><code class="sourceCode r">filenames &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">pattern =</span> <span class="st">&quot;inflammation.*csv&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)
+filename_max &lt;-<span class="st"> &quot;&quot;</span> <span class="co"># filename where the maximum average inflammation patient is found</span>
+patient_max &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># index (row number) for this patient in this file</span>
+average_inf_max &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># value of the average inflammation score for this patient</span>
+for (f in filenames) {
+  dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> f, <span class="dt">header =</span> <span class="ot">FALSE</span>)
+  dat.means =<span class="st"> </span><span class="kw">apply</span>(dat, <span class="dv">1</span>, mean)
+  for (patient_index in <span class="kw">length</span>(dat.means)){
+    patient_average_inf =<span class="st"> </span>dat.means[patient_index]
+&gt;
+<span class="st">    </span><span class="co"># Add your code here ...</span>
+<span class="er">&gt;</span>
+<span class="st">  </span>}
+}
+<span class="kw">print</span>(filename_max)
+<span class="kw">print</span>(patient_max)
+<span class="kw">print</span>(average_inf_max)</code></pre>
+</div>
+</section>
 <h3 id="saving-automatically-generated-figures">Saving Automatically Generated Figures</h3>
 <p>Now that we know how to have R make decisions based on input values, let’s update <code>analyze</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">analyze &lt;-<span class="st"> </span>function(filename, <span class="dt">output =</span> <span class="ot">NULL</span>) {
