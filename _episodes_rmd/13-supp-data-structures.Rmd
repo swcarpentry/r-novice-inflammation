@@ -396,14 +396,15 @@ class(iris)
 >
 > Knowing that data frames are lists of lists, can columns be of different type?
 >
-> What type of structure do you expect on the iris data frame? Hint: Use str()
-
-```{r column-types-DF-answer, eval=FALSE, include=FALSE}
-# The Sepal.Length, Sepal.Width, Petal.Length and Petal.Width columns are all
-# numeric types, while Species is a Factor.
-# Lists can have elements of different types.
-# Since a Data Frame is just a special type of list, it can have columns of
-# differing type (although, remember that type must be consistent within each column!).
-str(iris)
-```
+> What type of structure do you expect on the iris data frame? Hint: Use `str()`.
+>
+> ~~~
+> # The Sepal.Length, Sepal.Width, Petal.Length and Petal.Width columns are all
+> # numeric types, while Species is a Factor.
+> # Lists can have elements of different types.
+> # Since a Data Frame is just a special type of list, it can have columns of
+> # differing type (although, remember that type must be consistent within each column!).
+> str(iris)
+> ~~~
+> {: .r}
 {: .challenge}

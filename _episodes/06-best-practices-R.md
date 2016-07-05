@@ -1,17 +1,18 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Best practices for writing R code
-minutes: 30
+title: "Best Practices for Writing R"
+teaching: 30
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Define best formating practices when writing code in R scripts."
+- "Synthesize a consistent personal coding style to increase code readability, consistency, and repeatability."
+- "Apply this style to one's own code."
+keypoints:
+- "FIXME"
 ---
 
 
-
-> ## Learning Objectives {.objectives}
->
-> Define best formating practices when writing code in R scripts;
-> Synthesize a consistent personal coding style to increase code readability, consistency, and repeatability;
-> Apply this style to one's own code
 
 1. Start your code with an annotated description of what the code does when it is run:
 
@@ -81,7 +82,8 @@ dat <- read.csv(file = "/Users/Karthik/Documents/sannic-project/files/dataset-20
 
 10. R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. To inspect the objects in your current R  environment, you can list the objects, search current packages, and remove objects that are currently not in use. A good practice when running long lines of computationally intensive  code is to remove temporary objects after they have served their purpose. However, sometimes, R will not clean up unused memory for a while after you delete objects. You can force R to tidy up its memory by using `gc()`.
 
-~~~{.r}
+
+~~~
 interim_object <- data.frame(rep(1:100,10),rep(101:200,10),rep(201:300,10)) # Sample dataset of 1000 rows
 object.size(interim_object) # Reports the memory size allocated to the object
 rm(interim_object) # Removes only the object itself and not necessarily the memory alloted to it
@@ -89,6 +91,7 @@ gc() # Force R to release memory it is no longer using
 ls()  # Lists all the objects in your current workspace
 rm(list = ls()) # If you want to delete all the objects in the workspace and start with a clean slate
 ~~~
+{: .r}
 
 11. Don't save a session history (the default option in R, when it asks if you want an `RData` file). Instead, start in a clean environment so that older objects don't remain in your environment any longer than they need to. If that happens, it can lead to unexpected results.
 
@@ -98,8 +101,11 @@ rm(list = ls()) # If you want to delete all the objects in the workspace and sta
 
 14. Develop your code using version control and frequent updates!
 
-> ## Discussion - Best practice {.challenge}
+> ## Best Practice
 >
 > 1. What other suggestions do you have for coding best practices?
 > 2. What are some specific ways we could restructure the code we worked on today to make it easier for a new user to read? Discuss with your neighbor.
-> 3. Make two new R scripts called `inflammation.R` and `inflammation_fxns.R`. Copy and paste code into each script so that `inflammation.R` "does stuff" and `inflammation_fxns.R` holds all of your functions. __Hint__: you will need to add `source` to one of the files.
+> 3. Make two new R scripts called `inflammation.R` and `inflammation_fxns.R`.
+>    Copy and paste code into each script so that `inflammation.R` "does stuff" and `inflammation_fxns.R` holds all of your functions.
+>    __Hint__: you will need to add `source` to one of the files.
+{: .challenge}

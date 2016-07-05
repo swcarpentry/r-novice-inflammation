@@ -19,8 +19,6 @@ source('../bin/chunk-options.R')
 opts_chunk$set(fig.path = "fig/12-supp-factors-")
 ```
 
-This section is modeled after the [datacarpentry lessons](http://datacarpentry.org).
-
 Factors are used to represent categorical data. Factors can be ordered or
 unordered and are an important class for statistical analysis and for plotting.
 

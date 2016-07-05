@@ -1,23 +1,32 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Reading and writing .csv
-minutes: 30
+title: "Reading and Writing CSV Files"
+teaching: 30
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Read in a .csv, and explore the arguments of the csv reader."
+- "Write the altered data set to a new .csv, and explore the arguments."
+keypoints:
+- "Import data from a .csv file using the  `read.csv(...)` function."
+- "Understand some of the key arguments available for importing the data properly, including `header`, `stringsAsFactors`, `as.is`, and `strip.white`."
+- "Write data to a new .csv file using the `write.csv(...)` function"
+- "Understand some of the key arguments available for exporting the data properly, such as `row.names`, `col.names`, and `na`."
 ---
 
 
 
-> ## Learning Objectives {.objectives}
->
->   * Read in a .csv, and explore the arguments of the csv reader
->   * Write the altered data set to a new .csv, and explore the arguments
-
-The most common way that scientists store data is in Excel spreadsheets. While there are R packages designed to access data from Excel spreadsheets (e.g., gdata, RODBC, XLConnect, xlsx, RExcel), users often find it easier to save their spreadsheets in [comma-separated values](reference.html#comma-separated-values-(csv)) files (CSV) and then use R's built in functionality to read and manipulate the data. In this short lesson, we'll learn how to read data from a .csv and write to a new .csv, and explore the [arguments](reference.html#argument) that allow you read and write the data correctly for your needs.
+The most common way that scientists store data is in Excel spreadsheets.
+While there are R packages designed to access data from Excel spreadsheets (e.g., gdata, RODBC, XLConnect, xlsx, RExcel),
+users often find it easier to save their spreadsheets in [comma-separated values]({{ site.root }}/reference/#comma-separated-values-(csv)) files (CSV)
+and then use R's built in functionality to read and manipulate the data.
+In this short lesson, we'll learn how to read data from a .csv and write to a new .csv,
+and explore the [arguments]({{ site.root }}/reference/#argument) that allow you read and write the data correctly for your needs.
 
 
 ### Read a .csv and Explore the Arguments
 
-Let's start by opening a .csv file containing information on the speeds at which cars of different colors were clocked in 45 mph zones in the four-corners states (`CarSpeeds.csv`). We will use the built in `read.csv(...)` [function call](reference.html#function-call), which reads the data in as a data frame, and assign the data frame to a variable (using `<-`) so that it is stored in R's memory. Then we will explore some of the basic arguments that can be supplied to the function.
+Let's start by opening a .csv file containing information on the speeds at which cars of different colors were clocked in 45 mph zones in the four-corners states (`CarSpeeds.csv`). We will use the built in `read.csv(...)` [function call]({{ site.root }}/reference/#function-call), which reads the data in as a data frame, and assign the data frame to a variable (using `<-`) so that it is stored in R's memory. Then we will explore some of the basic arguments that can be supplied to the function.
 
 
 ~~~
@@ -47,13 +56,14 @@ head(carSpeeds)
 ~~~
 {: .output}
 
-> ## Tip {.callout} 
+> ## Changing Delimiters
 >
 > The default delimiter of the `read.csv()` function is a comma, but you can 
 > use other delimiters by supplying the 'sep' argument to the function 
 > (e.g., typing `sep = ';'` allows a semi-colon separated file to be correctly 
 > imported -see `?read.csv()` for more information on this and other options for 
 > working with different file types).
+{: .callout}
 
 The call above will import the data, but we have not taken advantage of several handy arguments that can be helpful in loading the data in the format we want. Let's explore some of these arguments.
 
@@ -98,7 +108,7 @@ Clearly this is not the desired behavior for this data set, but it may be useful
 
 ### The `stringsAsFactors` Argument
 
-This is perhaps the most important argument in `read.csv()`, particularly if you are working with categorical data. This is because the default behavior of R is to convert character [string](reference.html#string)s into factors, which may make it difficult to do such things as replace values. For example, let's say we find out that the data collector was color blind, and accidentally recorded green cars as being blue. In order to correct the data set, let's replace 'Blue' with 'Green' in the `$Color` column:
+This is perhaps the most important argument in `read.csv()`, particularly if you are working with categorical data. This is because the default behavior of R is to convert character [string]({{ site.root }}/reference/#string)s into factors, which may make it difficult to do such things as replace values. For example, let's say we find out that the data collector was color blind, and accidentally recorded green cars as being blue. In order to correct the data set, let's replace 'Blue' with 'Green' in the `$Color` column:
 
 
 ~~~
@@ -232,8 +242,11 @@ carSpeeds$State
 ~~~
 {: .output}
 
-> ## Challenge - Updating values in a factor {.challenge}
-> Suppose we want to keep the colors of cars as factors for some other operations we want to perform. Write code for replacing 'Blue' with 'Green' in the `$Color` column of the cars dataset without importing the data with `stringsAsFactors=FALSE`.
+> ## Updating Values in a Factor
+> Suppose we want to keep the colors of cars as factors for some other operations we want to perform.
+> Write code for replacing 'Blue' with 'Green' in the `$Color` column of the cars dataset
+> without importing the data with `stringsAsFactors=FALSE`.
+{: .challenge}
 
 
 
@@ -282,7 +295,7 @@ That's better!
 
 ### Write a New .csv and Explore the Arguments 
 
-After altering our cars dataset by replacing 'Blue' with 'Green' in the `$Color` column, we now want to save the output. There are several arguments for the `write.csv(...)` [function call](reference.html#function-call), a few of which are particularly important for how the data are exported.  Let's explore these now.
+After altering our cars dataset by replacing 'Blue' with 'Green' in the `$Color` column, we now want to save the output. There are several arguments for the `write.csv(...)` [function call]({{ site.root }}/reference/#function-call), a few of which are particularly important for how the data are exported.  Let's explore these now.
 
 
 ~~~
@@ -311,12 +324,13 @@ Now we see:
 
 <img src="{{ site.root }}/fig/01-supp-csv-without-row-nums.png" alt="csv written with row.names argument" />
 
-> ## Tip {.callout}
+> ## Setting Column Names
 > 
-> there is also a `col.names` argument, which can be used to set the column 
-names for a data set without headers. If the data set already has headers 
-(e.g., we used the `headers = TRUE` argument when importing the data) then a 
-`col.names` argument will be ignored.
+> There is also a `col.names` argument, which can be used to set the column 
+> names for a data set without headers. If the data set already has headers 
+> (e.g., we used the `headers = TRUE` argument when importing the data) then a 
+> `col.names` argument will be ignored.
+{: .callout}
 
 ### The `na` Argument
 
@@ -362,22 +376,3 @@ write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE, na= '-
 And we see:
 
 <img src="{{ site.root }}/fig/01-supp-csv-with-special-NA.png" alt="csv written with -9999 as NA" />
-
-
-> ## Key Points {.callout}
->
->  * Import data from a .csv file using the  `read.csv(...)` function.
->  * Understand some of the key arguments available for importing the data properly
->    + `header`
->    + `stringsAsFactors`
->    + `as.is`
->    + `strip.white`
->  * Write data to a new .csv file using the `write.csv(...)` function
->  * Understand some of the key arguments available for exporting the data properly
->    + `row.names` / `col.names`
->    + `na`
-
-> ## Next Steps {.callout}
->We have now explored data import and export from .csv files. There are several more arguments available for both the `read.csv(...)` and `write.csv(...)` functions, as well as similar options for working with data that are stored in other text formats (e.g., .txt).  To find out more, use the R help commands '?read.csv()' and '?write.csv()'.
->
-> In the next lessons, we'll explore how to work with and analyze data in the R environment.

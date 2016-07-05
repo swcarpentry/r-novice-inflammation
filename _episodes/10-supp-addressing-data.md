@@ -1,16 +1,17 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Addressing data
-minutes: 20
+title: "Addressing Data"
+teaching: 20
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Understand the 3 different ways R can address data inside a data frame."
+- "Combine different methods for addressing data with the assignment operator to update subsets of data."
+keypoints:
+- "FIXME"
 ---
 
 
-
-> ## Learning Objectives {.objectives}
->
-> * Understand the 3 different ways R can address data inside a data frame.
-> * Combine different methods for addressing data with the assignment operator to update subsets of data
 
 R is a powerful language for data manipulation. There are 3 main ways for addressing data inside R objects.
 
@@ -26,10 +27,13 @@ dat <- read.csv(file = 'data/sample.csv', header = TRUE, stringsAsFactors = FALS
 ~~~
 {: .r}
 
-> ## Tip {.callout} 
+> ## Interpreting Rows as Headers
 >
-> The first row of this csv file is a list of column names. We used the *header=TRUE* argument to `read.csv` so that R can interpret the file correctly.
-> We are using the *stringsAsFactors=FALSE* argument to override the default behaviour for R. Using factors in R is covered in a separate lesson.
+> The first row of this csv file is a list of column names.
+> We used the *header=TRUE* argument to `read.csv` so that R can interpret the file correctly.
+> We are using the *stringsAsFactors=FALSE* argument to override the default behaviour for R.
+> Using factors in R is covered in a separate lesson.
+{: .callout}
 
 Lets take a look at this data.
 
@@ -95,9 +99,10 @@ The data is the results of an (not real) experiment, looking at the number of an
 
 Data can be accessed by index. We have already seen how square brackets `[` can be used to subset (slice) data. The generic format is `dat[row_numbers,column_numbers]`.
 
-> ## Challenge - Selecting values 1 {.challenge}
+> ## Selecting Values
 >
 > What will be returned by `dat[1,1]`?
+{: .challenge}
 
 
 ~~~
@@ -114,9 +119,10 @@ dat[1,1]
 
 If we leave out a dimension R will interpret this as a request for all values in that dimension.
 
-> ## Challenge - Selecting values 2 {.challenge}
+> ## Selecting More Values
 >
 > What will be returned by `dat[,2]`?
+{: .challenge}
 
 The colon `:` can be used to create a sequence of integers.
 
@@ -137,8 +143,10 @@ Creates a vector of numbers from 6 to 9.
 
 This can be very useful for addressing data. 
 
-> ## Challenge - Subsetting with sequences {.challenge}
+> ## Subsetting with Sequences
+>
 > Use the colon operator to index just the aneurism count data (columns 6 to 9).
+{: .challenge}
 
 Finally we can use the `c()` (combine) function to address non-sequential rows and columns.
 
@@ -161,8 +169,10 @@ dat[c(1,5,7,9), 1:5]
 
 Returns the first 5 columns for patients in rows 1,5,7 & 9
 
-> ## Challenge - Subsetting non-sequential data {.challenge}
-> Return the Age and Gender values for the first 5 patients.
+> ## Subsetting Non-Sequential Data
+>
+> Return the age and gender values for the first 5 patients.
+{: .challenge}
 
 ### Addressing by Name
 
@@ -183,9 +193,10 @@ names(dat)
 ~~~
 {: .output}
 
-> ## Tip {.callout} 
+> ## Default Names
 >
 > If names are not specified e.g. using `headers=FALSE` in a `read.csv()` function, R assigns default names `V1,V2,...,Vn`
+{: .callout}
 
 We usually use the `$` operator to address a column by name
 
@@ -227,9 +238,10 @@ head(dat[,c('Age', 'Gender')])
 ~~~
 {: .output}
 
-> ## Best Practice {.callout} 
+> ## Best Practice
 >
 > Best practice is to address columns by name, often you will create or delete columns and the column position will change.
+{: .callout}
 
 ### Logical Indexing
 
@@ -247,9 +259,10 @@ c(TRUE, TRUE, FALSE, FALSE, TRUE)
 [1]  TRUE  TRUE FALSE FALSE  TRUE
 ~~~
 {: .output}
-> ## Tip {.callout} 
+> ## Truth and Its Opposite
 >
 > Note the values `TRUE` and `FALSE` are all capital letters and are not quoted.
+{: .callout}
 
 Logical vectors can be created using `relational operators` e.g. `<, >, ==, !=, %in%`.
 
@@ -308,9 +321,11 @@ plot(dat[dat$Group == 'Control',]$BloodPressure)
 
 <img src="../fig/rmd-logical_vectors_indexing2-1.png" title="plot of chunk logical_vectors_indexing2" alt="plot of chunk logical_vectors_indexing2" style="display: block; margin: auto;" />
 
-> ## Challenge - Using logical indexes {.challenge}
+> ## Using Logical Indexes
+>
 > 1. Create a scatterplot showing BloodPressure for subjects not in the control group.
 > 2. How many ways are there to index this set of subjects?
+{: .challenge}
 
 ### Combining Indexing and Assignment
 
@@ -331,6 +346,8 @@ x
 ~~~
 {: .output}
 
-> ## Challenge - Updating a subset of values {.challenge}
+> ## Updating a Subset of Values
+>
 > In this dataset, values for Gender have been recorded as both uppercase `M, F` and lowercase `m,f`. 
 > Combine the indexing and assignment operations to convert all values to lowercase.
+{: .challenge}

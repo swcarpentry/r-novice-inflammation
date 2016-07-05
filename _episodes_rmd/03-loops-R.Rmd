@@ -108,7 +108,7 @@ This is shorter---certainly shorter than something that prints every character i
 print_words(best_practice[-6])
 ```
 
-The improved version of `print_words` uses a [for loop](reference.html#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
+The improved version of `print_words` uses a [for loop]({{ site.root }}/reference/#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
 The general form of a loop is:
 
 ```{r, eval=FALSE}
@@ -117,7 +117,7 @@ for (variable in collection) {
 }
 ```
 
-We can name the [loop variable](reference.html#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
+We can name the [loop variable]({{ site.root }}/reference/#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
 `in` is part of the `for` syntax.
 Note that the body of the loop is enclosed in curly braces `{ }`.
 For a single-line loop body, as here, the braces aren't needed, but it is good practice to include them as we did.
@@ -161,7 +161,7 @@ Note also that finding the length of a vector is such a common operation that R 
 length(vowels)
 ```
 
-`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](01-supp-data-structures.html) to learn more about the different ways to store data in R).
+`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson]({{ site.root }}/01-supp-data-structures/) to learn more about the different ways to store data in R).
 
 
 > ## Using Loops
@@ -229,7 +229,8 @@ We do not need to write it ourselves because R already has a function to do this
 
 If we run the function without any arguments, `list.files()`, it returns every file in the current working directory.
 We can understand this result by reading the help file (`?list.files`).
-The first argument, `path`, is the path to the directory to be searched, and it has the default value of `"."` (recall from the [lesson](http://swcarpentry.github.io/shell-novice/01-filedir.html) on the Unix Shell that `"."` is shorthand for the current working directory).
+The first argument, `path`, is the path to the directory to be searched, and it has the default value of `"."`
+(recall from the [lesson](http://swcarpentry.github.io/shell-novice/01-filedir.html) on the Unix Shell that `"."` is shorthand for the current working directory).
 The second argument, `pattern`, is the pattern being searched, and it has the default value of `NULL`.
 Since no pattern is specified to filter the files, all files are returned.
 
@@ -287,7 +288,7 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 > accomplish this. Sometimes the choice of one method over another is more a
 > matter of personal style, but other times it can have consequences for the
 > speed of your code. For instruction on best practices, see this supplementary
-> [lesson](03-supp-loops-in-depth.html) that demonstrates how to properly repeat
+> [lesson]({{ site.root }}/03-supp-loops-in-depth/) that demonstrates how to properly repeat
 > operations in R.
 {: .callout}
 

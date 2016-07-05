@@ -1,8 +1,7 @@
 ---
 layout: page
-title: Programming with R
-subtitle: Guide
-minutes: 0
+title: "Instructor's Guide"
+permalink: /guide/
 ---
 
 

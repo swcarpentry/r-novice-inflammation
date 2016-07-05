@@ -1,19 +1,27 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Creating functions
-minutes: 30
+title: "Creating Functions"
+teaching: 30
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Define a function that takes arguments."
+- "Return a value from a function."
+- "Test a function."
+- "Set default values for function arguments."
+- "Explain why we should divide programs into small, single-purpose functions."
+keypoints:
+- "Define a function using `name <- function(...args...) {...body...}`."
+- "Call a function using `name(...values...)`."
+- "R looks for variables in the current stack frame before looking for them at the top level."
+- "Use `help(thing)` to view help for something."
+- "Put comments at the beginning of functions to provide help for that function."
+- "Annotate your code!"
+- "Specify default values for arguments when defining a function using `name = value` in the argument list."
+- "Arguments can be passed by matching based on name, by position, or by omitting them (in which case the default value is used)."
 ---
 
 
-
-> ## Learning Objectives {.objectives}
->
-> * Define a function that takes arguments.
-> * Return a value from a function.
-> * Test a function.
-> * Set default values for function arguments.
-> * Explain why we should divide programs into small, single-purpose functions.
 
 If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics.
 But we have twelve files to check, and may have more in the future.
@@ -34,18 +42,19 @@ fahr_to_kelvin <- function(temp) {
 
 We define `fahr_to_kelvin` by assigning it to the output of `function`.
 The list of argument names are containted within parentheses.
-Next, the [body](reference.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
+Next, the [body]({{ site.root }}/reference/#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
 The statements in the body are indented by two spaces, which makes the code easier to read but does not affect how the code operates.
 
 When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
-Inside the function, we use a [return statement](reference.html#return-statement) to send a result back to whoever asked for it.
+Inside the function, we use a [return statement]({{ site.root }}/reference/#return-statement) to send a result back to whoever asked for it.
 
-> ## Tip {.callout}
+> ## Automatic Returns
 >
 > In R, it is not necessary to include the return statement.
 > R automatically returns whichever variable is on the last line of the body
 > of the function. Since we are just learning, we will explicitly define the
 > return statement.
+{: .callout}
 
 Let's try running our function.
 Calling our own function is no different from calling any other function:
@@ -106,7 +115,7 @@ kelvin_to_celsius(0)
 
 What about converting Fahrenheit to Celsius?
 We could write out the formula, but we don't need to.
-Instead, we can [compose](reference.html#function-composition) the two functions we have already created:
+Instead, we can [compose]({{ site.root }}/reference/#function-composition) the two functions we have already created:
 
 
 ~~~
@@ -132,7 +141,7 @@ This is our first taste of how larger programs are built: we define basic
 operations, then combine them in ever-larger chunks to get the effect we want.
 Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
 
-> ## Tip {.callout}
+> ## Chaining Functions
 >
 > This example showed the output of `fahr_to_kelvin` assigned to `temp_k`, which
 > is then passed to `kelvin_to_celsius` to get the final result. It is also possible
@@ -152,14 +161,16 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > [1] 0
 > ~~~
 > {: .output}
+{: .callout}
 
-> ## Create a function {.challenge}
+> ## Create a Function
 >
->  + In the last lesson, we learned to **c**oncatenate elements into a vector using the `c` function, e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
+>  In the last lesson, we learned to **c**oncatenate elements into a vector using the `c` function,
+> e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
 >  Furthermore, we can extend that vector again using `c`, e.g. `y <- c(x, "D")` creates a vector `y` with four elements.
 >  Write a function called `fence` that takes two vectors as arguments, called
->`original` and `wrapper`, and returns a new vector that has the wrapper vector
->at the beginning and end of the original:
+> `original` and `wrapper`, and returns a new vector that has the wrapper vector
+> at the beginning and end of the original:
 >
 > 
 > ~~~
@@ -192,13 +203,18 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > [1] "Don't"  "others"
 > ~~~
 > {: .output}
+{: .challenge}
 
-> ## The call stack {.callout}
+> ## The Call Stack
 >
-> For a deeper understanding of how functions work, you'll need to learn how they create their own environments and call other functions. Function calls are managed via the call stack. For more details on the call stack, have a look at the [supplementary material](02-supp-call-stack.html).
+> For a deeper understanding of how functions work,
+> you'll need to learn how they create their own environments and call other functions.
+> Function calls are managed via the call stack.
+> For more details on the call stack,
+> have a look at the [supplementary material]({{ site.root }}/02-supp-call-stack/).
+{: .callout}
 
-
-> ## Named variables and the scope of variables {.challenge}
+> ## Named Variables and the Scope of Variables
 >
 >  + Functions can accept arguments explicitly assigned to a variable name in
 >    in the function call `functionName(variable = value)`, as well as arguments by
@@ -220,6 +236,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > 4) 30
 >
 > Q2. If mySum(3) == 13, why does mySum(b=3) return an error?
+{: .challenge}
 
 ### Testing and Documenting
 
@@ -442,9 +459,9 @@ all.equal(sd(dat[, 4]), sd(centered))
 {: .output}
 
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
-We have one more task first, though: we should write some [documentation](reference.html#documentation) for our function to remind ourselves later what it's for and how to use it.
+We have one more task first, though: we should write some [documentation]({{ site.root }}/reference#documentation) for our function to remind ourselves later what it's for and how to use it.
 
-A common way to put documentation in software is to add [comments](reference.html#comment) like this:
+A common way to put documentation in software is to add [comments]({{ site.root }}/reference/#comment) like this:
 
 
 ~~~
@@ -458,7 +475,7 @@ center <- function(data, desired) {
 ~~~
 {: .r}
 
-> ## Tip {.callout}
+> ## Writing Documentation
 >
 > Formal documentation for R functions is written in separate `.Rd` using a
 > markup language similar to [LaTeX][]. You see the result of this documentation
@@ -467,6 +484,7 @@ center <- function(data, desired) {
 > the function code and then process it into the appropriate `.Rd` files.
 > You will want to switch to this more formal method of writing documentation
 > when you start writing more complicated R projects.
+{: .callout}
 
 [LaTeX]: http://www.latex-project.org/
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
@@ -475,7 +493,7 @@ center <- function(data, desired) {
 
 
 
-> ## A more advanced function {.challenge}
+> ## A More Advanced Function
 >
 >  + Write a function called `analyze` that takes a filename as a argument and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
 >  `analyze("data/inflammation-01.csv")` should produce the graphs already shown, while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set. Be sure to document your function with comments.
@@ -483,6 +501,7 @@ center <- function(data, desired) {
 >  (If $L$ and $H$ are the lowest and highest values in the original vector, then the replacement for a value $v$ should be $(v-L) / (H-L)$.)
 >  Be sure to document your function with comments.
 >  + Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
+{: .challenge}
 
 [01]: 01-starting-with-data.html
 
@@ -667,11 +686,10 @@ display(c = 77)
 ~~~
 {: .output}
 
-> ## Tip {.callout}
+> ## Matching Arguments
 >
 > To be precise, R has three ways that arguments are supplied
->
-> by you are matched to the *formal arguments* of the function definition
+> by you are matched to the *formal arguments* of the function definition:
 >
 > 1. by complete name,
 > 2. by partial name (matching on initial *n* characters of the argument name), and
@@ -679,6 +697,7 @@ display(c = 77)
 >
 > Arguments are matched in the manner outlined above in *that order*: by
 > complete name, then by partial matching of names, and finally by position.
+{: .callout}
 
 With that in hand, let's look at the help for `read.csv()`:
 
@@ -715,37 +734,10 @@ Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'f
 
 It fails because `FALSE` is assigned to `file` and the filename is assigned to the argument `header`.
 
-> ## A function with default argument values {.challenge}
+> ## A Function with Default Argument Values
 >
 >  + Rewrite the `rescale` function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want.
 >  Compare your implementation to your neighbor's: do the two functions always behave the same way?
+{: .challenge}
 
 
-
-> ## Key Points {.callout}
->
-> * Define a function using `name <- function(...args...) {...body...}`.
-> * Call a function using `name(...values...)`.
-> * R looks for variables in the current stack frame before looking for them at the top level.
-> * Use `help(thing)` to view help for something.
-> * Put comments at the beginning of functions to provide help for that function.
-> * Annotate your code!
-> * Specify default values for arguments when defining a function using `name = value` in the argument list.
-> * Arguments can be passed by matching based on name, by position, or by omitting them (in which case the default value is used).
-
-> ## Next Steps {.callout}
->
-> We now have a function called analyze to visualize a single data set.
-> We could use it to explore all 12 of our current data sets like this:
->
-> 
-> ~~~
-> analyze("data/inflammation-01.csv")
-> analyze("data/inflammation-02.csv")
-> #...
-> analyze("data/inflammation-12.csv")
-> ~~~
-> {: .r}
->
-> but the chances of us typing all 12 filenames correctly aren't great, and we'll be even worse off if we get another hundred files.
-> What we need is a way to tell R to do something once for each file, and that will be the subject of the next lesson.

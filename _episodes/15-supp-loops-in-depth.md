@@ -1,20 +1,21 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Loops in R
-minutes: 30
+title: "Loops in R"
+teaching: 30
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Compare loops and vectorized operations."
+- "Use the apply family of functions."
+keypoints:
+- "FIXME"
 ---
 
 
 
-> ## Learning Objectives {.objectives}
->
-> * Compare loops and vectorized operations
-> * Use the apply family of functions
-
 In R you have multiple options when repeating calculations: vectorized operations, `for` loops, and `apply` functions.
 
-This lesson is an extension of [Analyzing Multiple Data Sets](03-loops-R.html).
+This lesson is an extension of [Analyzing Multiple Data Sets]({{ site.root }}/03-loops-R/).
 In that lesson, we introduced how to run a custom function, `analyze`, over multiple data files:
 
 
@@ -160,7 +161,7 @@ length
 
 A `for` loop is used to apply the same function calls to a collection of objects.
 R has a family of functions, the `apply` family, which can be used in much the same way.
-You've already used one of the family, `apply` in the first [lesson](01-starting-with-data.html).
+You've already used one of the family, `apply` in the first [lesson]({{ site.root }}/01-starting-with-data/).
 The `apply` family members include
 
  * `apply`  - apply over the margins of an array (e.g. the rows or columns of a matrix)
@@ -455,7 +456,7 @@ logical: returning NA
 
 ~~~
    user  system elapsed 
-  0.121   0.003   0.125 
+  0.121   0.005   0.127 
 ~~~
 {: .output}
 
@@ -725,7 +726,7 @@ logical: returning NA
 
 ~~~
    user  system elapsed 
-  0.117   0.003   0.121 
+  0.127   0.004   0.134 
 ~~~
 {: .output}
 

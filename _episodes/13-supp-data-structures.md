@@ -1,19 +1,20 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Data types and structures
-minutes: 45
+title: "Data Types and Structures"
+teaching: 45
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Expose learners to the different data types in R."
+- "Learn how to create vectors of different types."
+- "Be able to check the type of vector."
+- "Learn about missing data and other special values."
+- "Getting familiar with the different data structures (lists, matrices, data frames)."
+keypoints:
+- "FIXME"
 ---
 
 
-
-> ## Learning Objectives {.objectives}
->
-> * Expose learners to the different data types in R
-> * Learn how to create vectors of different types
-> * Be able to check the type of vector
-> * Learn about missing data and other special values
-> * Getting familiar with the different data structures (lists, matrices, data frames)
 
 ### Understanding Basic Data Types in R
 
@@ -344,9 +345,10 @@ str(z)
 ~~~
 {: .output}
 
-> ## Challenge - Finding commonalities {.challenge}
+> ## Finding Commonalities
 >
 > Do you see a property that's common to all these vectors above?
+{: .challenge}
 
 ### Adding Elements
 
@@ -893,7 +895,7 @@ dat
 ~~~
 {: .output}
 
-> ## Useful data frame functions {.callout}
+> ## Useful Data Frame Functions
 >
 > * `head()` - shown first 6 rows
 > * `tail()` - show last 6 rows
@@ -901,8 +903,8 @@ dat
 > * `nrow()` - number of rows
 > * `ncol()` - number of columns
 > * `str()` - structure of each column
-> * `names()` - shows the `names` attribute for a data frame, which gives the
->column names.
+> * `names()` - shows the `names` attribute for a data frame, which gives the column names.
+{: .callout}
 
 See that it is actually a special list:
 
@@ -939,10 +941,19 @@ class(iris)
 | 2-D | matrix | data frame |
 
 
-> ## Column Types in Data Frames {.challenge}
+> ## Column Types in Data Frames
 >
 > Knowing that data frames are lists of lists, can columns be of different type?
 >
-> What type of structure do you expect on the iris data frame? Hint: Use str()
-
-
+> What type of structure do you expect on the iris data frame? Hint: Use `str()`.
+>
+> ~~~
+> # The Sepal.Length, Sepal.Width, Petal.Length and Petal.Width columns are all
+> # numeric types, while Species is a Factor.
+> # Lists can have elements of different types.
+> # Since a Data Frame is just a special type of list, it can have columns of
+> # differing type (although, remember that type must be consistent within each column!).
+> str(iris)
+> ~~~
+> {: .r}
+{: .challenge}

@@ -1,19 +1,20 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Understanding factors
-minutes: 20
+title: "Understanding Factors"
+teaching: 20
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Understand how to represent categorical data in R."
+- "Know the difference between ordered and unordered factors."
+- "Be aware of some of the problems encountered when using factors."
+keypoints:
+- "Factors are used to represent categorical data."
+- "Factors can be *ordered* or *unordered*."
+- "Some R functions have special methods for handling factors."
 ---
 
 
-
-> ## Learning Objectives {.objectives}
->
->   * Understand how to represent categorical data in R
->   * Know the difference between ordered and unordered factors
->   * Be aware of some of the problems encountered when using factors
-
-This section is modeled after the [datacarpentry lessons](http://datacarpentry.org).
 
 Factors are used to represent categorical data. Factors can be ordered or
 unordered and are an important class for statistical analysis and for plotting.
@@ -27,15 +28,16 @@ Once created, factors can only contain a pre-defined set values, known as
 *levels*. By default, R always sorts *levels* in alphabetical order. For
 instance, if you have a factor with 2 levels:
 
-> ## Tip {.callout}
+> ## The `factor()` Command
 >
-> The `factor()` command is used to create and modify factors in R
-
-
-~~~
-sex <- factor(c("male", "female", "female", "male"))
-~~~
-{: .r}
+> The `factor()` command is used to create and modify factors in R:
+>
+> 
+> ~~~
+> sex <- factor(c("male", "female", "female", "male"))
+> ~~~
+> {: .r}
+{: .callout}
 
 R will assign `1` to the level `"female"` and `2` to the level `"male"` (because
 `f` comes before `m`, even though the first element in this vector is
@@ -154,7 +156,7 @@ is low?  You wouldn't be able to tell with just integer data. Factors have this
 information built in. It is particularly helpful when there are many levels
 (like the subjects in our example data set).
 
-> ## Challenge - Representing data in R {.challenge}
+> ## Representing Data in R
 >
 > You have a vector representing levels of exercise undertaken by 5 subjects
 >
@@ -169,6 +171,7 @@ information built in. It is particularly helpful when there are many levels
 > c) exercise < -factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = FALSE)
 >
 > d) exercise <- factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = TRUE)
+{: .challenge}
 
 ###  Converting Factors
 
@@ -224,9 +227,12 @@ dat <- read.csv(file = 'data/sample.csv', stringsAsFactors = TRUE)
 ~~~
 {: .r}
 
-> ## Tip {.callout}
+> ## Default Behavior
 >
-> `stringsAsFactors=TRUE` is the default behaviour for R. We could leave this argument out. It is included here for clarity.
+> `stringsAsFactors=TRUE` is the default behavior for R.
+> We could leave this argument out.
+> It is included here for clarity.
+{: .callout}
 
 
 ~~~
@@ -282,11 +288,13 @@ summary(dat)
 
 Notice the `summary()` function handles factors differently to numbers (and strings), the occurence counts for each value is often more useful information.
 
-> ## Tip {.callout}
+> ## The `summary()` Function
 > 
-> The `summary()` function is a great way of spotting errors in your data, look at the *dat$Gender* column. It's also a great way for spotting missing data.
+> The `summary()` function is a great way of spotting errors in your data (look at the *dat$Gender* column).
+> It's also a great way for spotting missing data.
+{: .callout}
 
-> ## Challenge - Reordering factors {.challenge}
+> ## Reordering Factors
 > 
 > The function `table()` tabulates observations and can be used to create bar plots quickly. For instance:
 >
@@ -314,6 +322,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 > 
 > <img src="../fig/12-supp-factors-reordering-factors-1.png" title="plot of chunk reordering-factors" alt="plot of chunk reordering-factors" style="display: block; margin: auto;" />
 > Use the `factor()` command to modify the column dat$Group so that the *control* group is plotted last
+{: .challenge}
 
 ### Removing Levels from a Factor
 
@@ -336,7 +345,7 @@ dat$Gender[dat$Gender == 'M'] <- 'm'
 ~~~
 {: .r}
 
-> ## Challenge - Updating factors {.challenge}
+> ## Updating Factors
 >
 > 
 > ~~~
@@ -349,7 +358,7 @@ dat$Gender[dat$Gender == 'M'] <- 'm'
 > Why does this plot show 4 levels?
 >
 > *Hint* how many levels does dat$Gender have?
-
+{: .challenge}
 
 We need to tell R that "M" is no longer a valid value for this column.
 We use the `droplevels()` function to remove extra levels.
@@ -363,7 +372,7 @@ plot(x = dat$Gender, y = dat$BloodPressure)
 
 <img src="../fig/12-supp-factors-dropping-levels-1.png" title="plot of chunk dropping-levels" alt="plot of chunk dropping-levels" style="display: block; margin: auto;" />
 
-> ## Tip {.callout}
+> ## Adjusting Factor Levels
 >
 > Adjusting the `levels()` of a factor provides a useful shortcut for reassigning values in this case.
 >
@@ -375,9 +384,4 @@ plot(x = dat$Gender, y = dat$BloodPressure)
 > {: .r}
 > 
 > <img src="../fig/12-supp-factors-adjusting-levels-1.png" title="plot of chunk adjusting-levels" alt="plot of chunk adjusting-levels" style="display: block; margin: auto;" />
-
-> ## Key Points {.callout}
->
-> * Factors are used to represent categorical data
-> * Factors can be *ordered* or *unordered*
-> * Some R functions have special methods for handling factors
+{: .callout}
