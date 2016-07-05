@@ -660,6 +660,25 @@ We'll learn why this is so in the next lesson.
 
 
 
+> ## Using the apply function on patient data {.challenge}
+>
+> Challenge: the apply function can be used to summarize datasets and subsets
+> of data across rows and columns using the MARGIN argument.
+> Suppose you want to calculate the mean inflammation for specific days and patients
+> in the patient dataset (i.e. 60 patients across 40 days).
+>
+> Please use a combination of the apply function and indexing to:
+>
+> 1. calculate the mean inflammation for patients 1 to 5 over the whole 40 days
+> 1. calculate the mean inflammation for days 1 to 10 (across all patients).
+> 1. calculate the mean inflammation for every second day (across all patients).
+>
+> Think about the number of rows and columns you would expect as the result before each
+> apply call and check your intuition by applying the mean function.
+>
+
+
+
 ### Plotting
 
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers," and the best way to develop insight is often to visualize data.
