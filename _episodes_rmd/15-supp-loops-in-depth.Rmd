@@ -1,18 +1,19 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Loops in R
-minutes: 30
+title: "Loops in R"
+teaching: 30
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Compare loops and vectorized operations."
+- "Use the apply family of functions."
+keypoints:
+- "FIXME"
 ---
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
 ```
-
-> ## Learning Objectives {.objectives}
->
-> * Compare loops and vectorized operations
-> * Use the apply family of functions
 
 In R you have multiple options when repeating calculations: vectorized operations, `for` loops, and `apply` functions.
 

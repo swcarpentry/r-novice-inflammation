@@ -1,17 +1,18 @@
 ---
-layout: page
-title: Programming with R
-subtitle: Making packages in R
-minutes: 30
+title: "Making Packages in R"
+teaching: 30
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Quick summary on how (and why) making R packages."
+keypoints:
+- "FIXME"
 ---
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
 ```
-
-> ## Learning Objectives {.objectives}
->
-> Quick summary on how (and why) making R packages
 
 Why should you make your own R packages?
 
@@ -151,7 +152,8 @@ fahr_to_kelvin(212)
 kelvin_to_celsius(273.15)
 ```
 
-> ## Challenge - Creating a package for distribution {.challenge}
+> ## Creating a Package for Distribution
 > 
-> - Create some new functions for your tempConvert package to convert from Kelvin to Fahrenheit or from Celsius to Kelvin or Fahrenheit.
-> - Create a package for our `analyze` function so that it will be easy to load when more data arrives.
+> 1. Create some new functions for your tempConvert package to convert from Kelvin to Fahrenheit or from Celsius to Kelvin or Fahrenheit.
+> 2. Create a package for our `analyze` function so that it will be easy to load when more data arrives.
+{: .challenge}

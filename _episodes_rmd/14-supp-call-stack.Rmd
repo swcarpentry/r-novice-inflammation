@@ -1,8 +1,15 @@
 ---
-layout: page
-title: Programming with R
-subtitle: The call stack
-minutes: 15
+title: "The Call Stack"
+teaching: 15
+exercises: 0
+questions:
+- "FIXME"
+objectives:
+- "Explain how stack frames are created and destroyed as functions are called."
+- "Correctly identify the scope of a function's local variables."
+- "Explain variable scope in terms of the call stack."
+keypoints:
+- "FIXME"
 ---
 
 ```{r, include = FALSE}
@@ -61,7 +68,7 @@ If we try to get the value of `temp` after our functions have finished running, 
 temp
 ```
 
-> ## Tip {.callout}
+> ## Where to Learn More
 >
 > The explanation of the stack frame above was very general and the basic
 > concept will help you understand most languages you try to program with.
@@ -72,6 +79,7 @@ temp
 > [R Language Manual][man] or this [chapter][] from
 > [Advanced R Programming][adv-r] by Hadley Wickham. For context, R uses the
 > terminology "environments" instead of frames.
+{: .callout}
 
 [man]: http://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
 [chapter]: http://adv-r.had.co.nz/Environments.html
@@ -105,7 +113,7 @@ The big idea here is [encapsulation](reference.html#encapsulation), and it's the
 A function's job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something.
 That only works if functions don't interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.
 
-> ## Challenge - Following the call stack {.challenge}
+> ## Following the Call Stack
 >
 >  + We previously wrote functions called `fence` and `outside`.
 >    Draw a diagram showing how the call stack changes when we run the
@@ -115,3 +123,4 @@ That only works if functions don't interfere with each other; if they do, we hav
 > outer_vec <- "+"
 > result <- outside(fence(inner_vec, outer_vec))
 > ```
+{: .challenge}
