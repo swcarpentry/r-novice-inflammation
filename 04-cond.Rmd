@@ -213,6 +213,66 @@ In this case, "either" means "either or both", not "either one or the other but 
 > plot_dist(dat[1:5, 10], threshold = 10)                    # samples (rows) 1-5 on day (column) 10
 > ```
 
+> ## Find the maximum inflammation score {.challenge}
+>
+> Find the file containing the patient with the highest average inflammation score. Print the file name, the patient number (row number) and the value of the maximum average inflammation score.
+>
+> Tips:
+>
+> 1. Use variables to store the maximum average and update it as you go through files and patients.
+> 1. You can use nested loops (one loop is inside the other) to go through the files as well as through the patients in each file (every row).
+>
+> Complete the code below:
+>
+> ```{r, eval=FALSE}
+> filenames <- list.files(path = "data", pattern = "inflammation.*csv", full.names = TRUE)
+> filename_max <- "" # filename where the maximum average inflammation patient is found
+> patient_max <- 0 # index (row number) for this patient in this file
+> average_inf_max <- 0 # value of the average inflammation score for this patient
+> for (f in filenames) {
+>   dat <- read.csv(file = f, header = FALSE)
+>   dat.means = apply(dat, 1, mean)
+>   for (patient_index in length(dat.means)){
+>     patient_average_inf = dat.means[patient_index]
+>
+>     # Add your code here ...
+>
+>   }
+> }
+> print(filename_max)
+> print(patient_max)
+> print(average_inf_max)
+> ```
+>
+
+```{r max-inflammation-answer, eval=FALSE, include=FALSE}
+filenames <- list.files(path = "data", pattern = "inflammation.*csv", full.names = TRUE)
+filename_max <- "" # filename where the maximum average inflammation patient is found
+patient_max <- 0 # index (row number) for this patient in this file
+average_inf_max <- 0 # value of the average inflammation score for this patient
+for (f in filenames) {
+  dat <- read.csv(file = f, header = FALSE)
+  dat.means = apply(dat, 1, mean)
+  for (patient_index in length(dat.means)){
+      patient_average_inf = dat.means[patient_index]
+
+    # Add your code here ...
+    if (patient_average_inf > average_inf_max) {
+      average_inf_max = patient_average_inf
+      filename_max <- f
+      patient_max <- patient_index
+    }
+
+  }
+}
+print(filename_max)
+print(patient_max)
+print(average_inf_max)
+```
+
+
+
+
 ### Saving Automatically Generated Figures
 
 Now that we know how to have R make decisions based on input values, let's update `analyze`:
@@ -344,30 +404,6 @@ analyze <- function(filename, output = NULL) {
     dev.off()
   }
 }
-```
-
-> ## Challenge -  {.challenge}
-> 
-> + Find the file containing the patient with the highest average inflammation score. Print the file name, the patient number (row number) and the value of the maximum average inflammation score.
-> + tip 1: use variables to store the maximum average and update it as you go through files and patients.
-> + tip 2: you can use nested loops (one loop is inside the other) to go through the files as well as through the patients in each file (every row).
-> + Complete the code below:
-```{r, echo=FALSE}
-filenames <- list.files(path = "data", pattern = "csv", full.names = TRUE)
-filename_max <- "" # filename where the maximum average inflammation patient is found
-patient_max <- 0 # index (row number) for this patient in this file
-average_inf_max <- 0 # value of the average inflammation score for this patient
-for (f in filenames) {
-  dat <- read.csv(file = f, header = FALSE)
-  rownum <- 1
-  for (patient_average_inf in apply(dat, 2, mean)){
-    # Add code here ...
-    rownum <- rownum + 1
-  }
-}
-print(filename_max)
-print(patient_max)
-print(average_inf_max)
 ```
 
 
