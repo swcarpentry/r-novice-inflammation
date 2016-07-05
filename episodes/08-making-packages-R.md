@@ -5,9 +5,7 @@ subtitle: Making packages in R
 minutes: 30
 ---
 
-```{r, include = FALSE}
-source("../bin/chunk-options.R")
-```
+
 
 > ## Learning Objectives {.objectives}
 >
@@ -50,57 +48,68 @@ Making your first R package
 
 Let's turn our temperature conversion functions into an R package.
 
-```{r}
+
+~~~
 fahr_to_kelvin <- function(temp) {
     #Converts Fahrenheit to Kelvin
     kelvin <- ((temp - 32) * (5/9)) + 273.15
     kelvin
 }
-```
+~~~
+{: .r}
 
-```{r}
+
+~~~
 kelvin_to_celsius <- function(temp) {
   #Converts Kelvin to Celsius
   Celsius <- temp - 273.15
   Celsius
 }
-```
+~~~
+{: .r}
 
-```{r}
+
+~~~
 fahr_to_celsius <- function(temp) {
   #Converts Fahrenheit to Celsius using fahr_to_kelvin() and kelvin_to_celsius()
   temp_k <- fahr_to_kelvin(temp)
 	result <- kelvin_to_celsius(temp_k)
   result
 }
-```
+~~~
+{: .r}
 
 We will use the `devtools` and `roxygen2` packages, which make creating packages in R relatively simple.
 First, install the `devtools` package, which will allow you to install the `roxygen2` package from GitHub ([code][]).
 
 [code]: https://github.com/klutometis/roxygen
 
-```{r, eval=FALSE}
+
+~~~
 install.packages("devtools")
 library("devtools")
 install_github("klutometis/roxygen")
 library("roxygen2")
-```
+~~~
+{: .r}
 
 Set your working directory, and then use the `create` function to start making your package.
 Keep the name simple and unique.
   - package_to_convert_temperatures_between_kelvin_fahrenheit_and_celsius (BAD)
   - tempConvert (GOOD)
 
-```{r, eval=FALSE}
+
+~~~
 setwd(parentDirectory)
 create("tempConvert")
-```
+~~~
+{: .r}
 
 Add our functions to the R directory.
 Place each function into a separate R script and add documentation like this:
 
-```{r}
+
+~~~
 #' Convert Fahrenheit to Kelvin
 #'
 #' This function converts input temperatures in Fahrenheit to Kelvin.
@@ -114,42 +123,84 @@ fahr_to_kelvin <- function(temp) {
   kelvin <- ((temp - 32) * (5/9)) + 273.15
   kelvin
 }
-```
+~~~
+{: .r}
 
 The `roxygen2` package reads lines that begin with `#'` as comments to create the documentation for your package.
 Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function.
 Now, we will use `roxygen2` to convert our documentation to the standard R format.
 
-```{r, eval=FALSE}
+
+~~~
 setwd("./tempConvert")
 document()
-```
+~~~
+{: .r}
 
 Take a look at the package directory now.
 The /man directory has a .Rd file for each .R file with properly formatted documentation.
 
 Now, let's load the package and take a look at the documentation.
 
-```{r, eval=FALSE}
+
+~~~
 setwd("..")
 install("tempConvert")
 
 ?fahr_to_kelvin
-```
+~~~
+{: .r}
 
 Notice there is now a tempConvert environment that is the parent environment to the global environment.
 
-```{r, eval=FALSE}
+
+~~~
 search()
-```
+~~~
+{: .r}
 
 Now that our package is loaded, let's try out some of the functions.
 
-```{r}
+
+~~~
 fahr_to_celsius(32)
+~~~
+{: .r}
+
+
+
+~~~
+[1] 0
+~~~
+{: .output}
+
+
+
+~~~
 fahr_to_kelvin(212)
+~~~
+{: .r}
+
+
+
+~~~
+[1] 373.15
+~~~
+{: .output}
+
+
+
+~~~
 kelvin_to_celsius(273.15)
-```
+~~~
+{: .r}
+
+
+
+~~~
+[1] 0
+~~~
+{: .output}
 
 > ## Challenge - Creating a package for distribution {.challenge}
 > 

@@ -5,9 +5,7 @@ subtitle: Best practices for writing R code
 minutes: 30
 ---
 
-```{r, include = FALSE}
-source("../bin/chunk-options.R")
-```
+
 
 > ## Learning Objectives {.objectives}
 >
@@ -17,18 +15,22 @@ source("../bin/chunk-options.R")
 
 1. Start your code with an annotated description of what the code does when it is run:
 
-```{r}
+
+~~~
 #This is code to replicate the analyses and figures from my 2014 Science paper.
 #Code developed by Sarah Supp, Tracy Teal, and Jon Borelli
-```
+~~~
+{: .r}
 
 2. Next, load all of the packages that will be necessary to run your code (using `library`):
 
-```{r, eval=FALSE}
+
+~~~
 library(ggplot2)
 library(reshape)
 library(vegan)
-```
+~~~
+{: .r}
 
 3. Set your working directory before `source()`ing a script, or start `R` inside your project folder:
 
@@ -49,9 +51,11 @@ It is best practice to have the user running the script begin in a consistent di
 
 5. If you create only one or a few custom functions in your script, put them toward the top of your code so they are among the first objects created. If you have written many functions, put them all in their own .R file and then `source` those files. `source` will define all of these functions so that your code can make use of them as needed. For the reasons listed above, try to avoid using `setwd()` (or other functions that have side-effects in the user's workspace) in scripts you `source`.
 
-```{r, eval=FALSE}
+
+~~~
 source("my_genius_fxns.R")
-```
+~~~
+{: .r}
 
 6. Use a consistent style within your code. For example, name all matrices something ending in `.mat`. Consistency makes code easier to read and problems easier to spot.
 
@@ -61,15 +65,19 @@ source("my_genius_fxns.R")
 
 9. Keep all of your source files for a project in the same directory, then use relative paths as necessary to access them. For example, use
 
-```{r, eval=FALSE}
+
+~~~
 dat <- read.csv(file = "files/dataset-2013-01.csv", header = TRUE)
-```
+~~~
+{: .r}
 
 rather than:
 
-```{r, eval=FALSE}
+
+~~~
 dat <- read.csv(file = "/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv", header = TRUE)
-```
+~~~
+{: .r}
 
 10. R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. To inspect the objects in your current R  environment, you can list the objects, search current packages, and remove objects that are currently not in use. A good practice when running long lines of computationally intensive  code is to remove temporary objects after they have served their purpose. However, sometimes, R will not clean up unused memory for a while after you delete objects. You can force R to tidy up its memory by using `gc()`.
 
