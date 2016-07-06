@@ -192,7 +192,7 @@ Rscript readings-02.R data/inflammation-01.csv
 > Rscript find-pattern.R print-args
 > ```
 >
-> ```{r include=FALSE, engine='bash'}
+> ```{r echo=FALSE, engine='bash'}
 > cat find-pattern.R
 > ```
 {: .challenge}
