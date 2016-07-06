@@ -11,11 +11,12 @@ kind: "lesson"
 # Overall title for pages.
 title: "Programming with R"
 
-# Account (without slashes).
-account: "swcarpentry"
+# Repository URL (without trailing slash).
+repo: https://github.com/swcarpentry/r-novice-inflammation
 
-# Root URL below account (without slashes).
-project: "r-novice-inflammation"
+# Root URL below username.github.io domain, with leading slash but no trailing slash.
+# For example, for 'https://swcarpentry.github.io/lesson-example', use '/lesson-example'.
+root: "/r-novice-inflammation"
 
 # Contact email address.
 email: lessons@software-carpentry.org
