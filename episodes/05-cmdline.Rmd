@@ -3,7 +3,8 @@ title: "Command-Line Programs"
 teaching: 30
 exercises: 0
 questions:
-- "FIXME"
+- "How do I write a command-line script?"
+- "How do I read in arguments from the command-line?"
 objectives:
 - "Use the values of command-line arguments in a program."
 - "Handle flags and files separately in a command-line program."
