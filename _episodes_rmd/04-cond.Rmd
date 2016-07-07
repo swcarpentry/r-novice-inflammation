@@ -3,7 +3,9 @@ title: "Making Choices"
 teaching: 30
 exercises: 0
 questions:
-- "FIXME"
+- "How do I make choices using `if` and `else` statements?"
+- "How do I compare values?"
+- "How do I save my plots to a PDF file?"
 objectives:
 - "Save plot(s) in a PDF file."
 - "Write conditional statements with `if` and `else`."

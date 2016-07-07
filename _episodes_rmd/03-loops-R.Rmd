@@ -3,7 +3,8 @@ title: "Analyzing Multiple Data Sets"
 teaching: 30
 exercises: 0
 questions:
-- "FIXME"
+- "How can I do the same thing to multiple data sets?"
+- "How do I write a `for` loop?"
 objectives:
 - "Explain what a `for` loop does."
 - "Correctly write `for` loops to repeat simple calculations."
