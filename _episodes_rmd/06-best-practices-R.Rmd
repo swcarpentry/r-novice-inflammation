@@ -3,7 +3,7 @@ title: "Best Practices for Writing R"
 teaching: 30
 exercises: 0
 questions:
-- "FIXME"
+- "What advice can help me write the best R code?"
 objectives:
 - "Define best formating practices when writing code in R scripts."
 - "Synthesize a consistent personal coding style to increase code readability, consistency, and repeatability."
