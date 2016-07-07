@@ -3,10 +3,10 @@ main <- function() {
   action <- args[1]
   filenames <- args[-1]
   stopifnot(action %in% c("--min", "--mean", "--max"))
-  
+
   if (length(filenames) == 0) {
     process(file("stdin"), action)
-  } else {  
+  } else {
     for (f in filenames) {
       process(f, action)
     }
@@ -15,7 +15,7 @@ main <- function() {
 
 process <- function(filename, action) {
   dat <- read.csv(file = filename, header = FALSE)
-  
+
   if (action == "--min") {
     values <- apply(dat, 1, min)
   } else if (action == "--mean") {
