@@ -3,7 +3,9 @@ title: "Data Types and Structures"
 teaching: 45
 exercises: 0
 questions:
-- "FIXME"
+- "What are the different data types in R?"
+- "What are the different data structures in R?"
+- "How do I access data within the various data structures?"
 objectives:
 - "Expose learners to the different data types in R."
 - "Learn how to create vectors of different types."
