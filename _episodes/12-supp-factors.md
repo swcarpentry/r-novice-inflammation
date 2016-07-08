@@ -3,7 +3,8 @@ title: "Understanding Factors"
 teaching: 20
 exercises: 0
 questions:
-- "FIXME"
+- "How is categorical data represented in R?"
+- "How do I work with factors?"
 objectives:
 - "Understand how to represent categorical data in R."
 - "Know the difference between ordered and unordered factors."
@@ -289,13 +290,13 @@ summary(dat)
 Notice the `summary()` function handles factors differently to numbers (and strings), the occurence counts for each value is often more useful information.
 
 > ## The `summary()` Function
-> 
+>
 > The `summary()` function is a great way of spotting errors in your data (look at the *dat$Gender* column).
 > It's also a great way for spotting missing data.
 {: .callout}
 
 > ## Reordering Factors
-> 
+>
 > The function `table()` tabulates observations and can be used to create bar plots quickly. For instance:
 >
 > 

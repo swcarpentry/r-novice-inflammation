@@ -8,7 +8,8 @@ questions:
 objectives:
 - "Quick summary on how (and why) making R packages."
 keypoints:
-- "FIXME"
+- "A package is the basic unit of reusability in R."
+- "Every package must have a DESCRIPTION file and an R directory containing code."
 ---
 
 ```{r, include = FALSE}

@@ -3,7 +3,9 @@ title: "Data Types and Structures"
 teaching: 45
 exercises: 0
 questions:
-- "FIXME"
+- "What are the different data types in R?"
+- "What are the different data structures in R?"
+- "How do I access data within the various data structures?"
 objectives:
 - "Expose learners to the different data types in R."
 - "Learn how to create vectors of different types."
@@ -11,7 +13,9 @@ objectives:
 - "Learn about missing data and other special values."
 - "Getting familiar with the different data structures (lists, matrices, data frames)."
 keypoints:
-- "FIXME"
+- "R's basic data types are character, numeric, integer, complex, and logical."
+- "R's basic data structures include the vector, list, matrix, data frame, and factors."
+- "Objects may have attributes, such as name, dimension, and class."
 ---
 
 

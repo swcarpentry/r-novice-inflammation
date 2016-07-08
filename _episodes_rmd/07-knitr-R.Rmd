@@ -3,7 +3,7 @@ title: "Dynamic Reports with knitr"
 teaching: 30
 exercises: 0
 questions:
-- "How can I put put my text, code and results all in one document?"
+- "How can I put put my text, code, and results all in one document?"
 - "How do I use `knitr`?"
 - "How do I write in Markdown?"
 objectives:
@@ -11,7 +11,9 @@ objectives:
 - "Control basic formatting using markdown syntax."
 - "Be able to create, edit, and compile an .Rmd document including code chunks and inline code."
 keypoints:
-- "FIXME"
+- "Use knitr to generate reports that combine text, code, and results."
+- "Use Markdown to format text."
+- "Put code in blocks delimited by triple back quotes followed by `{r}`."
 ---
 
 ```{r, include = FALSE}

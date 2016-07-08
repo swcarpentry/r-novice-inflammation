@@ -9,7 +9,7 @@ objectives:
 - "Understand the difference between script file and console."
 - "Demonstrate useful shortcuts."
 keypoints:
-- "FIXME"
+- "Use RStudio to write R programs."
 ---
 
 ```{r, include= FALSE}

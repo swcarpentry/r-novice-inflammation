@@ -3,11 +3,13 @@ title: "Making Packages in R"
 teaching: 30
 exercises: 0
 questions:
-- "FIXME"
+- "How do I collect my code together so I can reuse it and share it?"
+- "How do I make my own packages?"
 objectives:
 - "Quick summary on how (and why) making R packages."
 keypoints:
-- "FIXME"
+- "A package is the basic unit of reusability in R."
+- "Every package must have a DESCRIPTION file and an R directory containing code."
 ---
 
 
@@ -40,7 +42,7 @@ Maintainer: Name and email of package maintainer (who to contact with issues)
 License: Abbreviation for an open source license
 ~~~
 {: .source}
-    
+
 The package name can only contain letters and numbers and has to start with a letter.
 
 ### .R files
@@ -208,7 +210,7 @@ kelvin_to_celsius(273.15)
 {: .output}
 
 > ## Creating a Package for Distribution
-> 
+>
 > 1. Create some new functions for your tempConvert package to convert from Kelvin to Fahrenheit or from Celsius to Kelvin or Fahrenheit.
 > 2. Create a package for our `analyze` function so that it will be easy to load when more data arrives.
 {: .challenge}

@@ -3,13 +3,15 @@ title: "The Call Stack"
 teaching: 15
 exercises: 0
 questions:
-- "FIXME"
+- "What is the call stack, and how does R know what order to do things in?"
+- "How does scope work in R?"
 objectives:
 - "Explain how stack frames are created and destroyed as functions are called."
 - "Correctly identify the scope of a function's local variables."
 - "Explain variable scope in terms of the call stack."
 keypoints:
-- "FIXME"
+- "R keeps track of active function calls using a call stack comprised of stack frames."
+- "Only global variables and variables in the current stack frame can be accessed directly."
 ---
 
 
