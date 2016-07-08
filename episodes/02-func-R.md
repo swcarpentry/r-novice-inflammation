@@ -3,7 +3,9 @@ title: "Creating Functions"
 teaching: 30
 exercises: 0
 questions:
-- "FIXME"
+- "How do I make a function?"
+- "How can I test my functions?"
+- "How should I document my code?"
 objectives:
 - "Define a function that takes arguments."
 - "Return a value from a function."

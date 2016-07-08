@@ -3,13 +3,26 @@ title: "Best Practices for Writing R"
 teaching: 30
 exercises: 0
 questions:
-- "FIXME"
+- "What advice can help me write the best R code?"
 objectives:
 - "Define best formating practices when writing code in R scripts."
 - "Synthesize a consistent personal coding style to increase code readability, consistency, and repeatability."
 - "Apply this style to one's own code."
 keypoints:
-- "FIXME"
+- "Start each program with a description of what it does."
+- "Then load all required packages."
+- "Set your working directory before sourcing a script."
+- "Use comments to mark off sections of code."
+- "Put function definitions at the top of your file, or in a separate file if there are many."
+- "Name and style code consistently."
+- "Break code into small, discrete pieces."
+- "Factor out common operations rather than repeating them."
+- "Keep all of the source files for a project in one directory and use relative paths to access them."
+- "Keep track of the memory used by your program."
+- "Always start with a clean environment instead of saving session history."
+- "Keep track of session information in your project folder."
+- "Have someone else review your code."
+- "Use version control."
 ---
 
 

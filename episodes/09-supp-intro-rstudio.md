@@ -3,13 +3,13 @@ title: "Introduction to RStudio"
 teaching: 15
 exercises: 0
 questions:
-- "FIXME"
+- "How do I use the RStudio graphical user interface?"
 objectives:
 - "Get familiar with RStudio interface."
 - "Understand the difference between script file and console."
 - "Demonstrate useful shortcuts."
 keypoints:
-- "FIXME"
+- "Use RStudio to write R programs."
 ---
 
 

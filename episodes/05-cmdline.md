@@ -3,7 +3,8 @@ title: "Command-Line Programs"
 teaching: 30
 exercises: 0
 questions:
-- "FIXME"
+- "How do I write a command-line script?"
+- "How do I read in arguments from the command-line?"
 objectives:
 - "Use the values of command-line arguments in a program."
 - "Handle flags and files separately in a command-line program."
@@ -533,10 +534,10 @@ main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   action <- args[1]
   filenames <- args[-1]
-  
+
   for (f in filenames) {
     dat <- read.csv(file = f, header = FALSE)
-    
+
     if (action == "--min") {
       values <- apply(dat, 1, min)
     } else if (action == "--mean") {
@@ -586,7 +587,7 @@ main <- function() {
   action <- args[1]
   filenames <- args[-1]
   stopifnot(action %in% c("--min", "--mean", "--max"))
-  
+
   for (f in filenames) {
     process(f, action)
   }
@@ -594,7 +595,7 @@ main <- function() {
 
 process <- function(filename, action) {
   dat <- read.csv(file = filename, header = FALSE)
-  
+
   if (action == "--min") {
     values <- apply(dat, 1, min)
   } else if (action == "--mean") {
@@ -693,10 +694,10 @@ main <- function() {
   action <- args[1]
   filenames <- args[-1]
   stopifnot(action %in% c("--min", "--mean", "--max"))
-  
+
   if (length(filenames) == 0) {
     process(file("stdin"), action)
-  } else {  
+  } else {
     for (f in filenames) {
       process(f, action)
     }
@@ -705,7 +706,7 @@ main <- function() {
 
 process <- function(filename, action) {
   dat <- read.csv(file = filename, header = FALSE)
-  
+
   if (action == "--min") {
     values <- apply(dat, 1, min)
   } else if (action == "--mean") {

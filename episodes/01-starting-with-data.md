@@ -3,7 +3,13 @@ title: "Analyzing Patient Data"
 teaching: 30
 exercises: 0
 questions:
-- "FIXME"
+- "How do I read data into R?"
+- "How do I assign variables?"
+- "What is a data frame?"
+- "How do I access subsets a data frame?"
+- "How do I calculate simple statistics like mean and median?"
+- "Where can I get help?"
+- "How can I plot my data?"
 objectives:
 - "Read tabular data from a file into a program."
 - "Assign values to variables."

@@ -3,7 +3,8 @@ title: "Reading and Writing CSV Files"
 teaching: 30
 exercises: 0
 questions:
-- "FIXME"
+- "How do I read data from a CSV file into R?"
+- "How do I write data to a CSV file?"
 objectives:
 - "Read in a .csv, and explore the arguments of the csv reader."
 - "Write the altered data set to a new .csv, and explore the arguments."
@@ -39,7 +40,7 @@ setwd('~/swc')
 ~~~
 #Import the data and look at the first six rows
 carSpeeds <- read.csv(file='data/car-speeds.csv')
-head(carSpeeds) 
+head(carSpeeds)
 ~~~
 {: .r}
 
@@ -58,10 +59,10 @@ head(carSpeeds)
 
 > ## Changing Delimiters
 >
-> The default delimiter of the `read.csv()` function is a comma, but you can 
-> use other delimiters by supplying the 'sep' argument to the function 
-> (e.g., typing `sep = ';'` allows a semi-colon separated file to be correctly 
-> imported -see `?read.csv()` for more information on this and other options for 
+> The default delimiter of the `read.csv()` function is a comma, but you can
+> use other delimiters by supplying the 'sep' argument to the function
+> (e.g., typing `sep = ';'` allows a semi-colon separated file to be correctly
+> imported -see `?read.csv()` for more information on this and other options for
 > working with different file types).
 {: .callout}
 
@@ -112,8 +113,8 @@ This is perhaps the most important argument in `read.csv()`, particularly if you
 
 
 ~~~
-#Here we will use R's ifelse function, in which we provide the test phrase, the outcome if the 
-# result of the test is 'TRUE', and the outcome if the result is 'FALSE'. We will also assign 
+#Here we will use R's ifelse function, in which we provide the test phrase, the outcome if the
+# result of the test is 'TRUE', and the outcome if the result is 'FALSE'. We will also assign
 # the results to the Color column, using '<-'
 
 #First - reload the data with a header
@@ -184,7 +185,7 @@ This is an extension of the `stringsAsFactors` argument, but gives you control o
 
 
 ~~~
-carSpeeds <- read.csv(file='data/car-speeds.csv', as.is = 1) 
+carSpeeds <- read.csv(file='data/car-speeds.csv', as.is = 1)
 
 #Note, the 1 applies as.is to the first column only
 ~~~
@@ -250,7 +251,7 @@ carSpeeds$State
 
 
 
-### The `strip.white` Argument 
+### The `strip.white` Argument
 
 It is not uncommon for mistakes to have been made when the data were recorded, for example a space (whitespace) may have been inserted before a data value. By default this whitespace will be kept in the R environment, such that '\ Red' will be recognized as a different value than 'Red'. In order to avoid this type of error, use the `strip.white` argument. Let's see how this works by checking for the unique values in the `$Color` column of our dataset:
 
@@ -259,7 +260,7 @@ Here, the data recorder added a space before the color of the car in one of the 
 
 ~~~
 #We use the built in unique() function to extract the unique colors in our dataset
- 
+
 unique(carSpeeds$Color)
 ~~~
 {: .r}
@@ -279,7 +280,7 @@ Let's try again, this time importing the data using the `strip.white` argument. 
 
 ~~~
 carSpeeds<-read.csv(file='data/car-speeds.csv',stringsAsFactors=FALSE,strip.white=TRUE,sep=',')
- 
+
 unique(carSpeeds$Color)
 ~~~
 {: .r}
@@ -293,7 +294,7 @@ unique(carSpeeds$Color)
 
 That's better!
 
-### Write a New .csv and Explore the Arguments 
+### Write a New .csv and Explore the Arguments
 
 After altering our cars dataset by replacing 'Blue' with 'Green' in the `$Color` column, we now want to save the output. There are several arguments for the `write.csv(...)` [function call]({{ site.root }}/reference/#function-call), a few of which are particularly important for how the data are exported.  Let's explore these now.
 
@@ -325,10 +326,10 @@ Now we see:
 <img src="{{ site.root }}/fig/01-supp-csv-without-row-nums.png" alt="csv written with row.names argument" />
 
 > ## Setting Column Names
-> 
-> There is also a `col.names` argument, which can be used to set the column 
-> names for a data set without headers. If the data set already has headers 
-> (e.g., we used the `headers = TRUE` argument when importing the data) then a 
+>
+> There is also a `col.names` argument, which can be used to set the column
+> names for a data set without headers. If the data set already has headers
+> (e.g., we used the `headers = TRUE` argument when importing the data) then a
 > `col.names` argument will be ignored.
 {: .callout}
 

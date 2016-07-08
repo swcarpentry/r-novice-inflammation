@@ -3,12 +3,15 @@ title: "Loops in R"
 teaching: 30
 exercises: 0
 questions:
-- "FIXME"
+- "How can I do the same thing multiple times more efficiently in R?"
+- "What is vectorization?"
+- "Should I use a loop or an `apply` statement?"
 objectives:
 - "Compare loops and vectorized operations."
 - "Use the apply family of functions."
 keypoints:
-- "FIXME"
+- "Where possible, use vectorized operations instead of `for` loops to make code faster and more concise."
+- "Use functions such as `apply` instead of `for` loops to operate on the values in a data structure."
 ---
 
 
@@ -456,7 +459,7 @@ logical: returning NA
 
 ~~~
    user  system elapsed 
-  0.122   0.003   0.127 
+  0.116   0.005   0.123 
 ~~~
 {: .output}
 
@@ -470,7 +473,7 @@ This time there is no copying/growing for R to deal with.
 
 ~~~
 analyze3 <- function(filenames) {
-  out <- matrix(ncol = length(filenames), nrow = 40) ## assuming 40 here from files 
+  out <- matrix(ncol = length(filenames), nrow = 40) ## assuming 40 here from files
   for (f in seq_along(filenames)) {
     fdata <- read.csv(filenames[f], header = FALSE)
     out[, f] <- apply(fdata, 2, mean)
@@ -726,7 +729,7 @@ logical: returning NA
 
 ~~~
    user  system elapsed 
-  0.130   0.003   0.136 
+  0.121   0.003   0.126 
 ~~~
 {: .output}
 

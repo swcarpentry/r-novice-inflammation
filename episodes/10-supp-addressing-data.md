@@ -3,17 +3,19 @@ title: "Addressing Data"
 teaching: 20
 exercises: 0
 questions:
-- "FIXME"
+- "What are the different methods for accessing parts of a data frame?"
 objectives:
-- "Understand the 3 different ways R can address data inside a data frame."
+- "Understand the three different ways R can address data inside a data frame."
 - "Combine different methods for addressing data with the assignment operator to update subsets of data."
 keypoints:
-- "FIXME"
+- "Data in data frames can be addressed by index (slicing), by logical vector, or by name (columns only)."
+- "Use the `$` operator to address a column by name."
 ---
 
 
 
-R is a powerful language for data manipulation. There are 3 main ways for addressing data inside R objects.
+R is a powerful language for data manipulation.
+There are three main ways for addressing data inside R objects.
 
 * By index (slicing)
 * By logical vector
@@ -141,7 +143,7 @@ The colon `:` can be used to create a sequence of integers.
 
 Creates a vector of numbers from 6 to 9.
 
-This can be very useful for addressing data. 
+This can be very useful for addressing data.
 
 > ## Subsetting with Sequences
 >
@@ -348,6 +350,6 @@ x
 
 > ## Updating a Subset of Values
 >
-> In this dataset, values for Gender have been recorded as both uppercase `M, F` and lowercase `m,f`. 
+> In this dataset, values for Gender have been recorded as both uppercase `M, F` and lowercase `m,f`.
 > Combine the indexing and assignment operations to convert all values to lowercase.
 {: .challenge}

@@ -3,13 +3,17 @@ title: "Dynamic Reports with knitr"
 teaching: 30
 exercises: 0
 questions:
-- "FIXME"
+- "How can I put put my text, code, and results all in one document?"
+- "How do I use `knitr`?"
+- "How do I write in Markdown?"
 objectives:
 - "Understand the value of `knitr` for generating dynamic documents that include text, code, and results."
 - "Control basic formatting using markdown syntax."
 - "Be able to create, edit, and compile an .Rmd document including code chunks and inline code."
 keypoints:
-- "FIXME"
+- "Use knitr to generate reports that combine text, code, and results."
+- "Use Markdown to format text."
+- "Put code in blocks delimited by triple back quotes followed by `{r}`."
 ---
 
 
@@ -30,10 +34,10 @@ When you click on File -> New File, there is an option for "R Markdown...". Choo
 
 > ## Formatting Text in Markdown
 >
-> Visit <http://rmarkdown.rstudio.com/authoring_basics.html> and briefly check out some of the formatting options. 
+> Visit <http://rmarkdown.rstudio.com/authoring_basics.html> and briefly check out some of the formatting options.
 >
 > In the example document add
-> 
+>
 > * Headers using `#`
 > * Emphasis using astericks:  \*italics\* and \*\*bold\*\*
 > * Lists using `*` and numbered lists using `1.`, `2.`, etc.
@@ -45,7 +49,7 @@ We can display pretty equations by enclosing them in `$`,
 e.g., `$\alpha = \dfrac{1}{(1 - \beta)^2}$` renders as: $\alpha = \dfrac{1}{(1 - \beta)^2}$.
 
 The top of the source (.Rmd) file has some header material in YAML format (enclosed by triple dashes).
-Some of this gets displayed in the output header, other of it provides formatting information to the conversion engine. 
+Some of this gets displayed in the output header, other of it provides formatting information to the conversion engine.
 
 To distinguish R code from text, RMarkdown uses three back-ticks followed by `{r}` to distinguish a "code chunk".
 In RStudio, the keyboard shortcut to create a code chunk is command-option-i or control-alt-i.

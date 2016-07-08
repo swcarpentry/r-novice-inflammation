@@ -13,7 +13,9 @@ objectives:
 - "Learn about missing data and other special values."
 - "Getting familiar with the different data structures (lists, matrices, data frames)."
 keypoints:
-- "FIXME"
+- "R's basic data types are character, numeric, integer, complex, and logical."
+- "R's basic data structures include the vector, list, matrix, data frame, and factors."
+- "Objects may have attributes, such as name, dimension, and class."
 ---
 
 ```{r, include = FALSE}

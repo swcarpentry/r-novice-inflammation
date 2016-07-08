@@ -5,17 +5,19 @@ exercises: 0
 questions:
 - "What are the different methods for accessing parts of a data frame?"
 objectives:
-- "Understand the 3 different ways R can address data inside a data frame."
+- "Understand the three different ways R can address data inside a data frame."
 - "Combine different methods for addressing data with the assignment operator to update subsets of data."
 keypoints:
-- "FIXME"
+- "Data in data frames can be addressed by index (slicing), by logical vector, or by name (columns only)."
+- "Use the `$` operator to address a column by name."
 ---
 
 ```{r, include = FALSE}
 source('../bin/chunk-options.R')
 ```
 
-R is a powerful language for data manipulation. There are 3 main ways for addressing data inside R objects.
+R is a powerful language for data manipulation.
+There are three main ways for addressing data inside R objects.
 
 * By index (slicing)
 * By logical vector

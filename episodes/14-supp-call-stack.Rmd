@@ -10,7 +10,8 @@ objectives:
 - "Correctly identify the scope of a function's local variables."
 - "Explain variable scope in terms of the call stack."
 keypoints:
-- "FIXME"
+- "R keeps track of active function calls using a call stack comprised of stack frames."
+- "Only global variables and variables in the current stack frame can be accessed directly."
 ---
 
 ```{r, include = FALSE}
