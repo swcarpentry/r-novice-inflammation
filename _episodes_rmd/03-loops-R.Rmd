@@ -20,7 +20,7 @@ keypoints:
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
-opts_chunk$set(fig.path = "fig/03-loops-R-")
+knitr_fig_path("03-loops-R-")
 ```
 
 We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:

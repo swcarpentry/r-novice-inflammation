@@ -16,7 +16,7 @@ keypoints:
 
 ```{r, include = FALSE}
 source('../bin/chunk-options.R')
-opts_chunk$set(fig.path = "fig/12-supp-factors-")
+knitr_fig_path("12-supp-factors-")
 ```
 
 Factors are used to represent categorical data. Factors can be ordered or
@@ -142,13 +142,13 @@ summary(dat)
 Notice the `summary()` function handles factors differently to numbers (and strings), the occurence counts for each value is often more useful information.
 
 > ## The `summary()` Function
-> 
+>
 > The `summary()` function is a great way of spotting errors in your data (look at the *dat$Gender* column).
 > It's also a great way for spotting missing data.
 {: .callout}
 
 > ## Reordering Factors
-> 
+>
 > The function `table()` tabulates observations and can be used to create bar plots quickly. For instance:
 >
 > ```{r reordering-factors}
