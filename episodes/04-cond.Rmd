@@ -19,7 +19,7 @@ keypoints:
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
-opts_chunk$set(fig.path = "fig/04-cond-")
+knitr_fig_path("04-cond-")
 ```
 
 Our previous lessons have shown us how to manipulate data, define our own functions, and repeat things.
