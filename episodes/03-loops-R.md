@@ -282,9 +282,9 @@ length(vowels)
 `length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson]({{ site.root }}/01-supp-data-structures/) to learn more about the different ways to store data in R).
 
 
-> ## Using Loops
+> ## Printing Numbers
 >
-> 1. R has a built-in function called `seq` that creates a list of numbers:
+> R has a built-in function called `seq` that creates a list of numbers:
 >
 > 
 > ~~~
@@ -316,7 +316,22 @@ length(vowels)
 > ~~~
 > {: .output}
 >
-> 2. Write a function called `total` that calculates the sum of the values in a vector.
+> > ## Solution
+> > ~~~
+> > print_N <- function(N) {
+> >   nseq <- seq(N)
+> >   for (num in nseq) {
+> >     print(num)
+> >   }
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
+
+> ## Summing Values
+>
+> Write a function called `total` that calculates the sum of the values in a vector.
 > (R has a built-in function called `sum` that does this for you.
 > Please don't use it for this exercise.)
 >
@@ -334,7 +349,24 @@ length(vowels)
 > ~~~
 > {: .output}
 >
-> 3. Exponentiation is built into R:
+> > ## Solution
+> > ~~~
+> > total <- function(vec) {
+> >   #calculates the sum of the values in a vector
+> >   vec_sum <- 0
+> >   for (num in vec) {
+> >     vec_sum <- vec_sum + num
+> >   }
+> >   return(vec_sum)
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
+
+> ## Exponentiation
+>
+> Exponentiation is built into R:
 >
 > 
 > ~~~
@@ -350,6 +382,7 @@ length(vowels)
 > {: .output}
 >
 > Write a function called `expo` that uses a loop to calculate the same result.
+>
 > 
 > ~~~
 > expo(2, 4)
@@ -363,6 +396,18 @@ length(vowels)
 > ~~~
 > {: .output}
 >
+> > ## Solution
+> > ~~~
+> > expo <- function(base, power) {
+> >   result <- 1
+> >   for (i in seq(power)) {
+> >     result <- result * base
+> >   }
+> >   return(result)
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
 
 ### Processing Multiple Files
@@ -573,6 +618,18 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 >
 > Write a function called `analyze_all` that takes a filename pattern as its sole argument
 > and runs `analyze` for each file whose name matches the pattern.
+>
+> > ## Solution
+> > ~~~
+> > analyze_all <- function(pattern) {
+> >   # Runs the function analyze for each file in the current working directory
+> >   # that contains the given pattern.
+> >   filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
+> >   for (f in filenames) {
+> >     analyze(f)
+> >   }
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
-
-

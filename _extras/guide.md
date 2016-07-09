@@ -4,7 +4,6 @@ title: "Instructor's Guide"
 permalink: /guide/
 ---
 
-
 This lesson is written as an introduction to R,
 but its real purpose is to introduce the single most important idea in programming:
 how to solve problems by building functions,
@@ -32,6 +31,48 @@ Tools like `grep` might be more sophisticated than
 the programs our learners can write at this point in their careers,
 but it's crucial they realize this is a difference of scale rather than kind.
 
+A typical, half-day, lesson would use the first three lessons:
+
+1. [Analyzing Patient Data]({{ site.root }}/01-starting-with-data/)
+2. [Creating Functions]({{ site.root }}/02-func-R/)
+3. [Analyzing Multiple Data Sets]({{ site.root }}/03-loops-R/)
+
+An additional half-day could add the next two lessons:
+
+4.  [Making choices]({{ site.root }}/04-cond/)
+5.  [Command-Line Programs]({{ site.root }}/05-cmdline/)
+
+Time-permitting, you can fit in one of these shorter lessons that cover bigger picture ideas like best practices for organizing code, reproducible research, and creating packages:
+
+6.  [Best practices for using R and designing programs]({{ site.root }}/06-best-practices-R/)
+7.  [Dynamic reports with knitr]({{ site.root }}/07-knitr-R/)
+8.  [Making packages in R]({{ site.root }}/08-making-packages-R/)
+
+## Using Git in RStudio
+
+Some instructors will demo RStudio's git integration at some point during the
+workshop. This often goes over very well, but there can be a few snags with the
+setup. First, RStudio may not know where to find git. You can specify where git
+is located in _Tools > Global Options > Git/SVN_; on Mac/Linux git is often in
+`usr/bin/git` or `usr/local/bin/git` and on Windows it is often in
+`C:/Program Files (x86)/Git/bin/git.exe`. If you don't know where git is
+installed on someone's computer, open a terminal and try `which git` on
+Mac/Linux, or `where git` or `whereis git.exe` on Windows. See
+[Jenny Bryan's instructions](http://stat545-ubc.github.io/git03_rstudio-meet-git.html)
+for more detail.
+
+If Windows users select the option "Run Git from the Windows command prompt"
+while setting up Git Bash, RStudio will automatically find the git executable.
+If you plan to demo git in RStudio during your workshop, you should edit the
+workshop setup instructions to have the Windows users choose this option during
+setup.
+
+Another common gotcha is that the push/pull buttons in RStudio are grayed out,
+even after you have added a remote and pushed to it from the command line. You
+need to add an upstream tracking reference before you can push and pull directly
+from RStudio; have your learners do `git push -u origin master` from the command
+line and this should resolve the issue.
+
 ## Teaching Notes
 
 *   Watching the instructor grow programs step by step
@@ -48,3 +89,24 @@ but it's crucial they realize this is a difference of scale rather than kind.
 *   The discussion of command-line scripts
     assumes that students understand standard I/O and building filters,
     which are covered in the lesson on the shell.
+
+*   We are using a dataset with records on inflammation from patients following an
+    arthritis treatment. With it we explain `R` data structure, basic data
+    manipulation and plotting, writing functions and loops.
+
+## [Analyzing Patient Data]({{ site.root }}/01-starting-with-data/)
+
+*   Check learners are reading files from the correct location (set working
+    directory); remind them of the shell lesson.
+
+*   Provide shortcut for the assignment operator (`<-`) (RStudio: Alt+- on
+    Windows/Linux; Option+- on Mac).
+
+## [Addressing Data]({{ site.root }}/01-supp-addressing-data/)
+
+*   Note that the data frame `dat` is not the same set of data as in other lessons.
+
+## [Analyzing Multiple Data Sets](03-loops-R.html)
+
+*   The transition from the previous lesson to this one might be challenging for
+    a very novice audience. Do not rush through the challenges, maybe drop some.

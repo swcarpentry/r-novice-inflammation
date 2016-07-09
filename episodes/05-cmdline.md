@@ -370,6 +370,48 @@ Rscript readings-02.R data/inflammation-01.csv
 > ~~~
 > {: .output}
 >
+> > ## Solution
+> > 
+> > ~~~
+> > cat arith.R
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > 
+> > ~~~
+> > main <- function() {
+> >   # Performs addition or subtraction from the command line.
+> >   #
+> >   # Takes three arguments:
+> >   # The first and third are the numbers.
+> >   # The second is either + for addition or - for subtraction.
+> >   #
+> >   # Ex. usage:
+> >   #   Rscript arith.R 1 + 2
+> >   #   Rscript arith.R 3 - 4
+> >   #
+> >   args <- commandArgs(trailingOnly = TRUE)
+> >   num1 <- as.numeric(args[1])
+> >   operation <- args[2]
+> >   num2 <- as.numeric(args[3])
+> >   if (operation == "+") {
+> >     answer <- num1 + num2
+> >     cat(answer)
+> >   } else if (operation == "-") {
+> >     answer <- num1 - num2
+> >     cat(answer)
+> >   } else {
+> >     stop("Invalid input. Use + for addition or - for subtraction.")
+> >   }
+> > }
+> > 
+> > main()
+> > ~~~
+> > {: .output}
+> {: .solution}
+>
 > 2. What goes wrong if you try to add multiplication using `*` to the program?
 >
 > 3. Using the function `list.files` introduced in a previous [lesson]({{ site.root }}/03-loops-R/),
@@ -392,25 +434,35 @@ Rscript readings-02.R data/inflammation-01.csv
 > ~~~
 > {: .output}
 >
-> 
-> ~~~
-> main <- function() {
->   # Finds all files in the current directory that contain a given pattern.
->   #
->   # Takes one argument: the pattern to be searched.
->   #
->   # Ex. usage:
->   #   Rscript find-pattern.R csv
->   #
->   args <- commandArgs(trailingOnly = TRUE)
->   pattern <- args[1]
->   files <- list.files(pattern = pattern)
->   cat(files, sep = "\n")
-> }
-> 
-> main()
-> ~~~
-> {: .output}
+> > ## Solution
+> > 
+> > ~~~
+> > cat find-pattern.R
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > 
+> > ~~~
+> > main <- function() {
+> >   # Finds all files in the current directory that contain a given pattern.
+> >   #
+> >   # Takes one argument: the pattern to be searched.
+> >   #
+> >   # Ex. usage:
+> >   #   Rscript find-pattern.R csv
+> >   #
+> >   args <- commandArgs(trailingOnly = TRUE)
+> >   pattern <- args[1]
+> >   files <- list.files(pattern = pattern)
+> >   cat(files, sep = "\n")
+> > }
+> > 
+> > main()
+> > ~~~
+> > {: .output}
+> {: .solution}
 {: .challenge}
 
 ### Handling Multiple Files
@@ -515,13 +567,49 @@ For teaching, though, we need all the successive versions side by side.
 
 > ## A Command Line Program with Arguments
 >
->  + Write a program called `check.R` that takes the names of one or more inflammation data files as arguments and checks that all the files have the same number of rows and columns.
->  What is the best way to test your program?
+> Write a program called `check.R`
+> that takes the names of one or more inflammation data files as arguments
+> and checks that all the files have the same number of rows and columns.
+> What is the best way to test your program?
+>
+> > ## Solution
+> > 
+> > ~~~
+> > cat check.R
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > 
+> > ~~~
+> > main <- function() {
+> >   # Checks that all csv files have the same number of rows and columns.
+> >   #
+> >   # Takes multiple arguments: the names of the files to be checked.
+> >   #
+> >   # Ex. usage:
+> >   #   Rscript check.R inflammation-*
+> >   #
+> >   args <- commandArgs(trailingOnly = TRUE)
+> >   first_file <- read.csv(args[1], header = FALSE)
+> >   first_dim <- dim(first_file)
+> > #   num_rows <- dim(args[1])[1]  # nrow(args[1])
+> > #   num_cols <- dim(args[1])[2]  # ncol(args[1])
+> >   for (filename in args[-1]) {
+> >     new_file <- read.csv(filename, header = FALSE)
+> >     new_dim <- dim(new_file)
+> >     if (new_dim[1] != first_dim[1] | new_dim[2] != first_dim[2]) {
+> >       cat("Not all the data files have the same dimensions.")
+> >     }
+> >   }
+> > }
+> > 
+> > main()
+> > ~~~
+> > {: .output}
+> {: .solution}
 {: .challenge}
-
-
-
-
 
 ### Handling Command-Line Flags
 
@@ -624,14 +712,60 @@ This is four lines longer than its predecessor, but broken into more digestible 
 
 > ## Shorter Command Line Arguments
 >
->  + Rewrite this program so that it uses `-n`, `-m`, and `-x` instead of `--min`, `--mean`, and `--max` respectively.
->    Is the code easier to read?
->    Is the program easier to understand?
+> Rewrite this program so that it uses `-n`, `-m`, and `-x` instead of `--min`, `--mean`, and `--max` respectively.
+> Is the code easier to read?
+> Is the program easier to understand?
 >
->  + Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.
+>  Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.
+>
+> > ## Solution
+> > 
+> > ~~~
+> > cat readings-usage.R
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > 
+> > ~~~
+> > main <- function() {
+> >   args <- commandArgs(trailingOnly = TRUE)
+> >   action <- args[1]
+> >   filenames <- args[-1]
+> >   if (!(action %in% c("--min", "--mean", "--max"))) {
+> >     usage()
+> >   } else if (length(filenames) == 0) {
+> >     process(file("stdin"), action)
+> >   } else {
+> >     for (f in filenames) {
+> >       process(f, action)
+> >     }
+> >   }
+> > }
+> > 
+> > process <- function(filename, action) {
+> >   dat <- read.csv(file = filename, header = FALSE)
+> > 
+> >   if (action == "--min") {
+> >     values <- apply(dat, 1, min)
+> >   } else if (action == "--mean") {
+> >     values <- apply(dat, 1, mean)
+> >   } else if (action == "--max") {
+> >     values <- apply(dat, 1, max)
+> >   }
+> >   cat(values, sep = "\n")
+> > }
+> > 
+> > usage <- function() {
+> >   cat("usage: Rscript readings-usage.R [--min, --mean, --max] filenames", sep = "\n")
+> > }
+> > 
+> > main()
+> > ~~~
+> > {: .output}
+> {: .solution}
 {: .challenge}
-
-
 
 ### Handling Standard Input
 
@@ -755,6 +889,37 @@ And now we're done: the program now does everything we set out to do.
 >
 >  *   If no filenames are given, it reports the number of lines in standard input.
 >  *   If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.
+>
+> > ## Solution
+> > 
+> > ~~~
+> > cat line-count.R
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > 
+> > ~~~
+> > main <- function() {
+> >   args <- commandArgs(trailingOnly = TRUE)
+> >   if (length(args) > 0) {
+> >     for (filename in args) {
+> >       input <- readLines(filename)
+> >       num_lines <- length(input)
+> >       cat(filename)
+> >       cat(" ")
+> >       cat(num_lines, sep = "\n")
+> >     }
+> >   } else {
+> >     input <- readLines(file("stdin"))
+> >     num_lines <- length(input)
+> >     cat(num_lines, sep = "\n")
+> >   }
+> > }
+> > 
+> > main()
+> > ~~~
+> > {: .output}
+> {: .solution}
 {: .challenge}
-
-
