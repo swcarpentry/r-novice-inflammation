@@ -244,9 +244,23 @@ carSpeeds$State
 {: .output}
 
 > ## Updating Values in a Factor
+>
 > Suppose we want to keep the colors of cars as factors for some other operations we want to perform.
 > Write code for replacing 'Blue' with 'Green' in the `$Color` column of the cars dataset
 > without importing the data with `stringsAsFactors=FALSE`.
+>
+> > ## Solution
+> > ~~~
+> > carSpeeds <- read.csv(file = 'data/car-speeds.csv')
+> > # Replace 'Blue' with 'Green' in cars$Color without using the stringsAsFactors or as.is arguments
+> > carSpeeds$Color <- ifelse(as.character(carSpeeds$Color) == 'Blue',
+> >                          'Green',
+> >                          as.character(carSpeeds$Color))
+> > # Convert colors back to factors
+> > carSpeeds$Color <- as.factor(carSpeeds$Color)
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
 
 

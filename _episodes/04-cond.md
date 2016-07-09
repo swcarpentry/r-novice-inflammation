@@ -272,10 +272,12 @@ if (1 > 0 | -1 > 0) {
 
 In this case, "either" means "either or both", not "either one or the other but not both".
 
-> ## Using Conditions to Change Behavior
+> ## Choosing Plots Based on Data
 >
->  + Write a function, `plot_dist`, that plots a boxplot if the length of the vector is greater than a specified threshold and a stripchart otherwise.
->  To do this you'll use the R functions `boxplot` and `stripchart`.
+> Write a function `plot_dist` that plots
+> a boxplot if the length of the vector is greater than a specified threshold
+> and a stripchart otherwise.
+> To do this you'll use the R functions `boxplot` and `stripchart`.
 >
 >
 >~~~
@@ -293,7 +295,33 @@ In this case, "either" means "either or both", not "either one or the other but 
 >
 ><img src="../fig/04-cond-using-conditions-01-2.png" title="plot of chunk using-conditions-01" alt="plot of chunk using-conditions-01" style="display: block; margin: auto;" />
 >
->  + One of your collaborators prefers to see the distributions of the larger vectors as a histogram instead of as a boxplot.  In order to choose between a histogram and a boxplot we will edit the function `plot_dist` and add an additional argument `use_boxplot`.  By default we will set `use_boxplot` to `TRUE` which will create a boxplot when the vector is longer than `threshold`.  When `use_boxplot` is set to `FALSE`, `plot_dist` will instead plot a histogram for the larger vectors.  As before, if the length of the vector is shorter than `threshold`, `plot_dist` will create a stripchart.  A histogram is made with the `hist` command in R.
+> > ## Solution
+> > ~~~
+> > plot_dist <- function(x, threshold) {
+> >   if (length(x) > threshold) {
+> >     boxplot(x)
+> >   } else {
+> >     stripchart(x)
+> >   }
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
+
+> ## Histograms Instead
+>
+> One of your collaborators prefers to see the distributions of the larger vectors
+> as a histogram instead of as a boxplot.
+> In order to choose between a histogram and a boxplot
+> we will edit the function `plot_dist` and add an additional argument `use_boxplot`.
+> By default we will set `use_boxplot` to `TRUE`
+> which will create a boxplot when the vector is longer than `threshold`.
+> When `use_boxplot` is set to `FALSE`,
+> `plot_dist` will instead plot a histogram for the larger vectors.
+> As before, if the length of the vector is shorter than `threshold`,
+> `plot_dist` will create a stripchart.
+> A histogram is made with the `hist` command in R.
 >
 > 
 > ~~~
@@ -317,6 +345,21 @@ In this case, "either" means "either or both", not "either one or the other but 
 > {: .r}
 > 
 > <img src="../fig/04-cond-conditional-challenge-hist-3.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" style="display: block; margin: auto;" />
+>
+> > ## Solution
+> > ~~~
+> > plot_dist <- function(x, threshold, use_boxplot = TRUE) {
+> >    if (length(x) > threshold & use_boxplot) {
+> >        boxplot(x)
+> >    } else if (length(x) > threshold & !use_boxplot) {
+> >        hist(x)
+> >    } else {
+> >        stripchart(x)
+> >    }
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
 
 > ## Find the Maximum Inflammation Score
@@ -342,9 +385,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 >   dat.means = apply(dat, 1, mean)
 >   for (patient_index in length(dat.means)){
 >     patient_average_inf = dat.means[patient_index]
-> >
 >     # Add your code here ...
-> >
 >   }
 > }
 > print(filename_max)
@@ -352,16 +393,24 @@ In this case, "either" means "either or both", not "either one or the other but 
 > print(average_inf_max)
 > ~~~
 > {: .r}
+>
+> > ## Solution
+> > ~~~
+> > # Add your code here ...
+> > if (patient_average_inf > average_inf_max) {
+> >   average_inf_max = patient_average_inf
+> >   filename_max <- f
+> >   patient_max <- patient_index
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
-
-
-
-
-
 
 ### Saving Automatically Generated Figures
 
-Now that we know how to have R make decisions based on input values, let's update `analyze`:
+Now that we know how to have R make decisions based on input values,
+let's update `analyze`:
 
 
 ~~~
@@ -523,8 +572,32 @@ Now if we need to make any changes to our analysis, we can edit the `analyze` fu
 
 > ## Changing the Behavior of the Plot Command
 >
->  + One of your collaborators asks if you can recreate the figures with lines instead of points.
->  Find the relevant argument to `plot` by reading the documentation (`?plot`), update `analyze`, and then recreate all the figures with `analyze_all`.
+> One of your collaborators asks if you can recreate the figures with lines instead of points.
+> Find the relevant argument to `plot` by reading the documentation (`?plot`),
+> update `analyze`, and then recreate all the figures with `analyze_all`.
+>
+> > ## Solution
+> > ~~~
+> > analyze <- function(filename, output = NULL) {
+> >   # Plots the average, min, and max inflammation over time.
+> >   # Input:
+> >   #    filename: character string of a csv file
+> >   #    output: character string of pdf file for saving
+> >   if (!is.null(output)) {
+> >     pdf(output)
+> >   }
+> >   dat <- read.csv(file = filename, header = FALSE)
+> >   avg_day_inflammation <- apply(dat, 2, mean)
+> >   plot(avg_day_inflammation, type = "l")
+> >   max_day_inflammation <- apply(dat, 2, max)
+> >   plot(max_day_inflammation, type = "l")
+> >   min_day_inflammation <- apply(dat, 2, min)
+> >   plot(min_day_inflammation, type = "l")
+> >   if (!is.null(output)) {
+> >     dev.off()
+> >   }
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
-
-
