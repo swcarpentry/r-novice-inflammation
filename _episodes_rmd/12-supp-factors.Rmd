@@ -17,7 +17,7 @@ keypoints:
 
 ```{r, include = FALSE}
 source('../bin/chunk-options.R')
-opts_chunk$set(fig.path = "fig/12-supp-factors-")
+knitr_fig_path("12-supp-factors-")
 ```
 
 Factors are used to represent categorical data. Factors can be ordered or

@@ -31,7 +31,7 @@ keypoints:
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
-opts_chunk$set(fig.path = "fig/01-starting-with-data-")
+knitr_fig_path("01-starting-with-data-")
 ```
 
 We are studying inflammation in patients who have been given a new treatment for arthritis,

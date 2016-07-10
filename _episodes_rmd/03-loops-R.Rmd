@@ -21,7 +21,7 @@ keypoints:
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
-opts_chunk$set(fig.path = "fig/03-loops-R-")
+knitr_fig_path("03-loops-R-")
 ```
 
 We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
@@ -317,7 +317,7 @@ Let's test out running our `analyze` function by using it on the first three fil
 
 
 ```{r loop-analyze, fig=FALSE}
-filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
+filenames <- list.files(path = "data", pattern = "inflammation.*csv", full.names = TRUE)
 filenames <- filenames[1:3]
 for (f in filenames) {
   print(f)
