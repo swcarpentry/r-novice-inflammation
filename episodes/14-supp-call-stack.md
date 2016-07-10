@@ -144,9 +144,9 @@ That only works if functions don't interfere with each other; if they do, we hav
 
 > ## Following the Call Stack
 >
->  + We previously wrote functions called `fence` and `outside`.
->    Draw a diagram showing how the call stack changes when we run the
->    following:
+> We previously wrote functions called `fence` and `outside`.
+> Draw a diagram showing how the call stack changes when we run the following:
+>
 > 
 > ~~~
 > inner_vec <- "carbon"

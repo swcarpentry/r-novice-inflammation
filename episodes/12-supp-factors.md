@@ -321,7 +321,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 > ~~~
 > {: .r}
 > 
-> <img src="../fig/12-supp-factors-reordering-factors-1.png" title="plot of chunk reordering-factors" alt="plot of chunk reordering-factors" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-12-supp-factors-reordering-factors-1.png" title="plot of chunk reordering-factors" alt="plot of chunk reordering-factors" style="display: block; margin: auto;" />
 > Use the `factor()` command to modify the column dat$Group so that the *control* group is plotted last
 {: .challenge}
 
@@ -336,7 +336,7 @@ barplot(table(dat$Gender))
 ~~~
 {: .r}
 
-<img src="../fig/12-supp-factors-gender-counts-1.png" title="plot of chunk gender-counts" alt="plot of chunk gender-counts" style="display: block; margin: auto;" />
+<img src="../fig/rmd-12-supp-factors-gender-counts-1.png" title="plot of chunk gender-counts" alt="plot of chunk gender-counts" style="display: block; margin: auto;" />
 
 Values should have been recorded as lowercase 'm' & 'f'. We should correct this.
 
@@ -354,7 +354,7 @@ dat$Gender[dat$Gender == 'M'] <- 'm'
 > ~~~
 > {: .r}
 > 
-> <img src="../fig/12-supp-factors-updating-factors-1.png" title="plot of chunk updating-factors" alt="plot of chunk updating-factors" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-12-supp-factors-updating-factors-1.png" title="plot of chunk updating-factors" alt="plot of chunk updating-factors" style="display: block; margin: auto;" />
 >
 > Why does this plot show 4 levels?
 >
@@ -371,7 +371,7 @@ plot(x = dat$Gender, y = dat$BloodPressure)
 ~~~
 {: .r}
 
-<img src="../fig/12-supp-factors-dropping-levels-1.png" title="plot of chunk dropping-levels" alt="plot of chunk dropping-levels" style="display: block; margin: auto;" />
+<img src="../fig/rmd-12-supp-factors-dropping-levels-1.png" title="plot of chunk dropping-levels" alt="plot of chunk dropping-levels" style="display: block; margin: auto;" />
 
 > ## Adjusting Factor Levels
 >
@@ -384,5 +384,5 @@ plot(x = dat$Gender, y = dat$BloodPressure)
 > ~~~
 > {: .r}
 > 
-> <img src="../fig/12-supp-factors-adjusting-levels-1.png" title="plot of chunk adjusting-levels" alt="plot of chunk adjusting-levels" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-12-supp-factors-adjusting-levels-1.png" title="plot of chunk adjusting-levels" alt="plot of chunk adjusting-levels" style="display: block; margin: auto;" />
 {: .callout}

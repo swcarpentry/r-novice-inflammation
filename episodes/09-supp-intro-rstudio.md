@@ -9,7 +9,7 @@ objectives:
 - "Understand the difference between script file and console."
 - "Demonstrate useful shortcuts."
 keypoints:
-- "Use RStudio to write R programs."
+- "Using RStudio can make programming in R much more productive."
 ---
 
 

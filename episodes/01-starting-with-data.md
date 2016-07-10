@@ -718,8 +718,18 @@ We'll learn why this is so in the next lesson.
 > 1. Write a vector containing each affected patient (hint: `? seq`)
 > 2. Create a new data frame with in which you halve the first five days' values in only those patients
 > 3. Print out the corrected data frame to check that your code has fixed the problem
+>
+> > ## Solution
+> > ~~~
+> > whichPatients <- seq(2,40,2)
+> > whichDays <- c(1:5)
+> > dat2 <- dat
+> > dat2[whichPatients,whichDays] <- dat2[whichPatients,whichDays]/2
+> > (dat2)
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
-
 
 
 > ## Using the Apply Function on Patient Data
@@ -737,8 +747,19 @@ We'll learn why this is so in the next lesson.
 >
 > Think about the number of rows and columns you would expect as the result before each
 > apply call and check your intuition by applying the mean function.
+>
+> > ## Solution
+> > ~~~
+> > # 1.
+> > apply(dat[1:5, ], 1, mean)
+> > # 2.
+> > apply(dat[, 1:10], 2, mean)
+> > # 3.
+> > apply(dat[, seq(1,40, by=2)], 2, mean)
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
-
 
 
 ### Plotting
@@ -756,7 +777,7 @@ plot(avg_day_inflammation)
 ~~~
 {: .r}
 
-<img src="../fig/01-starting-with-data-plot-avg-inflammation-1.png" title="plot of chunk plot-avg-inflammation" alt="plot of chunk plot-avg-inflammation" style="display: block; margin: auto;" />
+<img src="../fig/rmd-01-starting-with-data-plot-avg-inflammation-1.png" title="plot of chunk plot-avg-inflammation" alt="plot of chunk plot-avg-inflammation" style="display: block; margin: auto;" />
 
 Above, we gave the function `plot` a vector of numbers corresponding to the average inflammation per day across all patients.
 `plot` created a scatter plot where the y-axis is the average inflammation level and the x-axis is the order, or index, of the values in the vector, which in this case correspond to the 40 days of treatment.
@@ -770,7 +791,7 @@ plot(max_day_inflammation)
 ~~~
 {: .r}
 
-<img src="../fig/01-starting-with-data-plot-max-inflammation-1.png" title="plot of chunk plot-max-inflammation" alt="plot of chunk plot-max-inflammation" style="display: block; margin: auto;" />
+<img src="../fig/rmd-01-starting-with-data-plot-max-inflammation-1.png" title="plot of chunk plot-max-inflammation" alt="plot of chunk plot-max-inflammation" style="display: block; margin: auto;" />
 
 
 ~~~
@@ -779,7 +800,7 @@ plot(min_day_inflammation)
 ~~~
 {: .r}
 
-<img src="../fig/01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" />
+<img src="../fig/rmd-01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" style="display: block; margin: auto;" />
 
 The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.
 
