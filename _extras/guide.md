@@ -42,7 +42,10 @@ An additional half-day could add the next two lessons:
 4.  [Making choices]({{ site.root }}/04-cond/)
 5.  [Command-Line Programs]({{ site.root }}/05-cmdline/)
 
-Time-permitting, you can fit in one of these shorter lessons that cover bigger picture ideas like best practices for organizing code, reproducible research, and creating packages:
+Time permitting,
+you can fit in one of these shorter lessons that cover bigger picture ideas
+like best practices for organizing code, reproducible research,
+and creating packages:
 
 6.  [Best practices for using R and designing programs]({{ site.root }}/06-best-practices-R/)
 7.  [Dynamic reports with knitr]({{ site.root }}/07-knitr-R/)
