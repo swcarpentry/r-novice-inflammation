@@ -34,11 +34,11 @@ repository. For making your contribution, we use the GitHub flow, which is
 nicely explained in the chapter [Contributing to a Project][pro-git] in Pro Git
 by Scott Chacon.
 
-General instructions for making contributions are summarised in [CONTRIBUTING.md](https://github.com/swcarpentry/r-novice-inflammation/blob/gh-pages/CONTRIBUTING.md).
+General instructions for making contributions are summarized in [CONTRIBUTING.md](https://github.com/swcarpentry/r-novice-inflammation/blob/gh-pages/CONTRIBUTING.md).
 When editing topic pages for R lessons, you should change the source R Markdown
-file (*.Rmd). Only changes to R markdown files and other supporting files (e.g. data files) should be committed to Git. 
+file (*.Rmd). Only changes to R markdown files and other supporting files (e.g. data files) should be committed to Git.
 
-To view how the changes will look, when viewed in a web browser, you can render the html pages by running `make preview` from the base of the repository. Generating the html file(s) is required for viewing the [online version of the lessons][online] (you can learn more about the design of the build process [here][design]). Building the rendered page with the Makefile requires installing some dependencies first. In addition to the dependencies listed in the [lesson template documentation][dependencies], you also need to install the R package [knitr][]. 
+To view how the changes will look, when viewed in a web browser, you can render the html pages by running `make preview` from the base of the repository. Generating the html file(s) is required for viewing the [online version of the lessons][online] (you can learn more about the design of the build process [here][design]). Building the rendered page with the Makefile requires installing some dependencies first. In addition to the dependencies listed in the [lesson template documentation][dependencies], you also need to install the R package [knitr][].
 
 Once you've made your edits and rendered the corresponding html files,
 you need to add, commit, and push just the source R Markdown file(s)

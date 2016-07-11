@@ -24,7 +24,7 @@ Remove all objects from current environment
 
 ## Control Flow
 
-- Create a contitional using `if`, `else if`, and `else`
+- Create a conditional using `if`, `else if`, and `else`
 
 ~~~
 if(x > 0){
@@ -72,7 +72,7 @@ This will print:
 is_positive <- function(integer_value){
 	if(integer_value > 0){
 	   TRUE
-	} 
+	}
 	else{
 	   FALSE
 	{

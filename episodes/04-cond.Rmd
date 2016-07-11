@@ -64,7 +64,7 @@ Since we currently have 12 data sets, running `analyze_all` creates 36 plots.
 Saving each of these individually would be tedious and error-prone.
 And in the likely situation that we want to change how the data is processed or the look of the plots, we would have to once again save all 36 before sharing the updated results with our collaborators.
 
-Here's how we can save all three plots of the first inflamation data set in a pdf file:
+Here's how we can save all three plots of the first inflammation data set in a pdf file:
 
 ```{r, results='hide'}
 pdf("inflammation-01.pdf")
@@ -111,7 +111,7 @@ Only one or the other is ever executed:
 
 <img src="{{ site.root }}/fig/python-flowchart-conditional.svg" alt="Executing a Conditional" />
 
-In the example above, the test `num > 100` returns the value `FALSE`, which is why the code inside the `if` block was skipped and the code inside the `else` statment was run instead.
+In the example above, the test `num > 100` returns the value `FALSE`, which is why the code inside the `if` block was skipped and the code inside the `else` statement was run instead.
 
 ```{r}
 num > 100
@@ -362,7 +362,7 @@ analyze("data/inflammation-01.csv", output = "inflammation-01.pdf")
 ```
 
 Before going further, we will create a directory `results` for saving our plots.
-It is [good practice](http://swcarpentry.github.io/good-enough-practices-in-scientific-computing/) in data analysis projects to save all output to a directory seperate from the data and analysis code.
+It is [good practice](http://swcarpentry.github.io/good-enough-practices-in-scientific-computing/) in data analysis projects to save all output to a directory separate from the data and analysis code.
 You can create this directory using the shell command [mkdir](http://swcarpentry.github.io/shell-novice/02-create.html), or the R function `dir.create()`
 ```{r warning=FALSE}
 dir.create("results")
