@@ -57,7 +57,7 @@ Some instructors will demo RStudio's git integration at some point during the
 workshop. This often goes over very well, but there can be a few snags with the
 setup. First, RStudio may not know where to find git. You can specify where git
 is located in _Tools > Global Options > Git/SVN_; on Mac/Linux git is often in
-`usr/bin/git` or `usr/local/bin/git` and on Windows it is often in
+`/usr/bin/git` or `/usr/local/bin/git` and on Windows it is often in
 `C:/Program Files (x86)/Git/bin/git.exe`. If you don't know where git is
 installed on someone's computer, open a terminal and try `which git` on
 Mac/Linux, or `where git` or `whereis git.exe` on Windows. See
