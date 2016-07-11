@@ -85,7 +85,7 @@ b <- 1:5
 a + b
 ```
 
-The elements of `a` and `b` are added together starting from the first element of both vectors. When R reaches the end of the shorter vector `b`, it starts again at the first element of `b` and contines until it reaches the last element of the longest vector `a`.  This behaviour may seem crazy at first glance, but it is very useful when you want to perform the same operation on every element of a vector. For example, say we want to multiply every element of our vector `a` by 5:
+The elements of `a` and `b` are added together starting from the first element of both vectors. When R reaches the end of the shorter vector `b`, it starts again at the first element of `b` and continues until it reaches the last element of the longest vector `a`.  This behaviour may seem crazy at first glance, but it is very useful when you want to perform the same operation on every element of a vector. For example, say we want to multiply every element of our vector `a` by 5:
 
 ```{r}
 a <- 1:10
@@ -130,7 +130,7 @@ Using an `apply` family function forces to you encapsulate your operations as a 
 
 No, they are not! *If* you follow some golden rules:
 
- 1. Don't use a loop when a vectorised alternative exists
+ 1. Don't use a loop when a vectorized alternative exists
  2. Don't grow objects (via `c`, `cbind`, etc) during the loop - R has to create a new object and copy across the information just to add a new element or row/column
  3. Allocate an object to hold the results and fill it in during the loop
 
