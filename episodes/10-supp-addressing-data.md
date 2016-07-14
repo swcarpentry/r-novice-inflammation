@@ -95,7 +95,7 @@ head(dat)
 ~~~
 {: .output}
 
-The data is the results of an (not real) experiment, looking at the number of aneurisms that formed in the eyes of patients who undertook 3 different treatments.
+The data is the results of an (not real) experiment, looking at the number of aneurysms that formed in the eyes of patients who undertook 3 different treatments.
 
 ### Addressing by Index
 

@@ -33,7 +33,7 @@ keypoints:
 
 We are studying inflammation in patients who have been given a new treatment for arthritis,
 and need to analyze the first dozen data sets.
-The data sets are stored in [comma-separated values]({{ site.root }}/reference/#comma-separated-values-(csv)) (CSV) format. Each row holds the observations for just one patient. Each column holds the inflammation measured in a day, so we have a set of values in successive days.
+The data sets are stored in [comma-separated values]({{ site.github.url }}/reference/#comma-separated-values-(csv)) (CSV) format. Each row holds the observations for just one patient. Each column holds the inflammation measured in a day, so we have a set of values in successive days.
 The first few rows of our first file look like this:
 
 
@@ -75,16 +75,16 @@ read.csv(file = "data/inflammation-01.csv", header = FALSE)
 ~~~
 {: .r}
 
-The expression `read.csv(...)` is a [function call]({{ site.root }}/reference/#function-call) that asks R to run the function `read.csv`.
+The expression `read.csv(...)` is a [function call]({{ site.github.url }}/reference/#function-call) that asks R to run the function `read.csv`.
 
-`read.csv` has two [arguments]({{ site.root }}/reference/#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
-The filename needs to be a character string (or [string]({{ site.root }}/reference/#string) for short), so we put it in quotes. Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers. We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
+`read.csv` has two [arguments]({{ site.github.url }}/reference/#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
+The filename needs to be a character string (or [string]({{ site.github.url }}/reference/#string) for short), so we put it in quotes. Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers. We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
 
 > ## Other Options for Reading CSV Files
 >
 > `read.csv` actually has many more arguments that you may find useful when
 > importing your own data in the future. You can learn more about these
-> options in this supplementary [lesson]({{ site.root }}/01-supp-read-write-csv/).
+> options in this supplementary [lesson]({{ site.github.url }}/01-supp-read-write-csv/).
 {: .callout}
 
 > ## Loading Data with Headers
@@ -180,7 +180,7 @@ weight_kg
 If we imagine the variable as a sticky note with a name written on it,
 assignment is like putting the sticky note on a particular value:
 
-<img src="{{ site.root }}/fig/python-sticky-note-variables-01.svg" alt="Variables as Sticky Notes" />
+<img src="{{ site.github.url }}/fig/python-sticky-note-variables-01.svg" alt="Variables as Sticky Notes" />
 
 This means that assigning a value to one object does not change the values of other variables.
 For example, let's store the subject's weight in pounds in a variable:
@@ -215,7 +215,7 @@ weight_lb
 ~~~
 {: .output}
 
-<img src="{{ site.root }}/fig/python-sticky-note-variables-02.svg" alt="Creating Another Variable" />
+<img src="{{ site.github.url }}/fig/python-sticky-note-variables-02.svg" alt="Creating Another Variable" />
 
 and then change `weight_kg`:
 
@@ -249,7 +249,7 @@ weight_lb
 ~~~
 {: .output}
 
-<img src="{{ site.root }}/fig/python-sticky-note-variables-03.svg" alt="Updating a Variable" />
+<img src="{{ site.github.url }}/fig/python-sticky-note-variables-03.svg" alt="Updating a Variable" />
 
 Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes.
 This is different from the way spreadsheets work.
@@ -341,7 +341,7 @@ class(dat)
 The output tells us that is a data frame. Think of this structure as a spreadsheet in MS Excel that many of us are familiar with.
 Data frames are very useful for storing data and you will find them elsewhere when programming in R. A typical data frame of experimental data contains individual observations in rows and variables in columns.
 
-We can see the shape, or [dimensions]({{ site.root }}/reference/#dimensions), of the data frame with the function `dim`:
+We can see the shape, or [dimensions]({{ site.github.url }}/reference/#dimensions), of the data frame with the function `dim`:
 
 
 ~~~
@@ -358,7 +358,7 @@ dim(dat)
 
 This tells us that our data frame, `dat`, has 60 rows and 40 columns.
 
-If we want to get a single value from the data frame, we can provide an [index]({{ site.root }}/reference/#index) in square brackets, just as we do in math:
+If we want to get a single value from the data frame, we can provide an [index]({{ site.github.url }}/reference/#index) in square brackets, just as we do in math:
 
 
 ~~~
@@ -409,7 +409,7 @@ dat[1:4, 1:10]
 ~~~
 {: .output}
 
-The [slice]({{ site.root }}/reference/#slice) `1:4` means, "Start at index 1 and go to index 4."
+The [slice]({{ site.github.url }}/reference/#slice) `1:4` means, "Start at index 1 and go to index 4."
 
 The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
 
@@ -493,7 +493,7 @@ dat[, 16]
 > ## Addressing Columns by Name
 >
 > Columns can also be addressed by name, with either the `$` operator (ie. `dat$Age`) or square brackets (ie. `dat[,'Age']`).
-> You can learn more about subsetting by column name in this supplementary [lesson]({{ site.root }}/01-supp-addressing-data/).
+> You can learn more about subsetting by column name in this supplementary [lesson]({{ site.github.url }}/01-supp-addressing-data/).
 {: .callout}
 
 Now let's perform some common mathematical operations to learn about our inflammation data.
@@ -615,7 +615,7 @@ sd(dat[, 7])
 What if we need the maximum inflammation for all patients, or the average for each day?
 As the diagram below shows, we want to perform the operation across a margin of the data frame:
 
-<img src="{{ site.root }}/fig/r-operations-across-axes.svg" alt="Operations Across Axes" />
+<img src="{{ site.github.url }}/fig/r-operations-across-axes.svg" alt="Operations Across Axes" />
 
 To support this, we can use the `apply` function.
 
@@ -655,7 +655,7 @@ We'll learn why this is so in the next lesson.
 
 > ## Slicing (Subsetting) Data
 >
-> A subsection of a data frame is called a [slice]({{ site.root }}/reference/#slice).
+> A subsection of a data frame is called a [slice]({{ site.github.url }}/reference/#slice).
 > We can take slices of character vectors as well:
 >
 > 

@@ -257,7 +257,7 @@ str(dat)
 ~~~
 {: .output}
 
-Notice the first 3 columns have been converted to factors. These values were text in the data file so R automatically interpreted them as catagorical variables.
+Notice the first 3 columns have been converted to factors. These values were text in the data file so R automatically interpreted them as categorical variables.
 
 
 ~~~
@@ -287,7 +287,7 @@ summary(dat)
 ~~~
 {: .output}
 
-Notice the `summary()` function handles factors differently to numbers (and strings), the occurence counts for each value is often more useful information.
+Notice the `summary()` function handles factors differently to numbers (and strings), the occurrence counts for each value is often more useful information.
 
 > ## The `summary()` Function
 >

@@ -5,7 +5,7 @@ exercises: 0
 questions:
 - "How can I write R that other people can understand and use?"
 objectives:
-- "Define best formating practices when writing code in R scripts."
+- "Define best formatting practices when writing code in R scripts."
 - "Synthesize a consistent personal coding style to increase code readability, consistency, and repeatability."
 - "Apply this style to one's own code."
 keypoints:
@@ -99,7 +99,7 @@ dat <- read.csv(file = "/Users/Karthik/Documents/sannic-project/files/dataset-20
 ~~~
 interim_object <- data.frame(rep(1:100,10),rep(101:200,10),rep(201:300,10)) # Sample dataset of 1000 rows
 object.size(interim_object) # Reports the memory size allocated to the object
-rm(interim_object) # Removes only the object itself and not necessarily the memory alloted to it
+rm(interim_object) # Removes only the object itself and not necessarily the memory allotted to it
 gc() # Force R to release memory it is no longer using
 ls()  # Lists all the objects in your current workspace
 rm(list = ls()) # If you want to delete all the objects in the workspace and start with a clean slate

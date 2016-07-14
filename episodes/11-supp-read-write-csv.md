@@ -19,15 +19,15 @@ keypoints:
 
 The most common way that scientists store data is in Excel spreadsheets.
 While there are R packages designed to access data from Excel spreadsheets (e.g., gdata, RODBC, XLConnect, xlsx, RExcel),
-users often find it easier to save their spreadsheets in [comma-separated values]({{ site.root }}/reference/#comma-separated-values-(csv)) files (CSV)
+users often find it easier to save their spreadsheets in [comma-separated values]({{ site.github.url }}/reference/#comma-separated-values-(csv)) files (CSV)
 and then use R's built in functionality to read and manipulate the data.
 In this short lesson, we'll learn how to read data from a .csv and write to a new .csv,
-and explore the [arguments]({{ site.root }}/reference/#argument) that allow you read and write the data correctly for your needs.
+and explore the [arguments]({{ site.github.url }}/reference/#argument) that allow you read and write the data correctly for your needs.
 
 
 ### Read a .csv and Explore the Arguments
 
-Let's start by opening a .csv file containing information on the speeds at which cars of different colors were clocked in 45 mph zones in the four-corners states (`CarSpeeds.csv`). We will use the built in `read.csv(...)` [function call]({{ site.root }}/reference/#function-call), which reads the data in as a data frame, and assign the data frame to a variable (using `<-`) so that it is stored in R's memory. Then we will explore some of the basic arguments that can be supplied to the function.
+Let's start by opening a .csv file containing information on the speeds at which cars of different colors were clocked in 45 mph zones in the four-corners states (`CarSpeeds.csv`). We will use the built in `read.csv(...)` [function call]({{ site.github.url }}/reference/#function-call), which reads the data in as a data frame, and assign the data frame to a variable (using `<-`) so that it is stored in R's memory. Then we will explore some of the basic arguments that can be supplied to the function.
 
 
 ~~~
@@ -109,11 +109,11 @@ Clearly this is not the desired behavior for this data set, but it may be useful
 
 ### The `stringsAsFactors` Argument
 
-This is perhaps the most important argument in `read.csv()`, particularly if you are working with categorical data. This is because the default behavior of R is to convert character [string]({{ site.root }}/reference/#string)s into factors, which may make it difficult to do such things as replace values. For example, let's say we find out that the data collector was color blind, and accidentally recorded green cars as being blue. In order to correct the data set, let's replace 'Blue' with 'Green' in the `$Color` column:
+This is perhaps the most important argument in `read.csv()`, particularly if you are working with categorical data. This is because the default behavior of R is to convert character [string]({{ site.github.url }}/reference/#string)s into factors, which may make it difficult to do such things as replace values. For example, let's say we find out that the data collector was color blind, and accidentally recorded green cars as being blue. In order to correct the data set, let's replace 'Blue' with 'Green' in the `$Color` column:
 
 
 ~~~
-#Here we will use R's ifelse function, in which we provide the test phrase, the outcome if the
+#Here we will use R's `ifelse` function, in which we provide the test phrase, the outcome if the
 # result of the test is 'TRUE', and the outcome if the result is 'FALSE'. We will also assign
 # the results to the Color column, using '<-'
 
@@ -310,7 +310,7 @@ That's better!
 
 ### Write a New .csv and Explore the Arguments
 
-After altering our cars dataset by replacing 'Blue' with 'Green' in the `$Color` column, we now want to save the output. There are several arguments for the `write.csv(...)` [function call]({{ site.root }}/reference/#function-call), a few of which are particularly important for how the data are exported.  Let's explore these now.
+After altering our cars dataset by replacing 'Blue' with 'Green' in the `$Color` column, we now want to save the output. There are several arguments for the `write.csv(...)` [function call]({{ site.github.url }}/reference/#function-call), a few of which are particularly important for how the data are exported.  Let's explore these now.
 
 
 ~~~
@@ -322,7 +322,7 @@ write.csv(carSpeeds, file='data/car-speeds-cleaned.csv')
 
 If you open the file, you'll see that it has header names, because the data had headers within R, but that there are numbers in the first column.
 
-<img src="{{ site.root }}/fig/01-supp-csv-with-row-nums.png" alt="csv written without row.names argument" />
+<img src="{{ site.github.url }}/fig/01-supp-csv-with-row-nums.png" alt="csv written without row.names argument" />
 
 
 ### The `row.names` Argument
@@ -337,7 +337,7 @@ write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE)
 
 Now we see:
 
-<img src="{{ site.root }}/fig/01-supp-csv-without-row-nums.png" alt="csv written with row.names argument" />
+<img src="{{ site.github.url }}/fig/01-supp-csv-without-row-nums.png" alt="csv written with row.names argument" />
 
 > ## Setting Column Names
 >
@@ -390,4 +390,4 @@ write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE, na= '-
 
 And we see:
 
-<img src="{{ site.root }}/fig/01-supp-csv-with-special-NA.png" alt="csv written with -9999 as NA" />
+<img src="{{ site.github.url }}/fig/01-supp-csv-with-special-NA.png" alt="csv written with -9999 as NA" />
