@@ -18,7 +18,7 @@ keypoints:
 
 In R you have multiple options when repeating calculations: vectorized operations, `for` loops, and `apply` functions.
 
-This lesson is an extension of [Analyzing Multiple Data Sets]({{ site.root }}/03-loops-R/).
+This lesson is an extension of [Analyzing Multiple Data Sets]({{ site.github.url }}/03-loops-R/).
 In that lesson, we introduced how to run a custom function, `analyze`, over multiple data files:
 
 
@@ -116,7 +116,7 @@ a + b
 ~~~
 {: .output}
 
-The elements of `a` and `b` are added together starting from the first element of both vectors. When R reaches the end of the shorter vector `b`, it starts again at the first element of `b` and contines until it reaches the last element of the longest vector `a`.  This behaviour may seem crazy at first glance, but it is very useful when you want to perform the same operation on every element of a vector. For example, say we want to multiply every element of our vector `a` by 5:
+The elements of `a` and `b` are added together starting from the first element of both vectors. When R reaches the end of the shorter vector `b`, it starts again at the first element of `b` and continues until it reaches the last element of the longest vector `a`.  This behaviour may seem crazy at first glance, but it is very useful when you want to perform the same operation on every element of a vector. For example, say we want to multiply every element of our vector `a` by 5:
 
 
 ~~~
@@ -164,7 +164,7 @@ length
 
 A `for` loop is used to apply the same function calls to a collection of objects.
 R has a family of functions, the `apply` family, which can be used in much the same way.
-You've already used one of the family, `apply` in the first [lesson]({{ site.root }}/01-starting-with-data/).
+You've already used one of the family, `apply` in the first [lesson]({{ site.github.url }}/01-starting-with-data/).
 The `apply` family members include
 
  * `apply`  - apply over the margins of an array (e.g. the rows or columns of a matrix)
@@ -189,7 +189,7 @@ Using an `apply` family function forces to you encapsulate your operations as a 
 
 No, they are not! *If* you follow some golden rules:
 
- 1. Don't use a loop when a vectorised alternative exists
+ 1. Don't use a loop when a vectorized alternative exists
  2. Don't grow objects (via `c`, `cbind`, etc) during the loop - R has to create a new object and copy across the information just to add a new element or row/column
  3. Allocate an object to hold the results and fill it in during the loop
 
@@ -219,7 +219,7 @@ system.time(avg2 <- analyze2(filenames))
 
 ~~~
    user  system elapsed 
-  0.075   0.004   0.148 
+  0.074   0.005   0.147 
 ~~~
 {: .output}
 
@@ -249,7 +249,7 @@ system.time(avg3 <- analyze3(filenames))
 
 ~~~
    user  system elapsed 
-  0.048   0.002   0.051 
+  0.050   0.001   0.052 
 ~~~
 {: .output}
 
