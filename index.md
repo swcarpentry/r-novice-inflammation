@@ -1,6 +1,5 @@
 ---
 layout: lesson
-title: Programming with R
 ---
 The best way to learn how to program is to do something useful,
 so this introduction to R is built around a common scientific task:
@@ -34,6 +33,7 @@ The first few rows of our first file look like this:
 0,0,2,0,4,2,2,1,6,7,10,7,9,13,8,8,15,10,10,7,17,4,4,7,6,15,6,4,9,11,3,5,6,3,3,4,2,3,2,1
 0,1,1,3,3,1,3,5,2,4,4,7,6,5,3,10,8,10,6,17,9,14,9,7,13,9,12,6,7,7,9,6,3,2,2,4,2,0,1,1
 ~~~
+{: .source}
 
 We want to:
 
@@ -43,44 +43,9 @@ We want to:
 
 To do all that, we'll have to learn a little bit about programming.
 
-> ## Prerequisites {.prereq}
+> ## Prerequisites
 >
 > Learners need to understand the concepts of files and directories
 > (including the working directory).
 > We often use RStudio to teach this lesson, but it is not required.
-
-> ## Getting ready {.getready}
->
-> You need to download some files to follow this lesson:
->
-> 1. Make a new folder in your Desktop called `r-novice-inflammation`.
-> 2. Download [r-novice-inflammation-data.zip](./r-novice-inflammation-data.zip) and move the file to this folder.
-> 3. If it's not unzipped yet, double-click on it to unzip it. You should end up with a new folder called `data`.
-> 4. You can access this folder from the Unix shell with:
->```
-> $ cd && cd Desktop/r-novice-inflammation/data
->```
-
-## Topics
-
-1.  [Analyzing patient data](01-starting-with-data.html)
-2.  [Creating functions](02-func-R.html)
-3.  [Analyzing multiple data sets](03-loops-R.html)
-4.  [Making choices](04-cond.html)
-5.  [Command-Line Programs](05-cmdline.html)
-6.  [Best practices for using R and designing programs](06-best-practices-R.html)
-7.  [Dynamic reports with knitr](07-knitr-R.html)
-8.  [Making packages in R](08-making-packages-R.html)
-
-## Other Resources
-
-*   [Reference](reference.html)
-*   [Discussion](discussion.html)
-*   [Instructor's Guide](instructors.html)
-
-## Supplemental lessons
-
-*   [Introduction to RStudio](01-supp-intro-rstudio.html)
-*   [Addressing data](01-supp-addressing-data.html)
-*   [Understanding factors](01-supp-factors.html)
-*   [Data types and structures](01-supp-data-structures.html)
+{: .prereq}
