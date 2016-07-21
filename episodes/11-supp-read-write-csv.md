@@ -322,7 +322,7 @@ write.csv(carSpeeds, file='data/car-speeds-cleaned.csv')
 
 If you open the file, you'll see that it has header names, because the data had headers within R, but that there are numbers in the first column.
 
-<img src="{{ site.github.url }}/fig/01-supp-csv-with-row-nums.png" alt="csv written without row.names argument" />
+<img src="../fig/01-supp-csv-with-row-nums.png" alt="csv written without row.names argument" />
 
 
 ### The `row.names` Argument
@@ -337,7 +337,7 @@ write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE)
 
 Now we see:
 
-<img src="{{ site.github.url }}/fig/01-supp-csv-without-row-nums.png" alt="csv written with row.names argument" />
+<img src="../fig/01-supp-csv-without-row-nums.png" alt="csv written with row.names argument" />
 
 > ## Setting Column Names
 >
@@ -390,4 +390,4 @@ write.csv(carSpeeds, file='data/car-speeds-cleaned.csv', row.names=FALSE, na= '-
 
 And we see:
 
-<img src="{{ site.github.url }}/fig/01-supp-csv-with-special-NA.png" alt="csv written with -9999 as NA" />
+<img src="../fig/01-supp-csv-with-special-NA.png" alt="csv written with -9999 as NA" />
