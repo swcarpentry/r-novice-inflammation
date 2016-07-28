@@ -279,7 +279,7 @@ length(vowels)
 ~~~
 {: .output}
 
-`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson]({{ site.github.url }}/01-supp-data-structures/) to learn more about the different ways to store data in R).
+`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson]({{ site.github.url }}/13-supp-data-structures/) to learn more about the different ways to store data in R).
 
 
 > ## Printing Numbers
@@ -570,7 +570,7 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 > accomplish this. Sometimes the choice of one method over another is more a
 > matter of personal style, but other times it can have consequences for the
 > speed of your code. For instruction on best practices, see this supplementary
-> [lesson]({{ site.github.url }}/03-supp-loops-in-depth/) that demonstrates how to properly repeat
+> [lesson]({{ site.github.url }}/15-supp-loops-in-depth/) that demonstrates how to properly repeat
 > operations in R.
 {: .callout}
 

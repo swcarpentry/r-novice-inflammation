@@ -225,7 +225,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > you'll need to learn how they create their own environments and call other functions.
 > Function calls are managed via the call stack.
 > For more details on the call stack,
-> have a look at the [supplementary material]({{ site.github.url }}/02-supp-call-stack/).
+> have a look at the [supplementary material]({{ site.github.url }}/14-supp-call-stack/).
 {: .callout}
 
 > ## Named Variables and the Scope of Variables
