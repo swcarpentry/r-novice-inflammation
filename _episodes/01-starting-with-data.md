@@ -84,7 +84,7 @@ The filename needs to be a character string (or [string]({{ site.github.url }}/r
 >
 > `read.csv` actually has many more arguments that you may find useful when
 > importing your own data in the future. You can learn more about these
-> options in this supplementary [lesson]({{ site.github.url }}/01-supp-read-write-csv/).
+> options in this supplementary [lesson]({{ site.github.url }}/11-supp-read-write-csv/).
 {: .callout}
 
 > ## Loading Data with Headers
@@ -493,7 +493,7 @@ dat[, 16]
 > ## Addressing Columns by Name
 >
 > Columns can also be addressed by name, with either the `$` operator (ie. `dat$Age`) or square brackets (ie. `dat[,'Age']`).
-> You can learn more about subsetting by column name in this supplementary [lesson]({{ site.github.url }}/01-supp-addressing-data/).
+> You can learn more about subsetting by column name in this supplementary [lesson]({{ site.github.url }}/10-supp-addressing-data/).
 {: .callout}
 
 Now let's perform some common mathematical operations to learn about our inflammation data.

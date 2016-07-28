@@ -105,7 +105,7 @@ line and this should resolve the issue.
 *   Provide shortcut for the assignment operator (`<-`) (RStudio: Alt+- on
     Windows/Linux; Option+- on Mac).
 
-## [Addressing Data]({{ site.github.url }}/01-supp-addressing-data/)
+## [Addressing Data]({{ site.github.url }}/10-supp-addressing-data/)
 
 *   Note that the data frame `dat` is not the same set of data as in other lessons.
 
