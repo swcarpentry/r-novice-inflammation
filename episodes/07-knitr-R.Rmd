@@ -3,7 +3,7 @@ title: "Dynamic Reports with knitr"
 teaching: 30
 exercises: 0
 questions:
-- "How can I put put my text, code, and results all in one document?"
+- "How can I put my text, code, and results all in one document?"
 - "How do I use `knitr`?"
 - "How do I write in Markdown?"
 objectives:
