@@ -109,77 +109,102 @@ increment_me <- function(value_to_increment, value_to_increment_by = 1){
 
 ## Glossary
 
+<a id="argument"/>
 argument
 :   A value given to a function or program when it runs. The term is often used interchangeably (and inconsistently) with [parameter](#parameter).
 
+<a id="call-stack"/>
 call stack
 :   A data structure inside a running program that keeps track of active function calls. Each call's variables are stored in a [stack frame](#stack-frame); a new stack frame is put on top of the stack for each call, and discarded when the call is finished.
 
+<a id="comma-separated-values"/>
 comma-separated values (CSV)
 :   A common textual representation for tables in which the values in each row are separated by commas.
 
+<a id="comment"/>
 comment
 :   A remark in a program that is intended to help human readers understand what is going on, but is ignored by the computer. Comments in Python, R, and the Unix shell start with a `#` character and run to the end of the line; comments in SQL start with `--`, and other languages have other conventions.
 
+<a id="conditional-statement"/>
 conditional statement
 :   A statement in a program that might or might not be executed depending on whether a test is true or false.
 
+<a id="dimensions"/>
 dimensions (of an array)
 :   An array's extent, represented as a vector. For example, an array with 5 rows and 3 columns has dimensions `(5,3)`.
 
+<a id="documentation"/>
 documentation
 :   Human-language text written to explain what software does, how it works, or how to use it.
 
+<a id="encapsulation"/>
 encapsulation
 :   The practice of hiding something's implementation details so that the rest of a program can worry about *what* it does rather than *how* it does it.
 
+<a id="for-loop"/>
 for loop
 :   A loop that is executed once for each value in some kind of set, list, or range. See also: [while loop](#while-loop).
 
+<a id="function-body"/>
 function body
 :   The statements that are executed inside a function.
 
+<a id="function-call"/>
 function call
 :   A use of a function in another piece of software.
 
+<a id="function-composition"/>
 function composition
 :   The immediate application of one function to the result of another, such as `f(g(x))`.
 
+<a id="index"/>
 index
 :   A subscript that specifies the location of a single value in a collection, such as a single pixel in an image.
 
+<a id="loop-variable"/>
 loop variable
 :   The variable that keeps track of the progress of the loop.
 
+<a id="notional-machine"/>
 notional machine
 :   An abstraction of a computer used to think about what it can and will do.
 
+<a id="parameter"/>
 parameter
 :   A variable named in the function's declaration that is used to hold a value passed into the call. The term is often used interchangeably (and inconsistently) with [argument](#argument).
 
+<a id="pipe"/>
 pipe
 :   A connection from the output of one program to the input of another. When two or more programs are connected in this way, they are called a "pipeline".
 
+<a id="return-statement"/>
 return statement
 :   A statement that causes a function to stop executing and return a value to its caller immediately.
 
+<a id="silent-failure"/>
 silent failure
 :   Failing without producing any warning messages. Silent failures are hard to detect and debug.
 
+<a id="slice"/>
 slice
 :   A regular subsequence of a larger sequence, such as the first five elements or every second element.
 
+<a id="stack-frame"/>
 stack frame
 :   A data structure that provides storage for a function's local variables. Each time a function is called, a new stack frame is created and put on the top of the [call stack](#call-stack). When the function returns, the stack frame is discarded.
 
+<a id="standard-input"/>
 standard input (stdin)
 :   A process's default input stream. In interactive command-line applications, it is typically connected to the keyboard; in a [pipe](#pipe), it receives data from the [standard output](#standard-output) of the preceding process.
 
+<a id="standard-output"/>
 standard output (stdout)
 :   A process's default output stream. In interactive command-line applications, data sent to standard output is displayed on the screen; in a [pipe](#pipe), it is passed to the [standard input](#standard-input) of the next process.
 
+<a id="string"/>
 string
 :   Short for "character string", a [sequence](#sequence) of zero or more characters.
 
+<a id="while-loop"/>
 while loop
 :   A loop that keeps executing as long as some condition is true. See also: [for loop](#for-loop).
