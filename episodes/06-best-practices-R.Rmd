@@ -1,6 +1,6 @@
 ---
 title: "Best Practices for Writing R"
-teaching: 30
+teaching: 10
 exercises: 0
 questions:
 - "How can I write R that other people can understand and use?"
