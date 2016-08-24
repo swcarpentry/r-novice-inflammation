@@ -248,7 +248,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 >     2. 11
 >     3. 23
 >     4. 30
-> 2.  If mySum(3) == 13, why does mySum(b=3) return an error?
+> 2.  If `mySum(3)` returns 13, why does `mySum(input_2 = 3)` return an error?
 {: .challenge}
 
 ### Testing and Documenting
