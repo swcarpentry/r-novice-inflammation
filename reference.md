@@ -179,7 +179,7 @@ standard output (stdout)
 :   A process's default output stream. In interactive command-line applications, data sent to standard output is displayed on the screen; in a [pipe](#pipe), it is passed to the [standard input](#standard-input) of the next process.
 
 string
-:   Short for "character string", a [sequence](#sequence) of zero or more characters.
+:   Short for "character string", a sequence of zero or more characters.
 
 while loop
 :   A loop that keeps executing as long as some condition is true. See also: [for loop](#for-loop).
