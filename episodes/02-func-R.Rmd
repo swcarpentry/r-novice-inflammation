@@ -366,7 +366,7 @@ rescale <- function(v) {
 > {: .solution}
 {: .challenge}
 
-[01]: 01-starting-with-data.html
+[01]: {{ site.github.url }}/01-starting-with-data/
 
 ```{r rescale-test, include=FALSE}
 answer <- rescale(dat[, 4])
