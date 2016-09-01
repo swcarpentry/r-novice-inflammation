@@ -1,6 +1,6 @@
 ---
 title: "Analyzing Patient Data"
-teaching: 30
+teaching: 45
 exercises: 0
 questions:
 - "How do I read data into R?"
