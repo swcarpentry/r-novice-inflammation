@@ -554,7 +554,7 @@ center <- function(data, desired) {
 > {: .solution}
 {: .challenge}
 
-[01]: 01-starting-with-data.html
+[01]: {{ site.github.url }}/01-starting-with-data/
 
 
 

@@ -18,7 +18,7 @@ the "other 90%" of the language
 as well.
 
 The secondary goal of this lesson is to give them a usable mental model of how programs run
-(what computer science educators call a [notional machine](reference.html#notional-machine)
+(what computer science educators call a [notional machine]({{ site.github.url }}/reference/#notional-machine)
 so that they can debug things when they go wrong.
 In particular,
 they must understand how function call stacks work.
@@ -109,7 +109,7 @@ line and this should resolve the issue.
 
 *   Note that the data frame `dat` is not the same set of data as in other lessons.
 
-## [Analyzing Multiple Data Sets](03-loops-R.html)
+## [Analyzing Multiple Data Sets]({{ site.github.url }}/03-loops-R/)
 
 *   The transition from the previous lesson to this one might be challenging for
     a very novice audience. Do not rush through the challenges, maybe drop some.
