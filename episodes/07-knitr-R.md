@@ -1,6 +1,6 @@
 ---
 title: "Dynamic Reports with knitr"
-teaching: 30
+teaching: 20
 exercises: 0
 questions:
 - "How can I put my text, code, and results all in one document?"

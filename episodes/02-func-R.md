@@ -44,11 +44,11 @@ fahr_to_kelvin <- function(temp) {
 
 We define `fahr_to_kelvin` by assigning it to the output of `function`.
 The list of argument names are contained within parentheses.
-Next, the [body]({{ site.github.url }}/reference/#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
+Next, the [body]({{ page.root }}/reference/#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
 The statements in the body are indented by two spaces, which makes the code easier to read but does not affect how the code operates.
 
 When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
-Inside the function, we use a [return statement]({{ site.github.url }}/reference/#return-statement) to send a result back to whoever asked for it.
+Inside the function, we use a [return statement]({{ page.root }}/reference/#return-statement) to send a result back to whoever asked for it.
 
 > ## Automatic Returns
 >
@@ -117,7 +117,7 @@ kelvin_to_celsius(0)
 
 What about converting Fahrenheit to Celsius?
 We could write out the formula, but we don't need to.
-Instead, we can [compose]({{ site.github.url }}/reference/#function-composition) the two functions we have already created:
+Instead, we can [compose]({{ page.root }}/reference/#function-composition) the two functions we have already created:
 
 
 ~~~
@@ -225,7 +225,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > you'll need to learn how they create their own environments and call other functions.
 > Function calls are managed via the call stack.
 > For more details on the call stack,
-> have a look at the [supplementary material]({{ site.github.url }}/14-supp-call-stack/).
+> have a look at the [supplementary material]({{ page.root }}/14-supp-call-stack/).
 {: .callout}
 
 > ## Named Variables and the Scope of Variables
@@ -248,7 +248,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 >     2. 11
 >     3. 23
 >     4. 30
-> 2.  If `mySum(3)` returns 13, why does `mySum(input_2 = 3)` return an error?
+> 2.  If mySum(3) == 13, why does mySum(b=3) return an error?
 {: .challenge}
 
 ### Testing and Documenting
@@ -472,9 +472,9 @@ all.equal(sd(dat[, 4]), sd(centered))
 {: .output}
 
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
-We have one more task first, though: we should write some [documentation]({{ site.github.url }}/reference#documentation) for our function to remind ourselves later what it's for and how to use it.
+We have one more task first, though: we should write some [documentation]({{ page.root }}/reference#documentation) for our function to remind ourselves later what it's for and how to use it.
 
-A common way to put documentation in software is to add [comments]({{ site.github.url }}/reference/#comment) like this:
+A common way to put documentation in software is to add [comments]({{ page.root }}/reference/#comment) like this:
 
 
 ~~~
@@ -554,7 +554,7 @@ center <- function(data, desired) {
 > {: .solution}
 {: .challenge}
 
-[01]: {{ site.github.url }}/01-starting-with-data/
+[01]: {{ page.root }}/01-starting-with-data/
 
 
 
