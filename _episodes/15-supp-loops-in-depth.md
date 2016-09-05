@@ -18,7 +18,7 @@ keypoints:
 
 In R you have multiple options when repeating calculations: vectorized operations, `for` loops, and `apply` functions.
 
-This lesson is an extension of [Analyzing Multiple Data Sets]({{ site.github.url }}/03-loops-R/).
+This lesson is an extension of [Analyzing Multiple Data Sets]({{ page.root }}/03-loops-R/).
 In that lesson, we introduced how to run a custom function, `analyze`, over multiple data files:
 
 
@@ -164,7 +164,7 @@ length
 
 A `for` loop is used to apply the same function calls to a collection of objects.
 R has a family of functions, the `apply` family, which can be used in much the same way.
-You've already used one of the family, `apply` in the first [lesson]({{ site.github.url }}/01-starting-with-data/).
+You've already used one of the family, `apply` in the first [lesson]({{ page.root }}/01-starting-with-data/).
 The `apply` family members include
 
  * `apply`  - apply over the margins of an array (e.g. the rows or columns of a matrix)
@@ -219,7 +219,7 @@ system.time(avg2 <- analyze2(filenames))
 
 ~~~
    user  system elapsed 
-  0.049   0.002   0.051 
+  0.076   0.004   0.149 
 ~~~
 {: .output}
 
@@ -249,7 +249,7 @@ system.time(avg3 <- analyze3(filenames))
 
 ~~~
    user  system elapsed 
-  0.052   0.002   0.054 
+  0.050   0.002   0.054 
 ~~~
 {: .output}
 

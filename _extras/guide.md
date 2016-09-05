@@ -18,7 +18,7 @@ the "other 90%" of the language
 as well.
 
 The secondary goal of this lesson is to give them a usable mental model of how programs run
-(what computer science educators call a [notional machine]({{ site.github.url }}/reference/#notional-machine)
+(what computer science educators call a [notional machine]({{ page.root }}/reference/#notional-machine)
 so that they can debug things when they go wrong.
 In particular,
 they must understand how function call stacks work.
@@ -33,23 +33,23 @@ but it's crucial they realize this is a difference of scale rather than kind.
 
 A typical, half-day, lesson would use the first three lessons:
 
-1. [Analyzing Patient Data]({{ site.github.url }}/01-starting-with-data/)
-2. [Creating Functions]({{ site.github.url }}/02-func-R/)
-3. [Analyzing Multiple Data Sets]({{ site.github.url }}/03-loops-R/)
+1. [Analyzing Patient Data]({{ page.root }}/01-starting-with-data/)
+2. [Creating Functions]({{ page.root }}/02-func-R/)
+3. [Analyzing Multiple Data Sets]({{ page.root }}/03-loops-R/)
 
 An additional half-day could add the next two lessons:
 
-4.  [Making choices]({{ site.github.url }}/04-cond/)
-5.  [Command-Line Programs]({{ site.github.url }}/05-cmdline/)
+4.  [Making choices]({{ page.root }}/04-cond/)
+5.  [Command-Line Programs]({{ page.root }}/05-cmdline/)
 
 Time permitting,
 you can fit in one of these shorter lessons that cover bigger picture ideas
 like best practices for organizing code, reproducible research,
 and creating packages:
 
-6.  [Best practices for using R and designing programs]({{ site.github.url }}/06-best-practices-R/)
-7.  [Dynamic reports with knitr]({{ site.github.url }}/07-knitr-R/)
-8.  [Making packages in R]({{ site.github.url }}/08-making-packages-R/)
+6.  [Best practices for using R and designing programs]({{ page.root }}/06-best-practices-R/)
+7.  [Dynamic reports with knitr]({{ page.root }}/07-knitr-R/)
+8.  [Making packages in R]({{ page.root }}/08-making-packages-R/)
 
 ## Using Git in RStudio
 
@@ -97,7 +97,7 @@ line and this should resolve the issue.
     arthritis treatment. With it we explain `R` data structure, basic data
     manipulation and plotting, writing functions and loops.
 
-## [Analyzing Patient Data]({{ site.github.url }}/01-starting-with-data/)
+## [Analyzing Patient Data]({{ page.root }}/01-starting-with-data/)
 
 *   Check learners are reading files from the correct location (set working
     directory); remind them of the shell lesson.
@@ -105,11 +105,11 @@ line and this should resolve the issue.
 *   Provide shortcut for the assignment operator (`<-`) (RStudio: Alt+- on
     Windows/Linux; Option+- on Mac).
 
-## [Addressing Data]({{ site.github.url }}/10-supp-addressing-data/)
+## [Addressing Data]({{ page.root }}/10-supp-addressing-data/)
 
 *   Note that the data frame `dat` is not the same set of data as in other lessons.
 
-## [Analyzing Multiple Data Sets]({{ site.github.url }}/03-loops-R/)
+## [Analyzing Multiple Data Sets]({{ page.root }}/03-loops-R/)
 
 *   The transition from the previous lesson to this one might be challenging for
     a very novice audience. Do not rush through the challenges, maybe drop some.

@@ -182,7 +182,7 @@ print_words(best_practice[-6])
 ~~~
 {: .output}
 
-The improved version of `print_words` uses a [for loop]({{ site.github.url }}/reference/#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
+The improved version of `print_words` uses a [for loop]({{ page.root }}/reference/#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
 The general form of a loop is:
 
 
@@ -193,7 +193,7 @@ for (variable in collection) {
 ~~~
 {: .r}
 
-We can name the [loop variable]({{ site.github.url }}/reference/#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
+We can name the [loop variable]({{ page.root }}/reference/#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
 `in` is part of the `for` syntax.
 Note that the body of the loop is enclosed in curly braces `{ }`.
 For a single-line loop body, as here, the braces aren't needed, but it is good practice to include them as we did.
@@ -279,7 +279,7 @@ length(vowels)
 ~~~
 {: .output}
 
-`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson]({{ site.github.url }}/13-supp-data-structures/) to learn more about the different ways to store data in R).
+`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson]({{ page.root }}/13-supp-data-structures/) to learn more about the different ways to store data in R).
 
 
 > ## Printing Numbers
@@ -570,7 +570,7 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 > accomplish this. Sometimes the choice of one method over another is more a
 > matter of personal style, but other times it can have consequences for the
 > speed of your code. For instruction on best practices, see this supplementary
-> [lesson]({{ site.github.url }}/15-supp-loops-in-depth/) that demonstrates how to properly repeat
+> [lesson]({{ page.root }}/15-supp-loops-in-depth/) that demonstrates how to properly repeat
 > operations in R.
 {: .callout}
 
