@@ -109,6 +109,8 @@ increment_me <- function(value_to_increment, value_to_increment_by = 1){
 
 ## Glossary
 
+{:auto_ids}
+
 argument
 :   A value given to a function or program when it runs. The term is often used interchangeably (and inconsistently) with [parameter](#parameter).
 
