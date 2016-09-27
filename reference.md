@@ -109,14 +109,13 @@ increment_me <- function(value_to_increment, value_to_increment_by = 1){
 
 ## Glossary
 
-{:auto_ids}
 argument
 :   A value given to a function or program when it runs. The term is often used interchangeably (and inconsistently) with [parameter](#parameter).
 
 call stack
 :   A data structure inside a running program that keeps track of active function calls. Each call's variables are stored in a [stack frame](#stack-frame); a new stack frame is put on top of the stack for each call, and discarded when the call is finished.
 
-{:#comma-separated-values}comma-separated values (CSV)
+comma-separated values (CSV)
 :   A common textual representation for tables in which the values in each row are separated by commas.
 
 comment
@@ -125,7 +124,7 @@ comment
 conditional statement
 :   A statement in a program that might or might not be executed depending on whether a test is true or false.
 
-{:#dimensions}dimensions (of an array)
+dimensions (of an array)
 :   An array's extent, represented as a vector. For example, an array with 5 rows and 3 columns has dimensions `(5,3)`.
 
 documentation
@@ -173,10 +172,10 @@ slice
 stack frame
 :   A data structure that provides storage for a function's local variables. Each time a function is called, a new stack frame is created and put on the top of the [call stack](#call-stack). When the function returns, the stack frame is discarded.
 
-{:#standard-input}standard input (stdin)
+standard input (stdin)
 :   A process's default input stream. In interactive command-line applications, it is typically connected to the keyboard; in a [pipe](#pipe), it receives data from the [standard output](#standard-output) of the preceding process.
 
-{:#standard-output}standard output (stdout)
+standard output (stdout)
 :   A process's default output stream. In interactive command-line applications, data sent to standard output is displayed on the screen; in a [pipe](#pipe), it is passed to the [standard input](#standard-input) of the next process.
 
 string
