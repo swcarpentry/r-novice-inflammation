@@ -327,6 +327,16 @@ median(dat[, 7])
 sd(dat[, 7])
 ```
 
+R also has a function that summaries the previous common calculations:
+
+```{r}
+# Summarize function
+summary(dat[,1:4])
+```
+
+For every column in the data frame, the function "summary" calculates: the minimun value, the first quartile, the median, the mean, the third quartile and the max value, given helpful details about the sample distribution.
+
+
 What if we need the maximum inflammation for all patients, or the average for each day?
 As the diagram below shows, we want to perform the operation across a margin of the data frame:
 
