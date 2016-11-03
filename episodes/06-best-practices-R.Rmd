@@ -7,7 +7,7 @@ questions:
 objectives:
 - "Define best formatting practices when writing code in R scripts."
 - "Synthesize a consistent personal coding style to increase code readability, consistency, and repeatability."
-- "Apply this style to one's own code."
+- "Apply this style to your own code."
 keypoints:
 - "Start each program with a description of what it does."
 - "Then load all required packages."
@@ -25,33 +25,35 @@ keypoints:
 - "Use version control."
 ---
 
-```{r, include = FALSE}
+```{r source, include = FALSE}
 source("../bin/chunk-options.R")
 ```
 
-1. Start your code with an annotated description of what the code does when it is run:
+1. Start your code with an annotated description of what the code does:
 
-```{r}
+```{r comment1}
 #This is code to replicate the analyses and figures from my 2014 Science paper.
 #Code developed by Sarah Supp, Tracy Teal, and Jon Borelli
 ```
 
-2. Next, load all of the packages that will be necessary to run your code (using `library`):
+2. Next, load all of the packages needed to run your code (using `library()`):
 
-```{r, eval=FALSE}
+```{r loadpkgs, eval=FALSE}
 library(ggplot2)
 library(reshape)
 library(vegan)
 ```
 
+If you use only one or two functions from a package, it is sometimes useful to note that fact in a comment, e.g. `library(reshape2) ## for melt()`
+
 3. Set your working directory before `source()`ing a script, or start `R` inside your project folder:
 
-One should exercise caution when using `setwd()`. Changing directories in a script file can limit reproducibility:
+Exercise caution when using `setwd()`. Changing directories in a script file can limit reproducibility:
 
-* `setwd()` will return an error if the directory to which you're trying to change doesn't exit or if the user doesn't have the correct permissions to access that directory. This becomes a problem when sharing scripts between users who have organized their directories differently.
-* If/when your script terminates with an error, you might leave the user in a different directory than the one they started in, and if they then call the script again, this will cause further problems. If you must use `setwd()`, it is best to put it at the top of the script to avoid these problems.
+* `setwd()` will return an error if the directory you're trying to change to doesn't exist or if the user doesn't have the correct permissions to access that directory. This becomes a problem when sharing scripts between users who have organized their directories differently.
+* If/when your script terminates with an error, you might leave the user in a different directory than the one they started in, which will cause further problems if they then call the script again. If you must use `setwd()`, it is best to put it at the top of the script to avoid these problems. Putting a commented-out `setwd()` call at the top of your code can be a reasonable compromise: it reminds you where on your machine your material is living, is easy to copy-and-paste if necessary, but doesn't commit other users.
 
-The following error message indicates that R has failed to set the working directory you specified:
+This error message indicates that R has failed to set the working directory you specified:
 
 ```
 Error in setwd("~/path/to/working/directory") : cannot change working directory
@@ -61,13 +63,13 @@ It is best practice to have the user running the script begin in a consistent di
 
 4. Annotate and mark your code using `#` or `#-` to set off sections of your code and to make finding specific parts of your code easier.
 
-5. If you create only one or a few custom functions in your script, put them toward the top of your code so they are among the first objects created. If you have written many functions, put them all in their own .R file and then `source` those files. `source` will define all of these functions so that your code can make use of them as needed. For the reasons listed above, try to avoid using `setwd()` (or other functions that have side-effects in the user's workspace) in scripts you `source`.
+5. If you create only a few custom functions in your script, put them toward the top of your code so they are among the first objects created. If you have written many functions, put them all in their own .R file and then `source()` those files. `source()` will define all of these functions so that your code can use them as needed. For the reasons listed above, avoid using `setwd()` (or other functions that have side-effects in the user's workspace) in scripts you `source()`.
 
 ```{r, eval=FALSE}
 source("my_genius_fxns.R")
 ```
 
-6. Use a consistent style within your code. For example, name all matrices something ending in `.mat`. Consistency makes code easier to read and problems easier to spot.
+6. Use a consistent style within your code. For example, name all matrices something ending in `.mat`. Indent consistently and decide on a scheme for multi-word variable names (e.g. `resource.use`, `resource_use`, or `resourceUse`). Consistency makes code easier to read and problems easier to spot.
 
 7. Keep your code in bite-sized chunks. If a single function or loop gets too long, consider looking for ways to break it into smaller pieces.
 
@@ -85,20 +87,20 @@ rather than:
 dat <- read.csv(file = "/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv", header = TRUE)
 ```
 
-10. R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. To inspect the objects in your current R  environment, you can list the objects, search current packages, and remove objects that are currently not in use. A good practice when running long lines of computationally intensive  code is to remove temporary objects after they have served their purpose. However, sometimes, R will not clean up unused memory for a while after you delete objects. You can force R to tidy up its memory by using `gc()`.
+10. R can run into memory issues. R scripts that run for a long time often run out of memory. To inspect the objects in your current R  environment, you can list the objects, search current packages, and remove objects that are currently not in use. A good practice when running long chunks of computationally intensive  code is to remove temporary objects after they have served their purpose. However, R will not always clean up unused memory immediately after you delete objects. You can force R to tidy up its memory by using `gc()`.
 
 ```{r, eval=FALSE}
 interim_object <- data.frame(rep(1:100,10),rep(101:200,10),rep(201:300,10)) # Sample dataset of 1000 rows
 object.size(interim_object) # Reports the memory size allocated to the object
-rm(interim_object) # Removes only the object itself and not necessarily the memory allotted to it
+rm("interim_object") # Removes only the object itself and not necessarily the memory allotted to it
 gc() # Force R to release memory it is no longer using
 ls()  # Lists all the objects in your current workspace
 rm(list = ls()) # If you want to delete all the objects in the workspace and start with a clean slate
 ```
 
-11. Don't save a session history (the default option in R, when it asks if you want an `RData` file). Instead, start in a clean environment so that older objects don't remain in your environment any longer than they need to. If that happens, it can lead to unexpected results.
+11. Don't save your workspace (the default option in R, when it asks if you want to "Save workspace image [y/n/c]?"). Instead, start in a clean workspace without old objects cluttering it. Leftover objects from previous sessions can lead to unexpected, hard-to-debug results. Do *not* put `rm(list=ls())` (which removes all objects in your current workspace, as shown in the previous code example) at the top of your code, as this is a trap for other users who might `source()` or copy-and-paste your code in the course of their R session. Instead, restart R when you want to start fresh.
 
-12. Wherever possible, keep track of `sessionInfo()` somewhere in your project folder. Session information is invaluable because it captures all of the packages used in the current project. If a newer version of a package changes the way a function behaves, you can always go back and reinstall the version that worked (Note: At least on CRAN, all older versions of packages are permanently archived).
+12. Wherever possible, keep track of `sessionInfo()` somewhere in your project folder. Session information is invaluable because it captures all of the packages used in the current project. If a newer version of a package changes the way a function behaves, you can always go back and reinstall the version that worked (Note: At least on CRAN, all older versions of packages are permanently archived). For more complex projects, you may want to use the [packrat](https://CRAN.R-project.org/package=packrat) package.
 
 13. Collaborate. Grab a buddy and practice "code review". Review is used for preparing experiments and manuscripts; why not use it for code as well? Our code is also a major scientific achievement and the product of lots of hard work!
 
