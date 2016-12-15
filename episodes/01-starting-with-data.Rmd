@@ -6,7 +6,7 @@ questions:
 - "How do I read data into R?"
 - "How do I assign variables?"
 - "What is a data frame?"
-- "How do I access subsets a data frame?"
+- "How do I access subsets of a data frame?"
 - "How do I calculate simple statistics like mean and median?"
 - "Where can I get help?"
 - "How can I plot my data?"
@@ -22,7 +22,7 @@ keypoints:
 - "The function `dim` gives the dimensions of a data frame."
 - "Use `object[x, y]` to select a single element from a data frame."
 - "Use `from:to` to specify a sequence that includes the indices from `from` to `to`."
-- "All the indexing and slicing that works on data frames also works on vectors."
+- "All the indexing and subsetting that works on data frames also works on vectors."
 - "Use `#` to add comments to programs."
 - "Use `mean`, `max`, `min` and `sd` to calculate simple statistics."
 - "Use `apply` to calculate statistics across the rows or columns of a data frame."
@@ -114,19 +114,25 @@ We can create a new variable simply by assigning a value to it using `<-`
 weight_kg <- 55
 ```
 
-Once a variable has a value, we can print it by typing the name of the variable and hitting `Enter` (or `return`).
+Once a variable is created, we can use the variable name to refer to the value it was assigned. The variable name now acts as a tag. Whenever R reads that tag (`weight_kg`), it substitutes the value (`55`).
+
+<img src="../fig/tag-variables.svg" alt="Variables as Tags" />
+
+To see the value of a variable, we can print it by typing the name of the variable and hitting `Enter` (or `return`).
 In general, R will print to the console any object returned by a function or operation *unless* we assign it to a variable.
 
 ```{r}
 weight_kg
 ```
 
-We can do arithmetic with the variable:
+We can treat our variable like a regular number, and do arithmetic it:
 
 ```{r}
 # weight in pounds:
 2.2 * weight_kg
 ```
+
+<img src="../fig/arithmetic-variables.svg" alt="Variables as Tags" />
 
 > ## Commenting
 >
@@ -143,13 +149,13 @@ weight_kg <- 57.5
 weight_kg
 ```
 
-If we imagine the variable as a sticky note with a name written on it,
-assignment is like putting the sticky note on a particular value:
+<img src="../fig/reassign-variables.svg" alt="Reassigning Variables" />
 
-<img src="../fig/python-sticky-note-variables-01.svg" alt="Variables as Sticky Notes" />
+Assigning a new value to a variable breaks the connection with the old value; R forgets that number and applies the variable name to the new value. 
 
-This means that assigning a value to one object does not change the values of other variables.
-For example, let's store the subject's weight in pounds in a variable:
+When you assign a value to a variable, R only stores the value, not the calculation you used to create it. This is an important point if you're used to the way a spreadsheet program automatically updates linked cells. Let's look at an example.
+
+First, we'll convert `weight_kg` into pounds, and store the new value in the variable `weight_lb`:
 
 ```{r}
 weight_lb <- 2.2 * weight_kg
@@ -159,9 +165,12 @@ weight_kg
 weight_lb
 ```
 
-<img src="../fig/python-sticky-note-variables-02.svg" alt="Creating Another Variable" />
+In words, we're asking R to look up the value we tagged `weight_kg`,
+multiply it by 2.2, and tag the result with the name `weight_lb`:
 
-and then change `weight_kg`:
+<img src="../fig/new-variables.svg" alt="Creating Another Variable" />
+
+If we now change the value of `weight_kg`:
 
 ```{r}
 weight_kg <- 100.0
@@ -171,7 +180,7 @@ weight_kg
 weight_lb
 ```
 
-<img src="../fig/python-sticky-note-variables-03.svg" alt="Updating a Variable" />
+<img src="../fig/memory-variables.svg" alt="Updating a Variable" />
 
 Since `weight_lb` doesn't "remember" where its value came from, it isn't automatically updated when `weight_kg` changes.
 This is different from the way spreadsheets work.
@@ -221,7 +230,7 @@ class(dat)
 ```
 
 The output tells us that is a data frame. Think of this structure as a spreadsheet in MS Excel that many of us are familiar with.
-Data frames are very useful for storing data and you will find them elsewhere when programming in R. A typical data frame of experimental data contains individual observations in rows and variables in columns.
+Data frames are very useful for storing data and you will use them frequently when programming in R. A typical data frame of experimental data contains individual observations in rows and variables in columns.
 
 We can see the shape, or [dimensions]({{ page.root }}/reference/#dimensions), of the data frame with the function `dim`:
 
@@ -233,43 +242,48 @@ This tells us that our data frame, `dat`, has `r nrow(dat)` rows and `r ncol(dat
 
 If we want to get a single value from the data frame, we can provide an [index]({{ page.root }}/reference/#index) in square brackets, just as we do in math:
 
-```{r}
-# first value in dat
+```{r selecting data frame elements}
+# first value in dat, row 1, column 1
 dat[1, 1]
-# middle value in dat
+# middle value in dat, row 30, column 20
 dat[30, 20]
 ```
 
-An index like `[30, 20]` selects a single element of a data frame, but we can select whole sections as well.
-For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:
+The first value in a data frame index is the row, the second value is the column. If we want to select more than one row or column, we can use the function `c`, which stands for **c**ombine. For example, to pick columns 10 and 20 from rows 1, 3, and 5, we can do this:
+
+```{r selecting with c}
+dat[c(1, 3, 5), c(10, 20)]
+```
+
+We frequently want to select contiguous rows or columns, such as the first ten rows, or columns 3 through 7. You can use `c` for this, but it's more convenient to use the `:` operator. This special function generates sequences of numbers:
+
+```{r sequences}
+1:5
+3:12
+```
+
+For example, we can select the first ten columns of values for the first four rows like this:
 
 ```{r}
 dat[1:4, 1:10]
 ```
 
-The [slice]({{ page.root }}/reference/#slice) `1:4` means, "Start at index 1 and go to index 4."
-
-The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
+or the first ten columns of rows 5 to 10 like this:
 
 ```{r}
 dat[5:10, 1:10]
 ```
-We can use the function `c`, which stands for **c**ombine, to select non-contiguous values:
 
-```{r}
-dat[c(3, 8, 37, 56), c(10, 14, 29)]
-```
-
-We also don't have to provide a slice for either the rows or the columns.
-If we don't include a slice for the rows, R returns all the rows; if we don't include a slice for the columns, R returns all the columns.
-If we don't provide a slice for either rows or columns, e.g. `dat[, ]`, R returns the full data frame.
+If you want to select all rows or all columns, leave that index value empty. 
 
 ```{r}
 # All columns from row 5
 dat[5, ]
-# All rows from column 16
-dat[, 16]
+# All rows from column 16-18
+dat[, 16:18]
 ```
+
+If you leave both index values empty (i.e., `dat[, ]`), you get the entire data frame. 
 
 > ## Addressing Columns by Name
 >
@@ -288,11 +302,29 @@ patient_1 <- dat[1, ]
 max(patient_1)
 ```
 
+<!-- 
+    OUCH!! The following may be true, but it will vary by R version, not by
+    installation! There shouldn't be an issue with a data frame where all
+    columns are numeric without missing values. Under those circumstances,
+    coercion should do what you expect. You'll get problems with mixed
+    types (factors, character etc), or with missing values. If this is
+    actually a problem, we need to change the example - we should be able
+    to come up with an example that doesn't require this ugliness in the
+    very first lesson. 
+    
+    Also, columns always work as expected because by definition a column
+    contains a vector of values of the same type. Rows include values from
+    different columns, which of course can be different types. This doesn't
+    need to be confusing, and if we're careful in our presentation here we
+    can avoid this until the students know enough to cope rationally.
+-->
+
+<!--
 > ## Forcing Conversion
 >
 > The code above may give you an error in some R installations,
-> since R does not automatically convert a sliced row of a `data.frame` to a vector.
-> (Confusingly, sliced columns are automatically converted.)
+> since R does not automatically convert a row from a `data.frame` to a vector.
+> (Confusingly, subsetted columns are automatically converted.)
 > If this happens, you can use the `as.numeric` command to convert the row of data to a numeric vector:
 >
 > `patient_1 <- as.numeric(dat[1, ])`
@@ -305,6 +337,7 @@ max(patient_1)
 >
 > `class(as.numeric(dat[1, ]))`
 {: .callout}
+-->
 
 We don't actually need to store the row in a variable of its own.
 Instead, we can combine the selection and the function call:
@@ -364,10 +397,10 @@ We'll learn why this is so in the next lesson.
 > `colMeans`, respectively.
 {: .callout}
 
-> ## Slicing (Subsetting) Data
+<!-- Slice is a Python thing. I've never seen this term used in R -->
+> ## Subsetting Data
 >
-> A subsection of a data frame is called a [slice]({{ page.root }}/reference/#slice).
-> We can take slices of character vectors as well:
+> We can take subsets of character vectors as well:
 >
 > ```{r}
 > animal <- c("m", "o", "n", "k", "e", "y")
@@ -390,7 +423,7 @@ We'll learn why this is so in the next lesson.
 > ## Subsetting More Data
 >
 > Suppose you want to determine the maximum inflammation for patient 5 across days three to seven.
-> To do this you would extract the relevant slice from the data frame and calculate the maximum value.
+> To do this you would extract the relevant subset from the data frame and calculate the maximum value.
 > Which of the following lines of R code gives the correct answer?
 >
 > 1. `max(dat[5, ])`
@@ -399,7 +432,7 @@ We'll learn why this is so in the next lesson.
 > 4. `max(dat[5, 3, 7])`
 {: .challenge}
 
-> ## Slicing and Re-Assignment
+> ## Subsetting and Re-Assignment
 >
 > Using the inflammation data frame `dat` from above:
 > Let's pretend there was something wrong with the instrument on the first five days for every second patient (#2, 4, 6, etc.), which resulted in the measurements being twice as large as they should be.
