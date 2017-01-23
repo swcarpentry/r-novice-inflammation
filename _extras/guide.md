@@ -105,6 +105,15 @@ line and this should resolve the issue.
 *   Provide shortcut for the assignment operator (`<-`) (RStudio: Alt+- on
     Windows/Linux; Option+- on Mac).
 
+*   When performing operations on sliced rows of data frames, be aware that some 
+    functions in R automatically convert the object type to a numeric vector, while 
+    others do not. For example, `max(dat[1, ])` works as expected, while `mean(dat[1, ])` 
+    returns an error. You can fix this by including an explicit call to `as.numeric()`, 
+    for example `mean(as.numeric(dat[1, ]))`. This issue is also mentioned in a callout 
+    box in the lesson materials, since it is unexpected and can create confusion when 
+    simple examples fail (by contrast, operations on sliced columns of data frames always 
+    work as expected, since columns of data frames are already vectors).
+
 ## [Addressing Data]({{ page.root }}/10-supp-addressing-data/)
 
 *   Note that the data frame `dat` is not the same set of data as in other lessons.
