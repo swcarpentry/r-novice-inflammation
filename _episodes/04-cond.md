@@ -376,7 +376,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 >
 > 
 > ~~~
-> filenames <- list.files(path = "data", pattern = "inflammation*.csv", full.names = TRUE)
+> filenames <- list.files(path = "data", pattern = "inflammation.*csv", full.names = TRUE)
 > filename_max <- "" # filename where the maximum average inflammation patient is found
 > patient_max <- 0 # index (row number) for this patient in this file
 > average_inf_max <- 0 # value of the average inflammation score for this patient
@@ -564,7 +564,7 @@ Now we can save all of the results with just one line of code:
 
 
 ~~~
-analyze_all("inflammation*.csv")
+analyze_all("inflammation.*csv")
 ~~~
 {: .r}
 
