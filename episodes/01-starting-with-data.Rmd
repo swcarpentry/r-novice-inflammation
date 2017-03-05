@@ -413,7 +413,7 @@ We'll learn why this is so in the next lesson.
 > > whichPatients <- seq(2,40,2)
 > > whichDays <- c(1:5)
 > > dat2 <- dat
-> > dat2[whichPatients,whichDays] <- dat2[whichPatients,whichDays]/2
+> > dat2[whichDays,whichPatients] <- dat2[whichDays,whichPatients]/2
 > > (dat2)
 > > ~~~
 > > {: .r}
