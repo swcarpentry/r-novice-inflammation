@@ -36,7 +36,7 @@ knitr_fig_path("01-starting-with-data-")
 
 We are studying inflammation in patients who have been given a new treatment for arthritis,
 and need to analyze the first dozen data sets.
-The data sets are stored in [comma-separated values]({{ page.root }}/reference/#comma-separated-values-(csv)) (CSV) format. Each row holds the observations for just one patient. Each column holds the inflammation measured in a day, so we have a set of values in successive days.
+The data sets are stored in [comma-separated values]({{ page.root }}/reference/#comma-separated-values-csv) (CSV) format. Each row holds the observations for just one patient. Each column holds the inflammation measured in a day, so we have a set of values in successive days.
 The first few rows of our first file look like this:
 
 ```{r echo = FALSE}
@@ -223,7 +223,7 @@ class(dat)
 The output tells us that is a data frame. Think of this structure as a spreadsheet in MS Excel that many of us are familiar with.
 Data frames are very useful for storing data and you will find them elsewhere when programming in R. A typical data frame of experimental data contains individual observations in rows and variables in columns.
 
-We can see the shape, or [dimensions]({{ page.root }}/reference/#dimensions), of the data frame with the function `dim`:
+We can see the shape, or [dimensions]({{ page.root }}/reference/#dimensions-of-an-array), of the data frame with the function `dim`:
 
 ```{r}
 dim(dat)
