@@ -142,6 +142,15 @@ weight_kg <- 57.5
 # weight in kilograms is now
 weight_kg
 ```
+> ## Variable Naming Conventions
+>
+> Historically, R programmers have used a variety of conventions for naming variables. The `.` character
+> in R can be a valid part of a variable name; thus the above assignment could have easily been `weight.kg <- 57.5`.
+> This is often confusing to R newcomers who have programmed in languages where `.` has a more significant meaning. 
+> Today, most R programmers 1) start variable names with lower case letters, 2) separate words in variable names with 
+> underscores, and 3) use only lowercase letters, underscores, and numbers in variable names. The book *R Packages* includes
+> a [chapter](http://r-pkgs.had.co.nz/style.html) on this and other style considerations. 
+{: .callout}
 
 If we imagine the variable as a sticky note with a name written on it,
 assignment is like putting the sticky note on a particular value:
