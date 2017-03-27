@@ -174,10 +174,10 @@ stack frame
 :   A data structure that provides storage for a function's local variables. Each time a function is called, a new stack frame is created and put on the top of the [call stack](#call-stack). When the function returns, the stack frame is discarded.
 
 standard input (stdin)
-:   A process's default input stream. In interactive command-line applications, it is typically connected to the keyboard; in a [pipe](#pipe), it receives data from the [standard output](#standard-output) of the preceding process.
+:   A process's default input stream. In interactive command-line applications, it is typically connected to the keyboard; in a [pipe](#pipe), it receives data from the [standard output](#standard-output-stdout) of the preceding process.
 
 standard output (stdout)
-:   A process's default output stream. In interactive command-line applications, data sent to standard output is displayed on the screen; in a [pipe](#pipe), it is passed to the [standard input](#standard-input) of the next process.
+:   A process's default output stream. In interactive command-line applications, data sent to standard output is displayed on the screen; in a [pipe](#pipe), it is passed to the [standard input](#standard-input-stdin) of the next process.
 
 string
 :   Short for "character string", a sequence of zero or more characters.
