@@ -727,6 +727,22 @@ mdat
 ~~~
 {: .output}
 
+
+Elements of a matrix can be referenced by specifying the index along each dimension (e.g. "row" and "column") in single square brackets.
+
+
+~~~
+mdat[2, 3]
+~~~
+{: .r}
+
+
+
+~~~
+[1]  13 
+~~~
+{: .output}
+
 ### List
 
 In R lists act as containers. Unlike atomic vectors, the contents of a list are
@@ -780,6 +796,7 @@ length(x)
 {: .output}
 
 
+The content of elements of a list can be retrieved by using double square brackets. 
 
 ~~~
 x[[1]]
@@ -813,6 +830,9 @@ length(x)
 2. What about `x[[1]]`?
 
 
+Elements of a list can be named (i.e. lists can have the `names` atttibute) 
+
+
 ~~~
 xlist <- list(a = "Karthik Ram", b = 1:10, data = head(iris))
 xlist
@@ -841,14 +861,15 @@ $data
 
 1. What is the length of this object? What about its structure?
 
-Lists can be extremely useful inside functions. You can “staple” together lots
+Lists can be extremely useful inside functions. Because the functions in R are able 
+to return only a single object, you can “staple” together lots
 of different kinds of results into a single object that a function can return.
 
 A list does not print to the console like a vector. Instead, each element of the
 list starts on a new line.
 
 Elements are indexed by double brackets. Single brackets will still return
-a(nother) list.
+a(nother) list. If the elements of a list are named, they can be referenced by the `$` notation (i.e. `xlist$data`). 
 
 
 ### Data Frame
@@ -856,7 +877,7 @@ a(nother) list.
 A data frame is a very important data type in R. It's pretty much the *de facto*
 data structure for most tabular data and what we use for statistics.
 
-A data frame is a special type of list where every element of the list has same length.
+A data frame is a *special type of list* where every element of the list has same length (i.e. data frame is a "rectangular" list).
 
 Data frames can have additional attributes such as `rownames()`, which can be
 useful for annotating data, like `subject_id` or `sample_id`. But most of the
@@ -864,12 +885,11 @@ time they are not used.
 
 Some additional information on data frames:
 
-* Usually created by `read.csv()` and `read.table()`.
-* Can convert to matrix with `data.matrix()` (preferred) or `as.matrix()`
-* Coercion will be forced and not always what you expect.
-* Can also create with `data.frame()` function.
+* Usually created by `read.csv()` and `read.table()`, i.e. when importing the data.
+* Assuming all columns in a data frame are of same type, data frame can be converted to a matrix with `data.matrix()` (preferred) or `as.matrix()`. Otherwise type coercion will be enforced and the results may not always be what you expect.
+* Can also create a new data frame with `data.frame()` function.
 * Find the number of rows and columns with `nrow(dat)` and `ncol(dat)`, respectively.
-* Rownames are usually 1, 2, ..., n.
+* Rownames are automatically generated and usually look like 1, 2, ..., n. Consistency of rownames may not be honored when rows are reshuffled or subset.
 
 ### Creating Data Frames by Hand
 
@@ -901,12 +921,12 @@ dat
 
 > ## Useful Data Frame Functions
 >
-> * `head()` - shown first 6 rows
-> * `tail()` - show last 6 rows
-> * `dim()` - returns the dimensions
+> * `head()` - shows first 6 rows
+> * `tail()` - shows last 6 rows
+> * `dim()` - returns the dimensions of data frame (i.e. number of rows and number of columns)
 > * `nrow()` - number of rows
 > * `ncol()` - number of columns
-> * `str()` - structure of each column
+> * `str()` - structure of data frame - name, type and preview of data in each column
 > * `names()` - shows the `names` attribute for a data frame, which gives the column names.
 {: .callout}
 
@@ -914,7 +934,7 @@ See that it is actually a special list:
 
 
 ~~~
-is.list(iris)
+is.list(dat)
 ~~~
 {: .r}
 
@@ -928,7 +948,7 @@ is.list(iris)
 
 
 ~~~
-class(iris)
+class(dat)
 ~~~
 {: .r}
 
@@ -939,21 +959,72 @@ class(iris)
 ~~~
 {: .output}
 
+
+Because data frames are rectangular, elements of data frame can be referenced by specifying the row and the column index in single square brackets (similar to matrix).
+
+
+~~~
+dat[1, 3]
+~~~
+{: .r}
+
+
+~~~
+[1] 11
+~~~
+{: .output}
+
+
+As data frames are also lists, it is possible to refer to columns (which are elements of such list) using the list notation, i.e. either double square brackets or a `$`.
+
+
+~~~
+dat[["y"]]
+~~~
+{: .r}
+
+
+~~~
+[1] 11 12 13 14 15 16 17 18 19 20
+~~~
+{: .output}
+
+
+~~~
+dat$y
+~~~
+{: .r}
+
+
+~~~
+[1] 11 12 13 14 15 16 17 18 19 20
+~~~
+{: .output}
+
+
+The following table summarizes the one-dimensional and two-dimensional data structures in R in relation to diversity of data types they can contain.
+
+
 | Dimensions | Homogenous | Heterogeneous |
 | ------- | ---- | ---- |
 | 1-D | atomic vector | list |
 | 2-D | matrix | data frame |
 
 
+> Lists can contain elements that are themselves muti-dimensional (e.g. a lists can contain data frames or another type of objects). 
+> Lists can also contain elements of any length, therefore list do not necessarily have to be "rectangular". However in order for the 
+> list to qualify as a data frame, the lenghth of each element has to be the same. 
+{: .callout}
+
+
 > ## Column Types in Data Frames
 >
-> Knowing that data frames are lists of lists, can columns be of different type?
+> Knowing that data frames are lists, can columns be of different type?
 >
-> What type of structure do you expect on the iris data frame? Hint: Use `str()`.
+> What type of structure do you expect to see when you explore the structure of the iris data frame? Hint: Use `str()`.
 >
 > ~~~
-> # The Sepal.Length, Sepal.Width, Petal.Length and Petal.Width columns are all
-> # numeric types, while Species is a Factor.
+> # The Sepal.Length, Sepal.Width, Petal.Length and Petal.Width columns are all numeric types, while Species is a Factor.
 > # Lists can have elements of different types.
 > # Since a Data Frame is just a special type of list, it can have columns of
 > # differing type (although, remember that type must be consistent within each column!).
