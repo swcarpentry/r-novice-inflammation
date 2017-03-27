@@ -6,7 +6,10 @@ questions:
 - "How do I collect my code together so I can reuse it and share it?"
 - "How do I make my own packages?"
 objectives:
-- "Quick summary on how (and why) making R packages."
+- "Describe the required structure of R packages."
+- "Create the required structure of a simple R package."
+- "Write documentation comments that can be automatically compiled to R's native help and documentation format."
+
 keypoints:
 - "A package is the basic unit of reusability in R."
 - "Every package must have a DESCRIPTION file and an R directory containing code."

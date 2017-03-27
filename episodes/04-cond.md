@@ -564,7 +564,7 @@ Now we can save all of the results with just one line of code:
 
 
 ~~~
-analyze_all("inflammation*.csv")
+analyze_all("inflammation.*csv")
 ~~~
 {: .r}
 
