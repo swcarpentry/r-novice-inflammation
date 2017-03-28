@@ -411,7 +411,7 @@ analyze_all <- function(pattern) {
 Now we can save all of the results with just one line of code:
 
 ```{r}
-analyze_all("inflammation*.csv")
+analyze_all("inflammation.*csv")
 ```
 
 Now if we need to make any changes to our analysis, we can edit the `analyze` function and quickly regenerate all the figures with `analyze_all`.
