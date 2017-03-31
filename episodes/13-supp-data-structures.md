@@ -941,6 +941,7 @@ dat
 > * `ncol()` - number of columns
 > * `str()` - structure of data frame - name, type and preview of data in each column
 > * `names()` - shows the `names` attribute for a data frame, which gives the column names.
+> * `sapply(dataframe, class)` - shows the class of each column in the data frame
 {: .callout}
 
 See that it is actually a special list:
