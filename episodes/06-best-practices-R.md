@@ -19,7 +19,7 @@ keypoints:
 - "Factor out common operations rather than repeating them."
 - "Keep all of the source files for a project in one directory and use relative paths to access them."
 - "Keep track of the memory used by your program."
-- "Always start with a clean environment instead of saving session history."
+- "Always start with a clean environment instead of saving the workspace."
 - "Keep track of session information in your project folder."
 - "Have someone else review your code."
 - "Use version control."
@@ -51,6 +51,7 @@ If you use only one or two functions from a package, it is sometimes useful to n
 3. Set your working directory before `source()`ing a script, or start `R` inside your project folder:
 
 Exercise caution when using `setwd()`. Changing directories in a script file can limit reproducibility:
+
 
 * `setwd()` will return an error if the directory you're trying to change to doesn't exist or if the user doesn't have the correct permissions to access that directory. This becomes a problem when sharing scripts between users who have organized their directories differently.
 * If/when your script terminates with an error, you might leave the user in a different directory than the one they started in, which will cause further problems if they then call the script again. If you must use `setwd()`, it is best to put it at the top of the script to avoid these problems. Putting a commented-out `setwd()` call at the top of your code can be a reasonable compromise: it reminds you where on your machine your material is living, is easy to copy-and-paste if necessary, but doesn't commit other users.
