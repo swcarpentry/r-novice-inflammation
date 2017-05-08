@@ -172,6 +172,14 @@ information built in. It is particularly helpful when there are many levels
 > c) exercise < -factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = FALSE)
 >
 > d) exercise <- factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = TRUE)
+>> ## Solution
+>> Correct solution is **d)**
+>> ~~~
+>> exercise <- factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = TRUE)
+>> ~~~
+>> {: .r}
+>> We only expect three cathegories ("n", "l", "i"). We can order these from least intense to most intense, so let's use `oredered`.
+> {: .solution}
 {: .challenge}
 
 ###  Converting Factors
