@@ -240,6 +240,27 @@ dim(dat)
 
 This tells us that our data frame, `dat`, has `r nrow(dat)` rows and `r ncol(dat)` columns.
 
+At the moment, the columns of our data frame are named as they were in the csv file `inflammation-01.csv`. We can find the names of `dat` using the command `names`:
+
+```{r}
+names(dat)
+```
+
+We know that each row represents one patient and each column represents one time point. It is a good programing practice to use column names that indicate as good as possible the nature of the data. In our case, columns represent time points. Thus, let's modify our column names to T1, T2, T3 and so on. For this, we will use a comman called `gsub`:
+
+```{r}
+# Modify column names
+names(dat) <- gsub("V", "T", names(dat))
+# Show column names
+names(dat)
+```
+
+The comman `gsub` works as the find/replace option found in Excell. In the code above, the `gsub` function is defining that every letter `V` found in the column names of `dat` should be replaced by a letter `T`. Remember that R is case sensitive, so upper and lower cases matter. This is how the data frame looks like now:
+
+```{r}
+head(dat)
+```
+
 If we want to get a single value from the data frame, we can provide an [index]({{ page.root }}/reference/#index) in square brackets. The first number specifies the row and the second the column:
 
 ```{r}
