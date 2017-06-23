@@ -1,5 +1,5 @@
 ---
-title: "Analyzing Patient Data - APS"
+title: "Analyzing Patient Data"
 teaching: 45
 exercises: 0
 questions:
@@ -55,7 +55,7 @@ To do all that, we'll have to learn a little bit about programming.
 
 ### Loading Data
 
-Let's import the file called `inflammation-01.csv` into our R environment. To import the file, first we need to tell our computer where the file is. We do that by choosing a working directory, that is, a local directory on our computer containing the files we need. This is very important in R. If we forget this step we’ll get an error message saying that the file does not exist. We can set the working directory using the function `setwd`. For this example, we change the path to our new directory at the desktop:
+Let's import the file called `inflammation-01.csv` into our R environment. To import the file, first we need to tell our computer where the file is. We do that by choosing a working directory, that is, a local directory on our computer containing the files we need. This is very important in R. If we forget this step we???ll get an error message saying that the file does not exist. We can set the working directory using the function `setwd`. For this example, we change the path to our new directory at the desktop:
 
 ```{r,eval=FALSE}
 setwd("~/Desktop/r-novice-inflammation/")
@@ -416,6 +416,14 @@ We'll learn why this is so in the next lesson.
 > 2. `max(dat[3:7, 5])`
 > 3. `max(dat[5, 3:7])`
 > 4. `max(dat[5, 3, 7])`
+>
+> > ## Solution
+> >  
+> > Answer: 3
+> >
+> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in columns and the days are represented by the rows.  Subscripting in R follows the `[i,j]` principle, where `i=columns` and `j=rows`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
+> > 
+> {: .solution}
 {: .challenge}
 
 > ## Slicing and Re-Assignment
