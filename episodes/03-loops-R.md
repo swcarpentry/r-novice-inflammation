@@ -163,7 +163,7 @@ print_words(best_practice)
 ~~~
 {: .output}
 
-This is shorter---certainly shorter than something that prints every character in a hundred-letter string---and more robust as well:
+This is shorter - certainly shorter than something that prints every character in a hundred-letter string - and more robust as well:
 
 
 ~~~
@@ -195,7 +195,8 @@ for (variable in collection) {
 
 We can name the [loop variable]({{ page.root }}/reference/#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
 `in` is part of the `for` syntax.
-Note that the body of the loop is enclosed in curly braces `{ }`.
+Note that the condition (`variable in collection`) is enclosed in parentheses,
+and the body of the loop is enclosed in curly braces `{ }`.
 For a single-line loop body, as here, the braces aren't needed, but it is good practice to include them as we did.
 
 [restrictions]: http://cran.r-project.org/doc/manuals/R-intro.html#R-commands_003b-case-sensitivity-etc
