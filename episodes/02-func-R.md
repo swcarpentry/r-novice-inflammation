@@ -171,7 +171,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
 > Furthermore, we can extend that vector again using `c`, e.g. `y <- c(x, "D")` creates a vector `y` with four elements.
 > Write a function called `fence` that takes two vectors as arguments, called
-> original` and `wrapper`, and returns a new vector that has the wrapper vector
+> `original` and `wrapper`, and returns a new vector that has the wrapper vector
 > at the beginning and end of the original:
 >
 > 
@@ -248,7 +248,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 >     2. 11
 >     3. 23
 >     4. 30
-> 2.  If mySum(3) == 13, why does mySum(b=3) return an error?
+> 2.  If `mySum(3)` returns 13, why does `mySum(input_2 = 3)` return an error?
 {: .challenge}
 
 ### Testing and Documenting

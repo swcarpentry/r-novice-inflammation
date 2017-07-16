@@ -79,13 +79,11 @@ line and this should resolve the issue.
 ## Teaching Notes
 
 *   Watching the instructor grow programs step by step
-    is as helpful to learners as anything to do with Python.
-    Resist the urge to update a single cell repeatedly
+    is as helpful to learners as anything to do with R.
+    Resist the urge to clean up your R script as you go
     (which is what you'd probably do in real life).
-    Instead,
-    clone the previous cell and write the update in the new copy
-    so that learners have a complete record of how the program grew.
-    Once you've done this,
+    Instead, keep intermediate steps in your script.
+    Once you've reached the final version
     you can say,
     "Now why don't we just breaks things into small functions right from the start?"
 
