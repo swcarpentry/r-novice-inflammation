@@ -50,7 +50,7 @@ $ Rscript readings.R --max data/inflammation-*.csv
 
 Our overall requirements are:
 
-1. If no filename is given on the command line, read data from [standard input]({{ page.root }}/reference/#standard-input).
+1. If no filename is given on the command line, read data from [standard input]({{ page.root }}/reference/#standard-input-stdin).
 2. If one or more filenames are given, read data from them and report statistics for each file separately.
 3. Use the `--min`, `--mean`, or `--max` flag to determine what statistic to print.
 
@@ -82,11 +82,17 @@ Rscript session-info.R
 
 
 ~~~
-R version 3.1.2 (2014-10-31)
-Platform: x86_64-apple-darwin13.4.0 (64-bit)
+R version 3.3.3 (2017-03-06)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Antergos Linux
 
 locale:
-[1] en_CA.UTF-8/en_CA.UTF-8/en_CA.UTF-8/C/en_CA.UTF-8/en_CA.UTF-8
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
@@ -112,7 +118,7 @@ cat(args, sep = "\n")
 
 The function `commandArgs` extracts all the command line arguments and returns them as a vector.
 The function `cat`, similar to the `cat` of the Unix Shell, outputs the contents of the variable.
-Since we did not specify a filename for writing, `cat` sends the output to [standard output]({{ page.root }}/reference/#standard-output-(stdout)),
+Since we did not specify a filename for writing, `cat` sends the output to [standard output]({{ page.root }}/reference/#standard-output-stdout),
 which we can then pipe to other Unix functions.
 Because we set the argument `sep` to `"\n"`, which is the symbol to start a new line, each element of the vector is printed on its own line.
 Let's see what happens when we run this program in the Unix Shell:
@@ -127,7 +133,7 @@ Rscript print-args.R
 
 
 ~~~
-/Library/Frameworks/R.framework/Resources/bin/exec/R
+/usr/lib64/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -156,7 +162,7 @@ R --slave --no-restore --file=print-args.R --args
 
 
 ~~~
-/Library/Frameworks/R.framework/Resources/bin/exec/R
+/usr/lib64/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -176,7 +182,7 @@ Rscript print-args.R first second third
 
 
 ~~~
-/Library/Frameworks/R.framework/Resources/bin/exec/R
+/usr/lib64/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
