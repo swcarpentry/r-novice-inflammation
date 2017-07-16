@@ -33,7 +33,7 @@ keypoints:
 
 We are studying inflammation in patients who have been given a new treatment for arthritis,
 and need to analyze the first dozen data sets.
-The data sets are stored in [comma-separated values]({{ page.root }}/reference/#comma-separated-values-(csv)) (CSV) format. Each row holds the observations for just one patient. Each column holds the inflammation measured in a day, so we have a set of values in successive days.
+The data sets are stored in [comma-separated values]({{ page.root }}/reference/#comma-separated-values-csv) (CSV) format. Each row holds the observations for just one patient. Each column holds the inflammation measured in a day, so we have a set of values in successive days.
 The first few rows of our first file look like this:
 
 
@@ -56,7 +56,7 @@ To do all that, we'll have to learn a little bit about programming.
 
 ### Loading Data
 
-To load our inflammation data, first we need to tell our computer where is the file that contains the values. We have been told its name is `inflammation-01.csv`. This is very important in R, if we forget this step we’ll get an error message when trying to read the file. We can change the current working directory using the function `setwd`. For this example, we change the path to the directory we just created:
+Let's import the file called `inflammation-01.csv` into our R environment. To import the file, first we need to tell our computer where the file is. We do that by choosing a working directory, that is, a local directory on our computer containing the files we need. This is very important in R. If we forget this step we???ll get an error message saying that the file does not exist. We can set the working directory using the function `setwd`. For this example, we change the path to our new directory at the desktop:
 
 
 ~~~
@@ -67,7 +67,7 @@ setwd("~/Desktop/r-novice-inflammation/")
 Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
 Alternatively you can change the working directory using the RStudio GUI using the menu option `Session` -> `Set Working Directory` -> `Choose Directory...`
 
-The data files are located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
+The data file is located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
 
 
 ~~~
@@ -104,16 +104,16 @@ The filename needs to be a character string (or [string]({{ page.root }}/referen
 > Take a look at `?read.csv` and write the code to load a file called `commadec.txt` that has numeric values with commas as decimal mark, separated by semicolons.
 {: .challenge}
 
-The utility of a function is that it will perform its given action on whatever value is passed to the named argument(s).
-For example, in this case if we provided the name of a different file to the argument `file`, `read.csv` would read it instead.
-We'll learn more of the details about functions and their arguments in the next lesson.
+A function will perform its given action on whatever value is passed to the argument(s).
+For example, in this case if we provided the name of a different file to the argument `file`, `read.csv` would read that instead.
+We'll learn more about the details of functions and their arguments in the next lesson.
 
 Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `inflammation-01.csv`.
 Try it out.
 
-`read.csv` read the file, but we can't use data unless we assign it to a variable.
-A variable is just a name for a value, such as `x`, `current_temperature`, or `subject_id`.
-We can create a new variable simply by assigning a value to it using `<-`
+`read.csv` reads the file, but we can't use data unless we assign it to a variable.
+We can think of a variable as a container with a name, such as `x`, `current_temperature`, or `subject_id` that contains one or more values.
+We can create a new variable and assign a value to it using `<-`
 
 
 ~~~
@@ -137,7 +137,7 @@ weight_kg
 ~~~
 {: .output}
 
-We can do arithmetic with the variable:
+We can do arithmetics with the variable:
 
 
 ~~~
@@ -160,7 +160,7 @@ We can do arithmetic with the variable:
 > read it) have an easier time following what the code is doing.
 {: .callout}
 
-We can also change an object's value by assigning it a new value:
+We can also change an variable's value by assigning it a new value:
 
 
 ~~~
@@ -176,6 +176,15 @@ weight_kg
 [1] 57.5
 ~~~
 {: .output}
+> ## Variable Naming Conventions
+>
+> Historically, R programmers have used a variety of conventions for naming variables. The `.` character
+> in R can be a valid part of a variable name; thus the above assignment could have easily been `weight.kg <- 57.5`.
+> This is often confusing to R newcomers who have programmed in languages where `.` has a more significant meaning.
+> Today, most R programmers 1) start variable names with lower case letters, 2) separate words in variable names with
+> underscores, and 3) use only lowercase letters, underscores, and numbers in variable names. The book *R Packages* includes
+> a [chapter](http://r-pkgs.had.co.nz/style.html) on this and other style considerations.
+{: .callout}
 
 If we imagine the variable as a sticky note with a name written on it,
 assignment is like putting the sticky note on a particular value:
@@ -262,7 +271,7 @@ This is different from the way spreadsheets work.
 > and finally prints the assigned value of the variable `total_weight`.
 {: .callout}
 
-Now that we know how to assign things to variables, let's re-run `read.csv` and save its result:
+Now that we know how to assign things to variables, let's re-run `read.csv` and save its result into a variable called 'dat':
 
 
 ~~~
@@ -270,9 +279,9 @@ dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 ~~~
 {: .r}
 
-This statement doesn't produce any output because assignment doesn't display anything.
-If we want to check that our data has been loaded, we can print the variable's value.
-However, for large data sets it is convenient to use the function `head` to display only the first few rows of data.
+This statement doesn't produce any output because the assignment doesn't display anything.
+If we want to check if our data has been loaded, we can print the variable's value by typing the name of the variable `dat`. However, for large data sets it is convenient to use the function `head` to display only the first few rows of data.
+
 
 
 ~~~
@@ -322,7 +331,7 @@ head(dat)
 
 ### Manipulating Data
 
-Now that our data is loaded in memory, we can start doing things with it.
+Now that our data are loaded into R, we can start doing things with them.
 First, let's ask what type of thing `dat` is:
 
 
@@ -338,10 +347,10 @@ class(dat)
 ~~~
 {: .output}
 
-The output tells us that is a data frame. Think of this structure as a spreadsheet in MS Excel that many of us are familiar with.
-Data frames are very useful for storing data and you will find them elsewhere when programming in R. A typical data frame of experimental data contains individual observations in rows and variables in columns.
+The output tells us that it is a data frame. We can think of this as a spreadsheet in MS Excel, which many of us are familiar with.
+Data frames are very useful for organizing data and you will find them elsewhere when programming in R. A typical data frame of experimental data contains individual observations in rows and variables in columns.
 
-We can see the shape, or [dimensions]({{ page.root }}/reference/#dimensions), of the data frame with the function `dim`:
+We can see the shape, or [dimensions]({{ page.root }}/reference/#dimensions-of-an-array), of the data frame with the function `dim`:
 
 
 ~~~
@@ -358,7 +367,7 @@ dim(dat)
 
 This tells us that our data frame, `dat`, has 60 rows and 40 columns.
 
-If we want to get a single value from the data frame, we can provide an [index]({{ page.root }}/reference/#index) in square brackets, just as we do in math:
+If we want to get a single value from the data frame, we can provide an [index]({{ page.root }}/reference/#index) in square brackets. The first number specifies the row and the second the column:
 
 
 ~~~
@@ -496,7 +505,7 @@ dat[, 16]
 > You can learn more about subsetting by column name in this supplementary [lesson]({{ page.root }}/10-supp-addressing-data/).
 {: .callout}
 
-Now let's perform some common mathematical operations to learn about our inflammation data.
+Now let's perform some common mathematical operations to learn more about our inflammation data.
 When analyzing data we often want to look at partial statistics, such as the maximum value per patient or the average value per day.
 One way to do this is to select the data we want to create a new temporary data frame, and then perform the calculation on this subset:
 
@@ -612,6 +621,31 @@ sd(dat[, 7])
 ~~~
 {: .output}
 
+R also has a function that summaries the previous common calculations:
+
+
+~~~
+# Summarize function
+summary(dat[,1:4])
+~~~
+{: .r}
+
+
+
+~~~
+       V1          V2             V3              V4
+ Min.   :0   Min.   :0.00   Min.   :0.000   Min.   :0.00
+ 1st Qu.:0   1st Qu.:0.00   1st Qu.:1.000   1st Qu.:1.00
+ Median :0   Median :0.00   Median :1.000   Median :2.00
+ Mean   :0   Mean   :0.45   Mean   :1.117   Mean   :1.75
+ 3rd Qu.:0   3rd Qu.:1.00   3rd Qu.:2.000   3rd Qu.:3.00
+ Max.   :0   Max.   :1.00   Max.   :2.000   Max.   :3.00
+~~~
+{: .output}
+
+For every column in the data frame, the function "summary" calculates: the minimun value, the first quartile, the median, the mean, the third quartile and the max value, given helpful details about the sample distribution.
+
+
 What if we need the maximum inflammation for all patients, or the average for each day?
 As the diagram below shows, we want to perform the operation across a margin of the data frame:
 
@@ -658,31 +692,31 @@ We'll learn why this is so in the next lesson.
 > A subsection of a data frame is called a [slice]({{ page.root }}/reference/#slice).
 > We can take slices of character vectors as well:
 >
-> 
+>
 > ~~~
 > animal <- c("m", "o", "n", "k", "e", "y")
 > # first three characters
 > animal[1:3]
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
 > [1] "m" "o" "n"
 > ~~~
 > {: .output}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
 > # last three characters
 > animal[4:6]
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
 > [1] "k" "e" "y"
 > ~~~
@@ -708,6 +742,14 @@ We'll learn why this is so in the next lesson.
 > 2. `max(dat[3:7, 5])`
 > 3. `max(dat[5, 3:7])`
 > 4. `max(dat[5, 3, 7])`
+>
+> > ## Solution
+> >
+> > Answer: 3
+> >
+> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in columns and the days are represented by the rows.  Subscripting in R follows the `[i,j]` principle, where `i=columns` and `j=rows`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
+> >
+> {: .solution}
 {: .challenge}
 
 > ## Slicing and Re-Assignment
@@ -724,7 +766,7 @@ We'll learn why this is so in the next lesson.
 > > whichPatients <- seq(2,40,2)
 > > whichDays <- c(1:5)
 > > dat2 <- dat
-> > dat2[whichPatients,whichDays] <- dat2[whichPatients,whichDays]/2
+> > dat2[whichDays, whichPatients] <- dat2[whichDays, whichPatients]/2
 > > (dat2)
 > > ~~~
 > > {: .r}
