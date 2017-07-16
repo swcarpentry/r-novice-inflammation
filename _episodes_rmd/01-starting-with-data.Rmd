@@ -243,25 +243,23 @@ This tells us that our data frame, `dat`, has `r nrow(dat)` rows and `r ncol(dat
 If we want to get a single value from the data frame, we can provide an [index]({{ page.root }}/reference/#index) in square brackets. The first number specifies the row and the second the column:
 
 ```{r}
-# first value in dat
+# The first value in dat is indexed at row 1 column 1
 dat[1, 1]
-# middle value in dat
+# The middle value in dat is indexed at row 30 column 20
 dat[30, 20]
 ```
 
 An index like `[30, 20]` selects a single element of a data frame, but we can select whole sections as well.
-For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:
+For example, we can select values for the first four patients (rows) during the first ten days of treatment (columns) like this:
 
 ```{r}
 dat[1:4, 1:10]
 ```
 
-The [slice]({{ page.root }}/reference/#slice) `1:4` means, "Start at index 1 and go to index 4."
-
-The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
+The slice does not need to start at 1, e.g. the line below selects rows 5 through 10, and columns 3 through 10 :
 
 ```{r}
-dat[5:10, 1:10]
+dat[5:10, 3:10]
 ```
 We can use the function `c`, which stands for **c**ombine, to select non-contiguous values:
 
@@ -269,7 +267,7 @@ We can use the function `c`, which stands for **c**ombine, to select non-contigu
 dat[c(3, 8, 37, 56), c(10, 14, 29)]
 ```
 
-We also don't have to provide a slice for either the rows or the columns.
+We can also provide a slice for the rows but not for the columns, or for the columns but not for the rows. 
 If we don't include a slice for the rows, R returns all the rows; if we don't include a slice for the columns, R returns all the columns.
 If we don't provide a slice for either rows or columns, e.g. `dat[, ]`, R returns the full data frame.
 
