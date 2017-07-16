@@ -56,7 +56,7 @@ To do all that, we'll have to learn a little bit about programming.
 
 ### Loading Data
 
-Let's import the file called `inflammation-01.csv` into our R environment. To import the file, first we need to tell our computer where the file is. We do that by choosing a working directory, that is, a local directory on our computer containing the files we need. This is very important in R. If we forget this step we’ll get an error message saying that the file does not exist. We can set the working directory using the function `setwd`. For this example, we change the path to our new directory at the desktop:
+Let's import the file called `inflammation-01.csv` into our R environment. To import the file, first we need to tell our computer where the file is. We do that by choosing a working directory, that is, a local directory on our computer containing the files we need. This is very important in R. If we forget this step we???ll get an error message saying that the file does not exist. We can set the working directory using the function `setwd`. For this example, we change the path to our new directory at the desktop:
 
 
 ~~~
@@ -633,13 +633,13 @@ summary(dat[,1:4])
 
 
 ~~~
-       V1          V2             V3              V4      
- Min.   :0   Min.   :0.00   Min.   :0.000   Min.   :0.00  
- 1st Qu.:0   1st Qu.:0.00   1st Qu.:1.000   1st Qu.:1.00  
- Median :0   Median :0.00   Median :1.000   Median :2.00  
- Mean   :0   Mean   :0.45   Mean   :1.117   Mean   :1.75  
- 3rd Qu.:0   3rd Qu.:1.00   3rd Qu.:2.000   3rd Qu.:3.00  
- Max.   :0   Max.   :1.00   Max.   :2.000   Max.   :3.00  
+       V1          V2             V3              V4
+ Min.   :0   Min.   :0.00   Min.   :0.000   Min.   :0.00
+ 1st Qu.:0   1st Qu.:0.00   1st Qu.:1.000   1st Qu.:1.00
+ Median :0   Median :0.00   Median :1.000   Median :2.00
+ Mean   :0   Mean   :0.45   Mean   :1.117   Mean   :1.75
+ 3rd Qu.:0   3rd Qu.:1.00   3rd Qu.:2.000   3rd Qu.:3.00
+ Max.   :0   Max.   :1.00   Max.   :2.000   Max.   :3.00
 ~~~
 {: .output}
 
@@ -692,31 +692,31 @@ We'll learn why this is so in the next lesson.
 > A subsection of a data frame is called a [slice]({{ page.root }}/reference/#slice).
 > We can take slices of character vectors as well:
 >
-> 
+>
 > ~~~
 > animal <- c("m", "o", "n", "k", "e", "y")
 > # first three characters
 > animal[1:3]
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
 > [1] "m" "o" "n"
 > ~~~
 > {: .output}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
 > # last three characters
 > animal[4:6]
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
 > [1] "k" "e" "y"
 > ~~~
@@ -742,6 +742,14 @@ We'll learn why this is so in the next lesson.
 > 2. `max(dat[3:7, 5])`
 > 3. `max(dat[5, 3:7])`
 > 4. `max(dat[5, 3, 7])`
+>
+> > ## Solution
+> >
+> > Answer: 3
+> >
+> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in columns and the days are represented by the rows.  Subscripting in R follows the `[i,j]` principle, where `i=columns` and `j=rows`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
+> >
+> {: .solution}
 {: .challenge}
 
 > ## Slicing and Re-Assignment
