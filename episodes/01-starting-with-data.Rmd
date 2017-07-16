@@ -297,24 +297,6 @@ patient_1 <- dat[1, ]
 max(patient_1)
 ```
 
-> ## Forcing Conversion
->
-> The code above may give you an error in some R installations,
-> since R does not automatically convert a sliced row of a `data.frame` to a vector.
-> (Confusingly, sliced columns are automatically converted.)
-> If this happens, you can use the `as.numeric` command to convert the row of data to a numeric vector:
->
-> `patient_1 <- as.numeric(dat[1, ])`
->
-> `max(patient_1)`
->
-> You can also check the `class` of each object:
->
-> `class(dat[1, ])`
->
-> `class(as.numeric(dat[1, ]))`
-{: .callout}
-
 We don't actually need to store the row in a variable of its own.
 Instead, we can combine the selection and the function call:
 
@@ -336,6 +318,17 @@ median(dat[, 7])
 sd(dat[, 7])
 ```
 
+> ## Forcing Conversion
+>
+> Note that R may return an error when you attempt to perform similar calculations on 
+> sliced *rows* of data frames. This is because some functions in R automatically convert 
+> the object type to a numeric vector, while others do not (e.g. `max(dat[1, ])` works as 
+> expected, while `mean(dat[1, ])` returns an error). You can fix this by including an 
+> explicit call to `as.numeric()`, e.g. `mean(as.numeric(dat[1, ]))`. By contrast, 
+> calculations on sliced *columns* always work as expected, since columns of data frames 
+> are already defined as vectors.
+{: .callout}
+
 R also has a function that summaries the previous common calculations:
 
 ```{r}
@@ -344,7 +337,6 @@ summary(dat[,1:4])
 ```
 
 For every column in the data frame, the function "summary" calculates: the minimun value, the first quartile, the median, the mean, the third quartile and the max value, given helpful details about the sample distribution.
-
 
 What if we need the maximum inflammation for all patients, or the average for each day?
 As the diagram below shows, we want to perform the operation across a margin of the data frame:
