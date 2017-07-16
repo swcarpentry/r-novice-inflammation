@@ -371,7 +371,7 @@ If we want to get a single value from the data frame, we can provide an [index](
 
 
 ~~~
-# first value in dat
+# The first value in dat is indexed at row 1 column 1
 dat[1, 1]
 ~~~
 {: .r}
@@ -386,7 +386,7 @@ dat[1, 1]
 
 
 ~~~
-# middle value in dat
+# The middle value in dat is indexed at row 30 column 20
 dat[30, 20]
 ~~~
 {: .r}
@@ -399,7 +399,7 @@ dat[30, 20]
 {: .output}
 
 An index like `[30, 20]` selects a single element of a data frame, but we can select whole sections as well.
-For example, we can select the first ten days (columns) of values for the first four patients (rows) like this:
+For example, we can select values for the first four patients (rows) during the first ten days of treatment (columns) like this:
 
 
 ~~~
@@ -418,26 +418,24 @@ dat[1:4, 1:10]
 ~~~
 {: .output}
 
-The [slice]({{ page.root }}/reference/#slice) `1:4` means, "Start at index 1 and go to index 4."
-
-The slice does not need to start at 1, e.g. the line below selects rows 5 through 10:
+The slice does not need to start at 1, e.g. the line below selects rows 5 through 10, and columns 3 through 10 :
 
 
 ~~~
-dat[5:10, 1:10]
+dat[5:10, 3:10]
 ~~~
 {: .r}
 
 
 
 ~~~
-   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
-5   0  1  1  3  3  1  3  5  2   4
-6   0  0  1  2  2  4  2  1  6   4
-7   0  0  2  2  4  2  2  5  5   8
-8   0  0  1  2  3  1  2  3  5   3
-9   0  0  0  3  1  5  6  5  5   8
-10  0  1  1  2  1  3  5  3  5   8
+   V3 V4 V5 V6 V7 V8 V9 V10
+5   1  3  3  1  3  5  2   4
+6   1  2  2  4  2  1  6   4
+7   2  2  4  2  2  5  5   8
+8   1  2  3  1  2  3  5   3
+9   0  3  1  5  6  5  5   8
+10  1  2  1  3  5  3  5   8
 ~~~
 {: .output}
 We can use the function `c`, which stands for **c**ombine, to select non-contiguous values:
@@ -459,7 +457,7 @@ dat[c(3, 8, 37, 56), c(10, 14, 29)]
 ~~~
 {: .output}
 
-We also don't have to provide a slice for either the rows or the columns.
+We can also provide a slice for the rows but not for the columns, or for the columns but not for the rows. 
 If we don't include a slice for the rows, R returns all the rows; if we don't include a slice for the columns, R returns all the columns.
 If we don't provide a slice for either rows or columns, e.g. `dat[, ]`, R returns the full data frame.
 
@@ -758,9 +756,10 @@ We'll learn why this is so in the next lesson.
 > > whichPatients <- seq(2,60,2)  # i.e., which rows
 > > whichDays <- c(1:5)           # i.e., which columns
 > > dat2 <- dat
-> > dim(dat2[whichPatients, whichDays]) # check the size of your subset: returns `30 5`, that is 30 [rows=patients] by 5 [columns=days]
+> > # check the size of your subset: returns `30 5`, that is 30 [rows=patients] by 5 [columns=days]
+> > dim(dat2[whichPatients, whichDays])
 > > dat2[whichPatients, whichDays] <- dat2[whichPatients, whichDays]/2
-> > (dat2)
+> > dat2
 > > ~~~
 > > {: .r}
 > {: .solution}
