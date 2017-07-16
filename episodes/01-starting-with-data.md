@@ -755,10 +755,11 @@ We'll learn why this is so in the next lesson.
 >
 > > ## Solution
 > > ~~~
-> > whichPatients <- seq(2,40,2)
-> > whichDays <- c(1:5)
+> > whichPatients <- seq(2,60,2)  # i.e., which rows
+> > whichDays <- c(1:5)           # i.e., which columns
 > > dat2 <- dat
-> > dat2[whichDays, whichPatients] <- dat2[whichDays, whichPatients]/2
+> > dim(dat2[whichPatients, whichDays]) # check the size of your subset: returns `30 5`, that is 30 [rows=patients] by 5 [columns=days]
+> > dat2[whichPatients, whichDays] <- dat2[whichPatients, whichDays]/2
 > > (dat2)
 > > ~~~
 > > {: .r}
