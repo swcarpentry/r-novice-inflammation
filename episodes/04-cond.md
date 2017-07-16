@@ -220,7 +220,7 @@ sign(2/3)
 ~~~
 {: .output}
 
-Note that when combining `else` and `if` in an `else if` statement (similar to `elif` in Python), the `if` portion still requires a direct input condition.  This is never the case for the `else` statement alone, which is only executed if all other conditions go unsatisfied.
+Note that when combining `else` and `if` in an `else if` statement, the `if` portion still requires a direct input condition.  This is never the case for the `else` statement alone, which is only executed if all other conditions go unsatisfied.
 Note that the test for equality uses two equal signs, `==`.
 
 > ## Other Comparisons
@@ -564,7 +564,7 @@ Now we can save all of the results with just one line of code:
 
 
 ~~~
-analyze_all("inflammation*.csv")
+analyze_all("inflammation.*csv")
 ~~~
 {: .r}
 

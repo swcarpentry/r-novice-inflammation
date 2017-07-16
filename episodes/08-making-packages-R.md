@@ -6,7 +6,10 @@ questions:
 - "How do I collect my code together so I can reuse it and share it?"
 - "How do I make my own packages?"
 objectives:
-- "Quick summary on how (and why) making R packages."
+- "Describe the required structure of R packages."
+- "Create the required structure of a simple R package."
+- "Write documentation comments that can be automatically compiled to R's native help and documentation format."
+
 keypoints:
 - "A package is the basic unit of reusability in R."
 - "Every package must have a DESCRIPTION file and an R directory containing code."
@@ -117,16 +120,16 @@ Place each function into a separate R script and add documentation like this:
 
 
 ~~~
-#' Convert Fahrenheit to Kelvin
+#' Converts Fahrenheit to Kelvin
 #'
 #' This function converts input temperatures in Fahrenheit to Kelvin.
-#' @param temp The input temperature.
+#' @param temp The temperature in Fahrenheit.
+#' @return The temperature in Kelvin.
 #' @export
 #' @examples
 #' fahr_to_kelvin(32)
 
 fahr_to_kelvin <- function(temp) {
-  #Converts Fahrenheit to Kelvin
   kelvin <- ((temp - 32) * (5/9)) + 273.15
   kelvin
 }
