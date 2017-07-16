@@ -525,24 +525,6 @@ max(patient_1)
 ~~~
 {: .output}
 
-> ## Forcing Conversion
->
-> The code above may give you an error in some R installations,
-> since R does not automatically convert a sliced row of a `data.frame` to a vector.
-> (Confusingly, sliced columns are automatically converted.)
-> If this happens, you can use the `as.numeric` command to convert the row of data to a numeric vector:
->
-> `patient_1 <- as.numeric(dat[1, ])`
->
-> `max(patient_1)`
->
-> You can also check the `class` of each object:
->
-> `class(dat[1, ])`
->
-> `class(as.numeric(dat[1, ]))`
-{: .callout}
-
 We don't actually need to store the row in a variable of its own.
 Instead, we can combine the selection and the function call:
 
@@ -621,6 +603,17 @@ sd(dat[, 7])
 ~~~
 {: .output}
 
+> ## Forcing Conversion
+>
+> Note that R may return an error when you attempt to perform similar calculations on 
+> sliced *rows* of data frames. This is because some functions in R automatically convert 
+> the object type to a numeric vector, while others do not (e.g. `max(dat[1, ])` works as 
+> expected, while `mean(dat[1, ])` returns an error). You can fix this by including an 
+> explicit call to `as.numeric()`, e.g. `mean(as.numeric(dat[1, ]))`. By contrast, 
+> calculations on sliced *columns* always work as expected, since columns of data frames 
+> are already defined as vectors.
+{: .callout}
+
 R also has a function that summaries the previous common calculations:
 
 
@@ -633,18 +626,17 @@ summary(dat[,1:4])
 
 
 ~~~
-       V1          V2             V3              V4
- Min.   :0   Min.   :0.00   Min.   :0.000   Min.   :0.00
- 1st Qu.:0   1st Qu.:0.00   1st Qu.:1.000   1st Qu.:1.00
- Median :0   Median :0.00   Median :1.000   Median :2.00
- Mean   :0   Mean   :0.45   Mean   :1.117   Mean   :1.75
- 3rd Qu.:0   3rd Qu.:1.00   3rd Qu.:2.000   3rd Qu.:3.00
- Max.   :0   Max.   :1.00   Max.   :2.000   Max.   :3.00
+       V1          V2             V3              V4      
+ Min.   :0   Min.   :0.00   Min.   :0.000   Min.   :0.00  
+ 1st Qu.:0   1st Qu.:0.00   1st Qu.:1.000   1st Qu.:1.00  
+ Median :0   Median :0.00   Median :1.000   Median :2.00  
+ Mean   :0   Mean   :0.45   Mean   :1.117   Mean   :1.75  
+ 3rd Qu.:0   3rd Qu.:1.00   3rd Qu.:2.000   3rd Qu.:3.00  
+ Max.   :0   Max.   :1.00   Max.   :2.000   Max.   :3.00  
 ~~~
 {: .output}
 
 For every column in the data frame, the function "summary" calculates: the minimun value, the first quartile, the median, the mean, the third quartile and the max value, given helpful details about the sample distribution.
-
 
 What if we need the maximum inflammation for all patients, or the average for each day?
 As the diagram below shows, we want to perform the operation across a margin of the data frame:
@@ -692,31 +684,31 @@ We'll learn why this is so in the next lesson.
 > A subsection of a data frame is called a [slice]({{ page.root }}/reference/#slice).
 > We can take slices of character vectors as well:
 >
->
+> 
 > ~~~
 > animal <- c("m", "o", "n", "k", "e", "y")
 > # first three characters
 > animal[1:3]
 > ~~~
 > {: .r}
->
->
->
+> 
+> 
+> 
 > ~~~
 > [1] "m" "o" "n"
 > ~~~
 > {: .output}
->
->
->
+> 
+> 
+> 
 > ~~~
 > # last three characters
 > animal[4:6]
 > ~~~
 > {: .r}
->
->
->
+> 
+> 
+> 
 > ~~~
 > [1] "k" "e" "y"
 > ~~~
@@ -744,11 +736,11 @@ We'll learn why this is so in the next lesson.
 > 4. `max(dat[5, 3, 7])`
 >
 > > ## Solution
-> >
+> >  
 > > Answer: 3
 > >
 > > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in columns and the days are represented by the rows.  Subscripting in R follows the `[i,j]` principle, where `i=columns` and `j=rows`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
-> >
+> > 
 > {: .solution}
 {: .challenge}
 
