@@ -35,9 +35,9 @@ Let's start by defining a function `fahr_to_kelvin` that converts temperatures f
 
 
 ~~~
-fahr_to_kelvin <- function(temp) {
-  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
-  return(kelvin)
+fahr_to_kelvin = function(temp_fahr){
+  temp_kelv = ((temp_fahr - 32)*(5/9))+273.15
+  return(temp_kelv)
 }
 ~~~
 {: .r}
@@ -98,9 +98,9 @@ Now that we've seen how to turn Fahrenheit into Kelvin, it's easy to turn Kelvin
 
 
 ~~~
-kelvin_to_celsius <- function(temp) {
-  celsius <- temp - 273.15
-  return(celsius)
+kelvin_to_celsius = function(temp_kelv){
+  temp_cels = temp_kelv - 273.15
+  return(temp_cels)
 }
 
 #absolute zero in Celsius
@@ -121,10 +121,10 @@ Instead, we can [compose]({{ page.root }}/reference/#function-composition) the t
 
 
 ~~~
-fahr_to_celsius <- function(temp) {
-  temp_k <- fahr_to_kelvin(temp)
-  result <- kelvin_to_celsius(temp_k)
-  return(result)
+fahr_to_celsius = function(temp_fahr){
+  temp_kelv = fahr_to_kelvin(temp_fahr)
+  temp_cels = kelvin_to_celsius(temp_kelv)
+  return(temp_cels)
 }
 
 # freezing point of water in Celsius
