@@ -168,6 +168,7 @@ Now, let's load the dataset using `stringsAsFactors=FALSE`, and see what happens
 
 ~~~
 carSpeeds <- read.csv(file='data/car-speeds.csv', stringsAsFactors=FALSE)
+str(carSpeeds)
 
 carSpeeds$Color<- ifelse(carSpeeds$Color=='Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
@@ -177,6 +178,12 @@ carSpeeds$Color
 
 
 ~~~
+'data.frame':	100 obs. of  3 variables:
+ $ Color: chr  "Blue" " Red" "Blue" "White" ...
+ $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
+ $ State: chr  "NewMexico" "Arizona" "Colorado" "Arizona" ...
+
+
   [1] "Green" " Red"  "Green" "White" "Red"   "Green" "Green" "Black"
   [9] "White" "Red"   "Red"   "White" "Green" "Green" "Black" "Red"  
  [17] "Green" "Green" "White" "Green" "Green" "Green" "Red"   "Green"
@@ -193,7 +200,7 @@ carSpeeds$Color
 ~~~
 {: .output}
 
-That's better!
+That's better! And we can see how the data now is read as character instead of factor.
 
 
 ### The `as.is` Argument
