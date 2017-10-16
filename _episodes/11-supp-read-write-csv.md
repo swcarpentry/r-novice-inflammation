@@ -219,6 +219,8 @@ Now we can see that if we try to replace 'Blue' with 'Green' in the `$Color` col
 
 
 ~~~
+str(carSpeeds)
+
 carSpeeds$Color<- ifelse(carSpeeds$Color=='Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
 ~~~
@@ -227,6 +229,11 @@ carSpeeds$Color
 
 
 ~~~
+'data.frame':	100 obs. of  3 variables:
+ $ Color: chr  "Blue" " Red" "Blue" "White" ...
+ $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
+ $ State: Factor w/ 4 levels "Arizona","Colorado",..: 3 1 2 1 1 1 3 2 1 2 ...
+
   [1] "Green" " Red"  "Green" "White" "Red"   "Green" "Green" "Black"
   [9] "White" "Red"   "Red"   "White" "Green" "Green" "Black" "Red"  
  [17] "Green" "Green" "White" "Green" "Green" "Green" "Red"   "Green"
@@ -243,7 +250,7 @@ carSpeeds$Color
 ~~~
 {: .output}
 
-
+We can see that `$Color` column is a character while `$State` is a factor
 
 ~~~
 carSpeeds$State<- ifelse(carSpeeds$State=='Arizona','Ohio',carSpeeds$State)
