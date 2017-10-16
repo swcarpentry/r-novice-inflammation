@@ -146,6 +146,23 @@ carSpeeds$Color
 
 What happened?!? It looks like 'Blue'  was replaced with 'Green', but every other color was turned into a number (as a character string, given the quote marks before and after). This is because the colors of the cars were loaded as factors, and the factor level was reported following replacement.
 
+To see the internal structure, we can use another function, 'str', it will told us which format has each column. It will be reviewed a little more in the lesson [Data Types and Structures](http://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/).
+
+~~~
+str(carSpeeds)
+~~~
+{: .r}
+
+~~~
+'data.frame':	100 obs. of  3 variables:
+ $ Color: Factor w/ 5 levels " Red","Black",..: 3 1 3 5 4 3 3 2 5 4 ...
+ $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
+ $ State: Factor w/ 4 levels "Arizona","Colorado",..: 3 1 2 1 1 1 3 2 1 2 ...
+~~~
+{: .output}
+
+We can see that the `$Color` and `$State` columns are factors and `$Speed` is a numeric column. 
+
 Now, let's load the dataset using `stringsAsFactors=FALSE`, and see what happens when we try to replace 'Blue' with 'Green' in the `$Color` column:
 
 
