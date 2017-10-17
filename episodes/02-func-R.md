@@ -25,7 +25,7 @@ keypoints:
 
 
 
-If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics.
+If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some statistics.
 But we have twelve files to check, and may have more in the future.
 In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.
 
@@ -94,7 +94,7 @@ We've successfully called the function that we defined, and we have access to th
 
 ### Composing Functions
 
-Now that we've seen how to turn Fahrenheit into Kelvin, it's easy to turn Kelvin into Celsius:
+Now that we've seen how to turn Fahrenheit into Kelvin, we can write a function to turn Kelvin into Celsius:
 
 
 ~~~
@@ -267,7 +267,7 @@ center <- function(data, desired) {
 
 We could test this on our actual data, but since we don't know what the values ought to be, it will be hard to tell if the result was correct.
 Instead, let's create a vector of 0s and then center that around 3.
-This will make it simple to see if our function is working as expected:
+This will give us an indication if our function is working as expected:
 
 
 ~~~
@@ -314,7 +314,7 @@ head(centered)
 ~~~
 {: .output}
 
-It's hard to tell from the default output whether the result is correct, but there are a few simple tests that will reassure us:
+It's hard to tell from the default output whether the result is correct, but we can run some tests to reassure ourselves:
 
 
 ~~~

@@ -7,10 +7,10 @@ questions:
 - "How do I write a `for` loop?"
 objectives:
 - "Explain what a `for` loop does."
-- "Correctly write `for` loops to repeat simple calculations."
+- "Correctly write `for` loops to repeat calculations."
 - "Trace changes to a loop variable as the loop runs."
 - "Trace changes to other variables as they are updated by a `for` loop."
-- "Use a function to get a list of filenames that match a simple pattern."
+- "Use a function to get a list of filenames that contain specific words."
 - "Use a `for` loop to process multiple files."
 keypoints:
 - "Use `for (variable in collection)` to process the elements of a collection one at a time."
@@ -566,7 +566,7 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 
 > ## Other Ways to Do It
 >
-> In this lesson we saw how to use a simple `for` loop to repeat an operation.
+> In this lesson we saw how to use a `for` loop to repeat an operation.
 > As you progress with R, you will learn that there are multiple ways to
 > accomplish this. Sometimes the choice of one method over another is more a
 > matter of personal style, but other times it can have consequences for the

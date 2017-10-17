@@ -7,7 +7,7 @@ questions:
 - "How do I make my own packages?"
 objectives:
 - "Describe the required structure of R packages."
-- "Create the required structure of a simple R package."
+- "Create the required structure of a minimal R package."
 - "Write documentation comments that can be automatically compiled to R's native help and documentation format."
 
 keypoints:
@@ -89,7 +89,7 @@ fahr_to_celsius <- function(temp) {
 ~~~
 {: .r}
 
-We will use the `devtools` and `roxygen2` packages, which make creating packages in R relatively simple.
+We will use the `devtools` and `roxygen2` packages, which automate some of the steps in creating R packages.
 First, install the `devtools` package, which will allow you to install the `roxygen2` package from GitHub ([code][]).
 
 [code]: https://github.com/klutometis/roxygen
@@ -104,7 +104,7 @@ library("roxygen2")
 {: .r}
 
 Set your working directory, and then use the `create` function to start making your package.
-Keep the name simple and unique.
+Keep the name short and unique.
   - package_to_convert_temperatures_between_kelvin_fahrenheit_and_celsius (BAD)
   - tempConvert (GOOD)
 
@@ -215,5 +215,5 @@ kelvin_to_celsius(273.15)
 > ## Creating a Package for Distribution
 >
 > 1. Create some new functions for your tempConvert package to convert from Kelvin to Fahrenheit or from Celsius to Kelvin or Fahrenheit.
-> 2. Create a package for our `analyze` function so that it will be easy to load when more data arrives.
+> 2. Create a package for our `analyze` function so that it will be can be reloaded or shared when more data arrives.
 {: .challenge}
