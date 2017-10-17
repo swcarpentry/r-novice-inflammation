@@ -88,7 +88,7 @@ It is also worth considering what the working directory is. If the working direc
 > ## Be careful when using `setwd()`
 
 > One should exercise caution when using `setwd()`. Changing directories in a script file can limit reproducibility:
-> * `setwd()` will return an error if the directory to which you're trying to change doesn't exit or if the user doesn't have the correct permissions to access that directory. This becomes a problem when sharing scripts between users who have organized their directories differently.
+> * `setwd()` will return an error if the directory to which you're trying to change doesn't exist or if the user doesn't have the correct permissions to access that directory. This becomes a problem when sharing scripts between users who have organized their directories differently.
 > * If/when your script terminates with an error, you might leave the user in a different directory than the one they started in, and if they then call the script again, this will cause further problems. If you must use `setwd()`, it is best to put it at the top of the script to avoid these problems.
 > The following error message indicates that R has failed to set the working directory you specified:
 > ```
