@@ -3,7 +3,7 @@ title: "Best Practices for Writing R"
 teaching: 10
 exercises: 0
 questions:
-- "How can I write R that other people can understand and use?"
+- "How can I write R code that other people can understand and use?"
 objectives:
 - "Define best formatting practices when writing code in R scripts."
 - "Synthesize a consistent personal coding style to increase code readability, consistency, and repeatability."
