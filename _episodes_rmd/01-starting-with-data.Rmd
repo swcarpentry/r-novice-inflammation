@@ -55,7 +55,7 @@ To do all that, we'll have to learn a little bit about programming.
 
 ### Loading Data
 
-Let's import the file called `inflammation-01.csv` into our R environment. To import the file, first we need to tell our computer where the file is. We do that by choosing a working directory, that is, a local directory on our computer containing the files we need. This is very important in R. If we forget this step we???ll get an error message saying that the file does not exist. We can set the working directory using the function `setwd`. For this example, we change the path to our new directory at the desktop:
+Let's import the file called `inflammation-01.csv` into our R environment. To import the file, first we need to tell our computer where the file is. We do that by choosing a working directory, that is, a local directory on our computer containing the files we need. This is very important in R. If we forget this step we'll get an error message saying that the file does not exist. We can set the working directory using the function `setwd`. For this example, we change the path to our new directory at the desktop:
 
 ```{r,eval=FALSE}
 setwd("~/Desktop/r-novice-inflammation/")
@@ -106,7 +106,7 @@ We'll learn more about the details of functions and their arguments in the next 
 Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `inflammation-01.csv`.
 Try it out.
 
-`read.csv` reads the file, but we can't use data unless we assign it to a variable.
+`read.csv` reads the file, but we can't use the data unless we assign it to a variable.
 We can think of a variable as a container with a name, such as `x`, `current_temperature`, or `subject_id` that contains one or more values.
 We can create a new variable and assign a value to it using `<-`
 
@@ -124,7 +124,7 @@ In general, R will print to the console any object returned by a function or ope
 ```{r}
 weight_kg
 ```
-We can treat our variable like a regular number, and do arithmetic it:
+We can treat our variable like a regular number, and do arithmetic with it:
 
 ```{r}
 # weight in pounds:
@@ -388,7 +388,7 @@ R also has a function that summaries the previous common calculations:
 summary(dat[,1:4])
 ```
 
-For every column in the data frame, the function "summary" calculates: the minimun value, the first quartile, the median, the mean, the third quartile and the max value, given helpful details about the sample distribution.
+For every column in the data frame, the function "summary" calculates: the minimun value, the first quartile, the median, the mean, the third quartile and the max value, giving helpful details about the sample distribution.
 
 What if we need the maximum inflammation for all patients, or the average for each day?
 As the diagram below shows, we want to perform the operation across a margin of the data frame:
@@ -476,7 +476,7 @@ We'll learn why this is so in the next lesson.
 > Let's pretend there was something wrong with the instrument on the first five days for every second patient (#2, 4, 6, etc.), which resulted in the measurements being twice as large as they should be.
 >
 > 1. Write a vector containing each affected patient (hint: `? seq`)
-> 2. Create a new data frame with in which you halve the first five days' values in only those patients
+> 2. Create a new data frame in which you halve the first five days' values in only those patients
 > 3. Print out the corrected data frame to check that your code has fixed the problem
 >
 > > ## Solution
