@@ -14,6 +14,8 @@ keypoints:
 
 ```{r, include= FALSE}
 source("../bin/chunk-options.R")
+knitr_fig_path("09-supp-intro-rstudio-")
+```
 ```
 
 Let's start by learning about our tool.
