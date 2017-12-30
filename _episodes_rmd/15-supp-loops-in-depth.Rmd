@@ -16,6 +16,7 @@ keypoints:
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
+knitr_fig_path("15-supp-loops-in-depth-")
 ```
 
 In R you have multiple options when repeating calculations: vectorized operations, `for` loops, and `apply` functions.
