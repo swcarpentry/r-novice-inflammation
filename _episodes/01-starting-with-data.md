@@ -592,11 +592,11 @@ dat[, 16:18]
 ~~~
 {: .output}
 
-If you leave both index values empty (i.e., `dat[, ]`), you get the entire data frame. 
+If you leave both index values empty (i.e., `dat[,]`), you get the entire data frame. 
 
 > ## Addressing Columns by Name
 >
-> Columns can also be addressed by name, with either the `$` operator (ie. `dat$V16`) or square brackets (ie. `dat[,'V16']`).
+> Columns can also be addressed by name, with either the `$` operator (ie. `dat$V16`) or square brackets (ie. `dat[, 'V16']`).
 > You can learn more about subsetting by column name in this supplementary [lesson]({{ page.root }}/10-supp-addressing-data/).
 {: .callout}
 
@@ -750,7 +750,7 @@ R also has a function that summaries the previous common calculations:
 
 ~~~
 # Summarize function
-summary(dat[,1:4])
+summary(dat[, 1:4])
 ~~~
 {: .r}
 
@@ -870,7 +870,7 @@ We'll learn why this is so in the next lesson.
 > >  
 > > Answer: 3
 > >
-> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in rows and the days are represented by the columns. Subscripting in R follows the `[i,j]` principle, where `i=rows` and `j=columns`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
+> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in rows and the days are represented by the columns. Subscripting in R follows the `[i, j]` principle, where `i = rows` and `j = columns`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
 > > 
 > {: .solution}
 {: .challenge}
@@ -880,18 +880,18 @@ We'll learn why this is so in the next lesson.
 > Using the inflammation data frame `dat` from above:
 > Let's pretend there was something wrong with the instrument on the first five days for every second patient (#2, 4, 6, etc.), which resulted in the measurements being twice as large as they should be.
 >
-> 1. Write a vector containing each affected patient (hint: `? seq`)
+> 1. Write a vector containing each affected patient (hint: `?seq`)
 > 2. Create a new data frame in which you halve the first five days' values in only those patients
 > 3. Print out the corrected data frame to check that your code has fixed the problem
 >
 > > ## Solution
 > > ~~~
-> > whichPatients <- seq(2,60,2)  # i.e., which rows
-> > whichDays <- seq(1,5)         # i.e., which columns
+> > whichPatients <- seq(2, 60, 2) # i.e., which rows
+> > whichDays <- seq(1, 5)         # i.e., which columns
 > > dat2 <- dat
 > > # check the size of your subset: returns `30 5`, that is 30 [rows=patients] by 5 [columns=days]
 > > dim(dat2[whichPatients, whichDays])
-> > dat2[whichPatients, whichDays] <- dat2[whichPatients, whichDays]/2
+> > dat2[whichPatients, whichDays] <- dat2[whichPatients, whichDays] / 2
 > > dat2
 > > ~~~
 > > {: .r}
@@ -922,7 +922,7 @@ We'll learn why this is so in the next lesson.
 > > # 2.
 > > apply(dat[, 1:10], 2, mean)
 > > # 3.
-> > apply(dat[, seq(1,40, by=2)], 2, mean)
+> > apply(dat[, seq(1, 40, by = 2)], 2, mean)
 > > ~~~
 > > {: .r}
 > {: .solution}
