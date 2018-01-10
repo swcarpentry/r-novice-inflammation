@@ -713,7 +713,10 @@ You can also use the `byrow` argument to specify how the matrix is filled. From 
 
 
 ~~~
-mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE)
+mdat <- matrix(c(1, 2, 3, 11, 12, 13),
+               nrow = 2,
+               ncol = 3,
+               byrow = TRUE)
 mdat
 ~~~
 {: .r}
@@ -731,7 +734,7 @@ Elements of a matrix can be referenced by specifying the index along each dimens
 
 
 ~~~
-mdat[2,3]
+mdat[2, 3]
 ~~~
 {: .r}
 
@@ -977,7 +980,7 @@ Because data frames are rectangular, elements of data frame can be referenced by
 
 
 ~~~
-dat[1,3]
+dat[1, 3]
 ~~~
 {: .r}
 

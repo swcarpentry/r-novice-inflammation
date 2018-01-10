@@ -123,7 +123,7 @@ Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), .Label = c("low
 
 
 ~~~
-food <- factor(food, levels = c("low", "medium", "high"), ordered=TRUE)
+food <- factor(food, levels = c("low", "medium", "high"), ordered = TRUE)
 levels(food)
 ~~~
 {: .r}

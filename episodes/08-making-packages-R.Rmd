@@ -21,7 +21,6 @@ source("../bin/chunk-options.R")
 knitr_fig_path("08-making-packages-R-")
 ```
 
-
 Why should you make your own R packages?
 
 **Reproducible research!**
