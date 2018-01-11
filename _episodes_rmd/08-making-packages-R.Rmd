@@ -12,7 +12,7 @@ objectives:
 
 keypoints:
 - "A package is the basic unit of reusability in R."
-- "Every package must have a DESCRIPTION file and an R directory containing code."
+- "Every package must have a DESCRIPTION file, a NAMESPACE file, an R directory containing code, and a man directory containing documentation."
 ---
 
 ```{r, include = FALSE}
@@ -26,10 +26,12 @@ Why should you make your own R packages?
 An R package is the **basic unit of reusable code**.
 If you want to reuse code later or want others to be able to use your code, you should put it in a package.
 
-An R package requires two components:
+An R package requires four components:
 
 *   a DESCRIPTION file with metadata about the package
 *   an R directory with the code
+*   a man directory with documentation (we will create this automatically)
+*   a NAMESPACE file listing user-level functions in the package (we will also create this automatically)
 
 *There are other optional components. Go [here][r-package-basics] for much more information.*
 
