@@ -140,6 +140,10 @@ document()
 Take a look at the package directory now.
 The /man directory has a .Rd file for each .R file with properly formatted documentation.
 
+Overall, your package directory should look something like this:
+
+<img src="../fig/R-package-structure.svg" alt="R Package Structure" width="500" />
+
 Now, let's load the package and take a look at the documentation.
 
 ```{r, eval=FALSE}
