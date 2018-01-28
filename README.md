@@ -7,6 +7,7 @@ Maintainers:
 
 * [Daniel Chen](http://software-carpentry.org/team/#chen_daniel)
 * [Harriet Dashnow](http://software-carpentry.org/team/#dashnow_harriet)
+* Katrin Leinweber (@katrinleinweber)
 
 The goal of this lesson is to teach novice programmers to write modular code to
 perform a data analysis. R is used to teach these skills because it is a
