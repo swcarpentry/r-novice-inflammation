@@ -31,18 +31,18 @@ In this lesson, we'll learn how to write a function so that we can repeat severa
 
 ### Defining a Function
 
-Let's start by defining a function `fahr_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
+Let's start by defining a function `fahrenheit_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
 
 
 ~~~
-fahr_to_kelvin <- function(temp_F) {
+fahrenheit_to_kelvin <- function(temp_F) {
   temp_K <- ((temp_F - 32) * (5 / 9)) + 273.15
   return(temp_K)
 }
 ~~~
 {: .r}
 
-We define `fahr_to_kelvin` by assigning it to the output of `function`.
+We define `fahrenheit_to_kelvin` by assigning it to the output of `function`.
 The list of argument names are contained within parentheses.
 Next, the [body]({{ page.root }}/reference/#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
 The statements in the body are indented by two spaces, which makes the code easier to read but does not affect how the code operates.
@@ -64,7 +64,7 @@ Calling our own function is no different from calling any other function:
 
 ~~~
 # freezing point of water
-fahr_to_kelvin(32)
+fahrenheit_to_kelvin(32)
 ~~~
 {: .r}
 
@@ -79,7 +79,7 @@ fahr_to_kelvin(32)
 
 ~~~
 # boiling point of water
-fahr_to_kelvin(212)
+fahrenheit_to_kelvin(212)
 ~~~
 {: .r}
 
@@ -121,14 +121,14 @@ Instead, we can [compose]({{ page.root }}/reference/#function-composition) the t
 
 
 ~~~
-fahr_to_celsius <- function(temp_F) {
-  temp_K <- fahr_to_kelvin(temp_F)
+fahrenheit_to_celsius <- function(temp_F) {
+  temp_K <- fahrenheit_to_kelvin(temp_F)
   temp_C <- kelvin_to_celsius(temp_K)
   return(temp_C)
 }
 
 # freezing point of water in Celsius
-fahr_to_celsius(32.0)
+fahrenheit_to_celsius(32.0)
 ~~~
 {: .r}
 
@@ -145,7 +145,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 
 > ## Chaining Functions
 >
-> This example showed the output of `fahr_to_kelvin` assigned to `temp_K`, which
+> This example showed the output of `fahrenheit_to_kelvin` assigned to `temp_K`, which
 > is then passed to `kelvin_to_celsius` to get the final result. It is also possible
 > to perform this calculation in one line of code, by "chaining" functions
 > together, like so:
@@ -153,7 +153,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > 
 > ~~~
 > # freezing point of water in Celsius
-> kelvin_to_celsius(fahr_to_kelvin(32.0))
+> kelvin_to_celsius(fahrenheit_to_kelvin(32.0))
 > ~~~
 > {: .r}
 > 
