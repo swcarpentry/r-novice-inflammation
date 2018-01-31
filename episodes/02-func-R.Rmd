@@ -37,9 +37,9 @@ In this lesson, we'll learn how to write a function so that we can repeat severa
 Let's start by defining a function `fahr_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
 
 ```{r}
-fahr_to_kelvin <- function(temp) {
-  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
-  return(kelvin)
+fahr_to_kelvin <- function(temp_F) {
+  temp_K <- ((temp_F - 32) * (5 / 9)) + 273.15
+  return(temp_K)
 }
 ```
 
@@ -76,9 +76,9 @@ We've successfully called the function that we defined, and we have access to th
 Now that we've seen how to turn Fahrenheit into Kelvin, it's easy to turn Kelvin into Celsius:
 
 ```{r}
-kelvin_to_celsius <- function(temp) {
-  celsius <- temp - 273.15
-  return(celsius)
+kelvin_to_celsius <- function(temp_K) {
+  temp_C <- temp_K - 273.15
+  return(temp_C)
 }
 
 #absolute zero in Celsius
@@ -90,10 +90,10 @@ We could write out the formula, but we don't need to.
 Instead, we can [compose]({{ page.root }}/reference/#function-composition) the two functions we have already created:
 
 ```{r}
-fahr_to_celsius <- function(temp) {
-  temp_k <- fahr_to_kelvin(temp)
-  result <- kelvin_to_celsius(temp_k)
-  return(result)
+fahr_to_celsius <- function(temp_F) {
+  temp_K <- fahr_to_kelvin(temp_F)
+  temp_C <- kelvin_to_celsius(temp_K)
+  return(temp_C)
 }
 
 # freezing point of water in Celsius
@@ -106,7 +106,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 
 > ## Chaining Functions
 >
-> This example showed the output of `fahr_to_kelvin` assigned to `temp_k`, which
+> This example showed the output of `fahr_to_kelvin` assigned to `temp_K`, which
 > is then passed to `kelvin_to_celsius` to get the final result. It is also possible
 > to perform this calculation in one line of code, by "chaining" functions
 > together, like so:
