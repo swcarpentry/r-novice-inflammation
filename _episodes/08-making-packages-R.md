@@ -60,7 +60,7 @@ Let's turn our temperature conversion functions into an R package.
 
 
 ~~~
-fahr_to_kelvin <- function(temp_F) {
+fahrenheit_to_kelvin <- function(temp_F) {
     #Converts Fahrenheit to Kelvin
     temp_K <- ((temp_F - 32) * (5/9)) + 273.15
     temp_K
@@ -80,9 +80,9 @@ kelvin_to_celsius <- function(temp_K) {
 
 
 ~~~
-fahr_to_celsius <- function(temp_F) {
-  #Converts Fahrenheit to Celsius using fahr_to_kelvin() and kelvin_to_celsius()
-  temp_K <- fahr_to_kelvin(temp_F)
+fahrenheit_to_celsius <- function(temp_F) {
+  #Converts Fahrenheit to Celsius using fahrenheit_to_kelvin() and kelvin_to_celsius()
+  temp_K <- fahrenheit_to_kelvin(temp_F)
 	temp_C <- kelvin_to_celsius(temp_K)
   temp_C
 }
@@ -127,9 +127,9 @@ Place each function into a separate R script and add documentation like this:
 #' @return The temperature in Kelvin.
 #' @export
 #' @examples
-#' fahr_to_kelvin(32)
+#' fahrenheit_to_kelvin(32)
 
-fahr_to_kelvin <- function(temp_F) {
+fahrenheit_to_kelvin <- function(temp_F) {
   temp_K <- ((temp_F - 32) * (5/9)) + 273.15
   temp_K
 }
@@ -157,7 +157,7 @@ Now, let's load the package and take a look at the documentation.
 setwd("..")
 install("tempConvert")
 
-?fahr_to_kelvin
+?fahrenheit_to_kelvin
 ~~~
 {: .r}
 
@@ -173,7 +173,7 @@ Now that our package is loaded, let's try out some of the functions.
 
 
 ~~~
-fahr_to_celsius(32)
+fahrenheit_to_celsius(32)
 ~~~
 {: .r}
 
@@ -187,7 +187,7 @@ fahr_to_celsius(32)
 
 
 ~~~
-fahr_to_kelvin(212)
+fahrenheit_to_kelvin(212)
 ~~~
 {: .r}
 
