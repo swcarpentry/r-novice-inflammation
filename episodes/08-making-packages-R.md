@@ -60,31 +60,31 @@ Let's turn our temperature conversion functions into an R package.
 
 
 ~~~
-fahr_to_kelvin <- function(temp) {
+fahrenheit_to_kelvin <- function(temp_F) {
     #Converts Fahrenheit to Kelvin
-    kelvin <- ((temp - 32) * (5/9)) + 273.15
-    kelvin
+    temp_K <- ((temp_F - 32) * (5/9)) + 273.15
+    temp_K
 }
 ~~~
 {: .r}
 
 
 ~~~
-kelvin_to_celsius <- function(temp) {
+kelvin_to_celsius <- function(temp_K) {
   #Converts Kelvin to Celsius
-  Celsius <- temp - 273.15
-  Celsius
+  temp_C <- temp_K - 273.15
+  temp_C
 }
 ~~~
 {: .r}
 
 
 ~~~
-fahr_to_celsius <- function(temp) {
-  #Converts Fahrenheit to Celsius using fahr_to_kelvin() and kelvin_to_celsius()
-  temp_k <- fahr_to_kelvin(temp)
-	result <- kelvin_to_celsius(temp_k)
-  result
+fahrenheit_to_celsius <- function(temp_F) {
+  #Converts Fahrenheit to Celsius using fahrenheit_to_kelvin() and kelvin_to_celsius()
+  temp_K <- fahrenheit_to_kelvin(temp_F)
+	temp_C <- kelvin_to_celsius(temp_K)
+  temp_C
 }
 ~~~
 {: .r}
@@ -123,15 +123,15 @@ Place each function into a separate R script and add documentation like this:
 #' Converts Fahrenheit to Kelvin
 #'
 #' This function converts input temperatures in Fahrenheit to Kelvin.
-#' @param temp The temperature in Fahrenheit.
+#' @param temp_F The temperature in Fahrenheit.
 #' @return The temperature in Kelvin.
 #' @export
 #' @examples
-#' fahr_to_kelvin(32)
+#' fahrenheit_to_kelvin(32)
 
-fahr_to_kelvin <- function(temp) {
-  kelvin <- ((temp - 32) * (5/9)) + 273.15
-  kelvin
+fahrenheit_to_kelvin <- function(temp_F) {
+  temp_K <- ((temp_F - 32) * (5/9)) + 273.15
+  temp_K
 }
 ~~~
 {: .r}
@@ -157,7 +157,7 @@ Now, let's load the package and take a look at the documentation.
 setwd("..")
 install("tempConvert")
 
-?fahr_to_kelvin
+?fahrenheit_to_kelvin
 ~~~
 {: .r}
 
@@ -173,7 +173,7 @@ Now that our package is loaded, let's try out some of the functions.
 
 
 ~~~
-fahr_to_celsius(32)
+fahrenheit_to_celsius(32)
 ~~~
 {: .r}
 
@@ -187,7 +187,7 @@ fahr_to_celsius(32)
 
 
 ~~~
-fahr_to_kelvin(212)
+fahrenheit_to_kelvin(212)
 ~~~
 {: .r}
 
