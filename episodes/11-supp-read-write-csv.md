@@ -32,7 +32,7 @@ Let's start by opening a .csv file containing information on the speeds at which
 
 ~~~
 #First, set a working directory (see lesson 'Analyzing Patient Data' for more info)
-setwd('~/swc')
+setwd('~/Desktop/r-novice-inflammation/')
 ~~~
 {: .r}
 
