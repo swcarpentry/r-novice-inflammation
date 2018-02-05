@@ -98,7 +98,7 @@ It is also worth considering what the working directory is. If the working direc
 
 ### Identify and segregate distinct components in your code
 
-It's easy to annotate and mark your code using `#` or `#-` to set off sections of your code and to make finding specific parts of your code easier. For example, it's often helpful when writing code to separate the  if you create only one or a few custom functions in your script, put them toward the top of your code. If you have written many functions, put them all in their own .R file and then `source` those files. `source` will define all of these functions so that your code can make use of them as needed. 
+It's helpful to annotate and mark your code using `#` or `#-` to set off sections of your code and to make finding specific parts of your code easier. For example, if you create only a few custom functions in your script, you can put them toward the top of your code both so that you can find them later and they can be used anywhere in the script (in case you realise they are useful in an earlier part too). If you have written many functions, put them all in their own .R file and then `source` those files. `source` will define all of these functions so that your code can make use of them as needed. 
 
 
 

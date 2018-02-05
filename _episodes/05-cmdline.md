@@ -243,7 +243,7 @@ main <- function() {
 
 
 This function gets the name of the file to process from the first element returned by `commandArgs`.
-Here's a simple test to run from the Unix Shell:
+Here's an example to run from the Unix Shell:
 
 
 ~~~
@@ -341,7 +341,7 @@ Rscript readings-02.R data/inflammation-01.csv
 ~~~
 {: .output}
 
-> ## A Simple Command-Line Program
+> ## A Short Command-Line Program
 >
 > 1. Write a command-line program that does addition and subtraction.
 >
@@ -524,7 +524,7 @@ Rscript readings-02.R data/small-01.csv
 {: .output}
 
 Using small data files as input also allows us to check our results more easily: here, for example, we can see that our program is calculating the mean correctly for each line, whereas we were really taking it on faith before.
-This is yet another rule of programming: test the simple things first.
+This is yet another rule of programming: test small things first, before moving on to larger ones.
 
 We want our program to process each file separately, so we need a loop that executes once for each filename.
 If we specify the files on the command line, the filenames will be returned by `commandArgs(trailingOnly = TRUE)`.
