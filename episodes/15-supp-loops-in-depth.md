@@ -253,7 +253,7 @@ system.time(avg3 <- analyze3(filenames))
 ~~~
 {: .output}
 
-In this simple example there is little difference in the compute time of `analyze2` and `analyze3`.
+In this small example there is little difference in the compute time of `analyze2` and `analyze3`.
 This is because we are only iterating over 12 files and hence we only incur 12 copy/grow operations.
 If we were doing this over more files or the data objects we were growing were larger, the penalty for copying/growing would be much larger.
 

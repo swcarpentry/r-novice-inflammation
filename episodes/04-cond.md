@@ -167,7 +167,7 @@ if (num > 100) {
 {: .r}
 
 We can also chain several tests together when there are more than two options.
-This makes it simple to write a function that returns the sign of a number:
+This means that we can write a function that returns the sign of a number as:
 
 
 ~~~

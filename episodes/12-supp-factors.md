@@ -151,7 +151,7 @@ Levels: low < medium < high
 {: .output}
 
 In R's memory, these factors are represented by numbers (1, 2, 3). They are
-better than using simple integer labels because factors are self describing:
+better than using integer labels because factors are self describing:
 `"low"`, `"medium"`, and `"high"`" is more descriptive than `1`, `2`, `3`. Which
 is low?  You wouldn't be able to tell with just integer data. Factors have this
 information built in. It is particularly helpful when there are many levels

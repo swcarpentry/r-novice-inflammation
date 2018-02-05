@@ -7,7 +7,7 @@ questions:
 - "How do I assign variables?"
 - "What is a data frame?"
 - "How do I access subsets of a data frame?"
-- "How do I calculate simple statistics like mean and median?"
+- "How do I calculate summary statistics like mean and median?"
 - "Where can I get help?"
 - "How can I plot my data?"
 objectives:
@@ -15,7 +15,7 @@ objectives:
 - "Assign values to variables."
 - "Select individual values and subsections from data."
 - "Perform operations on a data frame of data."
-- "Display simple graphs."
+- "Display scatterplot graphs."
 keypoints:
 - "Use `variable <- value` to assign a value to a variable in order to record it in memory."
 - "Objects are created on demand whenever a value is assigned to them."
@@ -24,9 +24,9 @@ keypoints:
 - "Use `from:to` to specify a sequence that includes the indices from `from` to `to`."
 - "All the indexing and subsetting that works on data frames also works on vectors."
 - "Use `#` to add comments to programs."
-- "Use `mean`, `max`, `min` and `sd` to calculate simple statistics."
+- "Use `mean`, `max`, `min` and `sd` to calculate summary statistics."
 - "Use `apply` to calculate statistics across the rows or columns of a data frame."
-- "Use `plot` to create simple visualizations."
+- "Use `plot` to create scatterplot visualizations."
 ---
 
 
