@@ -217,6 +217,18 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > [1] "Don't"  "others"
 > ~~~
 > {: .output}
+> 
+> > ## Solution
+> > ~~~
+> > outside <- function(v) {
+> >   first <- v[1]
+> >    last <- v[length(v)]
+> >    answer <- c(first, last)
+> >    return(answer)
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
 
 > ## The Call Stack
