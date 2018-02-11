@@ -12,7 +12,8 @@ objectives:
 
 keypoints:
 - "A package is the basic unit of reusability in R."
-- "Every package must have a DESCRIPTION file, a NAMESPACE file, an R directory containing code, and a man directory containing documentation."
+- "Every package must have a DESCRIPTION file and an R directory containing code. This is our task."
+- "A NAMESPACE file is needed as well, and a man directory containing documentation, but both are auto-generated."
 ---
 
 ```{r, include = FALSE}
