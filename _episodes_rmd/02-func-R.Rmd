@@ -160,7 +160,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
 > outside(dry_principle)
 > ```
-> 
+>
 > > ## Solution
 > > ~~~
 > > outside <- function(v) {
@@ -303,8 +303,8 @@ center <- function(data, desired) {
 > when you start writing more complicated R projects.
 {: .callout}
 
-[LaTeX]: http://www.latex-project.org/
-[roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
+[LaTeX]: https://www.latex-project.org/
+[roxygen2]: https://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 
 ```{r challenge-more-advanced-function-analyze, eval=FALSE, include=FALSE}
 analyze <- function(filename) {

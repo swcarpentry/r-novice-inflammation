@@ -56,7 +56,7 @@ If you have questions or proposals, please send them to the [r-discuss][] mailin
 [dependencies]: https://github.com/swcarpentry/lesson-example#dependencies
 [design]: https://github.com/swcarpentry/lesson-example/blob/gh-pages/DESIGN.md
 [issues]: https://github.com/swcarpentry/r-novice-inflammation/issues
-[knitr]: http://cran.r-project.org/web/packages/knitr/index.html
+[knitr]: https://cran.r-project.org/web/packages/knitr/index.html
 [online]: http://swcarpentry.github.io/r-novice-inflammation/
 [pro-git]: http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project
 [r-discuss]: http://lists.software-carpentry.org/mailman/listinfo/r-discuss_lists.software-carpentry.org

@@ -511,8 +511,8 @@ center <- function(data, desired) {
 > when you start writing more complicated R projects.
 {: .callout}
 
-[LaTeX]: http://www.latex-project.org/
-[roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
+[LaTeX]: https://www.latex-project.org/
+[roxygen2]: https://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 
 
 
