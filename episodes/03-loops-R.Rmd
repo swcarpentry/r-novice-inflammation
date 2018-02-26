@@ -89,7 +89,7 @@ print_words(best_practice[-6])
 > for more details.
 {: .callout}
 
-[na]: http://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values
+[na]: https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values
 
 Here's a better approach:
 
@@ -124,7 +124,7 @@ Note that the condition (`variable in collection`) is enclosed in parentheses,
 and the body of the loop is enclosed in curly braces `{ }`.
 For a single-line loop body, as here, the braces aren't needed, but it is good practice to include them as we did.
 
-[restrictions]: http://cran.r-project.org/doc/manuals/R-intro.html#R-commands_003b-case-sensitivity-etc
+[restrictions]: https://cran.r-project.org/doc/manuals/R-intro.html#R-commands_003b-case-sensitivity-etc
 
 Here's another loop that repeatedly updates a variable:
 

@@ -34,7 +34,7 @@ When you click on File -> New File, there is an option for "R Markdown...". Choo
 
 > ## Formatting Text in Markdown
 >
-> Visit <http://rmarkdown.rstudio.com/authoring_basics.html> and briefly check out some of the formatting options.
+> Visit <https://rmarkdown.rstudio.com/authoring_basics.html> and briefly check out some of the formatting options.
 >
 > In the example document add
 >
