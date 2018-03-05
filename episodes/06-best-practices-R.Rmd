@@ -100,7 +100,7 @@ source("my_genius_fxns.R")
 ```
 
 ### Other ideas
-1. Use a consistent style within your code. For example, name all matrices something ending in `.mat`. Consistency makes code easier to read and problems easier to spot.
+1. Use a consistent style within your code. For example, name all matrices something ending in `_mat`. Consistency makes code easier to read and problems easier to spot.
 
 2. Keep your code in bite-sized chunks. If a single function or loop gets too long, consider looking for ways to break it into smaller pieces.
 
