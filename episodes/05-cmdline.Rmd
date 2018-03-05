@@ -301,7 +301,7 @@ This is four lines longer than its predecessor, but broken into more digestible 
 
 [argparse-r]: https://cran.r-project.org/web/packages/argparse/index.html
 [argparse-py]: https://docs.python.org/dev/library/argparse.html
-[vignette]: https://cran.r-project.org/web/packages/argparse/vignettes/argparse.pdf
+[vignette]: https://cran.r-project.org/web/packages/argparse/vignettes/argparse.html
 
 > ## Shorter Command Line Arguments
 >
