@@ -318,7 +318,13 @@ Let's test out running our `analyze` function by using it on the first three fil
 
 
 ```{r loop-analyze, fig=FALSE}
-filenames <- list.files(path = "data", pattern = "inflammation-[0-9]{2}.csv", full.names = TRUE)
+filenames <- list.files(path = "data", 
+                        pattern = "inflammation-[0-9]{2}.csv", 
+                        # This pattern is a regular expression that matches:
+                        # a) the static part of the filenames,
+                        # b) the variable part (two of the digits 0 to 9), and
+                        # c) the static file type CSV.
+                        full.names = TRUE)
 filenames <- filenames[1:3]
 for (f in filenames) {
   print(f)
