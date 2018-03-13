@@ -90,15 +90,10 @@ fahrenheit_to_celsius <- function(temp_F) {
 {: .r}
 
 We will use the `devtools` and `roxygen2` packages, which automate some of the steps in creating R packages.
-First, install the `devtools` package, which will allow you to install the `roxygen2` package from GitHub ([code][]).
-
-[code]: https://github.com/klutometis/roxygen
-
 
 ~~~
-install.packages("devtools")
+install.packages(c("devtools", "roxygen2"))
 library("devtools")
-install_github("klutometis/roxygen")
 library("roxygen2")
 ~~~
 {: .r}
@@ -137,7 +132,10 @@ fahrenheit_to_kelvin <- function(temp_F) {
 {: .r}
 
 The `roxygen2` package reads lines that begin with `#'` as comments to create the documentation for your package.
-Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function.
+Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function. 
+
+Note that if you don't put `@export` in the `roxygen2` comments, this function can only be used within the package itself. `@export` export the function to the package NAMESPACE and make it available when the package is loaded.
+
 Now, we will use `roxygen2` to convert our documentation to the standard R format.
 
 
