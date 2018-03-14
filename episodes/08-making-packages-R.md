@@ -134,7 +134,7 @@ fahrenheit_to_kelvin <- function(temp_F) {
 The `roxygen2` package reads lines that begin with `#'` as comments to create the documentation for your package.
 Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function. 
 
-Note that if you don't put `@export` in the `roxygen2` comments, this function can only be used within the package itself. `@export` export the function to the package NAMESPACE and make it available when the package is loaded.
+Note that if you don't put `@export` in the `roxygen2` comments, this function can only be used within the package itself. `@export` exports the function to the package NAMESPACE and makes it available when the package is loaded.
 
 Now, we will use `roxygen2` to convert our documentation to the standard R format.
 
