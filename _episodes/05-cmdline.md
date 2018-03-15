@@ -806,7 +806,7 @@ lines in standard input: 2
 ~~~
 {: .output}
 
-Note that because we did not specify `sep = "\n"` when calling `cat`, the output is written on the same line.
+Note that because we did not specify `sep = "\n"` when calling the first `cat`, the output is written on the same line.
 
 A common mistake is to try to run something that reads from standard input like this:
 
