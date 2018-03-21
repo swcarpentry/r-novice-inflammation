@@ -3,7 +3,7 @@ title: "Best Practices for Writing R"
 teaching: 10
 exercises: 0
 questions:
-- "How can I write R code that other people can understand and use?"
+- "How can I write R that other people can understand and use?"
 objectives:
 - "Define best formatting practices when writing code in R scripts."
 - "Synthesize a consistent personal coding style to increase code readability, consistency, and repeatability."
@@ -98,7 +98,7 @@ It is also worth considering what the working directory is. If the working direc
 
 ### Identify and segregate distinct components in your code
 
-It's helpful to annotate and mark your code using `#` or `#-` to set off sections of your code and to make finding specific parts of your code easier. For example, if you create only a few custom functions in your script, you can put them toward the top of your code both so that you can find them later and they can be used anywhere in the script (in case you realise they are useful in an earlier part too). If you have written many functions, put them all in their own .R file and then `source` those files. `source` will define all of these functions so that your code can make use of them as needed. 
+It's easy to annotate and mark your code using `#` or `#-` to set off sections of your code and to make finding specific parts of your code easier. For example, it's often helpful when writing code to separate the function definitions. If you create only one or a few custom functions in your script, put them toward the top of your code. If you have written many functions, put them all in their own .R file and then `source` those files. `source` will define all of these functions so that your code can make use of them as needed. 
 
 
 
@@ -108,7 +108,7 @@ source("my_genius_fxns.R")
 {: .r}
 
 ### Other ideas
-1. Use a consistent style within your code. For example, name all matrices something ending in `.mat`. Consistency makes code easier to read and problems easier to spot.
+1. Use a consistent style within your code. For example, name all matrices something ending in `_mat`. Consistency makes code easier to read and problems easier to spot.
 
 2. Keep your code in bite-sized chunks. If a single function or loop gets too long, consider looking for ways to break it into smaller pieces.
 

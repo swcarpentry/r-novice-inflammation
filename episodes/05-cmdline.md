@@ -82,20 +82,22 @@ Rscript session-info.R
 
 
 ~~~
-R version 3.3.3 (2017-03-06)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Antergos Linux
+R version 3.4.0 (2017-04-21)
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+Running under: macOS  10.13.3
+
+Matrix products: default
+BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
 
 locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
- [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
+
+loaded via a namespace (and not attached):
+[1] compiler_3.4.0
 ~~~
 {: .output}
 
@@ -133,7 +135,7 @@ Rscript print-args.R
 
 
 ~~~
-/usr/lib64/R/bin/exec/R
+/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -162,7 +164,7 @@ R --slave --no-restore --file=print-args.R --args
 
 
 ~~~
-/usr/lib64/R/bin/exec/R
+/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -182,7 +184,7 @@ Rscript print-args.R first second third
 
 
 ~~~
-/usr/lib64/R/bin/exec/R
+/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -243,7 +245,7 @@ main <- function() {
 
 
 This function gets the name of the file to process from the first element returned by `commandArgs`.
-Here's an example to run from the Unix Shell:
+Here's a simple test to run from the Unix Shell:
 
 
 ~~~
@@ -341,7 +343,7 @@ Rscript readings-02.R data/inflammation-01.csv
 ~~~
 {: .output}
 
-> ## A Short Command-Line Program
+> ## A Simple Command-Line Program
 >
 > 1. Write a command-line program that does addition and subtraction.
 >
@@ -524,7 +526,7 @@ Rscript readings-02.R data/small-01.csv
 {: .output}
 
 Using small data files as input also allows us to check our results more easily: here, for example, we can see that our program is calculating the mean correctly for each line, whereas we were really taking it on faith before.
-This is yet another rule of programming: test small things first, before moving on to larger ones.
+This is yet another rule of programming: test the simple things first.
 
 We want our program to process each file separately, so we need a loop that executes once for each filename.
 If we specify the files on the command line, the filenames will be returned by `commandArgs(trailingOnly = TRUE)`.
@@ -600,8 +602,10 @@ For teaching, though, we need all the successive versions side by side.
 > >   args <- commandArgs(trailingOnly = TRUE)
 > >   first_file <- read.csv(args[1], header = FALSE)
 > >   first_dim <- dim(first_file)
-> > #   num_rows <- dim(args[1])[1]  # nrow(args[1])
-> > #   num_cols <- dim(args[1])[2]  # ncol(args[1])
+> > #   num_rows <- dim(first_file)[1]  # nrow(first_file)
+> > #   num_cols <- dim(first_file)[2]  # ncol(first_file)
+> >   
+> >   
 > >   for (filename in args[-1]) {
 > >     new_file <- read.csv(filename, header = FALSE)
 > >     new_dim <- dim(new_file)
@@ -712,9 +716,9 @@ This is four lines longer than its predecessor, but broken into more digestible 
 > We will not cover this package in this lesson but when you start writing programs with multiple parameters you'll want to read through the package's [vignette][].
 {: .callout}
 
-[argparse-r]: https://cran.r-project.org/web/packages/argparse/index.html
+[argparse-r]: https://cran.r-project.org/package=argparse
 [argparse-py]: https://docs.python.org/dev/library/argparse.html
-[vignette]: https://cran.r-project.org/web/packages/argparse/vignettes/argparse.pdf
+[vignette]: https://cran.r-project.org/package=argparse/vignettes/argparse.html
 
 > ## Shorter Command Line Arguments
 >
@@ -806,7 +810,7 @@ lines in standard input: 2
 ~~~
 {: .output}
 
-Note that because we did not specify `sep = "\n"` when calling the first `cat`, the output is written on the same line.
+Note that because we did not specify `sep = "\n"` when calling `cat`, the output is written on the same line.
 
 A common mistake is to try to run something that reads from standard input like this:
 
