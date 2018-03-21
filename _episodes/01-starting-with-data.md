@@ -7,7 +7,7 @@ questions:
 - "How do I assign variables?"
 - "What is a data frame?"
 - "How do I access subsets of a data frame?"
-- "How do I calculate summary statistics like mean and median?"
+- "How do I calculate simple statistics like mean and median?"
 - "Where can I get help?"
 - "How can I plot my data?"
 objectives:
@@ -15,7 +15,7 @@ objectives:
 - "Assign values to variables."
 - "Select individual values and subsections from data."
 - "Perform operations on a data frame of data."
-- "Display scatterplot graphs."
+- "Display simple graphs."
 keypoints:
 - "Use `variable <- value` to assign a value to a variable in order to record it in memory."
 - "Objects are created on demand whenever a value is assigned to them."
@@ -24,9 +24,9 @@ keypoints:
 - "Use `from:to` to specify a sequence that includes the indices from `from` to `to`."
 - "All the indexing and subsetting that works on data frames also works on vectors."
 - "Use `#` to add comments to programs."
-- "Use `mean`, `max`, `min` and `sd` to calculate summary statistics."
+- "Use `mean`, `max`, `min` and `sd` to calculate simple statistics."
 - "Use `apply` to calculate statistics across the rows or columns of a data frame."
-- "Use `plot` to create scatterplot visualizations."
+- "Use `plot` to create simple visualizations."
 ---
 
 
@@ -111,7 +111,7 @@ We'll learn more about the details of functions and their arguments in the next 
 Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `inflammation-01.csv`.
 Try it out.
 
-`read.csv` reads the file, but we can't use data unless we assign it to a variable.
+`read.csv` reads the file, but we can't use the data unless we assign it to a variable.
 We can think of a variable as a container with a name, such as `x`, `current_temperature`, or `subject_id` that contains one or more values.
 We can create a new variable and assign a value to it using `<-`
 
@@ -140,7 +140,7 @@ weight_kg
 [1] 55
 ~~~
 {: .output}
-We can treat our variable like a regular number, and do arithmetic it:
+We can treat our variable like a regular number, and do arithmetic with it:
 
 
 ~~~
@@ -767,7 +767,7 @@ summary(dat[,1:4])
 ~~~
 {: .output}
 
-For every column in the data frame, the function "summary" calculates: the minimun value, the first quartile, the median, the mean, the third quartile and the max value, given helpful details about the sample distribution.
+For every column in the data frame, the function "summary" calculates: the minimun value, the first quartile, the median, the mean, the third quartile and the max value, giving helpful details about the sample distribution.
 
 What if we need the maximum inflammation for all patients, or the average for each day?
 As the diagram below shows, we want to perform the operation across a margin of the data frame:
@@ -870,7 +870,7 @@ We'll learn why this is so in the next lesson.
 > >  
 > > Answer: 3
 > >
-> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in columns and the days are represented by the rows.  Subscripting in R follows the `[i,j]` principle, where `i=columns` and `j=rows`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
+> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in rows and the days are represented by the columns. Subscripting in R follows the `[i,j]` principle, where `i=rows` and `j=columns`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
 > > 
 > {: .solution}
 {: .challenge}
@@ -881,7 +881,7 @@ We'll learn why this is so in the next lesson.
 > Let's pretend there was something wrong with the instrument on the first five days for every second patient (#2, 4, 6, etc.), which resulted in the measurements being twice as large as they should be.
 >
 > 1. Write a vector containing each affected patient (hint: `? seq`)
-> 2. Create a new data frame with in which you halve the first five days' values in only those patients
+> 2. Create a new data frame in which you halve the first five days' values in only those patients
 > 3. Print out the corrected data frame to check that your code has fixed the problem
 >
 > > ## Solution
