@@ -136,7 +136,7 @@ rm(list = ls()) # If you want to delete all the objects in the workspace and sta
 
 8. Collaborate. Grab a buddy and practice "code review". Review is used for preparing experiments and manuscripts; why not use it for code as well? Our code is also a major scientific achievement and the product of lots of hard work!
 
-9. Develop your code using version control and frequent updates!
+9. Develop your code using version control and frequent updates! You can find lessons about version control on [software-carpentry.org/lessons][lessons].
 
 > ## Best Practice
 >
