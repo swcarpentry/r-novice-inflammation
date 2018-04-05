@@ -92,16 +92,12 @@ fahrenheit_to_celsius <- function(temp_F) {
 ~~~
 {: .r}
 
-We will use the `devtools` and `roxygen2` packages, which make creating packages in R relatively simple.
-First, install the `devtools` package, which will allow you to install the `roxygen2` package from GitHub ([code][]).
-
-[code]: https://github.com/klutometis/roxygen
+We will use the [`devtools`][devtools] and [`roxygen2`][roxygen2] packages, which make creating packages in R relatively simple. Both can be installed from CRAN like this:
 
 
 ~~~
-install.packages("devtools")
+install.packages(c("devtools", "roxygen2"))  # installations can be `c`ombined
 library("devtools")
-install_github("klutometis/roxygen")
 library("roxygen2")
 ~~~
 {: .r}
