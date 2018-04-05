@@ -7,6 +7,7 @@
 [cran-checkpoint]: https://cran.r-project.org/web/packages/checkpoint/index.html
 [cran-knitr]: https://cran.r-project.org/web/packages/knitr/index.html
 [cran-stringr]: https://cran.r-project.org/web/packages/stringr/index.html
+[devtools]: https://cran.r-project.org/package=devtools
 [github-importer]: https://import.github.com/
 [importer]: http://import.github.com/new
 [jekyll-collection]: https://jekyllrb.com/docs/collections/
@@ -24,6 +25,7 @@
 [python-gapminder]: https://swcarpentry.github.io/python-novice-gapminder/
 [pyyaml]: https://pypi.python.org/pypi/PyYAML
 [r-markdown]: https://rmarkdown.rstudio.com/
+[roxygen2]: https://cran.r-project.org/package=roxygen2
 [rstudio]: https://www.rstudio.com/
 [ruby-install-guide]: https://www.ruby-lang.org/en/downloads/
 [ruby-installer]: http://rubyinstaller.org/
