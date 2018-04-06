@@ -39,7 +39,7 @@ analyze <- function(filename) {
 ```
 
 ```{r files}
-filenames <- list.files(path = "data", pattern = "inflammation.*.csv", full.names = TRUE)
+filenames <- list.files(path = "data/", pattern = "inflammation.*.csv", full.names = TRUE)
 ```
 
 ### Vectorized Operations
