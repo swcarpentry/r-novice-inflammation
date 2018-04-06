@@ -18,6 +18,7 @@ keypoints:
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
+knitr_fig_path("07-knitr-R-")
 ```
 
 `knitr` is an R package that allows you to organize your notes, code, and results in a single document. It's a great tool for "literate programming" -- the idea that your code should be readable by humans as well as computers! It also keeps your writing and results together, so if you collect some new data or change how you clean the data, you just have to re-compile the document and you're up to date!

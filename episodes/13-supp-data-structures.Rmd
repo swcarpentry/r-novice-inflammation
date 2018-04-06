@@ -20,6 +20,7 @@ exercises: 0
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
+knitr_fig_path("13-supp-data-structures-")
 ```
 
 ### Understanding Basic Data Types in R

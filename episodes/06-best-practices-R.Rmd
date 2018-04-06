@@ -27,6 +27,7 @@ keypoints:
 
 ```{r source, include = FALSE}
 source("../bin/chunk-options.R")
+knitr_fig_path("06-best-practices-R-")
 ```
 ### Keep track of who wrote your code and its intended purpose
 

@@ -18,6 +18,7 @@ keypoints:
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
+knitr_fig_path("05-cmdline-")
 ```
 
 The R Console and other interactive tools like RStudio are great for prototyping code and exploring data, but sooner or later we will want to use our program in a pipeline or run it in a shell script to process thousands of data files.
