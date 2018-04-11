@@ -512,7 +512,7 @@ center <- function(data, desired) {
 {: .callout}
 
 [LaTeX]: https://www.latex-project.org/
-[roxygen2]: https://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
+[roxygen2]: https://cran.r-project.org/package=roxygen2/vignettes/rd.html
 
 
 

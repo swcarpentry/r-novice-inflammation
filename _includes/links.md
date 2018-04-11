@@ -4,9 +4,9 @@
 [contact]: mailto:lessons@software-carpentry.org
 [contrib-covenant]: http://contributor-covenant.org/
 [contributing]: {{ site.github.repository_url }}/blob/gh-pages/CONTRIBUTING.md
-[cran-checkpoint]: https://cran.r-project.org/web/packages/checkpoint/index.html
-[cran-knitr]: https://cran.r-project.org/web/packages/knitr/index.html
-[cran-stringr]: https://cran.r-project.org/web/packages/stringr/index.html
+[cran-checkpoint]: https://cran.r-project.org/package=checkpoint
+[cran-knitr]: https://cran.r-project.org/package=knitr
+[cran-stringr]: https://cran.r-project.org/package=stringr
 [devtools]: https://cran.r-project.org/package=devtools
 [github-importer]: https://import.github.com/
 [importer]: http://import.github.com/new
