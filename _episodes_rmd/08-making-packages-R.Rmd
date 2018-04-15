@@ -18,7 +18,7 @@ keypoints:
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
-knitr_fit_path("08-making-packages-R-")
+knitr_fig_path("08-making-packages-R-")
 ```
 
 
