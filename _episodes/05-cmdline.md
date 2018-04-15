@@ -84,7 +84,7 @@ Rscript session-info.R
 ~~~
 R version 3.4.0 (2017-04-21)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS  10.13.3
+Running under: macOS  10.13.4
 
 Matrix products: default
 BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib

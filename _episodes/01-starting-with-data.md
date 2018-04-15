@@ -78,7 +78,7 @@ read.csv(file = "data/inflammation-01.csv", header = FALSE)
 The expression `read.csv(...)` is a [function call]({{ page.root }}/reference/#function-call) that asks R to run the function `read.csv`.
 
 `read.csv` has two [arguments]({{ page.root }}/reference/#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
-The filename needs to be a character string (or [string]({{ page.root }}/reference/#string) for short), so we put it in quotes. Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers. We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
+The filename needs to be a character string (or [string]({{ page.root }}/reference/#string) for short), so we put it in quotes. Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers. We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04. In case of our `inflammation-01.csv` example, R auto-generates column names in the sequence `V1` (for "variable 1"), `V2`, and so on, until `V30`.
 
 > ## Other Options for Reading CSV Files
 >
@@ -596,7 +596,7 @@ If you leave both index values empty (i.e., `dat[, ]`), you get the entire data 
 
 > ## Addressing Columns by Name
 >
-> Columns can also be addressed by name, with either the `$` operator (ie. `dat$Age`) or square brackets (ie. `dat[,'Age']`).
+> Columns can also be addressed by name, with either the `$` operator (ie. `dat$V16`) or square brackets (ie. `dat[,'V16']`).
 > You can learn more about subsetting by column name in this supplementary [lesson]({{ page.root }}/10-supp-addressing-data/).
 {: .callout}
 
@@ -772,7 +772,7 @@ For every column in the data frame, the function "summary" calculates: the minim
 What if we need the maximum inflammation for all patients, or the average for each day?
 As the diagram below shows, we want to perform the operation across a margin of the data frame:
 
-<img src="../fig/r-operations-across-axes.svg" alt="Operations Across Axes" />
+<img src="../fig/r-operations-across-margins.svg" alt="Operations Across Margins" />
 
 To support this, we can use the `apply` function.
 

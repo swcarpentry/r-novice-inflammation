@@ -130,6 +130,7 @@ dat <- read.csv(file = "/Users/Karthik/Documents/sannic-project/files/dataset-20
 ~~~
 {: .r}
 
+{:start="5"}
 5. R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. To inspect the objects in your current R  environment, you can list the objects, search current packages, and remove objects that are currently not in use. A good practice when running long lines of computationally intensive  code is to remove temporary objects after they have served their purpose. However, sometimes, R will not clean up unused memory for a while after you delete objects. You can force R to tidy up its memory by using `gc()`.
 
 
@@ -144,13 +145,14 @@ rm(list = ls()) # If you want to delete all the objects in the workspace and sta
 ~~~
 {: .r}
 
+{:start="6"}
 6. Don't save a session history (the default option in R, when it asks if you want an `RData` file). Instead, start in a clean environment so that older objects don't remain in your environment any longer than they need to. If that happens, it can lead to unexpected results.
 
 7. Wherever possible, keep track of `sessionInfo()` somewhere in your project folder. Session information is invaluable because it captures all of the packages used in the current project. If a newer version of a package changes the way a function behaves, you can always go back and reinstall the version that worked (Note: At least on CRAN, all older versions of packages are permanently archived).
 
 8. Collaborate. Grab a buddy and practice "code review". Review is used for preparing experiments and manuscripts; why not use it for code as well? Our code is also a major scientific achievement and the product of lots of hard work!
 
-9. Develop your code using version control and frequent updates!
+9. Develop your code using version control and frequent updates! You can find lessons about version control on [software-carpentry.org/lessons][lessons].
 
 > ## Best Practice
 >

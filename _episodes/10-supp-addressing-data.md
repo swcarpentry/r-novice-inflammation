@@ -321,7 +321,7 @@ plot(dat[dat$Group == 'Control',]$BloodPressure)
 ~~~
 {: .r}
 
-<img src="../fig/rmd-logical_vectors_indexing2-1.png" title="plot of chunk logical_vectors_indexing2" alt="plot of chunk logical_vectors_indexing2" style="display: block; margin: auto;" />
+<img src="../fig/rmd-10-supp-addressing-data-logical_vectors_indexing2-1.png" title="plot of chunk logical_vectors_indexing2" alt="plot of chunk logical_vectors_indexing2" style="display: block; margin: auto;" />
 
 > ## Using Logical Indexes
 >
