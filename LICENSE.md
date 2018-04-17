@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Licenses"
-permalink: /license/
+root: .
 ---
 ## Instructional Material
 
@@ -78,6 +78,12 @@ are registered trademarks of [Community Initiatives][CI].
 
 [cc-by-human]: https://creativecommons.org/licenses/by/4.0/
 [cc-by-legal]: https://creativecommons.org/licenses/by/4.0/legalcode
+<<<<<<< HEAD
 [mit-license]: https://opensource.org/licenses/mit-license.html
 [ci]: http://communityin.org/
 [osi]: https://opensource.org
+=======
+[mit-license]: http://opensource.org/licenses/mit-license.html
+[ci]: http://communityin.org/
+[osi]: http://opensource.org
+>>>>>>> upstream-styles/gh-pages
