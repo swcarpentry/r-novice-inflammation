@@ -90,7 +90,7 @@ fahrenheit_to_celsius <- function(temp_F) {
 }
 ```
 
-We will use the [`devtools`][devtools] and [`roxygen2`][roxygen2] packages, which make creating packages in R relatively simple. Both can be installed from CRAN like this:
+We will use the [`devtools`][devtools] package and [`roxygen2` from episode 2 "Creating Functions"]({{ page.root }}/02-func-R/), which make creating packages in R relatively simple. Both can be installed from CRAN like this:
 
 ```{r, eval=FALSE}
 install.packages(c("devtools", "roxygen2"))  # installations can be `c`ombined
@@ -127,7 +127,7 @@ fahrenheit_to_kelvin <- function(temp_F) {
 }
 ```
 
-The `roxygen2` package reads lines that begin with `#'` as comments to create the documentation for your package.
+The `roxygen2` package reads lines that begin with `#'` as the function documentation for your package.
 Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function.
 Now, we will use `roxygen2` to convert our documentation to the standard R format.
 

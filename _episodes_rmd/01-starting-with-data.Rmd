@@ -135,7 +135,7 @@ We can treat our variable like a regular number, and do arithmetic with it:
 
 > ## Commenting
 >
-> We can add comments to our code using the `#` character. It is useful to
+> We can add [comments]({{ page.root }}/reference/#comment) to our code using the `#` character. It is useful to
 > document our code in this way so that others (and us the next time we
 > read it) have an easier time following what the code is doing.
 {: .callout}
