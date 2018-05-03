@@ -81,7 +81,7 @@ kelvin_to_celsius <- function(temp_K) {
   return(temp_C)
 }
 
-#absolute zero in Celsius
+# absolute zero in Celsius
 kelvin_to_celsius(0)
 ```
 
