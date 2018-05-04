@@ -98,6 +98,10 @@ library("devtools")
 library("roxygen2")
 ```
 
+[devtools]: https://cran.r-project.org/package=devtools
+[roxygen2]: https://cran.r-project.org/package=roxygen2
+
+
 Set your working directory, and then use the `create` function to start making your package.
 Keep the name simple and unique.
   - package_to_convert_temperatures_between_kelvin_fahrenheit_and_celsius (BAD)
