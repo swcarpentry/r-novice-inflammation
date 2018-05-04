@@ -64,7 +64,7 @@ Let's turn our temperature conversion functions into an R package.
 
 ~~~
 fahrenheit_to_kelvin <- function(temp_F) {
-    #Converts Fahrenheit to Kelvin
+    # Converts Fahrenheit to Kelvin
     temp_K <- ((temp_F - 32) * (5/9)) + 273.15
     temp_K
 }
@@ -74,7 +74,7 @@ fahrenheit_to_kelvin <- function(temp_F) {
 
 ~~~
 kelvin_to_celsius <- function(temp_K) {
-  #Converts Kelvin to Celsius
+  # Converts Kelvin to Celsius
   temp_C <- temp_K - 273.15
   temp_C
 }
@@ -84,7 +84,7 @@ kelvin_to_celsius <- function(temp_K) {
 
 ~~~
 fahrenheit_to_celsius <- function(temp_F) {
-  #Converts Fahrenheit to Celsius using fahrenheit_to_kelvin() and kelvin_to_celsius()
+  # Converts Fahrenheit to Celsius using fahrenheit_to_kelvin() and kelvin_to_celsius()
   temp_K <- fahrenheit_to_kelvin(temp_F)
 	temp_C <- kelvin_to_celsius(temp_K)
   temp_C
@@ -101,6 +101,10 @@ library("devtools")
 library("roxygen2")
 ~~~
 {: .r}
+
+[devtools]: https://cran.r-project.org/package=devtools
+[roxygen2]: https://cran.r-project.org/package=roxygen2
+
 
 Set your working directory, and then use the `create` function to start making your package.
 Keep the name simple and unique.
