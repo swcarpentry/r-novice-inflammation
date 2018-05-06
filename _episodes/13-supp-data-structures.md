@@ -785,7 +785,7 @@ x
 
 
 ~~~
-x <- vector("list", length = 5) ## empty list
+x <- vector("list", length = 5) # empty list
 length(x)
 ~~~
 {: .r}
