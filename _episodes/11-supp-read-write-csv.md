@@ -144,9 +144,9 @@ carSpeeds$Color
 ~~~
 {: .output}
 
-What happened?!? It looks like 'Blue'  was replaced with 'Green', but every other color was turned into a number (as a character string, given the quote marks before and after). This is because the colors of the cars were loaded as factors, and the factor level was reported following replacement.
+What happened?!? It looks like 'Blue' was replaced with 'Green', but every other color was turned into a number (as a character string, given the quote marks before and after). This is because the colors of the cars were loaded as factors, and the factor level was reported following replacement.
 
-To see the internal structure, we can use another function, 'str', it will told us which format has each column. It will be reviewed a little more in the lesson [Data Types and Structures](http://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/).
+To see the internal structure, we can use another function, `str()`. In this case, the dataframe's internal structure includes the format of each column, which is what we are interested in. `str()` will be reviewed a little more in the lesson [Data Types and Structures]({{ page.root }}/13-supp-data-structures/).
 
 ~~~
 str(carSpeeds)
