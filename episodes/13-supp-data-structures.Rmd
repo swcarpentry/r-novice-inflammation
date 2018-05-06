@@ -294,14 +294,17 @@ rbind(x, y)
 You can also use the `byrow` argument to specify how the matrix is filled. From R's own documentation:
 
 ```{r}
-mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE)
+mdat <- matrix(c(1, 2, 3, 11, 12, 13),
+               nrow = 2,
+               ncol = 3,
+               byrow = TRUE)
 mdat
 ```
 
 Elements of a matrix can be referenced by specifying the index along each dimension (e.g. "row" and "column") in single square brackets.
 
 ```{r}
-mdat[2,3]
+mdat[2, 3]
 ```
 
 ### List
@@ -321,7 +324,7 @@ list of the required length can be created using `vector()`
 x <- list(1, "a", TRUE, 1+4i)
 x
 
-x <- vector("list", length = 5) ## empty list
+x <- vector("list", length = 5) # empty list
 length(x)
 ```
 
@@ -413,7 +416,7 @@ class(dat)
 Because data frames are rectangular, elements of data frame can be referenced by specifying the row and the column index in single square brackets (similar to matrix).
 
 ```{r}
-dat[1,3]
+dat[1, 3]
 ```
 
 As data frames are also lists, it is possible to refer to columns (which are elements of such list) using the list notation, i.e. either double square brackets or a `$`.

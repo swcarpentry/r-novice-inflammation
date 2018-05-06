@@ -353,7 +353,7 @@ length(vowels)
 > > ## Solution
 > > ~~~
 > > total <- function(vec) {
-> >   #calculates the sum of the values in a vector
+> >   # calculates the sum of the values in a vector
 > >   vec_sum <- 0
 > >   for (num in vec) {
 > >     vec_sum <- vec_sum + num
