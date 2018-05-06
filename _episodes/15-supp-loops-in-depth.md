@@ -233,7 +233,7 @@ This time there is no copying/growing for R to deal with.
 
 ~~~
 analyze3 <- function(filenames) {
-  out <- matrix(ncol = length(filenames), nrow = 40) ## assuming 40 here from files
+  out <- matrix(ncol = length(filenames), nrow = 40) # assuming 40 here from files
   for (f in seq_along(filenames)) {
     fdata <- read.csv(filenames[f], header = FALSE)
     out[, f] <- apply(fdata, 2, mean)

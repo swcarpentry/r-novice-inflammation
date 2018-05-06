@@ -148,7 +148,7 @@ The following are all command-line arguments that affect the behavior of R.
 From the R help file:
 
 *  `--slave`: Make R run as quietly as possible
-*  `--no-restore`:  Don't restore anything that was created during the R session
+*  `--no-restore`: Don't restore anything that was created during the R session
 *  `--file`: Run this file
 *  `--args`: Pass these arguments to the file being run
 
