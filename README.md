@@ -6,11 +6,11 @@ r-novice-inflammation
 
 Introduction to R for non-programmers using inflammation data.
 
-Maintainers:
+Current maintainers:
 
 * [Daniel Chen](http://software-carpentry.org/team/#chen_daniel) (@chendaniely)
-* [Harriet Dashnow](http://software-carpentry.org/team/#dashnow_harriet) (@hdashnow)
 * Katrin Leinweber (@katrinleinweber)
+* [Diya Das](https://software-carpentry.org/team/#das_diya) (@diyadas)
 
 The goal of this lesson is to teach novice programmers to write modular code to
 perform a data analysis. R is used to teach these skills because it is a

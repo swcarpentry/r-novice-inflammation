@@ -525,7 +525,7 @@ sub("csv", "pdf", f)
 [1] "inflammation-01.pdf"
 ~~~
 {: .output}
-To add the "data" directory to the filename use the function `file.path`,
+To add the "results" directory to the filename use the function `file.path`,
 
 ~~~
 file.path("results", sub("csv", "pdf", f))

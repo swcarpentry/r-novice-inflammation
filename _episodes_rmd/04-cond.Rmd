@@ -384,7 +384,7 @@ To change the extension to "pdf", we will use the function `sub`,
 f <- "inflammation-01.csv"
 sub("csv", "pdf", f)
 ```
-To add the "data" directory to the filename use the function `file.path`,
+To add the "results" directory to the filename use the function `file.path`,
 ```{r}
 file.path("results", sub("csv", "pdf", f))
 ```
