@@ -382,9 +382,9 @@ In this case, "either" means "either or both", not "either one or the other but 
 > average_inf_max <- 0 # value of the average inflammation score for this patient
 > for (f in filenames) {
 >   dat <- read.csv(file = f, header = FALSE)
->   dat.means = apply(dat, 1, mean)
+>   dat.means <- apply(dat, 1, mean)
 >   for (patient_index in length(dat.means)){
->     patient_average_inf = dat.means[patient_index]
+>     patient_average_inf <- dat.means[patient_index]
 >     # Add your code here ...
 >   }
 > }
@@ -398,7 +398,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > > ~~~
 > > # Add your code here ...
 > > if (patient_average_inf > average_inf_max) {
-> >   average_inf_max = patient_average_inf
+> >   average_inf_max <- patient_average_inf
 > >   filename_max <- f
 > >   patient_max <- patient_index
 > > }
@@ -525,7 +525,7 @@ sub("csv", "pdf", f)
 [1] "inflammation-01.pdf"
 ~~~
 {: .output}
-To add the "data" directory to the filename use the function `file.path`,
+To add the "results" directory to the filename use the function `file.path`,
 
 ~~~
 file.path("results", sub("csv", "pdf", f))

@@ -18,11 +18,12 @@ keypoints:
 
 ```{r, include = FALSE}
 source("../bin/chunk-options.R")
+knitr_fig_path("07-knitr-R-")
 ```
 
 `knitr` is an R package that allows you to organize your notes, code, and results in a single document. It's a great tool for "literate programming" -- the idea that your code should be readable by humans as well as computers! It also keeps your writing and results together, so if you collect some new data or change how you clean the data, you just have to re-compile the document and you're up to date!
 
-You write `knitr` documents in a simple plain text-like format called markdown, which allows you to format text using intuitive notation, so that you can focus on the content you're writing. But you still get a well-formatted document out. In fact, you can turn your plain text (and R code and results) into an html file or, if you have an installation of LaTeX and Pandoc on your machine, a pdf, or even a Word document (if you must!).
+You write `knitr` documents in a simple plain text-like format called markdown, which allows you to format text using intuitive notation, so that you can focus on the content you're writing and generating a well-formatted document when needed. In fact, you can turn your plain text (and R code and results) into an HTML file or, if you have an installation of LaTeX and [Pandoc][pandoc] on your machine, a PDF, or even a Word document (if you must!).
 
 To get started, install the `knitr` package.
 
@@ -34,7 +35,7 @@ When you click on File -> New File, there is an option for "R Markdown...". Choo
 
 > ## Formatting Text in Markdown
 >
-> Visit <http://rmarkdown.rstudio.com/authoring_basics.html> and briefly check out some of the formatting options.
+> Visit <https://rmarkdown.rstudio.com/authoring_basics.html> and briefly check out some of the formatting options.
 >
 > In the example document add
 >

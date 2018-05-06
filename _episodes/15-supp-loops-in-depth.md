@@ -219,7 +219,7 @@ system.time(avg2 <- analyze2(filenames))
 
 ~~~
    user  system elapsed 
-  0.055   0.000   0.056 
+  0.060   0.004   0.070 
 ~~~
 {: .output}
 
@@ -233,7 +233,7 @@ This time there is no copying/growing for R to deal with.
 
 ~~~
 analyze3 <- function(filenames) {
-  out <- matrix(ncol = length(filenames), nrow = 40) ## assuming 40 here from files
+  out <- matrix(ncol = length(filenames), nrow = 40) # assuming 40 here from files
   for (f in seq_along(filenames)) {
     fdata <- read.csv(filenames[f], header = FALSE)
     out[, f] <- apply(fdata, 2, mean)
@@ -249,7 +249,7 @@ system.time(avg3 <- analyze3(filenames))
 
 ~~~
    user  system elapsed 
-  0.054   0.000   0.055 
+  0.072   0.003   0.094 
 ~~~
 {: .output}
 

@@ -103,12 +103,12 @@ Data can be accessed by index. We have already seen how square brackets `[` can 
 
 > ## Selecting Values
 >
-> What will be returned by `dat[1,1]`?
+> What will be returned by `dat[1, 1]`?
 {: .challenge}
 
 
 ~~~
-dat[1,1]
+dat[1, 1]
 ~~~
 {: .r}
 
@@ -123,7 +123,7 @@ If we leave out a dimension R will interpret this as a request for all values in
 
 > ## Selecting More Values
 >
-> What will be returned by `dat[,2]`?
+> What will be returned by `dat[, 2]`?
 {: .challenge}
 
 The colon `:` can be used to create a sequence of integers.
@@ -154,7 +154,7 @@ Finally we can use the `c()` (combine) function to address non-sequential rows a
 
 
 ~~~
-dat[c(1,5,7,9), 1:5]
+dat[c(1, 5, 7, 9), 1:5]
 ~~~
 {: .r}
 
@@ -197,7 +197,7 @@ names(dat)
 
 > ## Default Names
 >
-> If names are not specified e.g. using `headers=FALSE` in a `read.csv()` function, R assigns default names `V1,V2,...,Vn`
+> If names are not specified e.g. using `headers = FALSE` in a `read.csv()` function, R assigns default names `V1, V2, ..., Vn`
 {: .callout}
 
 We usually use the `$` operator to address a column by name
@@ -223,7 +223,7 @@ dat$Gender
 Named addressing can also be used in square brackets.
 
 ~~~
-head(dat[,c('Age', 'Gender')])
+head(dat[, c('Age', 'Gender')])
 ~~~
 {: .r}
 
@@ -261,6 +261,7 @@ c(TRUE, TRUE, FALSE, FALSE, TRUE)
 [1]  TRUE  TRUE FALSE FALSE  TRUE
 ~~~
 {: .output}
+
 > ## Truth and Its Opposite
 >
 > Note the values `TRUE` and `FALSE` are all capital letters and are not quoted.
@@ -317,11 +318,11 @@ Often this operation is written as one line of code:
 
 
 ~~~
-plot(dat[dat$Group == 'Control',]$BloodPressure)
+plot(dat[dat$Group == 'Control', ]$BloodPressure)
 ~~~
 {: .r}
 
-<img src="../fig/rmd-logical_vectors_indexing2-1.png" title="plot of chunk logical_vectors_indexing2" alt="plot of chunk logical_vectors_indexing2" style="display: block; margin: auto;" />
+<img src="../fig/rmd-10-supp-addressing-data-logical_vectors_indexing2-1.png" title="plot of chunk logical_vectors_indexing2" alt="plot of chunk logical_vectors_indexing2" style="display: block; margin: auto;" />
 
 > ## Using Logical Indexes
 >
@@ -350,6 +351,6 @@ x
 
 > ## Updating a Subset of Values
 >
-> In this dataset, values for Gender have been recorded as both uppercase `M, F` and lowercase `m,f`.
+> In this dataset, values for Gender have been recorded as both uppercase `M, F` and lowercase `m, f`.
 > Combine the indexing and assignment operations to convert all values to lowercase.
 {: .challenge}

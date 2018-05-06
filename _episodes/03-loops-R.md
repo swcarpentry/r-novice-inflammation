@@ -135,7 +135,7 @@ print_words(best_practice[-6])
 > for more details.
 {: .callout}
 
-[na]: http://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values
+[na]: https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values
 
 Here's a better approach:
 
@@ -199,7 +199,7 @@ Note that the condition (`variable in collection`) is enclosed in parentheses,
 and the body of the loop is enclosed in curly braces `{ }`.
 For a single-line loop body, as here, the braces aren't needed, but it is good practice to include them as we did.
 
-[restrictions]: http://cran.r-project.org/doc/manuals/R-intro.html#R-commands_003b-case-sensitivity-etc
+[restrictions]: https://cran.r-project.org/doc/manuals/R-intro.html#R-commands_003b-case-sensitivity-etc
 
 Here's another loop that repeatedly updates a variable:
 
@@ -353,7 +353,7 @@ length(vowels)
 > > ## Solution
 > > ~~~
 > > total <- function(vec) {
-> >   #calculates the sum of the values in a vector
+> >   # calculates the sum of the values in a vector
 > >   vec_sum <- 0
 > >   for (num in vec) {
 > >     vec_sum <- vec_sum + num
@@ -530,7 +530,13 @@ Let's test out running our `analyze` function by using it on the first three fil
 
 
 ~~~
-filenames <- list.files(path = "data", pattern = "inflammation.*csv", full.names = TRUE)
+filenames <- list.files(path = "data",  
+                        # Now follows a regular expression that matches:
+                        pattern = "inflammation-[0-9]{2}.csv",
+                        #          |            |        the static file extension of comma-separated values,
+                        #          |            the variable parts (two of the digits 0 to 9, and
+                        #          the static part of the filenames
+                        full.names = TRUE)
 filenames <- filenames[1:3]
 for (f in filenames) {
   print(f)

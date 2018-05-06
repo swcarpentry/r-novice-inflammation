@@ -56,7 +56,7 @@ To do all that, we'll have to learn a little bit about programming.
 
 ### Loading Data
 
-Let's import the file called `inflammation-01.csv` into our R environment. To import the file, first we need to tell our computer where the file is. We do that by choosing a working directory, that is, a local directory on our computer containing the files we need. This is very important in R. If we forget this step we???ll get an error message saying that the file does not exist. We can set the working directory using the function `setwd`. For this example, we change the path to our new directory at the desktop:
+Let's import the file called `inflammation-01.csv` into our R environment. To import the file, first we need to tell our computer where the file is. We do that by choosing a working directory, that is, a local directory on our computer containing the files we need. This is very important in R. If we forget this step we'll get an error message saying that the file does not exist. We can set the working directory using the function `setwd`. For this example, we change the path to our new directory at the desktop:
 
 
 ~~~
@@ -78,7 +78,7 @@ read.csv(file = "data/inflammation-01.csv", header = FALSE)
 The expression `read.csv(...)` is a [function call]({{ page.root }}/reference/#function-call) that asks R to run the function `read.csv`.
 
 `read.csv` has two [arguments]({{ page.root }}/reference/#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
-The filename needs to be a character string (or [string]({{ page.root }}/reference/#string) for short), so we put it in quotes. Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers. We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
+The filename needs to be a character string (or [string]({{ page.root }}/reference/#string) for short), so we put it in quotes. Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers. We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04. In case of our `inflammation-01.csv` example, R auto-generates column names in the sequence `V1` (for "variable 1"), `V2`, and so on, until `V30`.
 
 > ## Other Options for Reading CSV Files
 >
@@ -111,7 +111,7 @@ We'll learn more about the details of functions and their arguments in the next 
 Since we didn't tell it to do anything else with the function's output, the console will display the full contents of the file `inflammation-01.csv`.
 Try it out.
 
-`read.csv` reads the file, but we can't use data unless we assign it to a variable.
+`read.csv` reads the file, but we can't use the data unless we assign it to a variable.
 We can think of a variable as a container with a name, such as `x`, `current_temperature`, or `subject_id` that contains one or more values.
 We can create a new variable and assign a value to it using `<-`
 
@@ -140,7 +140,7 @@ weight_kg
 [1] 55
 ~~~
 {: .output}
-We can treat our variable like a regular number, and do arithmetic it:
+We can treat our variable like a regular number, and do arithmetic with it:
 
 
 ~~~
@@ -592,11 +592,11 @@ dat[, 16:18]
 ~~~
 {: .output}
 
-If you leave both index values empty (i.e., `dat[, ]`), you get the entire data frame. 
+If you leave both index values empty (i.e., `dat[,]`), you get the entire data frame. 
 
 > ## Addressing Columns by Name
 >
-> Columns can also be addressed by name, with either the `$` operator (ie. `dat$Age`) or square brackets (ie. `dat[,'Age']`).
+> Columns can also be addressed by name, with either the `$` operator (ie. `dat$V16`) or square brackets (ie. `dat[, 'V16']`).
 > You can learn more about subsetting by column name in this supplementary [lesson]({{ page.root }}/10-supp-addressing-data/).
 {: .callout}
 
@@ -750,7 +750,7 @@ R also has a function that summaries the previous common calculations:
 
 ~~~
 # Summarize function
-summary(dat[,1:4])
+summary(dat[, 1:4])
 ~~~
 {: .r}
 
@@ -767,12 +767,12 @@ summary(dat[,1:4])
 ~~~
 {: .output}
 
-For every column in the data frame, the function "summary" calculates: the minimun value, the first quartile, the median, the mean, the third quartile and the max value, given helpful details about the sample distribution.
+For every column in the data frame, the function "summary" calculates: the minimun value, the first quartile, the median, the mean, the third quartile and the max value, giving helpful details about the sample distribution.
 
 What if we need the maximum inflammation for all patients, or the average for each day?
 As the diagram below shows, we want to perform the operation across a margin of the data frame:
 
-<img src="../fig/r-operations-across-axes.svg" alt="Operations Across Axes" />
+<img src="../fig/r-operations-across-margins.svg" alt="Operations Across Margins" />
 
 To support this, we can use the `apply` function.
 
@@ -870,7 +870,7 @@ We'll learn why this is so in the next lesson.
 > >  
 > > Answer: 3
 > >
-> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in columns and the days are represented by the rows.  Subscripting in R follows the `[i,j]` principle, where `i=columns` and `j=rows`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
+> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in rows and the days are represented by the columns. Subscripting in R follows the `[i, j]` principle, where `i = rows` and `j = columns`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
 > > 
 > {: .solution}
 {: .challenge}
@@ -880,18 +880,18 @@ We'll learn why this is so in the next lesson.
 > Using the inflammation data frame `dat` from above:
 > Let's pretend there was something wrong with the instrument on the first five days for every second patient (#2, 4, 6, etc.), which resulted in the measurements being twice as large as they should be.
 >
-> 1. Write a vector containing each affected patient (hint: `? seq`)
-> 2. Create a new data frame with in which you halve the first five days' values in only those patients
+> 1. Write a vector containing each affected patient (hint: `?seq`)
+> 2. Create a new data frame in which you halve the first five days' values in only those patients
 > 3. Print out the corrected data frame to check that your code has fixed the problem
 >
 > > ## Solution
 > > ~~~
-> > whichPatients <- seq(2,60,2)  # i.e., which rows
-> > whichDays <- c(1:5)           # i.e., which columns
+> > whichPatients <- seq(2, 60, 2) # i.e., which rows
+> > whichDays <- seq(1, 5)         # i.e., which columns
 > > dat2 <- dat
 > > # check the size of your subset: returns `30 5`, that is 30 [rows=patients] by 5 [columns=days]
 > > dim(dat2[whichPatients, whichDays])
-> > dat2[whichPatients, whichDays] <- dat2[whichPatients, whichDays]/2
+> > dat2[whichPatients, whichDays] <- dat2[whichPatients, whichDays] / 2
 > > dat2
 > > ~~~
 > > {: .r}
@@ -922,7 +922,7 @@ We'll learn why this is so in the next lesson.
 > > # 2.
 > > apply(dat[, 1:10], 2, mean)
 > > # 3.
-> > apply(dat[, seq(1,40, by=2)], 2, mean)
+> > apply(dat[, seq(1, 40, by = 2)], 2, mean)
 > > ~~~
 > > {: .r}
 > {: .solution}

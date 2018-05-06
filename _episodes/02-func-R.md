@@ -31,18 +31,18 @@ In this lesson, we'll learn how to write a function so that we can repeat severa
 
 ### Defining a Function
 
-Let's start by defining a function `fahr_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
+Let's start by defining a function `fahrenheit_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
 
 
 ~~~
-fahr_to_kelvin <- function(temp) {
-  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
-  return(kelvin)
+fahrenheit_to_kelvin <- function(temp_F) {
+  temp_K <- ((temp_F - 32) * (5 / 9)) + 273.15
+  return(temp_K)
 }
 ~~~
 {: .r}
 
-We define `fahr_to_kelvin` by assigning it to the output of `function`.
+We define `fahrenheit_to_kelvin` by assigning it to the output of `function`.
 The list of argument names are contained within parentheses.
 Next, the [body]({{ page.root }}/reference/#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
 The statements in the body are indented by two spaces, which makes the code easier to read but does not affect how the code operates.
@@ -64,7 +64,7 @@ Calling our own function is no different from calling any other function:
 
 ~~~
 # freezing point of water
-fahr_to_kelvin(32)
+fahrenheit_to_kelvin(32)
 ~~~
 {: .r}
 
@@ -79,7 +79,7 @@ fahr_to_kelvin(32)
 
 ~~~
 # boiling point of water
-fahr_to_kelvin(212)
+fahrenheit_to_kelvin(212)
 ~~~
 {: .r}
 
@@ -98,12 +98,12 @@ Now that we've seen how to turn Fahrenheit into Kelvin, it's easy to turn Kelvin
 
 
 ~~~
-kelvin_to_celsius <- function(temp) {
-  celsius <- temp - 273.15
-  return(celsius)
+kelvin_to_celsius <- function(temp_K) {
+  temp_C <- temp_K - 273.15
+  return(temp_C)
 }
 
-#absolute zero in Celsius
+# absolute zero in Celsius
 kelvin_to_celsius(0)
 ~~~
 {: .r}
@@ -121,14 +121,14 @@ Instead, we can [compose]({{ page.root }}/reference/#function-composition) the t
 
 
 ~~~
-fahr_to_celsius <- function(temp) {
-  temp_k <- fahr_to_kelvin(temp)
-  result <- kelvin_to_celsius(temp_k)
-  return(result)
+fahrenheit_to_celsius <- function(temp_F) {
+  temp_K <- fahrenheit_to_kelvin(temp_F)
+  temp_C <- kelvin_to_celsius(temp_K)
+  return(temp_C)
 }
 
 # freezing point of water in Celsius
-fahr_to_celsius(32.0)
+fahrenheit_to_celsius(32.0)
 ~~~
 {: .r}
 
@@ -145,7 +145,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 
 > ## Chaining Functions
 >
-> This example showed the output of `fahr_to_kelvin` assigned to `temp_k`, which
+> This example showed the output of `fahrenheit_to_kelvin` assigned to `temp_K`, which
 > is then passed to `kelvin_to_celsius` to get the final result. It is also possible
 > to perform this calculation in one line of code, by "chaining" functions
 > together, like so:
@@ -153,7 +153,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > 
 > ~~~
 > # freezing point of water in Celsius
-> kelvin_to_celsius(fahr_to_kelvin(32.0))
+> kelvin_to_celsius(fahrenheit_to_kelvin(32.0))
 > ~~~
 > {: .r}
 > 
@@ -167,7 +167,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 
 > ## Create a Function
 >
-> In the last lesson, we learned to **c**oncatenate elements into a vector using the `c` function,
+> In the last lesson, we learned to **c**ombine elements into a vector using the `c` function,
 > e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
 > Furthermore, we can extend that vector again using `c`, e.g. `y <- c(x, "D")` creates a vector `y` with four elements.
 > Write a function called `fence` that takes two vectors as arguments, called
@@ -217,6 +217,18 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > [1] "Don't"  "others"
 > ~~~
 > {: .output}
+>
+> > ## Solution
+> > ~~~
+> > outside <- function(v) {
+> >   first <- v[1]
+> >    last <- v[length(v)]
+> >    answer <- c(first, last)
+> >    return(answer)
+> > }
+> > ~~~
+> > {: .r}
+> {: .solution}
 {: .challenge}
 
 > ## The Call Stack
@@ -235,7 +247,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 >    order:
 > 
 > ~~~
-> input_1 = 20
+> input_1 <- 20
 > mySum <- function(input_1, input_2 = 10) {
 >   output <- input_1 + input_2
 >   return(output)
@@ -499,8 +511,8 @@ center <- function(data, desired) {
 > when you start writing more complicated R projects.
 {: .callout}
 
-[LaTeX]: http://www.latex-project.org/
-[roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
+[LaTeX]: https://www.latex-project.org/
+[roxygen2]: https://cran.r-project.org/package=roxygen2/vignettes/rd.html
 
 
 
@@ -508,7 +520,7 @@ center <- function(data, desired) {
 
 > ## Functions to Create Graphs
 >
-> Write a function called `analyze` that takes a filename as a argument
+> Write a function called `analyze` that takes a filename as an argument
 > and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
 > `analyze("data/inflammation-01.csv")` should produce the graphs already shown,
 > while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set.

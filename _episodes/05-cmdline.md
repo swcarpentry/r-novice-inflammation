@@ -82,20 +82,22 @@ Rscript session-info.R
 
 
 ~~~
-R version 3.3.3 (2017-03-06)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Antergos Linux
+R version 3.4.0 (2017-04-21)
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+Running under: macOS  10.13.4
+
+Matrix products: default
+BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
 
 locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
- [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  base     
+
+loaded via a namespace (and not attached):
+[1] compiler_3.4.0
 ~~~
 {: .output}
 
@@ -133,7 +135,7 @@ Rscript print-args.R
 
 
 ~~~
-/usr/lib64/R/bin/exec/R
+/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -146,7 +148,7 @@ The following are all command-line arguments that affect the behavior of R.
 From the R help file:
 
 *  `--slave`: Make R run as quietly as possible
-*  `--no-restore`:  Don't restore anything that was created during the R session
+*  `--no-restore`: Don't restore anything that was created during the R session
 *  `--file`: Run this file
 *  `--args`: Pass these arguments to the file being run
 
@@ -162,7 +164,7 @@ R --slave --no-restore --file=print-args.R --args
 
 
 ~~~
-/usr/lib64/R/bin/exec/R
+/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -182,7 +184,7 @@ Rscript print-args.R first second third
 
 
 ~~~
-/usr/lib64/R/bin/exec/R
+/Library/Frameworks/R.framework/Resources/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -600,8 +602,10 @@ For teaching, though, we need all the successive versions side by side.
 > >   args <- commandArgs(trailingOnly = TRUE)
 > >   first_file <- read.csv(args[1], header = FALSE)
 > >   first_dim <- dim(first_file)
-> > #   num_rows <- dim(args[1])[1]  # nrow(args[1])
-> > #   num_cols <- dim(args[1])[2]  # ncol(args[1])
+> > #   num_rows <- dim(first_file)[1]  # nrow(first_file)
+> > #   num_cols <- dim(first_file)[2]  # ncol(first_file)
+> >   
+> >   
 > >   for (filename in args[-1]) {
 > >     new_file <- read.csv(filename, header = FALSE)
 > >     new_dim <- dim(new_file)
@@ -712,9 +716,9 @@ This is four lines longer than its predecessor, but broken into more digestible 
 > We will not cover this package in this lesson but when you start writing programs with multiple parameters you'll want to read through the package's [vignette][].
 {: .callout}
 
-[argparse-r]: http://cran.r-project.org/web/packages/argparse/index.html
-[argparse-py]: http://docs.python.org/dev/library/argparse.html
-[vignette]: http://cran.r-project.org/web/packages/argparse/vignettes/argparse.pdf
+[argparse-r]: https://cran.r-project.org/package=argparse
+[argparse-py]: https://docs.python.org/dev/library/argparse.html
+[vignette]: https://cran.r-project.org/package=argparse/vignettes/argparse.html
 
 > ## Shorter Command Line Arguments
 >
@@ -819,7 +823,7 @@ Rscript count-stdin.R data/small-01.csv
 i.e., to forget the `<` character that redirect the file to standard input.
 In this case, there's nothing in standard input, so the program waits at the start of the loop for someone to type something on the keyboard.
 We can type some input, but R keeps running because it doesn't know when the standard input has ended.
-If you ran this, you can pause R by typing `ctrl`+`z` (technically it is still paused in the background; if you want to fully kill the process type `kill %`; see [bash manual][bash-jobs] for more information)).
+If you ran this, you can pause R by typing `ctrl`+`z` (technically it is still paused in the background; if you want to fully kill the process type `kill %`; see [bash manual][bash-jobs] for more information).
 
 [bash-jobs]: https://www.gnu.org/software/bash/manual/bash.html#Job-Control-Basics
 
