@@ -167,7 +167,6 @@ Now, let's load the dataset using `stringsAsFactors=FALSE`, and see what happens
 
 
 ~~~
-
 carSpeeds <- read.csv(file='data/car-speeds.csv', stringsAsFactors = FALSE)
 str(carSpeeds)
 
@@ -304,8 +303,7 @@ Here, the data recorder added a space before the color of the car in one of the 
 
 
 ~~~
-# We use the built in unique() function to extract the unique colors in our dataset
-
+# We use the built-in unique() function to extract the unique colors in our dataset
 unique(carSpeeds$Color)
 ~~~
 {: .r}
@@ -326,8 +324,8 @@ Let's try again, this time importing the data using the `strip.white` argument. 
 ~~~
 carSpeeds <- read.csv(
   file = 'data/car-speeds.csv',
-                      stringsAsFactors = FALSE, 
-  strip.white = TRUE ,
+  stringsAsFactors = FALSE, 
+  strip.white = TRUE,
   sep = ','
   )
 
