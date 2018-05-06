@@ -109,7 +109,7 @@ levels(food)
 
 
 ~~~
-min(food) ## doesn't work
+min(food) # doesn't work
 ~~~
 {: .r}
 
@@ -138,7 +138,7 @@ levels(food)
 
 
 ~~~
-min(food) ## works!
+min(food) # works!
 ~~~
 {: .r}
 

@@ -324,7 +324,7 @@ list of the required length can be created using `vector()`
 x <- list(1, "a", TRUE, 1+4i)
 x
 
-x <- vector("list", length = 5) ## empty list
+x <- vector("list", length = 5) # empty list
 length(x)
 ```
 
