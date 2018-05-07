@@ -42,6 +42,13 @@ and to meet some of our community members.
     and would like to add or change material,
     you can submit a pull request (PR).
     Instructions for doing this are [included below](#using-github).
+    While we would like substantial changes to be raised in an issue for input from maintainers 
+    before you work on a PR, **we always welcome PRs that correct typos and bugs**. 
+    If you are not sure if your proposed changes are substantial, we encourage you to submit an issue.  
+
+Issues in this repository are tagged with [labels](../../labels) by the maintainers, 
+which you may find useful for navigating open issues.
+
 
 ## Where to Contribute
 
