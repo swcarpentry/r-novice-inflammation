@@ -65,6 +65,7 @@ exclude:
   - Makefile
   - bin
   - .Rproj.user
+  - .Rproj.user/
 
 # Turn off built-in syntax highlighting.
 highlighter: false
