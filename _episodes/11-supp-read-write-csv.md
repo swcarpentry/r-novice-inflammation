@@ -15,6 +15,7 @@ keypoints:
 - "Understand some of the key arguments available for importing the data properly, including `header`, `stringsAsFactors`, `as.is`, and `strip.white`."
 - "Write data to a new .csv file using the `write.csv(...)` function"
 - "Understand some of the key arguments available for exporting the data properly, such as `row.names`, `col.names`, and `na`."
+source: Rmd
 ---
 
 
