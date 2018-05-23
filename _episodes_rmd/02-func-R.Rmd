@@ -55,7 +55,7 @@ Inside the function, we use a [return statement]({{ page.root }}/reference/#retu
 >
 > In R, it is not necessary to include the return statement.
 > R automatically returns whichever variable is on the last line of the body
-> of the function. Since we are just learning, we will explicitly define the
+> of the function. While in the learning phase, we will explicitly define the
 > return statement.
 {: .callout}
 
