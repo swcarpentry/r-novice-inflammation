@@ -321,8 +321,8 @@ Let's test out running our `analyze` function by using it on the first three fil
 filenames <- list.files(path = "data",  
                         # Now follows a regular expression that matches:
                         pattern = "inflammation-[0-9]{2}.csv",
-                        #          |            |        the static file extension of comma-separated values,
-                        #          |            the variable parts (two of the digits 0 to 9, and
+                        #          |            |        the standard file extension of comma-separated values
+                        #          |            the variable parts (two of the digits 0 to 9)
                         #          the static part of the filenames
                         full.names = TRUE)
 filenames <- filenames[1:3]
