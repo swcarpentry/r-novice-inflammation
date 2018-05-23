@@ -19,6 +19,7 @@ keypoints:
 - "The body of a `for` loop is surrounded by curly braces (`{}`)."
 - "Use `length(thing)` to determine the length of something that contains other values."
 - "Use `list.files(path = \"path\", pattern = \"pattern\", full.names = TRUE)` to create a list of files whose names match a pattern."
+source: Rmd
 ---
 
 

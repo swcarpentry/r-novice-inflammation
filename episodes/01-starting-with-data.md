@@ -29,6 +29,7 @@ keypoints:
 - "Use `mean`, `max`, `min` and `sd` to calculate simple statistics."
 - "Use `apply` to calculate statistics across the rows or columns of a data frame."
 - "Use `plot` to create simple visualizations."
+source: Rmd
 ---
 
 

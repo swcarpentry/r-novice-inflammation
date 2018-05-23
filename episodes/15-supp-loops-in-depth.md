@@ -14,6 +14,7 @@ objectives:
 keypoints:
 - "Where possible, use vectorized operations instead of `for` loops to make code faster and more concise."
 - "Use functions such as `apply` instead of `for` loops to operate on the values in a data structure."
+source: Rmd
 ---
 
 

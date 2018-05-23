@@ -15,6 +15,7 @@ keypoints:
 - "Factors are used to represent categorical data."
 - "Factors can be *ordered* or *unordered*."
 - "Some R functions have special methods for handling factors."
+source: Rmd
 ---
 
 
