@@ -19,6 +19,7 @@ keypoints:
 - "Use `==` to test for equality."
 - "`X & Y` is only true if both X and Y are true."
 - "`X | Y` is true if either X or Y, or both, are true."
+source: Rmd
 ---
 
 

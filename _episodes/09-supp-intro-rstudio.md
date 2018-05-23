@@ -12,6 +12,7 @@ objectives:
 - "Demonstrate useful shortcuts."
 keypoints:
 - "Using RStudio can make programming in R much more productive."
+source: Rmd
 ---
 
 

@@ -25,6 +25,7 @@ keypoints:
 - "Keep track of session information in your project folder."
 - "Have someone else review your code."
 - "Use version control."
+source: Rmd
 ---
 
 

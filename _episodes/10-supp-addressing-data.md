@@ -12,6 +12,7 @@ objectives:
 keypoints:
 - "Data in data frames can be addressed by index (slicing), by logical vector, or by name (columns only)."
 - "Use the `$` operator to address a column by name."
+source: Rmd
 ---
 
 
