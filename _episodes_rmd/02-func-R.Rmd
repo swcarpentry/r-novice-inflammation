@@ -320,15 +320,6 @@ analyze <- function(filename) {
 }
 ```
 
-```{r challenge-more-advanced-function-rescale, include=FALSE}
-rescale <- function(v) {
-  # Rescales a vector, v, to lie in the range 0 to 1.
-  L <- min(v)
-  H <- max(v)
-  result <- (v - L) / (H - L)
-  return(result)
-}
-```
 
 > ## Functions to Create Graphs
 >
@@ -355,6 +346,15 @@ rescale <- function(v) {
 > > {: .r}
 > {: .solution}
 {: .challenge}
+
+```{r challenge-more-advanced-function-rescale, include=FALSE}
+rescale <- function(v) {
+  L <- min(v)
+  H <- max(v)
+  result <- (v - L) / (H - L)
+  return(result)
+}
+```
 
 > ## Rescaling
 >
