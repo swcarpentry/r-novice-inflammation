@@ -395,6 +395,12 @@ analyze <- function(filename) {
 > {: .solution}
 {: .challenge}
 
+If you are using RStudio, a nice shortcut is `CTRL`+`Shift`+`Alt`+`R`. Place the 
+cursor inside the function name or body, press that shortcut, 
+the roxygen2 function docu skeleton will be inserted. Note that we are not using 
+`@export` here, because it will only become relevant for [packaging]({{ page.root }}/reference/#packages).
+You can safely ignore it for now, or delete it.
+
 ```{r challenge-more-advanced-function-rescale, include=FALSE}
 rescale <- function(v) {
   L <- min(v)
