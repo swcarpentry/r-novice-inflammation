@@ -280,6 +280,8 @@ all.equal(sd(dat[, 4]), sd(centered))
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
 We have one more task first, though: we should write some [documentation]({{ page.root }}/reference#documentation) for our function to remind ourselves later what it's for and how to use it.
 
+## Writing Documentation
+
 A common way to put documentation in software is to add function comments like this:
 
 ```{r}
@@ -292,15 +294,13 @@ center <- function(data, desired) {
 }
 ```
 
-> ## Writing Documentation
+> ## Technical details of R's help page format
 >
-> Formal documentation for R functions is written in separate `.Rd` using a
-> markup language similar to [LaTeX][]. You see the result of this documentation
-> when you look at the help file for a given function, e.g. `?read.csv`.
-> The [roxygen2][] package allows R coders to write documentation alongside
-> the function code and then process it into the appropriate `.Rd` files.
-> You will want to switch to this more formal method of writing documentation
-> when you start writing more complicated R projects.
+> Help pages are rendered not directly from the roxygen2 comments, but from 
+> `.Rd` files that use a markup language similar to [LaTeX]. 
+> [roxygen2] generates those `.Rd` files from the formal function documentation
+> comments. Therefore, R coders not have to write these LaTeX-like files separately,
+> but instead document their functions alongside the code.
 {: .callout}
 
 [LaTeX]: https://www.latex-project.org/
