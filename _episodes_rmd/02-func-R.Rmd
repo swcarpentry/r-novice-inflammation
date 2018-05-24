@@ -294,6 +294,7 @@ center <- function(data, desired) {
 }
 ```
 
+the code helps keeping the docu up to date when the code has to be changed. 
 > ## Technical details of R's help page format
 >
 > Help pages are rendered not directly from the roxygen2 comments, but from 
@@ -308,8 +309,6 @@ center <- function(data, desired) {
 
 ```{r challenge-more-advanced-function-analyze, eval=FALSE, include=FALSE}
 analyze <- function(filename) {
-  # Plots the average, min, and max inflammation over time.
-  # Input is character string of a csv file.
   dat <- read.csv(file = filename, header = FALSE)
   avg_day_inflammation <- apply(dat, 2, mean)
   plot(avg_day_inflammation)
@@ -331,9 +330,15 @@ analyze <- function(filename) {
 >
 > > ## Solution
 > > ~~~
+> > #' Analyse my Patient Inflammation Data 
+> > #'
+> > #' @param filename character string of a .csv file
+> > #'
+> > #' @return Plots of the average, min, and max inflammation over time.
+> > #'
+> > #' @examples 
+> > #'   analyze("data/inflammation-01.csv")
 > > analyze <- function(filename) {
-> >   # Plots the average, min, and max inflammation over time.
-> >   # Input is character string of a csv file.
 > >   dat <- read.csv(file = filename, header = FALSE)
 > >   avg_day_inflammation <- apply(dat, 2, mean)
 > >   plot(avg_day_inflammation)
@@ -360,14 +365,21 @@ rescale <- function(v) {
 >
 > Write a function `rescale` that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1.
 > (If $L$ and $H$ are the lowest and highest values in the original vector, then the replacement for a value $v$ should be $(v-L) / (H-L)$.)
-> Be sure to document your function with comments.
+> Be sure to document your function with roxygen2 comments.
 >
 > Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
 >
 > > ## Solution
 > > ~~~
+> > #' Rescaling vectors to lie in the range 0 to 1
+> > #'
+> > #' @param v A numeric vector
+> > #'
+> > #' @return The rescaled numeric vector
+> > #'
+> > #' @examples
+> > #'   rescale(c(1, 2, 3), 0)  # should return [1] 0.0 0.5 1.0
 > > rescale <- function(v) {
-> >   # Rescales a vector, v, to lie in the range 0 to 1.
 > >   L <- min(v)
 > >   H <- max(v)
 > >   result <- (v - L) / (H - L)
@@ -408,10 +420,16 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 To understand what's going on, and make our own functions easier to use, let's re-define our `center` function like this:
 
 ```{r}
+#' Centering Data (or another descriptive title for your function)
+#' 
+#' @param data The numeric vector to be centered
+#' @param desired The numeric value around which the data should be centered (default = 0)
+#'
+#' @return A new vector containing the original data centered around the desired value.
+#'
+#' @examples
+#'   center(c(1, 2, 3), 0)  # should return [1] -1  0  1
 center <- function(data, desired = 0) {
-  # return a new vector containing the original data centered around the
-  # desired value (0 by default).
-  # Example: center(c(1, 2, 3), 0) => c(-1, 0, 1)
   new_data <- (data - mean(data)) + desired
   return(new_data)
 }
