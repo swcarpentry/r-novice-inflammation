@@ -284,7 +284,7 @@ We have one more task first, though: we should write some [documentation]({{ pag
 
 A common way to put documentation in software is to add "informal" comments like this:
 
-```{r}
+```{r center-commented, eval=FALSE}
 center <- function(data, desired) {
   # return a new vector containing the original data centered around the
   # desired value.
@@ -322,6 +322,33 @@ this conversion in [episode 8 "Making Packages in R"]({{ page.root }}/08-making-
 
 [LaTeX]: https://www.latex-project.org/
 [roxygen2]: https://cran.r-project.org/package=roxygen2/vignettes/rd.html
+
+For now, let's just lay a solid foundation of using [roxygen2's `#'` notation][roxygen2]
+for documenting functions. Please compare the following to the informal comments 
+we used above and in [episode 1 "Analyzing Patient Data"]({{ page.root }}/01-starting-with-data/):
+
+```{r center-roxygen}
+#' Centering Data (or another descriptive title for your function)
+#' 
+#' @param data The numeric vector to be centered
+#' @param desired The numeric value around which the data should be centered
+#'
+#' @return A new vector containing the original data centered around the desired value.
+#'
+#' @examples
+#'   center(c(1, 2, 3), 0)  # should return [1] -1  0  1
+center <- function(data, desired) {
+  new_data <- (data - mean(data)) + desired
+  return(new_data)
+}
+```
+
+Unsurprisingly, the first line should be a short, descriptive title. Additional 
+text paragraphs are possible after leaving one line blank with only a `#'`.
+The descriptive tags (preceded by an `@` symbol) hold the most important info. 
+`@param` documents a function's input parameters, while `@return` explains its 
+output. An accurate description of the in- and output data (types) helps to 
+successfully apply a function and integrate it into larger analysis pipelines.
 
 ```{r challenge-more-advanced-function-analyze, eval=FALSE, include=FALSE}
 analyze <- function(filename) {
