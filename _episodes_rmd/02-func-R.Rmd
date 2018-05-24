@@ -282,7 +282,7 @@ We have one more task first, though: we should write some [documentation]({{ pag
 
 ## Writing Documentation
 
-A common way to put documentation in software is to add function comments like this:
+A common way to put documentation in software is to add "informal" comments like this:
 
 ```{r}
 center <- function(data, desired) {
@@ -294,7 +294,23 @@ center <- function(data, desired) {
 }
 ```
 
+This is a good practice to begin with. Keeping the documentation exactly next to 
 the code helps keeping the docu up to date when the code has to be changed. 
+However, such comments are not what we saw when using `?read.csv` to view a help 
+page.
+
+How can we create conveniently readable help pages for our own functions? By
+using the [roxygen2] package!
+
+```{r, eval=FALSE}
+install.packages("roxygen2")
+library("roxygen2")
+```
+
+It can convert "formal" documentation comments (lines starting with `#'`) into the 
+standard R format for help pages. You will learn  more about taking advantage of 
+this conversion in [episode 8 "Making Packages in R"]({{ page.root }}/08-making-packages-R/).
+
 > ## Technical details of R's help page format
 >
 > Help pages are rendered not directly from the roxygen2 comments, but from 
