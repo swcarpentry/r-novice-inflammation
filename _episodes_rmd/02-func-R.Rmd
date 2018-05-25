@@ -373,7 +373,7 @@ analyze <- function(filename) {
 >
 > > ## Solution
 > > ~~~
-> > #' Analyse my Patient Inflammation Data 
+> > #' Analyse One of My Patient Inflammation Data Files
 > > #'
 > > #' @param filename character string of a .csv file
 > > #'
