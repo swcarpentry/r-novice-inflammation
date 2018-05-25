@@ -722,7 +722,7 @@ display(55, 66)
 
 ~~~
 # three arguments
-display (55, 66, 77)
+display(55, 66, 77)
 ~~~
 {: .language-r}
 
