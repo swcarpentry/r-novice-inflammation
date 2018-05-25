@@ -35,9 +35,9 @@ An R package requires four components:
 *   a man directory with documentation (we will create this automatically)
 *   a NAMESPACE file listing user-level functions in the package (we will also create this automatically)
 
-*There are other optional components. Go [here][r-package-basics] for much more information.*
+*There are other optional components. [Read the "R packages" book][r-pkgs-desc] for much more information.*
 
-[r-package-basics]: http://adv-r.had.co.nz/Package-basics.html
+[r-pkgs-desc]: http://r-pkgs.had.co.nz/description.html
 
 ### DESCRIPTION file
 
