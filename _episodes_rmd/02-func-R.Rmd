@@ -402,6 +402,14 @@ the roxygen2 function docu skeleton will be inserted. Note that we are not using
 You can safely ignore it for now, or delete it.
 
 ```{r challenge-more-advanced-function-rescale, include=FALSE}
+#' Rescaling vectors to lie in the range 0 to 1
+#'
+#' @param v A numeric vector
+#'
+#' @return The rescaled numeric vector
+#'
+#' @examples
+#'   rescale(c(1, 2, 3), 0)  # should return [1] 0.0 0.5 1.0
 rescale <- function(v) {
   L <- min(v)
   H <- max(v)
@@ -571,8 +579,17 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 >
 > > ## Solution
 > > ~~~
+> > #' Rescaling Vectors To Lie In A Lower- And Upper-Bounded Range
+> > #'
+> > #' @param v A numeric vector
+> > #' @param lower numeric (default = 0)
+> > #' @param upper numeric (default = 1)
+> > #'
+> > #' @return The rescaled numeric vector
+> > #'
+> > #' @examples
+> > #'   rescale(c(1, 2, 3), 0, 1)  # should return [1] 0.0 0.5 1.0
 > > rescale <- function(v, lower = 0, upper = 1) {
-> >   # Rescales a vector, v, to lie in the range lower to upper.
 > >   L <- min(v)
 > >   H <- max(v)
 > >   result <- (v - L) / (H - L) * (upper - lower) + lower
@@ -584,8 +601,17 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 {: .challenge}
 
 ```{r, include=FALSE}
+#' Rescaling Vectors To Lie In A Lower- And Upper-Bounded Range
+#'
+#' @param v A numeric vector
+#' @param lower numeric (default = 0)
+#' @param upper numeric (default = 1)
+#'
+#' @return The rescaled numeric vector
+#'
+#' @examples
+#'   rescale(c(1, 2, 3), 0, 1)  # should return [1] 0.0 0.5 1.0
 rescale <- function(v, lower = 0, upper = 1) {
-  # Rescales a vector, v, to lie in the range lower to upper.
   L <- min(v)
   H <- max(v)
   result <- (v - L) / (H - L) * (upper - lower) + lower
