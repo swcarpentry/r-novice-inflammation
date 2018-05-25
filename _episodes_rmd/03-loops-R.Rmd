@@ -305,7 +305,7 @@ list.files(path = "data", pattern = "inflammation")
 As these examples show, `list.files` result is a vector of strings, which means we can loop over it to do something with each filename in turn.
 In our case, the "something" we want is our `analyze` function.
 
-Because we have put our data in separate subdirectory, if we want to access these files
+Because we have put our data in a separate subdirectory, if we want to access these files
 using the output of `list.files` we also need to include the "path" portion of the file name.
 We can do that by using the argument `full.names = TRUE`.
 
