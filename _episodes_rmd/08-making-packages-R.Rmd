@@ -8,8 +8,6 @@ questions:
 objectives:
 - "Describe the required structure of R packages."
 - "Create the required structure of a simple R package."
-- "Write documentation comments that can be automatically compiled to R's native help and documentation format."
-
 keypoints:
 - "A package is the basic unit of reusability in R."
 - "Every package must have a DESCRIPTION file and an R directory containing code. These are created by us."

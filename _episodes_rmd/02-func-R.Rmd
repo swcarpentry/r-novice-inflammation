@@ -12,6 +12,7 @@ objectives:
 - "Test a function."
 - "Set default values for function arguments."
 - "Explain why we should divide programs into small, single-purpose functions."
+- "Write documentation comments that can be automatically compiled to R's native help and documentation format."
 keypoints:
 - "Define a function using `name <- function(...args...) {...body...}`."
 - "Call a function using `name(...values...)`."
