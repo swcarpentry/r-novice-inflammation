@@ -101,6 +101,8 @@ rescale <- function(v, lower = 0, upper = 1) {
 
 We will use the [`devtools`][devtools] package and [`roxygen2` from episode 2 "Creating Functions"]({{ page.root }}/02-func-R/), which make creating packages in R relatively simple. Both can be installed from CRAN like this:
 
+[devtools]: https://cran.r-project.org/package=devtools
+[usethis]: https://cran.r-project.org/package=usethis
 ```{r, eval=FALSE}
 install.packages(c("devtools", "roxygen2"))  # installations can be `c`ombined
 library("devtools")
