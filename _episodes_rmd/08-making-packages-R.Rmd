@@ -61,32 +61,43 @@ Suggestion: organize in a logical manner so that you know which file holds which
 
 ### Making your first R package
 
-Let's turn our temperature conversion functions into an R package.
+Let's turn our centering and rescaling functions into an R package.
 
-```{r}
-fahrenheit_to_kelvin <- function(temp_F) {
-    #Converts Fahrenheit to Kelvin
-    temp_K <- ((temp_F - 32) * (5/9)) + 273.15
-    temp_K
+```{r center-packaged}
+#' Centering Data (or another descriptive title for your function)
+#' 
+#' @param data The numeric vector to be centered
+#' @param desired The numeric value around which the data should be centered
+#'
+#' @return A new vector containing the original data centered around the desired value.
+#'
+#' @examples
+#'   center(c(1, 2, 3), 0)  # should return [1] -1  0  1
+center <- function(data, desired) {
+  new_data <- (data - mean(data)) + desired
+  return(new_data)
 }
 ```
 
-```{r}
-kelvin_to_celsius <- function(temp_K) {
-  #Converts Kelvin to Celsius
-  temp_C <- temp_K - 273.15
-  temp_C
+```{r rescale-packaged}
+#' Rescaling Vectors To Lie In A Lower- And Upper-Bounded Range
+#'
+#' @param v A numeric vector
+#' @param lower numeric (default = 0)
+#' @param upper numeric (default = 1)
+#'
+#' @return The rescaled numeric vector
+#'
+#' @examples
+#'   rescale(c(1, 2, 3), 0, 1)  # should return [1] 0.0 0.5 1.0
+rescale <- function(v, lower = 0, upper = 1) {
+  L <- min(v)
+  H <- max(v)
+  result <- (v - L) / (H - L) * (upper - lower) + lower
+  return(result)
 }
 ```
 
-```{r}
-fahrenheit_to_celsius <- function(temp_F) {
-  #Converts Fahrenheit to Celsius using fahrenheit_to_kelvin() and kelvin_to_celsius()
-  temp_K <- fahrenheit_to_kelvin(temp_F)
-	temp_C <- kelvin_to_celsius(temp_K)
-  temp_C
-}
-```
 
 We will use the [`devtools`][devtools] package and [`roxygen2` from episode 2 "Creating Functions"]({{ page.root }}/02-func-R/), which make creating packages in R relatively simple. Both can be installed from CRAN like this:
 
