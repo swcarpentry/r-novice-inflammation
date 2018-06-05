@@ -43,12 +43,14 @@ An R package requires four components:
 ### DESCRIPTION file
 
 ~~~
-Package: Package name
-Title: Brief package description
-Description: Longer package description
-Version: Version number(major.minor.patch)
-Author: Name and email of package creator
-Maintainer: Name and email of package maintainer (who to contact with issues)
+Package: PackageName
+Title: One Descriptive Sentence (Title Case)
+Description: One descriptive paragraph explaining why the package exists and what
+  it is useful for. Similar to a paper abstract.
+Version: Semantic version number (major.minor.patch)  # see semver.org
+Authors@R: person("First", "Last", "first.last@example.com",
+  role = c("aut", "cre"),  # see ?person for all possibilities 
+  comment = c(ORCID = "0000-…-…-…")))
 License: Abbreviation for an open source license
 ~~~
 {: .source}
