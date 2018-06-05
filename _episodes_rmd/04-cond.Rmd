@@ -17,6 +17,7 @@ keypoints:
 - "Use `==` to test for equality."
 - "`X & Y` is only true if both X and Y are true."
 - "`X | Y` is true if either X or Y, or both, are true."
+source: Rmd
 ---
 
 ```{r, include = FALSE}
@@ -295,7 +296,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > Complete the code below:
 >
 > ```{r, eval=FALSE}
-> filenames <- list.files(path = "data", pattern = "inflammation.*csv", full.names = TRUE)
+> filenames <- list.files(path = "data", pattern = "inflammation-[0-9]{2}.csv", full.names = TRUE)
 > filename_max <- "" # filename where the maximum average inflammation patient is found
 > patient_max <- 0 # index (row number) for this patient in this file
 > average_inf_max <- 0 # value of the average inflammation score for this patient
@@ -405,7 +406,7 @@ To change the extension to "pdf", we will use the function `sub`,
 f <- "inflammation-01.csv"
 sub("csv", "pdf", f)
 ```
-To add the "data" directory to the filename use the function `file.path`,
+To add the "results" directory to the filename use the function `file.path`,
 ```{r}
 file.path("results", sub("csv", "pdf", f))
 ```

@@ -14,6 +14,7 @@ keypoints:
 - "Avoid silent failures."
 - "Use `file(\"stdin\")` to connect to a program's standard input."
 - "Use `cat(vec, sep = \"\n\")` to write the elements of `vec` to standard output, one per line."
+source: Rmd
 ---
 
 ```{r, include = FALSE}
@@ -108,7 +109,7 @@ The following are all command-line arguments that affect the behavior of R.
 From the R help file:
 
 *  `--slave`: Make R run as quietly as possible
-*  `--no-restore`:  Don't restore anything that was created during the R session
+*  `--no-restore`: Don't restore anything that was created during the R session
 *  `--file`: Run this file
 *  `--args`: Pass these arguments to the file being run
 

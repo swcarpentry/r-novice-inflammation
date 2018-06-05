@@ -27,6 +27,7 @@ keypoints:
 - "Use `mean`, `max`, `min` and `sd` to calculate simple statistics."
 - "Use `apply` to calculate statistics across the rows or columns of a data frame."
 - "Use `plot` to create simple visualizations."
+source: Rmd
 ---
 
 ```{r, include = FALSE}
@@ -57,7 +58,7 @@ To do all that, we'll have to learn a little bit about programming.
 
 Let's import the file called `inflammation-01.csv` into our R environment. To import the file, first we need to tell our computer where the file is. We do that by choosing a working directory, that is, a local directory on our computer containing the files we need. This is very important in R. If we forget this step we'll get an error message saying that the file does not exist. We can set the working directory using the function `setwd`. For this example, we change the path to our new directory at the desktop:
 
-```{r,eval=FALSE}
+```{r, eval = FALSE}
 setwd("~/Desktop/r-novice-inflammation/")
 ```
 
@@ -66,7 +67,7 @@ Alternatively you can change the working directory using the RStudio GUI using t
 
 The data file is located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
 
-```{r, results="hide"}
+```{r, results = "hide"}
 read.csv(file = "data/inflammation-01.csv", header = FALSE)
 ```
 
@@ -294,11 +295,11 @@ dat[5, ]
 dat[, 16:18]
 ```
 
-If you leave both index values empty (i.e., `dat[, ]`), you get the entire data frame. 
+If you leave both index values empty (i.e., `dat[,]`), you get the entire data frame. 
 
 > ## Addressing Columns by Name
 >
-> Columns can also be addressed by name, with either the `$` operator (ie. `dat$V16`) or square brackets (ie. `dat[,'V16']`).
+> Columns can also be addressed by name, with either the `$` operator (ie. `dat$V16`) or square brackets (ie. `dat[, 'V16']`).
 > You can learn more about subsetting by column name in this supplementary [lesson]({{ page.root }}/10-supp-addressing-data/).
 {: .callout}
 
@@ -385,7 +386,7 @@ R also has a function that summaries the previous common calculations:
 
 ```{r}
 # Summarize function
-summary(dat[,1:4])
+summary(dat[, 1:4])
 ```
 
 For every column in the data frame, the function "summary" calculates: the minimun value, the first quartile, the median, the mean, the third quartile and the max value, giving helpful details about the sample distribution.
@@ -465,7 +466,7 @@ We'll learn why this is so in the next lesson.
 > >  
 > > Answer: 3
 > >
-> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in rows and the days are represented by the columns. Subscripting in R follows the `[i,j]` principle, where `i=rows` and `j=columns`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
+> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in rows and the days are represented by the columns. Subscripting in R follows the `[i, j]` principle, where `i = rows` and `j = columns`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
 > > 
 > {: .solution}
 {: .challenge}
@@ -475,18 +476,18 @@ We'll learn why this is so in the next lesson.
 > Using the inflammation data frame `dat` from above:
 > Let's pretend there was something wrong with the instrument on the first five days for every second patient (#2, 4, 6, etc.), which resulted in the measurements being twice as large as they should be.
 >
-> 1. Write a vector containing each affected patient (hint: `? seq`)
+> 1. Write a vector containing each affected patient (hint: `?seq`)
 > 2. Create a new data frame in which you halve the first five days' values in only those patients
 > 3. Print out the corrected data frame to check that your code has fixed the problem
 >
 > > ## Solution
 > > ~~~
-> > whichPatients <- seq(2,60,2)  # i.e., which rows
-> > whichDays <- seq(1,5)         # i.e., which columns
+> > whichPatients <- seq(2, 60, 2) # i.e., which rows
+> > whichDays <- seq(1, 5)         # i.e., which columns
 > > dat2 <- dat
 > > # check the size of your subset: returns `30 5`, that is 30 [rows=patients] by 5 [columns=days]
 > > dim(dat2[whichPatients, whichDays])
-> > dat2[whichPatients, whichDays] <- dat2[whichPatients, whichDays]/2
+> > dat2[whichPatients, whichDays] <- dat2[whichPatients, whichDays] / 2
 > > dat2
 > > ~~~
 > > {: .r}
@@ -517,7 +518,7 @@ We'll learn why this is so in the next lesson.
 > > # 2.
 > > apply(dat[, 1:10], 2, mean)
 > > # 3.
-> > apply(dat[, seq(1,40, by=2)], 2, mean)
+> > apply(dat[, seq(1, 40, by = 2)], 2, mean)
 > > ~~~
 > > {: .r}
 > {: .solution}

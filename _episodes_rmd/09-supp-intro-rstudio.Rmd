@@ -10,6 +10,7 @@ objectives:
 - "Demonstrate useful shortcuts."
 keypoints:
 - "Using RStudio can make programming in R much more productive."
+source: Rmd
 ---
 
 ```{r, include= FALSE}
@@ -72,4 +73,4 @@ all contexts so it is good practice to use `<-` for assignments. `=` should only
 be used to specify the values of arguments in functions, see below.
 
 In RStudio, typing `Alt + -` (push `Alt`, the key next to your space bar at the
-same time as the `-` key) will write ` <- ` in a single keystroke.
+same time as the `-` key) will write `<-` in a single keystroke.

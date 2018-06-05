@@ -14,6 +14,7 @@ keypoints:
 - "Use knitr to generate reports that combine text, code, and results."
 - "Use Markdown to format text."
 - "Put code in blocks delimited by triple back quotes followed by `{r}`."
+source: Rmd
 ---
 
 ```{r, include = FALSE}

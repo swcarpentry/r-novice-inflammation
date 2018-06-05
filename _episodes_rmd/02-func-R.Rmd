@@ -22,6 +22,7 @@ keypoints:
 - "Annotate your code!"
 - "Specify default values for arguments when defining a function using `name = value` in the argument list."
 - "Arguments can be passed by matching based on name, by position, or by omitting them (in which case the default value is used)."
+source: Rmd
 ---
 
 ```{r, include = FALSE}
@@ -56,7 +57,7 @@ Inside the function, we use a [return statement]({{ page.root }}/reference/#retu
 >
 > In R, it is not necessary to include the return statement.
 > R automatically returns whichever variable is on the last line of the body
-> of the function. Since we are just learning, we will explicitly define the
+> of the function. While in the learning phase, we will explicitly define the
 > return statement.
 {: .callout}
 
@@ -82,7 +83,7 @@ kelvin_to_celsius <- function(temp_K) {
   return(temp_C)
 }
 
-#absolute zero in Celsius
+# absolute zero in Celsius
 kelvin_to_celsius(0)
 ```
 
@@ -528,7 +529,7 @@ display(55)
 # two arguments
 display(55, 66)
 # three arguments
-display (55, 66, 77)
+display(55, 66, 77)
 ```
 
 As this example shows, arguments are matched from left to right, and any that haven't been given a value explicitly get their default value.

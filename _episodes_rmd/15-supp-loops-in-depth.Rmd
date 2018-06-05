@@ -12,6 +12,7 @@ objectives:
 keypoints:
 - "Where possible, use vectorized operations instead of `for` loops to make code faster and more concise."
 - "Use functions such as `apply` instead of `for` loops to operate on the values in a data structure."
+source: Rmd
 ---
 
 ```{r, include = FALSE}
@@ -45,7 +46,7 @@ analyze <- function(filename) {
 ```
 
 ```{r files}
-filenames <- list.files(path = "data", pattern = "inflammation.*.csv", full.names = TRUE)
+filenames <- list.files(path = "data", pattern = "inflammation-[0-9]{2}.csv", full.names = TRUE)
 ```
 
 ### Vectorized Operations
@@ -170,7 +171,7 @@ This time there is no copying/growing for R to deal with.
 
 ```{r}
 analyze3 <- function(filenames) {
-  out <- matrix(ncol = length(filenames), nrow = 40) ## assuming 40 here from files
+  out <- matrix(ncol = length(filenames), nrow = 40) # assuming 40 here from files
   for (f in seq_along(filenames)) {
     fdata <- read.csv(filenames[f], header = FALSE)
     out[, f] <- apply(fdata, 2, mean)

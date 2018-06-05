@@ -17,6 +17,7 @@ keypoints:
 - "The body of a `for` loop is surrounded by curly braces (`{}`)."
 - "Use `length(thing)` to determine the length of something that contains other values."
 - "Use `list.files(path = \"path\", pattern = \"pattern\", full.names = TRUE)` to create a list of files whose names match a pattern."
+source: Rmd
 ---
 
 ```{r, include = FALSE}
@@ -213,7 +214,7 @@ length(vowels)
 >
 > ```{r, echo=-1}
 > total <- function(vec) {
->   #calculates the sum of the values in a vector
+>   # calculates the sum of the values in a vector
 >   vec_sum <- 0
 >   for (num in vec) {
 >     vec_sum <- vec_sum + num
@@ -227,7 +228,7 @@ length(vowels)
 > > ## Solution
 > > ~~~
 > > total <- function(vec) {
-> >   #calculates the sum of the values in a vector
+> >   # calculates the sum of the values in a vector
 > >   vec_sum <- 0
 > >   for (num in vec) {
 > >     vec_sum <- vec_sum + num
@@ -310,7 +311,7 @@ list.files(path = "data", pattern = "inflammation")
 As these examples show, `list.files` result is a vector of strings, which means we can loop over it to do something with each filename in turn.
 In our case, the "something" we want is our `analyze` function.
 
-Because we have put our data in separate subdirectory, if we want to access these files
+Because we have put our data in a separate subdirectory, if we want to access these files
 using the output of `list.files` we also need to include the "path" portion of the file name.
 We can do that by using the argument `full.names = TRUE`.
 
@@ -327,8 +328,8 @@ Let's test out running our `analyze` function by using it on the first three fil
 filenames <- list.files(path = "data",  
                         # Now follows a regular expression that matches:
                         pattern = "inflammation-[0-9]{2}.csv",
-                        #          |            |        the static file extension of comma-separated values,
-                        #          |            the variable parts (two of the digits 0 to 9, and
+                        #          |            |        the standard file extension of comma-separated values
+                        #          |            the variable parts (two digits, each between 0 and 9)
                         #          the static part of the filenames
                         full.names = TRUE)
 filenames <- filenames[1:3]
