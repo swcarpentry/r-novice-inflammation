@@ -421,7 +421,8 @@ rescale <- function(v) {
 
 > ## Rescaling
 >
-> Write a function `rescale` that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1.
+> Write a function `rescale` that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1. 
+> Please create a new file for this and save it as `rescale.R`.
 > (If $L$ and $H$ are the lowest and highest values in the original vector, then the replacement for a value $v$ should be $(v-L) / (H-L)$.)
 > Be sure to document your function with roxygen2 comments.
 >
@@ -475,7 +476,7 @@ dat <- read.csv(header = FALSE, file = "data/inflammation-01.csv")
 dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
 
-To understand what's going on, and make our own functions easier to use, let's re-define our `center` function like this:
+To understand what's going on, and make our own functions easier to use, let's re-define our `center` function as follows. Please create a new file for this and save it as `center.R`.
 
 ```{r}
 #' Centering Data (or another descriptive title for your function)

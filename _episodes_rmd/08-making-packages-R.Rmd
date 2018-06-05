@@ -61,43 +61,7 @@ Suggestion: organize in a logical manner so that you know which file holds which
 
 ### Making your first R package
 
-Let's turn our centering and rescaling functions into an R package.
-
-```{r center-packaged}
-#' Centering Data (or another descriptive title for your function)
-#' 
-#' @param data The numeric vector to be centered
-#' @param desired The numeric value around which the data should be centered
-#'
-#' @return A new vector containing the original data centered around the desired value.
-#'
-#' @examples
-#'   center(c(1, 2, 3), 0)  # should return [1] -1  0  1
-center <- function(data, desired) {
-  new_data <- (data - mean(data)) + desired
-  return(new_data)
-}
-```
-
-```{r rescale-packaged}
-#' Rescaling Vectors To Lie In A Lower- And Upper-Bounded Range
-#'
-#' @param v A numeric vector
-#' @param lower numeric (default = 0)
-#' @param upper numeric (default = 1)
-#'
-#' @return The rescaled numeric vector
-#'
-#' @examples
-#'   rescale(c(1, 2, 3), 0, 1)  # should return [1] 0.0 0.5 1.0
-rescale <- function(v, lower = 0, upper = 1) {
-  L <- min(v)
-  H <- max(v)
-  result <- (v - L) / (H - L) * (upper - lower) + lower
-  return(result)
-}
-```
-
+Let's turn our `center.R` and `rescale.R` functions into an R package.
 
 We will use the [`devtools`][devtools] package and [`roxygen2` from episode 2 "Creating Functions"]({{ page.root }}/02-func-R/), which make creating packages in R relatively simple. Both can be installed from CRAN like this:
 
@@ -109,34 +73,21 @@ library("devtools")
 library("roxygen2")
 ```
 
-Set your working directory, and then use the `create` function to start making your package.
-Keep the name simple and unique.
-  - package_to_convert_temperatures_between_kelvin_fahrenheit_and_celsius (BAD)
-  - tempConvert (GOOD)
+In this lesson, we will start building a "personal package". This is meant to
+collect any kind of R code that is useful to you. As you continue to evolve it
+after this lesson, you may move codes that belong to the same publication, topic
+or a distinct project, into their own packages.
 
-```{r, eval=FALSE}
-setwd(parentDirectory)
-create("tempConvert")
-```
+To start working on this personal package, please open RStudio's `File` menu and 
+select `New Project… > New Directory… > R Package`. Give it a unique, but useful
+name. Your own will work just fine. Bonus points for squeezing in an `R` ;-)
+In case you have learned about version control already, it would be a good 
+practice to `create a git repository` now and apply what you learned to document
+building this package.
 
-Add our functions to the R directory.
-Place each function into a separate R script and add documentation like this:
+![](../fig/08-RStudio-new-package.png)
 
-```{r}
-#' Converts Fahrenheit to Kelvin
-#'
-#' This function converts input temperatures in Fahrenheit to Kelvin.
-#' @param temp_F The temperature in Fahrenheit.
-#' @return The temperature in Kelvin.
-#' @export
-#' @examples
-#' fahrenheit_to_kelvin(32)
 
-fahrenheit_to_kelvin <- function(temp_F) {
-  temp_K <- ((temp_F - 32) * (5/9)) + 273.15
-  temp_K
-}
-```
 
 The `roxygen2` package reads lines that begin with `#'` as the function documentation for your package.
 Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function.
