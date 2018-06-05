@@ -29,10 +29,10 @@ If you want to reuse code later or want others to be able to use your code, you 
 
 An R package requires four components:
 
-*   a DESCRIPTION file with metadata about the package
-*   an R directory with the code
-*   a man directory with documentation (we will create this automatically)
-*   a NAMESPACE file listing user-level functions in the package (we will also create this automatically)
+*   a `DESCRIPTION` file with metadata about the package
+*   an `R` directory with the code
+*   a `man` directory with documentation (we will create this automatically)
+*   a `NAMESPACE` file listing user-level functions in the package (we will also create this automatically)
 
 *There are other optional components. [Read the "R packages" book][r-pkgs-desc] and/or the original ["Writing R Extensions" documentation][WRE]for much more information.*
 
