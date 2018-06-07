@@ -204,5 +204,10 @@ In case you learned about Git already, also view the `.Rd` files in RStudio's
 > {: .solution}
 {: .challenge}
 
+Also, after `roxygenise()`-ing the function docu, you can tell R to run the examples.
+You don't need to copy paste them from the help page.
 
+```{r center-rescale-packaged-test-call, eval=FALSE}
+example(center)
+example(rescale)
 ```
