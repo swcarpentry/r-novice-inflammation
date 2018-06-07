@@ -116,9 +116,11 @@ library("usethis")
 ```
 
 In this lesson, we will start building a "personal package". This is meant to
-collect any kind of R code that is useful to you. As you continue to evolve it
+collect any kind of R code that is useful to _you_. As you continue to evolve it
 after this lesson, you may move codes that belong to the same publication, topic
-or a distinct project, into their own packages.
+or a distinct project, into their own packages. Here we begin to realise the
+benefit of [formally documenting the functions already in the episode 2][02]: 
+We can publish more quickly, because we didn't leave much unfished clean-up business.
 
 To start working on this personal package, please open RStudio's `File` menu and 
 select `New Project… > New Directory… > R Package`. Give it a unique, but useful
