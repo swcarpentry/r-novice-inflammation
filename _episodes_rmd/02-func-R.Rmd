@@ -630,7 +630,9 @@ rescale <- function(v, lower = 0, upper = 1) {
   result <- (v - L) / (H - L) * (upper - lower) + lower
   return(result)
 }
+```
 
+```{r rescale-test}
 answer <- rescale(dat[, 4], lower = 2, upper = 5)
 min(answer)
 max(answer)
