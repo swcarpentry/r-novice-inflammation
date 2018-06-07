@@ -127,7 +127,7 @@ In case you have learned about version control already, it would be a good
 practice to `create a git repository` now and apply what you learned to document
 building this package.
 
-![](../fig/08-RStudio-new-package.png)
+<img src="../fig/08-RStudio-new-package.png" alt="New package in RStudio" width="500" />
 
 
 
