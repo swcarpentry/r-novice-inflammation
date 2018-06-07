@@ -154,6 +154,9 @@ center(c(1, 2, 3))
 rescale(c(1, 2, 3))
 ```
 
+
+## Converting function documentation to help pages
+
 Remember that we added some documentation as roxygen2 comments? Let's try and look
 it up:
 
@@ -194,7 +197,7 @@ In case you learned about Git already, also view the `.Rd` files in RStudio's
 > >
 > > ## Solution
 > > 
-> > - "roxygenise() docu to help pages" because it includes a hint to the 
+> > - "roxygenise() function comments into help pages" because it includes a hint to the 
 > > the command used
 > > - "Integrate function docu into R's standard help pages"
 > > 
