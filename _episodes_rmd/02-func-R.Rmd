@@ -483,8 +483,8 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 To understand what's going on, and make our own functions easier to use, let's re-define our `center` function as follows. Please create a new file for this and save it as `center.R`.
 
-```{r}
-#' Centering Data (or another descriptive title for your function)
+```{r center-default}
+#' Centering Data
 #' 
 #' @param data The numeric vector to be centered
 #' @param desired The numeric value around which the data should be centered (default = 0)

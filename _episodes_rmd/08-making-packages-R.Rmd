@@ -68,7 +68,7 @@ Suggestion: organize in a logical manner so that you know which file holds which
 Let's turn our `center.R` and `rescale.R` functions into an R package.
 
 ```{r center-rescale-to-package}
-#' Centering Data (or another descriptive title for your function)
+#' Centering Data
 #' 
 #' @param data The numeric vector to be centered
 #' @param desired The numeric value around which the data should be centered (default = 0)
