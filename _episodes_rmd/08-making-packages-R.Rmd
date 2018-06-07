@@ -171,7 +171,6 @@ After `Install and Restart`-ing again, looking up the documentation should work.
 What exactly does `roxygen2` do? It reads lines that begin with `#'` as the function documentation for your package.
 Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function.
 
-Notice there is now a tempConvert environment that is the parent environment to the global environment.
 Please take a look at RStudio's `Files` panes now. The `/man` directory should
 now contain one LaTeX-like formatted `.Rd` file for each function.
 
@@ -192,6 +191,9 @@ In case you learned about Git already, also view the `.Rd` files in RStudio's
 > > 
 > {: .solution}
 {: .challenge}
+
+Notice there is now a `package:YouRName` environment that is the parent environment to the global environment.
+
 ```{r, eval=FALSE}
 search()
 ```
