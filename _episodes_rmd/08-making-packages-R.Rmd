@@ -129,7 +129,11 @@ building this package.
 
 <img src="../fig/08-RStudio-new-package.png" alt="New package in RStudio" width="500" />
 
+This should open a new RStudio window, within which we'll first create an "Initial
+commit" in RStudio's `Git` tab. This helps us differentiate between RStudio's  
+"skelleton" content of a package, and the "meat" we add later.
 
+<img src="../fig/08-RStudio-new-package-git.png" alt="Default package files in RStudio's Git pane" width="500" />
 
 The `roxygen2` package reads lines that begin with `#'` as the function documentation for your package.
 Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function.
@@ -146,6 +150,23 @@ Now, let's load the package and take a look at the documentation.
 
 Notice there is now a tempConvert environment that is the parent environment to the global environment.
 
+In case you learned about Git already, also view the `.Rd` files in RStudio's
+`Git` pane and commit the documentation.
+
+> ## How would you word the commit message?
+>
+> "Add docu" is a bit moot, because that's obvious from the filenames and contents.
+> Which other messages would better explain the "Why?", or that would be more useful
+> when browsing the commit history later?
+> >
+> > ## Solution
+> > 
+> > - "roxygenise() docu to help pages" because it includes a hint to the 
+> > the command used
+> > - "Integrate function docu into R's standard help pages"
+> > 
+> {: .solution}
+{: .challenge}
 ```{r, eval=FALSE}
 search()
 ```
