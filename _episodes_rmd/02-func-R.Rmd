@@ -290,7 +290,7 @@ A common way to put documentation in software is to add "informal" comments like
 center <- function(data, desired) {
   # return a new vector containing the original data centered around the
   # desired value.
-  # Example: center(c(1, 2, 3), 0) => c(-1, 0, 1)
+  # Example: center(c(1, 2, 3), 0) should return [1] -1  0  1
   new_data <- (data - mean(data)) + desired
   return(new_data)
 }
@@ -412,6 +412,8 @@ You can safely ignore it for now, or delete it.
 #'
 #' @examples
 #'   rescale(c(1, 2, 3))  # should return [1] 0.0 0.5 1.0
+#'   rescale(c(1, 2, 3, 4, 5))  # should return [1] 0.00 0.25 0.50 0.75 1.00
+
 rescale <- function(v) {
   L <- min(v)
   H <- max(v)
@@ -439,6 +441,8 @@ rescale <- function(v) {
 > > #'
 > > #' @examples
 > > #'   rescale(c(1, 2, 3))  # should return [1] 0.0 0.5 1.0
+> > #'   rescale(c(1, 2, 3, 4, 5))  # should return [1] 0.00 0.25 0.50 0.75 1.00
+> > 
 > > rescale <- function(v) {
 > >   L <- min(v)
 > >   H <- max(v)
@@ -488,7 +492,9 @@ To understand what's going on, and make our own functions easier to use, let's r
 #' @return A new vector containing the original data centered around the desired value.
 #'
 #' @examples
-#'   center(c(1, 2, 3), 0)  # should return [1] -1  0  1
+#'   center(c(1, 2, 3))  # should return [1] -1  0  1
+#'   center(c(1, 2, 3), 1)  # should return [1] 0 1 2
+
 center <- function(data, desired = 0) {
   new_data <- (data - mean(data)) + desired
   return(new_data)
@@ -591,7 +597,9 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 > > #' @return The rescaled numeric vector
 > > #'
 > > #' @examples
-> > #'   rescale(c(1, 2, 3), 0, 1)  # should return [1] 0.0 0.5 1.0
+> > #'   rescale(c(1, 2, 3))  # should return [1] 0.0 0.5 1.0
+> > #'   rescale(c(1, 2, 3), 1, 2)  # should return [1] 1.0 1.5 2.0
+> > 
 > > rescale <- function(v, lower = 0, upper = 1) {
 > >   L <- min(v)
 > >   H <- max(v)
@@ -613,13 +621,16 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 #' @return The rescaled numeric vector
 #'
 #' @examples
-#'   rescale(c(1, 2, 3), 0, 1)  # should return [1] 0.0 0.5 1.0
+#'   rescale(c(1, 2, 3))  # should return [1] 0.0 0.5 1.0
+#'   rescale(c(1, 2, 3), 1, 2)  # should return [1] 1.0 1.5 2.0
+
 rescale <- function(v, lower = 0, upper = 1) {
   L <- min(v)
   H <- max(v)
   result <- (v - L) / (H - L) * (upper - lower) + lower
   return(result)
 }
+
 answer <- rescale(dat[, 4], lower = 2, upper = 5)
 min(answer)
 max(answer)

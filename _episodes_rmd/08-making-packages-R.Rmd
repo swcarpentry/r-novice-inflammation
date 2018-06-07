@@ -68,6 +68,40 @@ Suggestion: organize in a logical manner so that you know which file holds which
 Let's turn our `center.R` and `rescale.R` functions into an R package.
 
 We will use the [`devtools`][devtools] and [`usethis`][usethis] packages, as well as [`roxygen2` from episode 2 "Creating Functions"][02]. These make creating packages in R relatively simple. They can be installed from CRAN like this:
+```{r center-rescale-to-package}
+#' Centering Data (or another descriptive title for your function)
+#' 
+#' @param data The numeric vector to be centered
+#' @param desired The numeric value around which the data should be centered (default = 0)
+#'
+#' @return A new vector containing the original data centered around the desired value.
+#'
+#' @examples
+#'   center(c(1, 2, 3))  # should return [1] -1  0  1
+#'   center(c(1, 2, 3), 1)  # should return [1] 0 1 2
+
+center <- function(data, desired = 0) {
+  new_data <- (data - mean(data)) + desired
+  return(new_data)
+}
+
+#' Rescaling vectors to lie in the range 0 to 1
+#'
+#' @param v A numeric vector
+#'
+#' @return The rescaled numeric vector
+#'
+#' @examples
+#'   rescale(c(1, 2, 3))  # should return [1] 0.0 0.5 1.0
+#'   rescale(c(1, 2, 3, 4, 5))  # should return [1] 0.00 0.25 0.50 0.75 1.00
+
+rescale <- function(v) {
+  L <- min(v)
+  H <- max(v)
+  result <- (v - L) / (H - L)
+  return(result)
+}
+```
 
 [02]: {{ page.root }}/02-func-R/
 [devtools]: https://cran.r-project.org/package=devtools
