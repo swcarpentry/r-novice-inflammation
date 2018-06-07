@@ -138,7 +138,14 @@ commit" in RStudio's `Git` tab. This helps us differentiate between RStudio's
 The `roxygen2` package reads lines that begin with `#'` as the function documentation for your package.
 Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function.
 Now, we will use `roxygen2` to convert our documentation to the standard R format.
+RStudio's "skelleton" package can already be built, using the `Build > Install and Restart`
+option. Note the `library(...)` line that appears in the console. Now you can take
+advantage of the console's auto-complete just like for every other package. Type
+`cen` and/or `resc`, then `TAB` and insert some example values.
 
+```{r center-rescale-packaged-test}
+center(c(1, 2, 3))
+rescale(c(1, 2, 3))
 ```
 
 
