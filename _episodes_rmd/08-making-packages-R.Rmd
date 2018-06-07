@@ -135,9 +135,6 @@ commit" in RStudio's `Git` tab. This helps us differentiate between RStudio's
 
 <img src="../fig/08-RStudio-new-package-git.png" alt="Default package files in RStudio's Git pane" width="500" />
 
-The `roxygen2` package reads lines that begin with `#'` as the function documentation for your package.
-Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function.
-Now, we will use `roxygen2` to convert our documentation to the standard R format.
 RStudio's "skelleton" package can already be built, using the `Build > Install and Restart`
 option. Note the `library(...)` line that appears in the console. Now you can take
 advantage of the console's auto-complete just like for every other package. Type
@@ -148,14 +145,35 @@ center(c(1, 2, 3))
 rescale(c(1, 2, 3))
 ```
 
+Remember that we added some documentation as roxygen2 comments? Let's try and look
+it up:
 
+```{r error=TRUE}
+?center
+help(rescale)
+```
 
+> ## Why `No documentation…`? We did write it!
+>
+> Why do you think the documentation of our package can not be found. Hint: Look
+> at the commit diff.
+> >
+> > ## Solution
+> > 
+> > We did not yet tell R to actually generate the `man`ual files and folders in
+> > our package. This needs to be done with `roxygenise()`
+> > 
+> {: .solution}
+{: .challenge}
 
-Now, let's load the package and take a look at the documentation.
+After `Install and Restart`-ing again, looking up the documentation should work.
 
-
+What exactly does `roxygen2` do? It reads lines that begin with `#'` as the function documentation for your package.
+Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function.
 
 Notice there is now a tempConvert environment that is the parent environment to the global environment.
+Please take a look at RStudio's `Files` panes now. The `/man` directory should
+now contain one LaTeX-like formatted `.Rd` file for each function.
 
 In case you learned about Git already, also view the `.Rd` files in RStudio's
 `Git` pane and commit the documentation.
