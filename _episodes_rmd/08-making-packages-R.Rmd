@@ -137,7 +137,15 @@ commit" in RStudio's `Git` tab. This helps us differentiate between RStudio's
 <img src="../fig/08-RStudio-new-package-git.png" alt="Default package files in RStudio's Git pane" width="500" />
 
 RStudio's "skelleton" package can already be built, using the `Build > Install and Restart`
-option. Note the `library(...)` line that appears in the console. Now you can take
+option. Note the `library(...)` line that appears in the console. 
+Also, notice there is now a `package:YouRName` environment that is the parent 
+environment to the global environment.
+
+```{r, eval=FALSE}
+search()
+```
+
+This means you can now take
 advantage of the console's auto-complete just like for every other package. Type
 `cen` and/or `resc`, then `TAB` and insert some example values.
 
@@ -193,8 +201,5 @@ In case you learned about Git already, also view the `.Rd` files in RStudio's
 > {: .solution}
 {: .challenge}
 
-Notice there is now a `package:YouRName` environment that is the parent environment to the global environment.
 
-```{r, eval=FALSE}
-search()
 ```
