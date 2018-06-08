@@ -1,7 +1,7 @@
 ---
 title: "Making Packages in R"
 teaching: 30
-exercises: 0
+exercises: 3
 questions:
 - "How do I collect my code together so I can reuse it and share it?"
 - "How do I make my own package(s)?"
