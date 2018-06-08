@@ -4,10 +4,12 @@ teaching: 30
 exercises: 0
 questions:
 - "How do I collect my code together so I can reuse it and share it?"
-- "How do I make my own packages?"
+- "How do I make my own package(s)?"
+- "How do I integrate my function documentation into R's help pages system?"
 objectives:
 - "Describe the required structure of R packages."
 - "Create the required structure of a simple R package."
+- "Using roxygen2 to convert function docu into help pages."
 keypoints:
 - "A package is the basic unit of reusability in R."
 - "Every package must have a DESCRIPTION file and an R directory containing code. These are created by us."
