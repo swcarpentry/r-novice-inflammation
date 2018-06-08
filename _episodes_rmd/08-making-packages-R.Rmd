@@ -207,7 +207,9 @@ In case you learned about Git already, also view the `.Rd` files in RStudio's
 {: .challenge}
 
 Also, after `roxygenise()`-ing the function docu, you can tell R to run the examples.
-You don't need to copy paste them from the help page.
+Using R's `example()` function and on another function's name saves you from
+scrolling down its help page, copying the example code and pasting it into the
+console.
 
 ```{r center-rescale-packaged-test-call, eval=FALSE}
 example(center)
