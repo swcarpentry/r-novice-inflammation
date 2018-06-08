@@ -456,7 +456,7 @@ rescale <- function(v) {
 
 [01]: {{ page.root }}/01-starting-with-data/
 
-```{r rescale-test, include=FALSE}
+```{r rescale-test1, include=FALSE}
 answer <- rescale(dat[, 4])
 min(answer)
 max(answer)
@@ -632,7 +632,7 @@ rescale <- function(v, lower = 0, upper = 1) {
 }
 ```
 
-```{r rescale-test}
+```{r rescale-test2}
 answer <- rescale(dat[, 4], lower = 2, upper = 5)
 min(answer)
 max(answer)
