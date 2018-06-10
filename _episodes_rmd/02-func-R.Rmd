@@ -4,12 +4,12 @@ teaching: 30
 exercises: 0
 questions:
 - "How do I make a function?"
-- "How can I test my functions?"
+- "How can I test my functions manually?"
 - "How should I document my code?"
 objectives:
 - "Define a function that takes arguments."
 - "Return a value from a function."
-- "Test a function."
+- "Test a function manually."
 - "Set default values for function arguments."
 - "Explain why we should divide programs into small, single-purpose functions."
 - "Write documentation comments that can be automatically compiled to R's native help and documentation format."
@@ -18,7 +18,7 @@ keypoints:
 - "Call a function using `name(...values...)`."
 - "R looks for variables in the current stack frame before looking for them at the top level."
 - "Use `help(thing)` to view help for something."
-- "Put comments at the beginning of functions to provide help for that function."
+- "Put formal roxygen2 comments at the beginning of functions to provide help for that function."
 - "Annotate your code!"
 - "Specify default values for arguments when defining a function using `name = value` in the argument list."
 - "Arguments can be passed by matching based on name, by position, or by omitting them (in which case the default value is used)."
