@@ -50,7 +50,7 @@ and to meet some of our community members.
     changes should be made.
     
 Issues in this repository are tagged with [labels](../../labels) by the maintainers, 
-which you may find useful for navigating open issues. If an issue 
+which you may find useful for navigating open issues.
 
 
 ## Where to Contribute
