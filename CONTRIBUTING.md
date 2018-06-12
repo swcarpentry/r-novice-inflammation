@@ -39,15 +39,18 @@ and to meet some of our community members.
     and to respond to it in a threaded discussion.
 
 3.  If you are comfortable with Git,
-    and would like to add or change material,
-    you can submit a pull request (PR).
-    Instructions for doing this are [included below](#using-github).
-    While we would like substantial changes to be raised in an issue for input from maintainers 
-    before you work on a PR, **we always welcome PRs that correct typos and bugs**. 
-    If you are not sure if your proposed changes are substantial, we encourage you to submit an issue.  
-
+    and would like to resolve an existing issue that's been tagged by the maintainers 
+    or typos/bugs, you can submit a pull request (PR). 
+    Since the episode markdown files are generated from 
+    the R markdown files, please commit changes to files in `_episodes_rmd` *not* `_episodes_md`. We appreciate 
+    your contributions but we cannot merge changes made directly to the markdown files.
+    Further instructions for submitting a PR [included below](#using-github). 
+    If you'd like to suggest substantial changes such as removing or adding topics in the lesson,
+    please first raise an issue to allow the maintainers to comment, so we can discuss whether/how these
+    changes should be made.
+    
 Issues in this repository are tagged with [labels](../../labels) by the maintainers, 
-which you may find useful for navigating open issues.
+which you may find useful for navigating open issues. If an issue 
 
 
 ## Where to Contribute
