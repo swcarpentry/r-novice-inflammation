@@ -360,7 +360,7 @@ rescale <- function(v) {
 > ## Rescaling
 >
 > Write a function `rescale` that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1.
-> (If $L$ and $H$ are the lowest and highest values in the original vector, then the replacement for a value $v$ should be $(v-L) / (H-L)$.)
+> (If `L` and `H` are the lowest and highest values in the original vector, then the replacement for a value `v` should be `(v-L) / (H-L)`.)
 > Be sure to document your function with comments.
 >
 > Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
