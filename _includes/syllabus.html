@@ -21,6 +21,7 @@
     <td class="col-md-7">Download files required for the lesson</td>
   </tr>
   {% for episode in site.episodes %}
+  {% set episodes = episodes|group('supp') %}
     {% if episode.start %} {% comment %} Starting a new day? {% endcomment %}
       {% assign day = day | plus: 1 %}
       {% if day > 1 %} {% comment %} If about to start day 2 or later, show finishing time for previous day {% endcomment %}
