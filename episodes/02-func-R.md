@@ -201,7 +201,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > >   return(answer)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 >
 > If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
@@ -230,7 +230,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > >    return(answer)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -543,7 +543,7 @@ center <- function(data, desired) {
 > >   plot(min_day_inflammation)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -565,7 +565,7 @@ center <- function(data, desired) {
 > >   return(result)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -815,7 +815,7 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 > >   return(result)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
