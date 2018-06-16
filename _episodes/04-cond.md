@@ -604,3 +604,5 @@ Now if we need to make any changes to our analysis, we can edit the `analyze` fu
 > > {: .r}
 > {: .solution}
 {: .challenge}
+
+{% include links.md %}

@@ -978,3 +978,5 @@ The maximum value rises and falls perfectly smoothly, while the minimum seems to
 >
 > Create a plot showing the standard deviation of the inflammation data for each day across all patients.
 {: .challenge}
+
+{% include links.md %}

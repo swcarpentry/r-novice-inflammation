@@ -400,3 +400,5 @@ plot(x = dat$Gender, y = dat$BloodPressure)
 > 
 > <img src="../fig/rmd-12-supp-factors-adjusting-levels-1.png" title="plot of chunk adjusting-levels" alt="plot of chunk adjusting-levels" style="display: block; margin: auto;" />
 {: .callout}
+
+{% include links.md %}
