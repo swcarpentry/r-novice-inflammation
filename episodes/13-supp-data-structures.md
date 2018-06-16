@@ -1049,3 +1049,5 @@ The following table summarizes the one-dimensional and two-dimensional data stru
 > ~~~
 > {: .r}
 {: .challenge}
+
+{% include links.md %}
