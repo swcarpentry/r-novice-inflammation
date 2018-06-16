@@ -36,7 +36,7 @@ $ Rscript readings.R --mean data/inflammation-01.csv
 7.05
 5.9
 ~~~
-{: .r}
+{: .language-r}
 
 but we might also want to look at the minimum of the first four lines
 

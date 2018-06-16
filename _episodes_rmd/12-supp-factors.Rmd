@@ -96,7 +96,7 @@ information built in. It is particularly helpful when there are many levels
 > > ~~~
 > > exercise <- factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = TRUE)
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > We only expect three cathegories ("n", "l", "i").
 > > We can order these from least intense to most intense, so let's use `oredered`.
 > {: .solution}
