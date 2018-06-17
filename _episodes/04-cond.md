@@ -308,7 +308,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > >   }
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -361,7 +361,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > >    }
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -406,7 +406,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > >   patient_max <- patient_index
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -601,6 +601,6 @@ Now if we need to make any changes to our analysis, we can edit the `analyze` fu
 > >   }
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}

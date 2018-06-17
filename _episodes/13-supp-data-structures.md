@@ -1047,5 +1047,5 @@ The following table summarizes the one-dimensional and two-dimensional data stru
 > # differing type (although, remember that type must be consistent within each column!).
 > str(iris)
 > ~~~
-> {: .r}
+> {: .language-r}
 {: .challenge}

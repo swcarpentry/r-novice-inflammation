@@ -262,7 +262,7 @@ carSpeeds$State
 > > # Convert colors back to factors
 > > carSpeeds$Color <- as.factor(carSpeeds$Color)
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
