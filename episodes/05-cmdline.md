@@ -42,14 +42,14 @@ but we might also want to look at the minimum of the first four lines
 ~~~
 $ head -4 data/inflammation-01.csv | Rscript readings.R --min
 ~~~
-{: .bash}
+{: .language-bash}
 
 or the maximum inflammations in several files one after another:
 
 ~~~
 $ Rscript readings.R --max data/inflammation-*.csv
 ~~~
-{: .bash}
+{: .language-bash}
 
 Our overall requirements are:
 

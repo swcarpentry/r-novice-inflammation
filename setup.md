@@ -22,4 +22,4 @@ You also need to download some files to follow this lesson:
 $ cd
 $ cd Desktop/r-novice-inflammation/data
 ~~~
-{: .bash}
+{: .language-bash}
