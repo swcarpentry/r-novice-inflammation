@@ -18,6 +18,7 @@
 [jekyll-windows]: http://jekyll-windows.juthilo.com/
 [jekyll]: https://jekyllrb.com/
 [jupyter]: https://jupyter.org/
+[lessons]: https://software-carpentry.org/lessons/
 [lesson-example]: https://swcarpentry.github.io/lesson-example/
 [mit-license]: https://opensource.org/licenses/mit-license.html
 [morea]: https://morea-framework.github.io/
