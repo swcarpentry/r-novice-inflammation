@@ -35,7 +35,7 @@ if(x > 0){
 	print("value is neither positive nor negative")
 }
 ~~~
-{: .r}
+{: .language-r}
 
 - create a `for` loop to process elements in a collection one at a time
 
@@ -44,7 +44,7 @@ for (i in 1:5) {
 	print(i)
 }
 ~~~
-{: .r}
+{: .language-r}
 
 This will print:
 
@@ -78,7 +78,7 @@ is_positive <- function(integer_value){
 	{
 }
 ~~~
-{: .r}
+{: .language-r}
 
 In R, the last executed line of a function is automatically returned
 
@@ -89,7 +89,7 @@ increment_me <- function(value_to_increment, value_to_increment_by = 1){
 	value_to_increment + value_to_increment_by
 }
 ~~~
-{: .r}
+{: .language-r}
 
 `increment_me(4)`, will return 5
 
