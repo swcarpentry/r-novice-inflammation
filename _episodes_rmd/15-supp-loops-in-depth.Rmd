@@ -182,3 +182,5 @@ If we were doing this over more files or the data objects we were growing were l
 
 Note that `apply` handles these memory allocation issues for you, but then you have to write the loop part as a function to pass to `apply`.
 At its heart, `apply` is just a `for` loop with extra convenience.
+
+{% include links.md %}

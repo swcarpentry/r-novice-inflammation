@@ -532,3 +532,5 @@ answer <- rescale(dat[, 4], lower = -5, upper = -2)
 min(answer)
 max(answer)
 ```
+
+{% include links.md %}
