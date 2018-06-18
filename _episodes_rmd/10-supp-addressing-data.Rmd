@@ -192,3 +192,5 @@ x
 > In this dataset, values for Gender have been recorded as both uppercase `M, F` and lowercase `m, f`.
 > Combine the indexing and assignment operations to convert all values to lowercase.
 {: .challenge}
+
+{% include links.md %}

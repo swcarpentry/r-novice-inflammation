@@ -168,3 +168,5 @@ rm(list = ls()) # If you want to delete all the objects in the workspace and sta
 >    Copy and paste code into each script so that `inflammation.R` "does stuff" and `inflammation_fxns.R` holds all of your functions.
 >    __Hint__: you will need to add `source` to one of the files.
 {: .challenge}
+
+{% include links.md %}

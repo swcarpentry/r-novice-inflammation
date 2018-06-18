@@ -227,3 +227,5 @@ kelvin_to_celsius(273.15)
 > 1. Create some new functions for your tempConvert package to convert from Kelvin to Fahrenheit or from Celsius to Kelvin or Fahrenheit.
 > 2. Create a package for our `analyze` function so that it will be easy to load when more data arrives.
 {: .challenge}
+
+{% include links.md %}
