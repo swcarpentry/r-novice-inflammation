@@ -936,3 +936,5 @@ And now we're done: the program now does everything we set out to do.
 > > {: .output}
 > {: .solution}
 {: .challenge}
+
+{% include links.md %}

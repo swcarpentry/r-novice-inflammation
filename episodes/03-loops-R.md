@@ -603,3 +603,5 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 > > {: .language-r}
 > {: .solution}
 {: .challenge}
+
+{% include links.md %}

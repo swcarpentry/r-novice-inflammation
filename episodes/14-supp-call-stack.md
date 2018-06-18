@@ -160,3 +160,5 @@ That only works if functions don't interfere with each other; if they do, we hav
 > ~~~
 > {: .language-r}
 {: .challenge}
+
+{% include links.md %}
