@@ -42,14 +42,14 @@ When you click on File -> New File, there is an option for "R Markdown...". Choo
 > In the example document add
 >
 > * Headers using `#`
-> * Emphasis using astericks:  \*italics\* and \*\*bold\*\*
+> * Emphasis using asterisk: \*italics\* and \*\*bold\*\*
 > * Lists using `*` and numbered lists using `1.`, `2.`, etc.
 > * **Bonus:** Create a table
 {: .challenge}
 
 Markdown also supports LaTeX equation editing.
 We can display pretty equations by enclosing them in `$`,
-e.g., `$\alpha = \dfrac{1}{(1 - \beta)^2}$` renders as: $\alpha = \dfrac{1}{(1 - \beta)^2}$.
+e.g., `$\alpha = \dfrac{1}{(1 - \beta)^2}$` renders as: ![](../fig/rmd-07-knitr-R-formula.png)
 
 The top of the source (.Rmd) file has some header material in YAML format (enclosed by triple dashes).
 Some of this gets displayed in the output header, other of it provides formatting information to the conversion engine.
