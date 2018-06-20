@@ -6,7 +6,6 @@
 __pycache__
 _site
 
-
 # Created by https://www.gitignore.io/api/r
 
 ### R ###
@@ -45,6 +44,3 @@ vignettes/*.pdf
 *.knit.md
 
 # End of https://www.gitignore.io/api/r
-
-
-.Rproj.user
