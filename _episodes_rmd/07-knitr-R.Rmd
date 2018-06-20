@@ -41,7 +41,7 @@ When you click on File -> New File, there is an option for "R Markdown...". Choo
 > In the example document add
 >
 > * Headers using `#`
-> * Emphasis using astericks:  \*italics\* and \*\*bold\*\*
+> * Emphasis using asterisk: \*italics\* and \*\*bold\*\*
 > * Lists using `*` and numbered lists using `1.`, `2.`, etc.
 > * **Bonus:** Create a table
 {: .challenge}
