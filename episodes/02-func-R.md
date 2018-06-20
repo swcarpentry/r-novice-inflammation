@@ -146,12 +146,12 @@ This is our first taste of how larger programs are built: we define basic
 operations, then combine them in ever-larger chunks to get the effect we want.
 Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
 
-> ## Chaining Functions
+> ## Nesting Functions
 >
 > This example showed the output of `fahrenheit_to_kelvin` assigned to `temp_K`, which
 > is then passed to `kelvin_to_celsius` to get the final result. It is also possible
-> to perform this calculation in one line of code, by "chaining" functions
-> together, like so:
+> to perform this calculation in one line of code, by "nesting" one function
+> inside another, like so:
 >
 > 
 > ~~~
@@ -596,7 +596,7 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 
 
 ~~~
-Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' muss eine Zeichenkette oder eine Verbindung sein
+Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 ~~~
 {: .error}
 
