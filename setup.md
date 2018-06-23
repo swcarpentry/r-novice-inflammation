@@ -1,8 +1,7 @@
 ---
 layout: page
 title: Setup
-permalink: /setup/
-root: ..
+root: .
 ---
 
 This lesson assumes you have the R software and the development environment RStudio installed on your computer.
