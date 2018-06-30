@@ -297,7 +297,7 @@ center <- function(data, desired) {
 ```
 
 This is a good practice to begin with. Keeping the documentation exactly next to 
-the code helps keeping the docu up to date when the code has to be changed. 
+the code helps keeping the documentation up to date when the code has to be changed. 
 However, such comments are not what we saw when using `?read.csv` to view a help 
 page.
 
@@ -318,7 +318,7 @@ this conversion in [episode 8 "Making Packages in R"]({{ page.root }}/08-making-
 > Help pages are rendered not directly from the roxygen2 comments, but from 
 > `.Rd` files that use a markup language similar to [LaTeX]. 
 > [roxygen2] generates those `.Rd` files from the formal function documentation
-> comments. Therefore, R coders not have to write these LaTeX-like files separately,
+> comments. Therefore, R coders do not have to write these LaTeX-like files separately,
 > but instead document their functions alongside the code.
 {: .callout}
 
@@ -399,7 +399,7 @@ analyze <- function(filename) {
 
 If you are using RStudio, a nice shortcut is `CTRL`+`Shift`+`Alt`+`R`. Place the 
 cursor inside the function name or body, press that shortcut, 
-the roxygen2 function docu skeleton will be inserted. Note that we are not using 
+the roxygen2 function documentation skeleton will be inserted. Note that we are not using 
 `@export` here, because it will only become relevant for [packaging]({{ page.root }}/reference/#packages).
 You can safely ignore it for now, or delete it.
 
