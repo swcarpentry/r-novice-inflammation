@@ -36,7 +36,7 @@ An R package requires four components:
 *   a `man` directory with documentation (we will create this automatically)
 *   a `NAMESPACE` file listing user-level functions in the package (we will also create this automatically)
 
-*There are other optional components. [Read the "R packages" book][r-pkgs-desc] and/or the original ["Writing R Extensions" documentation][WRE]for much more information.*
+*There are other optional components. [Read the "R packages" book][r-pkgs-desc] and/or the original ["Writing R Extensions" documentation][WRE] for much more information.*
 
 [r-pkgs-desc]: http://r-pkgs.had.co.nz/description.html
 [WRE]: https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-structure
@@ -52,7 +52,7 @@ Description: One descriptive paragraph explaining why the package exists and wha
 Version: Semantic version number (major.minor.patch)  # see semver.org
 Authors@R: person("First", "Last", "first.last@example.com",
   role = c("aut", "cre"),  # see ?person for all possibilities 
-  comment = c(ORCID = "0000-…-…-…")))
+  comment = c(ORCID = "0000-...-...-...")))
 License: Abbreviation for an open source license
 ~~~
 {: .source}
@@ -118,15 +118,15 @@ library("usethis")
 
 In this lesson, we will start building a "personal package". This is meant to
 collect any kind of R code that is useful to _you_. As you continue to evolve it
-after this lesson, you may move codes that belong to the same publication, topic
+after this lesson, you may move code that belongs to the same publication, topic
 or a distinct project, into their own packages. Here we begin to realise the
 benefit of [formally documenting the functions already in the episode 2][02]: 
-We can publish more quickly, because we didn't leave much unfished clean-up business.
+We can publish more quickly, because we didn't leave much unfinished clean-up business.
 
 To start working on this personal package, please open RStudio's `File` menu and 
 select `New Project… > New Directory… > R Package`. Give it a unique, but useful
 name. Your own will work just fine. Bonus points for squeezing in an `R` ;-)
-In case you have learned about version control already, it would be a good 
+If you have learned about version control already, it would be good 
 practice to `create a git repository` now and apply what you learned to document
 building this package.
 
@@ -134,11 +134,11 @@ building this package.
 
 This should open a new RStudio window, within which we'll first create an "Initial
 commit" in RStudio's `Git` tab. This helps us differentiate between RStudio's  
-"skelleton" content of a package, and the "meat" we add later.
+"skeleton" content of a package, and the "meat" we add later.
 
 <img src="../fig/08-RStudio-new-package-git.png" alt="Default package files in RStudio's Git pane" width="500" />
 
-RStudio's "skelleton" package can already be built, using the `Build > Install and Restart`
+RStudio's "skeleton" package can already be built, using the `Build > Install and Restart`
 option. Note the `library(...)` line that appears in the console. 
 Also, notice there is now a `package:YouRName` environment that is the parent 
 environment to the global environment.
@@ -167,7 +167,7 @@ it up:
 help(rescale)
 ```
 
-> ## Why `No documentation…`? We did write it!
+> ## Why `No documentation...`? We did write it!
 >
 > Why do you think the documentation of our package can not be found. Hint: Look
 > at the commit diff.
