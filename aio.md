@@ -1,7 +1,6 @@
 ---
-layout: page 
-permalink: /aio/
 ---
+
 <script>
   window.onload = function() {
     var lesson_episodes = [

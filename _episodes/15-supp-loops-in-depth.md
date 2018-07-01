@@ -222,7 +222,7 @@ system.time(avg2 <- analyze2(filenames))
 
 ~~~
    user  system elapsed 
-  0.060   0.004   0.070 
+  0.048   0.002   0.050 
 ~~~
 {: .output}
 
@@ -252,7 +252,7 @@ system.time(avg3 <- analyze3(filenames))
 
 ~~~
    user  system elapsed 
-  0.072   0.003   0.094 
+  0.054   0.002   0.060 
 ~~~
 {: .output}
 
@@ -262,3 +262,5 @@ If we were doing this over more files or the data objects we were growing were l
 
 Note that `apply` handles these memory allocation issues for you, but then you have to write the loop part as a function to pass to `apply`.
 At its heart, `apply` is just a `for` loop with extra convenience.
+
+{% include links.md %}

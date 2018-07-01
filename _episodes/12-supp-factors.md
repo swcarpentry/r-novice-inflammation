@@ -181,7 +181,7 @@ information built in. It is particularly helpful when there are many levels
 > > ~~~
 > > exercise <- factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = TRUE)
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > > We only expect three cathegories ("n", "l", "i").
 > > We can order these from least intense to most intense, so let's use `oredered`.
 > {: .solution}
@@ -400,3 +400,5 @@ plot(x = dat$Gender, y = dat$BloodPressure)
 > 
 > <img src="../fig/rmd-12-supp-factors-adjusting-levels-1.png" title="plot of chunk adjusting-levels" alt="plot of chunk adjusting-levels" style="display: block; margin: auto;" />
 {: .callout}
+
+{% include links.md %}

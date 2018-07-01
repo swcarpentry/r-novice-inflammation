@@ -80,7 +80,6 @@ Let's turn our `center.R` and `rescale.R` functions into an R package.
 #' @examples
 #'   center(c(1, 2, 3))  # should return [1] -1  0  1
 #'   center(c(1, 2, 3), 1)  # should return [1] 0 1 2
-
 center <- function(data, desired = 0) {
   new_data <- (data - mean(data)) + desired
   return(new_data)
@@ -215,3 +214,5 @@ console.
 example(center)
 example(rescale)
 ```
+
+{% include links.md %}

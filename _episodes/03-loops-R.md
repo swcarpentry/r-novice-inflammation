@@ -329,7 +329,7 @@ length(vowels)
 > >   }
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -364,7 +364,7 @@ length(vowels)
 > >   return(vec_sum)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -410,7 +410,7 @@ length(vowels)
 > >   return(result)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -600,6 +600,8 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 > >   }
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
+
+{% include links.md %}

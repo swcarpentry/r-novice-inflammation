@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Setup
-permalink: /setup/
+root: .
 ---
 
 This lesson assumes you have the R software and the development environment RStudio installed on your computer.
@@ -22,4 +22,4 @@ You also need to download some files to follow this lesson:
 $ cd
 $ cd Desktop/r-novice-inflammation/data
 ~~~
-{: .bash}
+{: .language-bash}

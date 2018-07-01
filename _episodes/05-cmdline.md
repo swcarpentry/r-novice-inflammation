@@ -35,21 +35,21 @@ $ Rscript readings.R --mean data/inflammation-01.csv
 7.05
 5.9
 ~~~
-{: .r}
+{: .language-r}
 
 but we might also want to look at the minimum of the first four lines
 
 ~~~
 $ head -4 data/inflammation-01.csv | Rscript readings.R --min
 ~~~
-{: .bash}
+{: .language-bash}
 
 or the maximum inflammations in several files one after another:
 
 ~~~
 $ Rscript readings.R --max data/inflammation-*.csv
 ~~~
-{: .bash}
+{: .language-bash}
 
 Our overall requirements are:
 
@@ -85,22 +85,22 @@ Rscript session-info.R
 
 
 ~~~
-R version 3.4.0 (2017-04-21)
+R version 3.5.0 (2018-04-23)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS  10.13.4
+Running under: macOS High Sierra 10.13.5
 
 Matrix products: default
-BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  base     
+[1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
-[1] compiler_3.4.0
+[1] compiler_3.5.0
 ~~~
 {: .output}
 
@@ -936,3 +936,5 @@ And now we're done: the program now does everything we set out to do.
 > > {: .output}
 > {: .solution}
 {: .challenge}
+
+{% include links.md %}

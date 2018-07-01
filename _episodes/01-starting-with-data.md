@@ -97,7 +97,7 @@ The filename needs to be a character string (or [string]({{ page.root }}/referen
 > ~~~
 > read.csv(file = "data/inflammation-01.csv")
 > ~~~
-> {: .r}
+> {: .language-r}
 {: .challenge}
 
 > ## Reading Different Decimal Point Formats
@@ -337,7 +337,7 @@ head(dat)
 > mass <- mass * 2.0
 > age <- age - 20
 > ~~~
-> {: .r}
+> {: .language-r}
 {: .challenge}
 
 ### Manipulating Data
@@ -897,7 +897,7 @@ We'll learn why this is so in the next lesson.
 > > dat2[whichPatients, whichDays] <- dat2[whichPatients, whichDays] / 2
 > > dat2
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -927,7 +927,7 @@ We'll learn why this is so in the next lesson.
 > > # 3.
 > > apply(dat[, seq(1, 40, by = 2)], 2, mean)
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -978,3 +978,5 @@ The maximum value rises and falls perfectly smoothly, while the minimum seems to
 >
 > Create a plot showing the standard deviation of the inflammation data for each day across all patients.
 {: .challenge}
+
+{% include links.md %}
