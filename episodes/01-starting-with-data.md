@@ -67,7 +67,7 @@ setwd("~/Desktop/r-novice-inflammation/")
 ~~~
 {: .language-r}
 
-Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
+Just like in the Unix Shell, we type the command and then press <kbd>Return</kbd> (or <kbd>Enter</kbd>).
 Alternatively you can change the working directory using the RStudio GUI using the menu option `Session` -> `Set Working Directory` -> `Choose Directory...`
 
 The data file is located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
@@ -128,7 +128,7 @@ Once a variable is created, we can use the variable name to refer to the value i
 
 <img src="../fig/tag-variables.svg" alt="Variables as Tags" />
 
-To see the value of a variable, we can print it by typing the name of the variable and hitting `Enter` (or `return`).
+To see the value of a variable, we can print it by typing the name of the variable and hitting <kbd>Return</kbd> (or <kbd>Enter</kbd>).
 In general, R will print to the console any object returned by a function or operation *unless* we assign it to a variable.
 
 
