@@ -168,7 +168,7 @@ We can treat our variable like a regular number, and do arithmetic with it:
 > read it) have an easier time following what the code is doing.
 {: .callout}
 
-We can also change an variable's value by assigning it a new value:
+We can also change a variable's value by assigning it a new value:
 
 
 ~~~
