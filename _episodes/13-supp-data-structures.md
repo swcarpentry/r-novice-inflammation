@@ -835,7 +835,7 @@ length(x)
 2. What about `x[[1]]`?
 
 
-Elements of a list can be named (i.e. lists can have the `names` atttibute)
+Elements of a list can be named (i.e. lists can have the `names` attribute)
 
 
 ~~~
