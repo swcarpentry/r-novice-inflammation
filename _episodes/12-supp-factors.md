@@ -183,7 +183,7 @@ information built in. It is particularly helpful when there are many levels
 > > ~~~
 > > {: .language-r}
 > > We only expect three cathegories ("n", "l", "i").
-> > We can order these from least intense to most intense, so let's use `oredered`.
+> > We can order these from least intense to most intense, so let's use `ordered`.
 > {: .solution}
 
 {: .challenge}

@@ -34,7 +34,8 @@ Let's start by opening a .csv file containing information on the speeds at which
 
 
 ~~~
-# First, set a working directory (see lesson 'Analyzing Patient Data' for more info)
+# First, set a working directory (see lesson 'Analyzing Patient Data' for more
+# info)
 setwd('~/swc')
 ~~~
 {: .language-r}
@@ -116,9 +117,10 @@ This is perhaps the most important argument in `read.csv()`, particularly if you
 
 
 ~~~
-# Here we will use R's `ifelse` function, in which we provide the test phrase, the outcome if the
-# result of the test is 'TRUE', and the outcome if the result is 'FALSE'. We will also assign
-# the results to the Color column, using '<-'
+# Here we will use R's `ifelse` function, in which we provide the test phrase,
+# the outcome if the result of the test is 'TRUE', and the outcome if the
+# result is 'FALSE'. We will also assign the results to the Color column,
+# using '<-'
 
 # First - reload the data with a header
 carSpeeds <- read.csv(file = 'data/car-speeds.csv')
@@ -255,7 +257,8 @@ carSpeeds$State
 > > ## Solution
 > > ~~~
 > > carSpeeds <- read.csv(file = 'data/car-speeds.csv')
-> > # Replace 'Blue' with 'Green' in cars$Color without using the stringsAsFactors or as.is arguments
+> > # Replace 'Blue' with 'Green' in cars$Color without using the stringsAsFactors
+> > # or as.is arguments
 > > carSpeeds$Color <- ifelse(as.character(carSpeeds$Color) == 'Blue',
 > >                          'Green',
 > >                          as.character(carSpeeds$Color))
@@ -276,7 +279,8 @@ Here, the data recorder added a space before the color of the car in one of the 
 
 
 ~~~
-# We use the built in unique() function to extract the unique colors in our dataset
+# We use the built in unique() function to extract the unique colors in our
+# dataset
 
 unique(carSpeeds$Color)
 ~~~
@@ -322,7 +326,8 @@ After altering our cars dataset by replacing 'Blue' with 'Green' in the `$Color`
 
 
 ~~~
-# Export the data. The write.csv() function requires a minimum of two arguments, the data to be saved and the name of the output file.
+# Export the data. The write.csv() function requires a minimum of two
+# arguments, the data to be saved and the name of the output file.
 
 write.csv(carSpeeds, file = 'data/car-speeds-cleaned.csv')
 ~~~
@@ -361,7 +366,8 @@ There are times when we want to specify certain values for `NA`s in the data set
 
 
 ~~~
-# First, replace the speed in the 3rd row with NA, by using an index (square brackets to indicate the position of the value we want to replace)
+# First, replace the speed in the 3rd row with NA, by using an index (square
+# brackets to indicate the position of the value we want to replace)
 carSpeeds$Speed[3] <- NA
 head(carSpeeds)
 ~~~
