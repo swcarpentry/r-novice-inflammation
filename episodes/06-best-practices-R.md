@@ -36,8 +36,8 @@ Starting your code with an annotated description of what the code does when it i
 
 
 ~~~
-# This is code to replicate the analyses and figures from my 2014 Science paper.
-# Code developed by Sarah Supp, Tracy Teal, and Jon Borelli
+# This is code to replicate the analyses and figures from my 2014 Science
+# paper. Code developed by Sarah Supp, Tracy Teal, and Jon Borelli
 ~~~
 {: .language-r}
 
