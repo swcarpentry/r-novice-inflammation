@@ -109,7 +109,7 @@ Try it out.
 
 `read.csv` reads the file, but we can't use the data unless we assign it to a variable.
 We can think of a variable as a container with a name, such as `x`, `current_temperature`, or `subject_id` that contains one or more values.
-We can create a new variable and assign a value to it using `<-`
+We can create a new variable and assign a value to it using `<-`.
 
 ```{r}
 weight_kg <- 55
