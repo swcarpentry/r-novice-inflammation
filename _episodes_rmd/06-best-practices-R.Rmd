@@ -3,7 +3,7 @@ title: "Best Practices for Writing R"
 teaching: 10
 exercises: 0
 questions:
-- "What are ways that I can write R so others can understand what I have done?"
+- "How can I write R code that other people can understand and use?"
 objectives:
 - "Describe changes made to code for future reference."
 - "Understand the importance about requirements and dependencies for your code."
