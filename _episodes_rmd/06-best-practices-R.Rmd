@@ -1,13 +1,15 @@
 ---
-title: "Best Practices for Writing R"
+title: "Best Practices for Writing R Code"
 teaching: 10
 exercises: 0
 questions:
-- "How can I write R that other people can understand and use?"
+- "How can I write R code that other people can understand and use?"
 objectives:
-- "Define best formatting practices when writing code in R scripts."
-- "Synthesize a consistent personal coding style to increase code readability, consistency, and repeatability."
-- "Apply this style to your own code."
+- "Describe changes made to code for future reference."
+- "Understand the importance about requirements and dependencies for your code."
+- "Know when to use setwd()."
+- "To identify and segregate distinct components in your code using # or #-."
+- "Additional best practice recommendations."
 keypoints:
 - "Start each program with a description of what it does."
 - "Then load all required packages."
