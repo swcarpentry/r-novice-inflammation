@@ -172,11 +172,20 @@ Descriptive tags are preceded with the `@` symbol. For example, `@param` has inf
 Please take a look at RStudio's `Files` panes now. The `/man` directory should
 now contain one LaTeX-like formatted `.Rd` file for each function.
 
-In case you learned about Git already, also view the `.Rd` files in RStudio's
-`Git` pane and commit the documentation.
+After `Install and Restart`-ing again, open the help pages for our two functions
+with `help(center)` and `help(rescale)`.
+Also, you can now tell R to run the examples with `example(center)` and
+`example(rescale)`. This saves you from scrolling
+down a help page, copying the example code and pasting it into the
+console. Note the prefix of the prompt in the R console! It contains the
+function's name (or an abbreviated version of it) to highlight it as belonging
+to the function's example.
 
-> ## How would you word the commit message?
+> ## In case you learned about Git already...
 >
+> ...also view the `.Rd` files in RStudio's `Git` pane and commit the documentation.
+> 
+> How would you word the commit message?
 > "Add docu" is a bit moot, because that's obvious from the filenames and contents.
 > Which other messages would better explain the "Why?", or that would be more useful
 > when browsing the commit history later?
@@ -186,17 +195,10 @@ In case you learned about Git already, also view the `.Rd` files in RStudio's
 > > - "roxygenise() function comments into help pages" because it includes a hint to the 
 > > the command used
 > > - "Integrate function docu into R's standard help pages"
+> > - something similarly description & explanatory, that helps your future self
+> > and others understand the purpose of the commit
 > > 
 > {: .solution}
 {: .challenge}
-
-After `Install and Restart`-ing again, open the help pages for our two functions
-with `help(center)` and `help(rescale)`.
-Also, you can now tell R to run the examples with `example(center)` and
-`example(rescale)`. This saves you from scrolling
-down a help page, copying the example code and pasting it into the
-console. Note the prefix of the prompt in the R console! It contains the
-function's name (or an abbreviated version of it) to highlight it as belonging
-to the function's example.
 
 {% include links.md %}
