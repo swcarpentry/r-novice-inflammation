@@ -158,28 +158,13 @@ rescale(c(1, 2, 3))
 
 ## Converting function documentation to help pages
 
-Remember that we added some documentation as roxygen2 comments? Let's try and look
-it up:
+Remember that we added some documentation as roxygen2 comments? Let's actually
+turn it into R help pages now.
 
-```{r error=TRUE}
-?center
-help(rescale)
+```{r eval=FALSE}
+library(roxygen2)
+roxygenise()
 ```
-
-> ## Why `No documentation...`? We did write it!
->
-> Why do you think the documentation of our package can not be found. Hint: Look
-> at the commit diff.
-> >
-> > ## Solution
-> > 
-> > We did not yet tell R to actually generate the `man`ual files and folders in
-> > our package. This needs to be done with `roxygenise()`
-> > 
-> {: .solution}
-{: .challenge}
-
-After `Install and Restart`-ing again, looking up the documentation should work.
 
 What exactly does `roxygen2` do? It reads lines that begin with `#'` as the function documentation for your package.
 Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function.
@@ -205,14 +190,13 @@ In case you learned about Git already, also view the `.Rd` files in RStudio's
 > {: .solution}
 {: .challenge}
 
-Also, after `roxygenise()`-ing the function docu, you can tell R to run the examples.
-Using R's `example()` function on another function's name saves you from
-scrolling down its help page, copying the example code and pasting it into the
-console.
-
-```{r center-rescale-packaged-test-call, eval=FALSE}
-example(center)
-example(rescale)
-```
+After `Install and Restart`-ing again, open the help pages for our two functions
+with `help(center)` and `help(rescale)`.
+Also, you can now tell R to run the examples with `example(center)` and
+`example(rescale)`. This saves you from scrolling
+down a help page, copying the example code and pasting it into the
+console. Note the prefix of the prompt in the R console! It contains the
+function's name (or an abbreviated version of it) to highlight it as belonging
+to the function's example.
 
 {% include links.md %}
