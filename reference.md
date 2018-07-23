@@ -1,6 +1,6 @@
 ---
 layout: reference
-root: ..
+root: .
 ---
 
 ## Basic Operation
