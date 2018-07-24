@@ -109,7 +109,7 @@ loaded via a namespace (and not attached):
 > If that did not work, you might have seen an error message indicating that the file `session-info.R` does not exist.
 > Remember that you must be in the correct directory, the one in which you created your script file.
 > You can determine which directory you are currently in using `pwd` and change to a different directory using `cd`.
-> For a review, see this [lesson]({{ site.swc_pages }}/shell-novice/01-filedir/).
+> For a review, see this [lesson]({{ site.swc_pages }}/shell-novice/02-filedir/).
 {: .callout}
 
 Now let's create another script that does something more interesting. Write the following lines in a file named `print-args.R`:
