@@ -22,19 +22,20 @@ source: Rmd
 
 The most common way that scientists store data is in Excel spreadsheets.
 While there are R packages designed to access data from Excel spreadsheets (e.g., gdata, RODBC, XLConnect, xlsx, RExcel),
-users often find it easier to save their spreadsheets in [comma-separated values]({{ page.root }}/reference/#comma-separated-values-csv) files (CSV)
+users often find it easier to save their spreadsheets in [comma-separated values]({{ page.root }}/reference.html#comma-separated-values-csv) files (CSV)
 and then use R's built in functionality to read and manipulate the data.
 In this short lesson, we'll learn how to read data from a .csv and write to a new .csv,
-and explore the [arguments]({{ page.root }}/reference/#argument) that allow you read and write the data correctly for your needs.
+and explore the [arguments]({{ page.root }}/reference.html#argument) that allow you read and write the data correctly for your needs.
 
 
 ### Read a .csv and Explore the Arguments
 
-Let's start by opening a .csv file containing information on the speeds at which cars of different colors were clocked in 45 mph zones in the four-corners states (`CarSpeeds.csv`). We will use the built in `read.csv(...)` [function call]({{ page.root }}/reference/#function-call), which reads the data in as a data frame, and assign the data frame to a variable (using `<-`) so that it is stored in R's memory. Then we will explore some of the basic arguments that can be supplied to the function.
+Let's start by opening a .csv file containing information on the speeds at which cars of different colors were clocked in 45 mph zones in the four-corners states (`CarSpeeds.csv`). We will use the built in `read.csv(...)` [function call]({{ page.root }}/reference.html#function-call), which reads the data in as a data frame, and assign the data frame to a variable (using `<-`) so that it is stored in R's memory. Then we will explore some of the basic arguments that can be supplied to the function.
 
 
 ~~~
-# First, set a working directory (see lesson 'Analyzing Patient Data' for more info)
+# First, set a working directory (see lesson 'Analyzing Patient Data' for more
+# info)
 setwd('~/swc')
 ~~~
 {: .language-r}
@@ -112,13 +113,14 @@ Clearly this is not the desired behavior for this data set, but it may be useful
 
 ### The `stringsAsFactors` Argument
 
-This is perhaps the most important argument in `read.csv()`, particularly if you are working with categorical data. This is because the default behavior of R is to convert character [string]({{ page.root }}/reference/#string)s into factors, which may make it difficult to do such things as replace values. For example, let's say we find out that the data collector was color blind, and accidentally recorded green cars as being blue. In order to correct the data set, let's replace 'Blue' with 'Green' in the `$Color` column:
+This is perhaps the most important argument in `read.csv()`, particularly if you are working with categorical data. This is because the default behavior of R is to convert character [string]({{ page.root }}/reference.html#string)s into factors, which may make it difficult to do such things as replace values. For example, let's say we find out that the data collector was color blind, and accidentally recorded green cars as being blue. In order to correct the data set, let's replace 'Blue' with 'Green' in the `$Color` column:
 
 
 ~~~
-# Here we will use R's `ifelse` function, in which we provide the test phrase, the outcome if the
-# result of the test is 'TRUE', and the outcome if the result is 'FALSE'. We will also assign
-# the results to the Color column, using '<-'
+# Here we will use R's `ifelse` function, in which we provide the test phrase,
+# the outcome if the result of the test is 'TRUE', and the outcome if the
+# result is 'FALSE'. We will also assign the results to the Color column,
+# using '<-'
 
 # First - reload the data with a header
 carSpeeds <- read.csv(file = 'data/car-speeds.csv')
@@ -255,7 +257,8 @@ carSpeeds$State
 > > ## Solution
 > > ~~~
 > > carSpeeds <- read.csv(file = 'data/car-speeds.csv')
-> > # Replace 'Blue' with 'Green' in cars$Color without using the stringsAsFactors or as.is arguments
+> > # Replace 'Blue' with 'Green' in cars$Color without using the stringsAsFactors
+> > # or as.is arguments
 > > carSpeeds$Color <- ifelse(as.character(carSpeeds$Color) == 'Blue',
 > >                          'Green',
 > >                          as.character(carSpeeds$Color))
@@ -276,7 +279,8 @@ Here, the data recorder added a space before the color of the car in one of the 
 
 
 ~~~
-# We use the built in unique() function to extract the unique colors in our dataset
+# We use the built in unique() function to extract the unique colors in our
+# dataset
 
 unique(carSpeeds$Color)
 ~~~
@@ -318,11 +322,12 @@ That's better!
 
 ### Write a New .csv and Explore the Arguments
 
-After altering our cars dataset by replacing 'Blue' with 'Green' in the `$Color` column, we now want to save the output. There are several arguments for the `write.csv(...)` [function call]({{ page.root }}/reference/#function-call), a few of which are particularly important for how the data are exported.  Let's explore these now.
+After altering our cars dataset by replacing 'Blue' with 'Green' in the `$Color` column, we now want to save the output. There are several arguments for the `write.csv(...)` [function call]({{ page.root }}/reference.html#function-call), a few of which are particularly important for how the data are exported.  Let's explore these now.
 
 
 ~~~
-# Export the data. The write.csv() function requires a minimum of two arguments, the data to be saved and the name of the output file.
+# Export the data. The write.csv() function requires a minimum of two
+# arguments, the data to be saved and the name of the output file.
 
 write.csv(carSpeeds, file = 'data/car-speeds-cleaned.csv')
 ~~~
@@ -361,7 +366,8 @@ There are times when we want to specify certain values for `NA`s in the data set
 
 
 ~~~
-# First, replace the speed in the 3rd row with NA, by using an index (square brackets to indicate the position of the value we want to replace)
+# First, replace the speed in the 3rd row with NA, by using an index (square
+# brackets to indicate the position of the value we want to replace)
 carSpeeds$Speed[3] <- NA
 head(carSpeeds)
 ~~~

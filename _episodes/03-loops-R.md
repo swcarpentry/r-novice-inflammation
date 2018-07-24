@@ -185,7 +185,7 @@ print_words(best_practice[-6])
 ~~~
 {: .output}
 
-The improved version of `print_words` uses a [for loop]({{ page.root }}/reference/#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
+The improved version of `print_words` uses a [for loop]({{ page.root }}/reference.html#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
 The general form of a loop is:
 
 
@@ -196,7 +196,7 @@ for (variable in collection) {
 ~~~
 {: .language-r}
 
-We can name the [loop variable]({{ page.root }}/reference/#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
+We can name the [loop variable]({{ page.root }}/reference.html#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
 `in` is part of the `for` syntax.
 Note that the condition (`variable in collection`) is enclosed in parentheses,
 and the body of the loop is enclosed in curly braces `{ }`.
@@ -423,7 +423,7 @@ We do not need to write it ourselves because R already has a function to do this
 If we run the function without any arguments, `list.files()`, it returns every file in the current working directory.
 We can understand this result by reading the help file (`?list.files`).
 The first argument, `path`, is the path to the directory to be searched, and it has the default value of `"."`
-(recall from the [lesson]({{ site.swc_pages }}/shell-novice/01-filedir/) on the Unix Shell that `"."` is shorthand for the current working directory).
+(recall from the [lesson]({{ site.swc_pages }}/shell-novice/02-filedir/) on the Unix Shell that `"."` is shorthand for the current working directory).
 The second argument, `pattern`, is the pattern being searched, and it has the default value of `NULL`.
 Since no pattern is specified to filter the files, all files are returned.
 

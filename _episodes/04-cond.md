@@ -98,7 +98,7 @@ It would be ideal if `analyze` would either save or not save the plots based on 
 ### Conditionals
 
 In order to update our function to decide between saving or not, we need to write code that automatically decides between multiple options.
-The tool R gives us for doing this is called a [conditional statement]({{ page.root }}/reference/#conditional-statement), and looks like this:
+The tool R gives us for doing this is called a [conditional statement]({{ page.root }}/reference.html#conditional-statement), and looks like this:
 
 
 ~~~
@@ -494,7 +494,7 @@ analyze("data/inflammation-01.csv", output = "inflammation-01.pdf")
 
 Before going further, we will create a directory `results` for saving our plots.
 It is [good practice](http://swcarpentry.github.io/good-enough-practices-in-scientific-computing/) in data analysis projects to save all output to a directory separate from the data and analysis code.
-You can create this directory using the shell command [mkdir]({{ site.swc_pages }}/shell-novice/02-create/), or the R function `dir.create()`
+You can create this directory using the shell command [mkdir]({{ site.swc_pages }}/shell-novice/03-create/), or the R function `dir.create()`
 
 ~~~
 dir.create("results")
