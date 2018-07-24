@@ -53,7 +53,7 @@ $ Rscript readings.R --max data/inflammation-*.csv
 
 Our overall requirements are:
 
-1. If no filename is given on the command line, read data from [standard input]({{ page.root }}/reference/#standard-input-stdin).
+1. If no filename is given on the command line, read data from [standard input]({{ page.root }}/reference.html#standard-input-stdin).
 2. If one or more filenames are given, read data from them and report statistics for each file separately.
 3. Use the `--min`, `--mean`, or `--max` flag to determine what statistic to print.
 
@@ -123,7 +123,7 @@ cat(args, sep = "\n")
 
 The function `commandArgs` extracts all the command line arguments and returns them as a vector.
 The function `cat`, similar to the `cat` of the Unix Shell, outputs the contents of the variable.
-Since we did not specify a filename for writing, `cat` sends the output to [standard output]({{ page.root }}/reference/#standard-output-stdout),
+Since we did not specify a filename for writing, `cat` sends the output to [standard output]({{ page.root }}/reference.html#standard-output-stdout),
 which we can then pipe to other Unix functions.
 Because we set the argument `sep` to `"\n"`, which is the symbol to start a new line, each element of the vector is printed on its own line.
 Let's see what happens when we run this program in the Unix Shell:
@@ -350,7 +350,7 @@ Rscript readings-02.R data/inflammation-01.csv
 >
 > 1. Write a command-line program that does addition and subtraction.
 >
->    **Hint:** Everything argument read from the command-line is interpreted as a character [string]({{ page.root }}/reference/#string).
+>    **Hint:** Everything argument read from the command-line is interpreted as a character [string]({{ page.root }}/reference.html#string).
 >    You can convert from a string to a number using the function `as.numeric`.
 >
 > 
@@ -676,7 +676,7 @@ but there are several things wrong with it:
 1.  `main` is too large to read comfortably.
 
 2.  If `action` isn't one of the three recognized flags, the program loads each file but does nothing with it (because none of the branches in the conditional match).
-    [Silent failures]({{ page.root }}/reference/#silent-failure) like this are always hard to debug.
+    [Silent failures]({{ page.root }}/reference.html#silent-failure) like this are always hard to debug.
 
 This version pulls the processing of each file out of the loop into a function of its own.
 It also checks that `action` is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as `readings-05.R`:
