@@ -112,7 +112,7 @@ diff <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 span(diff)
 ```
 
-We don't expect the variable `diff` to have the value `r span(diff)` after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in as it does in the main body of our program (which R refers to as the global environment).
+We don't expect the variable `diff` to have the value `r span(diff)` after this function call, so the name `diff` cannot refer to the same variable defined inside `span` as it does in the main body of our program (which R refers to as the global environment).
 And yes, we could probably choose a different name than `diff` for our variable in this case, but we don't want to have to read every line of code of the R functions we call to see what variable names they use, just in case they change the values of our variables.
 
 The big idea here is [encapsulation]({{ page.root }}/reference.html#encapsulation), and it's the key to writing correct, comprehensible programs.
