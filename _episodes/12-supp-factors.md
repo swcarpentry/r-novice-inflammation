@@ -260,7 +260,7 @@ str(dat)
 ~~~
 'data.frame':	100 obs. of  9 variables:
  $ ID           : Factor w/ 100 levels "Sub001","Sub002",..: 1 2 3 4 5 6 7 8 9 10 ...
- $ Gender       : Factor w/ 4 levels "F","M","f","m": 4 4 4 3 4 2 3 4 4 3 ...
+ $ Gender       : Factor w/ 4 levels "f","F","m","M": 3 3 3 1 3 4 1 3 3 1 ...
  $ Group        : Factor w/ 3 levels "Control","Treatment1",..: 1 3 3 2 2 3 1 3 3 1 ...
  $ BloodPressure: int  132 139 130 105 125 112 173 108 131 129 ...
  $ Age          : num  16 17.2 19.5 15.7 19.9 14.3 17.7 19.8 19.4 18.8 ...
@@ -283,10 +283,10 @@ summary(dat)
 
 ~~~
        ID     Gender        Group    BloodPressure        Age       
- Sub001 : 1   F: 4   Control   :30   Min.   : 62.0   Min.   :12.10  
- Sub002 : 1   M:15   Treatment1:35   1st Qu.:107.5   1st Qu.:14.78  
- Sub003 : 1   f:35   Treatment2:35   Median :117.5   Median :16.65  
- Sub004 : 1   m:46                   Mean   :118.6   Mean   :16.42  
+ Sub001 : 1   f:35   Control   :30   Min.   : 62.0   Min.   :12.10  
+ Sub002 : 1   F: 4   Treatment1:35   1st Qu.:107.5   1st Qu.:14.78  
+ Sub003 : 1   m:46   Treatment2:35   Median :117.5   Median :16.65  
+ Sub004 : 1   M:15                   Mean   :118.6   Mean   :16.42  
  Sub005 : 1                          3rd Qu.:133.0   3rd Qu.:18.30  
  Sub006 : 1                          Max.   :173.0   Max.   :20.00  
  (Other):94                                                         
