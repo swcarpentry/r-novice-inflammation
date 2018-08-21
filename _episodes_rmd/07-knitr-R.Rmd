@@ -55,7 +55,7 @@ The top of the source (.Rmd) file has some header material in YAML format (enclo
 Some of this gets displayed in the output header, other of it provides formatting information to the conversion engine.
 
 To distinguish R code from text, RMarkdown uses three back-ticks followed by `{r}` to distinguish a "code chunk".
-In RStudio, the keyboard shortcut to create a code chunk is command-option-i or control-alt-i.
+In RStudio, the keyboard shortcut to create a code chunk is <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> or <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>.
 
 A code chunk will set off the code and its results in the output document,
 but you can also print the results of code within a text block by enclosing code like so: `` `r '\x60r code-here\x60'` ``.
