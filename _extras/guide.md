@@ -100,8 +100,8 @@ line and this should resolve the issue.
 *   Check learners are reading files from the correct location (set working
     directory); remind them of the shell lesson.
 
-*   Provide shortcut for the assignment operator (`<-`) (RStudio: Alt+- on
-    Windows/Linux; Option+- on Mac).
+*   Provide shortcut for the assignment operator (`<-`) (RStudio: <kbd>Alt</kbd>+<kbd>-</kbd> on
+    Windows/Linux; <kbd>Option</kbd>+<kbd>-</kbd> on Mac).
 
 *   When performing operations on sliced rows of data frames, be aware that some 
     functions in R automatically convert the object type to a numeric vector, while 
