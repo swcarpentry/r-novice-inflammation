@@ -90,7 +90,7 @@ write.table("data/results.csv", results_file)
 It is also worth considering what the working directory is. If the working directory must change, it is best to do that at the beginning of the script.
 
 > ## Be careful when using `setwd()`
-
+>
 > One should exercise caution when using `setwd()`. Changing directories in a script file can limit reproducibility:
 > * `setwd()` will return an error if the directory to which you're trying to change doesn't exist or if the user doesn't have the correct permissions to access that directory. This becomes a problem when sharing scripts between users who have organized their directories differently.
 > * If/when your script terminates with an error, you might leave the user in a different directory than the one they started in, and if they then call the script again, this will cause further problems. If you must use `setwd()`, it is best to put it at the top of the script to avoid these problems.
@@ -99,6 +99,7 @@ It is also worth considering what the working directory is. If the working direc
 > Error in setwd("~/path/to/working/directory") : cannot change working directory
 > ```
 > It is best practice to have the user running the script begin in a consistent directory on their machine and then use relative file paths from that directory to access files (see below).
+{: .callout}
 
 ### Identify and segregate distinct components in your code
 
