@@ -656,6 +656,38 @@ dim(m)
 ~~~
 {: .output}
 
+You can check that matrices are vectors with a class attribute of `matrix` by using `class()` and `typeof()`.
+
+
+~~~
+m <- matrix(c(1:3))
+class(m)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "matrix"
+~~~
+{: .output}
+
+
+
+~~~
+typeof(m)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "integer"
+~~~
+{: .output}
+
+While `class()` shows that m is a matrix, `typeof()` shows that fundamentally the matrix is an integer vector.
+
 Matrices in R are filled column-wise.
 
 
