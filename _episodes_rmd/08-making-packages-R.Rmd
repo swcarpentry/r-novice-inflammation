@@ -1,15 +1,14 @@
 ---
 title: "Making Packages in R"
 teaching: 30
-exercises: 3
+exercises: 0
 questions:
 - "How do I collect my code together so I can reuse it and share it?"
-- "How do I make my own package(s)?"
-- "How do I integrate my function documentation into R's help pages system?"
+- "How do I make my own packages?"
 objectives:
 - "Describe the required structure of R packages."
 - "Create the required structure of a simple R package."
-- "Using roxygen2 to convert function docu into help pages."
+- "Write documentation comments that can be automatically compiled to R's native help and documentation format."
 keypoints:
 - "A package is the basic unit of reusability in R."
 - "Every package must have a DESCRIPTION file and an R directory containing code. These are created by us."
@@ -67,138 +66,113 @@ Suggestion: organize in a logical manner so that you know which file holds which
 
 ### Making your first R package
 
-Let's turn our `center.R` and `rescale.R` functions into an R package.
+Let's turn our temperature conversion functions into an R package.
 
-```{r center-rescale-to-package}
-#' Centering Data
-#' 
-#' @param data The numeric vector to be centered
-#' @param desired The numeric value around which the data should be centered (default = 0)
-#'
-#' @return A new vector containing the original data centered around the desired value.
-#'
-#' @examples
-#'   center(c(1, 2, 3))  # should return [1] -1  0  1
-#'   center(c(1, 2, 3), 1)  # should return [1] 0 1 2
-center <- function(data, desired = 0) {
-  new_data <- (data - mean(data)) + desired
-  return(new_data)
-}
-
-#' Rescaling vectors to lie in the range 0 to 1
-#'
-#' @param v A numeric vector
-#'
-#' @return The rescaled numeric vector
-#'
-#' @examples
-#'   rescale(c(1, 2, 3))  # should return [1] 0.0 0.5 1.0
-#'   rescale(c(1, 2, 3, 4, 5))  # should return [1] 0.00 0.25 0.50 0.75 1.00
-
-rescale <- function(v) {
-  L <- min(v)
-  H <- max(v)
-  result <- (v - L) / (H - L)
-  return(result)
+```{r}
+fahrenheit_to_kelvin <- function(temp_F) {
+    #Converts Fahrenheit to Kelvin
+    temp_K <- ((temp_F - 32) * (5/9)) + 273.15
+    temp_K
 }
 ```
 
-We will use RStudio, and the packages [`usethis`][usethis] and [`roxygen2` from episode 2 "Creating Functions"][02]. These make creating packages in R relatively simple. They can be installed from CRAN like this:
+```{r}
+kelvin_to_celsius <- function(temp_K) {
+  #Converts Kelvin to Celsius
+  temp_C <- temp_K - 273.15
+  temp_C
+}
+```
 
-[02]: {{ page.root }}/02-func-R/
-[usethis]: https://cran.r-project.org/package=usethis
+```{r}
+fahrenheit_to_celsius <- function(temp_F) {
+  #Converts Fahrenheit to Celsius using fahrenheit_to_kelvin() and kelvin_to_celsius()
+  temp_K <- fahrenheit_to_kelvin(temp_F)
+	temp_C <- kelvin_to_celsius(temp_K)
+  temp_C
+}
+```
+
+We will use the [`devtools`][devtools] package and [`roxygen2` from episode 2 "Creating Functions"]({{ page.root }}/02-func-R/), which make creating packages in R relatively simple. Both can be installed from CRAN like this:
 
 ```{r, eval=FALSE}
-install.packages(c("roxygen2", "usethis"))
-# several can be combined, but only for installations
+install.packages(c("devtools", "roxygen2"))  # installations can be `c`ombined
+library("devtools")
 library("roxygen2")
-library("usethis")
 ```
 
-In this lesson, we will start building a "personal package". This is meant to
-collect any kind of R code that is useful to _you_. As you continue to evolve it
-after this lesson, you may move code that belongs to the same publication, topic
-or a distinct project, into their own packages. Here we begin to realise the
-benefit of [formally documenting the functions already in the episode 2][02]: 
-We can publish more quickly, because we didn't leave much unfinished clean-up business.
+Set your working directory, and then use the `create` function to start making your package.
+Keep the name simple and unique.
+  - package_to_convert_temperatures_between_kelvin_fahrenheit_and_celsius (BAD)
+  - tempConvert (GOOD)
 
-To start working on this personal package, please open RStudio's `File` menu and 
-select `New Project… > New Directory… > R Package`. Give it a unique, but useful
-name. Your own will work just fine. Bonus points for squeezing in an `R` ;-)
-If you have learned about version control already, it would be good 
-practice to `create a git repository` now and apply what you learned to document
-building this package.
+```{r, eval=FALSE}
+setwd(parentDirectory)
+create("tempConvert")
+```
 
-<img src="../fig/08-RStudio-new-package.png" alt="New package in RStudio" width="500" />
+Add our functions to the R directory.
+Place each function into a separate R script and add documentation like this:
 
-This should open a new RStudio window, within which we'll first create an "Initial
-commit" in RStudio's `Git` tab. This helps us differentiate between RStudio's  
-"skeleton" content of a package, and the "meat" we add later.
+```{r}
+#' Converts Fahrenheit to Kelvin
+#'
+#' This function converts input temperatures in Fahrenheit to Kelvin.
+#' @param temp_F The temperature in Fahrenheit.
+#' @return The temperature in Kelvin.
+#' @export
+#' @examples
+#' fahrenheit_to_kelvin(32)
 
-<img src="../fig/08-RStudio-new-package-git.png" alt="Default package files in RStudio's Git pane" width="500" />
+fahrenheit_to_kelvin <- function(temp_F) {
+  temp_K <- ((temp_F - 32) * (5/9)) + 273.15
+  temp_K
+}
+```
 
-RStudio's "skeleton" package can already be built, using the `Build > Install and Restart`
-option. Note the `library(...)` line that appears in the console. 
-Also, notice there is now a `package:YouRName` environment that is the parent 
-environment to the global environment.
+The `roxygen2` package reads lines that begin with `#'` as the function documentation for your package.
+Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function.
+Now, we will use `roxygen2` to convert our documentation to the standard R format.
+
+```{r, eval=FALSE}
+setwd("./tempConvert")
+document()
+```
+
+Take a look at the package directory now.
+The /man directory has a .Rd file for each .R file with properly formatted documentation.
+
+Overall, your package directory should look something like this:
+
+<img src="../fig/R-package-structure.svg" alt="R Package Structure" width="500" />
+
+Now, let's load the package and take a look at the documentation.
+
+```{r, eval=FALSE}
+setwd("..")
+install("tempConvert")
+
+?fahrenheit_to_kelvin
+```
+
+Notice there is now a tempConvert environment that is the parent environment to the global environment.
 
 ```{r, eval=FALSE}
 search()
 ```
 
-This means you can now take
-advantage of the console's auto-complete just like for every other package. Type
-`cen` and/or `resc`, then `TAB` and insert some example values.
+Now that our package is loaded, let's try out some of the functions.
 
-```{r center-rescale-packaged-test}
-center(c(1, 2, 3))
-rescale(c(1, 2, 3))
+```{r}
+fahrenheit_to_celsius(32)
+fahrenheit_to_kelvin(212)
+kelvin_to_celsius(273.15)
 ```
 
-
-## Converting function documentation to help pages
-
-Remember that we added some documentation as roxygen2 comments? Let's actually
-turn it into R help pages now.
-
-```{r eval=FALSE}
-library(roxygen2)
-roxygenise()
-```
-
-What exactly does `roxygen2` do? It reads lines that begin with `#'` as the function documentation for your package.
-Descriptive tags are preceded with the `@` symbol. For example, `@param` has information about the input parameters for the function.
-
-Please take a look at RStudio's `Files` panes now. The `/man` directory should
-now contain one LaTeX-like formatted `.Rd` file for each function.
-
-After `Install and Restart`-ing again, open the help pages for our two functions
-with `help(center)` and `help(rescale)`.
-Also, you can now tell R to run the examples with `example(center)` and
-`example(rescale)`. This saves you from scrolling
-down a help page, copying the example code and pasting it into the
-console. Note the prefix of the prompt in the R console! It contains the
-function's name (or an abbreviated version of it) to highlight it as belonging
-to the function's example.
-
-> ## In case you learned about Git already...
+> ## Creating a Package for Distribution
 >
-> ...also view the `.Rd` files in RStudio's `Git` pane and commit the documentation.
-> 
-> How would you word the commit message?
-> "Add docu" is a bit moot, because that's obvious from the filenames and contents.
-> Which other messages would better explain the "Why?", or that would be more useful
-> when browsing the commit history later?
-> >
-> > ## Solution
-> > 
-> > - "roxygenise() function comments into help pages" because it includes a hint to the 
-> > the command used
-> > - "Integrate function docu into R's standard help pages"
-> > - something similarly description & explanatory, that helps your future self
-> > and others understand the purpose of the commit
-> > 
-> {: .solution}
+> 1. Create some new functions for your tempConvert package to convert from Kelvin to Fahrenheit or from Celsius to Kelvin or Fahrenheit.
+> 2. Create a package for our `analyze` function so that it will be easy to load when more data arrives.
 {: .challenge}
 
 {% include links.md %}
