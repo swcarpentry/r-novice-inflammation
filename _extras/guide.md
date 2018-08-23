@@ -18,7 +18,7 @@ the "other 90%" of the language
 as well.
 
 The secondary goal of this lesson is to give them a usable mental model of how programs run
-(what computer science educators call a [notional machine]({{ page.root }}/reference/#notional-machine)
+(what computer science educators call a [notional machine]({{ page.root }}/reference.html#notional-machine)
 so that they can debug things when they go wrong.
 In particular,
 they must understand how function call stacks work.
@@ -100,8 +100,8 @@ line and this should resolve the issue.
 *   Check learners are reading files from the correct location (set working
     directory); remind them of the shell lesson.
 
-*   Provide shortcut for the assignment operator (`<-`) (RStudio: Alt+- on
-    Windows/Linux; Option+- on Mac).
+*   Provide shortcut for the assignment operator (`<-`) (RStudio: <kbd>Alt</kbd>+<kbd>-</kbd> on
+    Windows/Linux; <kbd>Option</kbd>+<kbd>-</kbd> on Mac).
 
 *   When performing operations on sliced rows of data frames, be aware that some 
     functions in R automatically convert the object type to a numeric vector, while 

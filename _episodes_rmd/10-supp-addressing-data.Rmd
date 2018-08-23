@@ -10,6 +10,7 @@ objectives:
 keypoints:
 - "Data in data frames can be addressed by index (slicing), by logical vector, or by name (columns only)."
 - "Use the `$` operator to address a column by name."
+source: Rmd
 ---
 
 ```{r, include = FALSE}
@@ -191,3 +192,5 @@ x
 > In this dataset, values for Gender have been recorded as both uppercase `M, F` and lowercase `m, f`.
 > Combine the indexing and assignment operations to convert all values to lowercase.
 {: .challenge}
+
+{% include links.md %}

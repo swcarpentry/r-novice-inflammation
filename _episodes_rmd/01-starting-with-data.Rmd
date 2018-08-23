@@ -27,6 +27,7 @@ keypoints:
 - "Use `mean`, `max`, `min` and `sd` to calculate simple statistics."
 - "Use `apply` to calculate statistics across the rows or columns of a data frame."
 - "Use `plot` to create simple visualizations."
+source: Rmd
 ---
 
 ```{r, include = FALSE}
@@ -36,7 +37,7 @@ knitr_fig_path("01-starting-with-data-")
 
 We are studying inflammation in patients who have been given a new treatment for arthritis,
 and need to analyze the first dozen data sets.
-The data sets are stored in [comma-separated values]({{ page.root }}/reference/#comma-separated-values-csv) (CSV) format. Each row holds the observations for just one patient. Each column holds the inflammation measured in a day, so we have a set of values in successive days.
+The data sets are stored in [comma-separated values]({{ page.root }}/reference.html#comma-separated-values-csv) (CSV) format. Each row holds the observations for just one patient. Each column holds the inflammation measured in a day, so we have a set of values in successive days.
 The first few rows of our first file look like this:
 
 ```{r echo = FALSE}
@@ -61,7 +62,7 @@ Let's import the file called `inflammation-01.csv` into our R environment. To im
 setwd("~/Desktop/r-novice-inflammation/")
 ```
 
-Just like in the Unix Shell, we type the command and then press `Enter` (or `return`).
+Just like in the Unix Shell, we type the command and then press <kbd>Return</kbd> (or <kbd>Enter</kbd>).
 Alternatively you can change the working directory using the RStudio GUI using the menu option `Session` -> `Set Working Directory` -> `Choose Directory...`
 
 The data file is located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
@@ -70,10 +71,10 @@ The data file is located in the directory `data` inside the working directory. N
 read.csv(file = "data/inflammation-01.csv", header = FALSE)
 ```
 
-The expression `read.csv(...)` is a [function call]({{ page.root }}/reference/#function-call) that asks R to run the function `read.csv`.
+The expression `read.csv(...)` is a [function call]({{ page.root }}/reference.html#function-call) that asks R to run the function `read.csv`.
 
-`read.csv` has two [arguments]({{ page.root }}/reference/#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
-The filename needs to be a character string (or [string]({{ page.root }}/reference/#string) for short), so we put it in quotes. Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers. We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04. In case of our `inflammation-01.csv` example, R auto-generates column names in the sequence `V1` (for "variable 1"), `V2`, and so on, until `V30`.
+`read.csv` has two [arguments]({{ page.root }}/reference.html#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
+The filename needs to be a character string (or [string]({{ page.root }}/reference.html#string) for short), so we put it in quotes. Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers. We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04. In case of our `inflammation-01.csv` example, R auto-generates column names in the sequence `V1` (for "variable 1"), `V2`, and so on, until `V30`.
 
 > ## Other Options for Reading CSV Files
 >
@@ -89,7 +90,7 @@ The filename needs to be a character string (or [string]({{ page.root }}/referen
 > ~~~
 > read.csv(file = "data/inflammation-01.csv")
 > ~~~
-> {: .r}
+> {: .language-r}
 {: .challenge}
 
 > ## Reading Different Decimal Point Formats
@@ -108,7 +109,7 @@ Try it out.
 
 `read.csv` reads the file, but we can't use the data unless we assign it to a variable.
 We can think of a variable as a container with a name, such as `x`, `current_temperature`, or `subject_id` that contains one or more values.
-We can create a new variable and assign a value to it using `<-`
+We can create a new variable and assign a value to it using `<-`.
 
 ```{r}
 weight_kg <- 55
@@ -118,7 +119,7 @@ Once a variable is created, we can use the variable name to refer to the value i
 
 <img src="../fig/tag-variables.svg" alt="Variables as Tags" />
 
-To see the value of a variable, we can print it by typing the name of the variable and hitting `Enter` (or `return`).
+To see the value of a variable, we can print it by typing the name of the variable and hitting <kbd>Return</kbd> (or <kbd>Enter</kbd>).
 In general, R will print to the console any object returned by a function or operation *unless* we assign it to a variable.
 
 ```{r}
@@ -140,7 +141,7 @@ We can treat our variable like a regular number, and do arithmetic with it:
 > read it) have an easier time following what the code is doing.
 {: .callout}
 
-We can also change an variable's value by assigning it a new value:
+We can also change a variable's value by assigning it a new value:
 
 ```{r}
 weight_kg <- 57.5
@@ -225,7 +226,7 @@ head(dat)
 > mass <- mass * 2.0
 > age <- age - 20
 > ~~~
-> {: .r}
+> {: .language-r}
 {: .challenge}
 
 ### Manipulating Data
@@ -241,7 +242,7 @@ The output tells us that is a data frame. Think of this structure as a spreadshe
 Data frames are very useful for storing data and you will use them frequently when programming in R.
 A typical data frame of experimental data contains individual observations in rows and variables in columns.
 
-We can see the shape, or [dimensions]({{ page.root }}/reference/#dimensions-of-an-array), of the data frame with the function `dim`:
+We can see the shape, or [dimensions]({{ page.root }}/reference.html#dimensions-of-an-array), of the data frame with the function `dim`:
 
 ```{r}
 dim(dat)
@@ -249,7 +250,7 @@ dim(dat)
 
 This tells us that our data frame, `dat`, has `r nrow(dat)` rows and `r ncol(dat)` columns.
 
-If we want to get a single value from the data frame, we can provide an [index]({{ page.root }}/reference/#index) in square brackets. The first number specifies the row and the second the column:
+If we want to get a single value from the data frame, we can provide an [index]({{ page.root }}/reference.html#index) in square brackets. The first number specifies the row and the second the column:
 
 ```{r selecting data frame elements}
 # first value in dat, row 1, column 1
@@ -489,7 +490,7 @@ We'll learn why this is so in the next lesson.
 > > dat2[whichPatients, whichDays] <- dat2[whichPatients, whichDays] / 2
 > > dat2
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -519,7 +520,7 @@ We'll learn why this is so in the next lesson.
 > > # 3.
 > > apply(dat[, seq(1, 40, by = 2)], 2, mean)
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -558,3 +559,5 @@ The maximum value rises and falls perfectly smoothly, while the minimum seems to
 >
 > Create a plot showing the standard deviation of the inflammation data for each day across all patients.
 {: .challenge}
+
+{% include links.md %}

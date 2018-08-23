@@ -21,6 +21,7 @@ keypoints:
 - "Annotate your code!"
 - "Specify default values for arguments when defining a function using `name = value` in the argument list."
 - "Arguments can be passed by matching based on name, by position, or by omitting them (in which case the default value is used)."
+source: Rmd
 ---
 
 ```{r, include = FALSE}
@@ -45,17 +46,17 @@ fahrenheit_to_kelvin <- function(temp_F) {
 
 We define `fahrenheit_to_kelvin` by assigning it to the output of `function`.
 The list of argument names are contained within parentheses.
-Next, the [body]({{ page.root }}/reference/#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
+Next, the [body]({{ page.root }}/reference.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
 The statements in the body are indented by two spaces, which makes the code easier to read but does not affect how the code operates.
 
 When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
-Inside the function, we use a [return statement]({{ page.root }}/reference/#return-statement) to send a result back to whoever asked for it.
+Inside the function, we use a [return statement]({{ page.root }}/reference.html#return-statement) to send a result back to whoever asked for it.
 
 > ## Automatic Returns
 >
 > In R, it is not necessary to include the return statement.
 > R automatically returns whichever variable is on the last line of the body
-> of the function. Since we are just learning, we will explicitly define the
+> of the function. While in the learning phase, we will explicitly define the
 > return statement.
 {: .callout}
 
@@ -87,7 +88,7 @@ kelvin_to_celsius(0)
 
 What about converting Fahrenheit to Celsius?
 We could write out the formula, but we don't need to.
-Instead, we can [compose]({{ page.root }}/reference/#function-composition) the two functions we have already created:
+Instead, we can [compose]({{ page.root }}/reference.html#function-composition) the two functions we have already created:
 
 ```{r}
 fahrenheit_to_celsius <- function(temp_F) {
@@ -104,12 +105,12 @@ This is our first taste of how larger programs are built: we define basic
 operations, then combine them in ever-larger chunks to get the effect we want.
 Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
 
-> ## Chaining Functions
+> ## Nesting Functions
 >
 > This example showed the output of `fahrenheit_to_kelvin` assigned to `temp_K`, which
 > is then passed to `kelvin_to_celsius` to get the final result. It is also possible
-> to perform this calculation in one line of code, by "chaining" functions
-> together, like so:
+> to perform this calculation in one line of code, by "nesting" one function
+> inside another, like so:
 >
 > ```{r chained-example}
 > # freezing point of water in Celsius
@@ -144,7 +145,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > >   return(answer)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 >
 > If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
@@ -170,7 +171,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > >    return(answer)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -280,7 +281,7 @@ all.equal(sd(dat[, 4]), sd(centered))
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
 We have one more task first, though: we should write some [documentation]({{ page.root }}/reference#documentation) for our function to remind ourselves later what it's for and how to use it.
 
-A common way to put documentation in software is to add [comments]({{ page.root }}/reference/#comment) like this:
+A common way to put documentation in software is to add [comments]({{ page.root }}/reference.html#comment) like this:
 
 ```{r}
 center <- function(data, desired) {
@@ -352,14 +353,14 @@ rescale <- function(v) {
 > >   plot(min_day_inflammation)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
 > ## Rescaling
 >
 > Write a function `rescale` that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1.
-> (If $L$ and $H$ are the lowest and highest values in the original vector, then the replacement for a value $v$ should be $(v-L) / (H-L)$.)
+> (If `L` and `H` are the lowest and highest values in the original vector, then the replacement for a value `v` should be `(v-L) / (H-L)`.)
 > Be sure to document your function with comments.
 >
 > Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
@@ -374,7 +375,7 @@ rescale <- function(v) {
 > >   return(result)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -451,7 +452,7 @@ display(55)
 # two arguments
 display(55, 66)
 # three arguments
-display (55, 66, 77)
+display(55, 66, 77)
 ```
 
 As this example shows, arguments are matched from left to right, and any that haven't been given a value explicitly get their default value.
@@ -512,7 +513,7 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 > >   return(result)
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -531,3 +532,5 @@ answer <- rescale(dat[, 4], lower = -5, upper = -2)
 min(answer)
 max(answer)
 ```
+
+{% include links.md %}

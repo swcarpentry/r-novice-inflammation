@@ -17,6 +17,7 @@ keypoints:
 - "Use `==` to test for equality."
 - "`X & Y` is only true if both X and Y are true."
 - "`X | Y` is true if either X or Y, or both, are true."
+source: Rmd
 ---
 
 ```{r, include = FALSE}
@@ -92,7 +93,7 @@ It would be ideal if `analyze` would either save or not save the plots based on 
 ### Conditionals
 
 In order to update our function to decide between saving or not, we need to write code that automatically decides between multiple options.
-The tool R gives us for doing this is called a [conditional statement]({{ page.root }}/reference/#conditional-statement), and looks like this:
+The tool R gives us for doing this is called a [conditional statement]({{ page.root }}/reference.html#conditional-statement), and looks like this:
 
 ```{r, results='hold'}
 num <- 37
@@ -216,7 +217,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > >   }
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -262,7 +263,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > >    }
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -279,7 +280,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > Complete the code below:
 >
 > ```{r, eval=FALSE}
-> filenames <- list.files(path = "data", pattern = "inflammation.*csv", full.names = TRUE)
+> filenames <- list.files(path = "data", pattern = "inflammation-[0-9]{2}.csv", full.names = TRUE)
 > filename_max <- "" # filename where the maximum average inflammation patient is found
 > patient_max <- 0 # index (row number) for this patient in this file
 > average_inf_max <- 0 # value of the average inflammation score for this patient
@@ -305,7 +306,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > >   patient_max <- patient_index
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -363,7 +364,7 @@ analyze("data/inflammation-01.csv", output = "inflammation-01.pdf")
 
 Before going further, we will create a directory `results` for saving our plots.
 It is [good practice](http://swcarpentry.github.io/good-enough-practices-in-scientific-computing/) in data analysis projects to save all output to a directory separate from the data and analysis code.
-You can create this directory using the shell command [mkdir]({{ site.swc_pages }}/shell-novice/02-create/), or the R function `dir.create()`
+You can create this directory using the shell command [mkdir]({{ site.swc_pages }}/shell-novice/03-create/), or the R function `dir.create()`
 ```{r warning=FALSE}
 dir.create("results")
 ```
@@ -444,6 +445,8 @@ Now if we need to make any changes to our analysis, we can edit the `analyze` fu
 > >   }
 > > }
 > > ~~~
-> > {: .r}
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
+
+{% include links.md %}

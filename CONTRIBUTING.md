@@ -15,7 +15,7 @@ In exchange,
 we will address your issues and/or assess your change proposal as promptly as we can,
 and help you become a member of our community.
 Everyone involved in [Software Carpentry][swc-site] and [Data Carpentry][dc-site]
-agrees to abide by our [code of conduct](CONDUCT.md).
+agrees to abide by our [code of conduct](CODE_OF_CONDUCT.md).
 
 ## How to Contribute
 
@@ -39,9 +39,19 @@ and to meet some of our community members.
     and to respond to it in a threaded discussion.
 
 3.  If you are comfortable with Git,
-    and would like to add or change material,
-    you can submit a pull request (PR).
-    Instructions for doing this are [included below](#using-github).
+    and would like to resolve an existing issue that's been labeled by the maintainers 
+    or typos/bugs, you can submit a pull request (PR). 
+    Since the episode markdown files are generated from 
+    the R markdown files, please commit changes to files in `_episodes_rmd` *not* `_episodes_md`. We deeply appreciate 
+    your contributions but we cannot merge changes made directly to the markdown files.
+    Further instructions for submitting a PR [included below](#using-github). 
+    If you'd like to suggest substantial changes such as removing or adding topics in the lesson,
+    please first raise an issue to allow the maintainers to comment, so we can discuss whether/how these
+    changes should be made.
+    
+Issues in this repository are labeled with [labels](../../labels) by the maintainers, 
+which you may find useful for navigating open issues.
+
 
 ## Where to Contribute
 
@@ -50,19 +60,19 @@ and to meet some of our community members.
     which can be viewed at <https://swcarpentry.github.io/r-novice-inflammation/>.
 
 2.  If you wish to change the example lesson,
-    please work in <https://github.com/swcarpentry/lesson-example>,
+    please work in <https://github.com/carpentries/lesson-example>,
     which documents the format of our lessons
-    and can be viewed at <https://swcarpentry.github.io/lesson-example>.
+    and can be viewed at <https://carpentries.github.io/lesson-example>.
 
 3.  If you wish to change the template used for workshop websites,
-    please work in <https://github.com/swcarpentry/workshop-template>.
+    please work in <https://github.com/carpentries/workshop-template>.
     The home page of that repository explains how to set up workshop websites,
-    while the extra pages in <https://swcarpentry.github.io/workshop-template>
+    while the extra pages in <https://carpentries.github.io/workshop-template>
     provide more background on our design choices.
 
 4.  If you wish to change CSS style files, tools,
     or HTML boilerplate for lessons or workshops stored in `_includes` or `_layouts`,
-    please work in <https://github.com/swcarpentry/styles>.
+    please work in <https://github.com/carpentries/styles>.
 
 ## What to Contribute
 

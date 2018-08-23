@@ -1,13 +1,15 @@
 ---
-title: "Best Practices for Writing R"
+title: "Best Practices for Writing R Code"
 teaching: 10
 exercises: 0
 questions:
-- "How can I write R that other people can understand and use?"
+- "How can I write R code that other people can understand and use?"
 objectives:
-- "Define best formatting practices when writing code in R scripts."
-- "Synthesize a consistent personal coding style to increase code readability, consistency, and repeatability."
-- "Apply this style to your own code."
+- "Describe changes made to code for future reference."
+- "Understand the importance about requirements and dependencies for your code."
+- "Know when to use setwd()."
+- "To identify and segregate distinct components in your code using # or #-."
+- "Additional best practice recommendations."
 keypoints:
 - "Start each program with a description of what it does."
 - "Then load all required packages."
@@ -23,6 +25,7 @@ keypoints:
 - "Keep track of session information in your project folder."
 - "Have someone else review your code."
 - "Use version control."
+source: Rmd
 ---
 
 ```{r source, include = FALSE}
@@ -32,11 +35,11 @@ knitr_fig_path("06-best-practices-R-")
 
 ### Keep track of who wrote your code and its intended purpose
 
-Starting your code with an annotated description of what the code does when it is run will help you when you have to look at or change it in the future. Just one or two lines at the beginning of the file can save you sor someone else a lot of time and effort when trying to understand what a particular script does.
+Starting your code with an annotated description of what the code does when it is run will help you when you have to look at or change it in the future. Just one or two lines at the beginning of the file can save you or someone else a lot of time and effort when trying to understand what a particular script does.
 
 ```{r comment1}
-# This is code to replicate the analyses and figures from my 2014 Science paper.
-# Code developed by Sarah Supp, Tracy Teal, and Jon Borelli
+# This is code to replicate the analyses and figures from my 2014 Science
+# paper. Code developed by Sarah Supp, Tracy Teal, and Jon Borelli
 ```
 
 ### Be explicit about the requirements and dependencies of your code
@@ -80,7 +83,7 @@ write.table("data/results.csv", results_file)
 It is also worth considering what the working directory is. If the working directory must change, it is best to do that at the beginning of the script.
 
 > ## Be careful when using `setwd()`
-
+>
 > One should exercise caution when using `setwd()`. Changing directories in a script file can limit reproducibility:
 > * `setwd()` will return an error if the directory to which you're trying to change doesn't exist or if the user doesn't have the correct permissions to access that directory. This becomes a problem when sharing scripts between users who have organized their directories differently.
 > * If/when your script terminates with an error, you might leave the user in a different directory than the one they started in, and if they then call the script again, this will cause further problems. If you must use `setwd()`, it is best to put it at the top of the script to avoid these problems.
@@ -89,6 +92,7 @@ It is also worth considering what the working directory is. If the working direc
 > Error in setwd("~/path/to/working/directory") : cannot change working directory
 > ```
 > It is best practice to have the user running the script begin in a consistent directory on their machine and then use relative file paths from that directory to access files (see below).
+{: .callout}
 
 ### Identify and segregate distinct components in your code
 
@@ -140,7 +144,7 @@ rm(list = ls()) # If you want to delete all the objects in the workspace and sta
 
 8. Collaborate. Grab a buddy and practice "code review". Review is used for preparing experiments and manuscripts; why not use it for code as well? Our code is also a major scientific achievement and the product of lots of hard work!
 
-9. Develop your code using version control and frequent updates! You can find lessons about version control on [software-carpentry.org/lessons][lessons].
+9. Develop your code using version control and frequent updates! You can find lessons about version control on [software-carpentry.org/lessons][swc-lessons].
 
 > ## Best Practice
 >
@@ -150,3 +154,5 @@ rm(list = ls()) # If you want to delete all the objects in the workspace and sta
 >    Copy and paste code into each script so that `inflammation.R` "does stuff" and `inflammation_fxns.R` holds all of your functions.
 >    __Hint__: you will need to add `source` to one of the files.
 {: .challenge}
+
+{% include links.md %}
