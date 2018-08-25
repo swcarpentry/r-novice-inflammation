@@ -26,9 +26,15 @@ This lesson is an extension of [Analyzing Multiple Data Sets]({{ page.root }}/03
 In that lesson, we introduced how to run a custom function, `analyze`, over multiple data files:
 
 ```{r analyze-function}
+#' Analyse One of My Patient Inflammation Data Files
+#'
+#' @param filename character string of a .csv file
+#'
+#' @return Plots of the average, min, and max inflammation over time.
+#'
+#' @examples 
+#'   analyze("data/inflammation-01.csv")
 analyze <- function(filename) {
-  # Plots the average, min, and max inflammation over time.
-  # Input is character string of a csv file.
   dat <- read.csv(file = filename, header = FALSE)
   avg_day_inflammation <- apply(dat, 2, mean)
   plot(avg_day_inflammation)

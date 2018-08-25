@@ -28,9 +28,15 @@ knitr_fig_path("03-loops-R-")
 We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
 
 ```{r inflammation-01}
+#' Analyse One of My Patient Inflammation Data Files
+#'
+#' @param filename character string of a .csv file
+#'
+#' @return Plots of the average, min, and max inflammation over time.
+#'
+#' @examples 
+#'   analyze("data/inflammation-01.csv")
 analyze <- function(filename) {
-  # Plots the average, min, and max inflammation over time.
-  # Input is character string of a csv file.
   dat <- read.csv(file = filename, header = FALSE)
   avg_day_inflammation <- apply(dat, 2, mean)
   plot(avg_day_inflammation)
@@ -353,6 +359,15 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 >
 > > ## Solution
 > > ~~~
+> > #' Analyse All of My Patient Inflammation Data Files
+> > #'
+> > #' @param pattern A regular expression matching all relevant files names within 
+> > #'   the /data/ folder
+> > #'
+> > #' @return All plots of the average, min, and max inflammations over time.
+> > #'
+> > #' @examples
+> > #'  analyze_all("inflammation-[0-9]{2}.csv")
 > > analyze_all <- function(pattern) {
 > >   # Runs the function analyze for each file in the current working directory
 > >   # that contains the given pattern.
