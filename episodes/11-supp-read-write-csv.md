@@ -149,14 +149,56 @@ carSpeeds$Color
 ~~~
 {: .output}
 
-What happened?!? It looks like 'Blue'  was replaced with 'Green', but every other color was turned into a number (as a character string, given the quote marks before and after). This is because the colors of the cars were loaded as factors, and the factor level was reported following replacement.
+What happened?!? It looks like 'Blue' was replaced with 'Green', but every other
+color was turned into a number (as a character string, given the quote marks before
+and after). This is because the colors of the cars were loaded as factors, and the
+factor level was reported following replacement.
+
+To see the internal structure, we can use another function, `str()`. In this case,
+the dataframe's internal structure includes the format of each column, which is what
+we are interested in. `str()` will be reviewed a little more in the lesson
+[Data Types and Structures]({{ page.root }}/13-supp-data-structures/).
+
+
+~~~
+str(carSpeeds)
+~~~
+{: .language-r}
+
+
+
+~~~
+'data.frame':	100 obs. of  3 variables:
+ $ Color: chr  "Green" "1" "Green" "5" ...
+ $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
+ $ State: Factor w/ 4 levels "Arizona","Colorado",..: 3 1 2 1 1 1 3 2 1 2 ...
+~~~
+{: .output}
+
+We can see that the `$Color` and `$State` columns are factors and `$Speed` is a numeric column.
 
 Now, let's load the dataset using `stringsAsFactors=FALSE`, and see what happens when we try to replace 'Blue' with 'Green' in the `$Color` column:
 
 
 ~~~
 carSpeeds <- read.csv(file = 'data/car-speeds.csv', stringsAsFactors = FALSE)
-  
+str(carSpeeds)
+~~~
+{: .language-r}
+
+
+
+~~~
+'data.frame':	100 obs. of  3 variables:
+ $ Color: chr  "Blue" " Red" "Blue" "White" ...
+ $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
+ $ State: chr  "NewMexico" "Arizona" "Colorado" "Arizona" ...
+~~~
+{: .output}
+
+
+
+~~~
 carSpeeds$Color <- ifelse(carSpeeds$Color == 'Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
 ~~~
@@ -181,7 +223,7 @@ carSpeeds$Color
 ~~~
 {: .output}
 
-That's better!
+That's better! And we can see how the data now is read as character instead of factor.
 
 
 ### The `as.is` Argument
@@ -197,6 +239,23 @@ carSpeeds <- read.csv(file = 'data/car-speeds.csv', as.is = 1)
 {: .language-r}
 
 Now we can see that if we try to replace 'Blue' with 'Green' in the `$Color` column everything looks fine, while trying to replace 'Arizona' with 'Ohio' in the `$State` column returns the factor numbers for the names of states that we haven't replaced:
+
+
+~~~
+str(carSpeeds)
+~~~
+{: .language-r}
+
+
+
+~~~
+'data.frame':	100 obs. of  3 variables:
+ $ Color: chr  "Blue" " Red" "Blue" "White" ...
+ $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
+ $ State: Factor w/ 4 levels "Arizona","Colorado",..: 3 1 2 1 1 1 3 2 1 2 ...
+~~~
+{: .output}
+
 
 
 ~~~
@@ -247,6 +306,7 @@ carSpeeds$State
  [91] "4"    "Ohio" "Ohio" "3"    "2"    "2"    "4"    "3"    "Ohio" "4"   
 ~~~
 {: .output}
+We can see that `$Color` column is a character while `$State` is a factor.
 
 > ## Updating Values in a Factor
 >
@@ -279,9 +339,7 @@ Here, the data recorder added a space before the color of the car in one of the 
 
 
 ~~~
-# We use the built in unique() function to extract the unique colors in our
-# dataset
-
+# We use the built-in unique() function to extract the unique colors in our dataset
 unique(carSpeeds$Color)
 ~~~
 {: .language-r}
@@ -302,8 +360,8 @@ Let's try again, this time importing the data using the `strip.white` argument. 
 ~~~
 carSpeeds <- read.csv(
   file = 'data/car-speeds.csv',
-                      stringsAsFactors = FALSE, 
-  strip.white = TRUE ,
+  stringsAsFactors = FALSE, 
+  strip.white = TRUE,
   sep = ','
   )
 
