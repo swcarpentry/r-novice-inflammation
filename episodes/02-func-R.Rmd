@@ -279,7 +279,7 @@ all.equal(sd(dat[, 4]), sd(centered))
 ```
 
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
-We have one more task first, though: we should write some [documentation]({{ page.root }}/reference#documentation) for our function to remind ourselves later what it's for and how to use it.
+We have one more task first, though: we should write some [documentation]({{ page.root }}/reference.html#documentation) for our function to remind ourselves later what it's for and how to use it.
 
 A common way to put documentation in software is to add [comments]({{ page.root }}/reference.html#comment) like this:
 
