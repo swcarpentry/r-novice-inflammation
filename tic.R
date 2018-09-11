@@ -4,7 +4,6 @@ get_stage("before_install") %>%
   add_code_step(update.packages(ask = FALSE))
 
 get_stage("install") %>%
-  add_code_step(remotes::install_deps(dependencies = TRUE)) %>%
   add_code_step(remotes::install_github("hadley/requirements")) %>%
   add_code_step(install.packages(requirements:::req_dir("_episodes_rmd")))
 
