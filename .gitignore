@@ -44,3 +44,4 @@ vignettes/*.pdf
 *.knit.md
 
 # End of https://www.gitignore.io/api/r
+link_res*.csv
