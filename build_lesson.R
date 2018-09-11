@@ -32,7 +32,7 @@ CheckLinks <- R6::R6Class(
       ## to generate the website so we can test the links.
       on.exit(system("rm -rf _rendered/_site"))
 
-      system("cd _rendered && rvm $(travis_internal_ruby) --fuzzy do ruby -S jekyll build")
+      system("cd _rendered && rvm 2.5.1 do ruby -S jekyll build")
 
       ## ignore JS file not included as part of rmarkdown
       ## ignore email addresses

@@ -5,7 +5,8 @@
 # DO NOT CHANGE THE CODE BELOW
 before_install:
   - sudo apt-get install libgit2-dev
-  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install jekyll
+  - rvm install 2.5.1
+  - rvm 2.5.1 do ruby -S gem install jekyll
   - sudo apt-get install -y linkchecker
   - mkdir -p ~/.linkchecker
   - echo -e '[checking]\nsslverify=0' > ~/.linkchecker/linkcheckerrc
