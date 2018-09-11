@@ -30,14 +30,14 @@ CheckLinks <- R6::R6Class(
       ## folder that GitHub picks up to render (so the dynamically generated
       ## links such as "Edit on GitHub" are functional), here we actually need
       ## to generate the website so we can test the links.
-      on.exit(system("rm -rf _site"))
+      on.exit(system("rm -rf _rendered/_site"))
 
-      system("make site")
+      system("cd _rendered && rvm $(travis_internal_ruby) --fuzzy do ruby -S jekyll build")
 
       ## ignore JS file not included as part of rmarkdown
       ## ignore email addresses
       ## ignore embedded images
-      link_status <- system("linkchecker --ignore-url=external.+js --ignore-url=^mailto: --ignore-url=^data: --no-warnings  --file-output=csv/link_res.csv _site")
+      link_status <- system("linkchecker --ignore-url=external.+js --ignore-url=^mailto: --ignore-url=^data: --no-warnings  --file-output=csv/link_res.csv _rendered/_site")
       message("linkchecker exit code: ", link_status)
 
       ## Because URLs can contain #, we first need to remove the commented lines
