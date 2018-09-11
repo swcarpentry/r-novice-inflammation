@@ -8,7 +8,9 @@ get_stage("install") %>%
   add_code_step(install.packages(requirements:::req_dir("_episodes_rmd")))
 
 get_stage("deploy") %>%
-  add_step(build_lesson())  %>%
+  add_step(build_lesson())
+
+get_stage("after_deploy") %>%
   add_step(check_links())
 
 if (Sys.getenv("id_rsa") != "") {
