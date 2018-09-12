@@ -9,9 +9,9 @@ Introduction to R for non-programmers using inflammation data.
 
 Current maintainers:
 
-* [Daniel Chen](http://software-carpentry.org/team/#chen_daniel) (@chendaniely)
 * Katrin Leinweber (@katrinleinweber)
-* [Diya Das](https://software-carpentry.org/team/#das_diya) (@diyadas)
+* [Diya Das](https://diyadas.github.io) (@diyadas)
+* [Daniel Chen](http://software-carpentry.org/team/#chen_daniel) (@chendaniely)
 
 The goal of this lesson is to teach novice programmers to write modular code to
 perform a data analysis. R is used to teach these skills because it is a
@@ -39,7 +39,7 @@ repository. For making your contribution, we use the GitHub flow, which is
 nicely explained in the chapter [Contributing to a Project][pro-git] in Pro Git
 by Scott Chacon.
 
-General instructions for making contributions are summarized in [CONTRIBUTING.md](https://github.com/swcarpentry/r-novice-inflammation/blob/gh-pages/CONTRIBUTING.md).
+General instructions for making contributions are summarized in [CONTRIBUTING.md](https://github.com/swcarpentry/r-novice-inflammation/blob/master/CONTRIBUTING.md).
 When editing topic pages for R lessons, you should change the source R Markdown
 file (*.Rmd). Only changes to R markdown files and other supporting files (e.g. data files) should be committed to Git.
 
@@ -58,7 +58,7 @@ or run `make` in this directory for a list of helpful commands.
 If you have questions or proposals, please send them to the [r-discuss][] mailing list.
 
 [dependencies]: https://github.com/carpentries/lesson-example#dependencies
-[design]: https://github.com/carpentries/lesson-example/blob/gh-pages/DESIGN.md
+[design]: https://github.com/carpentries/lesson-example/blob/master/DESIGN.md
 [issues]: https://github.com/swcarpentry/r-novice-inflammation/issues
 [knitr]: https://cran.r-project.org/package=knitr
 [online]: http://swcarpentry.github.io/r-novice-inflammation/
