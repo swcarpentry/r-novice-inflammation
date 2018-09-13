@@ -45,3 +45,6 @@ vignettes/*.pdf
 
 # End of https://www.gitignore.io/api/r
 link_res*.csv
+
+# Markdown files for episodes
+_episodes/
