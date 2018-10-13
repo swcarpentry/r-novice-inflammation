@@ -89,7 +89,7 @@ line and this should resolve the issue.
 
 *   The discussion of command-line scripts
     assumes that students understand standard I/O and building filters,
-    which are covered in the lesson on the shell.
+    which are covered in the [Shell lesson](https://swcarpentry.github.io/shell-novice/).
 
 *   We are using a dataset with records on inflammation from patients following an
     arthritis treatment. With it we explain `R` data structure, basic data
@@ -98,7 +98,7 @@ line and this should resolve the issue.
 ## [Analyzing Patient Data]({{ page.root }}/01-starting-with-data/)
 
 *   Check learners are reading files from the correct location (set working
-    directory); remind them of the shell lesson.
+    directory); remind them of the [Shell lesson](https://swcarpentry.github.io/shell-novice/).
 
 *   Provide shortcut for the assignment operator (`<-`) (RStudio: <kbd>Alt</kbd>+<kbd>-</kbd> on
     Windows/Linux; <kbd>Option</kbd>+<kbd>-</kbd> on Mac).
