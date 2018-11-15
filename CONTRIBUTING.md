@@ -123,7 +123,9 @@ In brief:
 
 2.  We use [GitHub flow][github-flow] to manage changes:
     1.  Create a new branch in your desktop copy of this repository for each significant change.
-    2.  Commit the change to the in that branch. If you'd like to suggest a change to an episode in the lesson, please commit changes to files in `_episodes_rmd` *not* `_episodes_md` to avoid your contributions being overwritten by the R Markdown to Markdown conversion.
+    2.  Commit the change in that branch. If you'd like to suggest a change to an episode in the lesson, 
+        please commit changes to files in `_episodes_rmd` *not* `_episodes_md` to avoid your contributions 
+        being overwritten by the R Markdown to Markdown conversion.
     3.  Push that branch to your fork of this repository on GitHub.
     4.  Submit a pull request from that branch to the [master repository][repo].
     5.  If you receive feedback,
