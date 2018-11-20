@@ -287,7 +287,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > for (f in filenames) {
 >   dat <- read.csv(file = f, header = FALSE)
 >   dat.means <- apply(dat, 1, mean)
->   for (patient_index in length(dat.means)){
+>   for (patient_index in 1:length(dat.means)){
 >     patient_average_inf <- dat.means[patient_index]
 >     # Add your code here ...
 >   }
