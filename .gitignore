@@ -4,6 +4,7 @@
 .ipynb_checkpoints
 .sass-cache
 __pycache__
+_episodes
 _site
 
 # Created by https://www.gitignore.io/api/r
