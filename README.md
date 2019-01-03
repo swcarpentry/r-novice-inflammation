@@ -8,7 +8,7 @@ r-novice-inflammation
 [The Carpentries](https://carpentries.org/) teach foundational coding, and data science skills to 
 researchers worldwide. This GitHub repository generates the Software Carpentry lesson website 
  "Introduction to R for non-programmers using inflammation data." The [lesson website can be viewed 
-here](https://swcarpentry.github.io/r-novice-inflammation/). Making changes in this GitHub repository
+here][online]. Making changes in this GitHub repository
 allows us to change the content of the lesson website.
 
 The following people are maintainers for this lesson, and are responsible for determining which 
@@ -54,6 +54,6 @@ If you have questions or proposals, please send them to the [r-discuss][] mailin
 [design]: https://github.com/carpentries/lesson-example/blob/master/DESIGN.md
 [issues]: https://github.com/swcarpentry/r-novice-inflammation/issues
 [knitr]: https://cran.r-project.org/package=knitr
-[online]: http://swcarpentry.github.io/r-novice-inflammation/
+[online]: https://swcarpentry.github.io/r-novice-inflammation/
 [pro-git]: http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project
 [r-discuss]: http://lists.software-carpentry.org/mailman/listinfo/r-discuss_lists.software-carpentry.org
