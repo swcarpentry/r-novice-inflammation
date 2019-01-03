@@ -7,8 +7,8 @@ r-novice-inflammation
 
 [The Carpentries](https://carpentries.org/) teach foundational coding, and data science skills to 
 researchers worldwide. This GitHub repository generates the Software Carpentry lesson website 
- "Introduction to R for non-programmers using inflammation data." The lesson website can be viewed 
-[here](http://swcarpentry.github.io/r-novice-inflammation). Making changes in this GitHub repository
+ "Introduction to R for non-programmers using inflammation data." The [lesson website can be viewed 
+here](https://swcarpentry.github.io/r-novice-inflammation/). Making changes in this GitHub repository
 allows us to change the content of the lesson website.
 
 The following people are maintainers for this lesson, and are responsible for determining which 
