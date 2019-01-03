@@ -39,5 +39,6 @@
 [swc-lessons]: https://software-carpentry.org/lessons/ 
 [swc-releases]: https://github.com/swcarpentry/swc-releases
 [swc-lessons]: https://software-carpentry.org/lessons/
+[tex-eq]: https://latex.codecogs.com/gif.latex?%5Calpha%20%3D%20%5Cdfrac%7B1%7D%7B%281%20-%20%5Cbeta%29%5E2%7D
 [workshop-repo]: {{ site.workshop_repo }}
 [yaml]: http://yaml.org/
