@@ -4,7 +4,10 @@
 .ipynb_checkpoints
 .sass-cache
 __pycache__
+_episodes
 _site
+link_res*.csv
+
 
 # Created by https://www.gitignore.io/api/r
 
@@ -27,6 +30,7 @@ _site
 
 # RStudio files
 .Rproj.user/
+.Rproj.user
 
 # produced vignettes
 vignettes/*.html
@@ -44,4 +48,3 @@ vignettes/*.pdf
 *.knit.md
 
 # End of https://www.gitignore.io/api/r
-link_res*.csv
