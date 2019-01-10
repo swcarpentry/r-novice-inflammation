@@ -412,7 +412,7 @@ dat
 > * `nrow()` - number of rows
 > * `ncol()` - number of columns
 > * `str()` - structure of data frame - name, type and preview of data in each column
-> * `names()` - shows the `names` attribute for a data frame, which gives the column names.
+> * `names()` or `colnames()` - both show the `names` attribute for a data frame
 > * `sapply(dataframe, class)` - shows the class of each column in the data frame
 {: .callout}
 
