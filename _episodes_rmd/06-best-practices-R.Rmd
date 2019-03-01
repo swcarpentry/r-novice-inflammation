@@ -64,7 +64,7 @@ sample_number <- nrow(input_data)
 # generate results
 results <- some_other_function(input_file, sample_number)
 # write results
-write.table(results, results_file)
+write.table(results, output_file)
 ```
 
 is preferable to 
@@ -77,7 +77,7 @@ sample_number <- nrow(input_data)
 # generate results
 results <- some_other_function("data/data.csv", sample_number)
 # write results
-write.table("data/results.csv", results_file)
+write.table("data/results.csv", output_file)
 ```
 
 It is also worth considering what the working directory is. If the working directory must change, it is best to do that at the beginning of the script.
