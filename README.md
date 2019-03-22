@@ -63,4 +63,4 @@ If you have questions or proposals, please send them to the [r-discuss][] mailin
 [knitr]: https://cran.r-project.org/package=knitr
 [online]: http://swcarpentry.github.io/r-novice-inflammation/
 [pro-git]: http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project
-[r-discuss]: http://lists.software-carpentry.org/mailman/listinfo/r-discuss_lists.software-carpentry.org
+[r-discuss]: https://carpentries.topicbox.com/groups/discuss
