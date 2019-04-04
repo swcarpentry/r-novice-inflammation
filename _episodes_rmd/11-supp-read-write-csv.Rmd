@@ -115,6 +115,19 @@ carSpeeds$Color
 ```
 
 That's better! And we can see how the data now is read as character instead of factor.
+ 
+ 
+ 
+Alternatively, if we want to prevent characters from converting to factors, we can change R's default behavior by using `options(stringsAsFactors=FALSE)`. This will change the default value of the 'stringsAsFactors' argument to FALSE in all functions that utilize this parameter without us having to do so manually. 
+
+```{r optionsStringsAsFactorFALSE}
+options(stringsAsFactors=FALSE)
+carSpeeds <- read.csv(file = 'data/car-speeds.csv')
+str(carSpeeds)
+```
+
+See ?options for more details about the function and a list of other default settings that can be changed.
+
 
 
 ### The `as.is` Argument
