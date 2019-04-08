@@ -466,7 +466,7 @@ display(c = 77)
 
 > ## Matching Arguments
 >
-> To be precise, R has three ways that arguments are supplied
+> To be precise, R has three ways that arguments supplied
 > by you are matched to the *formal arguments* of the function definition:
 >
 > 1. by complete name,
