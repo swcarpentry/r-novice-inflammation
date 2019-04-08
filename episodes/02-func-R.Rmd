@@ -186,9 +186,10 @@ Real-life functions will usually be larger than the ones shown here--typically h
 
 > ## Named Variables and the Scope of Variables
 >
->  + Functions can accept arguments explicitly assigned to a variable name in
->    in the function call `functionName(variable = value)`, as well as arguments by
->    order:
+> Functions can accept arguments explicitly assigned to a variable name in
+> the function call `functionName(variable = value)`, as well as arguments by
+> order:
+>
 > ```{r}
 > input_1 <- 20
 > mySum <- function(input_1, input_2 = 10) {
