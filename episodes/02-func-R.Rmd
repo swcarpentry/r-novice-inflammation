@@ -502,7 +502,9 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 > ## A Function with Default Argument Values
 >
 > Rewrite the `rescale` function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want.
-> Compare your implementation to your neighbor's: do the two functions always behave the same way?
+> Compare your implementation to your neighbor's:
+> Do your two implementations produce the same results when
+> both are given the same input vector and parameters?
 >
 > > ## Solution
 > > ~~~
