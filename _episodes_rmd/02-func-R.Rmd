@@ -209,11 +209,12 @@ Real-life functions will usually be larger than the ones shown here--typically h
 ### Testing and Documenting
 
 Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly.
-To see how to do this, let's write a function to center a dataset around a particular value:
+To see how to do this, let's write a function to center a dataset around a
+particular midpoint:
 
 ```{r}
-center <- function(data, desired) {
-  new_data <- (data - mean(data)) + desired
+center <- function(data, midpoint) {
+  new_data <- (data - mean(data)) + midpoint
   return(new_data)
 }
 ```
@@ -285,11 +286,11 @@ We have one more task first, though: we should write some [documentation]({{ pag
 A common way to put documentation in software is to add [comments]({{ page.root }}/reference.html#comment) like this:
 
 ```{r}
-center <- function(data, desired) {
+center <- function(data, midpoint) {
   # return a new vector containing the original data centered around the
-  # desired value.
+  # midpoint.
   # Example: center(c(1, 2, 3), 0) => c(-1, 0, 1)
-  new_data <- (data - mean(data)) + desired
+  new_data <- (data - mean(data)) + midpoint
   return(new_data)
 }
 ```
@@ -410,16 +411,16 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 To understand what's going on, and make our own functions easier to use, let's re-define our `center` function like this:
 
 ```{r}
-center <- function(data, desired = 0) {
+center <- function(data, midpoint = 0) {
   # return a new vector containing the original data centered around the
-  # desired value (0 by default).
+  # midpoint (0 by default).
   # Example: center(c(1, 2, 3), 0) => c(-1, 0, 1)
-  new_data <- (data - mean(data)) + desired
+  new_data <- (data - mean(data)) + midpoint
   return(new_data)
 }
 ```
 
-The key change is that the second argument is now written `desired = 0` instead of just `desired`.
+The key change is that the second argument is now written `midpoint = 0` instead of just `midpoint`.
 If we call the function with two arguments, it works as it did before:
 
 ```{r}
@@ -427,7 +428,7 @@ test_data <- c(0, 0, 0, 0)
 center(test_data, 3)
 ```
 
-But we can also now call `center()` with just one argument, in which case `desired` is automatically assigned the default value of `0`:
+But we can also now call `center()` with just one argument, in which case `midpoint` is automatically assigned the default value of `0`:
 
 ```{r}
 more_data <- 5 + test_data
