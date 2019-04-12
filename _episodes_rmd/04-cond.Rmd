@@ -163,8 +163,8 @@ Note that the test for equality uses two equal signs, `==`.
 {: .callout}
 
 We can also combine tests.
-Two ampersands, `&&`, symbolizes "and".
-Two vertical bars, `||`, symbolizes "or".
+Two ampersands, `&&`, symbolize "and".
+Two vertical bars, `||`, symbolize "or".
 `&&` is only true if both parts are true:
 
 ```{r}
