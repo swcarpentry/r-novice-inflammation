@@ -100,7 +100,7 @@ Finally we can use the `c()` (combine) function to address non-sequential rows a
 dat[c(1, 5, 7, 9), 1:5]
 ```
 
-Returns the first 5 columns for patients in rows 1,5,7 & 9
+Returns the first 5 columns for patients in rows 1,5,7 and 9
 
 > ## Subsetting Non-Sequential Data
 >
@@ -138,7 +138,7 @@ head(dat[, c('Age', 'Gender')])
 
 ### Logical Indexing
 
-A logical vector contains only the special values `TRUE` & `FALSE`.
+A logical vector contains only the special values `TRUE` and `FALSE`.
 
 ```{r logical_vectors}
 c(TRUE, TRUE, FALSE, FALSE, TRUE)
