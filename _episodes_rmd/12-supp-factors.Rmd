@@ -179,7 +179,7 @@ Let's remove factors.
 barplot(table(dat$Gender))
 ```
 
-Values should have been recorded as lowercase 'm' & 'f'. We should correct this.
+Values should have been recorded as lowercase 'm' and 'f'. We should correct this.
 
 ```{r recoding-gender}
 dat$Gender[dat$Gender == 'M'] <- 'm'
