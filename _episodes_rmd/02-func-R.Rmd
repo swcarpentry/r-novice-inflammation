@@ -123,25 +123,25 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > In the last lesson, we learned to **c**ombine elements into a vector using the `c` function,
 > e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
 > Furthermore, we can extend that vector again using `c`, e.g. `y <- c(x, "D")` creates a vector `y` with four elements.
-> Write a function called `fence` that takes two vectors as arguments, called
-> `original` and `wrapper`, and returns a new vector that has the wrapper vector
-> at the beginning and end of the original:
+> Write a function called `highlight` that takes two vectors as arguments, called
+> `content` and `wrapper`, and returns a new vector that has the wrapper vector
+> at the beginning and end of the content:
 >
 > ```{r, echo=-1}
-> fence <- function(original, wrapper) {
->    answer <- c(wrapper, original, wrapper)
+> highlight <- function(content, wrapper) {
+>    answer <- c(wrapper, content, wrapper)
 >    return(answer)
 > }
 > best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 > asterisk <- "***"  # R interprets a variable with a single value as a vector
 >                    # with one element.
-> fence(best_practice, asterisk)
+> highlight(best_practice, asterisk)
 > ```
 >
 > > ## Solution
 > > ~~~
-> > fence <- function(original, wrapper) {
-> >   answer <- c(wrapper, original, wrapper)
+> > highlight <- function(content, wrapper) {
+> >   answer <- c(wrapper, content, wrapper)
 > >   return(answer)
 > > }
 > > ~~~
@@ -149,22 +149,22 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > {: .solution}
 >
 > If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
-> Write a function called `outside` that returns a vector made up of just the first and last elements of its input:
+> Write a function called `edges` that returns a vector made up of just the first and last elements of its input:
 >
 > ```{r, echo=-1}
-> outside <- function(v) {
+> edges <- function(v) {
 >   first <- v[1]
 >    last <- v[length(v)]
 >    answer <- c(first, last)
 >    return(answer)
 > }
 > dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
-> outside(dry_principle)
+> edges(dry_principle)
 > ```
 >
 > > ## Solution
 > > ~~~
-> > outside <- function(v) {
+> > edges <- function(v) {
 > >   first <- v[1]
 > >    last <- v[length(v)]
 > >    answer <- c(first, last)
@@ -215,7 +215,6 @@ particular midpoint:
 ```{r}
 center <- function(data, midpoint) {
   new_data <- (data - mean(data)) + midpoint
-  return(new_data)
 }
 ```
 

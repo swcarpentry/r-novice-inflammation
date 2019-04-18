@@ -121,13 +121,13 @@ That only works if functions don't interfere with each other; if they do, we hav
 
 > ## Following the Call Stack
 >
-> We previously wrote functions called `fence` and `outside`.
+> We previously wrote functions called `highlight` and `edges`.
 > Draw a diagram showing how the call stack changes when we run the following:
 >
 > ```{r, results="hide", eval = FALSE}
 > inner_vec <- "carbon"
 > outer_vec <- "+"
-> result <- outside(fence(inner_vec, outer_vec))
+> result <- edges(highlight(inner_vec, outer_vec))
 > ```
 {: .challenge}
 
