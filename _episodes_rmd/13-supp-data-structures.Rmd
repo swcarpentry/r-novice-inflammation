@@ -16,6 +16,7 @@ questions:
 - How do I access data within the various data structures?
 teaching: 45
 exercises: 0
+source: Rmd
 ---
 
 ```{r, include = FALSE}

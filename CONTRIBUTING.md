@@ -42,13 +42,14 @@ and to meet some of our community members.
     and would like to resolve an existing issue that's been labeled by the maintainers 
     or typos/bugs, you can submit a pull request (PR). 
     Since the episode markdown files are generated from 
-    the R markdown files, please commit changes to files in `_episodes_rmd` *not* `_episodes_md`. We deeply appreciate 
+    the R markdown files, please commit changes to files in `_episodes_rmd` *not* `_episodes_md`.
+    We deeply appreciate 
     your contributions but we cannot merge changes made directly to the markdown files.
     Further instructions for submitting a PR [included below](#using-github). 
     If you'd like to suggest substantial changes such as removing or adding topics in the lesson,
-    please first raise an issue to allow the maintainers to comment, so we can discuss whether/how these
-    changes should be made.
-    
+    please first raise an issue to allow the maintainers to comment, so we can discuss whether/how
+    these changes should be made.
+
 Issues in this repository are labeled with [labels](../../labels) by the maintainers, 
 which you may find useful for navigating open issues.
 
