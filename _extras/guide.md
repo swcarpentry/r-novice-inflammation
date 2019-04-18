@@ -18,9 +18,9 @@ the "other 90%" of the language
 as well.
 
 The secondary goal of this lesson is to give them a usable mental model of how programs run
-(what computer science educators call a [notional machine]({{ page.root }}/reference.html#notional-machine)
-so that they can debug things when they go wrong.
-In particular,
+(what computer science educators call a
+[notional machine]({{ page.root }}/reference.html#notional-machine)
+so that they can debug things when they go wrong. In particular,
 they must understand how function call stacks work.
 
 The final example asks them to build a command-line tool

@@ -9,14 +9,14 @@ questions:
 objectives:
 - "Save plot(s) in a PDF file."
 - "Write conditional statements with `if` and `else`."
-- "Correctly evaluate expressions containing `&` ('and') and `|` ('or')."
+- "Correctly evaluate expressions containing `&&` ('and') and `||` ('or')."
 keypoints:
 - "Save a plot in a pdf file using `pdf(\"name.pdf\")` and stop writing to the pdf file with `dev.off()`."
 - "Use `if (condition)` to start a conditional statement, `else if (condition)` to provide additional tests, and `else` to provide a default."
 - "The bodies of conditional statements must be surrounded by curly braces `{ }`."
 - "Use `==` to test for equality."
-- "`X & Y` is only true if both X and Y are true."
-- "`X | Y` is true if either X or Y, or both, are true."
+- "`X && Y` is only true if both X and Y are true."
+- "`X || Y` is true if either X or Y, or both, are true."
 source: Rmd
 ---
 
@@ -163,22 +163,22 @@ Note that the test for equality uses two equal signs, `==`.
 {: .callout}
 
 We can also combine tests.
-An ampersand, `&`, symbolizes "and".
-A vertical bar, `|`, symbolizes "or".
-`&` is only true if both parts are true:
+Two ampersands, `&&`, symbolize "and".
+Two vertical bars, `||`, symbolize "or".
+`&&` is only true if both parts are true:
 
 ```{r}
-if (1 > 0 & -1 > 0) {
+if (1 > 0 && -1 > 0) {
     print("both parts are true")
 } else {
   print("at least one part is not true")
 }
 ```
 
-while `|` is true if either part is true:
+while `||` is true if either part is true:
 
 ```{r}
-if (1 > 0 | -1 > 0) {
+if (1 > 0 || -1 > 0) {
     print("at least one part is true")
 } else {
   print("neither part is true")
@@ -237,9 +237,9 @@ In this case, "either" means "either or both", not "either one or the other but 
 >
 > ```{r conditional-challenge-hist, echo=-1}
 > plot_dist <- function(x, threshold, use_boxplot = TRUE) {
->    if (length(x) > threshold & use_boxplot) {
+>    if (length(x) > threshold && use_boxplot) {
 >        boxplot(x)
->    } else if (length(x) > threshold & !use_boxplot) {
+>    } else if (length(x) > threshold && !use_boxplot) {
 >        hist(x)
 >    } else {
 >        stripchart(x)
@@ -254,9 +254,9 @@ In this case, "either" means "either or both", not "either one or the other but 
 > > ## Solution
 > > ~~~
 > > plot_dist <- function(x, threshold, use_boxplot = TRUE) {
-> >    if (length(x) > threshold & use_boxplot) {
+> >    if (length(x) > threshold && use_boxplot) {
 > >        boxplot(x)
-> >    } else if (length(x) > threshold & !use_boxplot) {
+> >    } else if (length(x) > threshold && !use_boxplot) {
 > >        hist(x)
 > >    } else {
 > >        stripchart(x)
