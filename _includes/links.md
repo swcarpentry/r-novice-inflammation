@@ -37,11 +37,12 @@
 [pyyaml]: https://pypi.python.org/pypi/PyYAML
 [r-markdown]: https://rmarkdown.rstudio.com/
 [rstudio]: https://www.rstudio.com/
+[rstudio-git]: https://support.rstudio.com/hc/en-us/articles/200532077
 [ruby-install-guide]: https://www.ruby-lang.org/en/downloads/
 [ruby-installer]: https://rubyinstaller.org/
 [rubygems]: https://rubygems.org/pages/download/
 [styles]: https://github.com/carpentries/styles/
-[swc-lessons]: https://software-carpentry.org/lessons/ 
+[swc-lesson-git]: https://swcarpentry.github.io/git-novice/
 [swc-releases]: https://github.com/swcarpentry/swc-releases
 [tex-eq]: https://latex.codecogs.com/gif.latex?%5Calpha%20%3D%20%5Cdfrac%7B1%7D%7B%281%20-%20%5Cbeta%29%5E2%7D
 [training]: https://carpentries.github.io/instructor-training/
