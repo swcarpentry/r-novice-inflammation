@@ -1,9 +1,7 @@
-{% include gh_variables.html %}
-
 [cc-by-human]: https://creativecommons.org/licenses/by/4.0/
 [cc-by-legal]: https://creativecommons.org/licenses/by/4.0/legalcode
 [ci]: http://communityin.org/
-[coc-reporting]: https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html#reporting-guidelines
+[coc-reporting]: https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html#incident-reporting-guidelines
 [coc]: https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html
 [concept-maps]: https://carpentries.github.io/instructor-training/05-memory/
 [contrib-covenant]: https://contributor-covenant.org/
@@ -20,8 +18,15 @@
 [jekyll-windows]: http://jekyll-windows.juthilo.com/
 [jekyll]: https://jekyllrb.com/
 [jupyter]: https://jupyter.org/
-[lc-lessons]: https://librarycarpentry.org/#portfolio
+[kramdown]: https://kramdown.gettalong.org/
+[lc-lessons]: https://librarycarpentry.org/lessons/
+[lesson-aio]: {{ relative_root_path }}{% link aio.md %}
+[lesson-coc]: {{ relative_root_path }}{% link CODE_OF_CONDUCT.md %}
 [lesson-example]: https://carpentries.github.io/lesson-example/
+[lesson-license]: {{ relative_root_path }}{% link LICENSE.md %}
+[lesson-mainpage]: {{ relative_root_path }}{% link index.md %}
+[lesson-reference]: {{ relative_root_path }}{% link reference.md %}
+[lesson-setup]: {{ relative_page_root }}{% link setup.md %}
 [mit-license]: https://opensource.org/licenses/mit-license.html
 [morea]: https://morea-framework.github.io/
 [numfocus]: https://numfocus.org/
@@ -39,5 +44,6 @@
 [swc-lessons]: https://software-carpentry.org/lessons/ 
 [swc-releases]: https://github.com/swcarpentry/swc-releases
 [tex-eq]: https://latex.codecogs.com/gif.latex?%5Calpha%20%3D%20%5Cdfrac%7B1%7D%7B%281%20-%20%5Cbeta%29%5E2%7D
+[training]: https://carpentries.github.io/instructor-training/
 [workshop-repo]: {{ site.workshop_repo }}
 [yaml]: http://yaml.org/
