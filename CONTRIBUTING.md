@@ -1,21 +1,26 @@
 # Contributing
 
-[Software Carpentry][swc-site] and [Data Carpentry][dc-site] are open source projects,
-and we welcome contributions of all kinds:
-new lessons,
+[Software Carpentry][swc-site] and [Data Carpentry][dc-site] are open source 
+projects, and we welcome contributions of all kinds: new lessons,
 fixes to existing material,
 bug reports,
 and reviews of proposed changes are all welcome.
+
+Each lesson has several maintainers who review issues and pull requests
+or encourage others to do so.
+The maintainers are community volunteers,
+and have final say over what gets merged into the lesson.
 
 ## Contributor Agreement
 
 By contributing,
 you agree that we may redistribute your work under [our license](LICENSE.md).
 In exchange,
-we will address your issues and/or assess your change proposal as promptly as we can,
-and help you become a member of our community.
-Everyone involved in [Software Carpentry][swc-site] and [Data Carpentry][dc-site]
-agrees to abide by our [code of conduct](CODE_OF_CONDUCT.md).
+we will address your issues and/or assess your change proposal as promptly as 
+we can, and help you become a member of our community.
+Everyone involved in [Software Carpentry][swc-site] and 
+[Data Carpentry][dc-site] agrees to abide by our 
+[code of conduct](CODE_OF_CONDUCT.md).
 
 ## How to Contribute
 
@@ -27,53 +32,49 @@ This is a good way to introduce yourself
 and to meet some of our community members.
 
 1.  If you do not have a [GitHub][github] account,
-    you can [send us comments by email][contact].
-    However,
-    we will be able to respond more quickly if you use one of the other methods described below.
+you can [send us comments by email][contact].
+However, we will be able to respond more quickly if you use one of the other 
+methods described below.
 
 2.  If you have a [GitHub][github] account,
-    or are willing to [create one][github-join],
-    but do not know how to use Git,
-    you can report problems or suggest improvements by [creating an issue][issues].
-    This allows us to assign the item to someone
-    and to respond to it in a threaded discussion.
+or are willing to [create one][github-join],
+but do not know how to use Git,
+you can report problems or suggest improvements by [creating an issue][issues].
+This allows us to assign the item to someone
+and to respond to it in a threaded discussion.
 
 3.  If you are comfortable with Git,
-    and would like to resolve an existing issue that's been labeled by the maintainers 
-    or typos/bugs, you can submit a pull request (PR). 
-    Since the episode markdown files are generated from 
-    the R markdown files, please commit changes to files in `_episodes_rmd` *not* `_episodes_md`.
-    We deeply appreciate 
-    your contributions but we cannot merge changes made directly to the markdown files.
-    Further instructions for submitting a PR [included below](#using-github). 
-    If you'd like to suggest substantial changes such as removing or adding topics in the lesson,
-    please first raise an issue to allow the maintainers to comment, so we can discuss whether/how
-    these changes should be made.
+and would like to resolve an existing issue that's been labeled by the 
+maintainers or typos/bugs, you can submit a pull request (PR). Instructions for 
+submitting a PR are [included below](#submitting-pull-requests). 
+If you'd like to suggest substantial changes such as removing or adding topics 
+in the lesson, please first raise an issue to allow the maintainers to comment, 
+so we can discuss whether/how these changes should be made.
 
-Issues in this repository are labeled with [labels](../../labels) by the maintainers, 
-which you may find useful for navigating open issues.
+Issues in this repository are labeled with [labels](../../labels) by the 
+maintainers, which you may find useful for navigating open issues.
 
 
 ## Where to Contribute
 
 1.  If you wish to change this lesson,
-    please work in <https://github.com/swcarpentry/r-novice-inflammation/>,
-    which can be viewed at <https://swcarpentry.github.io/r-novice-inflammation/>.
+please work in <https://github.com/swcarpentry/r-novice-inflammation/>,
+which can be viewed at <https://swcarpentry.github.io/r-novice-inflammation/>.
 
 2.  If you wish to change the example lesson,
-    please work in <https://github.com/carpentries/lesson-example>,
-    which documents the format of our lessons
-    and can be viewed at <https://carpentries.github.io/lesson-example>.
+please work in <https://github.com/carpentries/lesson-example>,
+which documents the format of our lessons
+and can be viewed at <https://carpentries.github.io/lesson-example>.
 
 3.  If you wish to change the template used for workshop websites,
-    please work in <https://github.com/carpentries/workshop-template>.
-    The home page of that repository explains how to set up workshop websites,
-    while the extra pages in <https://carpentries.github.io/workshop-template>
-    provide more background on our design choices.
+please work in <https://github.com/carpentries/workshop-template>.
+The home page of that repository explains how to set up workshop websites,
+while the extra pages in <https://carpentries.github.io/workshop-template>
+provide more background on our design choices.
 
 4.  If you wish to change CSS style files, tools,
-    or HTML boilerplate for lessons or workshops stored in `_includes` or `_layouts`,
-    please work in <https://github.com/carpentries/styles>.
+or HTML boilerplate for lessons or workshops stored in `_includes` or 
+`_layouts`, please work in <https://github.com/carpentries/styles>.
 
 ## What to Contribute
 
@@ -94,80 +95,66 @@ it's easy for people who have been using these lessons for a while
 to forget how impenetrable some of this material can be,
 so fresh eyes are always welcome.
 
-Our lessons already contain more material than we can cover in a typical workshop,
-so we are usually *not* looking for more concepts or tools to add to them.
-As a rule,
-if you want to introduce a new idea,
+Our lessons already contain more material than we can cover in a typical 
+workshop, so we are usually *not* looking for more concepts or tools to add to 
+them. 
+As a rule, if you want to introduce a new idea,
 you must (a) estimate how long it will take to teach
 and (b) explain what you would take out to make room for it.
 The first encourages contributors to be honest about requirements;
 the second, to think hard about priorities.
 
-We are also not looking for exercises or other material that only run on one platform.
-Our workshops typically contain a mixture of Windows, Mac OS X, and Linux users;
-in order to be usable,
-our lessons must run equally well on all three.
+We are also not looking for exercises or other material that only run on one 
+platform. Our workshops typically contain a mixture of Windows, Mac OS X, and 
+Linux users; in order to be usable, our lessons must run equally well on all 
+three.
 
-## Using GitHub
+## Submitting Pull Requests
 
-If you choose to contribute via GitHub,
-you may want to look at
-[How to Contribute to an Open Source Project on GitHub][how-contribute].
+If you choose to submit a pull request, please review
+[How to Contribute to Open Source][how-contribute].
 
 In brief:
 
-1.  The published copy of the lesson is in the `gh-pages` branch of the repository and is 
-    automatically generated by Travis from the `master` branch.
-    Please create all branches from the `master` branch,
-    and merge the [master repository][repo]'s `master` branch into your `master` branch
-    before starting work.
-    Please do *not* work directly in your `master` branch,
-    since that will make it difficult for you to work on other contributions.
-    Please do *not* issue a pull request against this repo's `gh-pages` branch since that 
-    will not be preserved when the site is rebuilt.
-
-2.  We use [GitHub flow][github-flow] to manage changes:
-    1.  Create a new branch in your desktop copy of this repository for each significant change.
-    2.  Commit the change in that branch. If you'd like to suggest a change to an episode in the lesson, 
-        please commit changes to files in `_episodes_rmd` *not* `_episodes` to avoid your contributions 
-        being overwritten by the R Markdown to Markdown conversion.
-    3.  Push that branch to your fork of this repository on GitHub.
-    4.  Submit a pull request from that branch to the [master repository][repo].
-    5.  If you receive feedback,
-        make changes on your desktop and push to your branch on GitHub:
-        the pull request will update automatically.
-
-To view how your changes will look when viewed in a web browser, you can render the html pages by running
-`make serve` from the base of the repository. Generating the html file(s) is required for viewing the
-[online version of the lessons][online] (you can learn more about the [design of the build process][design]).
-Building the rendered page with the Makefile requires installing some dependencies first. In addition to the
-dependencies listed in the [lesson template documentation][dependencies], you also need to install the R
-package [knitr][]. Changes generated by the `make serve` command should not be committed or included in
-a pull request. 
-
-Each lesson has several maintainers who review issues and pull requests
-or encourage others to do so.
-The maintainers are community volunteers,
-and have final say over what gets merged into the lesson.
+1. Fork the repository and clone it locally.
+2. Create a new branch in your desktop copy of this repository.
+3. Commit the change in that branch. If you'd like to suggest a change to an 
+episode in the lesson, please commit changes to files in `_episodes_rmd`.
+4. Preview how your changes will look when viewed in a web browser, rendering 
+the html pages by running `make serve` from the base of the repository. 
+Generating the html file(s) is required for viewing the
+[online version of the lessons][online].
+Building the rendered page with the Makefile requires installing some 
+dependencies first. In addition to the dependencies listed in the 
+[lesson template documentation][dependencies], you also need to install the R
+package [knitr][]. Changes generated by the `make serve` command should not be 
+committed or included in a pull request. 
+5. Push that branch to your fork of this repository on GitHub.
+6. Submit a pull request from that branch to the master branch of the 
+[master repository][repo].
+7. If you receive feedback, make changes on your desktop and push to your 
+branch on GitHub: the pull request will update automatically.
 
 ## Other Resources
 
-General discussion of [Software Carpentry][swc-site] and [Data Carpentry][dc-site]
-happens on the [discussion mailing list][discuss-list],
-which everyone is welcome to join.
+General discussion of [Software Carpentry][swc-site] and 
+[Data Carpentry][dc-site] happens on the 
+[discussion mailing list][discuss-list], which everyone is welcome to join.
 You can also [reach us by email][contact].
 
 [contact]: mailto:admin@software-carpentry.org
+[dependencies]: https://github.com/carpentries/lesson-example#dependencies
 [dc-issues]: https://github.com/issues?q=user%3Adatacarpentry
 [dc-lessons]: http://datacarpentry.org/lessons/
 [dc-site]: http://datacarpentry.org/
 [discuss-list]: https://carpentries.topicbox.com/groups/discuss
 [github]: http://github.com
-[github-flow]: https://guides.github.com/introduction/flow/
 [github-join]: https://github.com/join
-[how-contribute]: https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github
+[how-contribute]: https://opensource.guide/how-to-contribute/#opening-a-pull-request
 [issues]: https://github.com/swcarpentry/r-novice-inflammation/issues/
 [repo]: https://github.com/swcarpentry/r-novice-inflammation/
 [swc-issues]: https://github.com/issues?q=user%3Aswcarpentry
 [swc-lessons]: http://software-carpentry.org/lessons/
 [swc-site]: http://software-carpentry.org/
+[knitr]: https://cran.r-project.org/package=knitr
+[online]: http://swcarpentry.github.io/r-novice-inflammation/
