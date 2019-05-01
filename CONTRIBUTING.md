@@ -1,9 +1,9 @@
 # Contributing
 
-[Software Carpentry][swc-site] and [Data Carpentry][dc-site] are open source 
-projects, and we welcome contributions of all kinds: new lessons,
-fixes to existing material,
-bug reports,
+[The Carpentries][c-site] ([Software Carpentry][swc-site],
+[Data Carpentry][dc-site], and [Library Carpentry][lc-site])
+are open source projects, and we welcome contributions of all kinds:
+new lessons, fixes to existing material, bug reports,
 and reviews of proposed changes are all welcome.
 
 Each lesson has several maintainers who review issues and pull requests
@@ -142,6 +142,7 @@ General discussion of [Software Carpentry][swc-site] and
 [discussion mailing list][discuss-list], which everyone is welcome to join.
 You can also [reach us by email][contact].
 
+[c-site]: https://carpentries.org/
 [contact]: mailto:admin@software-carpentry.org
 [dependencies]: https://github.com/carpentries/lesson-example#dependencies
 [dc-issues]: https://github.com/issues?q=user%3Adatacarpentry
@@ -152,6 +153,7 @@ You can also [reach us by email][contact].
 [github-join]: https://github.com/join
 [how-contribute]: https://opensource.guide/how-to-contribute/#opening-a-pull-request
 [issues]: https://github.com/swcarpentry/r-novice-inflammation/issues/
+[lc-site]: https://librarycarpentry.org/
 [repo]: https://github.com/swcarpentry/r-novice-inflammation/
 [swc-issues]: https://github.com/issues?q=user%3Aswcarpentry
 [swc-lessons]: http://software-carpentry.org/lessons/
