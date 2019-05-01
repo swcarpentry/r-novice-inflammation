@@ -32,24 +32,24 @@ This is a good way to introduce yourself
 and to meet some of our community members.
 
 1.  If you do not have a [GitHub][github] account,
-you can [send us comments by email][contact].
-However, we will be able to respond more quickly if you use one of the other 
-methods described below.
+    you can [send us comments by email][contact].
+    However, we will be able to respond more quickly if you use one of the other 
+    methods described below.
 
 2.  If you have a [GitHub][github] account,
-or are willing to [create one][github-join],
-but do not know how to use Git,
-you can report problems or suggest improvements by [creating an issue][issues].
-This allows us to assign the item to someone
-and to respond to it in a threaded discussion.
+    or are willing to [create one][github-join],
+    but do not know how to use Git,
+    you can report problems or suggest improvements by [creating an issue][issues].
+    This allows us to assign the item to someone
+    and to respond to it in a threaded discussion.
 
 3.  If you are comfortable with Git,
-and would like to resolve an existing issue that's been labeled by the 
-maintainers or typos/bugs, you can submit a pull request (PR). Instructions for 
-submitting a PR are [included below](#submitting-pull-requests). 
-If you'd like to suggest substantial changes such as removing or adding topics 
-in the lesson, please first raise an issue to allow the maintainers to comment, 
-so we can discuss whether/how these changes should be made.
+    and would like to resolve an existing issue that's been labeled by the 
+    maintainers or typos/bugs, you can submit a pull request (PR). Instructions for 
+    submitting a PR are [included below](#submitting-pull-requests). 
+    If you'd like to suggest substantial changes such as removing or adding topics 
+    in the lesson, please first raise an issue to allow the maintainers to comment, 
+    so we can discuss whether/how these changes should be made.
 
 Issues in this repository are labeled with [labels](../../labels) by the 
 maintainers, which you may find useful for navigating open issues.
@@ -58,23 +58,23 @@ maintainers, which you may find useful for navigating open issues.
 ## Where to Contribute
 
 1.  If you wish to change this lesson,
-please work in <https://github.com/swcarpentry/r-novice-inflammation/>,
-which can be viewed at <https://swcarpentry.github.io/r-novice-inflammation/>.
+    please work in <https://github.com/swcarpentry/r-novice-inflammation/>,
+    which can be viewed at <https://swcarpentry.github.io/r-novice-inflammation/>.
 
 2.  If you wish to change the example lesson,
-please work in <https://github.com/carpentries/lesson-example>,
-which documents the format of our lessons
-and can be viewed at <https://carpentries.github.io/lesson-example>.
+    please work in <https://github.com/carpentries/lesson-example>,
+    which documents the format of our lessons
+    and can be viewed at <https://carpentries.github.io/lesson-example>.
 
 3.  If you wish to change the template used for workshop websites,
-please work in <https://github.com/carpentries/workshop-template>.
-The home page of that repository explains how to set up workshop websites,
-while the extra pages in <https://carpentries.github.io/workshop-template>
-provide more background on our design choices.
+    please work in <https://github.com/carpentries/workshop-template>.
+    The home page of that repository explains how to set up workshop websites,
+    while the extra pages in <https://carpentries.github.io/workshop-template>
+    provide more background on our design choices.
 
 4.  If you wish to change CSS style files, tools,
-or HTML boilerplate for lessons or workshops stored in `_includes` or 
-`_layouts`, please work in <https://github.com/carpentries/styles>.
+    or HTML boilerplate for lessons or workshops stored in `_includes` or 
+    `_layouts`, please work in <https://github.com/carpentries/styles>.
 
 ## What to Contribute
 
