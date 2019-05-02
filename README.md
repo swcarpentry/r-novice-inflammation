@@ -52,7 +52,6 @@ or run `make` in this directory for a list of helpful commands.
 
 If you have questions or proposals, please send them to the [r-discuss][] mailing list.
 
-[dependencies]: https://github.com/carpentries/lesson-example#dependencies
 [design]: https://github.com/carpentries/lesson-example/blob/master/DESIGN.md
 [issues]: https://github.com/swcarpentry/r-novice-inflammation/issues
 [knitr]: https://cran.r-project.org/package=knitr
