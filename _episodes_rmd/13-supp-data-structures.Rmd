@@ -7,14 +7,14 @@ questions:
 - "What are the different data structures in R?"
 - "How do I access data within the various data structures?"
 objectives:
-- "Expose learners to the different data types in R."
+- "Expose learners to the different data types in R and show how these data types are used in data structures."
 - "Learn how to create vectors of different types."
 - "Be able to check the type of vector."
 - "Learn about missing data and other special values."
-- "Getting familiar with the different data structures (lists, matrices, data frames)."
+- "Get familiar with the different data structures (lists, matrices, data frames)."
 keypoints:
 - "R's basic data types are character, numeric, integer, complex, and logical."
-- "R's basic data structures include the vector, list, matrix, data frame, and factors."
+- "R's basic data structures include the vector, list, matrix, data frame, and factors. Some of these structures require that all members be of the same data type (e.g. vectors, matrices) while others permit multiple data types (e.g. lists, data frames)."
 - "Objects may have attributes, such as name, dimension, and class."
 source: Rmd
 ---
@@ -24,19 +24,18 @@ source("../bin/chunk-options.R")
 knitr_fig_path("13-supp-data-structures-")
 ```
 
-### Understanding Basic Data Types in R
+### Understanding Basic Data Types and Data Structures in R
 
 To make the best of the R language, you'll need a strong understanding of the
-basic data types and data structures and how to operate on those.
+basic data types and data structures and how to operate on them.
 
-Very important to understand because these are the objects you will manipulate
+Data structures are very important to understand because these are the objects you will manipulate
 on a day-to-day basis in R. Dealing with object conversions is one of the most
 common sources of frustration for beginners.
 
 **Everything** in R is an object.
 
-R has 6 (although we will not discuss the raw class for this workshop) atomic
-vector types.
+R has 6 basic data types. (In addition to the five listed below, there is also *raw* which will not be discussed in this workshop.)
 
 * character
 * numeric (real or decimal)
@@ -44,7 +43,7 @@ vector types.
 * logical
 * complex
 
-By *atomic*, we mean the vector only holds data of a single type.
+Elements of these data types may be combined to form data structures, such as atomic vectors. When we call a vector *atomic*, we mean that the vector only holds data of a single data type. Below are examples of atomic character vecotrs, numeric vectors, integer vectors, etc.
 
 * **character**: `"a"`, `"swc"`
 * **numeric**: `2`, `15.5`
@@ -84,7 +83,7 @@ R has many __data structures__. These include
 * data frame
 * factors
 
-### Atomic Vectors
+### Vectors
 
 A vector is the most common and basic data structure in R and is pretty much the
 workhorse of R. Technically, vectors can be one of two types:
@@ -260,7 +259,7 @@ nchar("Software Carpentry")
 
 In R matrices are an extension of the numeric or character vectors. They are not
 a separate type of object but simply an atomic vector with dimensions; the
-number of rows and columns.
+number of rows and columns. As with atomic vectors, the elements of a matrix must be of the same data type.
 
 ```{r}
 m <- matrix(nrow = 2, ncol = 2)
@@ -293,7 +292,7 @@ dim(m) <- c(2, 5)
 
 This takes a vector and transforms it into a matrix with 2 rows and 5 columns.
 
-Another way is to bind columns or rows using `cbind()` and `rbind()`.
+Another way is to bind columns or rows using `rbind()` and `cbind()` ("row bind" and "column bind", respectively).
 
 ```{r}
 x <- 1:3
