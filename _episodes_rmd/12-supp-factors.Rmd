@@ -79,7 +79,7 @@ information built in. It is particularly helpful when there are many levels
 >
 > You have a vector representing levels of exercise undertaken by 5 subjects
 >
-> **"l","n","n","i","l"** ; n=none, l=light, i=intense
+> **"l", "n", "n", "i", "l"** ; n=none, l=light, i=intense
 >
 > What is the best way to represent this in R?
 >
@@ -136,7 +136,7 @@ dat <- read.csv(file = 'data/sample.csv', stringsAsFactors = TRUE)
 
 > ## Default Behavior
 >
-> `stringsAsFactors=TRUE` is the default behavior for R.
+> `stringsAsFactors = TRUE` is the default behavior for R.
 > We could leave this argument out.
 > It is included here for clarity.
 {: .callout}
