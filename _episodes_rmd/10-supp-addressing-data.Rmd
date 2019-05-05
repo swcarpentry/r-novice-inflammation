@@ -34,8 +34,8 @@ dat <- read.csv(file = 'data/sample.csv', header = TRUE, stringsAsFactors = FALS
 > ## Interpreting Rows as Headers
 >
 > The first row of this csv file is a list of column names.
-> We used the *header=TRUE* argument to `read.csv` so that R can interpret the file correctly.
-> We are using the *stringsAsFactors=FALSE* argument to override the default behaviour for R.
+> We used the *header = TRUE* argument to `read.csv` so that R can interpret the file correctly.
+> We are using the *stringsAsFactors = FALSE* argument to override the default behaviour for R.
 > Using factors in R is covered in a separate lesson.
 {: .callout}
 
@@ -66,17 +66,32 @@ Data can be accessed by index. We have already seen how square brackets `[` can 
 > ## Selecting Values
 >
 > What will be returned by `dat[1, 1]`?
+> Think about the number of rows and columns you would expect as the result.
+>
+> > ## Solution
+> > ~~~
+> > [1] "Sub001"
+> > ~~~
+> > {: .output}
+> {: .solution}
 {: .challenge}
-
-```{r indexing1}
-dat[1, 1]
-```
 
 If we leave out a dimension R will interpret this as a request for all values in that dimension.
 
 > ## Selecting More Values
 >
 > What will be returned by `dat[, 2]`?
+>
+> > ## Solution
+> > ~~~
+> >  [1] "m" "m" "m" "f" "m" "M" "f" "m" "m" "f" "m" "f" "f" "m" "m" "m" "f" "m" "m" "F"
+> > [21] "f" "m" "f" "f" "m" "M" "M" "f" "m" "f" "f" "m" "m" "m" "m" "f" "f" "m" "M" "m"
+> > [41] "f" "m" "m" "m" "f" "f" "M" "M" "m" "m" "m" "f" "f" "f" "m" "f" "m" "m" "m" "f"
+> > [61] "f" "f" "f" "M" "f" "m" "f" "f" "M" "m" "m" "m" "F" "m" "m" "f" "M" "M" "M" "f"
+> > [81] "m" "M" "M" "m" "m" "f" "f" "f" "m" "m" "f" "m" "F" "f" "m" "m" "F" "m" "M" "M"
+> > ~~~
+> > {: .output}
+> {: .solution}
 {: .challenge}
 
 The colon `:` can be used to create a sequence of integers.
@@ -92,6 +107,13 @@ This can be very useful for addressing data.
 > ## Subsetting with Sequences
 >
 > Use the colon operator to index just the aneurism count data (columns 6 to 9).
+>
+> > ## Solution
+> > ~~~
+> > dat[,6:9]
+> > ~~~
+> > {: .language-r}
+> {: .solution}
 {: .challenge}
 
 Finally we can use the `c()` (combine) function to address non-sequential rows and columns.
@@ -104,7 +126,14 @@ Returns the first 5 columns for patients in rows 1,5,7 and 9
 
 > ## Subsetting Non-Sequential Data
 >
-> Return the age and gender values for the first 5 patients.
+> Write code to return the age and gender values for the first 5 patients.
+>
+> > ## Solution
+> > ~~~
+> > dat[1:5, c(5, 2)]
+> > ~~~
+> > {: .language-r}
+> {: .solution}
 {: .challenge}
 
 ### Addressing by Name
@@ -175,7 +204,18 @@ plot(dat[dat$Group == 'Control', ]$BloodPressure)
 >
 > 1. Create a scatterplot showing BloodPressure for subjects not in the control group.
 > 2. How many ways are there to index this set of subjects?
+> 
+> > ## Solution
+> > 1. The code for such a plot:
+> > ~~~
+> > plot(dat[dat$Group != 'Control', ]$BloodPressure)
+> > ~~~
+> > 2. In addition to `dat$Group != 'Control'`, one could use 
+> > `dat$Group %in% c("Treatment1", "Treatment2")`.
+> > {: .language-r}
+> {: .solution}
 {: .challenge}
+
 
 ### Combining Indexing and Assignment
 
@@ -191,6 +231,14 @@ x
 >
 > In this dataset, values for Gender have been recorded as both uppercase `M, F` and lowercase `m, f`.
 > Combine the indexing and assignment operations to convert all values to lowercase.
+> 
+> > ## Solution
+> > ~~~
+> > dat[dat$Gender == 'M', ]$Gender <- 'm'
+> > dat[dat$Gender == 'F', ]$Gender <- 'f'
+> > ~~~
+> > {: .language-r}
+> {: .solution}
 {: .challenge}
 
 {% include links.md %}
