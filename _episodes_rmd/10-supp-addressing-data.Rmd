@@ -69,10 +69,9 @@ Data can be accessed by index. We have already seen how square brackets `[` can 
 > Think about the number of rows and columns you would expect as the result.
 >
 > > ## Solution
-> > ~~~
-> > [1] "Sub001"
-> > ~~~
-> > {: .output}
+> > ```{r select-values}
+> > dat[1, 1]
+> > ```
 > {: .solution}
 {: .challenge}
 
@@ -83,14 +82,9 @@ If we leave out a dimension R will interpret this as a request for all values in
 > What will be returned by `dat[, 2]`?
 >
 > > ## Solution
-> > ~~~
-> >  [1] "m" "m" "m" "f" "m" "M" "f" "m" "m" "f" "m" "f" "f" "m" "m" "m" "f" "m" "m" "F"
-> > [21] "f" "m" "f" "f" "m" "M" "M" "f" "m" "f" "f" "m" "m" "m" "m" "f" "f" "m" "M" "m"
-> > [41] "f" "m" "m" "m" "f" "f" "M" "M" "m" "m" "m" "f" "f" "f" "m" "f" "m" "m" "m" "f"
-> > [61] "f" "f" "f" "M" "f" "m" "f" "f" "M" "m" "m" "m" "F" "m" "m" "f" "M" "M" "M" "f"
-> > [81] "m" "M" "M" "m" "m" "f" "f" "f" "m" "m" "f" "m" "F" "f" "m" "m" "F" "m" "M" "M"
-> > ~~~
-> > {: .output}
+> > ```{r select-values-2}
+> > dat[, 2]
+> > ```
 > {: .solution}
 {: .challenge}
 
@@ -109,10 +103,9 @@ This can be very useful for addressing data.
 > Use the colon operator to index just the aneurism count data (columns 6 to 9).
 >
 > > ## Solution
-> > ~~~
-> > dat[,6:9]
-> > ~~~
-> > {: .language-r}
+> > ```{r subset-sequence}
+> > dat[, 6:9]
+> > ```
 > {: .solution}
 {: .challenge}
 
@@ -129,10 +122,9 @@ Returns the first 5 columns for patients in rows 1,5,7 and 9
 > Write code to return the age and gender values for the first 5 patients.
 >
 > > ## Solution
-> > ~~~
+> > ```{r subset-nonsequential}
 > > dat[1:5, c(5, 2)]
-> > ~~~
-> > {: .language-r}
+> > ```
 > {: .solution}
 {: .challenge}
 
@@ -162,7 +154,7 @@ head(dat[, c('Age', 'Gender')])
 
 > ## Best Practice
 >
-> Best practice is to address columns by name, often you will create or delete columns and the column position will change.
+> Best practice is to address columns by name. Often, you will create or delete columns and the column position will change.
 {: .callout}
 
 ### Logical Indexing
@@ -207,12 +199,12 @@ plot(dat[dat$Group == 'Control', ]$BloodPressure)
 > 
 > > ## Solution
 > > 1. The code for such a plot:
-> > ~~~
-> > plot(dat[dat$Group != 'Control', ]$BloodPressure)
-> > ~~~
-> > 2. In addition to `dat$Group != 'Control'`, one could use 
+> >     ```{r plot-logical}
+> >     plot(dat[dat$Group != 'Control', ]$BloodPressure)
+> >     ```
+> > 2. In addition to 
+> > `dat$Group != 'Control'`, one could use 
 > > `dat$Group %in% c("Treatment1", "Treatment2")`.
-> > {: .language-r}
 > {: .solution}
 {: .challenge}
 

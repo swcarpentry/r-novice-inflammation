@@ -173,7 +173,6 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 > > dat$Group <- factor(dat$Group, levels = c("Treatment1", "Treatment2", "Control"))
 > > barplot(table(dat$Group))
 > > ```
-> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
