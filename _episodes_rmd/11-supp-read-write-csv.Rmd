@@ -50,7 +50,7 @@ head(carSpeeds)
 > The default delimiter of the `read.csv()` function is a comma, but you can
 > use other delimiters by supplying the 'sep' argument to the function
 > (e.g., typing `sep = ';'` allows a semi-colon separated file to be correctly
-> imported -see `?read.csv()` for more information on this and other options for
+> imported - see `?read.csv()` for more information on this and other options for
 > working with different file types).
 {: .callout}
 
