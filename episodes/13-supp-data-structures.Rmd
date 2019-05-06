@@ -151,11 +151,6 @@ class(z)
 str(z)
 ```
 
-> ## Finding Commonalities
->
-> Do you see a property that's common to all these vectors above?
-{: .challenge}
-
 ### Adding Elements
 
 The function `c()` (for combine) can also be used to add elements to a vector.
@@ -237,6 +232,14 @@ You can also control how vectors are coerced explicitly using the
 as.numeric("1")
 as.character(1:2)
 ```
+
+> ## Finding Commonalities
+>
+> Do you see a property that's common to all these vectors above?
+> > ## Solution
+> > All vectors are one-dimensional and each element is of the same type.
+> {: .solution}
+{: .challenge}
 
 ### Objects Attributes
 
