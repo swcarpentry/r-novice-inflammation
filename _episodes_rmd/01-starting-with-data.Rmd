@@ -501,6 +501,16 @@ We'll learn why this is so in the next lesson.
 >    explain what `animal[-1:-4]` does.
 >
 > 1.  Use a slice of `animal` to create a new character vector that spells the word "eon", i.e. `c("e", "o", "n")`.
+> > ## Solutions
+> > 
+> > 1. `animal[4:1]`
+> > 
+> > 1. `"o" "n" "k" "e" "y"` and `"m" "o" "n" "e" "y"`, which means that a
+> >    single `-` removes the element at the given index position.
+> >    `animal[-1:-4]` remove the slice, returning `"e" "y"`, which is
+> >    equivalent to `animal[5:6]`.
+> > 
+> {: .solution}
 {: .challenge}
 
 > ## Subsetting More Data
