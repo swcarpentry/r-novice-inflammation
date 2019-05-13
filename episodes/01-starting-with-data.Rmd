@@ -500,7 +500,6 @@ We'll learn why this is so in the next lesson.
 >    Given those answers,
 >    explain what `animal[-1:-4]` does.
 >
-> 1.  Use a slice of `animal` to create a new character vector that spells the word "eon", i.e. `c("e", "o", "n")`.
 > > ## Solutions
 > > 
 > > 1. `animal[4:1]`
