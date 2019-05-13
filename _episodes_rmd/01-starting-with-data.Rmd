@@ -619,6 +619,15 @@ The maximum value rises and falls perfectly smoothly, while the minimum seems to
 > ## Plotting Data
 >
 > Create a plot showing the standard deviation of the inflammation data for each day across all patients.
+>
+> > ## Solution
+> > 
+> > ~~~
+> > sd_day_inflammation <- apply(dat, 2, sd)
+> > plot(sd_day_inflammation)
+> > ~~~
+> > {: .language-r}
+> {: .solution}
 {: .challenge}
 
 {% include links.md %}
