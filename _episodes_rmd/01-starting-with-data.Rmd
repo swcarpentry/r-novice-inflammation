@@ -258,6 +258,26 @@ head(dat)
 > age <- age - 20
 > ~~~
 > {: .language-r}
+>
+> > ## Solution
+> >
+> > ~~~
+> > mass <- 47.5
+> > age <- 122
+> > ~~~
+> > {: .language-r}
+> > 
+> > <img src="../fig/mass-age-assign-1.svg" alt="Assigning Variables" />
+> >
+> > ~~~
+> > mass <- mass * 2.0
+> > age <- age - 20
+> > ~~~
+> > {: .language-r}
+> > 
+> > <img src="../fig/mass-age-assign-2.svg" alt="Assigning Variables" />
+> > 
+> {: .solution}
 {: .challenge}
 
 ### Manipulating Data
