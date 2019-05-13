@@ -113,6 +113,21 @@ The filename needs to be a character string (or [string]({{ page.root }}/referen
 > Depending on the country you live in, your standard can use the dot or the comma as decimal mark.
 > Also, different devices or software can generate data with different decimal points.
 > Take a look at `?read.csv` and write the code to load a file called `commadec.txt` that has numeric values with commas as decimal mark, separated by semicolons.
+>
+> > ## Solution
+> > 
+> > ~~~
+> > read.csv(file = "data/commadec.txt", sep = ";", dec = ",")
+> > ~~~
+> > {: .language-r}
+> > 
+> > or the built-in shortcut:
+> > 
+> > ~~~
+> > read.csv2(file = "data/commadec.txt")
+> > ~~~
+> > {: .language-r}
+> {: .solution}
 {: .challenge}
 
 A function will perform its given action on whatever value is passed to the argument(s).
