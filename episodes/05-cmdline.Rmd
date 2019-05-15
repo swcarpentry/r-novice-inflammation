@@ -171,7 +171,7 @@ Rscript readings-02.R data/inflammation-01.csv
 
 > ## A Simple Command-Line Program
 >
-> 1. Write a command-line program that does addition and subtraction.
+> 1. Write a command-line program that does addition and subtraction of two numbers.
 >
 >    **Hint:** Everything argument read from the command-line is interpreted as a character [string]({{ page.root }}/reference.html#string).
 >    You can convert from a string to a number using the function `as.numeric`.
@@ -192,6 +192,10 @@ Rscript readings-02.R data/inflammation-01.csv
 >
 > 2. What goes wrong if you try to add multiplication using `*` to the program?
 >
+> > ## Solution
+> > An error message is returned due to "invalid input."
+> > This is likely because '*' has a special meaning in the shell, as a wildcard. 
+> >
 > 3. Using the function `list.files` introduced in a previous [lesson]({{ page.root }}/03-loops-R/),
 >    write a command-line program called `find-pattern.R`
 >    that lists all the files in the current directory that contain a specific pattern:
