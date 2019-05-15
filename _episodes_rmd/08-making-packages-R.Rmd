@@ -174,6 +174,60 @@ kelvin_to_celsius(273.15)
 >
 > 1. Create some new functions for your tempConvert package to convert from Kelvin to Fahrenheit or from Celsius to Kelvin or Fahrenheit.
 > 2. Create a package for our `analyze` function so that it will be easy to load when more data arrives.
+> 
+> > ## Solution
+> >
+> > ~~~
+> > #' Converts Kelvin to Fahrenheit
+> > #'
+> > #' This function converts input temperatures in Kelvin to Fahrenheit.
+> > #' @param temp_K The temperature in Kelvin.
+> > #' @return The temperature in Fahrenheit.
+> > #' @export
+> > #' @examples
+> > #' kelvin_to_fahrenheit(273.15)
+> > 
+> > kelvin_to_fahrenheit <- function(temp_K) {
+> >   temp_F <- ((temp_K - 273.15) * (9/5)) + 32
+> >   temp_F
+> > }
+> > ~~~
+> > {: .language-r}
+> >
+> > ~~~
+> > #' Converts Celsius to Kelvin
+> > #'
+> > #' This function converts input temperatures in Celsius to Kelvin.
+> > #' @param temp_C The temperature in Celsius.
+> > #' @return The temperature in Kelvin.
+> > #' @export
+> > #' @examples
+> > #' celsius_to_kelvin(0)
+> > 
+> > celsius_to_kelvin <- function(temp_C) {
+> >   temp_K <- temp_C + 273.15
+> >   temp_K
+> > }
+> > ~~~
+> > {: .language-r}
+> > 
+> > ~~~
+> > #' Converts Celsius to Fahrenheit
+> > #'
+> > #' This function converts input temperatures in Celsius to Fahrenheit.
+> > #' @param temp_C The temperature in Celsius.
+> > #' @return The temperature in Fahrenheit.
+> > #' @export
+> > #' @examples
+> > #' celsius_to_fahrenheit(0)
+> > 
+> > celsius_to_fahrenheit <- function(temp_C) {
+> >   temp_F <- (temp_C * 9/5) + 32
+> >   temp_F
+> > }
+> > ~~~
+> > {: .language-r}
+> {: .solution}
 {: .challenge}
 
 {% include links.md %}
