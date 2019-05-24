@@ -85,7 +85,7 @@ kelvin_to_celsius <- function(temp_K) {
 fahrenheit_to_celsius <- function(temp_F) {
   # Converts Fahrenheit to Celsius using fahrenheit_to_kelvin() and kelvin_to_celsius()
   temp_K <- fahrenheit_to_kelvin(temp_F)
-	temp_C <- kelvin_to_celsius(temp_K)
+  temp_C <- kelvin_to_celsius(temp_K)
   temp_C
 }
 ```
