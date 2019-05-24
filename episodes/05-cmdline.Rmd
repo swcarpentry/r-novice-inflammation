@@ -195,7 +195,8 @@ Rscript readings-02.R data/inflammation-01.csv
 > > ## Solution
 > > An error message is returned due to "invalid input."
 > > This is likely because '*' has a special meaning in the shell, as a wildcard. 
-> >
+> {: .solution}
+> 
 > 3. Using the function `list.files` introduced in a previous [lesson]({{ page.root }}/03-loops-R/),
 >    write a command-line program called `find-pattern.R`
 >    that lists all the files in the current directory that contain a specific pattern:
