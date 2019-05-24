@@ -8,7 +8,7 @@ objectives:
 - "Understand the three different ways R can address data inside a data frame."
 - "Combine different methods for addressing data with the assignment operator to update subsets of data."
 keypoints:
-- "Data in data frames can be addressed by index (slicing), by logical vector, or by name (columns only)."
+- "Data in data frames can be addressed by index (subsetting), by logical vector, or by name (columns only)."
 - "Use the `$` operator to address a column by name."
 source: Rmd
 ---
@@ -21,7 +21,7 @@ knitr_fig_path("10-supp-addressing-data-")
 R is a powerful language for data manipulation.
 There are three main ways for addressing data inside R objects.
 
-* By index (slicing)
+* By index (subsetting)
 * By logical vector
 * By name (columns only)
 
@@ -61,7 +61,7 @@ The data is the results of an (not real) experiment, looking at the number of an
 
 ### Addressing by Index
 
-Data can be accessed by index. We have already seen how square brackets `[` can be used to subset (slice) data. The generic format is `dat[row_numbers,column_numbers]`.
+Data can be accessed by index. We have already seen how square brackets `[` can be used to subset data (sometimes also called "slicing"). The generic format is `dat[row_numbers,column_numbers]`.
 
 > ## Selecting Values
 >

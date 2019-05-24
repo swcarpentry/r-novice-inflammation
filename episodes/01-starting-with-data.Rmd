@@ -425,12 +425,12 @@ sd(dat[, 7])
 > ## Forcing Conversion
 >
 > Note that R may return an error when you attempt to perform similar calculations on 
-> sliced *rows* of data frames. This is because some functions in R automatically convert 
+> subsetted *rows* of data frames. This is because some functions in R automatically convert 
 > the object type to a numeric vector, while others do not (e.g. `max(dat[1, ])` works as 
 > expected, while `mean(dat[1, ])` returns `NA` and a warning). You get the
 > expected output by including an
 > explicit call to `as.numeric()`, e.g. `mean(as.numeric(dat[1, ]))`. By contrast, 
-> calculations on sliced *columns* always work as expected, since columns of data frames 
+> calculations on subsetted *columns* always work as expected, since columns of data frames 
 > are already defined as vectors.
 {: .callout}
 
@@ -480,7 +480,6 @@ We'll learn why this is so in the next lesson.
 > `colMeans`, respectively.
 {: .callout}
 
-<!-- Slice is a Python thing. I've never seen this term used in R -->
 > ## Subsetting Data
 >
 > We can take subsets of character vectors as well:
@@ -493,21 +492,21 @@ We'll learn why this is so in the next lesson.
 > animal[4:6]
 > ```
 >
-> 1.  If the first four characters are selected using the slice `animal[1:4]`, how can we obtain the first four characters in reverse order?
+> 1.  If the first four characters are selected using the subset `animal[1:4]`, how can we obtain the first four characters in reverse order?
 >
 > 1.  What is `animal[-1]`?
 >    What is `animal[-4]`?
 >    Given those answers,
 >    explain what `animal[-1:-4]` does.
 >
-> 1.  Use a slice of `animal` to create a new character vector that spells the word "eon", i.e. `c("e", "o", "n")`.
+> 1.  Use a subset of `animal` to create a new character vector that spells the word "eon", i.e. `c("e", "o", "n")`.
 > > ## Solutions
 > > 
 > > 1. `animal[4:1]`
 > > 
 > > 1. `"o" "n" "k" "e" "y"` and `"m" "o" "n" "e" "y"`, which means that a
 > >    single `-` removes the element at the given index position.
-> >    `animal[-1:-4]` remove the slice, returning `"e" "y"`, which is
+> >    `animal[-1:-4]` remove the subset, returning `"e" "y"`, which is
 > >    equivalent to `animal[5:6]`.
 > > 
 > > 1. `animal[c(5,2,3)]` combines indexing with the `c`ombine function.
@@ -530,7 +529,7 @@ We'll learn why this is so in the next lesson.
 > >  
 > > Answer: 3
 > >
-> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in rows and the days are represented by the columns. Subscripting in R follows the `[i, j]` principle, where `i = rows` and `j = columns`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a slice spanning day 3 to 7.
+> > Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in rows and the days are represented by the columns. Subscripting in R follows the `[i, j]` principle, where `i = rows` and `j = columns`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a subset spanning day 3 to 7.
 > > 
 > {: .solution}
 {: .challenge}
