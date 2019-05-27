@@ -348,15 +348,16 @@ Sure enough, the maxima of these data sets show exactly the same ramp as the fir
 
 > ## Using Loops to Analyze Multiple Files
 >
-> Write a function called `analyze_all` that takes a filename pattern as its sole argument
+> Write a function called `analyze_all` that takes a folder path and 
+> a filename pattern as its arguments
 > and runs `analyze` for each file whose name matches the pattern.
 >
 > > ## Solution
 > > ~~~
-> > analyze_all <- function(pattern) {
-> >   # Runs the function analyze for each file in the current working directory
+> > analyze_all <- function(folder = "data", pattern) {
+> >   # Runs the function analyze for each file in the given folder
 > >   # that contains the given pattern.
-> >   filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
+> >   filenames <- list.files(path = folder, pattern = pattern, full.names = TRUE)
 > >   for (f in filenames) {
 > >     analyze(f)
 > >   }
