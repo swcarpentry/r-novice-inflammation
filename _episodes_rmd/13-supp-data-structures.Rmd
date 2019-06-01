@@ -346,8 +346,6 @@ dimension (e.g. "row" and "column") in single square brackets.
 mdat[2, 3]
 ```
 
-
-
 ### List
 
 In R lists act as containers. Unlike atomic vectors, the contents of a list are
