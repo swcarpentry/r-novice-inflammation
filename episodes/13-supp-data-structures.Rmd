@@ -278,6 +278,32 @@ typeof(m)
 
 While `class()` shows that m is a matrix, `typeof()` shows that fundamentally the matrix is an integer vector.
 
+> ## Data types of matrix elements
+> 
+> Consider the following matrix:
+> 
+> ```{r matrix-typeof}
+> FOURS <- matrix(
+>   c(4, 4, 4, 4),
+>   nrow = 2,
+>   ncol = 2)
+> ```
+>
+> Given that `typeof(FOURS[1])` returns `"double"`, what would you expect
+> `typeof(FOURS)` to return? How do you know this is the case even without
+> running this code?
+>
+> *Hint* Can matrices be composed of elements of different data types?
+>
+> > ## Solution
+> > We know that `typeof(FOURS)` will also return `"double"` since matrices 
+> > are made of elements of the same data type. Note that you could do 
+> > something like `as.character(FOURS)` if you needed the elements of `FOURS` 
+> > *as characters*.
+> 
+> {: .solution}
+{: .challenge}
+
 Matrices in R are filled column-wise.
 
 ```{r}
@@ -302,7 +328,8 @@ cbind(x, y)
 rbind(x, y)
 ```
 
-You can also use the `byrow` argument to specify how the matrix is filled. From R's own documentation:
+You can also use the `byrow` argument to specify how the matrix is filled. 
+From R's own documentation:
 
 ```{r}
 mdat <- matrix(c(1, 2, 3, 11, 12, 13),
@@ -312,11 +339,14 @@ mdat <- matrix(c(1, 2, 3, 11, 12, 13),
 mdat
 ```
 
-Elements of a matrix can be referenced by specifying the index along each dimension (e.g. "row" and "column") in single square brackets.
+Elements of a matrix can be referenced by specifying the index along each
+dimension (e.g. "row" and "column") in single square brackets.
 
 ```{r}
 mdat[2, 3]
 ```
+
+
 
 ### List
 
