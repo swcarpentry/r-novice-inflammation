@@ -4,13 +4,10 @@ title: Setup
 root: .
 ---
 
-This lesson assumes you have the R software and the development environment
-RStudio installed on your computer.
+This lesson assumes you have current versions of the following installed on your computer:
 
-[R can be downloaded here](https://cran.r-project.org/mirrors.html).
-
-[RStudio can be downloaded here](https://www.rstudio.com/products/rstudio/download/).
-You will need the Desktop version for your computer.
+1. the [R software](https://cran.r-project.org/mirrors.html) itself, and
+1. [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/#download).
 
 You also need to download some files to follow this lesson:
 

@@ -158,11 +158,6 @@ class(z)
 str(z)
 ```
 
-> ## Finding Commonalities
->
-> Do you see a property that's common to all these vectors above?
-{: .challenge}
-
 ### Adding Elements
 
 The function `c()` (for combine) can also be used to add elements to a vector.
@@ -245,6 +240,14 @@ as.numeric("1")
 as.character(1:2)
 ```
 
+> ## Finding Commonalities
+>
+> Do you see a property that's common to all these vectors above?
+> > ## Solution
+> > All vectors are one-dimensional and each element is of the same type.
+> {: .solution}
+{: .challenge}
+
 ### Objects Attributes
 
 Objects can have __attributes__. Attributes are part of the object. These include:
@@ -288,6 +291,32 @@ typeof(m)
 While `class()` shows that m is a matrix, `typeof()` shows that fundamentally the
 matrix is an integer vector.
 
+> ## Data types of matrix elements
+> 
+> Consider the following matrix:
+> 
+> ```{r matrix-typeof}
+> FOURS <- matrix(
+>   c(4, 4, 4, 4),
+>   nrow = 2,
+>   ncol = 2)
+> ```
+>
+> Given that `typeof(FOURS[1])` returns `"double"`, what would you expect
+> `typeof(FOURS)` to return? How do you know this is the case even without
+> running this code?
+>
+> *Hint* Can matrices be composed of elements of different data types?
+>
+> > ## Solution
+> > We know that `typeof(FOURS)` will also return `"double"` since matrices 
+> > are made of elements of the same data type. Note that you could do 
+> > something like `as.character(FOURS)` if you needed the elements of `FOURS` 
+> > *as characters*.
+> 
+> {: .solution}
+{: .challenge}
+
 Matrices in R are filled column-wise.
 
 ```{r}
@@ -324,8 +353,8 @@ mdat <- matrix(c(1, 2, 3, 11, 12, 13),
 mdat
 ```
 
-Elements of a matrix can be referenced by specifying the index along each dimension
-(e.g. "row" and "column") in single square brackets.
+Elements of a matrix can be referenced by specifying the index along each
+dimension (e.g. "row" and "column") in single square brackets.
 
 ```{r}
 mdat[2, 3]
@@ -366,9 +395,22 @@ x <- as.list(x)
 length(x)
 ```
 
-1. What is the class of `x[1]`?
-2. What about `x[[1]]`?
-
+> ## Examining Lists
+>
+> 1. What is the class of `x[1]`?
+> 2. What is the class of `x[[1]]`?
+>
+> > ## Solution
+> > 1. 
+> >     ```{r examine-lists-1}
+> >     class(x[1])
+> >     ```
+> > 2. 
+> >     ```{r examine-lists-2}
+> >     class(x[[1]])
+> >     ```
+> {: .solution}
+{: .challenge}
 
 Elements of a list can be named (i.e. lists can have the `names` attribute)
 
@@ -378,7 +420,22 @@ xlist
 names(xlist)
 ```
 
-1. What is the length of this object? What about its structure?
+> ## Examining Named Lists
+>
+> 1. What is the length of this object?
+> 2. What is its structure?
+>
+> > ## Solution
+> > 1. 
+> >     ```{r examine-named-lists-1}
+> >     length(xlist)
+> >     ```
+> > 2. 
+> >     ```{r examine-named-lists-2}
+> >     str(xlist)
+> >     ```
+> {: .solution}
+{: .challenge} 
 
 Lists can be extremely useful inside functions. Because the functions in R are 
 able to return only a single object, you can "staple" together lots of different
@@ -469,22 +526,22 @@ R in relation to diversity of data types they can contain.
 > to qualify as a data frame, the lenghth of each element has to be the same. 
 {: .callout}
 
-
 > ## Column Types in Data Frames
 >
 > Knowing that data frames are lists, can columns be of different type?
 >
 > What type of structure do you expect to see when you explore the structure of the `iris` data frame? Hint: Use `str()`.
 >
-> ~~~
-> # The Sepal.Length, Sepal.Width, Petal.Length and Petal.Width columns are all
-> # numeric types, while Species is a Factor.
-> # Lists can have elements of different types.
-> # Since a Data Frame is just a special type of list, it can have columns of
-> # differing type (although, remember that type must be consistent within each column!).
-> str(iris)
-> ~~~
-> {: .language-r}
+> > ## Solution
+> > The Sepal.Length, Sepal.Width, Petal.Length and Petal.Width columns are all
+> > numeric types, while Species is a Factor.
+> > Lists can have elements of different types.
+> > Since a Data Frame is just a special type of list, it can have columns of
+> > differing type (although, remember that type must be consistent within each column!).
+> > ```{r column-types}
+> > str(iris)
+> > ```
+> {: .solution}
 {: .challenge}
 
 {% include links.md %}
