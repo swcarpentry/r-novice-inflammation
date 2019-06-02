@@ -50,10 +50,10 @@ analyze <- function(filename) {
 And also built the function `analyze_all` to automate the processing of each data file:
 
 ```{r analyze_all}
-analyze_all <- function(pattern) {
-  # Runs the function analyze for each file in the current working directory
+analyze_all <- function(folder = "data", pattern) {
+  # Runs the function analyze for each file in the given folder
   # that contains the given pattern.
-  filenames <- list.files(path = "data", pattern = pattern, full.names = TRUE)
+  filenames <- list.files(path = folder, pattern = pattern, full.names = TRUE)
   for (f in filenames) {
     analyze(f)
   }
