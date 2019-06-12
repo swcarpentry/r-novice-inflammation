@@ -7,6 +7,7 @@ questions:
 - "How can I test my functions?"
 - "How should I document my code?"
 objectives:
+- "Give the definition of the word function as used in programming"
 - "Define a function that takes arguments."
 - "Return a value from a function."
 - "Test a function."
