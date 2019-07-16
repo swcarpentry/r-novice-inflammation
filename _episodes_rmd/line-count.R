@@ -8,12 +8,12 @@ main <- function() {
       cat(filename)
       cat(" ")
       cat(num_lines, sep = "\n")
-      if (length(args) > 1) {
-        total_lines = total_lines + num_lines
-      }
+      total_lines <- total_lines + num_lines
     }
-    cat("Total ")
-    cat(total_lines, sep = "\n")
+    if (length(args) > 1) {
+      cat("Total ")
+      cat(total_lines, sep = "\n")
+    }
   } else {
     input <- readLines(file("stdin"))
     num_lines <- length(input)
