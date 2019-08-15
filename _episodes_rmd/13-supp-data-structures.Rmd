@@ -278,6 +278,20 @@ m <- matrix(nrow = 2, ncol = 2)
 m
 dim(m)
 ```
+You can create a matrix with single element (say 'x') following way
+
+```{r}
+m <- matrix(x, nrow = 2, ncol = 2)
+m
+dim(m)
+```
+A diagonal matrix with element 'x' can be created using 'diag'command
+
+```{r}
+m <- diag(x, nrow = 4, ncol = 4)
+m
+dim(m)
+```
 
 You can check that matrices are vectors with a class attribute of `matrix` by using
 `class()` and `typeof()`.
