@@ -35,21 +35,21 @@ In this lesson, we'll learn how to write a function so that we can repeat severa
 
 ### Defining a Function
 
-Let's start by defining a function `fahrenheit_to_kelvin` that converts temperatures from Fahrenheit to Kelvin:
+Let's start by defining a function `fahrenheit_to_celsius` that converts temperatures from Fahrenheit to Celsius:
 
 ```{r}
-fahrenheit_to_kelvin <- function(temp_F) {
-  temp_K <- (temp_F + 459.67) * 5 / 9
-  return(temp_K)
+fahrenheit_to_celsius <- function(temp_F) {
+  temp_C <- (temp_F - 32) * 5 / 9
+  return(temp_C)
 }
 ```
 
-We define `fahrenheit_to_kelvin` by assigning it to the output of `function`.
+We define `fahrenheit_to_celsius` by assigning it to the output of `function`.
 The list of argument names are contained within parentheses.
 Next, the [body]({{ page.root }}/reference.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
 The statements in the body are indented by two spaces, which makes the code easier to read but does not affect how the code operates.
 
-Aside: the formula here is from [wikipedia](https://en.wikipedia.org/wiki/Fahrenheit#Definition_and_conversion), and defines the zero point for the Kelvin scale as −459.67°F, with a scaling factor of 5/9.
+Explanation: this formula defines the zero point for the Celsius scale as 32°F, with a scaling factor of 5/9 to convert from Fahrenheit to Celsius.
 
 When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
 Inside the function, we use a [return statement]({{ page.root }}/reference.html#return-statement) to send a result back to whoever asked for it.
@@ -67,40 +67,40 @@ Calling our own function is no different from calling any other function:
 
 ```{r}
 # freezing point of water
-fahrenheit_to_kelvin(32)
+fahrenheit_to_celsius(32)
 # boiling point of water
-fahrenheit_to_kelvin(212)
+fahrenheit_to_celsius(212)
 ```
 
 We've successfully called the function that we defined, and we have access to the value that we returned.
 
 ### Composing Functions
 
-Now that we've seen how to turn Fahrenheit into Kelvin, it's easy to turn Kelvin into Celsius:
+Now that we've seen how to turn Fahrenheit into Celsius, it's easy to turn Celsius into Kelvin:
 
 ```{r}
-kelvin_to_celsius <- function(temp_K) {
-  temp_C <- temp_K - 273.15
-  return(temp_C)
+celsius_to_kelvin <- function(temp_K) {
+  temp_K <- temp_C + 273.15
+  return(temp_K)
 }
 
-# absolute zero in Celsius
-kelvin_to_celsius(0)
+# freezing point of water in Kelvin
+celsius_to_kelvin(0)
 ```
 
-What about converting Fahrenheit to Celsius?
+What about converting Fahrenheit to Kelvin?
 We could write out the formula, but we don't need to.
 Instead, we can [compose]({{ page.root }}/reference.html#function-composition) the two functions we have already created:
 
 ```{r}
-fahrenheit_to_celsius <- function(temp_F) {
-  temp_K <- fahrenheit_to_kelvin(temp_F)
-  temp_C <- kelvin_to_celsius(temp_K)
-  return(temp_C)
+fahrenheit_to_kelvin <- function(temp_F) {
+  temp_C <- fahrenheit_to_celsius(temp_F)
+  temp_K <- celsius_to_kelvin(temp_C)
+  return(temp_K)
 }
 
-# freezing point of water in Celsius
-fahrenheit_to_celsius(32.0)
+# freezing point of water in Kelvin
+fahrenheit_to_kelvin(32.0)
 ```
 
 This is our first taste of how larger programs are built: we define basic
@@ -109,14 +109,14 @@ Real-life functions will usually be larger than the ones shown here--typically h
 
 > ## Nesting Functions
 >
-> This example showed the output of `fahrenheit_to_kelvin` assigned to `temp_K`, which
-> is then passed to `kelvin_to_celsius` to get the final result. It is also possible
+> This example showed the output of `fahrenheit_to_celsius` assigned to `temp_C`, which
+> is then passed to `celsius_to_kelvin` to get the final result. It is also possible
 > to perform this calculation in one line of code, by "nesting" one function
 > inside another, like so:
 >
 > ```{r chained-example}
 > # freezing point of water in Celsius
-> kelvin_to_celsius(fahrenheit_to_kelvin(32.0))
+> celsius_to_kelvin(fahrenheit_to_celsius(32.0))
 > ```
 {: .callout}
 
