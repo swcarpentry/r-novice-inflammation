@@ -110,6 +110,8 @@ If the following test is true, the body of the `if` (i.e., the lines in the curl
 If the test is false, the body of the `else` is executed instead.
 Only one or the other is ever executed:
 
+Note that there are curly braces { } surrounding the steps to be implemented in each branch of the conditional.  These braces are not required; however, it is suggested that you use them to uniquely identify that this segment of code is indeed what such happen if the condition is true or false respectively.  Additionally, using the braces here is helpful should the code change in the future, and additional steps be added for each True/False branch (ensuring that those multiple steps will be executed as a group in each case).
+
 <img src="../fig/python-flowchart-conditional.svg" alt="Executing a Conditional" />
 
 In the example above, the test `num > 100` returns the value `FALSE`, which is why the code inside the `if` block was skipped and the code inside the `else` statement was run instead.
