@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg fill-rule="evenodd" height="215" width="345"
+<svg fill-rule="evenodd" height="215" width="380"
      font-family="Arial, sans-serif"
      font-size="16" font-weight="400" text-anchor="middle"
      preserveAspectRatio="xMidYMid" stroke-linejoin="round"
@@ -20,7 +20,7 @@
     </marker>
   </defs>
   <!-- translate 105,40 pixels to be consistent with original stack image -->
-  <g transform="translate(145,40)">
+  <g transform="translate(180,40)">
     <!-- top arrow (starts 40px above third arrow) -->
     <g stroke-width="1">
       <path d="M85,-1 140,35" fill="none" stroke="#000"
@@ -28,7 +28,7 @@
     </g>
     <path d="m52.5,9 h-30 v-24 h60 v24z" fill="#c0c0c0"/>
     <text x="52.5" y="2">
-      <tspan>temp</tspan>
+      <tspan>temp_C</tspan>
     </text>
     <!-- second arrow (starts 40px above third arrow) -->
     <g stroke-width="1">
@@ -46,7 +46,7 @@
     </g>
     <path d="m52.5,89 h-30 v-24 h60 v24z" fill="#c0c0c0"/>
     <text x="52.5" y="82">
-      <tspan>temp</tspan>
+      <tspan>temp_F</tspan>
     </text>
     <text font-size="40" x="-10" y="9">
       <tspan>{</tspan>
@@ -60,7 +60,7 @@
       </text>
     </g>
     <text font-style="italic" x="-20" y="62" text-anchor="end">
-      <tspan>fahr_to_kelvin</tspan>
+      <tspan>fahrenheit_to_kelvin</tspan>
     </text>
     <!-- bottom arrow -->
     <g stroke-width="1">
