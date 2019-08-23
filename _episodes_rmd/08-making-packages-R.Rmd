@@ -109,7 +109,7 @@ Keep the name simple and unique.
 
 ```{r, eval=FALSE}
 setwd(parentDirectory)
-create("tempConvert")
+create_package("tempConvert")
 ```
 
 Add our functions to the R directory.
