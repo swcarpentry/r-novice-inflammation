@@ -45,7 +45,7 @@ Lets take a look at this data.
 class(dat)
 ```
 
-R has loaded the contents of the .csv file into a variable called `dat` which is a `data frame`. A data frame is a list of variables of the same number of rows with unique row names, given class "data.frame".
+R has loaded the contents of the .csv file into a variable called `dat` which is a `data frame`.
 
 We can compactly display the internal structure of a data frame using the  structure function `str`.
 
@@ -149,7 +149,7 @@ We usually use the `$` operator to address a column by name
 dat$Gender
 ```
 
-When we address a data frame by a single column, R will return a vector of that column class and not a data frame.
+When we extract a single column column from a data frame using the `$` operator, R will return a vector of that column class and not a data frame.
 
 ```{r }
 class(dat$Gender)
