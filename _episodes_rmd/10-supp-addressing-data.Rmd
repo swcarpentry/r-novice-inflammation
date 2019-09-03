@@ -47,11 +47,13 @@ class(dat)
 
 R has loaded the contents of the .csv file into a variable called `dat` which is a `data frame`.
 
-```{r dimDat}
-dim(dat)
+We can compactly display the internal structure of a data frame using the  structure function `str`.
+
+```{r strDat}
+str(dat)
 ```
 
-The data has 100 rows and 9 columns.
+The `str` function tell us that the data has 100 rows and 9 columns. It is also tell us that the data frame is made up of character `chr`, integer `int` and `numeric` vectors.
 
 ```{r headDat}
 head(dat)
@@ -145,6 +147,13 @@ We usually use the `$` operator to address a column by name
 
 ```{r named_addressing}
 dat$Gender
+```
+
+When we extract a single column column from a data frame using the `$` operator, R will return a vector of that column class and not a data frame.
+
+```{r }
+class(dat$Gender)
+class(dat$BloodPressure)
 ```
 
 Named addressing can also be used in square brackets.
