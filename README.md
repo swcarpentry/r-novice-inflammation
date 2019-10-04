@@ -14,7 +14,6 @@ allows us to change the content of the lesson website.
 The following people are maintainers for this lesson, and are responsible for determining which 
 changes to incorporate into the lesson:
 
-* [Katrin Leinweber](https://github.com/katrinleinweber/) (@katrinleinweber)
 * [Diya Das](https://diyadas.github.io) (@diyadas)
 * [Daniel Chen](http://software-carpentry.org/team/#chen_daniel) (@chendaniely)
 
