@@ -224,6 +224,7 @@ particular midpoint:
 ```{r}
 center <- function(data, midpoint) {
   new_data <- (data - mean(data)) + midpoint
+  return(new_data)
 }
 ```
 
