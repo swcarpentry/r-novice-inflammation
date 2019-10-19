@@ -15,7 +15,12 @@ The following people are maintainers for this lesson, and are responsible for de
 changes to incorporate into the lesson:
 
 * [Diya Das](https://diyadas.github.io) (@diyadas)
-* [Daniel Chen](http://software-carpentry.org/team/#chen_daniel) (@chendaniely)
+
+Alumni:
+
+* [Daniel Chen](https://software-carpentry.org/team/#chen_daniel) (@chendaniely)
+* [Katrin Leinweber](https://carpentries.org/instructors/#katrinleinweber) (@katrinleinweber)
+
 
 The goal of this lesson is to teach novice programmers to write modular code to
 perform a data analysis. R is used to teach these skills because it is a
