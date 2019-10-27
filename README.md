@@ -15,6 +15,7 @@ The following people are maintainers for this lesson, and are responsible for de
 changes to incorporate into the lesson:
 
 * [Diya Das](https://diyadas.github.io) (@diyadas)
+* [Rohit Goswami](https://carpentries.org/instructors/#HaoZeke) (@haozeke)
 
 Alumni:
 
