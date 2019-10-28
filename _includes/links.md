@@ -39,7 +39,7 @@
 [pyyaml]: https://pypi.python.org/pypi/PyYAML
 [r-markdown]: https://rmarkdown.rstudio.com/
 [rstudio]: https://www.rstudio.com/
-[rstudio-git]: https://support.rstudio.com/hc/en-us/articles/200532077
+[rstudio-git]: https://web.archive.org/web/20190103191213/https://support.rstudio.com/hc/en-us/articles/200532077
 [rstudio-project]: https://resources.rstudio.com/wistia-rstudio-essentials-2/rstudioessentialsmanagingpart1-2
 [ruby-install-guide]: https://www.ruby-lang.org/en/downloads/
 [ruby-installer]: https://rubyinstaller.org/
