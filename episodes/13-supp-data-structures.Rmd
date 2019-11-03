@@ -50,7 +50,7 @@ R has 6 basic data types. (In addition to the five listed below, there is also
 
 Elements of these data types may be combined to form data structures, such as
 atomic vectors. When we call a vector *atomic*, we mean that the vector only 
-holds data of a single data type. Below are examples of atomic character vecotrs,
+holds data of a single data type. Below are examples of atomic character vectors,
 numeric vectors, integer vectors, etc.
 
 * **character**: `"a"`, `"swc"`
@@ -523,7 +523,7 @@ R in relation to diversity of data types they can contain.
 > Lists can contain elements that are themselves muti-dimensional (e.g. a lists can contain
 > data frames or another type of objects). Lists can also contain elements of any length,
 > therefore list do not necessarily have to be "rectangular". However in order for the list
-> to qualify as a data frame, the lenghth of each element has to be the same. 
+> to qualify as a data frame, the length of each element has to be the same. 
 {: .callout}
 
 > ## Column Types in Data Frames
