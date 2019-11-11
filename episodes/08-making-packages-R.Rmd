@@ -40,6 +40,10 @@ An R package requires four components:
 
 [r-pkgs-desc]: http://r-pkgs.had.co.nz/description.html
 
+*Learn more about the best practices for open and reproducible package development on the [rOpenSci][r-open-sci] guidebook.*
+  
+[r-open-sci]: https://devguide.ropensci.org/building.html
+
 ### DESCRIPTION file
 
 ~~~
