@@ -63,7 +63,8 @@ setwd("~/Desktop/r-novice-inflammation/")
 ```
 
 Just like in the Unix Shell, we type the command and then press <kbd>Return</kbd> (or <kbd>Enter</kbd>).
-Alternatively you can change the working directory using the RStudio GUI using the menu option `Session` -> `Set Working Directory` -> `Choose Directory...`
+Also similar to the Unix Shell, we can use tab completion to make it easier to type the working directory. So while typing inside the setwd command's quotes, we can press <kbd>Tab</kbd> to list possible directories. 
+Alternatively we can change the working directory using the RStudio GUI using the menu option `Session` -> `Set Working Directory` -> `Choose Directory...`
 
 The data file is located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
 
