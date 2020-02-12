@@ -229,7 +229,7 @@ This is different from the way spreadsheets work.
 >
 > An alternative way to print the value of a variable is to use
 > `(` parentheses `)` around the assignment statement.
-> As an example: `(total_weight <- weight_kg + weight_lb)` adds the values of `weight_kg` and `weight_lb`,
+> As an example: `(total_weight <- weight_kg*2.2 + weight_lb)` adds the values of `weight_kg*2.2` and `weight_lb`,
 > assigns the result to the `total_weight`,
 > and finally prints the assigned value of the variable `total_weight`.
 {: .callout}
