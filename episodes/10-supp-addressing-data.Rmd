@@ -190,7 +190,7 @@ We can now extract one or more rows using those row names:
 dat2["Sub072", ]
 ```
 
-```{r_row_names_addressing_2}
+```{r row_names_addressing_2}
 dat2[c("Sub009", "Sub072"), ]
 ```
 
@@ -204,7 +204,7 @@ dat2 <- read.csv(file = 'data/sample.csv', header = TRUE, stringsAsFactors = FAL
 
 
 
-### Logical Indexing
+### Addressing by Logical Vector
 
 A logical vector contains only the special values `TRUE` and `FALSE`.
 
@@ -226,7 +226,7 @@ x < 10
 x %in% 1:10
 ```
 
-We can use logical vectors to select data from a data frame.
+We can use logical vectors to select data from a data frame. This is often referred to as *logical indexing*.
 
 ```{r logical_vectors_indexing}
 index <- dat$Group == 'Control'
@@ -256,11 +256,11 @@ plot(dat[dat$Group == 'Control', ]$BloodPressure)
 {: .challenge}
 
 
-### Combining Indexing and Assignment
+### Combining Addressing and Assignment
 
-The assignment operator `<-` can be combined with indexing.
+The assignment operator `<-` can be combined with addressing.
 
-```{r indexing and assignment}
+```{r addressing and assignment}
 x <- c(1, 2, 3, 11, 12, 13)
 x[x < 10] <- 0
 x
@@ -269,7 +269,7 @@ x
 > ## Updating a Subset of Values
 >
 > In this dataset, values for Gender have been recorded as both uppercase `M, F` and lowercase `m, f`.
-> Combine the indexing and assignment operations to convert all values to lowercase.
+> Combine the addressing and assignment operations to convert all values to lowercase.
 > 
 > > ## Solution
 > > ~~~
