@@ -153,7 +153,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 >
 > ```{r, echo=-1}
 > edges <- function(v) {
->   first <- v[1]
+>    first <- v[1]
 >    last <- v[length(v)]
 >    answer <- c(first, last)
 >    return(answer)
@@ -165,7 +165,7 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > > ## Solution
 > > ~~~
 > > edges <- function(v) {
-> >   first <- v[1]
+> >    first <- v[1]
 > >    last <- v[length(v)]
 > >    answer <- c(first, last)
 > >    return(answer)
@@ -216,7 +216,8 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > {: .solution}
 {: .challenge}
 
-### Testing and Documenting
+
+### Testing, Error Handling, and Documenting
 
 Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly.
 To see how to do this, let's write a function to center a dataset around a
@@ -291,7 +292,59 @@ all.equal(sd(dat[, 4]), sd(centered))
 ```
 
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
-We have one more task first, though: we should write some [documentation]({{ page.root }}/reference.html#documentation) for our function to remind ourselves later what it's for and how to use it.
+However, there are two other important tasks to consider: 1) we should ensure our function can provide informative errors when needed, and 2) we should write some [documentation]({{ page.root }}/reference.html#documentation) for our function to remind ourselves later what it's for and how to use it.
+
+
+#### Error Handling
+
+What happens if we have missing data (NA values) in the `data` argument we provide to `center`?
+
+```{r}
+# new data object and set one value in column 4 to NA
+datNA <- dat
+datNA[10,4] <- NA
+
+# returns all NA values
+center(datNA[,4], 0)
+
+```
+
+This is likely not the behavior we want, and is caused by the `mean` function returning NA when the `na.rm=TRUE` is not provided. We may wish to not consider NA values in our `center` function. We can provide the `na.rm=TRUE` argument and solve this issue. 
+```{r}
+center <- function(data, midpoint) {
+  new_data <- (data - mean(data, na.rm=TRUE)) + midpoint
+  return(new_data)
+}
+
+center(datNA[,4], 0)
+```
+
+However, what happens if the user were to accidentally hand this function a `factor` or `character` vector?
+
+
+```{r}
+
+datNA[,1] <- as.factor(datNA[,1])
+datNA[,2] <- as.character(datNA[,2])
+
+center(datNA[,1], 0)
+center(datNA[,2], 0)
+
+```
+
+Both of these attempts result in errors. Luckily, the errors are quite informative. In other cases, we may need to add in error handling using the `warning` and `stop` functions.
+
+For instance, the `center` function only works on numeric vectors. Recognizing this and adding warnings and errors provides feedback to the user and makes sure the output of the function is what the user wanted. 
+
+
+
+
+
+
+
+
+
+#### Documentation
 
 A common way to put documentation in software is to add [comments]({{ page.root }}/reference.html#comment) like this:
 
