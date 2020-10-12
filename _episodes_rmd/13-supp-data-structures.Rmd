@@ -415,7 +415,7 @@ length(x)
 Elements of a list can be named (i.e. lists can have the `names` attribute)
 
 ```{r}
-xlist <- list(a = "Karthik Ram", b = 1:10, data = head(iris))
+xlist <- list(a = "Karthik Ram", b = 1:10, data = head(mtcars))
 xlist
 names(xlist)
 ```
