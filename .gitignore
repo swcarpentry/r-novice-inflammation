@@ -3,6 +3,7 @@
 .DS_Store
 .ipynb_checkpoints
 .sass-cache
+.jekyll-cache/
 __pycache__
 _episodes
 _site
@@ -52,3 +53,12 @@ vignettes/*.pdf
 
 # Markdown files for episodes
 _episodes/
+
+.bundle/
+.vendor/
+vendor/
+.docker-vendor/
+Gemfile.lock
+.*history
+
+>>>>>>> f53be3761951b2f4da8b0f1d27d45b4b3d4d1fad
