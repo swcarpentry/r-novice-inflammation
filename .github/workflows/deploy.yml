@@ -54,7 +54,7 @@ jobs:
         run: |
           make lesson-md
           mkdir _rendered
-          cp -r \`ls -A | grep -v '.git' | grep -v '_rendered' | grep -v '_site'\` _rendered
+          cp -r `ls -A | grep -v '.git' | grep -v '_rendered' | grep -v '_site'` _rendered
 
       - name: Deploy site
         uses: maxheld83/ghpages@v0.3.0
