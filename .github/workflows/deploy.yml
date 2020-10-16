@@ -14,15 +14,6 @@ jobs:
 
     steps:
 
-      - name: Set up Ruby
-        uses: actions/setup-ruby@main
-        with:
-          ruby-version: '2.7.1'
-
-      - name: Install GitHub Pages, Bundler, and kramdown gems
-        run: |
-          gem install github-pages bundler kramdown
-
       - name: Checkout repo
         uses: actions/checkout@v2
 
@@ -60,11 +51,14 @@ jobs:
           done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "18.04"), sep = "\n")')
 
       - name: Build site
-        run: make site
+        run: |
+          make lesson-md
+          mkdir _rendered
+          cp -r \`ls -A | grep -v '.git' | grep -v '_rendered' | grep -v '_site'\` _rendered
 
       - name: Deploy site
         uses: maxheld83/ghpages@v0.3.0
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository == 'swcarpentry/r-novice-inflammation' }}
         env:
-          BUILD_DIR: _site/
+          BUILD_DIR: _rendered/
           GH_PAT: ${{ secrets.GH_PAT }}
