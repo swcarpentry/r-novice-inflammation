@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Setup
-root: .
 ---
 
 This lesson assumes you have current versions of the following installed on your computer:
