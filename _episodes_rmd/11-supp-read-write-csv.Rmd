@@ -2,7 +2,11 @@
 title: "Reading and Writing CSV Files"
 teaching: 30
 exercises: 0
-output: word_document
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
 objectives:
 - Read in a .csv, and explore the arguments of the csv reader.
 - Write the altered data set to a new .csv, and explore the arguments.
@@ -78,7 +82,7 @@ Clearly this is not the desired behavior for this data set, but it may be useful
 ### The `stringsAsFactors` Argument
 
 When a file is imported with `read.csv()`, R determines the appropriate data type for each column. A column containing integer values will be imported as type `int`; a column containing character string values (e.g. names) will be imported as type `chr`. We can confirm the import type of each column in a data frame with the `str()` function, which returns information about the structure of an R object. (The `str()` function will be reviewed a little more in the lesson
-[Data Types and Structures]({{ page.root }}/13-supp-data-structures/.).
+[Data Types and Structures]({{ page.root }}/13-supp-data-structures/.).)
 
 ```{r checkDataTypes}
 
@@ -123,7 +127,7 @@ tail(carSpeeds)
 ```
 
 
-In addition to protecting us from data entry errors, using factors can insure that we perform appropriate categorical data analyses. For example, compare the behaviour of the `summary()` function when our data columns are treated as character strings or factors.
+In addition to protecting us from data entry errors, using factors can insure that we perform appropriate categorical data analyses. For example, compare the behaviour of the `summary()` function when our data columns are treated as character strings or as factors.
 
 ```{r summaryFunction}
 
@@ -137,7 +141,7 @@ summary(carSpeeds)
 
 ```
 
-When our string data are imported as chr, `summary()` tells us only the number of rows and the data type. However, when our string data are imported as factors, `summary()` provides the more useful frequency table, showing the number of occurrences of each factor level in the column.
+When our string data are imported as chr, `summary()` tells us only the number of rows and the data type. When our string data are imported as factors, `summary()` provides the more useful frequency table, showing the number of occurrences of each factor level in the column.
 
 
 However, when working with factors, it is more difficult to perform certain operations, such as replacing values. For example, let's say we find out that the data collector had some red/green colour blindness, and had accidentally recorded green cars as being blue. In order to correct the data set, we can replace 'Blue' with 'Green' in the `$Color` column:
@@ -159,7 +163,7 @@ carSpeeds$Color
 What happened?!? It looks like 'Blue' was replaced with 'Green', but every other
 color was turned into a number (as a character string, given the quote marks before
 and after). This is because the colors of the cars were loaded as factors, and the
-factor level was reported following replacement.
+factor *level* was reported following replacement.
 
 If we load the dataset without setting `stringsAsFactors` to `TRUE`, the operation to replace 'Blue' with 'Green' in the `$Color` column works as expected:
 
@@ -170,7 +174,7 @@ carSpeeds$Color <- ifelse(carSpeeds$Color == 'Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
 ```
 
-If we wish to import our string data as chr to allow easy modification and **subsequently** convert a column to a factor to gain error protection, we can use the `as.factor()` function.
+If we wish to import our string data as chr to allow easy modification and *subsequently* convert a column to a factor to gain error protection, we can use the `as.factor()` function.
 
 ```{r changeToFactor}
 
