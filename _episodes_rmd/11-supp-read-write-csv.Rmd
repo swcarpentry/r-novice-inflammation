@@ -2,18 +2,21 @@
 title: "Reading and Writing CSV Files"
 teaching: 30
 exercises: 0
-questions:
-- "How do I read data from a CSV file into R?"
-- "How do I write data to a CSV file?"
+output: word_document
 objectives:
-- "Read in a .csv, and explore the arguments of the csv reader."
-- "Write the altered data set to a new .csv, and explore the arguments."
+- Read in a .csv, and explore the arguments of the csv reader.
+- Write the altered data set to a new .csv, and explore the arguments.
 keypoints:
-- "Import data from a .csv file using the  `read.csv(...)` function."
-- "Understand some of the key arguments available for importing the data properly, including `header`, `stringsAsFactors`, `as.is`, and `strip.white`."
-- "Write data to a new .csv file using the `write.csv(...)` function"
-- "Understand some of the key arguments available for exporting the data properly, such as `row.names`, `col.names`, and `na`."
+- Import data from a .csv file using the  `read.csv(...)` function.
+- Understand some of the key arguments available for importing the data properly,
+  including `header`, `stringsAsFactors`, `as.is`, and `strip.white`.
+- Write data to a new .csv file using the `write.csv(...)` function
+- Understand some of the key arguments available for exporting the data properly,
+  such as `row.names`, `col.names`, and `na`.
 source: Rmd
+questions:
+- How do I read data from a CSV file into R?
+- How do I write data to a CSV file?
 ---
 
 ```{r, include = FALSE}
@@ -74,16 +77,80 @@ Clearly this is not the desired behavior for this data set, but it may be useful
 
 ### The `stringsAsFactors` Argument
 
-This is perhaps the most important argument in `read.csv()`, particularly if you are working with categorical data. This is because the default behavior of R is to convert character [string]({{ page.root }}/reference.html#string)s into factors, which may make it difficult to do such things as replace values. For example, let's say we find out that the data collector was color blind, and accidentally recorded green cars as being blue. In order to correct the data set, let's replace 'Blue' with 'Green' in the `$Color` column:
+When a file is imported with `read.csv()`, R determines the appropriate data type for each column. A column containing integer values will be imported as type `int`; a column containing character string values (e.g. names) will be imported as type `chr`. We can confirm the import type of each column in a data frame with the `str()` function, which returns information about the structure of an R object. (The `str()` function will be reviewed a little more in the lesson
+[Data Types and Structures]({{ page.root }}/13-supp-data-structures/.).
+
+```{r checkDataTypes}
+
+# Import the data file
+carSpeeds <- read.csv(file = 'data/car-speeds.csv', header = TRUE)
+
+# Display the data type and first few values of each column with str()
+str(carSpeeds)
+
+```
+
+For string data measures that can hold any value (for example, first names) it is appropriate to treat the data as character strings. However, string data columns are often used to represent categorical data measures, such as gender, or political party, which are restricted to a small set of unique values. In R, a categorical data type is called a **factor** and the set of unique values it contains are called **levels**. Correctly treating categorical data as a factor protects us against data entry errors, because R will not allow us to enter a value into a factor data column that does not match the defined set of levels.
+
+To instruct R to import string data columns as factors, we set the `stringsAsFactors` argument to `read.csv()` to `TRUE`.
 
 ```{r stringsAsFactorsTRUE}
+
+# Set stringsAsFactors = TRUE
+carSpeeds <- read.csv(file = 'data/car-speeds.csv', header = TRUE, stringsAsFactors = TRUE)
+
+# The Color and State columns are now treated as factors
+str(carSpeeds)
+```
+
+If we make a data entry error when trying to add a new car to our data frame, R will catch it.
+
+``` {r dataEntryErrorToFactot}
+
+# Assume we spell a state name incorrectly...
+newCarData <- c("Blue", "22", "Otah")
+
+# We try to add it to the data frame with the rbind command
+carSpeeds <- rbind(carSpeeds, newCarData) 
+```
+
+R has warned us that we have supplied an invalid factor level, and that it has generated "NA" (not available; missing data). 
+
+```{r SeeNA}
+
+# See the row we added by printing the tail (last six rows) of the data frame
+tail(carSpeeds)
+```
+
+
+In addition to protecting us from data entry errors, using factors can insure that we perform appropriate categorical data analyses. For example, compare the behaviour of the `summary()` function when our data columns are treated as character strings or factors.
+
+```{r summaryFunction}
+
+# Import string data as chr (no stringsAsFactors argument)
+carSpeeds <- read.csv(file = 'data/car-speeds.csv')
+summary(carSpeeds)
+
+# Import string data as factors (stringsAsFactors = TRUE)
+carSpeeds <- read.csv(file = 'data/car-speeds.csv', stringsAsFactors = TRUE)
+summary(carSpeeds)
+
+```
+
+When our string data are imported as chr, `summary()` tells us only the number of rows and the data type. However, when our string data are imported as factors, `summary()` provides the more useful frequency table, showing the number of occurrences of each factor level in the column.
+
+
+However, when working with factors, it is more difficult to perform certain operations, such as replacing values. For example, let's say we find out that the data collector had some red/green colour blindness, and had accidentally recorded green cars as being blue. In order to correct the data set, we can replace 'Blue' with 'Green' in the `$Color` column:
+
+```{r replacingFactors}
+
+# Import string data as factors
+carSpeeds <- read.csv(file = 'data/car-speeds.csv', stringsAsFactors = TRUE)
+
 # Here we will use R's `ifelse` function, in which we provide the test phrase,
 # the outcome if the result of the test is 'TRUE', and the outcome if the
 # result is 'FALSE'. We will also assign the results to the Color column,
 # using '<-'
-
-# First - reload the data with a header
-carSpeeds <- read.csv(file = 'data/car-speeds.csv')
 
 carSpeeds$Color <- ifelse(carSpeeds$Color == 'Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
@@ -94,28 +161,27 @@ color was turned into a number (as a character string, given the quote marks bef
 and after). This is because the colors of the cars were loaded as factors, and the
 factor level was reported following replacement.
 
-To see the internal structure, we can use another function, `str()`. In this case,
-the dataframe's internal structure includes the format of each column, which is what
-we are interested in. `str()` will be reviewed a little more in the lesson
-[Data Types and Structures]({{ page.root }}/13-supp-data-structures/).
-
-```{r}
-str(carSpeeds)
-```
-
-We can see that the `$Color` and `$State` columns are factors and `$Speed` is a numeric column.
-
-Now, let's load the dataset using `stringsAsFactors=FALSE`, and see what happens when we try to replace 'Blue' with 'Green' in the `$Color` column:
+If we load the dataset without setting `stringsAsFactors` to `TRUE`, the operation to replace 'Blue' with 'Green' in the `$Color` column works as expected:
 
 ```{r StringsAsFactorFALSE}
-carSpeeds <- read.csv(file = 'data/car-speeds.csv', stringsAsFactors = FALSE)
+carSpeeds <- read.csv(file = 'data/car-speeds.csv')
 str(carSpeeds)
 carSpeeds$Color <- ifelse(carSpeeds$Color == 'Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
 ```
 
-That's better! And we can see how the data now is read as character instead of factor.
+If we wish to import our string data as chr to allow easy modification and **subsequently** convert a column to a factor to gain error protection, we can use the `as.factor()` function.
 
+```{r changeToFactor}
+
+# Import with the default action of treating string data as chr
+carSpeeds <- read.csv(file = 'data/car-speeds.csv')
+str(carSpeeds)
+
+# Change a chr column to a factor
+carSpeeds$Color <- as.factor(carSpeeds$Color)
+str(carSpeeds)
+```
 
 ### The `as.is` Argument
 
