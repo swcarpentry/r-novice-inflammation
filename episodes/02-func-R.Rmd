@@ -251,22 +251,13 @@ head(centered)
 It's hard to tell from the default output whether the result is correct, but there are a few simple tests that will reassure us:
 
 ```{r}
-# original min
-min(dat[, 4])
 # original mean
 mean(dat[, 4])
-# original max
-max(dat[, 4])
-# centered min
-min(centered)
 # centered mean
 mean(centered)
-# centered max
-max(centered)
 ```
 
-That seems almost right: the original mean was about `r round(mean(dat[, 4]), 2)`, so the lower bound from zero is now about `r -round(mean(dat[, 4]), 2)`.
-The mean of the centered data is `r mean(centered)`.
+That seems right: the original mean was about `r round(mean(dat[, 4]), 2)` and the mean of the centered data is `r mean(centered)`.
 We can even go further and check that the standard deviation hasn't changed:
 
 ```{r}
