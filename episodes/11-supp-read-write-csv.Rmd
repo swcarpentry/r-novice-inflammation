@@ -202,6 +202,35 @@ unique(carSpeeds$Color)
 
 That's better!
 
+> ## Specify Missing Data When Loading
+>
+> It is common for data sets to have missing values, or mistakes.
+> The convention for recording missing values often depends on the individual who collected the data and can be recorded as `n.a.`, `--`, or empty cells " ". 
+> R recognises the reserved character string `NA` as a missing value, but not some of the examples above.
+> Let's say the inflamation scale in the data set we used earlier `inflammation-01.csv` actually starts at `1` for no inflamation and the zero values (`0`) were a missed observation.
+> Looking at the `?read.csv` help page is there an argument we could use to ensure all zeros (`0`) are read in as `NA`?
+> Perhaps, in the `car-speeds.csv` data contains mistakes and the person measuring the car speeds could not accurately distinguish between "Black or "Blue" cars.
+> Is there a way to specify more than one 'string', such as "Black" and "Blue", to be replaced by `NA`
+>
+> > ## Solution
+> > 
+> > ~~~
+> > read.csv(file = "data/inflammation-01.csv", na.strings = "0")
+> > ~~~
+> > {: .language-r}
+> > 
+> > or , in `car-speeds.csv` use a character vector for multiple values.
+> > 
+> > ~~~
+> > read.csv(
+  file = 'data/car-speeds.csv',
+  na.strings = c("Black", "Blue")
+  )
+> > ~~~
+> > {: .language-r}
+> {: .solution}
+{: .challenge}
+
 ### Write a New .csv and Explore the Arguments
 
 After altering our cars dataset by replacing 'Blue' with 'Green' in the `$Color` column, we now want to save the output. There are several arguments for the `write.csv(...)` [function call]({{ page.root }}/reference.html#function-call), a few of which are particularly important for how the data are exported.  Let's explore these now.
