@@ -223,9 +223,9 @@ That's better!
 > > 
 > > ~~~
 > > read.csv(
-  file = 'data/car-speeds.csv',
-  na.strings = c("Black", "Blue")
-  )
+> >   file = 'data/car-speeds.csv',
+> >   na.strings = c("Black", "Blue")
+> > )
 > > ~~~
 > > {: .language-r}
 > {: .solution}
