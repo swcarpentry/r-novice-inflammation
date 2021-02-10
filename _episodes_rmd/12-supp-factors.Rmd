@@ -21,6 +21,12 @@ source('../bin/chunk-options.R')
 knitr_fig_path("12-supp-factors-")
 ```
 
+<!--  We need to update the lesson in totality since StringAsFactors is no longer = TRUE in R by default.-->
+
+<!-- From the programming setup page, we categorically said, this lessons assumes you have current versions of R software. Therefore, current version of R Software default to  `stringsAsFactors = FALSE' -->
+
+
+
 Factors are used to represent categorical data. Factors can be ordered or
 unordered and are an important class for statistical analysis and for plotting.
 
@@ -126,6 +132,8 @@ f <- levels(f)[f]
 f <- as.numeric(f)
 ```
 
+
+
 ### Using Factors
 
 Lets load our example data to see the use of factors:
@@ -136,7 +144,11 @@ dat <- read.csv(file = 'data/sample.csv', stringsAsFactors = TRUE)
 
 > ## Default Behavior
 >
-> `stringsAsFactors = TRUE` is the default behavior for R.
+> `stringsAsFactors = FALSE` is the default behavior for R. 
+
+
+
+
 > We could leave this argument out.
 > It is included here for clarity.
 {: .callout}
