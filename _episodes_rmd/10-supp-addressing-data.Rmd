@@ -1,0 +1,283 @@
+---
+title: "Addressing Data"
+teaching: 20
+exercises: 0
+questions:
+- "What are the different methods for accessing parts of a data frame?"
+objectives:
+- "Understand the three different ways R can address data inside a data frame."
+- "Combine different methods for addressing data with the assignment operator to update subsets of data."
+keypoints:
+- "Data in data frames can be addressed by index (subsetting), by logical vector, or by name (columns only)."
+- "Use the `$` operator to address a column by name."
+source: Rmd
+---
+
+```{r, include = FALSE}
+source('../bin/chunk-options.R')
+knitr_fig_path("10-supp-addressing-data-")
+```
+
+R is a powerful language for data manipulation.
+There are three main ways for addressing data inside R objects.
+
+* By index (subsetting)
+* By logical vector
+* By name
+
+Lets start by loading some sample data:
+
+```{r readData}
+dat <- read.csv(file = 'data/sample.csv', header = TRUE, stringsAsFactors = FALSE)
+```
+
+> ## Interpreting Rows as Headers
+>
+> The first row of this csv file is a list of column names.
+> We used the *header = TRUE* argument to `read.csv` so that R can interpret the file correctly.
+> We are using the *stringsAsFactors = FALSE* argument to override the default behaviour for R.
+> Using factors in R is covered in a separate lesson.
+{: .callout}
+
+Lets take a look at this data.
+
+```{r classDat}
+class(dat)
+```
+
+R has loaded the contents of the .csv file into a variable called `dat` which is a `data frame`.
+
+We can compactly display the internal structure of a data frame using the  structure function `str`.
+
+```{r strDat}
+str(dat)
+```
+
+The `str` function tell us that the data has 100 rows and 9 columns. It is also tell us that the data frame is made up of character `chr`, integer `int` and `numeric` vectors.
+
+```{r headDat}
+head(dat)
+```
+
+The data is the results of an (not real) experiment, looking at the number of aneurysms that formed in the eyes of patients who undertook 3 different treatments.
+
+### Addressing by Index
+
+Data can be accessed by index. We have already seen how square brackets `[` can be used to subset data (sometimes also called "slicing"). The generic format is `dat[row_numbers,column_numbers]`.
+
+> ## Selecting Values
+>
+> What will be returned by `dat[1, 1]`?
+> Think about the number of rows and columns you would expect as the result.
+>
+> > ## Solution
+> > ```{r select-values}
+> > dat[1, 1]
+> > ```
+> {: .solution}
+{: .challenge}
+
+If we leave out a dimension R will interpret this as a request for all values in that dimension.
+
+> ## Selecting More Values
+>
+> What will be returned by `dat[, 2]`?
+>
+> > ## Solution
+> > ```{r select-values-2}
+> > dat[, 2]
+> > ```
+> {: .solution}
+{: .challenge}
+
+The colon `:` can be used to create a sequence of integers.
+
+```{r colonOperator}
+6:9
+```
+
+Creates a vector of numbers from 6 to 9.
+
+This can be very useful for addressing data.
+
+> ## Subsetting with Sequences
+>
+> Use the colon operator to index just the aneurism count data (columns 6 to 9).
+>
+> > ## Solution
+> > ```{r subset-sequence}
+> > dat[, 6:9]
+> > ```
+> {: .solution}
+{: .challenge}
+
+Finally we can use the `c()` (combine) function to address non-sequential rows and columns.
+
+```{r nonsequential_indexing}
+dat[c(1, 5, 7, 9), 1:5]
+```
+
+Returns the first 5 columns for patients in rows 1,5,7 and 9
+
+> ## Subsetting Non-Sequential Data
+>
+> Write code to return the age and gender values for the first 5 patients.
+>
+> > ## Solution
+> > ```{r subset-nonsequential}
+> > dat[1:5, c(5, 2)]
+> > ```
+> {: .solution}
+{: .challenge}
+
+### Addressing by Name
+
+Columns in an R data frame are named.
+
+```{r column_names}
+colnames(dat)
+```
+
+> ## Default Names
+>
+> If column names are not specified e.g. using `headers = FALSE` in a `read.csv()` function, R assigns default names `V1, V2, ..., Vn`
+{: .callout}
+
+We usually use the `$` operator to address a column by name
+
+```{r named_addressing}
+dat$Gender
+```
+
+When we extract a single column from a data frame using the `$` operator, R will return a vector of that column class and not a data frame.
+
+```{r }
+class(dat$Gender)
+class(dat$BloodPressure)
+```
+
+Named addressing can also be used in square brackets.
+```{r names_addressing_2}
+head(dat[, c('Age', 'Gender')])
+```
+
+> ## Best Practice
+>
+> Best practice is to address columns by name. Often, you will create or delete columns and the column position will change.
+{: .callout}
+
+<br>
+
+Rows in an R data frame can also be named, and rows can also be addressed by their names. 
+<br>
+By default, row names are indices (i.e. position of each row in the data frame):
+
+```{r row_names_1}
+rownames(dat)
+```
+
+We can add row names as we read in the file with the `row.names` parameter in `read.csv`.<br>
+In the following example, we choose the first column *ID* to become the vector of row names of the data frame, with `row.names = 1`.
+
+```{r read_row_names_1}
+dat2 <- read.csv(file = 'data/sample.csv', header = TRUE, stringsAsFactors = FALSE, row.names=1)
+rownames(dat2)
+```
+
+We can now extract one or more rows using those row names:
+
+```{r row_names_addressing_1}
+dat2["Sub072", ]
+```
+
+```{r row_names_addressing_2}
+dat2[c("Sub009", "Sub072"), ]
+```
+
+Note that row names must be **unique**!
+<br>
+For example, if we try and read in the data setting the *Group* column as row names, R will throw an error because values in that column are duplicated:
+
+```{r read_row_names_2}
+dat2 <- read.csv(file = 'data/sample.csv', header = TRUE, stringsAsFactors = FALSE, row.names=3)
+```
+
+
+
+### Addressing by Logical Vector
+
+A logical vector contains only the special values `TRUE` and `FALSE`.
+
+```{r logical_vectors}
+c(TRUE, TRUE, FALSE, FALSE, TRUE)
+```
+
+> ## Truth and Its Opposite
+>
+> Note the values `TRUE` and `FALSE` are all capital letters and are not quoted.
+{: .callout}
+
+Logical vectors can be created using `relational operators` e.g. `<, >, ==, !=, %in%`.
+
+```{r logical_vectors_example}
+x <- c(1, 2, 3, 11, 12, 13)
+x < 10
+
+x %in% 1:10
+```
+
+We can use logical vectors to select data from a data frame. This is often referred to as *logical indexing*.
+
+```{r logical_vectors_indexing}
+index <- dat$Group == 'Control'
+dat[index,]$BloodPressure
+```
+
+Often this operation is written as one line of code:
+
+```{r logical_vectors_indexing2}
+plot(dat[dat$Group == 'Control', ]$BloodPressure)
+```
+
+> ## Using Logical Indexes
+>
+> 1. Create a scatterplot showing BloodPressure for subjects not in the control group.
+> 2. How many ways are there to index this set of subjects?
+> 
+> > ## Solution
+> > 1. The code for such a plot:
+> >     ```{r plot-logical}
+> >     plot(dat[dat$Group != 'Control', ]$BloodPressure)
+> >     ```
+> > 2. In addition to 
+> > `dat$Group != 'Control'`, one could use 
+> > `dat$Group %in% c("Treatment1", "Treatment2")`.
+> {: .solution}
+{: .challenge}
+
+
+### Combining Addressing and Assignment
+
+The assignment operator `<-` can be combined with addressing.
+
+```{r addressing and assignment}
+x <- c(1, 2, 3, 11, 12, 13)
+x[x < 10] <- 0
+x
+```
+
+> ## Updating a Subset of Values
+>
+> In this dataset, values for Gender have been recorded as both uppercase `M, F` and lowercase `m, f`.
+> Combine the addressing and assignment operations to convert all values to lowercase.
+> 
+> > ## Solution
+> > ~~~
+> > dat[dat$Gender == 'M', ]$Gender <- 'm'
+> > dat[dat$Gender == 'F', ]$Gender <- 'f'
+> > ~~~
+> > {: .language-r}
+> {: .solution}
+{: .challenge}
+
+{% include links.md %}

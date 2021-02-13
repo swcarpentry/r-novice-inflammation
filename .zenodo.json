@@ -1,0 +1,305 @@
+{
+  "contributors": [
+    {
+      "type": "Editor",
+      "name": "Daniel Chen"
+    },
+    {
+      "type": "Editor",
+      "name": "Katrin Leinweber",
+      "orcid": "0000-0001-5135-5758"
+    },
+    {
+      "type": "Editor",
+      "name": "Diya Das",
+      "orcid": "0000-0001-9646-8983"
+    }
+  ],
+  "creators": [
+    {
+      "name": "John Blischak",
+      "orcid": "0000-0003-2634-9879"
+    },
+    {
+      "name": "Katrin Leinweber",
+      "orcid": "0000-0001-5135-5758"
+    },
+    {
+      "name": "Greg Wilson",
+      "orcid": "0000-0001-8659-8979"
+    },
+    {
+      "name": "Denis Haine",
+      "orcid": "0000-0002-6691-7335"
+    },
+    {
+      "name": "Raniere Silva"
+    },
+    {
+      "name": "Harriet Dashnow",
+      "orcid": "0000-0001-8433-6270"
+    },
+    {
+      "name": "Diya Das",
+      "orcid": "0000-0001-9646-8983"
+    },
+    {
+      "name": "François Michonneau",
+      "orcid": "0000-0002-9092-966X"
+    },
+    {
+      "name": "Andrew Boughton",
+      "orcid": "0000-0002-0318-4912"
+    },
+    {
+      "name": "Stephen Turner",
+      "orcid": "0000-0001-9140-9028"
+    },
+    {
+      "name": "Rémi Emonet",
+      "orcid": "0000-0002-1870-1329"
+    },
+    {
+      "name": "Andy Teucher",
+      "orcid": "0000-0002-7840-692X"
+    },
+    {
+      "name": "Natalie Robinson"
+    },
+    {
+      "name": "Ben Bolker",
+      "orcid": "0000-0002-2127-0443"
+    },
+    {
+      "name": "Eric Milliman"
+    },
+    {
+      "name": "Michael Levy"
+    },
+    {
+      "name": "Trevor Bekolay",
+      "orcid": "0000-0001-5215-7999"
+    },
+    {
+      "name": "James Hiebert",
+      "orcid": "0000-0002-4171-9586"
+    },
+    {
+      "name": "Joshua Ainsley",
+      "orcid": "0000-0002-7341-2052"
+    },
+    {
+      "name": "Kara Woo",
+      "orcid": "0000-0002-5125-4188"
+    },
+    {
+      "name": "Jonah Duckles",
+      "orcid": "0000-0002-8985-3119"
+    },
+    {
+      "name": "Maxim Belkin"
+    },
+    {
+      "name": "Erin Alison Becker",
+      "orcid": "0000-0002-6832-0233"
+    },
+    {
+      "name": "Frank Pennekamp",
+      "orcid": "0000-0003-0679-1045"
+    },
+    {
+      "name": "Lukas M. Weber",
+      "orcid": "0000-0002-3282-1730"
+    },
+    {
+      "name": "Matt Dickenson"
+    },
+    {
+      "name": "Naupaka Zimmerman",
+      "orcid": "0000-0003-2168-6390"
+    },
+    {
+      "name": "Ruud Steltenpool"
+    },
+    {
+      "name": "Alan L. Wong"
+    },
+    {
+      "name": "Ben Marwick",
+      "orcid": "0000-0001-7879-4531"
+    },
+    {
+      "name": "David Fredman"
+    },
+    {
+      "name": "Dean Attali",
+      "orcid": "0000-0002-5645-3493"
+    },
+    {
+      "name": "Hani Nakhoul"
+    },
+    {
+      "name": "James Mickley"
+    },
+    {
+      "name": "Jeremy Gray"
+    },
+    {
+      "name": "Joseph Stachelek",
+      "orcid": "0000-0002-5924-2464"
+    },
+    {
+      "name": "Kenan Direk"
+    },
+    {
+      "name": "Michael Sachs"
+    },
+    {
+      "name": "Paula Andrea Martinez",
+      "orcid": "0000-0002-8990-1985"
+    },
+    {
+      "name": "Peter Schmiedeskamp"
+    },
+    {
+      "name": "Sarah Stevens",
+      "orcid": "0000-0002-7040-548X"
+    },
+    {
+      "name": "Tyler Crawford Kelly",
+      "orcid": "0000-0002-2288-4906"
+    },
+    {
+      "name": "Alain Perkaz"
+    },
+    {
+      "name": "Alex Bajcz"
+    },
+    {
+      "name": "Ana Beatriz Villaseñor Altamirano"
+    },
+    {
+      "name": "Andrew B. Collier",
+      "orcid": "0000-0001-6595-0953"
+    },
+    {
+      "name": "Auriel Fournier",
+      "orcid": "0000-0002-8530-9968"
+    },
+    {
+      "name": "Balázs Brankovics"
+    },
+    {
+      "name": "Bill Mills",
+      "orcid": "0000-0002-5887-6270"
+    },
+    {
+      "name": "Derek Strong"
+    },
+    {
+      "name": "dounia"
+    },
+    {
+      "name": "Elsie Jacobson",
+      "orcid": "0000-0002-6094-5490"
+    },
+    {
+      "name": "evezeyl"
+    },
+    {
+      "name": "Fabian Held",
+      "orcid": "0000-0002-5260-5576"
+    },
+    {
+      "name": "gbass"
+    },
+    {
+      "name": "Heather Gibling",
+      "orcid": "0000-0002-9755-5701"
+    },
+    {
+      "name": "Iain Gillis"
+    },
+    {
+      "name": "jmablans"
+    },
+    {
+      "name": "Joey Reid"
+    },
+    {
+      "name": "Jonathan Keane"
+    },
+    {
+      "name": "Jeffrey Arnold",
+      "orcid": "0000-0001-9953-3904"
+    },
+    {
+      "name": "Kate Hertweck",
+      "orcid": "0000-0002-4026-4612"
+    },
+    {
+      "name": "Kristian Tylén",
+      "orcid": "0000-0001-7492-0078"
+    },
+    {
+      "name": "Lindsay Clark"
+    },
+    {
+      "name": "lkmills"
+    },
+    {
+      "name": "Marco Chiapello",
+      "orcid": "0000-0001-7768-3047"
+    },
+    {
+      "name": "Mark Mandel"
+    },
+    {
+      "name": "Mike Jackson",
+      "orcid": "0000-0002-1765-8234"
+    },
+    {
+      "name": "Nick Ulle"
+    },
+    {
+      "name": "Nick Young"
+    },
+    {
+      "name": "Noushin Ghaffari",
+      "orcid": "0000-0001-5354-5643"
+    },
+    {
+      "name": "Piotr Banaszkiewicz"
+    },
+    {
+      "name": "Raissa Philibert"
+    },
+    {
+      "name": "Roma Klapaukh"
+    },
+    {
+      "name": "Scott Ritchie",
+      "orcid": "0000-0002-8454-9548"
+    },
+    {
+      "name": "Shawn T O'Neil"
+    },
+    {
+      "name": "Simon Branford"
+    },
+    {
+      "name": "Stéphane Guillou",
+      "orcid": "0000-0001-8992-0951"
+    },
+    {
+      "name": "txemarix007"
+    },
+    {
+      "name": "Zbigniew Jędrzejewski-Szmek",
+      "orcid": "0000-0002-6548-7951"
+    }
+  ],
+  "license": {
+    "id": "CC-BY-4.0"
+  }
+}
