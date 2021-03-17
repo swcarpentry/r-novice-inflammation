@@ -598,7 +598,7 @@ Let's take a look at the average inflammation over time.
 Recall that we already calculated these values above using `apply(dat, 2, mean)` and saved them in the variable `avg_day_inflammation`.
 Plotting the values is done with the function `plot`.
 
-```{r plot-avg-inflammation}
+```{r plot-avg-inflammation, fig.cap = "Scatter plot of average inflammation versus time demonstrating the result of using the plot function"}
 plot(avg_day_inflammation)
 ```
 
@@ -607,12 +607,12 @@ Above, we gave the function `plot` a vector of numbers corresponding to the aver
 The result is roughly a linear rise and fall, which is suspicious: based on other studies, we expect a sharper rise and slower fall.
 Let's have a look at two other statistics: the maximum and minimum inflammation per day.
 
-```{r plot-max-inflammation}
+```{r plot-max-inflammation, fig.cap = "Scatter plot of maximum inflammation versus time demonstrating the result of using the plot function"}
 max_day_inflammation <- apply(dat, 2, max)
 plot(max_day_inflammation)
 ```
 
-```{r plot-min-inflammation}
+```{r plot-min-inflammation, fig.cap = "Scatter plot of minimum inflammation versus time demonstrating the result of using the plot function"}
 min_day_inflammation <- apply(dat, 2, min)
 plot(min_day_inflammation)
 ```
