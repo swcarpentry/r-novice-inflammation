@@ -1002,7 +1002,7 @@ plot(avg_day_inflammation)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-01-starting-with-data-plot-avg-inflammation-1.png" title="plot of chunk plot-avg-inflammation" alt="plot of chunk plot-avg-inflammation" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-01-starting-with-data-plot-avg-inflammation-1.png" title="Scatter plot of average inflammation versus time demonstrating the result of using the plot function" alt="Scatter plot of average inflammation versus time demonstrating the result of using the plot function" width="612" style="display: block; margin: auto;" />
 
 Above, we gave the function `plot` a vector of numbers corresponding to the average inflammation per day across all patients.
 `plot` created a scatter plot where the y-axis is the average inflammation level and the x-axis is the order, or index, of the values in the vector, which in this case correspond to the 40 days of treatment.
@@ -1016,7 +1016,7 @@ plot(max_day_inflammation)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-01-starting-with-data-plot-max-inflammation-1.png" title="plot of chunk plot-max-inflammation" alt="plot of chunk plot-max-inflammation" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-01-starting-with-data-plot-max-inflammation-1.png" title="Scatter plot of maximum inflammation versus time demonstrating the result of using the plot function" alt="Scatter plot of maximum inflammation versus time demonstrating the result of using the plot function" width="612" style="display: block; margin: auto;" />
 
 
 ~~~
@@ -1025,7 +1025,7 @@ plot(min_day_inflammation)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-01-starting-with-data-plot-min-inflammation-1.png" title="plot of chunk plot-min-inflammation" alt="plot of chunk plot-min-inflammation" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-01-starting-with-data-plot-min-inflammation-1.png" title="Scatter plot of minimum inflammation versus time demonstrating the result of using the plot function" alt="Scatter plot of minimum inflammation versus time demonstrating the result of using the plot function" width="612" style="display: block; margin: auto;" />
 
 The maximum value rises and falls perfectly smoothly, while the minimum seems to be a step function. Neither result seems particularly likely, so either there's a mistake in our calculations or something is wrong with our data.
 
