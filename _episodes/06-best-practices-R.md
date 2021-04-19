@@ -43,6 +43,11 @@ Starting your code with an annotated description of what the code does when it i
 ~~~
 {: .language-r}
 
+Also consider version-controlling your code as for example taught by
+[Software Carpentry's `git-novice` lessons][swc-lesson-git].
+Frequent commits with explanatory, synoptic commit messages are an elegant way
+to comment code. [RStudio enables this with a Git integration][rstudio-git].
+
 ### Be explicit about the requirements and dependencies of your code
 
 Loading all of the packages that will be necessary to run your code (using `library`) is a nice way of indicating which packages are necessary to run your code. It can be frustrating to make it two-thirds of the way through a long-running script only to find out that a dependency hasn't been installed.
@@ -119,7 +124,7 @@ source("my_genius_fxns.R")
 
 3. Don't repeat yourself--automate! If you are repeating the same code over and over, use a loop or a function to repeat that code for you. Needless repetition doesn't just waste time--it also increases the likelihood you'll make a costly mistake!
 
-4. Keep all of your source files for a project in the same directory, then use relative paths as necessary to access them. For example, use
+4. Keep all of your source files for a [project in the same directory][rstudio-project], then use relative paths as necessary to access them. For example, use
 
 
 ~~~
@@ -153,13 +158,11 @@ rm(list = ls()) # If you want to delete all the objects in the workspace and sta
 {: .language-r}
 
 {:start="6"}
-6. Don't save a session history (the default option in R, when it asks if you want an `RData` file). Instead, start in a clean environment so that older objects don't remain in your environment any longer than they need to. If that happens, it can lead to unexpected results.
+6. [Don't save a session history][dc-rstudio] (the default option in R, when it asks if you want an `RData` file). Instead, start in a clean environment so that older objects don't remain in your environment any longer than they need to. If that happens, it can lead to unexpected results.
 
-7. Wherever possible, keep track of `sessionInfo()` somewhere in your project folder. Session information is invaluable because it captures all of the packages used in the current project. If a newer version of a package changes the way a function behaves, you can always go back and reinstall the version that worked (Note: At least on CRAN, all older versions of packages are permanently archived).
+7. Wherever possible, [keep track of `sessionInfo()` somewhere][sessionInfo] in your project folder. Session information is invaluable because it captures all of the packages used in the current project. If a newer version of a package changes the way a function behaves, you can always go back and reinstall the version that worked (Note: At least on CRAN, all older versions of packages are permanently archived).
 
-8. Collaborate. Grab a buddy and practice "code review". Review is used for preparing experiments and manuscripts; why not use it for code as well? Our code is also a major scientific achievement and the product of lots of hard work!
-
-9. Develop your code using version control and frequent updates! You can find lessons about version control on [software-carpentry.org/lessons][swc-lessons].
+8. Collaborate. Grab a buddy and practice "code review". Review is used for preparing experiments and manuscripts; why not use it for code as well? Our code is also a major scientific achievement and the product of lots of hard work! Reviews are built into [GitHub's Pull request feature][gh-pr]
 
 > ## Best Practice
 >
