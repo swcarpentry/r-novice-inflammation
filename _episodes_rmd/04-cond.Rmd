@@ -199,6 +199,33 @@ if (1 > 0 || -1 > 0) {
 
 In this case, "either" means "either or both", not "either one or the other but not both".
 
+> ## Special case of the `NA` variable
+> 
+> You may remember from the previous lesson that R has a special variable, `NA`,
+> for designating missing values. Because it represents the absence of a value,
+> we will not be able to test its equality or inequality with another value.
+> Such tests always return `NA`:
+> ```{r test-equal-NA}
+> a <- NA
+> a == 1
+> a == NA
+> ```
+> We need to be particularly careful in tests because trying to compare a `NA`
+> value will result in an error:
+> ```{r if-NA}
+> if (a == NA) {
+>   print("Hi!")
+> }
+> ```
+> To solve this issue, we need to use the dedicated `is.na()` function:
+> ```{r is.na}
+> is.na(a)
+> if (is.na(a)) {
+>   print("Hi!")
+> }
+> ```
+{: .callout}
+
 > ## Choosing Plots Based on Data
 >
 > Write a function `plot_dist` that plots

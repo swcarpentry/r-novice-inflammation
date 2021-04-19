@@ -305,6 +305,86 @@ if (1 > 0 || -1 > 0) {
 
 In this case, "either" means "either or both", not "either one or the other but not both".
 
+> ## Special case of the `NA` variable
+> 
+> You may remember from the previous lesson that R has a special variable, `NA`,
+> for designating missing values. Because it represents the absence of a value,
+> we will not be able to test its equality or inequality with another value.
+> Such tests always return `NA`:
+> 
+> ~~~
+> a <- NA
+> a == 1
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> [1] NA
+> ~~~
+> {: .output}
+> 
+> 
+> 
+> ~~~
+> a == NA
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> [1] NA
+> ~~~
+> {: .output}
+> We need to be particularly careful in tests because trying to compare a `NA`
+> value will result in an error:
+> 
+> ~~~
+> if (a == NA) {
+>   print("Hi!")
+> }
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> Error in if (a == NA) {: missing value where TRUE/FALSE needed
+> ~~~
+> {: .error}
+> To solve this issue, we need to use the dedicated `is.na()` function:
+> 
+> ~~~
+> is.na(a)
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> [1] TRUE
+> ~~~
+> {: .output}
+> 
+> 
+> 
+> ~~~
+> if (is.na(a)) {
+>   print("Hi!")
+> }
+> ~~~
+> {: .language-r}
+> 
+> 
+> 
+> ~~~
+> [1] "Hi!"
+> ~~~
+> {: .output}
+{: .callout}
+
 > ## Choosing Plots Based on Data
 >
 > Write a function `plot_dist` that plots
