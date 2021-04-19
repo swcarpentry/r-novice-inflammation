@@ -56,7 +56,7 @@ We want to:
 
 To do all that, we'll have to learn a little bit about programming.
 
-# Getting started
+## Getting started
 
 Since we want to import the file called `inflammation-01.csv` into our R
 environment, we need to be able to tell our computer where the file is. 
