@@ -11,8 +11,10 @@
 [cran-knitr]: https://cran.r-project.org/package=knitr
 [cran-stringr]: https://cran.r-project.org/package=stringr
 [dc-lessons]: http://www.datacarpentry.org/lessons/
+[dc-rstudio]: https://datacarpentry.org/R-ecology-lesson/00-before-we-start.html#getting_set_up
 [email]: mailto:team@carpentries.org
 [github-importer]: https://import.github.com/
+[gh-pr]: https://lab.github.com/githubtraining/reviewing-pull-requests
 [importer]: https://github.com/new/import
 [jekyll-collection]: https://jekyllrb.com/docs/collections/
 [jekyll-install]: https://jekyllrb.com/docs/installation/
@@ -38,11 +40,14 @@
 [pyyaml]: https://pypi.org/project/PyYAML/
 [r-markdown]: https://rmarkdown.rstudio.com/
 [rstudio]: https://www.rstudio.com/
+[rstudio-git]: https://web.archive.org/web/20190103191213/https://support.rstudio.com/hc/en-us/articles/200532077
+[rstudio-project]: https://resources.rstudio.com/wistia-rstudio-essentials-2/rstudioessentialsmanagingpart1-2
 [ruby-install-guide]: https://www.ruby-lang.org/en/downloads/
 [ruby-installer]: https://rubyinstaller.org/
 [rubygems]: https://rubygems.org/pages/download/
+[sessionInfo]: https://stackoverflow.com/a/21967272/4341322
 [styles]: https://github.com/carpentries/styles/
-[swc-lessons]: https://software-carpentry.org/lessons/ 
+[swc-lesson-git]: https://swcarpentry.github.io/git-novice/
 [swc-releases]: https://github.com/swcarpentry/swc-releases
 [tex-eq]: https://latex.codecogs.com/gif.latex?%5Calpha%20%3D%20%5Cdfrac%7B1%7D%7B%281%20-%20%5Cbeta%29%5E2%7D
 [training]: https://carpentries.github.io/instructor-training/
