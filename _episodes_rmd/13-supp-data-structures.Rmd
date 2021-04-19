@@ -530,16 +530,16 @@ R in relation to diversity of data types they can contain.
 >
 > Knowing that data frames are lists, can columns be of different type?
 >
-> What type of structure do you expect to see when you explore the structure of the `iris` data frame? Hint: Use `str()`.
+> What type of structure do you expect to see when you explore the structure of the `PlantGrowth` data frame? Hint: Use `str()`.
 >
 > > ## Solution
-> > The Sepal.Length, Sepal.Width, Petal.Length and Petal.Width columns are all
-> > numeric types, while Species is a Factor.
+> > The weight column is numeric
+> > while group is a factor.
 > > Lists can have elements of different types.
 > > Since a Data Frame is just a special type of list, it can have columns of
 > > differing type (although, remember that type must be consistent within each column!).
 > > ```{r column-types}
-> > str(iris)
+> > str(PlantGrowth)
 > > ```
 > {: .solution}
 {: .challenge}
