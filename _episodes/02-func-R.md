@@ -346,21 +346,6 @@ It's hard to tell from the default output whether the result is correct, but the
 
 
 ~~~
-# original min
-min(dat[, 4])
-~~~
-{: .language-r}
-
-
-
-~~~
-[1] 0
-~~~
-{: .output}
-
-
-
-~~~
 # original mean
 mean(dat[, 4])
 ~~~
@@ -370,36 +355,6 @@ mean(dat[, 4])
 
 ~~~
 [1] 1.75
-~~~
-{: .output}
-
-
-
-~~~
-# original max
-max(dat[, 4])
-~~~
-{: .language-r}
-
-
-
-~~~
-[1] 3
-~~~
-{: .output}
-
-
-
-~~~
-# centered min
-min(centered)
-~~~
-{: .language-r}
-
-
-
-~~~
-[1] -1.75
 ~~~
 {: .output}
 
@@ -418,23 +373,7 @@ mean(centered)
 ~~~
 {: .output}
 
-
-
-~~~
-# centered max
-max(centered)
-~~~
-{: .language-r}
-
-
-
-~~~
-[1] 1.25
-~~~
-{: .output}
-
-That seems almost right: the original mean was about 1.75, so the lower bound from zero is now about -1.75.
-The mean of the centered data is 0.
+That seems right: the original mean was about 1.75 and the mean of the centered data is 0.
 We can even go further and check that the standard deviation hasn't changed:
 
 
