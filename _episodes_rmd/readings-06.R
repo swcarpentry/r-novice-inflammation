@@ -3,7 +3,7 @@ main <- function() {
   action <- args[1]
   filenames <- args[-1]
   stopifnot(action %in% c("--min", "--mean", "--max"))
-
+  
   if (length(filenames) == 0) {
     process(file("stdin"), action)
   } else {

@@ -34,10 +34,12 @@ source: Rmd
 
 
 
-We are studying inflammation in patients who have been given a new treatment for arthritis,
-and need to analyze the first dozen data sets.
-The data sets are stored in [comma-separated values]({{ page.root }}/reference.html#comma-separated-values-csv) (CSV) format. Each row holds the observations for just one patient. Each column holds the inflammation measured in a day, so we have a set of values in successive days.
-The first few rows of our first file look like this:
+We are studying inflammation in patients who have been given a new treatment for 
+arthritis, and need to analyze the first dozen data sets.
+The data sets are stored in [comma-separated values]({{ page.root }}/reference.html#comma-separated-values-csv)
+(CSV) format. Each row holds the observations for just one patient. Each column 
+holds the inflammation measured in a day, so we have a set of values in 
+successive days. The first few rows of our first file look like this:
 
 
 ~~~
@@ -57,21 +59,38 @@ We want to:
 
 To do all that, we'll have to learn a little bit about programming.
 
+## Getting started
+
+Since we want to import the file called `inflammation-01.csv` into our R
+environment, we need to be able to tell our computer where the file is. 
+To do this, we will create a "Project" with RStudio that contains the
+data we want to work with.
+The "Projects" interface in RStudio not only creates a working directory for 
+you, but also remembers its location (allowing you to quickly navigate to it).
+The interface also (optionally) preserves custom settings and open files to 
+make it easier to resume work after a break.
+
+### Create a new project
+
+* Under the `File` menu in RStudio, click on `New project`, choose
+  `New directory`, then `New project`
+* Enter a name for this new folder (or "directory") and choose a convenient
+  location for it. This will be your **working directory** for the rest of the
+  day (e.g., `~/Desktop/r-novice-inflammation`).
+* Click on `Create project`
+* Create a new file where we will type our scripts. Go to File > New File > R
+  script. Click the save icon on your toolbar and save your script as
+  "`script.R`".
+* Make sure you copy the data for the lesson into this folder, if they're
+  not there already.
+
+
 ### Loading Data
 
-Let's import the file called `inflammation-01.csv` into our R environment. To import the file, first we need to tell our computer where the file is. We do that by choosing a working directory, that is, a local directory on our computer containing the files we need. This is very important in R. If we forget this step we'll get an error message saying that the file does not exist. We can set the working directory using the function `setwd`. For this example, we change the path to our new directory at the desktop:
-
-
-~~~
-setwd("~/Desktop/r-novice-inflammation/")
-~~~
-{: .language-r}
-
-Just like in the Unix Shell, we type the command and then press <kbd>Return</kbd> (or <kbd>Enter</kbd>).
-Also similar to the Unix Shell, we can use tab completion to make it easier to type the working directory. So while typing inside the setwd command's quotes, we can press <kbd>Tab</kbd> to list possible directories. 
-Alternatively we can change the working directory using the RStudio GUI using the menu option `Session` -> `Set Working Directory` -> `Choose Directory...`
-
-The data file is located in the directory `data` inside the working directory. Now we can load the data into R using `read.csv`:
+Now that we are set up with an Rstudio project, we are sure that the
+and scripts we are using are all in our working directory.
+The data file should be located in the directory `data` inside the working 
+directory. Now we can load the data into R using `read.csv`:
 
 
 ~~~

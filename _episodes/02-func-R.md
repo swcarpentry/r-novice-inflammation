@@ -146,11 +146,11 @@ This is our first taste of how larger programs are built: we define basic
 operations, then combine them in ever-larger chunks to get the effect we want.
 Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
 
-> ## Nesting Functions
+> ## Nesting Function Calls
 >
 > This example showed the output of `fahrenheit_to_celsius` assigned to `temp_C`, which
 > is then passed to `celsius_to_kelvin` to get the final result. It is also possible
-> to perform this calculation in one line of code, by "nesting" one function
+> to perform this calculation in one line of code, by "nesting" one function call
 > inside another, like so:
 >
 > 
@@ -166,6 +166,13 @@ Real-life functions will usually be larger than the ones shown here--typically h
 > [1] 273.15
 > ~~~
 > {: .output}
+> Here, we call `fahrenheit_to_celsius` to convert `32.0` from Fahrenheit to 
+> Celsius, and immediately pass the value returned from `fahrenheit_to_celsius`
+> to `celsius_to_kelvin` to convert from Celsius to Kelvin. Our conversion
+> from Fahrenheit to Kelvin is done, all in one go!
+> 
+> This is convenient, but you should be careful not to nest too many function
+> calls at once - it can become confusing and difficult to read!
 {: .callout}
 
 > ## Create a Function

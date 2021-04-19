@@ -687,7 +687,7 @@ but there are several things wrong with it:
     [Silent failures]({{ page.root }}/reference.html#silent-failure) like this are always hard to debug.
 
 This version pulls the processing of each file out of the loop into a function of its own.
-It also checks that `action` is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as `readings-05.R`:
+It also uses `stopifnot` to check that `action` is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as `readings-05.R`:
 
 
 ~~~
@@ -889,7 +889,7 @@ main <- function() {
   action <- args[1]
   filenames <- args[-1]
   stopifnot(action %in% c("--min", "--mean", "--max"))
-
+  
   if (length(filenames) == 0) {
     process(file("stdin"), action)
   } else {
