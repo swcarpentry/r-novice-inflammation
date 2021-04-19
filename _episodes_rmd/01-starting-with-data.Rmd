@@ -84,7 +84,7 @@ make it easier to resume work after a break.
 
 ### Loading Data
 
-Now that we are set up with an Rstudio project, we can be sure the data
+Now that we are set up with an Rstudio project, we are sure that the
 and scripts we are using are all in our working directory.
 The data file should be located in the directory `data` inside the working 
 directory. Now we can load the data into R using `read.csv`:
