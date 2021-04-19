@@ -136,8 +136,8 @@ dat <- read.csv(file = 'data/sample.csv', stringsAsFactors = TRUE)
 
 > ## Default Behavior
 >
-> `stringsAsFactors = TRUE` is the default behavior for R.
-> We could leave this argument out.
+> `stringsAsFactors = TRUE` was the default behavior for R prior to version 4.0.
+> We are using it here to override the default behaviour for R version 4.0 which is `stringsAsFactors = FALSE`.
 > It is included here for clarity.
 {: .callout}
 
