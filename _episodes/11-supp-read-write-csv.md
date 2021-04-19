@@ -113,7 +113,7 @@ Clearly this is not the desired behavior for this data set, but it may be useful
 
 ### The `stringsAsFactors` Argument
 
-This is perhaps the most important argument in `read.csv()`, particularly if you are working with categorical data. This is because the default behavior of R is to convert character [string]({{ page.root }}/reference.html#string)s into factors, which may make it difficult to do such things as replace values. For example, let's say we find out that the data collector was color blind, and accidentally recorded green cars as being blue. In order to correct the data set, let's replace 'Blue' with 'Green' in the `$Color` column:
+In older versions of R (prior to 4.0) this was perhaps the most important argument in `read.csv()`, particularly if you were working with categorical data. This is because the default behavior of R was to convert character [string]({{ page.root }}/reference.html#string)s into factors, which may make it difficult to do such things as replace values. It is important to be aware of this behaviour, which we will demonstrate. For example, let's say we find out that the data collector was color blind, and accidentally recorded green cars as being blue. In order to correct the data set, let's replace 'Blue' with 'Green' in the `$Color` column:
 
 
 ~~~
@@ -123,7 +123,7 @@ This is perhaps the most important argument in `read.csv()`, particularly if you
 # using '<-'
 
 # First - reload the data with a header
-carSpeeds <- read.csv(file = 'data/car-speeds.csv')
+carSpeeds <- read.csv(file = 'data/car-speeds.csv', stringsAsFactors = TRUE)
 
 carSpeeds$Color <- ifelse(carSpeeds$Color == 'Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
@@ -133,18 +133,18 @@ carSpeeds$Color
 
 
 ~~~
-  [1] "Green" " Red"  "Green" "White" "Red"   "Green" "Green" "Black" "White"
- [10] "Red"   "Red"   "White" "Green" "Green" "Black" "Red"   "Green" "Green"
- [19] "White" "Green" "Green" "Green" "Red"   "Green" "Red"   "Red"   "Red"  
- [28] "Red"   "White" "Green" "Red"   "White" "Black" "Red"   "Black" "Black"
- [37] "Green" "Red"   "Black" "Red"   "Black" "Black" "Red"   "Red"   "White"
- [46] "Black" "Green" "Red"   "Red"   "Black" "Black" "Red"   "White" "Red"  
- [55] "Green" "Green" "Black" "Green" "White" "Black" "Red"   "Green" "Green"
- [64] "White" "Black" "Red"   "Red"   "Black" "Green" "White" "Green" "Red"  
- [73] "White" "White" "Green" "Green" "Green" "Green" "Green" "White" "Black"
- [82] "Green" "White" "Black" "Black" "Red"   "Red"   "White" "White" "White"
- [91] "White" "Red"   "Red"   "Red"   "White" "Black" "White" "Black" "Black"
-[100] "White"
+  [1] "Green" "1"     "Green" "5"     "4"     "Green" "Green" "2"     "5"    
+ [10] "4"     "4"     "5"     "Green" "Green" "2"     "4"     "Green" "Green"
+ [19] "5"     "Green" "Green" "Green" "4"     "Green" "4"     "4"     "4"    
+ [28] "4"     "5"     "Green" "4"     "5"     "2"     "4"     "2"     "2"    
+ [37] "Green" "4"     "2"     "4"     "2"     "2"     "4"     "4"     "5"    
+ [46] "2"     "Green" "4"     "4"     "2"     "2"     "4"     "5"     "4"    
+ [55] "Green" "Green" "2"     "Green" "5"     "2"     "4"     "Green" "Green"
+ [64] "5"     "2"     "4"     "4"     "2"     "Green" "5"     "Green" "4"    
+ [73] "5"     "5"     "Green" "Green" "Green" "Green" "Green" "5"     "2"    
+ [82] "Green" "5"     "2"     "2"     "4"     "4"     "5"     "5"     "5"    
+ [91] "5"     "4"     "4"     "4"     "5"     "2"     "5"     "2"     "2"    
+[100] "5"    
 ~~~
 {: .output}
 
@@ -168,9 +168,9 @@ str(carSpeeds)
 
 ~~~
 'data.frame':	100 obs. of  3 variables:
- $ Color: chr  "Green" " Red" "Green" "White" ...
+ $ Color: chr  "Green" "1" "Green" "5" ...
  $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
- $ State: chr  "NewMexico" "Arizona" "Colorado" "Arizona" ...
+ $ State: Factor w/ 4 levels "Arizona","Colorado",..: 3 1 2 1 1 1 3 2 1 2 ...
 ~~~
 {: .output}
 
@@ -221,7 +221,7 @@ carSpeeds$Color
 ~~~
 {: .output}
 
-That's better! And we can see how the data now is read as character instead of factor.
+That's better! And we can see how the data now is read as character instead of factor. From R version 4.0 onwards we do not have to specify `stringsAsFactors=FALSE`, this is the default behavior. 
 
 
 ### The `as.is` Argument
