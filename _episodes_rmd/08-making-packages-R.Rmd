@@ -147,7 +147,7 @@ The /man directory has a .Rd file for each .R file with properly formatted docum
 
 Overall, your package directory should look something like this:
 
-<img src="../fig/R-package-structure.svg" alt="R Package Structure" width="500" />
+<img src="../fig/R-package-structure.svg" alt="tempConvert directory containing 4 items: Namespace file, Description file, man directory with documentation in .Rd files, R directory with functions in .R files" width="500" />
 
 Now, let's load the package and take a look at the documentation.
 
