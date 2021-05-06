@@ -63,7 +63,8 @@ We'll tackle these questions in turn below.
 
 ### Command-Line Arguments
 
-Using the text editor of your choice, save the following line of code in a text file called `session-info.R`:
+When using R scripts with the command-line, save/store scripts into the same directory as R.exe and Rscript.exe (typically: C:\Program Files\R\R-3.5.1\bin, depending on version). 
+Now, using the text editor of your choice, save the following line of code in a text file called `session-info.R`: 
 
 ```{r echo=FALSE, engine='bash'}
 cat session-info.R
