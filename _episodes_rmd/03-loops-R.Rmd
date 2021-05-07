@@ -118,6 +118,8 @@ for (variable in collection) {
   do things with variable
 }
 ```
+![R_loop](https://user-images.githubusercontent.com/55941414/113637725-a6b59900-96b8-11eb-845b-29a837d081ce.png)
+
 
 We can name the [loop variable]({{ page.root }}/reference.html#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
 `in` is part of the `for` syntax.
