@@ -85,7 +85,7 @@ Rscript session-info.R
 
 
 ~~~
-R version 4.0.5 (2021-03-31)
+R version 4.1.0 (2021-05-18)
 Platform: x86_64-pc-linux-gnu (64-bit)
 Running under: Ubuntu 20.04.2 LTS
 
@@ -103,7 +103,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
-[1] compiler_4.0.5
+[1] compiler_4.1.0
 ~~~
 {: .output}
 
@@ -141,7 +141,7 @@ Rscript print-args.R
 
 
 ~~~
-/opt/R/4.0.5/lib/R/bin/exec/R
+/opt/R/4.1.0/lib/R/bin/exec/R
 --no-echo
 --no-restore
 --file=print-args.R
@@ -170,7 +170,7 @@ R --slave --no-restore --file=print-args.R --args
 
 
 ~~~
-/opt/R/4.0.5/lib/R/bin/exec/R
+/opt/R/4.1.0/lib/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -190,7 +190,7 @@ Rscript print-args.R first second third
 
 
 ~~~
-/opt/R/4.0.5/lib/R/bin/exec/R
+/opt/R/4.1.0/lib/R/bin/exec/R
 --no-echo
 --no-restore
 --file=print-args.R

@@ -152,6 +152,9 @@ we are interested in. `str()` will be reviewed a little more in the lesson
 
 
 ~~~
+# Reload the data with a header (the previous ifelse call modifies attributes)
+carSpeeds <- read.csv(file = 'data/car-speeds.csv', stringsAsFactors = TRUE)
+
 str(carSpeeds)
 ~~~
 {: .language-r}
@@ -160,7 +163,7 @@ str(carSpeeds)
 
 ~~~
 'data.frame':	100 obs. of  3 variables:
- $ Color: chr  "Green" "1" "Green" "5" ...
+ $ Color: Factor w/ 5 levels " Red","Black",..: 3 1 3 5 4 3 3 2 5 4 ...
  $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
  $ State: Factor w/ 4 levels "Arizona","Colorado",..: 3 1 2 1 1 1 3 2 1 2 ...
 ~~~

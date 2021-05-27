@@ -94,6 +94,9 @@ we are interested in. `str()` will be reviewed a little more in the lesson
 [Data Types and Structures]({{ page.root }}/13-supp-data-structures/).
 
 ```{r}
+# Reload the data with a header (the previous ifelse call modifies attributes)
+carSpeeds <- read.csv(file = 'data/car-speeds.csv', stringsAsFactors = TRUE)
+
 str(carSpeeds)
 ```
 
