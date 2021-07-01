@@ -31,11 +31,11 @@ Let's start by learning about our tool.
 There are two main ways of interacting with R: using the console or by using
 script files (plain text files that contain your code).
 
-The console window (in RStudio, the bottom left panel) is the place where R is
+The console window (in RStudio, the bottom left panel) ***Insert visual aid here*** is the place where R is
 waiting for you to tell it what to do, and where it will show the results of a
 command.  You can type commands directly into the console, but they will be
 forgotten when you close the session. It is better to enter the commands in the
-script editor, and save the script. This way, you have a complete record of what
+script editor ***Insert visual aid here*** , and save the script. This way, you have a complete record of what
 you did, you can easily show others how you did it and you can do it again later
 on if needed. You can copy-paste into the R console, but the Rstudio script
 editor allows you to 'send' the current line or the currently selected text to
