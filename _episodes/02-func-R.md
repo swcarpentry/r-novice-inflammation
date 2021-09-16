@@ -34,7 +34,11 @@ In this lesson, we'll learn how to write a function so that we can repeat severa
 
 ### Defining a Function
 
-Let's start by defining a function `fahrenheit_to_celsius` that converts temperatures from [Fahrenheit to Celsius](https://en.wikipedia.org/wiki/Temperature_conversion_formulas#Fahrenheit):
+You can write your own functions in order to make repetitive operations using a single command. Let's start by defining your function "my_function" and the input parameter(s) that the user will feed to the function. Afterwards you will define the operation that you desire to program in the body of the function within curly braces ({}). Finally, you need to assign the result (or output) of your function in the return statement.
+
+
+
+Now let's see this process with an example. We are going to define a function `fahrenheit_to_celsius` that converts temperatures from [Fahrenheit to Celsius](https://en.wikipedia.org/wiki/Temperature_conversion_formulas#Fahrenheit):
 
 
 ~~~
