@@ -603,7 +603,7 @@ We'll learn why this is so in the next lesson.
 > > # 2.
 > > apply(dat[, 1:10], 2, mean)
 > > # 3.
-> > apply(dat[, seq(1, 40, by = 2)], 2, mean)
+> > apply(dat[, seq(2, 40, by = 2)], 2, mean)
 > > ~~~
 > > {: .language-r}
 > {: .solution}
