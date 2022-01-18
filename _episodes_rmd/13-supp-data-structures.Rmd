@@ -520,7 +520,7 @@ R in relation to diversity of data types they can contain.
 | 1-D | atomic vector | list |
 | 2-D | matrix | data frame |
 
-> Lists can contain elements that are themselves muti-dimensional (e.g. a lists can contain
+> Lists can contain elements that are themselves multi-dimensional (e.g. a lists can contain
 > data frames or another type of objects). Lists can also contain elements of any length,
 > therefore list do not necessarily have to be "rectangular". However in order for the list
 > to qualify as a data frame, the length of each element has to be the same. 
