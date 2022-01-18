@@ -92,7 +92,7 @@ It would be ideal if `analyze` would either save or not save the plots based on 
 
 ### Conditionals
 
-In order to update our function to decide between saving or not, we need to write code that automatically decides between multiple options. The computer can make these deicisons through logical comparisons.
+In order to update our function to decide between saving or not, we need to write code that automatically decides between multiple options. The computer can make these decisions through logical comparisons.
 
 ```{r}
 num <- 37
