@@ -85,9 +85,9 @@ Rscript session-info.R
 
 
 ~~~
-R version 4.1.2 (2021-11-01)
+R version 4.1.3 (2022-03-10)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 20.04.3 LTS
+Running under: Ubuntu 20.04.4 LTS
 
 Matrix products: default
 BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
@@ -103,7 +103,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
-[1] compiler_4.1.2
+[1] compiler_4.1.3
 ~~~
 {: .output}
 
@@ -141,7 +141,7 @@ Rscript print-args.R
 
 
 ~~~
-/opt/R/4.1.2/lib/R/bin/exec/R
+/opt/R/4.1.3/lib/R/bin/exec/R
 --no-echo
 --no-restore
 --file=print-args.R
@@ -170,7 +170,7 @@ R --slave --no-restore --file=print-args.R --args
 
 
 ~~~
-/opt/R/4.1.2/lib/R/bin/exec/R
+/opt/R/4.1.3/lib/R/bin/exec/R
 --slave
 --no-restore
 --file=print-args.R
@@ -190,7 +190,7 @@ Rscript print-args.R first second third
 
 
 ~~~
-/opt/R/4.1.2/lib/R/bin/exec/R
+/opt/R/4.1.3/lib/R/bin/exec/R
 --no-echo
 --no-restore
 --file=print-args.R
