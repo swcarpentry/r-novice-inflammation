@@ -84,7 +84,7 @@ make it easier to resume work after a break.
 
 ### Loading Data
 
-Now that we are set up with an Rstudio project, we are sure that the
+Now that we are set up with an Rstudio project, we are sure that the data
 and scripts we are using are all in our working directory.
 The data file should be located in the directory `data` inside the working 
 directory. Now we can load the data into R using `read.csv`:
@@ -333,7 +333,8 @@ dat[30, 20]
 ```
 
 The first value in a data frame index is the row, the second value is the column.
-If we want to select more than one row or column, we can use the function `c`, which stands for **c**ombine.
+If we want to select more than one row or column, we can use the function `c`, 
+which **c**ombines the values you give it into one vector or list.
 For example, to pick columns 10 and 20 from rows 1, 3, and 5, we can do this:
 
 ```{r selecting with c}
@@ -531,7 +532,7 @@ We'll learn why this is so in the next lesson.
 > >    `animal[-1:-4]` remove the subset, returning `"e" "y"`, which is
 > >    equivalent to `animal[5:6]`.
 > > 
-> > 1. `animal[c(5,2,3)]` combines indexing with the `c`ombine function.
+> > 1. `animal[c(5,2,3)]` combines indexing with the `c` function.
 > > 
 > {: .solution}
 {: .challenge}
