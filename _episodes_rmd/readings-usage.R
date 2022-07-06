@@ -4,8 +4,6 @@ main <- function() {
   filenames <- args[-1]
   if (!(action %in% c("--min", "--mean", "--max"))) {
     usage()
-  } else if (length(filenames) == 0) {
-    process(file("stdin"), action)
   } else {
     for (f in filenames) {
       process(f, action)
