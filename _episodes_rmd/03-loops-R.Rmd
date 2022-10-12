@@ -318,7 +318,7 @@ list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 Let's test out running our `analyze` function by using it on the first three files in the vector returned by `list.files`:
 
 
-```{r loop-analyze, fig=FALSE}
+```{r loop-analyze, fig. alt = "A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." fig=FALSE}
 filenames <- list.files(path = "data",  
                         # Now follows a regular expression that matches:
                         pattern = "inflammation-[0-9]{2}.csv",
