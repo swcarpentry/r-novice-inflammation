@@ -169,7 +169,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 > ```
 > Use the `factor()` command to modify the column dat$Group so that the *control* group is plotted last.
 > > ## Solution
-> > ```{r reordering-factors-2}
+> > ```{r reordering-factors-2, fig. alt = "Bar chart showing control and treatment to emphasise how the function factor () moves the control group to the last coulumn."}
 > > dat$Group <- factor(dat$Group, levels = c("Treatment1", "Treatment2", "Control"))
 > > barplot(table(dat$Group))
 > > ```
