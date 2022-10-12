@@ -181,7 +181,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 Some of the Gender values in our dataset have been coded incorrectly.
 Let's remove levels from this factor.
 
-```{r gender-counts}
+```{r gender-counts, fig. alt = "Bar chart showing gender values in the dataset have been coded incorrectly."}
 barplot(table(dat$Gender))
 ```
 
