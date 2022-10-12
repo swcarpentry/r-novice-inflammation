@@ -274,7 +274,7 @@ In this case, "either" means "either or both", not "either one or the other but 
 > `plot_dist` will create a stripchart.
 > A histogram is made with the `hist` command in R.
 >
-> ```{r conditional-challenge-hist, echo=-1}
+> ```{r conditional-challenge-hist, fig.alt = "A grey unlabeled boxplot chart showing the distrubution of inflammation values for day 10 for one inflammation dataset.",  echo=-1}
 > plot_dist <- function(x, threshold, use_boxplot = TRUE) {
 >    if (length(x) > threshold && use_boxplot) {
 >        boxplot(x)
