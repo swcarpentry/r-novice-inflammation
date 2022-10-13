@@ -45,7 +45,7 @@ analyze("data/inflammation-01.csv")
 
 We can use it to analyze other data sets one by one:
 
-```{r inflammation-02, fig. alt = "A scatterplot of maxiumum daily inflammation by day, increasing in a straight line until day 20, and then decreasing in a straight line to visualize inflammation levels in a single dataset."}
+```{r inflammation-02, fig.alt = "A scatterplot of maxiumum daily inflammation by day, increasing in a straight line until day 20, and then decreasing in a straight line to visualize inflammation levels in a single dataset."}
 analyze("data/inflammation-02.csv")
 ```
 
