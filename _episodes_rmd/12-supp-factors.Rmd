@@ -163,7 +163,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 >
 > The function `table()` tabulates observations and can be used to create bar plots quickly. For instance:
 >
-> ```{r reordering-factors}
+> ```{r reordering-factors, fig. alt = "Bar chart showing control and treatment to emphasise how the function table() tabulates observations."}
 > table(dat$Group)
 > barplot(table(dat$Group))
 > ```
