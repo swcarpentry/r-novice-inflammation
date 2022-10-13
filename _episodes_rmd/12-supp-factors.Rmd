@@ -193,7 +193,7 @@ dat$Gender[dat$Gender == 'M'] <- 'm'
 
 > ## Updating Factors
 >
-> ```{r updating-factors, fig. alt = "Barplot graph showing blood pressure in males and females.}
+> ```{r updating-factors, fig.alt = "Barplot graph showing blood pressure in males and females.}
 > plot(x = dat$Gender, y = dat$BloodPressure)
 > ```
 >
