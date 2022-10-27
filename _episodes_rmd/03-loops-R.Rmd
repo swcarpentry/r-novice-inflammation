@@ -27,7 +27,7 @@ knitr_fig_path("03-loops-R-")
 
 We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
 
-```{r inflammation-01}
+```{r inflammation-01, fig.alt = "A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset."}
 analyze <- function(filename) {
   # Plots the average, min, and max inflammation over time.
   # Input is character string of a csv file.
