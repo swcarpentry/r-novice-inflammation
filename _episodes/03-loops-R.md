@@ -44,7 +44,7 @@ analyze("data/inflammation-01.csv")
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-03-loops-R-inflammation-01-1.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-inflammation-01-2.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-inflammation-01-3.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-03-loops-R-inflammation-01-1.png" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-inflammation-01-2.png" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-inflammation-01-3.png" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" />
 
 We can use it to analyze other data sets one by one:
 
@@ -54,7 +54,7 @@ analyze("data/inflammation-02.csv")
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-03-loops-R-inflammation-02-1.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-inflammation-02-2.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-inflammation-02-3.png" title="plot of chunk inflammation-02" alt="plot of chunk inflammation-02" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-03-loops-R-inflammation-02-1.png" alt="A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-inflammation-02-2.png" alt="A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-inflammation-02-3.png" alt="A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." width="612" style="display: block; margin: auto;" />
 
 but we have a dozen data sets right now and more on the way.
 We want to create plots for all our data sets with a single statement.
@@ -552,21 +552,21 @@ for (f in filenames) {
 ~~~
 {: .output}
 
-<img src="../fig/rmd-03-loops-R-loop-analyze-1.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-2.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-3.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-03-loops-R-loop-analyze-1.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-2.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-3.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" />
 
 ~~~
 [1] "data/inflammation-02.csv"
 ~~~
 {: .output}
 
-<img src="../fig/rmd-03-loops-R-loop-analyze-4.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-5.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-6.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-03-loops-R-loop-analyze-4.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-5.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-6.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" />
 
 ~~~
 [1] "data/inflammation-03.csv"
 ~~~
 {: .output}
 
-<img src="../fig/rmd-03-loops-R-loop-analyze-7.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-8.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-9.png" title="plot of chunk loop-analyze" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-03-loops-R-loop-analyze-7.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-8.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-9.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" />
 
 Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.
 

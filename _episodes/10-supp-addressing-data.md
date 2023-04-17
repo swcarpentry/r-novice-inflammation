@@ -634,7 +634,7 @@ plot(dat[dat$Group == 'Control', ]$BloodPressure)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-10-supp-addressing-data-logical_vectors_indexing2-1.png" title="plot of chunk logical_vectors_indexing2" alt="plot of chunk logical_vectors_indexing2" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-10-supp-addressing-data-logical_vectors_indexing2-1.png" alt="plot of chunk logical_vectors_indexing2" width="612" style="display: block; margin: auto;" />
 
 > ## Using Logical Indexes
 >
@@ -649,7 +649,7 @@ plot(dat[dat$Group == 'Control', ]$BloodPressure)
 > >     ~~~
 > >     {: .language-r}
 > >     
-> >     <img src="../fig/rmd-10-supp-addressing-data-plot-logical-1.png" title="plot of chunk plot-logical" alt="plot of chunk plot-logical" width="612" style="display: block; margin: auto;" />
+> >     <img src="../fig/rmd-10-supp-addressing-data-plot-logical-1.png" alt="plot of chunk plot-logical" width="612" style="display: block; margin: auto;" />
 > > 2. In addition to 
 > > `dat$Group != 'Control'`, one could use 
 > > `dat$Group %in% c("Treatment1", "Treatment2")`.

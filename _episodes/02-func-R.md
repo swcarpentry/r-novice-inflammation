@@ -520,8 +520,8 @@ center(datNA[,1], 0)
 
 
 ~~~
-Warning in mean.default(data, na.rm = TRUE): argument is not numeric or logical:
-returning NA
+Warning in mean.default(data, na.rm = TRUE): argument is not numeric or
+logical: returning NA
 ~~~
 {: .warning}
 
@@ -552,8 +552,8 @@ center(datNA[,2], 0)
 
 
 ~~~
-Warning in mean.default(data, na.rm = TRUE): argument is not numeric or logical:
-returning NA
+Warning in mean.default(data, na.rm = TRUE): argument is not numeric or
+logical: returning NA
 ~~~
 {: .warning}
 

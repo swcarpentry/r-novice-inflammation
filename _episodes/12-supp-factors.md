@@ -119,7 +119,7 @@ min(food) # doesn't work
 
 
 ~~~
-Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), .Label = c("low", : 'min' not meaningful for factors
+Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), levels = c("low", : 'min' not meaningful for factors
 ~~~
 {: .error}
 
@@ -334,7 +334,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-12-supp-factors-reordering-factors-1.png" title="plot of chunk reordering-factors" alt="plot of chunk reordering-factors" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-12-supp-factors-reordering-factors-1.png" alt="Bar chart showing control and treatment to emphasise how the function table() tabulates observations." width="612" style="display: block; margin: auto;" />
 > Use the `factor()` command to modify the column dat$Group so that the *control* group is plotted last.
 > > ## Solution
 > > 
@@ -344,7 +344,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-12-supp-factors-reordering-factors-2-1.png" title="plot of chunk reordering-factors-2" alt="plot of chunk reordering-factors-2" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-12-supp-factors-reordering-factors-2-1.png" alt="plot of chunk reordering-factors-2" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -359,7 +359,7 @@ barplot(table(dat$Gender))
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-12-supp-factors-gender-counts-1.png" title="plot of chunk gender-counts" alt="plot of chunk gender-counts" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-12-supp-factors-gender-counts-1.png" alt="Bar chart showing gender values in the dataset have been coded incorrectly." width="612" style="display: block; margin: auto;" />
 
 Values should have been recorded as lowercase 'm' and 'f'. We should correct this.
 
@@ -377,7 +377,7 @@ dat$Gender[dat$Gender == 'M'] <- 'm'
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-12-supp-factors-updating-factors-1.png" title="plot of chunk updating-factors" alt="plot of chunk updating-factors" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-12-supp-factors-updating-factors-1.png" alt="plot of chunk updating-factors" width="612" style="display: block; margin: auto;" />
 >
 > Why does this plot show 4 levels?
 >
@@ -397,7 +397,7 @@ plot(x = dat$Gender, y = dat$BloodPressure)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-12-supp-factors-dropping-levels-1.png" title="plot of chunk dropping-levels" alt="plot of chunk dropping-levels" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-12-supp-factors-dropping-levels-1.png" alt="plot of chunk dropping-levels" width="612" style="display: block; margin: auto;" />
 
 > ## Adjusting Factor Levels
 >
@@ -410,7 +410,7 @@ plot(x = dat$Gender, y = dat$BloodPressure)
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-12-supp-factors-adjusting-levels-1.png" title="plot of chunk adjusting-levels" alt="plot of chunk adjusting-levels" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-12-supp-factors-adjusting-levels-1.png" alt="plot of chunk adjusting-levels" width="612" style="display: block; margin: auto;" />
 {: .callout}
 
 {% include links.md %}

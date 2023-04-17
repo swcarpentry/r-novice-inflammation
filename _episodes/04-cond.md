@@ -399,14 +399,14 @@ In this case, "either" means "either or both", not "either one or the other but 
 >~~~
 >{: .language-r}
 >
-><img src="../fig/rmd-04-cond-using-conditions-01-1.png" title="plot of chunk using-conditions-01" alt="plot of chunk using-conditions-01" width="612" style="display: block; margin: auto;" />
+><img src="../fig/rmd-04-cond-using-conditions-01-1.png" alt="plot of chunk using-conditions-01" width="612" style="display: block; margin: auto;" />
 >
 >~~~
 > plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 >~~~
 >{: .language-r}
 >
-><img src="../fig/rmd-04-cond-using-conditions-01-2.png" title="plot of chunk using-conditions-01" alt="plot of chunk using-conditions-01" width="612" style="display: block; margin: auto;" />
+><img src="../fig/rmd-04-cond-using-conditions-01-2.png" alt="plot of chunk using-conditions-01" width="612" style="display: block; margin: auto;" />
 >
 > > ## Solution
 > > ~~~
@@ -443,21 +443,21 @@ In this case, "either" means "either or both", not "either one or the other but 
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-04-cond-conditional-challenge-hist-1.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-04-cond-conditional-challenge-hist-1.png" alt="plot of chunk conditional-challenge-hist" width="612" style="display: block; margin: auto;" />
 > 
 > ~~~
 > plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-04-cond-conditional-challenge-hist-2.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-04-cond-conditional-challenge-hist-2.png" alt="plot of chunk conditional-challenge-hist" width="612" style="display: block; margin: auto;" />
 > 
 > ~~~
 > plot_dist(dat[1:5, 10], threshold = 10)                    # samples (rows) 1-5 on day (column) 10
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-04-cond-conditional-challenge-hist-3.png" title="plot of chunk conditional-challenge-hist" alt="plot of chunk conditional-challenge-hist" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-04-cond-conditional-challenge-hist-3.png" alt="plot of chunk conditional-challenge-hist" width="612" style="display: block; margin: auto;" />
 >
 > > ## Solution
 > > ~~~
@@ -592,7 +592,7 @@ analyze("data/inflammation-01.csv")
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-cond-inflammation-01-1.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-04-cond-inflammation-01-2.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-04-cond-inflammation-01-3.png" title="plot of chunk inflammation-01" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-cond-inflammation-01-1.png" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-04-cond-inflammation-01-2.png" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-04-cond-inflammation-01-3.png" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" />
 
 but also use it to save plots,
 
