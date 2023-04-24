@@ -377,7 +377,7 @@ dat$Gender[dat$Gender == 'M'] <- 'm'
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-12-supp-factors-updating-factors-1.png" alt="plot of chunk updating-factors" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-12-supp-factors-updating-factors-1.png" alt="Barplot graph showing blood pressure in males and females." width="612" style="display: block; margin: auto;" />
 >
 > Why does this plot show 4 levels?
 >
