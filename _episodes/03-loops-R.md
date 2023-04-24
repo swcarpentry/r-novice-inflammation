@@ -552,21 +552,21 @@ for (f in filenames) {
 ~~~
 {: .output}
 
-<img src="../fig/rmd-03-loops-R-loop-analyze-1.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-2.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-3.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-03-loops-R-loop-analyze-1.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-2.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-3.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." width="612" style="display: block; margin: auto;" />
 
 ~~~
 [1] "data/inflammation-02.csv"
 ~~~
 {: .output}
 
-<img src="../fig/rmd-03-loops-R-loop-analyze-4.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-5.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-6.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-03-loops-R-loop-analyze-4.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-5.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-6.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." width="612" style="display: block; margin: auto;" />
 
 ~~~
 [1] "data/inflammation-03.csv"
 ~~~
 {: .output}
 
-<img src="../fig/rmd-03-loops-R-loop-analyze-7.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-8.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-9.png" alt="plot of chunk loop-analyze" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-03-loops-R-loop-analyze-7.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-8.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-loop-analyze-9.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." width="612" style="display: block; margin: auto;" />
 
 Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.
 
