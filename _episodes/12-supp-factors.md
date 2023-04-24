@@ -344,7 +344,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-12-supp-factors-reordering-factors-2-1.png" alt="plot of chunk reordering-factors-2" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-12-supp-factors-reordering-factors-2-1.png" alt="Bar chart showing control and treatment to emphasise how the function factor() moves the control group to the last coulumn." width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
