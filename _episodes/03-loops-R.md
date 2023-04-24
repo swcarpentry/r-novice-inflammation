@@ -44,7 +44,7 @@ analyze("data/inflammation-01.csv")
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-03-loops-R-inflammation-01-1.png" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-inflammation-01-2.png" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-inflammation-01-3.png" alt="plot of chunk inflammation-01" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-03-loops-R-inflammation-01-1.png" alt="Scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-inflammation-01-2.png" alt="A scatterplot of maximum daily inflammation over 40 days, increasing in a straight line until day 20, and then decreasing in a straight line to visualize inflammation levels in a single dataset." width="612" style="display: block; margin: auto;" /><img src="../fig/rmd-03-loops-R-inflammation-01-3.png" alt="A scatterplot of minimum daily inflammation over 40 days, increasing in a step-wise pattern until day 20, and then decreasing in a step-wise pattern to visualize inflammation levels in a single dataset." width="612" style="display: block; margin: auto;" />
 
 We can use it to analyze other data sets one by one:
 
