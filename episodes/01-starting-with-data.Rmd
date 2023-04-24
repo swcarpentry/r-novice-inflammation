@@ -206,8 +206,8 @@ weight_kg
 > in R can be a valid part of a variable name; thus the above assignment could have easily been `weight.kg <- 57.5`.
 > This is often confusing to R newcomers who have programmed in languages where `.` has a more significant meaning.
 > Today, most R programmers 1) start variable names with lower case letters, 2) separate words in variable names with
-> underscores, and 3) use only lowercase letters, underscores, and numbers in variable names. The book *R Packages* includes
-> a [chapter](http://r-pkgs.had.co.nz/style.html) on this and other style considerations.
+> underscores, and 3) use only lowercase letters, underscores, and numbers in variable names. The *Tidyverse Style Guide* includes
+> a [section](https://style.tidyverse.org/syntax.html) on this and other style considerations.
 {: .callout}
 
 <img src="../fig/reassign-variables.svg" alt="Reassigning Variables" />
