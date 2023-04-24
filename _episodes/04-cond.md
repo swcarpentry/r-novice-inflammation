@@ -443,21 +443,21 @@ In this case, "either" means "either or both", not "either one or the other but 
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-04-cond-conditional-challenge-hist-1.png" alt="plot of chunk conditional-challenge-hist" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-04-cond-conditional-challenge-hist-1.png" alt="A grey unlabeled boxplot chart showing the distrubution values between 2 and 9 with a mean at 6." width="612" style="display: block; margin: auto;" />
 > 
 > ~~~
 > plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-04-cond-conditional-challenge-hist-2.png" alt="plot of chunk conditional-challenge-hist" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-04-cond-conditional-challenge-hist-2.png" alt="A grey unlabeled histogram showing bimodal distribution between 2 and 9 with peaks at 2 and 6." width="612" style="display: block; margin: auto;" />
 > 
 > ~~~
 > plot_dist(dat[1:5, 10], threshold = 10)                    # samples (rows) 1-5 on day (column) 10
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-04-cond-conditional-challenge-hist-3.png" alt="plot of chunk conditional-challenge-hist" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-04-cond-conditional-challenge-hist-3.png" alt="A mostly blank strip chart showing five points at 3, 4, 6, 7, and 9" width="612" style="display: block; margin: auto;" />
 >
 > > ## Solution
 > > ~~~
