@@ -304,7 +304,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 
 > ## The `summary()` Function
 >
-> The `summary()` function is a great way of spotting errors in your data (look at the *dat$Gender* column).
+> The `summary()` function is a great way of spotting errors in your data (look at the `dat$Gender` column).
 > It's also a great way for spotting missing data.
 {: .callout}
 
@@ -335,7 +335,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 > {: .language-r}
 > 
 > <img src="../fig/rmd-12-supp-factors-reordering-factors-1.png" alt="Bar chart showing control and treatment to emphasise how the function table() tabulates observations." width="612" style="display: block; margin: auto;" />
-> Use the `factor()` command to modify the column dat$Group so that the *control* group is plotted last.
+> Use the `factor()` command to modify the column `dat$Group` so that the *control* group is plotted last.
 > > ## Solution
 > > 
 > > ~~~
@@ -381,7 +381,7 @@ dat$Gender[dat$Gender == 'M'] <- 'm'
 >
 > Why does this plot show 4 levels?
 >
-> *Hint* how many levels does dat$Gender have?
+> *Hint* how many levels does `dat$Gender` have?
 > > ## Solution
 > > `dat$Gender` has 4 levels, so the plot shows 4 levels.
 > {: .solution}
