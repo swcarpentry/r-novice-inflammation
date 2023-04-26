@@ -475,7 +475,8 @@ dat[30, 20]
 {: .output}
 
 The first value in a data frame index is the row, the second value is the column.
-If we want to select more than one row or column, we can use the function `c`, which stands for **c**ombine.
+If we want to select more than one row or column, we can use the function `c`, 
+which **c**ombines the values you give it into one vector or list.
 For example, to pick columns 10 and 20 from rows 1, 3, and 5, we can do this:
 
 
@@ -927,7 +928,7 @@ We'll learn why this is so in the next lesson.
 > >    `animal[-1:-4]` remove the subset, returning `"e" "y"`, which is
 > >    equivalent to `animal[5:6]`.
 > > 
-> > 1. `animal[c(5,2,3)]` combines indexing with the `c`ombine function.
+> > 1. `animal[c(5,2,3)]` combines indexing with the `c` function.
 > > 
 > {: .solution}
 {: .challenge}
