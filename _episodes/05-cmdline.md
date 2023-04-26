@@ -156,7 +156,7 @@ The first argument in the vector is the path to the `R` executable.
 The following are all command-line arguments that affect the behavior of R.
 From the R help file:
 
-*  `--slave`: Make R run as quietly as possible
+*  `--no-echo`: Make R run as quietly as possible
 *  `--no-restore`: Don't restore anything that was created during the R session
 *  `--file`: Run this file
 *  `--args`: Pass these arguments to the file being run
@@ -165,7 +165,7 @@ Thus running a file with Rscript is an easier way to run the following:
 
 
 ~~~
-R --slave --no-restore --file=print-args.R --args
+R --no-echo --no-restore --file=print-args.R --args
 ~~~
 {: .language-bash}
 
@@ -174,7 +174,7 @@ R --slave --no-restore --file=print-args.R --args
 
 ~~~
 /usr/lib/R/bin/exec/R
---slave
+--no-echo
 --no-restore
 --file=print-args.R
 --args
