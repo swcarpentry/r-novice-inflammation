@@ -35,7 +35,7 @@ source: Rmd
 
 
 We are studying inflammation in patients who have been given a new treatment for 
-arthritis, and need to analyze the first dozen data sets.
+arthritis, and need to analyze the first dozen data sets (here is a link to [download the data for this lesson]({{ page.root }}/data/r-novice-inflammation-data.zip)).
 The data sets are stored in [comma-separated values]({{ page.root }}/reference.html#comma-separated-values-csv)
 (CSV) format. Each row holds the observations for just one patient. Each column 
 holds the inflammation measured in a day, so we have a set of values in 
