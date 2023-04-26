@@ -155,7 +155,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 
 > ## The `summary()` Function
 >
-> The `summary()` function is a great way of spotting errors in your data (look at the *dat$Gender* column).
+> The `summary()` function is a great way of spotting errors in your data (look at the `dat$Gender` column).
 > It's also a great way for spotting missing data.
 {: .callout}
 
@@ -163,13 +163,13 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 >
 > The function `table()` tabulates observations and can be used to create bar plots quickly. For instance:
 >
-> ```{r reordering-factors}
+> ```{r reordering-factors, fig.alt = "Bar chart showing control and treatment to emphasise how the function table() tabulates observations."}
 > table(dat$Group)
 > barplot(table(dat$Group))
 > ```
-> Use the `factor()` command to modify the column dat$Group so that the *control* group is plotted last.
+> Use the `factor()` command to modify the column `dat$Group` so that the *control* group is plotted last.
 > > ## Solution
-> > ```{r reordering-factors-2}
+> > ```{r reordering-factors-2, fig.alt = "Bar chart showing control and treatment to emphasise how the function factor() moves the control group to the last coulumn."}
 > > dat$Group <- factor(dat$Group, levels = c("Treatment1", "Treatment2", "Control"))
 > > barplot(table(dat$Group))
 > > ```
@@ -181,7 +181,7 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 Some of the Gender values in our dataset have been coded incorrectly.
 Let's remove levels from this factor.
 
-```{r gender-counts}
+```{r gender-counts, fig.alt = "Bar chart showing gender values in the dataset have been coded incorrectly."}
 barplot(table(dat$Gender))
 ```
 
@@ -193,13 +193,13 @@ dat$Gender[dat$Gender == 'M'] <- 'm'
 
 > ## Updating Factors
 >
-> ```{r updating-factors}
+> ```{r updating-factors, fig.alt = "Barplot graph showing blood pressure in males and females."}
 > plot(x = dat$Gender, y = dat$BloodPressure)
 > ```
 >
 > Why does this plot show 4 levels?
 >
-> *Hint* how many levels does dat$Gender have?
+> *Hint* how many levels does `dat$Gender` have?
 > > ## Solution
 > > `dat$Gender` has 4 levels, so the plot shows 4 levels.
 > {: .solution}

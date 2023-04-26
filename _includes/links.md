@@ -13,8 +13,7 @@
 [dc-lessons]: http://www.datacarpentry.org/lessons/
 [dc-rstudio]: https://datacarpentry.org/R-ecology-lesson/00-before-we-start.html#getting_set_up
 [email]: mailto:team@carpentries.org
-[github-importer]: https://import.github.com/
-[gh-pr]: https://lab.github.com/githubtraining/reviewing-pull-requests
+[github-importer]: https://import2.github.com/
 [importer]: https://github.com/new/import
 [jekyll-collection]: https://jekyllrb.com/docs/collections/
 [jekyll-install]: https://jekyllrb.com/docs/installation/
