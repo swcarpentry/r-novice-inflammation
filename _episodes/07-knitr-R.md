@@ -33,7 +33,7 @@ install.packages("knitr")
 ~~~
 {: .language-r}
 
-When you click on File -> New File, there is an option for "R Markdown...". Choose this and accept the default options in the dialog box that follows (but note that you can also create presentations this way). Save the file and click on the "Knit HTML" button at the top of the script. Compare the output to the source.
+To create a new `knitr` document in RStudio, click on File -> New File, and then select "R Markdown..." from the dropdown list. Accept the default options in the dialog box that follows (but note the other document formats to choose from, including presentations). Save the file and click on the dropdown arrow next to the "Knit" button at the top of the script window. This will bring up another dropdown menu, this time with a number of options for controlling `knitr` output. Select the "Knit to HTML" option to create an HTML document based on the markdown file. Compare the output to the source.
 
 > ## Formatting Text in Markdown
 >
