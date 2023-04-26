@@ -369,7 +369,7 @@ colnames(dat)
 
 > ## Default Names
 >
-> If column names are not specified e.g. using `headers = FALSE` in a `read.csv()` function, R assigns default names `V1, V2, ..., Vn`
+> If column names are not specified e.g. using `header = FALSE` in a `read.csv()` function, R assigns default names `V1, V2, ..., Vn`
 {: .callout}
 
 We usually use the `$` operator to address a column by name
