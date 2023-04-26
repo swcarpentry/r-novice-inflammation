@@ -61,7 +61,7 @@ window and press <kbd>Esc</kbd>; this should help you out of trouble.
 ### Commenting
 
 Use `#` signs to comment. Comment liberally in your R scripts. Anything to the
-right of a `#` is ignored by R.
+right of a `#` is ignored by R. Comments remind yourself of what certain functions you write do, and it helps others understand their purpose without having to read the code. Start your comments with a `#` signs, which R takes as the sign to ignore anything to the right of it when running the code. Also remember that expressive naming of functions, arguments and variables, as well as [`#'`-prefixed roxygen documentation]({{ page.root }}/08-making-packages-R/#making-your-first-r-package), document your code. Consider free-form, #-comments as a last resort.
 
 ### Assignment Operator
 

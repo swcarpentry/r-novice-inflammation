@@ -162,6 +162,7 @@ Overall, your package directory should look something like this:
 
 <img src="../fig/R-package-structure.svg" alt="tempConvert directory containing 4 items: Namespace file, Description file, man directory with documentation in .Rd files, R directory with functions in .R files" width="500" />
 
+In the diagram above, your package is a folder (the same as it would exist on your computer!). This folder contains several files and sub-folders. For example, the folder 'R' contains all of the R scripts you just wrote above.
 Now, let's load the package and take a look at the documentation.
 
 
