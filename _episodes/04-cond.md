@@ -159,34 +159,6 @@ Only one or the other is ever executed:
 
 In the example above, the test `num > 100` returns the value `FALSE`, which is why the code inside the `if` block was skipped and the code inside the `else` statement was run instead.
 
-
-~~~
-num > 100
-~~~
-{: .language-r}
-
-
-
-~~~
-[1] FALSE
-~~~
-{: .output}
-
-And as you likely guessed, the opposite of `FALSE` is `TRUE`.
-
-
-~~~
-num < 100
-~~~
-{: .language-r}
-
-
-
-~~~
-[1] TRUE
-~~~
-{: .output}
-
 Conditional statements don't have to include an `else`.
 If there isn't one, R simply does nothing if the test is false:
 
