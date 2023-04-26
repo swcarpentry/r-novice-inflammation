@@ -135,7 +135,7 @@ Place each function into a separate R script and add documentation like this:
 #' @return The temperature in Celsius.
 #' @export
 #' @examples
-#' fahrenheit_to_kelvin(32)
+#' fahrenheit_to_celsius(32)
 
 fahrenheit_to_celsius <- function(temp_F) {
   temp_C <- (temp_F - 32) * 5 / 9
