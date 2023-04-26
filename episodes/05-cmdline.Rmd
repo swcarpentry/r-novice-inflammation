@@ -116,7 +116,7 @@ From the R help file:
 Thus running a file with Rscript is an easier way to run the following:
 
 ```{r engine='bash'}
-R --slave --no-restore --file=print-args.R --args
+R --no-echo --no-restore --file=print-args.R --args
 ```
 
 If we run it with a few arguments, however:
