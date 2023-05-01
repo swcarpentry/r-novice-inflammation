@@ -1,28 +1,31 @@
 ---
-title: "Loops in R"
+title: Loops in R
 teaching: 30
 exercises: 0
-questions:
-- "How can I do the same thing multiple times more efficiently in R?"
-- "What is vectorization?"
-- "Should I use a loop or an `apply` statement?"
-objectives:
-- "Compare loops and vectorized operations."
-- "Use the apply family of functions."
-keypoints:
-- "Where possible, use vectorized operations instead of `for` loops to make code faster and more concise."
-- "Use functions such as `apply` instead of `for` loops to operate on the values in a data structure."
 source: Rmd
 ---
 
-```{r, include = FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("15-supp-loops-in-depth-")
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Compare loops and vectorized operations.
+- Use the apply family of functions.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- How can I do the same thing multiple times more efficiently in R?
+- What is vectorization?
+- Should I use a loop or an `apply` statement?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+```{r, include=FALSE}
 ```
 
 In R you have multiple options when repeating calculations: vectorized operations, `for` loops, and `apply` functions.
 
-This lesson is an extension of [Analyzing Multiple Data Sets]({{ page.root }}/03-loops-R/).
+This lesson is an extension of [Analyzing Multiple Data Sets](03-loops-R.Rmd).
 In that lesson, we introduced how to run a custom function, `analyze`, over multiple data files:
 
 ```{r analyze-function}
@@ -43,7 +46,7 @@ analyze <- function(filename) {
 filenames <- list.files(path = "data", pattern = "inflammation-[0-9]{2}.csv", full.names = TRUE)
 ```
 
-### Vectorized Operations
+## Vectorized Operations
 
 A key difference between R and many other languages is a topic known as vectorization.
 When you wrote the `total` function, we mentioned that R already has `sum` to do this; `sum` is *much* faster than the interpreted `for` loop because `sum` is coded in C to work with a vector of numbers.
@@ -61,7 +64,6 @@ You could loop over the pairs adding each in turn, but that would be very ineffi
 
 Instead of using `i in a` to make our loop variable, we use the function `seq_along` to generate indices for each element `a` contains.
 
-
 ```{r}
 res <- numeric(length = length(a))
 for (i in seq_along(a)) {
@@ -77,7 +79,7 @@ res2 <- a + b
 all.equal(res, res2)
 ```
 
-### Vector Recycling
+## Vector Recycling
 
 When performing vector operations in R, it is important to know about recycling. If you perform an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector.  For example:
 
@@ -105,17 +107,17 @@ b <- 1:7
 a + b
 ```
 
-### `for` or `apply`?
+## `for` or `apply`?
 
 A `for` loop is used to apply the same function calls to a collection of objects.
 R has a family of functions, the `apply` family, which can be used in much the same way.
-You've already used one of the family, `apply` in the first [lesson]({{ page.root }}/01-starting-with-data/).
+You've already used one of the family, `apply` in the first [lesson](01-starting-with-data.Rmd).
 The `apply` family members include
 
- * `apply`  - apply over the margins of an array (e.g. the rows or columns of a matrix)
- * `lapply` - apply over an object and return list
- * `sapply` - apply over an object and return a simplified object (an array) if possible
- * `vapply` - similar to `sapply` but you specify the type of object returned by the iterations
+- `apply`  - apply over the margins of an array (e.g. the rows or columns of a matrix)
+- `lapply` - apply over an object and return list
+- `sapply` - apply over an object and return a simplified object (an array) if possible
+- `vapply` - similar to `sapply` but you specify the type of object returned by the iterations
 
 Each of these has an argument `FUN` which takes a function to apply to each element of the object.
 Instead of looping over `filenames` and calling `analyze`, as you did earlier, you could `sapply` over `filenames` with `FUN = analyze`:
@@ -128,13 +130,13 @@ Deciding whether to use `for` or one of the `apply` family is really personal pr
 Using an `apply` family function forces to you encapsulate your operations as a function rather than separate calls with `for`.
 `for` loops are often more natural in some circumstances; for several related operations, a `for` loop will avoid you having to pass in a lot of extra arguments to your function.
 
-### Loops in R Are Slow
+## Loops in R Are Slow
 
 No, they are not! *If* you follow some golden rules:
 
- 1. Don't use a loop when a vectorized alternative exists
- 2. Don't grow objects (via `c`, `cbind`, etc) during the loop - R has to create a new object and copy across the information just to add a new element or row/column
- 3. Allocate an object to hold the results and fill it in during the loop
+1. Don't use a loop when a vectorized alternative exists
+2. Don't grow objects (via `c`, `cbind`, etc) during the loop - R has to create a new object and copy across the information just to add a new element or row/column
+3. Allocate an object to hold the results and fill it in during the loop
 
 As an example, we'll create a new version of `analyze` that will return the mean inflammation per day (column) of each file.
 
@@ -183,4 +185,13 @@ If we were doing this over more files or the data objects we were growing were l
 Note that `apply` handles these memory allocation issues for you, but then you have to write the loop part as a function to pass to `apply`.
 At its heart, `apply` is just a `for` loop with extra convenience.
 
-{% include links.md %}
+
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- Where possible, use vectorized operations instead of `for` loops to make code faster and more concise.
+- Use functions such as `apply` instead of `for` loops to operate on the values in a data structure.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+

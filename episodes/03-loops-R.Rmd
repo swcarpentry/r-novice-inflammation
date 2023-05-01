@@ -1,33 +1,34 @@
 ---
-title: "Analyzing Multiple Data Sets"
+title: Analyzing Multiple Data Sets
 teaching: 30
 exercises: 0
-questions:
-- "How can I do the same thing to multiple data sets?"
-- "How do I write a `for` loop?"
-objectives:
-- "Explain what a `for` loop does."
-- "Correctly write `for` loops to repeat simple calculations."
-- "Trace changes to a loop variable as the loop runs."
-- "Trace changes to other variables as they are updated by a `for` loop."
-- "Use a function to get a list of filenames that match a simple pattern."
-- "Use a `for` loop to process multiple files."
-keypoints:
-- "Use `for (variable in collection)` to process the elements of a collection one at a time."
-- "The body of a `for` loop is surrounded by curly braces (`{}`)."
-- "Use `length(thing)` to determine the length of something that contains other values."
-- "Use `list.files(path = \"path\", pattern = \"pattern\", full.names = TRUE)` to create a list of files whose names match a pattern."
 source: Rmd
 ---
 
-```{r, include = FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("03-loops-R-")
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Explain what a `for` loop does.
+- Correctly write `for` loops to repeat simple calculations.
+- Trace changes to a loop variable as the loop runs.
+- Trace changes to other variables as they are updated by a `for` loop.
+- Use a function to get a list of filenames that match a simple pattern.
+- Use a `for` loop to process multiple files.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- How can I do the same thing to multiple data sets?
+- How do I write a `for` loop?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+```{r, include=FALSE}
 ```
 
 We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
 
-```{r inflammation-01, fig.alt = c("Scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset.", "A scatterplot of maximum daily inflammation over 40 days, increasing in a straight line until day 20, and then decreasing in a straight line to visualize inflammation levels in a single dataset.", "A scatterplot of minimum daily inflammation over 40 days, increasing in a step-wise pattern until day 20, and then decreasing in a step-wise pattern to visualize inflammation levels in a single dataset.") }
+```{r inflammation-01, fig.alt=c("Scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset.", "A scatterplot of maximum daily inflammation over 40 days, increasing in a straight line until day 20, and then decreasing in a straight line to visualize inflammation levels in a single dataset.", "A scatterplot of minimum daily inflammation over 40 days, increasing in a step-wise pattern until day 20, and then decreasing in a step-wise pattern to visualize inflammation levels in a single dataset.")}
 analyze <- function(filename) {
   # Plots the average, min, and max inflammation over time.
   # Input is character string of a csv file.
@@ -45,7 +46,7 @@ analyze("data/inflammation-01.csv")
 
 We can use it to analyze other data sets one by one:
 
-```{r inflammation-02, fig.alt = "A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset."}
+```{r inflammation-02, fig.alt="A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset."}
 analyze("data/inflammation-02.csv")
 ```
 
@@ -74,23 +75,25 @@ print_words(best_practice)
 
 but that's a bad approach for two reasons:
 
- 1. It doesn't scale: if we want to print the elements in a vector that's hundreds long, we'd be better off just typing them in.
+1. It doesn't scale: if we want to print the elements in a vector that's hundreds long, we'd be better off just typing them in.
 
- 2. It's fragile: if we give it a longer vector, it only prints part of the data, and if we give it a shorter input, it returns `NA` values because we're asking for elements that don't exist!
+2. It's fragile: if we give it a longer vector, it only prints part of the data, and if we give it a shorter input, it returns `NA` values because we're asking for elements that don't exist!
 
 ```{r}
 best_practice[-6]
 print_words(best_practice[-6])
 ```
 
-> ## Not Available
->
-> R has has a special variable, `NA`, for designating missing values that are
-> **N**ot **A**vailable in a data set. See `?NA` and [An Introduction to R][na]
-> for more details.
-{: .callout}
+:::::::::::::::::::::::::::::::::::::::::  callout
 
-[na]: https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values
+## Not Available
+
+R has has a special variable, `NA`, for designating missing values that are
+**N**ot **A**vailable in a data set. See `?NA` and [An Introduction to R][na]
+for more details.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Here's a better approach:
 
@@ -110,7 +113,7 @@ This is shorter - certainly shorter than something that prints every character i
 print_words(best_practice[-6])
 ```
 
-The improved version of `print_words` uses a [for loop]({{ page.root }}/reference.html#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
+The improved version of `print_words` uses a [for loop](../learners/reference.md#for-loop) to repeat an operation---in this case, printing---once for each thing in a collection.
 The general form of a loop is:
 
 ```{r, eval=FALSE}
@@ -119,13 +122,11 @@ for (variable in collection) {
 }
 ```
 
-We can name the [loop variable]({{ page.root }}/reference.html#loop-variable) anything we like (with a few [restrictions][], e.g. the name of the variable cannot start with a digit).
+We can name the [loop variable](../learners/reference.md#loop-variable) anything we like (with a few [restrictions], e.g. the name of the variable cannot start with a digit).
 `in` is part of the `for` syntax.
 Note that the condition (`variable in collection`) is enclosed in parentheses,
 and the body of the loop is enclosed in curly braces `{ }`.
 For a single-line loop body, as here, the braces aren't needed, but it is good practice to include them as we did.
-
-[restrictions]: https://cran.r-project.org/doc/manuals/R-intro.html#R-commands_003b-case-sensitivity-etc
 
 Here's another loop that repeatedly updates a variable:
 
@@ -164,110 +165,127 @@ Note also that finding the length of a vector is such a common operation that R 
 length(vowels)
 ```
 
-`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson]({{ page.root }}/13-supp-data-structures/) to learn more about the different ways to store data in R).
+`length` is much faster than any R function we could write ourselves, and much easier to read than a two-line loop; it will also give us the length of many other things that we haven't met yet, so we should always use it when we can (see this [lesson](13-supp-data-structures.Rmd) to learn more about the different ways to store data in R).
 
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-> ## Printing Numbers
->
-> R has a built-in function called `seq` that creates a list of numbers:
->
-> ```{r}
-> seq(3)
-> ```
->
-> Using `seq`, write a function that prints the first **N** natural numbers, one per line:
->
-> ```{r, echo=-1}
-> print_N <- function(N) {
->   nseq <- seq(N)
->   for (num in nseq) {
->     print(num)
->   }
-> }
-> print_N(3)
-> ```
->
-> > ## Solution
-> > ~~~
-> > print_N <- function(N) {
-> >   nseq <- seq(N)
-> >   for (num in nseq) {
-> >     print(num)
-> >   }
-> > }
-> > ~~~
-> > {: .language-r}
-> {: .solution}
-{: .challenge}
+## Printing Numbers
 
-> ## Summing Values
->
-> Write a function called `total` that calculates the sum of the values in a vector.
-> (R has a built-in function called `sum` that does this for you.
-> Please don't use it for this exercise.)
->
-> ```{r, echo=-1}
-> total <- function(vec) {
->   # calculates the sum of the values in a vector
->   vec_sum <- 0
->   for (num in vec) {
->     vec_sum <- vec_sum + num
->   }
->   return(vec_sum)
-> }
-> ex_vec <- c(4, 8, 15, 16, 23, 42)
-> total(ex_vec)
-> ```
->
-> > ## Solution
-> > ~~~
-> > total <- function(vec) {
-> >   # calculates the sum of the values in a vector
-> >   vec_sum <- 0
-> >   for (num in vec) {
-> >     vec_sum <- vec_sum + num
-> >   }
-> >   return(vec_sum)
-> > }
-> > ~~~
-> > {: .language-r}
-> {: .solution}
-{: .challenge}
+R has a built-in function called `seq` that creates a list of numbers:
 
-> ## Exponentiation
->
-> Exponentiation is built into R:
->
-> ```{r}
-> 2^4
-> ```
->
-> Write a function called `expo` that uses a loop to calculate the same result.
->
-> ```{r, echo=-1}
-> expo <- function(base, power) {
->   result <- 1
->   for (i in seq(power)) {
->     result <- result * base
->   }
->   return(result)
-> }
-> expo(2, 4)
-> ```
->
-> > ## Solution
-> > ~~~
-> > expo <- function(base, power) {
-> >   result <- 1
-> >   for (i in seq(power)) {
-> >     result <- result * base
-> >   }
-> >   return(result)
-> > }
-> > ~~~
-> > {: .language-r}
-> {: .solution}
-{: .challenge}
+```{r}
+seq(3)
+```
+
+Using `seq`, write a function that prints the first **N** natural numbers, one per line:
+
+```{r, echo=-1}
+print_N <- function(N) {
+  nseq <- seq(N)
+  for (num in nseq) {
+    print(num)
+  }
+}
+print_N(3)
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+```r
+print_N <- function(N) {
+  nseq <- seq(N)
+  for (num in nseq) {
+    print(num)
+  }
+}
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Summing Values
+
+Write a function called `total` that calculates the sum of the values in a vector.
+(R has a built-in function called `sum` that does this for you.
+Please don't use it for this exercise.)
+
+```{r, echo=-1}
+total <- function(vec) {
+  # calculates the sum of the values in a vector
+  vec_sum <- 0
+  for (num in vec) {
+    vec_sum <- vec_sum + num
+  }
+  return(vec_sum)
+}
+ex_vec <- c(4, 8, 15, 16, 23, 42)
+total(ex_vec)
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+```r
+total <- function(vec) {
+  # calculates the sum of the values in a vector
+  vec_sum <- 0
+  for (num in vec) {
+    vec_sum <- vec_sum + num
+  }
+  return(vec_sum)
+}
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exponentiation
+
+Exponentiation is built into R:
+
+```{r}
+2^4
+```
+
+Write a function called `expo` that uses a loop to calculate the same result.
+
+```{r, echo=-1}
+expo <- function(base, power) {
+  result <- 1
+  for (i in seq(power)) {
+    result <- result * base
+  }
+  return(result)
+}
+expo(2, 4)
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+```r
+expo <- function(base, power) {
+  result <- 1
+  for (i in seq(power)) {
+    result <- result * base
+  }
+  return(result)
+}
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Processing Multiple Files
 
@@ -278,7 +296,7 @@ We do not need to write it ourselves because R already has a function to do this
 If we run the function without any arguments, `list.files()`, it returns every file in the current working directory.
 We can understand this result by reading the help file (`?list.files`).
 The first argument, `path`, is the path to the directory to be searched, and it has the default value of `"."`
-(recall from the [lesson]({{ site.swc_pages }}/shell-novice/02-filedir/) on the Unix Shell that `"."` is shorthand for the current working directory).
+(recall from the [lesson](https://swcarpentry.github.io/shell-novice/02-filedir/) on the Unix Shell that `"."` is shorthand for the current working directory).
 The second argument, `pattern`, is the pattern being searched, and it has the default value of `NULL`.
 Since no pattern is specified to filter the files, all files are returned.
 
@@ -289,18 +307,19 @@ list.files(path = "data", pattern = "csv")
 list.files(path = "data", pattern = "inflammation")
 ```
 
-> ## Organizing Larger Projects
->
-> For larger projects, it is recommended to organize separate parts of the
-> analysis into multiple subdirectories, e.g. one subdirectory for the raw data,
-> one for the code, and one for the results like figures. We have done that here
-> to some extent, putting all of our data files into the subdirectory "data".
-> For more advice on this topic, you can read [A quick guide to organizing
-> computational biology projects][Noble2009] by William Stafford Noble.
-{: .callout}
+:::::::::::::::::::::::::::::::::::::::::  callout
 
-[Noble2009]: http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
+## Organizing Larger Projects
 
+For larger projects, it is recommended to organize separate parts of the
+analysis into multiple subdirectories, e.g. one subdirectory for the raw data,
+one for the code, and one for the results like figures. We have done that here
+to some extent, putting all of our data files into the subdirectory "data".
+For more advice on this topic, you can read [A quick guide to organizing
+computational biology projects][Noble2009] by William Stafford Noble.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 As these examples show, `list.files` result is a vector of strings, which means we can loop over it to do something with each filename in turn.
 In our case, the "something" we want is our `analyze` function.
@@ -314,11 +333,9 @@ list.files(path = "data", pattern = "csv", full.names = TRUE)
 list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 ```
 
-
 Let's test out running our `analyze` function by using it on the first three files in the vector returned by `list.files`:
 
-
-```{r loop-analyze, fig=FALSE, fig.alt = "Scatterplot of average daily inflammation showing a ramp with a peak at 20 days."}
+```{r loop-analyze, fig=FALSE, fig.alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days."}
 filenames <- list.files(path = "data",  
                         # Now follows a regular expression that matches:
                         pattern = "inflammation-[0-9]{2}.csv",
@@ -335,36 +352,62 @@ for (f in filenames) {
 
 Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.
 
-> ## Other Ways to Do It
->
-> In this lesson we saw how to use a simple `for` loop to repeat an operation.
-> As you progress with R, you will learn that there are multiple ways to
-> accomplish this. Sometimes the choice of one method over another is more a
-> matter of personal style, but other times it can have consequences for the
-> speed of your code. For instruction on best practices, see this supplementary
-> [lesson]({{ page.root }}/15-supp-loops-in-depth/) that demonstrates how to properly repeat
-> operations in R.
-{: .callout}
+:::::::::::::::::::::::::::::::::::::::::  callout
 
-> ## Using Loops to Analyze Multiple Files
->
-> Write a function called `analyze_all` that takes a folder path and 
-> a filename pattern as its arguments
-> and runs `analyze` for each file whose name matches the pattern.
->
-> > ## Solution
-> > ~~~
-> > analyze_all <- function(folder = "data", pattern) {
-> >   # Runs the function analyze for each file in the given folder
-> >   # that contains the given pattern.
-> >   filenames <- list.files(path = folder, pattern = pattern, full.names = TRUE)
-> >   for (f in filenames) {
-> >     analyze(f)
-> >   }
-> > }
-> > ~~~
-> > {: .language-r}
-> {: .solution}
-{: .challenge}
+## Other Ways to Do It
 
-{% include links.md %}
+In this lesson we saw how to use a simple `for` loop to repeat an operation.
+As you progress with R, you will learn that there are multiple ways to
+accomplish this. Sometimes the choice of one method over another is more a
+matter of personal style, but other times it can have consequences for the
+speed of your code. For instruction on best practices, see this supplementary
+[lesson](15-supp-loops-in-depth.Rmd) that demonstrates how to properly repeat
+operations in R.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Using Loops to Analyze Multiple Files
+
+Write a function called `analyze_all` that takes a folder path and
+a filename pattern as its arguments
+and runs `analyze` for each file whose name matches the pattern.
+
+:::::::::::::::  solution
+
+## Solution
+
+```r
+analyze_all <- function(folder = "data", pattern) {
+  # Runs the function analyze for each file in the given folder
+  # that contains the given pattern.
+  filenames <- list.files(path = folder, pattern = pattern, full.names = TRUE)
+  for (f in filenames) {
+    analyze(f)
+  }
+}
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+[na]: https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Missing-values
+[restrictions]: https://cran.r-project.org/doc/manuals/R-intro.html#R-commands_003b-case-sensitivity-etc
+[Noble2009]: https://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
+
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- Use `for (variable in collection)` to process the elements of a collection one at a time.
+- The body of a `for` loop is surrounded by curly braces (`{}`).
+- Use `length(thing)` to determine the length of something that contains other values.
+- Use `list.files(path = "path", pattern = "pattern", full.names = TRUE)` to create a list of files whose names match a pattern.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+

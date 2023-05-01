@@ -1,32 +1,29 @@
 ---
-title: "Creating Functions"
+title: Creating Functions
 teaching: 30
 exercises: 0
-questions:
-- "How do I make a function?"
-- "How can I test my functions?"
-- "How should I document my code?"
-objectives:
-- "Define a function that takes arguments."
-- "Return a value from a function."
-- "Test a function."
-- "Set default values for function arguments."
-- "Explain why we should divide programs into small, single-purpose functions."
-keypoints:
-- "Define a function using `name <- function(...args...) {...body...}`."
-- "Call a function using `name(...values...)`."
-- "R looks for variables in the current stack frame before looking for them at the top level."
-- "Use `help(thing)` to view help for something."
-- "Put comments at the beginning of functions to provide help for that function."
-- "Annotate your code!"
-- "Specify default values for arguments when defining a function using `name = value` in the argument list."
-- "Arguments can be passed by matching based on name, by position, or by omitting them (in which case the default value is used)."
 source: Rmd
 ---
 
-```{r, include = FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("02-func-R-")
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Define a function that takes arguments.
+- Return a value from a function.
+- Test a function.
+- Set default values for function arguments.
+- Explain why we should divide programs into small, single-purpose functions.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- How do I make a function?
+- How can I test my functions?
+- How should I document my code?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+```{r, include=FALSE}
 ```
 
 If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics.
@@ -35,9 +32,9 @@ In this lesson, we'll learn how to write a function so that we can repeat severa
 
 ### Defining a Function
 
-You can write your own functions in order to make repetitive operations using a single command. Let's start by defining your function "my_function" and the input parameter(s) that the user will feed to the function. Afterwards you will define the operation that you desire to program in the body of the function within curly braces ({}). Finally, you need to assign the result (or output) of your function in the return statement.
+You can write your own functions in order to make repetitive operations using a single command. Let's start by defining your function "my\_function" and the input parameter(s) that the user will feed to the function. Afterwards you will define the operation that you desire to program in the body of the function within curly braces ({}). Finally, you need to assign the result (or output) of your function in the return statement.
 
-```{r, include = FALSE}
+```{r, include=FALSE}
 my_function <- function(input) {
 # perform action and produce output
 return(output) # return output value
@@ -55,19 +52,23 @@ fahrenheit_to_celsius <- function(temp_F) {
 
 We define `fahrenheit_to_celsius` by assigning it to the output of `function`.
 The list of argument names are contained within parentheses.
-Next, the [body]({{ page.root }}/reference.html#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
+Next, the [body](../learners/reference.md#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
 The statements in the body are indented by two spaces, which makes the code easier to read but does not affect how the code operates.
 
 When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
-Inside the function, we use a [return statement]({{ page.root }}/reference.html#return-statement) to send a result back to whoever asked for it.
+Inside the function, we use a [return statement](../learners/reference.md#return-statement) to send a result back to whoever asked for it.
 
-> ## Automatic Returns
->
-> In R, it is not necessary to include the return statement.
-> R automatically returns whichever variable is on the last line of the body
-> of the function. While in the learning phase, we will explicitly define the
-> return statement.
-{: .callout}
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Automatic Returns
+
+In R, it is not necessary to include the return statement.
+R automatically returns whichever variable is on the last line of the body
+of the function. While in the learning phase, we will explicitly define the
+return statement.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Let's try running our function.
 Calling our own function is no different from calling any other function:
@@ -97,7 +98,7 @@ celsius_to_kelvin(0)
 
 What about converting Fahrenheit to Kelvin?
 We could write out the formula, but we don't need to.
-Instead, we can [compose]({{ page.root }}/reference.html#function-composition) the two functions we have already created:
+Instead, we can [compose](../learners/reference.md#function-composition) the two functions we have already created:
 
 ```{r}
 fahrenheit_to_kelvin <- function(temp_F) {
@@ -114,124 +115,147 @@ This is our first taste of how larger programs are built: we define basic
 operations, then combine them in ever-larger chunks to get the effect we want.
 Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
 
-> ## Nesting Function Calls
->
-> This example showed the output of `fahrenheit_to_celsius` assigned to `temp_C`, which
-> is then passed to `celsius_to_kelvin` to get the final result. It is also possible
-> to perform this calculation in one line of code, by "nesting" one function call
-> inside another, like so:
->
-> ```{r chained-example}
-> # freezing point of water in Fahrenheit
-> celsius_to_kelvin(fahrenheit_to_celsius(32.0))
-> ```
-> Here, we call `fahrenheit_to_celsius` to convert `32.0` from Fahrenheit to 
-> Celsius, and immediately pass the value returned from `fahrenheit_to_celsius`
-> to `celsius_to_kelvin` to convert from Celsius to Kelvin. Our conversion
-> from Fahrenheit to Kelvin is done, all in one go!
-> 
-> This is convenient, but you should be careful not to nest too many function
-> calls at once - it can become confusing and difficult to read!
-{: .callout}
+:::::::::::::::::::::::::::::::::::::::::  callout
 
-> ## Create a Function
->
-> In the last lesson, we learned to **c**ombine elements into a vector using the `c` function,
-> e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
-> Furthermore, we can extend that vector again using `c`, e.g. `y <- c(x, "D")` creates a vector `y` with four elements.
-> Write a function called `highlight` that takes two vectors as arguments, called
-> `content` and `wrapper`, and returns a new vector that has the wrapper vector
-> at the beginning and end of the content:
->
-> ```{r, echo=-1}
-> highlight <- function(content, wrapper) {
->    answer <- c(wrapper, content, wrapper)
->    return(answer)
-> }
-> best_practice <- c("Write", "programs", "for", "people", "not", "computers")
-> asterisk <- "***"  # R interprets a variable with a single value as a vector
->                    # with one element.
-> highlight(best_practice, asterisk)
-> ```
->
-> > ## Solution
-> > ~~~
-> > highlight <- function(content, wrapper) {
-> >   answer <- c(wrapper, content, wrapper)
-> >   return(answer)
-> > }
-> > ~~~
-> > {: .language-r}
-> {: .solution}
->
-> If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
-> Write a function called `edges` that returns a vector made up of just the first and last elements of its input:
->
-> ```{r, echo=-1}
-> edges <- function(v) {
->    first <- v[1]
->    last <- v[length(v)]
->    answer <- c(first, last)
->    return(answer)
-> }
-> dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
-> edges(dry_principle)
-> ```
->
-> > ## Solution
-> > ~~~
-> > edges <- function(v) {
-> >    first <- v[1]
-> >    last <- v[length(v)]
-> >    answer <- c(first, last)
-> >    return(answer)
-> > }
-> > ~~~
-> > {: .language-r}
-> {: .solution}
-{: .challenge}
+## Nesting Function Calls
 
-> ## The Call Stack
->
-> For a deeper understanding of how functions work,
-> you'll need to learn how they create their own environments and call other functions.
-> Function calls are managed via the call stack.
-> For more details on the call stack,
-> have a look at the [supplementary material]({{ page.root }}/14-supp-call-stack/).
-{: .callout}
+This example showed the output of `fahrenheit_to_celsius` assigned to `temp_C`, which
+is then passed to `celsius_to_kelvin` to get the final result. It is also possible
+to perform this calculation in one line of code, by "nesting" one function call
+inside another, like so:
 
-> ## Named Variables and the Scope of Variables
->
-> Functions can accept arguments explicitly assigned to a variable name in
-> the function call `functionName(variable = value)`, as well as arguments by
-> order:
->
-> ```{r}
-> input_1 <- 20
-> mySum <- function(input_1, input_2 = 10) {
->   output <- input_1 + input_2
->   return(output)
-> }
-> ```
->
-> 1.  Given the above code was run, which value does `mySum(input_1 = 1, 3)` produce?
->     1. 4
->     2. 11
->     3. 23
->     4. 30
-> 2.  If `mySum(3)` returns 13, why does `mySum(input_2 = 3)` return an error?
->
-> > ## Solution
-> > 1. The solution is `1.`.
-> > 
-> > 2. Read the error message: `argument "input_1" is missing, with no default`
-> > means that no value for `input_1` is provided in the function call, 
-> > and neither in the function's defintion. Thus, the addition in the
-> > function body can not be completed.
-> > 
-> {: .solution}
-{: .challenge}
+```{r chained-example}
+# freezing point of water in Fahrenheit
+celsius_to_kelvin(fahrenheit_to_celsius(32.0))
+```
 
+Here, we call `fahrenheit_to_celsius` to convert `32.0` from Fahrenheit to
+Celsius, and immediately pass the value returned from `fahrenheit_to_celsius`
+to `celsius_to_kelvin` to convert from Celsius to Kelvin. Our conversion
+from Fahrenheit to Kelvin is done, all in one go!
+
+This is convenient, but you should be careful not to nest too many function
+calls at once - it can become confusing and difficult to read!
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Create a Function
+
+In the last lesson, we learned to **c**ombine elements into a vector using the `c` function,
+e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
+Furthermore, we can extend that vector again using `c`, e.g. `y <- c(x, "D")` creates a vector `y` with four elements.
+Write a function called `highlight` that takes two vectors as arguments, called
+`content` and `wrapper`, and returns a new vector that has the wrapper vector
+at the beginning and end of the content:
+
+```{r, echo=-1}
+highlight <- function(content, wrapper) {
+   answer <- c(wrapper, content, wrapper)
+   return(answer)
+}
+best_practice <- c("Write", "programs", "for", "people", "not", "computers")
+asterisk <- "***"  # R interprets a variable with a single value as a vector
+                   # with one element.
+highlight(best_practice, asterisk)
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+```r
+highlight <- function(content, wrapper) {
+  answer <- c(wrapper, content, wrapper)
+  return(answer)
+}
+```
+
+:::::::::::::::::::::::::
+
+If the variable `v` refers to a vector, then `v[1]` is the vector's first element and `v[length(v)]` is its last (the function `length` returns the number of elements in a vector).
+Write a function called `edges` that returns a vector made up of just the first and last elements of its input:
+
+```{r, echo=-1}
+edges <- function(v) {
+   first <- v[1]
+   last <- v[length(v)]
+   answer <- c(first, last)
+   return(answer)
+}
+dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
+edges(dry_principle)
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+```r
+edges <- function(v) {
+   first <- v[1]
+   last <- v[length(v)]
+   answer <- c(first, last)
+   return(answer)
+}
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## The Call Stack
+
+For a deeper understanding of how functions work,
+you'll need to learn how they create their own environments and call other functions.
+Function calls are managed via the call stack.
+For more details on the call stack,
+have a look at the [supplementary material](14-supp-call-stack.Rmd).
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Named Variables and the Scope of Variables
+
+Functions can accept arguments explicitly assigned to a variable name in
+the function call `functionName(variable = value)`, as well as arguments by
+order:
+
+```{r}
+input_1 <- 20
+mySum <- function(input_1, input_2 = 10) {
+  output <- input_1 + input_2
+  return(output)
+}
+```
+
+1. Given the above code was run, which value does `mySum(input_1 = 1, 3)` produce?
+  1. 4
+  2. 11
+  3. 23
+  4. 30
+2. If `mySum(3)` returns 13, why does `mySum(input_2 = 3)` return an error?
+
+:::::::::::::::  solution
+
+## Solution
+
+1. The solution is `1.`.
+
+2. Read the error message: `argument "input_1" is missing, with no default`
+  means that no value for `input_1` is provided in the function call,
+  and neither in the function's defintion. Thus, the addition in the
+  function body can not be completed.
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Testing, Error Handling, and Documenting
 
@@ -250,7 +274,7 @@ We could test this on our actual data, but since we don't know what the values o
 Instead, let's create a vector of 0s and then center that around 3.
 This will make it simple to see if our function is working as expected:
 
-```{r, }
+```{r}
 z <- c(0, 0, 0, 0)
 z
 center(z, 3)
@@ -299,8 +323,7 @@ all.equal(sd(dat[, 4]), sd(centered))
 ```
 
 It's still possible that our function is wrong, but it seems unlikely enough that we should probably get back to doing our analysis.
-However, there are two other important tasks to consider: 1) we should ensure our function can provide informative errors when needed, and 2) we should write some [documentation]({{ page.root }}/reference.html#documentation) for our function to remind ourselves later what it's for and how to use it.
-
+However, there are two other important tasks to consider: 1) we should ensure our function can provide informative errors when needed, and 2) we should write some [documentation](../learners/reference.md#documentation) for our function to remind ourselves later what it's for and how to use it.
 
 #### Error Handling
 
@@ -316,7 +339,8 @@ center(datNA[,4], 0)
 
 ```
 
-This is likely not the behavior we want, and is caused by the `mean` function returning NA when the `na.rm=TRUE` is not provided. We may wish to not consider NA values in our `center` function. We can provide the `na.rm=TRUE` argument and solve this issue. 
+This is likely not the behavior we want, and is caused by the `mean` function returning NA when the `na.rm=TRUE` is not provided. We may wish to not consider NA values in our `center` function. We can provide the `na.rm=TRUE` argument and solve this issue.
+
 ```{r}
 center <- function(data, midpoint) {
   new_data <- (data - mean(data, na.rm=TRUE)) + midpoint
@@ -327,7 +351,6 @@ center(datNA[,4], 0)
 ```
 
 However, what happens if the user were to accidentally hand this function a `factor` or `character` vector?
-
 
 ```{r}
 
@@ -341,19 +364,11 @@ center(datNA[,2], 0)
 
 Both of these attempts result in errors. Luckily, the errors are quite informative. In other cases, we may need to add in error handling using the `warning` and `stop` functions.
 
-For instance, the `center` function only works on numeric vectors. Recognizing this and adding warnings and errors provides feedback to the user and makes sure the output of the function is what the user wanted. 
-
-
-
-
-
-
-
-
+For instance, the `center` function only works on numeric vectors. Recognizing this and adding warnings and errors provides feedback to the user and makes sure the output of the function is what the user wanted.
 
 #### Documentation
 
-A common way to put documentation in software is to add [comments]({{ page.root }}/reference.html#comment) like this:
+A common way to put documentation in software is to add [comments](../learners/reference.md#comment) like this:
 
 ```{r}
 center <- function(data, midpoint) {
@@ -365,19 +380,20 @@ center <- function(data, midpoint) {
 }
 ```
 
-> ## Writing Documentation
->
-> Formal documentation for R functions is written in separate `.Rd` using a
-> markup language similar to [LaTeX][]. You see the result of this documentation
-> when you look at the help file for a given function, e.g. `?read.csv`.
-> The [roxygen2][] package allows R coders to write documentation alongside
-> the function code and then process it into the appropriate `.Rd` files.
-> You will want to switch to this more formal method of writing documentation
-> when you start writing more complicated R projects.
-{: .callout}
+:::::::::::::::::::::::::::::::::::::::::  callout
 
-[LaTeX]: https://www.latex-project.org/
-[roxygen2]: https://cran.r-project.org/package=roxygen2/vignettes/rd.html
+## Writing Documentation
+
+Formal documentation for R functions is written in separate `.Rd` using a
+markup language similar to [LaTeX]. You see the result of this documentation
+when you look at the help file for a given function, e.g. `?read.csv`.
+The [roxygen2] package allows R coders to write documentation alongside
+the function code and then process it into the appropriate `.Rd` files.
+You will want to switch to this more formal method of writing documentation
+when you start writing more complicated R projects.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```{r challenge-more-advanced-function-analyze, eval=FALSE, include=FALSE}
 analyze <- function(filename) {
@@ -403,55 +419,65 @@ rescale <- function(v) {
 }
 ```
 
-> ## Functions to Create Graphs
->
-> Write a function called `analyze` that takes a filename as an argument
-> and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
-> `analyze("data/inflammation-01.csv")` should produce the graphs already shown,
-> while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set.
-> Be sure to document your function with comments.
->
-> > ## Solution
-> > ~~~
-> > analyze <- function(filename) {
-> >   # Plots the average, min, and max inflammation over time.
-> >   # Input is character string of a csv file.
-> >   dat <- read.csv(file = filename, header = FALSE)
-> >   avg_day_inflammation <- apply(dat, 2, mean)
-> >   plot(avg_day_inflammation)
-> >   max_day_inflammation <- apply(dat, 2, max)
-> >   plot(max_day_inflammation)
-> >   min_day_inflammation <- apply(dat, 2, min)
-> >   plot(min_day_inflammation)
-> > }
-> > ~~~
-> > {: .language-r}
-> {: .solution}
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-> ## Rescaling
->
-> Write a function `rescale` that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1.
-> (If `L` and `H` are the lowest and highest values in the original vector, then the replacement for a value `v` should be `(v-L) / (H-L)`.)
-> Be sure to document your function with comments.
->
-> Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
->
-> > ## Solution
-> > ~~~
-> > rescale <- function(v) {
-> >   # Rescales a vector, v, to lie in the range 0 to 1.
-> >   L <- min(v)
-> >   H <- max(v)
-> >   result <- (v - L) / (H - L)
-> >   return(result)
-> > }
-> > ~~~
-> > {: .language-r}
-> {: .solution}
-{: .challenge}
+## Functions to Create Graphs
 
-[01]: {{ page.root }}/01-starting-with-data/
+Write a function called `analyze` that takes a filename as an argument
+and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
+`analyze("data/inflammation-01.csv")` should produce the graphs already shown,
+while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set.
+Be sure to document your function with comments.
+
+:::::::::::::::  solution
+
+## Solution
+
+```r
+analyze <- function(filename) {
+  # Plots the average, min, and max inflammation over time.
+  # Input is character string of a csv file.
+  dat <- read.csv(file = filename, header = FALSE)
+  avg_day_inflammation <- apply(dat, 2, mean)
+  plot(avg_day_inflammation)
+  max_day_inflammation <- apply(dat, 2, max)
+  plot(max_day_inflammation)
+  min_day_inflammation <- apply(dat, 2, min)
+  plot(min_day_inflammation)
+}
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Rescaling
+
+Write a function `rescale` that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1.
+(If `L` and `H` are the lowest and highest values in the original vector, then the replacement for a value `v` should be `(v-L) / (H-L)`.)
+Be sure to document your function with comments.
+
+Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
+
+:::::::::::::::  solution
+
+## Solution
+
+```r
+rescale <- function(v) {
+  # Rescales a vector, v, to lie in the range 0 to 1.
+  L <- min(v)
+  H <- max(v)
+  result <- (v - L) / (H - L)
+  return(result)
+}
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```{r rescale-test, include=FALSE}
 answer <- rescale(dat[, 4])
@@ -473,7 +499,7 @@ dat <- read.csv("data/inflammation-01.csv", FALSE)
 
 However, the position of the arguments matters if they are not named.
 
-```{r, error = TRUE}
+```{r, error=TRUE}
 dat <- read.csv(header = FALSE, file = "data/inflammation-01.csv")
 dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
@@ -535,18 +561,22 @@ We can override this behavior by naming the value as we pass it in:
 display(c = 77)
 ```
 
-> ## Matching Arguments
->
-> To be precise, R has three ways that arguments supplied
-> by you are matched to the *formal arguments* of the function definition:
->
-> 1. by complete name,
-> 2. by partial name (matching on initial *n* characters of the argument name), and
-> 3. by position.
->
-> Arguments are matched in the manner outlined above in *that order*: by
-> complete name, then by partial matching of names, and finally by position.
-{: .callout}
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Matching Arguments
+
+To be precise, R has three ways that arguments supplied
+by you are matched to the *formal arguments* of the function definition:
+
+1. by complete name,
+2. by partial name (matching on initial *n* characters of the argument name), and
+3. by position.
+
+Arguments are matched in the manner outlined above in *that order*: by
+complete name, then by partial matching of names, and finally by position.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 With that in hand, let's look at the help for `read.csv()`:
 
@@ -564,32 +594,38 @@ read.csv(file, header = TRUE, sep = ",", quote = "\"",
 This tells us that `read.csv()` has one argument, `file`, that doesn't have a default value, and six others that do.
 Now we understand why the following gives an error:
 
-```{r, results="hide", error = TRUE}
+```{r, results="hide", error=TRUE}
 dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
 
 It fails because `FALSE` is assigned to `file` and the filename is assigned to the argument `header`.
 
-> ## A Function with Default Argument Values
->
-> Rewrite the `rescale` function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want.
-> Compare your implementation to your neighbor's:
-> Do your two implementations produce the same results when
-> both are given the same input vector and parameters?
->
-> > ## Solution
-> > ~~~
-> > rescale <- function(v, lower = 0, upper = 1) {
-> >   # Rescales a vector, v, to lie in the range lower to upper.
-> >   L <- min(v)
-> >   H <- max(v)
-> >   result <- (v - L) / (H - L) * (upper - lower) + lower
-> >   return(result)
-> > }
-> > ~~~
-> > {: .language-r}
-> {: .solution}
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## A Function with Default Argument Values
+
+Rewrite the `rescale` function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want.
+Compare your implementation to your neighbor's:
+Do your two implementations produce the same results when
+both are given the same input vector and parameters?
+
+:::::::::::::::  solution
+
+## Solution
+
+```r
+rescale <- function(v, lower = 0, upper = 1) {
+  # Rescales a vector, v, to lie in the range lower to upper.
+  L <- min(v)
+  H <- max(v)
+  result <- (v - L) / (H - L) * (upper - lower) + lower
+  return(result)
+}
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```{r, include=FALSE}
 rescale <- function(v, lower = 0, upper = 1) {
@@ -607,4 +643,24 @@ min(answer)
 max(answer)
 ```
 
-{% include links.md %}
+
+
+[LaTeX]: https://www.latex-project.org/
+[roxygen2]: https://cran.r-project.org/package=roxygen2/vignettes/rd.html
+[01]: 01-starting-with-data.Rmd
+
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- Define a function using `name <- function(...args...) {...body...}`.
+- Call a function using `name(...values...)`.
+- R looks for variables in the current stack frame before looking for them at the top level.
+- Use `help(thing)` to view help for something.
+- Put comments at the beginning of functions to provide help for that function.
+- Annotate your code!
+- Specify default values for arguments when defining a function using `name = value` in the argument list.
+- Arguments can be passed by matching based on name, by position, or by omitting them (in which case the default value is used).
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+

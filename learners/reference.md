@@ -1,5 +1,5 @@
 ---
-layout: reference
+title: 'Basic Operation'
 ---
 
 ## Basic Operation
@@ -25,7 +25,7 @@ Remove all objects from current environment
 
 - Create a conditional using `if`, `else if`, and `else`
 
-~~~
+```r
 if(x > 0){
 	print("value is positive")
 } else if (x < 0){
@@ -33,29 +33,25 @@ if(x > 0){
 } else{
 	print("value is neither positive nor negative")
 }
-~~~
-{: .language-r}
+```
 
 - create a `for` loop to process elements in a collection one at a time
 
-~~~
+```r
 for (i in 1:5) {
 	print(i)
 }
-~~~
-{: .language-r}
+```
 
 This will print:
 
-~~~
+```output
 1
 2
 3
 4
 5
-~~~
-{: .output}
-
+```
 
 - Use `==` to test for equality
   - `3 == 3`, will return `TRUE`,
@@ -67,7 +63,7 @@ This will print:
 
 - Defining a function:
 
-~~~
+```r
 is_positive <- function(integer_value){
 	if(integer_value > 0){
 	   TRUE
@@ -76,19 +72,17 @@ is_positive <- function(integer_value){
 	   FALSE
 	{
 }
-~~~
-{: .language-r}
+```
 
 In R, the last executed line of a function is automatically returned
 
 - Specifying a default value for a function argument
 
-~~~
+```r
 increment_me <- function(value_to_increment, value_to_increment_by = 1){
 	value_to_increment + value_to_increment_by
 }
-~~~
-{: .language-r}
+```
 
 `increment_me(4)`, will return 5
 
@@ -108,7 +102,7 @@ increment_me <- function(value_to_increment, value_to_increment_by = 1){
 
 ## Glossary
 
-{:auto_ids}
+{:auto\_ids}
 argument
 :   A value given to a function or program when it runs. The term is often used interchangeably
 (and inconsistently) with [parameter](#parameter).
@@ -201,3 +195,5 @@ string
 
 while loop
 :   A loop that keeps executing as long as some condition is true. See also: [for loop](#for-loop).
+
+
