@@ -1,135 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation01-starting-with-data.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/01-starting-with-data.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation02-func-R.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/02-func-R.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation03-loops-R.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/03-loops-R.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation04-cond.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/04-cond.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation05-cmdline.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/05-cmdline.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation06-best-practices-R.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/06-best-practices-R.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation07-knitr-R.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/07-knitr-R.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation08-making-packages-R.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/08-making-packages-R.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation09-supp-intro-rstudio.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/09-supp-intro-rstudio.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation10-supp-addressing-data.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/10-supp-addressing-data.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation11-supp-read-write-csv.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/11-supp-read-write-csv.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation12-supp-factors.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/12-supp-factors.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation13-supp-data-structures.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation14-supp-call-stack.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/14-supp-call-stack.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation15-supp-loops-in-depth.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/15-supp-loops-in-depth.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammation404.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/404.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationCODE_OF_CONDUCT.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationLICENSE.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationdiscuss.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/aio.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationindex.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/discuss.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/01-starting-with-data.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/images.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/02-func-R.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/index.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/03-loops-R.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/01-starting-with-data.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/04-cond.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/02-func-R.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/05-cmdline.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/03-loops-R.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/06-best-practices-R.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/04-cond.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/07-knitr-R.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/05-cmdline.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/08-making-packages-R.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/06-best-practices-R.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/09-supp-intro-rstudio.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/07-knitr-R.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/10-supp-addressing-data.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/08-making-packages-R.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/11-supp-read-write-csv.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/09-supp-intro-rstudio.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/12-supp-factors.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/10-supp-addressing-data.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/13-supp-data-structures.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/11-supp-read-write-csv.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/14-supp-call-stack.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/12-supp-factors.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/15-supp-loops-in-depth.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/13-supp-data-structures.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/404.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/14-supp-call-stack.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/CODE_OF_CONDUCT.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/15-supp-loops-in-depth.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/LICENSE.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/404.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/discuss.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/index.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/profiles.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/aio.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationinstructor/reference.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/discuss.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationprofiles.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/images.html</loc>
   </url>
   <url>
-    <loc>https://swcarpentry.github.io/r-novice-inflammationreference.html</loc>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/index.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/key-points.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/profiles.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor/reference.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/key-points.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/profiles.html</loc>
+  </url>
+  <url>
+    <loc>https://swcarpentry.github.io/r-novice-inflammation/reference.html</loc>
   </url>
 </urlset>
