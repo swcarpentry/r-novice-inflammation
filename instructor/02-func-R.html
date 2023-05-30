@@ -147,7 +147,7 @@
     <div class="accordion-header" id="flush-headingcurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Creating Functions
+        2. Creating Functions
         </span>
       
     </div><!--/div.accordion-header-->
@@ -403,12 +403,12 @@ code operates.</p>
 those variables so that we can use them inside the function. Inside the
 function, we use a <a href="reference.html#return-statement">return
 statement</a> to send a result back to whoever asked for it.</p>
-<div id="callout1" class="callout callout">
+<div id="automatic-returns" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="automatic-returns" class="callout-inner">
-<h3 class="callout-title">Automatic Returns<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Automatic Returns<a class="anchor" aria-label="anchor" href="#automatic-returns"></a>
 </h3>
 <div class="callout-content">
 <p>In R, it is not necessary to include the return statement. R
@@ -495,12 +495,12 @@ effect we want. Real-life functions will usually be larger than the ones
 shown here–typically half a dozen to a few dozen lines–but they
 shouldn’t ever be much longer than that, or the next person who reads it
 won’t be able to understand what’s going on.</p>
-<div id="callout2" class="callout callout">
+<div id="nesting-function-calls" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="nesting-function-calls" class="callout-inner">
-<h3 class="callout-title">Nesting Function Calls<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Nesting Function Calls<a class="anchor" aria-label="anchor" href="#nesting-function-calls"></a>
 </h3>
 <div class="callout-content">
 <p>This example showed the output of <code>fahrenheit_to_celsius</code>
@@ -531,12 +531,12 @@ read!</p>
 </div>
 </div>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="create-a-function" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="create-a-function" class="callout-inner">
-<h3 class="callout-title">Create a Function<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Create a Function<a class="anchor" aria-label="anchor" href="#create-a-function"></a>
 </h3>
 <div class="callout-content">
 <p>In the last lesson, we learned to <strong>c</strong>ombine elements
@@ -574,7 +574,7 @@ content:</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -589,12 +589,12 @@ content:</p>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="create-a-function" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="create-a-function" class="callout-inner">
-<h3 class="callout-title">Create a Function<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Create a Function<em> (continued)</em><a class="anchor" aria-label="anchor" href="#create-a-function"></a>
 </h3>
 <div class="callout-content">
 <p>If the variable <code>v</code> refers to a vector, then
@@ -625,7 +625,7 @@ last elements of its input:</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -642,12 +642,12 @@ last elements of its input:</p>
 </div>
 </div>
 </div>
-<div id="callout3" class="callout callout">
+<div id="the-call-stack" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="the-call-stack" class="callout-inner">
-<h3 class="callout-title">The Call Stack<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">The Call Stack<a class="anchor" aria-label="anchor" href="#the-call-stack"></a>
 </h3>
 <div class="callout-content">
 <p>For a deeper understanding of how functions work, you’ll need to
@@ -657,13 +657,13 @@ call stack, have a look at the <a href="14-supp-call-stack.html">supplementary m
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="named-variables-and-the-scope-of-variables" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="named-variables-and-the-scope-of-variables" class="callout-inner">
 <h3 class="callout-title">Named Variables and the Scope of
-Variables<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+Variables<a class="anchor" aria-label="anchor" href="#named-variables-and-the-scope-of-variables"></a>
 </h3>
 <div class="callout-content">
 <p>Functions can accept arguments explicitly assigned to a variable name
@@ -697,7 +697,7 @@ well as arguments by order:</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li><p>The solution is <code>1.</code>.</p></li>
 <li><p>Read the error message:
@@ -978,12 +978,12 @@ the user wanted.</p>
 <span>  <span class="kw">return</span><span class="op">(</span><span class="va">new_data</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre>
 </div>
-<div id="callout4" class="callout callout">
+<div id="writing-documentation" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="writing-documentation" class="callout-inner">
-<h3 class="callout-title">Writing Documentation<a class="anchor" aria-label="anchor" href="#callout4"></a>
+<h3 class="callout-title">Writing Documentation<a class="anchor" aria-label="anchor" href="#writing-documentation"></a>
 </h3>
 <div class="callout-content">
 <p>Formal documentation for R functions is written in separate
@@ -997,12 +997,12 @@ documentation when you start writing more complicated R projects.</p>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="functions-to-create-graphs" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="functions-to-create-graphs" class="callout-inner">
-<h3 class="callout-title">Functions to Create Graphs<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Functions to Create Graphs<a class="anchor" aria-label="anchor" href="#functions-to-create-graphs"></a>
 </h3>
 <div class="callout-content">
 <p>Write a function called <code>analyze</code> that takes a filename as
@@ -1023,7 +1023,7 @@ function with comments.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1045,12 +1045,12 @@ function with comments.</p>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="rescaling" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="rescaling" class="callout-inner">
-<h3 class="callout-title">Rescaling<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Rescaling<a class="anchor" aria-label="anchor" href="#rescaling"></a>
 </h3>
 <div class="callout-content">
 <p>Write a function <code>rescale</code> that takes a vector as input
@@ -1071,7 +1071,7 @@ using <code>min</code>, <code>max</code>, and <code>plot</code>.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1252,12 +1252,12 @@ We can override this behavior by naming the value as we pass it in:</p>
 <pre class="output" tabindex="0"><code> a  b  c 
  1  2 77 </code></pre>
 </div>
-<div id="callout5" class="callout callout">
+<div id="matching-arguments" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="matching-arguments" class="callout-inner">
-<h3 class="callout-title">Matching Arguments<a class="anchor" aria-label="anchor" href="#callout5"></a>
+<h3 class="callout-title">Matching Arguments<a class="anchor" aria-label="anchor" href="#matching-arguments"></a>
 </h3>
 <div class="callout-content">
 <p>To be precise, R has three ways that arguments supplied by you are
@@ -1305,12 +1305,12 @@ that do. Now we understand why the following gives an error:</p>
 </div>
 <p>It fails because <code>FALSE</code> is assigned to <code>file</code>
 and the filename is assigned to the argument <code>header</code>.</p>
-<div id="challenge6" class="callout challenge">
+<div id="a-function-with-default-argument-values" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="a-function-with-default-argument-values" class="callout-inner">
-<h3 class="callout-title">A Function with Default Argument Values<a class="anchor" aria-label="anchor" href="#challenge6"></a>
+<h3 class="callout-title">A Function with Default Argument Values<a class="anchor" aria-label="anchor" href="#a-function-with-default-argument-values"></a>
 </h3>
 <div class="callout-content">
 <p>Rewrite the <code>rescale</code> function so that it scales a vector
@@ -1328,7 +1328,7 @@ both are given the same input vector and parameters?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb76">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1404,9 +1404,9 @@ by omitting them (in which case the default value is used).</li>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1428,7 +1428,7 @@ by omitting them (in which case the default value is used).</li>
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/instructor/02-func-R.html",
   "dateCreated": "2014-12-18",
   "dateModified": "2023-05-01",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>

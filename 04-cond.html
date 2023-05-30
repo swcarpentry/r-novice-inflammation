@@ -166,7 +166,7 @@
     <div class="accordion-header" id="flush-headingcurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Making Choices
+        4. Making Choices
         </span>
       
     </div><!--/div.accordion-header-->
@@ -426,12 +426,12 @@ into a pdf file, which in this case we have named “inflammation-01.pdf”.
 After we are done generating the plots to be saved in the pdf file, we
 stop R from redirecting plots with the function
 <code>dev.off</code>.</p>
-<div id="callout1" class="callout callout">
+<div id="overwriting-plots" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="overwriting-plots" class="callout-inner">
-<h3 class="callout-title">Overwriting Plots<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Overwriting Plots<a class="anchor" aria-label="anchor" href="#overwriting-plots"></a>
 </h3>
 <div class="callout-content">
 <p>If you run <code>pdf</code> multiple times without running
@@ -576,12 +576,12 @@ requires a direct input condition. This is never the case for the
 <code>else</code> statement alone, which is only executed if all other
 conditions go unsatisfied. Note that the test for equality uses two
 equal signs, <code>==</code>.</p>
-<div id="callout2" class="callout callout">
+<div id="other-comparisons" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="other-comparisons" class="callout-inner">
-<h3 class="callout-title">Other Comparisons<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Other Comparisons<a class="anchor" aria-label="anchor" href="#other-comparisons"></a>
 </h3>
 <div class="callout-content">
 <p>Other tests include greater than or equal to (<code>&gt;=</code>),
@@ -626,13 +626,13 @@ symbolize “and”. Two vertical bars, <code>||</code>, symbolize “or”.
 </div>
 <p>In this case, “either” means “either or both”, not “either one or the
 other but not both”.</p>
-<div id="callout3" class="callout callout">
+<div id="special-case-of-the-na-variable" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="special-case-of-the-na-variable" class="callout-inner">
 <h3 class="callout-title">Special case of the <code>NA</code>
-variable<a class="anchor" aria-label="anchor" href="#callout3"></a>
+variable<a class="anchor" aria-label="anchor" href="#special-case-of-the-na-variable"></a>
 </h3>
 <div class="callout-content">
 <p>You may remember from the previous lesson that R has a special
@@ -707,12 +707,12 @@ a <code>NA</code> value will result in an error:</p>
 </div>
 </div>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="choosing-plots-based-on-data" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="choosing-plots-based-on-data" class="callout-inner">
-<h3 class="callout-title">Choosing Plots Based on Data<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Choosing Plots Based on Data<a class="anchor" aria-label="anchor" href="#choosing-plots-based-on-data"></a>
 </h3>
 <div class="callout-content">
 <p>Write a function <code>plot_dist</code> that plots a boxplot if the
@@ -742,7 +742,7 @@ stripchart otherwise. To do this you’ll use the R functions
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -760,12 +760,12 @@ stripchart otherwise. To do this you’ll use the R functions
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="histograms-instead" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="histograms-instead" class="callout-inner">
-<h3 class="callout-title">Histograms Instead<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Histograms Instead<a class="anchor" aria-label="anchor" href="#histograms-instead"></a>
 </h3>
 <div class="callout-content">
 <p>One of your collaborators prefers to see the distributions of the
@@ -809,7 +809,7 @@ A histogram is made with the <code>hist</code> command in R.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -829,12 +829,12 @@ A histogram is made with the <code>hist</code> command in R.</p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="find-the-maximum-inflammation-score" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="find-the-maximum-inflammation-score" class="callout-inner">
-<h3 class="callout-title">Find the Maximum Inflammation Score<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Find the Maximum Inflammation Score<a class="anchor" aria-label="anchor" href="#find-the-maximum-inflammation-score"></a>
 </h3>
 <div class="callout-content">
 <p>Find the file containing the patient with the highest average
@@ -877,7 +877,7 @@ row).</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -961,7 +961,8 @@ only executed if <code>output</code> is “not null”.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">analyze</span><span class="op">(</span><span class="st">"data/inflammation-01.csv"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/04-cond-rendered-inflammation-01-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"><img src="fig/04-cond-rendered-inflammation-01-2.png" style="display: block; margin: auto;" class="figure mx-auto d-block"><img src="fig/04-cond-rendered-inflammation-01-3.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>but also use it to save plots,</p>
+<p><img src="fig/04-cond-rendered-inflammation-01-1.png" style="display: block; margin: auto;" class="figure"><img src="fig/04-cond-rendered-inflammation-01-2.png" style="display: block; margin: auto;" class="figure"><img src="fig/04-cond-rendered-inflammation-01-3.png" style="display: block; margin: auto;" class="figure"></p>
+<p>but also use it to save plots,</p>
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1049,12 +1050,12 @@ need to do two things:</p>
 <p>Now if we need to make any changes to our analysis, we can edit the
 <code>analyze</code> function and quickly regenerate all the figures
 with <code>analyze_all</code>.</p>
-<div id="challenge4" class="callout challenge">
+<div id="changing-the-behavior-of-the-plot-command" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="changing-the-behavior-of-the-plot-command" class="callout-inner">
-<h3 class="callout-title">Changing the Behavior of the Plot Command<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Changing the Behavior of the Plot Command<a class="anchor" aria-label="anchor" href="#changing-the-behavior-of-the-plot-command"></a>
 </h3>
 <div class="callout-content">
 <p>One of your collaborators asks if you can recreate the figures with
@@ -1072,7 +1073,7 @@ by reading the documentation (<code>?plot</code>), update
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb55">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1161,9 +1162,9 @@ true.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1185,7 +1186,7 @@ true.</li>
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/04-cond.html",
   "dateCreated": "2014-12-18",
   "dateModified": "2023-05-01",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>

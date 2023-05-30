@@ -139,7 +139,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Analyzing Patient Data
+        1. Analyzing Patient Data
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -453,12 +453,12 @@ converse <code>TRUE</code>, in lesson 04. In case of our
 <code>inflammation-01.csv</code> example, R auto-generates column names
 in the sequence <code>V1</code> (for “variable 1”), <code>V2</code>, and
 so on, until <code>V40</code>.</p>
-<div id="callout1" class="callout callout">
+<div id="other-options-for-reading-csv-files" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="other-options-for-reading-csv-files" class="callout-inner">
-<h3 class="callout-title">Other Options for Reading CSV Files<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Other Options for Reading CSV Files<a class="anchor" aria-label="anchor" href="#other-options-for-reading-csv-files"></a>
 </h3>
 <div class="callout-content">
 <p><code>read.csv</code> actually has many more arguments that you may
@@ -467,12 +467,12 @@ more about these options in this supplementary <a href="11-supp-read-write-csv.h
 </div>
 </div>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="loading-data-with-headers" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="loading-data-with-headers" class="callout-inner">
-<h3 class="callout-title">Loading Data with Headers<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Loading Data with Headers<a class="anchor" aria-label="anchor" href="#loading-data-with-headers"></a>
 </h3>
 <div class="callout-content">
 <p>What happens if you forget to put <code>header = FALSE</code>? The
@@ -510,12 +510,12 @@ variables, the same naming rules apply. Appending <code>.1</code>,
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="reading-different-decimal-point-formats" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="reading-different-decimal-point-formats" class="callout-inner">
-<h3 class="callout-title">Reading Different Decimal Point Formats<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Reading Different Decimal Point Formats<a class="anchor" aria-label="anchor" href="#reading-different-decimal-point-formats"></a>
 </h3>
 <div class="callout-content">
 <p>Depending on the country you live in, your standard can use the “dot”
@@ -606,12 +606,12 @@ with it:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 121</code></pre>
 </div>
-<figure><img src="../fig/arithmetic-variables.svg" alt="Variables as Tags" class="figure mx-auto d-block"></figure><div id="callout2" class="callout callout">
+<figure><img src="../fig/arithmetic-variables.svg" alt="Variables as Tags" class="figure mx-auto d-block"></figure><div id="commenting" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="commenting" class="callout-inner">
-<h3 class="callout-title">Commenting<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Commenting<a class="anchor" aria-label="anchor" href="#commenting"></a>
 </h3>
 <div class="callout-content">
 <p>We can add comments to our code using the <code>#</code> character.
@@ -636,12 +636,12 @@ value:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 57.5</code></pre>
 </div>
-<div id="callout3" class="callout callout">
+<div id="variable-naming-conventions" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="variable-naming-conventions" class="callout-inner">
-<h3 class="callout-title">Variable Naming Conventions<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Variable Naming Conventions<a class="anchor" aria-label="anchor" href="#variable-naming-conventions"></a>
 </h3>
 <div class="callout-content">
 <p>Historically, R programmers have used a variety of conventions for
@@ -723,12 +723,12 @@ name <code>weight_lb</code>:</p>
 <figure><img src="../fig/memory-variables.svg" alt="Updating a Variable" class="figure mx-auto d-block"></figure><p>Since <code>weight_lb</code> doesn’t “remember” where its value came
 from, it isn’t automatically updated when <code>weight_kg</code>
 changes. This is different from the way spreadsheets work.</p>
-<div id="callout4" class="callout callout">
+<div id="printing-with-parentheses" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="printing-with-parentheses" class="callout-inner">
-<h3 class="callout-title">Printing with Parentheses<a class="anchor" aria-label="anchor" href="#callout4"></a>
+<h3 class="callout-title">Printing with Parentheses<a class="anchor" aria-label="anchor" href="#printing-with-parentheses"></a>
 </h3>
 <div class="callout-content">
 <p>An alternative way to print the value of a variable is to use
@@ -780,12 +780,12 @@ of data.</p>
 5  14   9   7  13   9  12   6   7   7   9   6   3   2   2   4   2   0   1   1
 6   5  18   9   5   3  10   3  12   7   8   4   7   3   5   4   4   3   2   1</code></pre>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="assigning-values-to-variables" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="assigning-values-to-variables" class="callout-inner">
-<h3 class="callout-title">Assigning Values to Variables<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Assigning Values to Variables<a class="anchor" aria-label="anchor" href="#assigning-values-to-variables"></a>
 </h3>
 <div class="callout-content">
 <p>Draw diagrams showing what variables refer to what values after each
@@ -1063,12 +1063,12 @@ empty.</p>
 </div>
 <p>If you leave both index values empty (i.e., <code>dat[,]</code>), you
 get the entire data frame.</p>
-<div id="callout5" class="callout callout">
+<div id="addressing-columns-by-name" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="addressing-columns-by-name" class="callout-inner">
-<h3 class="callout-title">Addressing Columns by Name<a class="anchor" aria-label="anchor" href="#callout5"></a>
+<h3 class="callout-title">Addressing Columns by Name<a class="anchor" aria-label="anchor" href="#addressing-columns-by-name"></a>
 </h3>
 <div class="callout-content">
 <p>Columns can also be addressed by name, with either the <code>$</code>
@@ -1197,12 +1197,12 @@ minimum, mean, median, and standard deviation of the data:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 1.725187</code></pre>
 </div>
-<div id="callout6" class="callout callout">
+<div id="forcing-conversion" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="forcing-conversion" class="callout-inner">
-<h3 class="callout-title">Forcing Conversion<a class="anchor" aria-label="anchor" href="#callout6"></a>
+<h3 class="callout-title">Forcing Conversion<a class="anchor" aria-label="anchor" href="#forcing-conversion"></a>
 </h3>
 <div class="callout-content">
 <p>Note that R may return an error when you attempt to perform similar
@@ -1246,12 +1246,12 @@ sample distribution.</p>
 average for each day? As the diagram below shows, we want to perform the
 operation across a margin of the data frame:</p>
 <figure><img src="../fig/r-operations-across-margins.svg" alt="Operations Across Margins" class="figure mx-auto d-block"></figure><p>To support this, we can use the <code>apply</code> function.</p>
-<div id="callout7" class="callout callout">
+<div id="getting-help" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="getting-help" class="callout-inner">
-<h3 class="callout-title">Getting Help<a class="anchor" aria-label="anchor" href="#callout7"></a>
+<h3 class="callout-title">Getting Help<a class="anchor" aria-label="anchor" href="#getting-help"></a>
 </h3>
 <div class="callout-content">
 <p>To learn about a function in R, e.g. <code>apply</code>, we can read
@@ -1285,12 +1285,12 @@ the data frame.</p>
 <code>MARGIN</code>, the above command is equivalent to
 <code>apply(dat, MARGIN = 2, mean)</code>. We’ll learn why this is so in
 the next lesson.</p>
-<div id="callout8" class="callout callout">
+<div id="efficient-alternatives" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="efficient-alternatives" class="callout-inner">
-<h3 class="callout-title">Efficient Alternatives<a class="anchor" aria-label="anchor" href="#callout8"></a>
+<h3 class="callout-title">Efficient Alternatives<a class="anchor" aria-label="anchor" href="#efficient-alternatives"></a>
 </h3>
 <div class="callout-content">
 <p>Some common operations have more efficient alternatives. For example,
@@ -1299,12 +1299,12 @@ you can calculate the row-wise or column-wise means with
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="subsetting-data" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="subsetting-data" class="callout-inner">
-<h3 class="callout-title">Subsetting Data<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Subsetting Data<a class="anchor" aria-label="anchor" href="#subsetting-data"></a>
 </h3>
 <div class="callout-content">
 <p>We can take subsets of character vectors as well:</p>
@@ -1367,12 +1367,12 @@ i.e. <code>c("e", "o", "n")</code>.</p></li>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="subsetting-more-data" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="subsetting-more-data" class="callout-inner">
-<h3 class="callout-title">Subsetting More Data<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Subsetting More Data<a class="anchor" aria-label="anchor" href="#subsetting-more-data"></a>
 </h3>
 <div class="callout-content">
 <p>Suppose you want to determine the maximum inflammation for patient 5
@@ -1408,12 +1408,12 @@ values in j, which is a subset spanning day 3 to 7.</p>
 </div>
 </div>
 </div>
-<div id="challenge6" class="callout challenge">
+<div id="subsetting-and-re-assignment" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="subsetting-and-re-assignment" class="callout-inner">
-<h3 class="callout-title">Subsetting and Re-Assignment<a class="anchor" aria-label="anchor" href="#challenge6"></a>
+<h3 class="callout-title">Subsetting and Re-Assignment<a class="anchor" aria-label="anchor" href="#subsetting-and-re-assignment"></a>
 </h3>
 <div class="callout-content">
 <p>Using the inflammation data frame <code>dat</code> from above: Let’s
@@ -1454,12 +1454,12 @@ the problem</li>
 </div>
 </div>
 </div>
-<div id="challenge7" class="callout challenge">
+<div id="using-the-apply-function-on-patient-data" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="using-the-apply-function-on-patient-data" class="callout-inner">
-<h3 class="callout-title">Using the Apply Function on Patient Data<a class="anchor" aria-label="anchor" href="#challenge7"></a>
+<h3 class="callout-title">Using the Apply Function on Patient Data<a class="anchor" aria-label="anchor" href="#using-the-apply-function-on-patient-data"></a>
 </h3>
 <div class="callout-content">
 <p>Challenge: the apply function can be used to summarize datasets and
@@ -1559,12 +1559,12 @@ result of using the plot function
 minimum seems to be a step function. Neither result seems particularly
 likely, so either there’s a mistake in our calculations or something is
 wrong with our data.</p>
-<div id="challenge8" class="callout challenge">
+<div id="plotting-data" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="plotting-data" class="callout-inner">
-<h3 class="callout-title">Plotting Data<a class="anchor" aria-label="anchor" href="#challenge8"></a>
+<h3 class="callout-title">Plotting Data<a class="anchor" aria-label="anchor" href="#plotting-data"></a>
 </h3>
 <div class="callout-content">
 <p>Create a plot showing the standard deviation of the inflammation data
@@ -1652,9 +1652,9 @@ columns of a data frame.</li>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1676,7 +1676,7 @@ columns of a data frame.</li>
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/instructor/01-starting-with-data.html",
   "dateCreated": "2014-12-18",
   "dateModified": "2023-05-01",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>
