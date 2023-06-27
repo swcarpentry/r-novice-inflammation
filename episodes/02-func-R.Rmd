@@ -236,10 +236,10 @@ mySum <- function(input_1, input_2 = 10) {
 ```
 
 1. Given the above code was run, which value does `mySum(input_1 = 1, 3)` produce?
-  1. 4
-  2. 11
-  3. 23
-  4. 30
+    1. 4
+    2. 11
+    3. 23
+    4. 30
 2. If `mySum(3)` returns 13, why does `mySum(input_2 = 3)` return an error?
 
 :::::::::::::::  solution
