@@ -420,10 +420,12 @@ length(x)
 
 ## Solution
 
-1. ```{r examine-lists-1}
+1. 
+  ```{r examine-lists-1}
   class(x[1])
   ```
-2. ```{r examine-lists-2}
+2.
+  ```{r examine-lists-2}
   class(x[[1]])
   ```
 
@@ -450,10 +452,12 @@ names(xlist)
 
 ## Solution
 
-1. ```{r examine-named-lists-1}
+1. 
+  ```{r examine-named-lists-1}
   length(xlist)
   ```
-2. ```{r examine-named-lists-2}
+2.
+  ```{r examine-named-lists-2}
   str(xlist)
   ```
 
