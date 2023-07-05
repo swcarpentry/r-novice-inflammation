@@ -90,25 +90,25 @@ You have a vector representing levels of exercise undertaken by 5 subjects
 
 What is the best way to represent this in R?
 
-a) exercise \<- c("L", "N", "N", "I", "L")
+a. `exercise <- c("L", "N", "N", "I", "L")`
 
-b) exercise \<- factor(c("L", "N", "N", "I", "L"), ordered = TRUE)
+b. `exercise <- factor(c("L", "N", "N", "I", "L"), ordered = TRUE)`
 
-c) exercise \< -factor(c("L", "N", "N", "I", "L"), levels = c("N", "L", "I"), ordered = FALSE)
+c. `exercise < -factor(c("L", "N", "N", "I", "L"), levels = c("N", "L", "I"), ordered = FALSE)`
 
-d) exercise \<- factor(c("L", "N", "N", "I", "L"), levels = c("N", "L", "I"), ordered = TRUE)
+d. `exercise <- factor(c("L", "N", "N", "I", "L"), levels = c("N", "L", "I"), ordered = TRUE)`
 
 :::::::::::::::  solution
 
 ## Solution
 
-Correct solution is **d)**
+Correct solution is **d.**
 
 ```r
 exercise <- factor(c("L", "N", "N", "I", "L"), levels = c("N", "L", "I"), ordered = TRUE)
 ```
 
-We only expect three cathegories ("L", "N", "N", "I", "L").
+We only expect three categories ("N", "L", "I").
 We can order these from least intense to most intense, so let's use `ordered`.
 
 
