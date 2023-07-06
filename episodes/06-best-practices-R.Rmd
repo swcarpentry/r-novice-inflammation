@@ -174,7 +174,12 @@ cat inflammation_fxns.R
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
+[swc-lesson-git]: https://swcarpentry.github.io/git-novice/
+[rstudio-git]: https://web.archive.org/web/20190103191213/https://support.rstudio.com/hc/en-us/articles/200532077
+[rstudio-project]: https://posit.co/resources/videos/programming-part-1-writing-code-in-rstudio/
+[dc-rstudio]: https://datacarpentry.org/R-ecology-lesson/00-before-we-start.html#getting-set-up
+[sessionInfo]: https://stackoverflow.com/a/21967272/4341322
+[gh-pr]: https://github.com/skills/review-pull-requests
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
