@@ -236,17 +236,17 @@ mySum <- function(input_1, input_2 = 10) {
 ```
 
 1. Given the above code was run, which value does `mySum(input_1 = 1, 3)` produce?
-    1. 4
-    2. 11
-    3. 23
-    4. 30
+    a. 4
+    b. 11
+    c. 23
+    d. 30
 2. If `mySum(3)` returns 13, why does `mySum(input_2 = 3)` return an error?
 
 :::::::::::::::  solution
 
 ## Solution
 
-1. The solution is `1.`.
+1. The solution is `a.`.
 
 2. Read the error message: `argument "input_1" is missing, with no default`
   means that no value for `input_1` is provided in the function call,
