@@ -421,13 +421,13 @@ length(x)
 ## Solution
 
 1. 
-  ```{r examine-lists-1}
-  class(x[1])
-  ```
+    ```{r examine-lists-1}
+    class(x[1])
+    ```
 2.
-  ```{r examine-lists-2}
-  class(x[[1]])
-  ```
+    ```{r examine-lists-2}
+    class(x[[1]])
+    ```
 
 :::::::::::::::::::::::::
 
