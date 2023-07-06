@@ -55,7 +55,7 @@ In the example document add
 Markdown also supports LaTeX equation editing.
 We can display pretty equations by enclosing them in `$`,
 e.g., `$\alpha = \dfrac{1}{(1 - \beta)^2}$` renders as:
-[![Rendered LaTeX equation][tex-eq]][tex-eq]
+$\alpha = \dfrac{1}{(1 - \beta)^2}$
 
 The top of the source (.Rmd) file has some header material in YAML format (enclosed by triple dashes).
 Some of this gets displayed in the output header, other of it provides formatting information to the conversion engine.
@@ -78,7 +78,7 @@ but you can also print the results of code within a text block by enclosing code
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
+[pandoc]: https://pandoc.org/
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
