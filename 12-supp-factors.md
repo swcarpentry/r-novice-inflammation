@@ -132,29 +132,29 @@ information built in. It is particularly helpful when there are many levels
 
 You have a vector representing levels of exercise undertaken by 5 subjects
 
-**"l", "n", "n", "i", "l"** ; n=none, l=light, i=intense
+**"L", "N", "N", "I", "L"** ; N=none, L=light, I=intense
 
 What is the best way to represent this in R?
 
-a) exercise \<- c("l", "n", "n", "i", "l")
+a. `exercise <- c("L", "N", "N", "I", "L")`
 
-b) exercise \<- factor(c("l", "n", "n", "i", "l"), ordered = TRUE)
+b. `exercise <- factor(c("L", "N", "N", "I", "L"), ordered = TRUE)`
 
-c) exercise \< -factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = FALSE)
+c. `exercise < -factor(c("L", "N", "N", "I", "L"), levels = c("N", "L", "I"), ordered = FALSE)`
 
-d) exercise \<- factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = TRUE)
+d. `exercise <- factor(c("L", "N", "N", "I", "L"), levels = c("N", "L", "I"), ordered = TRUE)`
 
 :::::::::::::::  solution
 
 ## Solution
 
-Correct solution is **d)**
+Correct solution is **d.**
 
 ```r
-exercise <- factor(c("l", "n", "n", "i", "l"), levels = c("n", "l", "i"), ordered = TRUE)
+exercise <- factor(c("L", "N", "N", "I", "L"), levels = c("N", "L", "I"), ordered = TRUE)
 ```
 
-We only expect three cathegories ("n", "l", "i").
+We only expect three categories ("N", "L", "I").
 We can order these from least intense to most intense, so let's use `ordered`.
 
 

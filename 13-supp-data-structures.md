@@ -708,12 +708,24 @@ length(x)
 
 ## Solution
 
-1. ```{r examine-lists-1}
-  class(x[1])
-  ```
-2. ```{r examine-lists-2}
-  class(x[[1]])
-  ```
+1. 
+    
+    ```r
+    class(x[1])
+    ```
+    
+    ```{.output}
+    [1] "list"
+    ```
+2.
+    
+    ```r
+    class(x[[1]])
+    ```
+    
+    ```{.output}
+    [1] "integer"
+    ```
 
 :::::::::::::::::::::::::
 
@@ -763,11 +775,37 @@ names(xlist)
 
 ## Solution
 
-1. ```{r examine-named-lists-1}
+1. 
+  
+  ```r
   length(xlist)
   ```
-2. ```{r examine-named-lists-2}
+  
+  ```{.output}
+  [1] 3
+  ```
+2.
+  
+  ```r
   str(xlist)
+  ```
+  
+  ```{.output}
+  List of 3
+   $ a   : chr "Karthik Ram"
+   $ b   : int [1:10] 1 2 3 4 5 6 7 8 9 10
+   $ data:'data.frame':	6 obs. of  11 variables:
+    ..$ mpg : num [1:6] 21 21 22.8 21.4 18.7 18.1
+    ..$ cyl : num [1:6] 6 6 4 6 8 6
+    ..$ disp: num [1:6] 160 160 108 258 360 225
+    ..$ hp  : num [1:6] 110 110 93 110 175 105
+    ..$ drat: num [1:6] 3.9 3.9 3.85 3.08 3.15 2.76
+    ..$ wt  : num [1:6] 2.62 2.88 2.32 3.21 3.44 ...
+    ..$ qsec: num [1:6] 16.5 17 18.6 19.4 17 ...
+    ..$ vs  : num [1:6] 0 0 1 1 0 1
+    ..$ am  : num [1:6] 1 1 1 0 0 0
+    ..$ gear: num [1:6] 4 4 4 3 3 3
+    ..$ carb: num [1:6] 4 4 1 1 2 1
   ```
 
 :::::::::::::::::::::::::
