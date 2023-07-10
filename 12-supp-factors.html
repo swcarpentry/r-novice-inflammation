@@ -501,16 +501,13 @@ our example data set).</p>
 <div class="callout-content">
 <p>You have a vector representing levels of exercise undertaken by 5
 subjects</p>
-<p><strong>“l”, “n”, “n”, “i”, “l”</strong> ; n=none, l=light,
-i=intense</p>
+<p><strong>“L”, “N”, “N”, “I”, “L”</strong> ; N=none, L=light,
+I=intense</p>
 <p>What is the best way to represent this in R?</p>
-<ol style="list-style-type: lower-alpha"><li><p>exercise &lt;- c(“l”, “n”, “n”, “i”, “l”)</p></li>
-<li><p>exercise &lt;- factor(c(“l”, “n”, “n”, “i”, “l”), ordered =
-TRUE)</p></li>
-<li><p>exercise &lt; -factor(c(“l”, “n”, “n”, “i”, “l”), levels = c(“n”,
-“l”, “i”), ordered = FALSE)</p></li>
-<li><p>exercise &lt;- factor(c(“l”, “n”, “n”, “i”, “l”), levels = c(“n”,
-“l”, “i”), ordered = TRUE)</p></li>
+<ol style="list-style-type: lower-alpha"><li><p><code>exercise &lt;- c("L", "N", "N", "I", "L")</code></p></li>
+<li><p><code>exercise &lt;- factor(c("L", "N", "N", "I", "L"), ordered = TRUE)</code></p></li>
+<li><p><code>exercise &lt; -factor(c("L", "N", "N", "I", "L"), levels = c("N", "L", "I"), ordered = FALSE)</code></p></li>
+<li><p><code>exercise &lt;- factor(c("L", "N", "N", "I", "L"), levels = c("N", "L", "I"), ordered = TRUE)</code></p></li>
 </ol></div>
 </div>
 </div>
@@ -523,14 +520,14 @@ TRUE)</p></li>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<p>Correct solution is <strong>d)</strong></p>
+<p>Correct solution is <strong>d.</strong></p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">exercise</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"l"</span>, <span class="st">"n"</span>, <span class="st">"n"</span>, <span class="st">"i"</span>, <span class="st">"l"</span><span class="op">)</span>, levels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"l"</span>, <span class="st">"i"</span><span class="op">)</span>, ordered <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">exercise</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"L"</span>, <span class="st">"N"</span>, <span class="st">"N"</span>, <span class="st">"I"</span>, <span class="st">"L"</span><span class="op">)</span>, levels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"N"</span>, <span class="st">"L"</span>, <span class="st">"I"</span><span class="op">)</span>, ordered <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
-<p>We only expect three cathegories (“n”, “l”, “i”). We can order these
+<p>We only expect three categories (“N”, “L”, “I”). We can order these
 from least intense to most intense, so let’s use
 <code>ordered</code>.</p>
 </div>

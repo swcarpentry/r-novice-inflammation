@@ -515,16 +515,16 @@ access them. For example, use</p></li>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span>file <span class="op">=</span> <span class="st">"/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
-<p>{:start=“5”} 5. R can run into memory issues. It is a common problem
-to run out of memory after running R scripts for a long time. To inspect
-the objects in your current R environment, you can list the objects,
-search current packages, and remove objects that are currently not in
-use. A good practice when running long lines of computationally
-intensive code is to remove temporary objects after they have served
-their purpose. However, sometimes, R will not clean up unused memory for
-a while after you delete objects. You can force R to tidy up its memory
-by using <code>gc()</code>.</p>
-<div class="codewrapper sourceCode" id="cb9">
+<ol start="5" style="list-style-type: decimal"><li>R can run into memory issues. It is a common problem to run out of
+memory after running R scripts for a long time. To inspect the objects
+in your current R environment, you can list the objects, search current
+packages, and remove objects that are currently not in use. A good
+practice when running long lines of computationally intensive code is to
+remove temporary objects after they have served their purpose. However,
+sometimes, R will not clean up unused memory for a while after you
+delete objects. You can force R to tidy up its memory by using
+<code>gc()</code>.</li>
+</ol><div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -538,12 +538,13 @@ by using <code>gc()</code>.</p>
 <span><span class="fu">ls</span><span class="op">(</span><span class="op">)</span> <span class="co"># Lists all the objects in your current workspace</span></span>
 <span><span class="fu">rm</span><span class="op">(</span>list <span class="op">=</span> <span class="fu">ls</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># If you want to delete all the objects in the workspace and start with a clean slate</span></span></code></pre>
 </div>
-<p>{:start=“6”} 6. <a href="https://datacarpentry.org/R-ecology-lesson/00-before-we-start.html#getting-set-up" class="external-link">Don’t
+<ol start="6" style="list-style-type: decimal"><li><p><a href="https://datacarpentry.org/R-ecology-lesson/00-before-we-start.html#getting-set-up" class="external-link">Don’t
 save a session history</a> (the default option in R, when it asks if you
 want an <code>RData</code> file). Instead, start in a clean environment
 so that older objects don’t remain in your environment any longer than
-they need to. If that happens, it can lead to unexpected results.</p>
-<ol start="7" style="list-style-type: decimal"><li><p>Wherever possible, <a href="https://stackoverflow.com/a/21967272/4341322" class="external-link">keep track of
+they need to. If that happens, it can lead to unexpected
+results.</p></li>
+<li><p>Wherever possible, <a href="https://stackoverflow.com/a/21967272/4341322" class="external-link">keep track of
 <code>sessionInfo()</code> somewhere</a> in your project folder. Session
 information is invaluable because it captures all of the packages used
 in the current project. If a newer version of a package changes the way
