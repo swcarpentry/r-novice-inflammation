@@ -324,7 +324,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Best Practices for Writing R Code</h1>
-        <p> Last updated on 2023-07-04 | 
+        <p> Last updated on 2023-07-10 | 
         
         <a href="https://github.com/swcarpentry/r-novice-inflammation/edit/main/episodes/06-best-practices-R.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -379,10 +379,10 @@ understand what a particular script does.</p>
 <span><span class="co"># paper. Code developed by Sarah Supp, Tracy Teal, and Jon Borelli</span></span></code></pre>
 </div>
 <p>Also consider version-controlling your code as for example taught by
-[Software Carpentry’s <code>git-novice</code> lessons][swc-lesson-git].
-Frequent commits with explanatory, synoptic commit messages are an
-elegant way to comment code. [RStudio enables this with a Git
-integration][rstudio-git].</p>
+<a href="https://swcarpentry.github.io/git-novice/" class="external-link">Software Carpentry’s
+<code>git-novice</code> lessons</a>. Frequent commits with explanatory,
+synoptic commit messages are an elegant way to comment code. <a href="https://web.archive.org/web/20190103191213/https://support.rstudio.com/hc/en-us/articles/200532077" class="external-link">RStudio
+enables this with a Git integration</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="be-explicit-about-the-requirements-and-dependencies-of-your-code">Be explicit about the requirements and dependencies of your
@@ -499,8 +499,8 @@ pieces.</p></li>
 code over and over, use a loop or a function to repeat that code for
 you. Needless repetition doesn’t just waste time–it also increases the
 likelihood you’ll make a costly mistake!</p></li>
-<li><p>Keep all of your source files for a [project in the same
-directory][rstudio-project], then use relative paths as necessary to
+<li><p>Keep all of your source files for a <a href="https://posit.co/resources/videos/programming-part-1-writing-code-in-rstudio/" class="external-link">project
+in the same directory</a>, then use relative paths as necessary to
 access them. For example, use</p></li>
 </ol><div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -538,23 +538,23 @@ by using <code>gc()</code>.</p>
 <span><span class="fu">ls</span><span class="op">(</span><span class="op">)</span> <span class="co"># Lists all the objects in your current workspace</span></span>
 <span><span class="fu">rm</span><span class="op">(</span>list <span class="op">=</span> <span class="fu">ls</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># If you want to delete all the objects in the workspace and start with a clean slate</span></span></code></pre>
 </div>
-<p>{:start=“6”} 6. [Don’t save a session history][dc-rstudio] (the
-default option in R, when it asks if you want an <code>RData</code>
-file). Instead, start in a clean environment so that older objects don’t
-remain in your environment any longer than they need to. If that
-happens, it can lead to unexpected results.</p>
-<ol start="7" style="list-style-type: decimal"><li><p>Wherever possible, [keep track of <code>sessionInfo()</code>
-somewhere][sessionInfo] in your project folder. Session information is
-invaluable because it captures all of the packages used in the current
-project. If a newer version of a package changes the way a function
-behaves, you can always go back and reinstall the version that worked
-(Note: At least on CRAN, all older versions of packages are permanently
-archived).</p></li>
+<p>{:start=“6”} 6. <a href="https://datacarpentry.org/R-ecology-lesson/00-before-we-start.html#getting-set-up" class="external-link">Don’t
+save a session history</a> (the default option in R, when it asks if you
+want an <code>RData</code> file). Instead, start in a clean environment
+so that older objects don’t remain in your environment any longer than
+they need to. If that happens, it can lead to unexpected results.</p>
+<ol start="7" style="list-style-type: decimal"><li><p>Wherever possible, <a href="https://stackoverflow.com/a/21967272/4341322" class="external-link">keep track of
+<code>sessionInfo()</code> somewhere</a> in your project folder. Session
+information is invaluable because it captures all of the packages used
+in the current project. If a newer version of a package changes the way
+a function behaves, you can always go back and reinstall the version
+that worked (Note: At least on CRAN, all older versions of packages are
+permanently archived).</p></li>
 <li><p>Collaborate. Grab a buddy and practice “code review”. Review is
 used for preparing experiments and manuscripts; why not use it for code
 as well? Our code is also a major scientific achievement and the product
-of lots of hard work! Reviews are built into [GitHub’s Pull request
-feature][gh-pr]</p></li>
+of lots of hard work! Reviews are built into <a href="https://github.com/skills/review-pull-requests" class="external-link">GitHub’s Pull
+request feature</a></p></li>
 </ol><div id="best-practice" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -583,7 +583,7 @@ of the files.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -709,7 +709,7 @@ workspace.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.4" class="external-link">sandpaper (0.12.4)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.12.5)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
@@ -732,8 +732,8 @@ workspace.</li>
   "url": "https://swcarpentry.github.io/r-novice-inflammation/06-best-practices-R.html",
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/06-best-practices-R.html",
   "dateCreated": "2014-12-18",
-  "dateModified": "2023-07-04",
-  "datePublished": "2023-07-04"
+  "dateModified": "2023-07-10",
+  "datePublished": "2023-07-10"
 }
 
   </script><script>
