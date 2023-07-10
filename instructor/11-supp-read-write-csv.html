@@ -464,12 +464,13 @@ may be useful if you have a dataset without headers.</p>
 important argument in <code>read.csv()</code>, particularly if you were
 working with categorical data. This is because the default behavior of R
 was to convert character <a href="reference.html#string">string</a>s
-into factors, which may make it difficult to do such things as replace
-values. It is important to be aware of this behaviour, which we will
-demonstrate. For example, let’s say we find out that the data collector
-was color blind, and accidentally recorded green cars as being blue. In
-order to correct the data set, let’s replace ‘Blue’ with ‘Green’ in the
-<code>$Color</code> column:</p>
+into <a href="12-supp-factors.html">factors</a>, which may make it
+difficult to do such things as replace values. It is important to be
+aware of this behaviour, which we will demonstrate. For example, let’s
+say we find out that the data collector was color blind, and
+accidentally recorded green cars as being blue. In order to correct the
+data set, let’s replace ‘Blue’ with ‘Green’ in the <code>$Color</code>
+column:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -674,7 +675,7 @@ importing the data with <code>stringsAsFactors=FALSE</code>.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -776,7 +777,7 @@ replaced by <code>NA</code></p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
