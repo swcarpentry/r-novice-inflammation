@@ -36,7 +36,7 @@ An R package requires four components:
 - a man directory with documentation (we will create this automatically)
 - a NAMESPACE file listing user-level functions in the package (we will also create this automatically)
 
-\*There are other optional components. [rOpenSci community][r-open-sci] has written a science-focused guidebook for package development, while [the "R packages" book][r-pkgs-desc] contains all the fundamental information.
+*There are other optional components. [rOpenSci community][r-open-sci] has written a science-focused guidebook for package development, while [the "R packages" book][r-pkgs-desc] contains all the fundamental information.*
 
 ### DESCRIPTION file
 
