@@ -743,7 +743,7 @@ summary(dat[, 1:4])
  Max.   :0   Max.   :1.00   Max.   :2.000   Max.   :3.00  
 ```
 
-For every column in the data frame, the function "summary" calculates: the minimun value, the first quartile, the median, the mean, the third quartile and the max value, giving helpful details about the sample distribution.
+For every column in the data frame, the function "summary" calculates: the minimum value, the first quartile, the median, the mean, the third quartile and the max value, giving helpful details about the sample distribution.
 
 What if we need the maximum inflammation for all patients, or the average for each day?
 As the diagram below shows, we want to perform the operation across a margin of the data frame:
