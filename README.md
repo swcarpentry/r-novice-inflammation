@@ -1,6 +1,6 @@
 [![Build and Deploy Website](https://github.com/swcarpentry/r-novice-inflammation/workflows/01%20Build%20and%20Deploy%20Site/badge.svg)](https://github.com/swcarpentry/r-novice-inflammation/actions/workflows/sandpaper-main.yaml)
-[![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://swc-slack-invite.herokuapp.com/)
-[![Slack Status](https://img.shields.io/badge/Slack_Channel-swc--r--inflammation-E01563.svg)](https://swcarpentry.slack.com/messages/C9WDPCMUG)
+[![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://slack-invite.carpentries.org/)
+[![Slack Status](https://img.shields.io/badge/Slack_Channel-swc--r--inflammation-E01563.svg)](https://carpentries.slack.com/messages/C9WDPCMUG)
 
 # r-novice-inflammation
 
