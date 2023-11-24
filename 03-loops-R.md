@@ -31,7 +31,7 @@ We have created a function called `analyze` that creates graphs of the minimum, 
 ```r
 analyze <- function(filename) {
   # Plots the average, min, and max inflammation over time.
-  # Input is character string of a csv file.
+  # The argument or input is a character string representing the name and location of a CSV file.
   dat <- read.csv(file = filename, header = FALSE)
   avg_day_inflammation <- apply(dat, 2, mean)
   plot(avg_day_inflammation)
