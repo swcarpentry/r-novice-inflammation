@@ -18,6 +18,7 @@ changes to incorporate into the lesson:
 - [Diya Das](https://diyadas.github.io) (@diyadas)
 - [Rohit Goswami](https://carpentries.org/instructors/#HaoZeke) (@haozeke)
 - [Hugo Gruson](https://carpentries.org/instructors/#bisaloo) (@Bisaloo)
+- [Isaac Jennings](https://carpentries.org/maintainers/#isaac-jennings) (@isaac-jennings)
 
 Alumni:
 
