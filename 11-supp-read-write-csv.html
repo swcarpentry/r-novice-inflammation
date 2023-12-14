@@ -32,7 +32,7 @@
     </div>
   </div>
   <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav software" aria-label="Main Navigation"><div class="container-fluid nav-container">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
     </button>
@@ -43,7 +43,7 @@
     </div>
     <div class="search-icon-sm">
       <!-- TODO: do not show until we have search
-      <i role="img" aria-label="search button" data-feather="search"></i>
+        <i role="img" aria-label="search button" data-feather="search"></i>
       -->
     </div>
     <div class="desktop-nav">
@@ -90,7 +90,7 @@
         <!-- START: inst/pkgdown/templates/navbar.html -->
 <div id="sidebar-col" class="col-lg-4">
   <div id="sidebar" class="sidebar">
-      <nav aria-labelledby="flush-headingEleven"><button role="button" aria-label="close menu" alt="close menu" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle">
+      <nav aria-labelledby="flush-headingEleven"><button role="button" aria-label="close menu" alt="close menu" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle" data-collapse="Collapse " data-episodes="Episodes ">
           <i class="search-icon" data-feather="x" role="img"></i>
         </button>
         <div class="sidebar-inner">
@@ -127,14 +127,16 @@
               <div id="flush-collapseEleven" class="accordion-collapse show collapse" aria-labelledby="flush-headingEleven" data-bs-parent="#accordionFlush11">
 
                 <div class="accordion-body">
-                  <div class="accordion accordion-flush" id="accordionFlush1">
+                  <?xml version="1.0" encoding="UTF-8"?><div class="accordion accordion-flush" id="accordionFlush1">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading1">
-        <a href="index.html">Summary and Setup</a>
-    </div><!--/div.accordion-header-->
-        
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
+      <a href="index.html">Summary and Setup</a>
+    </div>
+    <!--/div.accordion-header-->
+  </div>
+  <!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
 
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
@@ -333,14 +335,14 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Reading and Writing CSV Files</h1>
-        <p> Last updated on 2023-12-05 | 
+        <p>Last updated on 2023-12-14 |
         
         <a href="https://github.com/swcarpentry/r-novice-inflammation/edit/main/episodes/11-supp-read-write-csv.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
         
         
         <div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 
         
@@ -679,9 +681,7 @@ importing the data with <code>stringsAsFactors=FALSE</code>.</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
@@ -781,9 +781,7 @@ replaced by <code>NA</code></p>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">
-  Show me the solution
-  </h4>
+  <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
@@ -820,15 +818,22 @@ these now.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Export the data. The write.csv() function requires a minimum of two</span></span>
-<span><span class="co"># arguments, the data to be saved and the name of the output file.</span></span>
+<code class="sourceCode R"><span><span class="co"># Export the first rows of data. The write.csv() function requires a minimum of</span></span>
+<span><span class="co"># two arguments, the data to be saved and the name of the output file.</span></span>
 <span></span>
-<span><span class="fu">write.csv</span><span class="op">(</span><span class="va">carSpeeds</span>, file <span class="op">=</span> <span class="st">'data/car-speeds-cleaned.csv'</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">write.csv</span><span class="op">(</span><span class="fu">head</span><span class="op">(</span><span class="va">carSpeeds</span><span class="op">)</span>, file <span class="op">=</span> <span class="st">'data/car-speeds-cleaned.csv'</span><span class="op">)</span></span></code></pre>
 </div>
 <p>If you open the file, you’ll see that it has header names, because
 the data had headers within R, but that there are numbers in the first
 column.</p>
-<figure><img src="fig/01-supp-csv-with-row-nums.png" alt="csv written without row.names argument" class="figure mx-auto d-block"></figure></div>
+<pre class="csv"><code>"","Color","Speed","State"
+"1","Blue",32,"NewMexico"
+"2","Red",45,"Arizona"
+"3","Blue",35,"Colorado"
+"4","White",34,"Arizona"
+"5","Red",25,"Arizona"
+"6","Blue",41,"Arizona"</code></pre>
+</div>
 <div class="section level3">
 <h3 id="the-row-names-argument">The <code>row.names</code> Argument<a class="anchor" aria-label="anchor" href="#the-row-names-argument"></a></h3>
 <p>This argument allows us to set the names of the rows in the output
@@ -836,14 +841,21 @@ data file. R’s default for this argument is <code>TRUE</code>, and since
 it does not know what else to name the rows for the cars data set, it
 resorts to using row numbers. To correct this, we can set
 <code>row.names</code> to <code>FALSE</code>:</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">write.csv</span><span class="op">(</span><span class="va">carSpeeds</span>, file <span class="op">=</span> <span class="st">'data/car-speeds-cleaned.csv'</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">write.csv</span><span class="op">(</span><span class="fu">head</span><span class="op">(</span><span class="va">carSpeeds</span><span class="op">)</span>, file <span class="op">=</span> <span class="st">'data/car-speeds-cleaned.csv'</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Now we see:</p>
-<figure><img src="fig/01-supp-csv-without-row-nums.png" alt="csv written with row.names argument" class="figure mx-auto d-block"></figure><div id="setting-column-names" class="callout callout">
+<pre class="csv"><code>"Color","Speed","State"
+"Blue",32,"NewMexico"
+"Red",45,"Arizona"
+"Blue",35,"Colorado"
+"White",34,"Arizona"
+"Red",25,"Arizona"
+"Blue",41,"Arizona"</code></pre>
+<div id="setting-column-names" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
@@ -867,7 +879,7 @@ will be ignored.</p>
 a program that only accepts -9999 as a nodata value). In this case, we
 want to set the <code>NA</code> value of our output file to the desired
 value, using the na argument. Let’s see how this works:</p>
-<div class="codewrapper sourceCode" id="cb31">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -887,7 +899,7 @@ value, using the na argument. Let’s see how this works:</p>
 5   Red    25   Arizona
 6  Blue    41   Arizona</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb33">
+<div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -895,23 +907,30 @@ value, using the na argument. Let’s see how this works:</p>
 </div>
 <p>Now we’ll set <code>NA</code> to -9999 when we write the new .csv
 file:</p>
-<div class="codewrapper sourceCode" id="cb34">
+<div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Note - the na argument requires a string input</span></span>
-<span><span class="fu">write.csv</span><span class="op">(</span><span class="va">carSpeeds</span>,</span>
+<span><span class="fu">write.csv</span><span class="op">(</span><span class="fu">head</span><span class="op">(</span><span class="va">carSpeeds</span><span class="op">)</span>,</span>
 <span>          file <span class="op">=</span> <span class="st">'data/car-speeds-cleaned.csv'</span>,</span>
 <span>          row.names <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>          na <span class="op">=</span> <span class="st">'-9999'</span><span class="op">)</span></span></code></pre>
 </div>
 <p>And we see:</p>
-<figure><img src="fig/01-supp-csv-with-special-NA.png" alt="csv written with -9999 as NA" class="figure mx-auto d-block"></figure><div id="keypoints1" class="callout keypoints">
+<pre class="csv"><code>"Color","Speed","State"
+"Blue",32,"NewMexico"
+"Red",45,"Arizona"
+"Blue",-9999,"Colorado"
+"White",34,"Arizona"
+"Red",25,"Arizona"
+"Blue",41,"Arizona"</code></pre>
+<div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
 <ul><li>Import data from a .csv file using the <code>read.csv(...)</code>
@@ -953,13 +972,13 @@ and <code>na</code>.</li>
 
       </div><!--/div.row-->
       		<footer class="row footer mx-md-3"><hr><div class="col-md-6">
-				<p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
+        <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
         
         <a href="https://github.com/swcarpentry/r-novice-inflammation/edit/main/episodes/11-supp-read-write-csv.Rmd" class="external-link">Edit on GitHub</a>
         
 	
-        | <a href="https://github.com/swcarpentry/r-novice-inflammation/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a> 
+        | <a href="https://github.com/swcarpentry/r-novice-inflammation/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/swcarpentry/r-novice-inflammation/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/swcarpentry/r-novice-inflammation/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:team@carpentries.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
@@ -967,15 +986,13 @@ and <code>na</code>.</li>
         
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
-        <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.15.0" class="external-link">sandpaper (0.15.0)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.7.3" class="external-link">pegboard (0.7.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.4.0" class="external-link">varnish (0.4.0)</a>.</p>
+        <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.1" class="external-link">sandpaper (0.16.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.3" class="external-link">pegboard (0.7.3)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
 		<a href="#top">
-			<i class="search-icon" data-feather="arrow-up" role="img" aria-label="Back to top"></i><br><span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top
+      <i class="search-icon" data-feather="arrow-up" role="img" aria-label="Back To Top"></i><br><!-- <span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top --><span class="d-none d-sm-none d-md-none d-lg-none d-xl-block">Back</span> To Top
 		</a>
 	</div>
   <script type="application/ld+json">
@@ -991,8 +1008,8 @@ and <code>na</code>.</li>
   "url": "https://swcarpentry.github.io/r-novice-inflammation/11-supp-read-write-csv.html",
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/11-supp-read-write-csv.html",
   "dateCreated": "2014-12-18",
-  "dateModified": "2023-12-05",
-  "datePublished": "2023-12-13"
+  "dateModified": "2023-12-14",
+  "datePublished": "2023-12-14"
 }
 
   </script><script>
