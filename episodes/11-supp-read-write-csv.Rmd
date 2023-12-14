@@ -247,27 +247,29 @@ read.csv(
 After altering our cars dataset by replacing 'Blue' with 'Green' in the `$Color` column, we now want to save the output. There are several arguments for the `write.csv(...)` [function call](../learners/reference.md#function-call), a few of which are particularly important for how the data are exported.  Let's explore these now.
 
 ```{r writeData}
-# Export the data. The write.csv() function requires a minimum of two
-# arguments, the data to be saved and the name of the output file.
+# Export the first rows of data. The write.csv() function requires a minimum of
+# two arguments, the data to be saved and the name of the output file.
 
-write.csv(carSpeeds, file = 'data/car-speeds-cleaned.csv')
+write.csv(head(carSpeeds), file = 'data/car-speeds-cleaned.csv')
 ```
 
 If you open the file, you'll see that it has header names, because the data had headers within R, but that there are numbers in the first column.
 
-<img src="fig/01-supp-csv-with-row-nums.png" alt="csv written without row.names argument" />
+```{embed file = "data/car-speeds-cleaned.csv"}
+```
 
 ### The `row.names` Argument
 
 This argument allows us to set the names of the rows in the output data file. R's default for this argument is `TRUE`, and since it does not know what else to name the rows for the cars data set, it resorts to using row numbers. To correct this, we can set `row.names` to `FALSE`:
 
 ```{r row.namesFALSE}
-write.csv(carSpeeds, file = 'data/car-speeds-cleaned.csv', row.names = FALSE)
+write.csv(head(carSpeeds), file = 'data/car-speeds-cleaned.csv', row.names = FALSE)
 ```
 
 Now we see:
 
-<img src="fig/01-supp-csv-without-row-nums.png" alt="csv written with row.names argument" />
+```{embed file = "data/car-speeds-cleaned.csv"}
+```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -298,7 +300,7 @@ Now we'll set `NA` to -9999 when we write the new .csv file:
 
 ```{r naUserSelected}
 # Note - the na argument requires a string input
-write.csv(carSpeeds,
+write.csv(head(carSpeeds),
           file = 'data/car-speeds-cleaned.csv',
           row.names = FALSE,
           na = '-9999')
@@ -306,9 +308,8 @@ write.csv(carSpeeds,
 
 And we see:
 
-<img src="fig/01-supp-csv-with-special-NA.png" alt="csv written with -9999 as NA" />
-
-
+```{embed file = "data/car-speeds-cleaned.csv"}
+```
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
