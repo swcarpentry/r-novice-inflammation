@@ -362,15 +362,24 @@ After altering our cars dataset by replacing 'Blue' with 'Green' in the `$Color`
 
 
 ```r
-# Export the data. The write.csv() function requires a minimum of two
-# arguments, the data to be saved and the name of the output file.
+# Export the first rows of data. The write.csv() function requires a minimum of
+# two arguments, the data to be saved and the name of the output file.
 
-write.csv(carSpeeds, file = 'data/car-speeds-cleaned.csv')
+write.csv(head(carSpeeds), file = 'data/car-speeds-cleaned.csv')
 ```
 
 If you open the file, you'll see that it has header names, because the data had headers within R, but that there are numbers in the first column.
 
-<img src="fig/01-supp-csv-with-row-nums.png" alt="csv written without row.names argument" />
+
+```csv
+"","Color","Speed","State"
+"1","Blue",32,"NewMexico"
+"2","Red",45,"Arizona"
+"3","Blue",35,"Colorado"
+"4","White",34,"Arizona"
+"5","Red",25,"Arizona"
+"6","Blue",41,"Arizona"
+```
 
 ### The `row.names` Argument
 
@@ -378,12 +387,21 @@ This argument allows us to set the names of the rows in the output data file. R'
 
 
 ```r
-write.csv(carSpeeds, file = 'data/car-speeds-cleaned.csv', row.names = FALSE)
+write.csv(head(carSpeeds), file = 'data/car-speeds-cleaned.csv', row.names = FALSE)
 ```
 
 Now we see:
 
-<img src="fig/01-supp-csv-without-row-nums.png" alt="csv written with row.names argument" />
+
+```csv
+"Color","Speed","State"
+"Blue",32,"NewMexico"
+"Red",45,"Arizona"
+"Blue",35,"Colorado"
+"White",34,"Arizona"
+"Red",25,"Arizona"
+"Blue",41,"Arizona"
+```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -428,7 +446,7 @@ Now we'll set `NA` to -9999 when we write the new .csv file:
 
 ```r
 # Note - the na argument requires a string input
-write.csv(carSpeeds,
+write.csv(head(carSpeeds),
           file = 'data/car-speeds-cleaned.csv',
           row.names = FALSE,
           na = '-9999')
@@ -436,9 +454,16 @@ write.csv(carSpeeds,
 
 And we see:
 
-<img src="fig/01-supp-csv-with-special-NA.png" alt="csv written with -9999 as NA" />
 
-
+```csv
+"Color","Speed","State"
+"Blue",32,"NewMexico"
+"Red",45,"Arizona"
+"Blue",-9999,"Colorado"
+"White",34,"Arizona"
+"Red",25,"Arizona"
+"Blue",41,"Arizona"
+```
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
