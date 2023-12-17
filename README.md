@@ -15,7 +15,6 @@ allows us to change the content of the lesson website.
 The following people are maintainers for this lesson, and are responsible for determining which
 changes to incorporate into the lesson:
 
-- [Diya Das](https://diyadas.github.io) (@diyadas)
 - [Rohit Goswami](https://carpentries.org/instructors/#HaoZeke) (@haozeke)
 - [Hugo Gruson](https://carpentries.org/instructors/#bisaloo) (@Bisaloo)
 - [Isaac Jennings](https://carpentries.org/maintainers/#isaac-jennings) (@isaac-jennings)
@@ -23,6 +22,7 @@ changes to incorporate into the lesson:
 Alumni:
 
 - [Daniel Chen](https://software-carpentry.org/team/#chen_daniel) (@chendaniely)
+- [Diya Das](https://diyadas.github.io) (@diyadas)
 - [Katrin Leinweber](https://carpentries.org/instructors/#katrinleinweber) (@katrinleinweber)
 
 The goal of this lesson is to teach novice programmers to write modular code to
