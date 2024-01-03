@@ -321,7 +321,7 @@ and finally prints the assigned value of the variable `total_weight`.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Now that we know how to assign things to variables, let's re-run `read.csv` and save its result into a variable called 'dat':
+Now that we know how to assign things to variables, let's re-run `read.csv` and save its result into a variable called `dat`:
 
 
 ```r
