@@ -91,7 +91,7 @@ We've successfully called the function that we defined, and we have access to th
 
 ### Composing Functions
 
-Now that we've seen how to turn Fahrenheit into Celsius, it's easy to turn Celsius into Kelvin:
+Now that we've seen how to turn Fahrenheit into Celsius, we can also turn Celsius into Kelvin:
 
 
 ```r
