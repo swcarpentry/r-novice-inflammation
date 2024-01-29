@@ -65,7 +65,11 @@ window and press <kbd>Esc</kbd>; this should help you out of trouble.
 ## Commenting
 
 Use `#` signs to comment. Comment liberally in your R scripts. Anything to the
-right of a `#` is ignored by R. Comments remind yourself of what certain functions you write do, and it helps others understand their purpose without having to read the code. Start your comments with a `#` signs, which R takes as the sign to ignore anything to the right of it when running the code. Also remember that expressive naming of functions, arguments and variables, as well as [`#'`\-prefixed roxygen documentation](08-making-packages-R.Rmd), document your code. Consider free-form, #-comments as a last resort.
+right of a `#` is ignored by R. Comments remind yourself of what certain functions you write do, and it helps others understand their purpose without having to read the code. Start your comments with a `#` signs, which R takes as the sign to ignore anything to the right of it when running the code. 
+To comment multiple lines in RStudio, you can select the lines you want to comment and use <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd> to comment/uncomment.
+
+Also remember that expressive naming of functions, arguments and variables, as well as [`#'`\-prefixed roxygen documentation](08-making-packages-R.Rmd), document your code. Consider free-form, #-comments as a last resort.
+
 
 ## Assignment Operator
 
