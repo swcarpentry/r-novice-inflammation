@@ -30,7 +30,7 @@ and explore the [arguments](../learners/reference.md#argument) that allow you re
 
 ### Read a .csv and Explore the Arguments
 
-Let's start by opening a .csv file containing information on the speeds at which cars of different colors were clocked in 45 mph zones in the four-corners states (`CarSpeeds.csv`). We will use the built in `read.csv(...)` [function call](../learners/reference.md#function-call), which reads the data in as a data frame, and assign the data frame to a variable (using `<-`) so that it is stored in R's memory. Then we will explore some of the basic arguments that can be supplied to the function. First, open the RStudio project containing the scripts and data you were working on in episode 'Analyzing Patient Data'.
+Let's start by opening a .csv file containing information on the speeds at which cars of different colors were clocked in 45 mph zones in the four-corners states (`car-speeds.csv`). We will use the built in `read.csv(...)` [function call](../learners/reference.md#function-call), which reads the data in as a data frame, and assign the data frame to a variable (using `<-`) so that it is stored in R's memory. Then we will explore some of the basic arguments that can be supplied to the function. First, open the RStudio project containing the scripts and data you were working on in episode 'Analyzing Patient Data'.
 
 
 ```r
