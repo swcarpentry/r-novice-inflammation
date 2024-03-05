@@ -437,13 +437,12 @@ into a pdf file, which in this case we have named “inflammation-01.pdf”.
 After we are done generating the plots to be saved in the pdf file, we
 stop R from redirecting plots with the function
 <code>dev.off</code>.</p>
-<div id="overwriting-plots" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="overwriting-plots" class="callout-inner">
-<h3 class="callout-title">Overwriting Plots<a class="anchor" aria-label="anchor" href="#overwriting-plots"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="overwriting-plots">Overwriting Plots<a class="anchor" aria-label="anchor" href="#overwriting-plots"></a></h3>
 <div class="callout-content">
 <p>If you run <code>pdf</code> multiple times without running
 <code>dev.off</code>, you will save plots to the most recently opened
@@ -587,13 +586,12 @@ requires a direct input condition. This is never the case for the
 <code>else</code> statement alone, which is only executed if all other
 conditions go unsatisfied. Note that the test for equality uses two
 equal signs, <code>==</code>.</p>
-<div id="other-comparisons" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="other-comparisons" class="callout-inner">
-<h3 class="callout-title">Other Comparisons<a class="anchor" aria-label="anchor" href="#other-comparisons"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="other-comparisons">Other Comparisons<a class="anchor" aria-label="anchor" href="#other-comparisons"></a></h3>
 <div class="callout-content">
 <p>Other tests include greater than or equal to (<code>&gt;=</code>),
 less than or equal to (<code>&lt;=</code>), and not equal to
@@ -637,13 +635,13 @@ symbolize “and”. Two vertical bars, <code>||</code>, symbolize “or”.
 </div>
 <p>In this case, “either” means “either or both”, not “either one or the
 other but not both”.</p>
-<div id="special-case-of-the-na-variable" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="special-case-of-the-na-variable" class="callout-inner">
-<h3 class="callout-title">Special case of the<code>NA</code>variable<a class="anchor" aria-label="anchor" href="#special-case-of-the-na-variable"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="special-case-of-the-na-variable">Special case of the <code>NA</code>
+variable<a class="anchor" aria-label="anchor" href="#special-case-of-the-na-variable"></a></h3>
 <div class="callout-content">
 <p>You may remember from the previous lesson that R has a special
 variable, <code>NA</code>, for designating missing values. Because it
@@ -750,7 +748,7 @@ stripchart otherwise. To do this you’ll use the R functions
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -815,7 +813,7 @@ A histogram is made with the <code>hist</code> command in R.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -881,7 +879,7 @@ row).</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1075,7 +1073,7 @@ by reading the documentation (<code>?plot</code>), update
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb55">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1193,7 +1191,7 @@ true.</li>
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/instructor/04-cond.html",
   "dateCreated": "2014-12-18",
   "dateModified": "2024-02-27",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

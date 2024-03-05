@@ -382,13 +382,12 @@ ways for addressing data inside R objects.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span>file <span class="op">=</span> <span class="st">'data/sample.csv'</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="interpreting-rows-as-headers" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="interpreting-rows-as-headers" class="callout-inner">
-<h3 class="callout-title">Interpreting Rows as Headers<a class="anchor" aria-label="anchor" href="#interpreting-rows-as-headers"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="interpreting-rows-as-headers">Interpreting Rows as Headers<a class="anchor" aria-label="anchor" href="#interpreting-rows-as-headers"></a></h3>
 <div class="callout-content">
 <p>The first row of this csv file is a list of column names. We used the
 <em>header = TRUE</em> argument to <code>read.csv</code> so that R can
@@ -772,13 +771,12 @@ patients.</p>
 [5] "Age"           "Aneurisms_q1"  "Aneurisms_q2"  "Aneurisms_q3" 
 [9] "Aneurisms_q4" </code></pre>
 </div>
-<div id="default-names" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="default-names" class="callout-inner">
-<h3 class="callout-title">Default Names<a class="anchor" aria-label="anchor" href="#default-names"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="default-names">Default Names<a class="anchor" aria-label="anchor" href="#default-names"></a></h3>
 <div class="callout-content">
 <p>If column names are not specified e.g. using
 <code>header = FALSE</code> in a <code>read.csv()</code> function, R
@@ -847,13 +845,12 @@ not a data frame.</p>
 5 19.9      m
 6 14.3      M</code></pre>
 </div>
-<div id="best-practice" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="best-practice" class="callout-inner">
-<h3 class="callout-title">Best Practice<a class="anchor" aria-label="anchor" href="#best-practice"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="best-practice">Best Practice<a class="anchor" aria-label="anchor" href="#best-practice"></a></h3>
 <div class="callout-content">
 <p>Best practice is to address columns by name. Often, you will create
 or delete columns and the column position will change.</p>
@@ -974,13 +971,12 @@ and <code>FALSE</code>.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1]  TRUE  TRUE FALSE FALSE  TRUE</code></pre>
 </div>
-<div id="truth-and-its-opposite" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="truth-and-its-opposite" class="callout-inner">
-<h3 class="callout-title">Truth and Its Opposite<a class="anchor" aria-label="anchor" href="#truth-and-its-opposite"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="truth-and-its-opposite">Truth and Its Opposite<a class="anchor" aria-label="anchor" href="#truth-and-its-opposite"></a></h3>
 <div class="callout-content">
 <p>Note the values <code>TRUE</code> and <code>FALSE</code> are all
 capital letters and are not quoted.</p>
@@ -1198,7 +1194,7 @@ logical vector, or by name (columns only).</li>
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/10-supp-addressing-data.html",
   "dateCreated": "2014-12-18",
   "dateModified": "2024-02-27",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>
