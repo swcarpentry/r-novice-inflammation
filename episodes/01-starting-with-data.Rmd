@@ -180,7 +180,7 @@ Once a variable is created, we can use the variable name to refer to the value i
 
 <img src="fig/tag-variables.svg" alt="Variables as Tags" />
 
-To see the value of a variable, we can print it by typing the name of the variable and hitting <kbd>CTRL + Return</kbd> (or <kbd>CTRL + Enter</kbd>) while working in the `script.R` file in the editor which is recommended. If we are working in the console directly, we need to hit <kbd>Return</kbd> (or <kbd>Enter</kbd>).
+To see the value of a variable, we can print it by typing the name of the variable and hitting <kbd>CTRL + Return</kbd> (or <kbd>CTRL + Enter</kbd>) while working in the "`script.R`" file in the editor which is recommended. If we are working in the console directly, we need to hit <kbd>Return</kbd> (or <kbd>Enter</kbd>).
 In general, R will print to the console any object returned by a function or operation *unless* we assign it to a variable.
 
 ```{r}
