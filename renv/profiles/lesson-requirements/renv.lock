@@ -82,14 +82,14 @@
     },
     "digest": {
       "Package": "digest",
-      "Version": "0.6.33",
+      "Version": "0.6.34",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "utils"
       ],
-      "Hash": "b18a9cf3c003977b0cc49d5e76ebe48d"
+      "Hash": "7ede2ee9ea8d3edbf1ca84c1e333ad1a"
     },
     "ellipsis": {
       "Package": "ellipsis",
@@ -145,14 +145,14 @@
     },
     "glue": {
       "Package": "glue",
-      "Version": "1.6.2",
+      "Version": "1.7.0",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "methods"
       ],
-      "Hash": "4f2596dfb05dac67b9dc558e5c6fba2e"
+      "Hash": "e0b3a53876554bd45879e596cdb10a52"
     },
     "highr": {
       "Package": "highr",
@@ -274,24 +274,24 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "1.0.3",
+      "Version": "1.0.5",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "utils"
       ],
-      "Hash": "41b847654f567341725473431dd0d5ab"
+      "Hash": "32c3f93e8360f667ca5863272ec8ba6a"
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "1.1.2",
+      "Version": "1.1.3",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "utils"
       ],
-      "Hash": "50a6dbdc522936ca35afc5e2082ea91b"
+      "Hash": "42548638fae05fd9a9b5f3f437fbbbe2"
     },
     "rmarkdown": {
       "Package": "rmarkdown",
@@ -387,14 +387,15 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.41",
+      "Version": "0.42",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
+        "grDevices",
         "stats",
         "tools"
       ],
-      "Hash": "460a5e0fe46a80ef87424ad216028014"
+      "Hash": "fd1349170df31f7a10bd98b0189e85af"
     },
     "yaml": {
       "Package": "yaml",
