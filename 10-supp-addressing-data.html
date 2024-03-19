@@ -382,12 +382,13 @@ ways for addressing data inside R objects.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span>file <span class="op">=</span> <span class="st">'data/sample.csv'</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="interpreting-rows-as-headers" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="interpreting-rows-as-headers">Interpreting Rows as Headers<a class="anchor" aria-label="anchor" href="#interpreting-rows-as-headers"></a></h3>
+<div id="interpreting-rows-as-headers" class="callout-inner">
+<h3 class="callout-title">Interpreting Rows as Headers<a class="anchor" aria-label="anchor" href="#interpreting-rows-as-headers"></a>
+</h3>
 <div class="callout-content">
 <p>The first row of this csv file is a list of column names. We used the
 <em>header = TRUE</em> argument to <code>read.csv</code> so that R can
@@ -488,7 +489,7 @@ number of rows and columns you would expect as the result.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -524,7 +525,7 @@ all values in that dimension.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -579,7 +580,7 @@ integers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -732,7 +733,7 @@ patients.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -771,12 +772,13 @@ patients.</p>
 [5] "Age"           "Aneurisms_q1"  "Aneurisms_q2"  "Aneurisms_q3" 
 [9] "Aneurisms_q4" </code></pre>
 </div>
-<div id="callout2" class="callout">
+<div id="default-names" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="default-names">Default Names<a class="anchor" aria-label="anchor" href="#default-names"></a></h3>
+<div id="default-names" class="callout-inner">
+<h3 class="callout-title">Default Names<a class="anchor" aria-label="anchor" href="#default-names"></a>
+</h3>
 <div class="callout-content">
 <p>If column names are not specified e.g. using
 <code>header = FALSE</code> in a <code>read.csv()</code> function, R
@@ -845,12 +847,13 @@ not a data frame.</p>
 5 19.9      m
 6 14.3      M</code></pre>
 </div>
-<div id="callout3" class="callout">
+<div id="best-practice" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="best-practice">Best Practice<a class="anchor" aria-label="anchor" href="#best-practice"></a></h3>
+<div id="best-practice" class="callout-inner">
+<h3 class="callout-title">Best Practice<a class="anchor" aria-label="anchor" href="#best-practice"></a>
+</h3>
 <div class="callout-content">
 <p>Best practice is to address columns by name. Often, you will create
 or delete columns and the column position will change.</p>
@@ -971,12 +974,13 @@ and <code>FALSE</code>.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1]  TRUE  TRUE FALSE FALSE  TRUE</code></pre>
 </div>
-<div id="callout4" class="callout">
+<div id="truth-and-its-opposite" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="truth-and-its-opposite">Truth and Its Opposite<a class="anchor" aria-label="anchor" href="#truth-and-its-opposite"></a></h3>
+<div id="truth-and-its-opposite" class="callout-inner">
+<h3 class="callout-title">Truth and Its Opposite<a class="anchor" aria-label="anchor" href="#truth-and-its-opposite"></a>
+</h3>
 <div class="callout-content">
 <p>Note the values <code>TRUE</code> and <code>FALSE</code> are all
 capital letters and are not quoted.</p>
@@ -1050,7 +1054,7 @@ control group.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>The code for such a plot:</li>
 </ol><div class="codewrapper sourceCode" id="cb49">
@@ -1104,7 +1108,7 @@ lowercase.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Show me the solution</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1171,7 +1175,7 @@ logical vector, or by name (columns only).</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1194,7 +1198,7 @@ logical vector, or by name (columns only).</li>
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/10-supp-addressing-data.html",
   "dateCreated": "2014-12-18",
   "dateModified": "2024-03-08",
-  "datePublished": "2024-03-12"
+  "datePublished": "2024-03-19"
 }
 
   </script><script>

@@ -413,12 +413,13 @@ code operates.</p>
 those variables so that we can use them inside the function. Inside the
 function, we use a <a href="reference.html#return-statement">return
 statement</a> to send a result back to whoever asked for it.</p>
-<div id="callout1" class="callout">
+<div id="automatic-returns" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="automatic-returns">Automatic Returns<a class="anchor" aria-label="anchor" href="#automatic-returns"></a></h3>
+<div id="automatic-returns" class="callout-inner">
+<h3 class="callout-title">Automatic Returns<a class="anchor" aria-label="anchor" href="#automatic-returns"></a>
+</h3>
 <div class="callout-content">
 <p>In R, it is not necessary to include the return statement. R
 automatically returns whichever variable is on the last line of the body
@@ -504,12 +505,13 @@ effect we want. Real-life functions will usually be larger than the ones
 shown here–typically half a dozen to a few dozen lines–but they
 shouldn’t ever be much longer than that, or the next person who reads it
 won’t be able to understand what’s going on.</p>
-<div id="callout2" class="callout">
+<div id="nesting-function-calls" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="nesting-function-calls">Nesting Function Calls<a class="anchor" aria-label="anchor" href="#nesting-function-calls"></a></h3>
+<div id="nesting-function-calls" class="callout-inner">
+<h3 class="callout-title">Nesting Function Calls<a class="anchor" aria-label="anchor" href="#nesting-function-calls"></a>
+</h3>
 <div class="callout-content">
 <p>This example showed the output of <code>fahrenheit_to_celsius</code>
 assigned to <code>temp_C</code>, which is then passed to
@@ -646,12 +648,13 @@ last elements of its input:</p>
 </div>
 </div>
 </div>
-<div id="callout3" class="callout">
+<div id="the-call-stack" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="the-call-stack">The Call Stack<a class="anchor" aria-label="anchor" href="#the-call-stack"></a></h3>
+<div id="the-call-stack" class="callout-inner">
+<h3 class="callout-title">The Call Stack<a class="anchor" aria-label="anchor" href="#the-call-stack"></a>
+</h3>
 <div class="callout-content">
 <p>For a deeper understanding of how functions work, you’ll need to
 learn how they create their own environments and call other functions.
@@ -980,12 +983,13 @@ the user wanted.</p>
 <span>  <span class="kw">return</span><span class="op">(</span><span class="va">new_data</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre>
 </div>
-<div id="callout4" class="callout">
+<div id="writing-documentation" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="writing-documentation">Writing Documentation<a class="anchor" aria-label="anchor" href="#writing-documentation"></a></h3>
+<div id="writing-documentation" class="callout-inner">
+<h3 class="callout-title">Writing Documentation<a class="anchor" aria-label="anchor" href="#writing-documentation"></a>
+</h3>
 <div class="callout-content">
 <p>Formal documentation for R functions is written in separate
 <code>.Rd</code> using a markup language similar to <a href="https://www.latex-project.org/" class="external-link">LaTeX</a>. You see the result of
@@ -1249,12 +1253,13 @@ We can override this behavior by naming the value as we pass it in:</p>
 <pre class="output" tabindex="0"><code> a  b  c 
  1  2 77 </code></pre>
 </div>
-<div id="callout5" class="callout">
+<div id="matching-arguments" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="matching-arguments">Matching Arguments<a class="anchor" aria-label="anchor" href="#matching-arguments"></a></h3>
+<div id="matching-arguments" class="callout-inner">
+<h3 class="callout-title">Matching Arguments<a class="anchor" aria-label="anchor" href="#matching-arguments"></a>
+</h3>
 <div class="callout-content">
 <p>To be precise, R has three ways that arguments supplied by you are
 matched to the <em>formal arguments</em> of the function definition:</p>
@@ -1404,7 +1409,7 @@ by omitting them (in which case the default value is used).</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1427,7 +1432,7 @@ by omitting them (in which case the default value is used).</li>
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/instructor/02-func-R.html",
   "dateCreated": "2014-12-18",
   "dateModified": "2024-03-08",
-  "datePublished": "2024-03-12"
+  "datePublished": "2024-03-19"
 }
 
   </script><script>

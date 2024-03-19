@@ -383,12 +383,13 @@ careful when treating them like strings.</p>
 known as <em>levels</em>. By default, R always sorts <em>levels</em> in
 alphabetical order. For instance, if you have a factor with 2
 levels:</p>
-<div id="callout1" class="callout">
+<div id="the-factor-command" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="the-factor-command">The <code>factor()</code> Command<a class="anchor" aria-label="anchor" href="#the-factor-command"></a></h3>
+<div id="the-factor-command" class="callout-inner">
+<h3 class="callout-title">The<code>factor()</code>Command<a class="anchor" aria-label="anchor" href="#the-factor-command"></a>
+</h3>
 <div class="callout-content">
 <p>The <code>factor()</code> command is used to create and modify
 factors in R:</p>
@@ -591,12 +592,13 @@ function is still required to convert the values to the proper type
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span>file <span class="op">=</span> <span class="st">'data/sample.csv'</span>, stringsAsFactors <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="callout2" class="callout">
+<div id="default-behavior" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="default-behavior">Default Behavior<a class="anchor" aria-label="anchor" href="#default-behavior"></a></h3>
+<div id="default-behavior" class="callout-inner">
+<h3 class="callout-title">Default Behavior<a class="anchor" aria-label="anchor" href="#default-behavior"></a>
+</h3>
 <div class="callout-content">
 <p><code>stringsAsFactors = TRUE</code> was the default behavior for R
 prior to version 4.0. We are using it here to override the default
@@ -658,12 +660,13 @@ categorical variables.</p>
 <p>Notice the <code>summary()</code> function handles factors
 differently to numbers (and strings), the occurrence counts for each
 value is often more useful information.</p>
-<div id="callout3" class="callout">
+<div id="the-summary-function" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="the-summary-function">The <code>summary()</code> Function<a class="anchor" aria-label="anchor" href="#the-summary-function"></a></h3>
+<div id="the-summary-function" class="callout-inner">
+<h3 class="callout-title">The<code>summary()</code>Function<a class="anchor" aria-label="anchor" href="#the-summary-function"></a>
+</h3>
 <div class="callout-content">
 <p>The <code>summary()</code> function is a great way of spotting errors
 in your data (look at the <code>dat$Gender</code> column). It’s also a
@@ -784,12 +787,13 @@ levels.</p>
 <code class="sourceCode R"><span><span class="va">dat</span><span class="op">$</span><span class="va">Gender</span> <span class="op">&lt;-</span> <span class="fu">droplevels</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span></span>
 <span><span class="fu">plot</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dat</span><span class="op">$</span><span class="va">Gender</span>, y <span class="op">=</span> <span class="va">dat</span><span class="op">$</span><span class="va">BloodPressure</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/12-supp-factors-rendered-dropping-levels-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="callout4" class="callout">
+<figure><img src="../fig/12-supp-factors-rendered-dropping-levels-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="adjusting-factor-levels" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="adjusting-factor-levels">Adjusting Factor Levels<a class="anchor" aria-label="anchor" href="#adjusting-factor-levels"></a></h3>
+<div id="adjusting-factor-levels" class="callout-inner">
+<h3 class="callout-title">Adjusting Factor Levels<a class="anchor" aria-label="anchor" href="#adjusting-factor-levels"></a>
+</h3>
 <div class="callout-content">
 <p>Adjusting the <code>levels()</code> of a factor provides a useful
 shortcut for reassigning values in this case.</p>
@@ -857,7 +861,7 @@ shortcut for reassigning values in this case.</p>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -880,7 +884,7 @@ shortcut for reassigning values in this case.</p>
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/instructor/12-supp-factors.html",
   "dateCreated": "2014-12-18",
   "dateModified": "2024-03-08",
-  "datePublished": "2024-03-12"
+  "datePublished": "2024-03-19"
 }
 
   </script><script>

@@ -538,12 +538,12 @@ converse <code>TRUE</code>, in lesson 04. In case of our
 <code>inflammation-01.csv</code> example, R auto-generates column names
 in the sequence <code>V1</code> (for “variable 1”), <code>V2</code>, and
 so on, until <code>V40</code>.</p>
-<div id="callout1" class="callout">
+<div id="other-options-for-reading-csv-files" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="other-options-for-reading-csv-files">Other Options for Reading CSV Files<a class="anchor" aria-label="anchor" href="#other-options-for-reading-csv-files"></a>
+<div id="other-options-for-reading-csv-files" class="callout-inner">
+<h3 class="callout-title">Other Options for Reading CSV Files<a class="anchor" aria-label="anchor" href="#other-options-for-reading-csv-files"></a>
 </h3>
 <div class="callout-content">
 <p><code>read.csv</code> actually has many more arguments that you may
@@ -690,12 +690,12 @@ with it:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 121</code></pre>
 </div>
-<figure><img src="../fig/arithmetic-variables.svg" alt="Variables as Tags" class="figure mx-auto d-block"></figure><div id="callout2" class="callout">
+<figure><img src="../fig/arithmetic-variables.svg" alt="Variables as Tags" class="figure mx-auto d-block"></figure><div id="commenting" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="commenting">Commenting<a class="anchor" aria-label="anchor" href="#commenting"></a>
+<div id="commenting" class="callout-inner">
+<h3 class="callout-title">Commenting<a class="anchor" aria-label="anchor" href="#commenting"></a>
 </h3>
 <div class="callout-content">
 <p>We can add comments to our code using the <code>#</code> character.
@@ -720,12 +720,12 @@ value:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 57.5</code></pre>
 </div>
-<div id="callout3" class="callout">
+<div id="variable-naming-conventions" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="variable-naming-conventions">Variable Naming Conventions<a class="anchor" aria-label="anchor" href="#variable-naming-conventions"></a>
+<div id="variable-naming-conventions" class="callout-inner">
+<h3 class="callout-title">Variable Naming Conventions<a class="anchor" aria-label="anchor" href="#variable-naming-conventions"></a>
 </h3>
 <div class="callout-content">
 <p>Historically, R programmers have used a variety of conventions for
@@ -807,12 +807,12 @@ name <code>weight_lb</code>:</p>
 <figure><img src="../fig/memory-variables.svg" alt="Updating a Variable" class="figure mx-auto d-block"></figure><p>Since <code>weight_lb</code> doesn’t “remember” where its value came
 from, it isn’t automatically updated when <code>weight_kg</code>
 changes. This is different from the way spreadsheets work.</p>
-<div id="callout4" class="callout">
+<div id="printing-with-parentheses" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="printing-with-parentheses">Printing with Parentheses<a class="anchor" aria-label="anchor" href="#printing-with-parentheses"></a>
+<div id="printing-with-parentheses" class="callout-inner">
+<h3 class="callout-title">Printing with Parentheses<a class="anchor" aria-label="anchor" href="#printing-with-parentheses"></a>
 </h3>
 <div class="callout-content">
 <p>An alternative way to print the value of a variable is to use
@@ -1147,12 +1147,12 @@ empty.</p>
 </div>
 <p>If you leave both index values empty (i.e., <code>dat[,]</code>), you
 get the entire data frame.</p>
-<div id="callout5" class="callout">
+<div id="addressing-columns-by-name" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="addressing-columns-by-name">Addressing Columns by Name<a class="anchor" aria-label="anchor" href="#addressing-columns-by-name"></a>
+<div id="addressing-columns-by-name" class="callout-inner">
+<h3 class="callout-title">Addressing Columns by Name<a class="anchor" aria-label="anchor" href="#addressing-columns-by-name"></a>
 </h3>
 <div class="callout-content">
 <p>Columns can also be addressed by name, with either the <code>$</code>
@@ -1281,12 +1281,12 @@ minimum, mean, median, and standard deviation of the data:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 1.725187</code></pre>
 </div>
-<div id="callout6" class="callout">
+<div id="forcing-conversion" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="forcing-conversion">Forcing Conversion<a class="anchor" aria-label="anchor" href="#forcing-conversion"></a>
+<div id="forcing-conversion" class="callout-inner">
+<h3 class="callout-title">Forcing Conversion<a class="anchor" aria-label="anchor" href="#forcing-conversion"></a>
 </h3>
 <div class="callout-content">
 <p>Note that R may return an error when you attempt to perform similar
@@ -1330,12 +1330,12 @@ sample distribution.</p>
 average for each day? As the diagram below shows, we want to perform the
 operation across a margin of the data frame:</p>
 <figure><img src="../fig/r-operations-across-margins.svg" alt="Operations Across Margins" class="figure mx-auto d-block"></figure><p>To support this, we can use the <code>apply</code> function.</p>
-<div id="callout7" class="callout">
+<div id="getting-help" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="getting-help">Getting Help<a class="anchor" aria-label="anchor" href="#getting-help"></a>
+<div id="getting-help" class="callout-inner">
+<h3 class="callout-title">Getting Help<a class="anchor" aria-label="anchor" href="#getting-help"></a>
 </h3>
 <div class="callout-content">
 <p>To learn about a function in R, e.g. <code>apply</code>, we can read
@@ -1369,12 +1369,12 @@ the data frame.</p>
 <code>MARGIN</code>, the above command is equivalent to
 <code>apply(dat, MARGIN = 2, mean)</code>. We’ll learn why this is so in
 the next lesson.</p>
-<div id="callout8" class="callout">
+<div id="efficient-alternatives" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="efficient-alternatives">Efficient Alternatives<a class="anchor" aria-label="anchor" href="#efficient-alternatives"></a>
+<div id="efficient-alternatives" class="callout-inner">
+<h3 class="callout-title">Efficient Alternatives<a class="anchor" aria-label="anchor" href="#efficient-alternatives"></a>
 </h3>
 <div class="callout-content">
 <p>Some common operations have more efficient alternatives. For example,
@@ -1789,12 +1789,12 @@ code operates.</p>
 those variables so that we can use them inside the function. Inside the
 function, we use a <a href="reference.html#return-statement">return
 statement</a> to send a result back to whoever asked for it.</p>
-<div id="callout1" class="callout">
+<div id="automatic-returns" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="automatic-returns">Automatic Returns<a class="anchor" aria-label="anchor" href="#automatic-returns"></a>
+<div id="automatic-returns" class="callout-inner">
+<h3 class="callout-title">Automatic Returns<a class="anchor" aria-label="anchor" href="#automatic-returns"></a>
 </h3>
 <div class="callout-content">
 <p>In R, it is not necessary to include the return statement. R
@@ -1882,12 +1882,12 @@ effect we want. Real-life functions will usually be larger than the ones
 shown here–typically half a dozen to a few dozen lines–but they
 shouldn’t ever be much longer than that, or the next person who reads it
 won’t be able to understand what’s going on.</p>
-<div id="callout2" class="callout">
+<div id="nesting-function-calls" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="nesting-function-calls">Nesting Function Calls<a class="anchor" aria-label="anchor" href="#nesting-function-calls"></a>
+<div id="nesting-function-calls" class="callout-inner">
+<h3 class="callout-title">Nesting Function Calls<a class="anchor" aria-label="anchor" href="#nesting-function-calls"></a>
 </h3>
 <div class="callout-content">
 <p>This example showed the output of <code>fahrenheit_to_celsius</code>
@@ -2025,12 +2025,12 @@ last elements of its input:</p>
 </div>
 </div>
 </div>
-<div id="callout3" class="callout">
+<div id="the-call-stack" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="the-call-stack">The Call Stack<a class="anchor" aria-label="anchor" href="#the-call-stack"></a>
+<div id="the-call-stack" class="callout-inner">
+<h3 class="callout-title">The Call Stack<a class="anchor" aria-label="anchor" href="#the-call-stack"></a>
 </h3>
 <div class="callout-content">
 <p>For a deeper understanding of how functions work, you’ll need to
@@ -2369,12 +2369,12 @@ the user wanted.</p>
 <span>  <span class="kw">return</span><span class="op">(</span><span class="va">new_data</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre>
 </div>
-<div id="callout4" class="callout">
+<div id="writing-documentation" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="writing-documentation">Writing Documentation<a class="anchor" aria-label="anchor" href="#writing-documentation"></a>
+<div id="writing-documentation" class="callout-inner">
+<h3 class="callout-title">Writing Documentation<a class="anchor" aria-label="anchor" href="#writing-documentation"></a>
 </h3>
 <div class="callout-content">
 <p>Formal documentation for R functions is written in separate
@@ -2640,12 +2640,12 @@ We can override this behavior by naming the value as we pass it in:</p>
 <pre class="output" tabindex="0"><code> a  b  c 
  1  2 77 </code></pre>
 </div>
-<div id="callout5" class="callout">
+<div id="matching-arguments" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="matching-arguments">Matching Arguments<a class="anchor" aria-label="anchor" href="#matching-arguments"></a>
+<div id="matching-arguments" class="callout-inner">
+<h3 class="callout-title">Matching Arguments<a class="anchor" aria-label="anchor" href="#matching-arguments"></a>
 </h3>
 <div class="callout-content">
 <p>To be precise, R has three ways that arguments supplied by you are
@@ -2903,12 +2903,12 @@ exist!</p></li>
 [1] "the"
 [1] NA</code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="not-available" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="not-available">Not Available<a class="anchor" aria-label="anchor" href="#not-available"></a>
+<div id="not-available" class="callout-inner">
+<h3 class="callout-title">Not Available<a class="anchor" aria-label="anchor" href="#not-available"></a>
 </h3>
 <div class="callout-content">
 <p>R has has a special variable, <code>NA</code>, for designating
@@ -3100,7 +3100,7 @@ of numbers:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3149,7 +3149,7 @@ exercise.)</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3209,7 +3209,7 @@ calculate the same result.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3281,12 +3281,12 @@ following:</p>
 [11] "inflammation-11.csv"            "inflammation-12.csv"           
 [13] "r-novice-inflammation-data.zip"</code></pre>
 </div>
-<div id="callout2" class="callout">
+<div id="organizing-larger-projects" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="organizing-larger-projects">Organizing Larger Projects<a class="anchor" aria-label="anchor" href="#organizing-larger-projects"></a>
+<div id="organizing-larger-projects" class="callout-inner">
+<h3 class="callout-title">Organizing Larger Projects<a class="anchor" aria-label="anchor" href="#organizing-larger-projects"></a>
 </h3>
 <div class="callout-content">
 <p>For larger projects, it is recommended to organize separate parts of
@@ -3383,12 +3383,12 @@ on the first three files in the vector returned by
 <p><img src="../fig/03-loops-R-rendered-loop-analyze-7.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" class="figure"><img src="../fig/03-loops-R-rendered-loop-analyze-8.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" class="figure"><img src="../fig/03-loops-R-rendered-loop-analyze-9.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" class="figure"></p>
 <p>Sure enough, the maxima of these data sets show exactly the same ramp
 as the first, and their minima show the same staircase structure.</p>
-<div id="callout3" class="callout">
+<div id="other-ways-to-do-it" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="other-ways-to-do-it">Other Ways to Do It<a class="anchor" aria-label="anchor" href="#other-ways-to-do-it"></a>
+<div id="other-ways-to-do-it" class="callout-inner">
+<h3 class="callout-title">Other Ways to Do It<a class="anchor" aria-label="anchor" href="#other-ways-to-do-it"></a>
 </h3>
 <div class="callout-content">
 <p>In this lesson we saw how to use a simple <code>for</code> loop to
@@ -3420,7 +3420,7 @@ path and a filename pattern as its arguments and runs
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3565,12 +3565,12 @@ into a pdf file, which in this case we have named “inflammation-01.pdf”.
 After we are done generating the plots to be saved in the pdf file, we
 stop R from redirecting plots with the function
 <code>dev.off</code>.</p>
-<div id="callout1" class="callout">
+<div id="overwriting-plots" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="overwriting-plots">Overwriting Plots<a class="anchor" aria-label="anchor" href="#overwriting-plots"></a>
+<div id="overwriting-plots" class="callout-inner">
+<h3 class="callout-title">Overwriting Plots<a class="anchor" aria-label="anchor" href="#overwriting-plots"></a>
 </h3>
 <div class="callout-content">
 <p>If you run <code>pdf</code> multiple times without running
@@ -3716,12 +3716,12 @@ requires a direct input condition. This is never the case for the
 <code>else</code> statement alone, which is only executed if all other
 conditions go unsatisfied. Note that the test for equality uses two
 equal signs, <code>==</code>.</p>
-<div id="callout2" class="callout">
+<div id="other-comparisons" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="other-comparisons">Other Comparisons<a class="anchor" aria-label="anchor" href="#other-comparisons"></a>
+<div id="other-comparisons" class="callout-inner">
+<h3 class="callout-title">Other Comparisons<a class="anchor" aria-label="anchor" href="#other-comparisons"></a>
 </h3>
 <div class="callout-content">
 <p>Other tests include greater than or equal to (<code>&gt;=</code>),
@@ -3766,13 +3766,12 @@ symbolize “and”. Two vertical bars, <code>||</code>, symbolize “or”.
 </div>
 <p>In this case, “either” means “either or both”, not “either one or the
 other but not both”.</p>
-<div id="callout3" class="callout">
+<div id="special-case-of-the-na-variable" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="special-case-of-the-na-variable">Special case of the <code>NA</code>
-variable<a class="anchor" aria-label="anchor" href="#special-case-of-the-na-variable"></a>
+<div id="special-case-of-the-na-variable" class="callout-inner">
+<h3 class="callout-title">Special case of the<code>NA</code>variable<a class="anchor" aria-label="anchor" href="#special-case-of-the-na-variable"></a>
 </h3>
 <div class="callout-content">
 <p>You may remember from the previous lesson that R has a special
@@ -4397,12 +4396,12 @@ attached base packages:
 loaded via a namespace (and not attached):
 [1] compiler_4.3.3</code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="the-right-directory" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="the-right-directory">The Right Directory<a class="anchor" aria-label="anchor" href="#the-right-directory"></a>
+<div id="the-right-directory" class="callout-inner">
+<h3 class="callout-title">The Right Directory<a class="anchor" aria-label="anchor" href="#the-right-directory"></a>
 </h3>
 <div class="callout-content">
 <p>If that did not work, you might have seen an error message indicating
@@ -5049,12 +5048,12 @@ processing, so that the program fails fast. We’ll save it as
 </div>
 <p>This is four lines longer than its predecessor, but broken into more
 digestible chunks of 8 and 12 lines.</p>
-<div id="callout2" class="callout">
+<div id="parsing-command-line-flags" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="parsing-command-line-flags">Parsing Command-Line Flags<a class="anchor" aria-label="anchor" href="#parsing-command-line-flags"></a>
+<div id="parsing-command-line-flags" class="callout-inner">
+<h3 class="callout-title">Parsing Command-Line Flags<a class="anchor" aria-label="anchor" href="#parsing-command-line-flags"></a>
 </h3>
 <div class="callout-content">
 <p>R has a package named <a href="https://cran.r-project.org/package=argparse" class="external-link">argparse</a> that
@@ -5483,14 +5482,12 @@ to that file. For example</p>
 <p>It is also worth considering what the working directory is. If the
 working directory must change, it is best to do that at the beginning of
 the script.</p>
-<div id="callout1" class="callout">
+<div id="be-careful-when-using-setwd" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="be-careful-when-using-setwd">Be careful when using
-<code>setwd()</code>
-<a class="anchor" aria-label="anchor" href="#be-careful-when-using-setwd"></a>
+<div id="be-careful-when-using-setwd" class="callout-inner">
+<h3 class="callout-title">Be careful when using<code>setwd()</code><a class="anchor" aria-label="anchor" href="#be-careful-when-using-setwd"></a>
 </h3>
 <div class="callout-content">
 <p>One should exercise caution when using <code>setwd()</code>. Changing
@@ -6389,12 +6386,12 @@ ways for addressing data inside R objects.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span>file <span class="op">=</span> <span class="st">'data/sample.csv'</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="interpreting-rows-as-headers" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="interpreting-rows-as-headers">Interpreting Rows as Headers<a class="anchor" aria-label="anchor" href="#interpreting-rows-as-headers"></a>
+<div id="interpreting-rows-as-headers" class="callout-inner">
+<h3 class="callout-title">Interpreting Rows as Headers<a class="anchor" aria-label="anchor" href="#interpreting-rows-as-headers"></a>
 </h3>
 <div class="callout-content">
 <p>The first row of this csv file is a list of column names. We used the
@@ -6497,7 +6494,7 @@ number of rows and columns you would expect as the result.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6533,7 +6530,7 @@ all values in that dimension.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6588,7 +6585,7 @@ integers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6741,7 +6738,7 @@ patients.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6781,12 +6778,12 @@ patients.</p>
 [5] "Age"           "Aneurisms_q1"  "Aneurisms_q2"  "Aneurisms_q3" 
 [9] "Aneurisms_q4" </code></pre>
 </div>
-<div id="callout2" class="callout">
+<div id="default-names" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="default-names">Default Names<a class="anchor" aria-label="anchor" href="#default-names"></a>
+<div id="default-names" class="callout-inner">
+<h3 class="callout-title">Default Names<a class="anchor" aria-label="anchor" href="#default-names"></a>
 </h3>
 <div class="callout-content">
 <p>If column names are not specified e.g. using
@@ -6856,12 +6853,12 @@ not a data frame.</p>
 5 19.9      m
 6 14.3      M</code></pre>
 </div>
-<div id="callout3" class="callout">
+<div id="best-practice" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="best-practice">Best Practice<a class="anchor" aria-label="anchor" href="#best-practice"></a>
+<div id="best-practice" class="callout-inner">
+<h3 class="callout-title">Best Practice<a class="anchor" aria-label="anchor" href="#best-practice"></a>
 </h3>
 <div class="callout-content">
 <p>Best practice is to address columns by name. Often, you will create
@@ -6984,12 +6981,12 @@ and <code>FALSE</code>.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1]  TRUE  TRUE FALSE FALSE  TRUE</code></pre>
 </div>
-<div id="callout4" class="callout">
+<div id="truth-and-its-opposite" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="truth-and-its-opposite">Truth and Its Opposite<a class="anchor" aria-label="anchor" href="#truth-and-its-opposite"></a>
+<div id="truth-and-its-opposite" class="callout-inner">
+<h3 class="callout-title">Truth and Its Opposite<a class="anchor" aria-label="anchor" href="#truth-and-its-opposite"></a>
 </h3>
 <div class="callout-content">
 <p>Note the values <code>TRUE</code> and <code>FALSE</code> are all
@@ -7066,7 +7063,7 @@ control group.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The code for such a plot:</li>
@@ -7123,7 +7120,7 @@ lowercase.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Show me the solution</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7228,12 +7225,12 @@ data you were working on in episode ‘Analyzing Patient Data’.</p>
 5   Red    25   Arizona
 6  Blue    41   Arizona</code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="changing-delimiters" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="changing-delimiters">Changing Delimiters<a class="anchor" aria-label="anchor" href="#changing-delimiters"></a>
+<div id="changing-delimiters" class="callout-inner">
+<h3 class="callout-title">Changing Delimiters<a class="anchor" aria-label="anchor" href="#changing-delimiters"></a>
 </h3>
 <div class="callout-content">
 <p>The default delimiter of the <code>read.csv()</code> function is a
@@ -7680,12 +7677,12 @@ resorts to using row numbers. To correct this, we can set
 "White",34,"Arizona"
 "Red",25,"Arizona"
 "Blue",41,"Arizona"</code></pre>
-<div id="callout2" class="callout">
+<div id="setting-column-names" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="setting-column-names">Setting Column Names<a class="anchor" aria-label="anchor" href="#setting-column-names"></a>
+<div id="setting-column-names" class="callout-inner">
+<h3 class="callout-title">Setting Column Names<a class="anchor" aria-label="anchor" href="#setting-column-names"></a>
 </h3>
 <div class="callout-content">
 <p>There is also a <code>col.names</code> argument, which can be used to
@@ -7824,12 +7821,12 @@ careful when treating them like strings.</p>
 known as <em>levels</em>. By default, R always sorts <em>levels</em> in
 alphabetical order. For instance, if you have a factor with 2
 levels:</p>
-<div id="callout1" class="callout">
+<div id="the-factor-command" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="the-factor-command">The <code>factor()</code> Command<a class="anchor" aria-label="anchor" href="#the-factor-command"></a>
+<div id="the-factor-command" class="callout-inner">
+<h3 class="callout-title">The<code>factor()</code>Command<a class="anchor" aria-label="anchor" href="#the-factor-command"></a>
 </h3>
 <div class="callout-content">
 <p>The <code>factor()</code> command is used to create and modify
@@ -8037,12 +8034,12 @@ function is still required to convert the values to the proper type
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span>file <span class="op">=</span> <span class="st">'data/sample.csv'</span>, stringsAsFactors <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="callout2" class="callout">
+<div id="default-behavior" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="default-behavior">Default Behavior<a class="anchor" aria-label="anchor" href="#default-behavior"></a>
+<div id="default-behavior" class="callout-inner">
+<h3 class="callout-title">Default Behavior<a class="anchor" aria-label="anchor" href="#default-behavior"></a>
 </h3>
 <div class="callout-content">
 <p><code>stringsAsFactors = TRUE</code> was the default behavior for R
@@ -8105,12 +8102,12 @@ categorical variables.</p>
 <p>Notice the <code>summary()</code> function handles factors
 differently to numbers (and strings), the occurrence counts for each
 value is often more useful information.</p>
-<div id="callout3" class="callout">
+<div id="the-summary-function" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="the-summary-function">The <code>summary()</code> Function<a class="anchor" aria-label="anchor" href="#the-summary-function"></a>
+<div id="the-summary-function" class="callout-inner">
+<h3 class="callout-title">The<code>summary()</code>Function<a class="anchor" aria-label="anchor" href="#the-summary-function"></a>
 </h3>
 <div class="callout-content">
 <p>The <code>summary()</code> function is a great way of spotting errors
@@ -8234,12 +8231,12 @@ levels.</p>
 <code class="sourceCode R"><span><span class="va">dat</span><span class="op">$</span><span class="va">Gender</span> <span class="op">&lt;-</span> <span class="fu">droplevels</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span></span>
 <span><span class="fu">plot</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dat</span><span class="op">$</span><span class="va">Gender</span>, y <span class="op">=</span> <span class="va">dat</span><span class="op">$</span><span class="va">BloodPressure</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/12-supp-factors-rendered-dropping-levels-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="callout4" class="callout">
+<figure><img src="../fig/12-supp-factors-rendered-dropping-levels-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="adjusting-factor-levels" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="adjusting-factor-levels">Adjusting Factor Levels<a class="anchor" aria-label="anchor" href="#adjusting-factor-levels"></a>
+<div id="adjusting-factor-levels" class="callout-inner">
+<h3 class="callout-title">Adjusting Factor Levels<a class="anchor" aria-label="anchor" href="#adjusting-factor-levels"></a>
 </h3>
 <div class="callout-content">
 <p>Adjusting the <code>levels()</code> of a factor provides a useful
@@ -8845,7 +8842,7 @@ first)?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>All vectors are one-dimensional and each element is of the same
 type.</p>
@@ -8985,7 +8982,7 @@ types?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>We know that <code>typeof(FOURS)</code> will also return
 <code>"double"</code> since matrices are made of elements of the same
@@ -9172,7 +9169,7 @@ square brackets.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
@@ -9264,7 +9261,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>
 </li></ol>
@@ -9379,12 +9376,12 @@ reshuffled or subset.</li>
 9   i  9 19
 10  j 10 20</code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="useful-data-frame-functions" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="useful-data-frame-functions">Useful Data Frame Functions<a class="anchor" aria-label="anchor" href="#useful-data-frame-functions"></a>
+<div id="useful-data-frame-functions" class="callout-inner">
+<h3 class="callout-title">Useful Data Frame Functions<a class="anchor" aria-label="anchor" href="#useful-data-frame-functions"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -9500,8 +9497,9 @@ types they can contain.</p>
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title">Callout</h3>
+<div class="callout-inner">
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout2"></a>
+</h3>
 <div class="callout-content">
 <p>Lists can contain elements that are themselves muti-dimensional
 (e.g. a lists can contain data frames or another type of objects). Lists
@@ -9533,7 +9531,7 @@ structure of the <code>PlantGrowth</code> data frame? Hint: Use
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>The weight column is numeric while group is a factor. Lists can have
 elements of different types. Since a Data Frame is just a special type
@@ -9679,12 +9677,12 @@ running, R tells us that there’s no such thing:</p>
 </h3>
 <pre class="error" tabindex="0"><code>Error in eval(expr, envir, enclos): object 'temp_F' not found</code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="where-to-learn-more" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="where-to-learn-more">Where to Learn More<a class="anchor" aria-label="anchor" href="#where-to-learn-more"></a>
+<div id="where-to-learn-more" class="callout-inner">
+<h3 class="callout-title">Where to Learn More<a class="anchor" aria-label="anchor" href="#where-to-learn-more"></a>
 </h3>
 <div class="callout-content">
 <p>The explanation of the stack frame above was very general and the
@@ -10142,7 +10140,7 @@ loops to operate on the values in a data structure.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -10165,8 +10163,8 @@ loops to operate on the values in a data structure.</li>
   "url": "https://swcarpentry.github.io/r-novice-inflammation/instructor/aio.html",
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/instructor/aio.html",
   "dateCreated": "2014-12-18",
-  "dateModified": "2024-03-12",
-  "datePublished": "2024-03-12"
+  "dateModified": "2024-03-19",
+  "datePublished": "2024-03-19"
 }
 
   </script><script>
