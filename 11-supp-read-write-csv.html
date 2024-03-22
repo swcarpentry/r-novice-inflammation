@@ -333,7 +333,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Reading and Writing CSV Files</h1>
-        <p>Last updated on 2024-03-08 |
+        <p>Last updated on 2024-03-22 |
         
         <a href="https://github.com/swcarpentry/r-novice-inflammation/edit/main/episodes/11-supp-read-write-csv.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -681,7 +681,7 @@ importing the data with <code>stringsAsFactors=FALSE</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -763,9 +763,9 @@ convention for recording missing values often depends on the individual
 who collected the data and can be recorded as <code>n.a.</code>,
 <code>--</code>, or empty cells ” “. R recognises the reserved character
 string <code>NA</code> as a missing value, but not some of the examples
-above. Let’s say the inflamation scale in the data set we used earlier
+above. Let’s say the inflammation scale in the data set we used earlier
 <code>inflammation-01.csv</code> actually starts at <code>1</code> for
-no inflamation and the zero values (<code>0</code>) were a missed
+no inflammation and the zero values (<code>0</code>) were a missed
 observation. Looking at the <code>?read.csv</code> help page is there an
 argument we could use to ensure all zeros (<code>0</code>) are read in
 as <code>NA</code>? Perhaps, in the <code>car-speeds.csv</code> data
@@ -781,7 +781,7 @@ replaced by <code>NA</code></p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1007,8 +1007,8 @@ and <code>na</code>.</li>
   "url": "https://swcarpentry.github.io/r-novice-inflammation/11-supp-read-write-csv.html",
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/11-supp-read-write-csv.html",
   "dateCreated": "2014-12-18",
-  "dateModified": "2024-03-08",
-  "datePublished": "2024-03-19"
+  "dateModified": "2024-03-22",
+  "datePublished": "2024-03-22"
 }
 
   </script><script>
