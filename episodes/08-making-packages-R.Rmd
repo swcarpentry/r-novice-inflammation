@@ -20,9 +20,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-```{r, include=FALSE}
-```
-
 Why should you make your own R packages?
 
 **Reproducible research!**

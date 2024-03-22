@@ -20,9 +20,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-```{r, include=FALSE}
-```
-
 In R you have multiple options when repeating calculations: vectorized operations, `for` loops, and `apply` functions.
 
 This lesson is an extension of [Analyzing Multiple Data Sets](03-loops-R.Rmd).
