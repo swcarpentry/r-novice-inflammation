@@ -20,8 +20,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 In R you have multiple options when repeating calculations: vectorized operations, `for` loops, and `apply` functions.
 
 This lesson is an extension of [Analyzing Multiple Data Sets](03-loops-R.Rmd).
@@ -194,7 +192,7 @@ system.time(avg2 <- analyze2(filenames))
 
 ```{.output}
    user  system elapsed 
-  0.022   0.000   0.023 
+  0.022   0.000   0.022 
 ```
 
 Note how we add a new column to `out` at each iteration?
@@ -220,7 +218,7 @@ system.time(avg3 <- analyze3(filenames))
 
 ```{.output}
    user  system elapsed 
-  0.022   0.000   0.022 
+  0.021   0.000   0.022 
 ```
 
 In this simple example there is little difference in the compute time of `analyze2` and `analyze3`.

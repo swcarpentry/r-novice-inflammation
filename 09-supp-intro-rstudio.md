@@ -19,8 +19,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 Let's start by learning about our tool.
 
 - Point to the different panels: Console, Scripts, Environments, Plots.

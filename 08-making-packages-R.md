@@ -20,8 +20,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 Why should you make your own R packages?
 
 **Reproducible research!**
@@ -260,7 +258,7 @@ kelvin_to_fahrenheit <- function(temp_K) {
 
 
 [r-open-sci]: https://devguide.ropensci.org/building.html
-[r-pkgs-desc]: https://r-pkgs.had.co.nz/description.html
+[r-pkgs-desc]: https://r-pkgs.org/description.html
 [devtools]: https://cran.r-project.org/package=devtools
 [roxygen2]: https://cran.r-project.org/package=roxygen2
 

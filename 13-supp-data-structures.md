@@ -23,8 +23,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 ### Understanding Basic Data Types and Data Structures in R
 
 To make the best of the R language, you'll need a strong understanding of the

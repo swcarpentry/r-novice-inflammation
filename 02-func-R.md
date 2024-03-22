@@ -23,8 +23,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 If we only had one data set to analyze, it would probably be faster to load the file into a spreadsheet and use that to plot some simple statistics.
 But we have twelve files to check, and may have more in the future.
 In this lesson, we'll learn how to write a function so that we can repeat several operations with a single command.
@@ -274,7 +272,7 @@ mySum <- function(input_1, input_2 = 10) {
 
 2. Read the error message: `argument "input_1" is missing, with no default`
   means that no value for `input_1` is provided in the function call,
-  and neither in the function's defintion. Thus, the addition in the
+  and neither in the function's definition. Thus, the addition in the
   function body can not be completed.
 
 :::::::::::::::::::::::::

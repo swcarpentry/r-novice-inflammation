@@ -18,8 +18,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 R is a powerful language for data manipulation.
 There are three main ways for addressing data inside R objects.
 

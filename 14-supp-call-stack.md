@@ -20,8 +20,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 ### The Call Stack
 
 Let's take a closer look at what happens when we call `fahrenheit_to_kelvin(32)`.
@@ -156,8 +154,8 @@ result <- edges(highlight(inner_vec, outer_vec))
 
 
 [man]: https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Environment-objects
-[chapter]: https://adv-r.had.co.nz/Environments.html
-[adv-r]: https://adv-r.had.co.nz/
+[chapter]: https://adv-r.hadley.nz/environments.html
+[adv-r]: https://adv-r.hadley.nz/index.html
 
 
 :::::::::::::::::::::::::::::::::::::::: keypoints

@@ -20,8 +20,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 The R Console and other interactive tools like RStudio are great for prototyping code and exploring data, but sooner or later we will want to use our program in a pipeline or run it in a shell script to process thousands of data files.
 In order to do that, we need to make our programs work like other Unix command-line tools.
 For example, we may want a program that reads a data set and prints the average inflammation per patient:

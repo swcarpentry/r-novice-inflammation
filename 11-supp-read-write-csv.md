@@ -19,8 +19,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 The most common way that scientists store data is in Excel spreadsheets.
 While there are R packages designed to access data from Excel spreadsheets (e.g., gdata, RODBC, XLConnect, xlsx, RExcel),
 users often find it easier to save their spreadsheets in [comma-separated values](reference.html#comma-separated-values-csv\) files \(CSV)
@@ -330,7 +328,7 @@ That's better!
 It is common for data sets to have missing values, or mistakes.
 The convention for recording missing values often depends on the individual who collected the data and can be recorded as `n.a.`, `--`, or empty cells " ".
 R recognises the reserved character string `NA` as a missing value, but not some of the examples above.
-Let's say the inflamation scale in the data set we used earlier `inflammation-01.csv` actually starts at `1` for no inflamation and the zero values (`0`) were a missed observation.
+Let's say the inflammation scale in the data set we used earlier `inflammation-01.csv` actually starts at `1` for no inflammation and the zero values (`0`) were a missed observation.
 Looking at the `?read.csv` help page is there an argument we could use to ensure all zeros (`0`) are read in as `NA`?
 Perhaps, in the `car-speeds.csv` data contains mistakes and the person measuring the car speeds could not accurately distinguish between "Black or "Blue" cars.
 Is there a way to specify more than one 'string', such as "Black" and "Blue", to be replaced by `NA`

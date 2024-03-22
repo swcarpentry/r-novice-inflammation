@@ -27,8 +27,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 We are studying inflammation in patients who have been given a new treatment for
 arthritis, and need to analyze the first dozen data sets (here is a link to [download the data for this lesson](data/r-novice-inflammation-data.zip)).
 The data sets are stored in [comma-separated values](../learners/reference.md#comma-separated-values-csv)
@@ -757,7 +755,7 @@ To support this, we can use the `apply` function.
 ## Getting Help
 
 To learn about a function in R, e.g. `apply`, we can read its help
-documention by running `help(apply)` or `?apply`.
+documentation by running `help(apply)` or `?apply`.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
