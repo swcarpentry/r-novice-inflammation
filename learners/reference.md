@@ -7,7 +7,7 @@ title: 'Basic Operation'
 - `# this is a comment in R`
 - Use `x <- 3` to assign a value, `3`,  to a variable, `x`
 - R counts from 1, unlike many other programming languages (e.g., Python)
-- `length(thing)` returns the number of elements contained in the variable
+- `length(collection)` returns the number of elements contained in the variable
   `collection`
 - `c(value1, value2, value3)` creates a vector
 - `container[i]` selects the i'th element from the variable `container`
