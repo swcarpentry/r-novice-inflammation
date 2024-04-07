@@ -1,7 +1,7 @@
 ---
 title: Command-Line Programs
 teaching: 30
-exercises: 0
+exercises: 50
 source: Rmd
 ---
 

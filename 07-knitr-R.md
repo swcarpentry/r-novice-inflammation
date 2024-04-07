@@ -1,7 +1,7 @@
 ---
 title: Dynamic Reports with knitr
 teaching: 20
-exercises: 0
+exercises: 5
 source: Rmd
 ---
 
