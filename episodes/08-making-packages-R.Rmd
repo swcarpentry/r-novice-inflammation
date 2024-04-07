@@ -1,7 +1,7 @@
 ---
 title: Making Packages in R
 teaching: 30
-exercises: 0
+exercises: 5
 source: Rmd
 ---
 

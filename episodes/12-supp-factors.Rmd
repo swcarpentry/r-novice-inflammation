@@ -1,7 +1,7 @@
 ---
 title: Understanding Factors
 teaching: 20
-exercises: 0
+exercises: 5
 source: Rmd
 ---
 

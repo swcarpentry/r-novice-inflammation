@@ -1,7 +1,7 @@
 ---
 title: Making Choices
 teaching: 30
-exercises: 0
+exercises: 10
 source: Rmd
 ---
 
