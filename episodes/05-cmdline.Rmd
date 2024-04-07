@@ -186,8 +186,6 @@ Rscript arith.R 3 - 4
 
 :::::::::::::::  solution
 
-## Solution
-
 ```{r, engine="bash"}
 cat arith.R
 ```
@@ -197,8 +195,6 @@ cat arith.R
 2. What goes wrong if you try to add multiplication using `*` to the program?
 
 :::::::::::::::  solution
-
-## Solution
 
 An error message is returned due to "invalid input."
 This is likely because '\*' has a special meaning in the shell, as a wildcard.
@@ -216,8 +212,6 @@ Rscript find-pattern.R print-args
 ```
 
 :::::::::::::::  solution
-
-## Solution
 
 ```{r, engine="bash"}
 cat find-pattern.R
@@ -280,8 +274,6 @@ What is the best way to test your program?
 
 :::::::::::::::  solution
 
-## Solution
-
 ```{r, engine="bash"}
 cat check.R
 ```
@@ -342,8 +334,6 @@ Is the program easier to understand?
 Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.
 
 :::::::::::::::  solution
-
-## Solution
 
 ```{r, engine="bash"}
 cat readings-short.R
@@ -418,8 +408,6 @@ Write a program called `line-count.R` that works like the Unix `wc` command:
 - If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.
 
 :::::::::::::::  solution
-
-## Solution
 
 ```{r, engine="bash"}
 cat line-count.R
