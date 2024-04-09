@@ -224,7 +224,11 @@ plot(x = dat$Gender, y = dat$BloodPressure)
 
 Why does this plot show 4 levels?
 
-*Hint* how many levels does `dat$Gender` have?
+::::::::::::::: hint
+
+How many levels does `dat$Gender` have?
+
+::::::::::::::::::::
 
 :::::::::::::::  solution
 
