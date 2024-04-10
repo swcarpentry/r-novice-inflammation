@@ -52,6 +52,8 @@ The list of argument names are contained within parentheses.
 Next, the [body](../learners/reference.md#function-body) of the function--the statements that are executed when it runs--is contained within curly braces (`{}`).
 The statements in the body are indented by two spaces, which makes the code easier to read but does not affect how the code operates.
 
+![Vocabulary associated with functions.](fig/function-terminology.svg){alt="A screenshot of the function `fahrenheit_to_celsius` defined above with some extra text annotations on specific function elements. Above the text `fahrenheit_to_celsisus`, the text reads 'Function name'. Above the text `temp_F`, the text reads 'Function argument(s)'.' The next two lines, surrounded by curly braces, are labelled 'Function body'."}
+
 When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function.
 Inside the function, we use a [return statement](../learners/reference.md#return-statement) to send a result back to whoever asked for it.
 
