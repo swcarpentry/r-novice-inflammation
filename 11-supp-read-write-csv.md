@@ -37,7 +37,7 @@ carSpeeds <- read.csv(file = 'data/car-speeds.csv')
 head(carSpeeds)
 ```
 
-```{.output}
+```output
   Color Speed     State
 1  Blue    32 NewMexico
 2   Red    45   Arizona
@@ -72,7 +72,7 @@ The default for `read.csv(...)` is to set the `header` argument to `TRUE`. This 
 carSpeeds[1, ]
 ```
 
-```{.output}
+```output
   Color Speed     State
 1  Blue    32 NewMexico
 ```
@@ -84,7 +84,7 @@ carSpeeds <- read.csv(file = 'data/car-speeds.csv', header = FALSE)
 carSpeeds[1, ]
 ```
 
-```{.output}
+```output
      V1    V2    V3
 1 Color Speed State
 ```
@@ -109,7 +109,7 @@ carSpeeds$Color <- ifelse(carSpeeds$Color == 'Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
 ```
 
-```{.output}
+```output
   [1] "Green" "1"     "Green" "5"     "4"     "Green" "Green" "2"     "5"    
  [10] "4"     "4"     "5"     "Green" "Green" "2"     "4"     "Green" "Green"
  [19] "5"     "Green" "Green" "Green" "4"     "Green" "4"     "4"     "4"    
@@ -142,7 +142,7 @@ carSpeeds <- read.csv(file = 'data/car-speeds.csv', stringsAsFactors = TRUE)
 str(carSpeeds)
 ```
 
-```{.output}
+```output
 'data.frame':	100 obs. of  3 variables:
  $ Color: Factor w/ 5 levels " Red","Black",..: 3 1 3 5 4 3 3 2 5 4 ...
  $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
@@ -159,7 +159,7 @@ carSpeeds <- read.csv(file = 'data/car-speeds.csv', stringsAsFactors = FALSE)
 str(carSpeeds)
 ```
 
-```{.output}
+```output
 'data.frame':	100 obs. of  3 variables:
  $ Color: chr  "Blue" " Red" "Blue" "White" ...
  $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
@@ -171,7 +171,7 @@ carSpeeds$Color <- ifelse(carSpeeds$Color == 'Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
 ```
 
-```{.output}
+```output
   [1] "Green" " Red"  "Green" "White" "Red"   "Green" "Green" "Black" "White"
  [10] "Red"   "Red"   "White" "Green" "Green" "Black" "Red"   "Green" "Green"
  [19] "White" "Green" "Green" "Green" "Red"   "Green" "Red"   "Red"   "Red"  
@@ -206,7 +206,7 @@ Now we can see that if we try to replace 'Blue' with 'Green' in the `$Color` col
 str(carSpeeds)
 ```
 
-```{.output}
+```output
 'data.frame':	100 obs. of  3 variables:
  $ Color: chr  "Blue" " Red" "Blue" "White" ...
  $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
@@ -218,7 +218,7 @@ carSpeeds$Color <- ifelse(carSpeeds$Color == 'Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
 ```
 
-```{.output}
+```output
   [1] "Green" " Red"  "Green" "White" "Red"   "Green" "Green" "Black" "White"
  [10] "Red"   "Red"   "White" "Green" "Green" "Black" "Red"   "Green" "Green"
  [19] "White" "Green" "Green" "Green" "Red"   "Green" "Red"   "Red"   "Red"  
@@ -238,7 +238,7 @@ carSpeeds$State <- ifelse(carSpeeds$State == 'Arizona', 'Ohio', carSpeeds$State)
 carSpeeds$State
 ```
 
-```{.output}
+```output
   [1] "3"    "Ohio" "2"    "Ohio" "Ohio" "Ohio" "3"    "2"    "Ohio" "2"   
  [11] "4"    "4"    "4"    "4"    "4"    "3"    "Ohio" "3"    "Ohio" "4"   
  [21] "4"    "4"    "3"    "2"    "2"    "3"    "2"    "4"    "2"    "4"   
@@ -294,7 +294,7 @@ Here, the data recorder added a space before the color of the car in one of the 
 unique(carSpeeds$Color)
 ```
 
-```{.output}
+```output
 [1] Green  Red  White Red   Black
 Levels:  Red Black Green Red White
 ```
@@ -315,7 +315,7 @@ carSpeeds <- read.csv(
 unique(carSpeeds$Color)
 ```
 
-```{.output}
+```output
 [1] "Blue"  "Red"   "White" "Black"
 ```
 
@@ -425,7 +425,7 @@ carSpeeds$Speed[3] <- NA
 head(carSpeeds)
 ```
 
-```{.output}
+```output
   Color Speed     State
 1  Blue    32 NewMexico
 2   Red    45   Arizona

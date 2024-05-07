@@ -76,7 +76,7 @@ If we try to get the value of `temp_F` after our functions have finished running
 temp_F
 ```
 
-```{.error}
+```error
 Error in eval(expr, envir, enclos): object 'temp_F' not found
 ```
 
@@ -111,7 +111,7 @@ dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 span(dat)
 ```
 
-```{.output}
+```output
 [1] 20
 ```
 
@@ -124,7 +124,7 @@ diff <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 span(diff)
 ```
 
-```{.output}
+```output
 [1] 20
 ```
 

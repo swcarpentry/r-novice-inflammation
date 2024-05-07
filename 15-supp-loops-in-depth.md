@@ -73,7 +73,7 @@ for (i in seq_along(a)) {
 res
 ```
 
-```{.output}
+```output
  [1]  2  4  6  8 10 12 14 16 18 20
 ```
 
@@ -85,7 +85,7 @@ res2 <- a + b
 all.equal(res, res2)
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -100,7 +100,7 @@ b <- 1:5
 a + b
 ```
 
-```{.output}
+```output
  [1]  2  4  6  8 10  7  9 11 13 15
 ```
 
@@ -113,7 +113,7 @@ b <- 5
 a * b
 ```
 
-```{.output}
+```output
  [1]  5 10 15 20 25 30 35 40 45 50
 ```
 
@@ -128,12 +128,12 @@ b <- 1:7
 a + b
 ```
 
-```{.warning}
+```warning
 Warning in a + b: longer object length is not a multiple of shorter object
 length
 ```
 
-```{.output}
+```output
  [1]  2  4  6  8 10 12 14  9 11 13
 ```
 
@@ -190,7 +190,7 @@ analyze2 <- function(filenames) {
 system.time(avg2 <- analyze2(filenames))
 ```
 
-```{.output}
+```output
    user  system elapsed 
   0.022   0.000   0.022 
 ```
@@ -216,9 +216,9 @@ analyze3 <- function(filenames) {
 system.time(avg3 <- analyze3(filenames))
 ```
 
-```{.output}
+```output
    user  system elapsed 
-  0.021   0.000   0.021 
+  0.022   0.000   0.022 
 ```
 
 In this simple example there is little difference in the compute time of `analyze2` and `analyze3`.

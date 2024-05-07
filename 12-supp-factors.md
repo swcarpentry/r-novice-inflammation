@@ -55,7 +55,7 @@ number of levels using `nlevels()`:
 levels(sex)
 ```
 
-```{.output}
+```output
 [1] "female" "male"  
 ```
 
@@ -63,7 +63,7 @@ levels(sex)
 nlevels(sex)
 ```
 
-```{.output}
+```output
 [1] 2
 ```
 
@@ -78,7 +78,7 @@ food <- factor(c("low", "high", "medium", "high", "low", "medium", "high"))
 levels(food)
 ```
 
-```{.output}
+```output
 [1] "high"   "low"    "medium"
 ```
 
@@ -87,7 +87,7 @@ food <- factor(food, levels = c("low", "medium", "high"))
 levels(food)
 ```
 
-```{.output}
+```output
 [1] "low"    "medium" "high"  
 ```
 
@@ -95,7 +95,7 @@ levels(food)
 min(food) # doesn't work
 ```
 
-```{.error}
+```error
 Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), levels = c("low", : 'min' not meaningful for factors
 ```
 
@@ -104,7 +104,7 @@ food <- factor(food, levels = c("low", "medium", "high"), ordered = TRUE)
 levels(food)
 ```
 
-```{.output}
+```output
 [1] "low"    "medium" "high"  
 ```
 
@@ -112,7 +112,7 @@ levels(food)
 min(food) # works!
 ```
 
-```{.output}
+```output
 [1] low
 Levels: low < medium < high
 ```
@@ -171,7 +171,7 @@ f <- factor(c(3.4, 1.2, 5))
 as.numeric(f)
 ```
 
-```{.output}
+```output
 [1] 2 1 3
 ```
 
@@ -184,7 +184,7 @@ The recommended way is to use the integer vector to index the factor levels:
 levels(f)[f]
 ```
 
-```{.output}
+```output
 [1] "3.4" "1.2" "5"  
 ```
 
@@ -221,7 +221,7 @@ It is included here for clarity.
 str(dat)
 ```
 
-```{.output}
+```output
 'data.frame':	100 obs. of  9 variables:
  $ ID           : Factor w/ 100 levels "Sub001","Sub002",..: 1 2 3 4 5 6 7 8 9 10 ...
  $ Gender       : Factor w/ 4 levels "f","F","m","M": 3 3 3 1 3 4 1 3 3 1 ...
@@ -241,7 +241,7 @@ Notice the first 3 columns have been converted to factors. These values were tex
 summary(dat)
 ```
 
-```{.output}
+```output
        ID     Gender        Group    BloodPressure        Age       
  Sub001 : 1   f:35   Control   :30   Min.   : 62.0   Min.   :12.10  
  Sub002 : 1   F: 4   Treatment1:35   1st Qu.:107.5   1st Qu.:14.78  
@@ -283,7 +283,7 @@ The function `table()` tabulates observations and can be used to create bar plot
 table(dat$Group)
 ```
 
-```{.output}
+```output
 
    Control Treatment1 Treatment2 
         30         35         35 

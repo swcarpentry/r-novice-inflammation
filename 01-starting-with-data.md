@@ -35,7 +35,7 @@ holds the inflammation measured in a day, so we have a set of values in
 successive days. The first few rows of our first file look like this:
 
 
-```{.output}
+```output
 0,0,1,3,1,2,4,7,8,3,3,3,10,5,7,4,7,7,12,18,6,13,11,11,7,7,4,6,8,8,4,4,5,7,3,4,2,3,0,0
 0,1,2,1,2,1,3,2,2,6,10,11,5,9,4,4,7,16,8,6,18,4,12,5,12,7,11,5,11,3,3,5,4,4,5,5,1,1,0,1
 0,1,1,3,3,2,6,2,5,9,5,7,4,5,4,15,5,11,9,10,19,14,12,17,7,12,11,7,4,2,10,5,4,2,2,3,2,2,1,1
@@ -190,7 +190,7 @@ In general, R will print to the console any object returned by a function or ope
 weight_kg
 ```
 
-```{.output}
+```output
 [1] 55
 ```
 
@@ -202,7 +202,7 @@ We can treat our variable like a regular number, and do arithmetic with it:
 2.2 * weight_kg
 ```
 
-```{.output}
+```output
 [1] 121
 ```
 
@@ -228,7 +228,7 @@ weight_kg <- 57.5
 weight_kg
 ```
 
-```{.output}
+```output
 [1] 57.5
 ```
 
@@ -261,7 +261,7 @@ weight_lb <- 2.2 * weight_kg
 weight_kg
 ```
 
-```{.output}
+```output
 [1] 57.5
 ```
 
@@ -270,7 +270,7 @@ weight_kg
 weight_lb
 ```
 
-```{.output}
+```output
 [1] 126.5
 ```
 
@@ -288,7 +288,7 @@ weight_kg <- 100.0
 weight_kg
 ```
 
-```{.output}
+```output
 [1] 100
 ```
 
@@ -297,7 +297,7 @@ weight_kg
 weight_lb
 ```
 
-```{.output}
+```output
 [1] 126.5
 ```
 
@@ -334,7 +334,7 @@ If we want to check if our data has been loaded, we can print the variable's val
 head(dat)
 ```
 
-```{.output}
+```output
   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20 V21
 1  0  0  1  3  1  2  4  7  8   3   3   3  10   5   7   4   7   7  12  18   6
 2  0  1  2  1  2  1  3  2  2   6  10  11   5   9   4   4   7  16   8   6  18
@@ -396,7 +396,7 @@ First, let's ask what type of thing `dat` is:
 class(dat)
 ```
 
-```{.output}
+```output
 [1] "data.frame"
 ```
 
@@ -411,7 +411,7 @@ We can see the shape, or [dimensions](../learners/reference.md#dimensions-of-an-
 dim(dat)
 ```
 
-```{.output}
+```output
 [1] 60 40
 ```
 
@@ -425,7 +425,7 @@ If we want to get a single value from the data frame, we can provide an [index](
 dat[1, 1]
 ```
 
-```{.output}
+```output
 [1] 0
 ```
 
@@ -434,7 +434,7 @@ dat[1, 1]
 dat[30, 20]
 ```
 
-```{.output}
+```output
 [1] 16
 ```
 
@@ -448,7 +448,7 @@ For example, to pick columns 10 and 20 from rows 1, 3, and 5, we can do this:
 dat[c(1, 3, 5), c(10, 20)]
 ```
 
-```{.output}
+```output
   V10 V20
 1   3  18
 3   9  10
@@ -462,7 +462,7 @@ We frequently want to select contiguous rows or columns, such as the first ten r
 1:5
 ```
 
-```{.output}
+```output
 [1] 1 2 3 4 5
 ```
 
@@ -470,7 +470,7 @@ We frequently want to select contiguous rows or columns, such as the first ten r
 3:12
 ```
 
-```{.output}
+```output
  [1]  3  4  5  6  7  8  9 10 11 12
 ```
 
@@ -481,7 +481,7 @@ For example, we can select the first ten columns of values for the first four ro
 dat[1:4, 1:10]
 ```
 
-```{.output}
+```output
   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
 1  0  0  1  3  1  2  4  7  8   3
 2  0  1  2  1  2  1  3  2  2   6
@@ -496,7 +496,7 @@ or the first ten columns of rows 5 to 10 like this:
 dat[5:10, 1:10]
 ```
 
-```{.output}
+```output
    V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
 5   0  1  1  3  3  1  3  5  2   4
 6   0  0  1  2  2  4  2  1  6   4
@@ -514,7 +514,7 @@ If you want to select all rows or all columns, leave that index value empty.
 dat[5, ]
 ```
 
-```{.output}
+```output
   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20 V21
 5  0  1  1  3  3  1  3  5  2   4   4   7   6   5   3  10   8  10   6  17   9
   V22 V23 V24 V25 V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38 V39 V40
@@ -526,7 +526,7 @@ dat[5, ]
 dat[, 16:18]
 ```
 
-```{.output}
+```output
    V16 V17 V18
 1    4   7   7
 2    4   7  16
@@ -614,7 +614,7 @@ patient_1 <- dat[1, ]
 max(patient_1)
 ```
 
-```{.output}
+```output
 [1] 18
 ```
 
@@ -664,7 +664,7 @@ Instead, we can combine the selection and the function call:
 max(dat[2, ])
 ```
 
-```{.output}
+```output
 [1] 18
 ```
 
@@ -676,7 +676,7 @@ R also has functions for other common calculations, e.g. finding the minimum, me
 min(dat[, 7])
 ```
 
-```{.output}
+```output
 [1] 1
 ```
 
@@ -685,7 +685,7 @@ min(dat[, 7])
 mean(dat[, 7])
 ```
 
-```{.output}
+```output
 [1] 3.8
 ```
 
@@ -694,7 +694,7 @@ mean(dat[, 7])
 median(dat[, 7])
 ```
 
-```{.output}
+```output
 [1] 4
 ```
 
@@ -703,7 +703,7 @@ median(dat[, 7])
 sd(dat[, 7])
 ```
 
-```{.output}
+```output
 [1] 1.725187
 ```
 
@@ -731,7 +731,7 @@ R also has a function that summaries the previous common calculations:
 summary(dat[, 1:4])
 ```
 
-```{.output}
+```output
        V1          V2             V3              V4      
  Min.   :0   Min.   :0.00   Min.   :0.000   Min.   :0.00  
  1st Qu.:0   1st Qu.:0.00   1st Qu.:1.000   1st Qu.:1.00  
@@ -803,7 +803,7 @@ animal <- c("m", "o", "n", "k", "e", "y")
 animal[1:3]
 ```
 
-```{.output}
+```output
 [1] "m" "o" "n"
 ```
 
@@ -812,7 +812,7 @@ animal[1:3]
 animal[4:6]
 ```
 
-```{.output}
+```output
 [1] "k" "e" "y"
 ```
 

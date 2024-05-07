@@ -51,7 +51,7 @@ Lets take a look at this data.
 class(dat)
 ```
 
-```{.output}
+```output
 [1] "data.frame"
 ```
 
@@ -64,7 +64,7 @@ We can compactly display the internal structure of a data frame using the  struc
 str(dat)
 ```
 
-```{.output}
+```output
 'data.frame':	100 obs. of  9 variables:
  $ ID           : chr  "Sub001" "Sub002" "Sub003" "Sub004" ...
  $ Gender       : chr  "m" "m" "m" "f" ...
@@ -84,7 +84,7 @@ The `str` function tell us that the data has 100 rows and 9 columns. It is also 
 head(dat)
 ```
 
-```{.output}
+```output
       ID Gender      Group BloodPressure  Age Aneurisms_q1 Aneurisms_q2
 1 Sub001      m    Control           132 16.0          114          140
 2 Sub002      m Treatment2           139 17.2          148          209
@@ -123,7 +123,7 @@ Think about the number of rows and columns you would expect as the result.
 dat[1, 1]
 ```
 
-```{.output}
+```output
 [1] "Sub001"
 ```
 
@@ -148,7 +148,7 @@ What will be returned by `dat[, 2]`?
 dat[, 2]
 ```
 
-```{.output}
+```output
   [1] "m" "m" "m" "f" "m" "M" "f" "m" "m" "f" "m" "f" "f" "m" "m" "m" "f" "m"
  [19] "m" "F" "f" "m" "f" "f" "m" "M" "M" "f" "m" "f" "f" "m" "m" "m" "m" "f"
  [37] "f" "m" "M" "m" "f" "m" "m" "m" "f" "f" "M" "M" "m" "m" "m" "f" "f" "f"
@@ -168,7 +168,7 @@ The colon `:` can be used to create a sequence of integers.
 6:9
 ```
 
-```{.output}
+```output
 [1] 6 7 8 9
 ```
 
@@ -191,7 +191,7 @@ Use the colon operator to index just the aneurism count data (columns 6 to 9).
 dat[, 6:9]
 ```
 
-```{.output}
+```output
     Aneurisms_q1 Aneurisms_q2 Aneurisms_q3 Aneurisms_q4
 1            114          140          202          237
 2            148          209          248          248
@@ -306,7 +306,7 @@ Finally we can use the `c()` (combine) function to address non-sequential rows a
 dat[c(1, 5, 7, 9), 1:5]
 ```
 
-```{.output}
+```output
       ID Gender      Group BloodPressure  Age
 1 Sub001      m    Control           132 16.0
 5 Sub005      m Treatment1           125 19.9
@@ -331,7 +331,7 @@ Write code to return the age and gender values for the first 5 patients.
 dat[1:5, c(5, 2)]
 ```
 
-```{.output}
+```output
    Age Gender
 1 16.0      m
 2 17.2      m
@@ -353,7 +353,7 @@ Columns in an R data frame are named.
 colnames(dat)
 ```
 
-```{.output}
+```output
 [1] "ID"            "Gender"        "Group"         "BloodPressure"
 [5] "Age"           "Aneurisms_q1"  "Aneurisms_q2"  "Aneurisms_q3" 
 [9] "Aneurisms_q4" 
@@ -375,7 +375,7 @@ We usually use the `$` operator to address a column by name
 dat$Gender
 ```
 
-```{.output}
+```output
   [1] "m" "m" "m" "f" "m" "M" "f" "m" "m" "f" "m" "f" "f" "m" "m" "m" "f" "m"
  [19] "m" "F" "f" "m" "f" "f" "m" "M" "M" "f" "m" "f" "f" "m" "m" "m" "m" "f"
  [37] "f" "m" "M" "m" "f" "m" "m" "m" "f" "f" "M" "M" "m" "m" "m" "f" "f" "f"
@@ -391,7 +391,7 @@ When we extract a single column from a data frame using the `$` operator, R will
 class(dat$Gender)
 ```
 
-```{.output}
+```output
 [1] "character"
 ```
 
@@ -399,7 +399,7 @@ class(dat$Gender)
 class(dat$BloodPressure)
 ```
 
-```{.output}
+```output
 [1] "integer"
 ```
 
@@ -410,7 +410,7 @@ Named addressing can also be used in square brackets.
 head(dat[, c('Age', 'Gender')])
 ```
 
-```{.output}
+```output
    Age Gender
 1 16.0      m
 2 17.2      m
@@ -440,7 +440,7 @@ By default, row names are indices (i.e. position of each row in the data frame):
 rownames(dat)
 ```
 
-```{.output}
+```output
   [1] "1"   "2"   "3"   "4"   "5"   "6"   "7"   "8"   "9"   "10"  "11"  "12" 
  [13] "13"  "14"  "15"  "16"  "17"  "18"  "19"  "20"  "21"  "22"  "23"  "24" 
  [25] "25"  "26"  "27"  "28"  "29"  "30"  "31"  "32"  "33"  "34"  "35"  "36" 
@@ -461,7 +461,7 @@ dat2 <- read.csv(file = 'data/sample.csv', header = TRUE, stringsAsFactors = FAL
 rownames(dat2)
 ```
 
-```{.output}
+```output
   [1] "Sub001" "Sub002" "Sub003" "Sub004" "Sub005" "Sub006" "Sub007" "Sub008"
   [9] "Sub009" "Sub010" "Sub011" "Sub012" "Sub013" "Sub014" "Sub015" "Sub016"
  [17] "Sub017" "Sub018" "Sub019" "Sub020" "Sub021" "Sub022" "Sub023" "Sub024"
@@ -484,7 +484,7 @@ We can now extract one or more rows using those row names:
 dat2["Sub072", ]
 ```
 
-```{.output}
+```output
        Gender   Group BloodPressure  Age Aneurisms_q1 Aneurisms_q2 Aneurisms_q3
 Sub072      m Control           116 17.4          118          165          220
        Aneurisms_q4
@@ -496,7 +496,7 @@ Sub072          227
 dat2[c("Sub009", "Sub072"), ]
 ```
 
-```{.output}
+```output
        Gender      Group BloodPressure  Age Aneurisms_q1 Aneurisms_q2
 Sub009      m Treatment2           131 19.4          117          215
 Sub072      m    Control           116 17.4          118          165
@@ -514,7 +514,7 @@ For example, if we try and read in the data setting the *Group* column as row na
 dat2 <- read.csv(file = 'data/sample.csv', header = TRUE, stringsAsFactors = FALSE, row.names=3)
 ```
 
-```{.error}
+```error
 Error in read.table(file = file, header = header, sep = sep, quote = quote, : duplicate 'row.names' are not allowed
 ```
 
@@ -527,7 +527,7 @@ A logical vector contains only the special values `TRUE` and `FALSE`.
 c(TRUE, TRUE, FALSE, FALSE, TRUE)
 ```
 
-```{.output}
+```output
 [1]  TRUE  TRUE FALSE FALSE  TRUE
 ```
 
@@ -548,7 +548,7 @@ x <- c(1, 2, 3, 11, 12, 13)
 x < 10
 ```
 
-```{.output}
+```output
 [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE
 ```
 
@@ -556,7 +556,7 @@ x < 10
 x %in% 1:10
 ```
 
-```{.output}
+```output
 [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE
 ```
 
@@ -568,7 +568,7 @@ index <- dat$Group == 'Control'
 dat[index,]$BloodPressure
 ```
 
-```{.output}
+```output
  [1] 132 173 129  77 158  81 137 111 135 108 133 139 126 125  99 122 155 133  94
 [20]  98  74 116  97 104 117  90 150 116 108 102
 ```
@@ -621,7 +621,7 @@ x[x < 10] <- 0
 x
 ```
 
-```{.output}
+```output
 [1]  0  0  0 11 12 13
 ```
 

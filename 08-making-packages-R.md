@@ -171,7 +171,7 @@ Now that our package is loaded, let's try out some of the functions.
 fahrenheit_to_celsius(32)
 ```
 
-```{.output}
+```output
 [1] 0
 ```
 
@@ -179,7 +179,7 @@ fahrenheit_to_celsius(32)
 celsius_to_kelvin(-273.15)
 ```
 
-```{.output}
+```output
 [1] 0
 ```
 
@@ -187,7 +187,7 @@ celsius_to_kelvin(-273.15)
 fahrenheit_to_kelvin(-459.67)
 ```
 
-```{.output}
+```output
 [1] 0
 ```
 

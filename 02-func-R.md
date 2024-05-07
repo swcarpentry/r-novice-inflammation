@@ -74,7 +74,7 @@ Calling our own function is no different from calling any other function:
 fahrenheit_to_celsius(32)
 ```
 
-```{.output}
+```output
 [1] 0
 ```
 
@@ -83,7 +83,7 @@ fahrenheit_to_celsius(32)
 fahrenheit_to_celsius(212)
 ```
 
-```{.output}
+```output
 [1] 100
 ```
 
@@ -104,7 +104,7 @@ celsius_to_kelvin <- function(temp_C) {
 celsius_to_kelvin(0)
 ```
 
-```{.output}
+```output
 [1] 273.15
 ```
 
@@ -124,7 +124,7 @@ fahrenheit_to_kelvin <- function(temp_F) {
 fahrenheit_to_kelvin(32.0)
 ```
 
-```{.output}
+```output
 [1] 273.15
 ```
 
@@ -147,7 +147,7 @@ inside another, like so:
 celsius_to_kelvin(fahrenheit_to_celsius(32.0))
 ```
 
-```{.output}
+```output
 [1] 273.15
 ```
 
@@ -181,7 +181,7 @@ asterisk <- "***"  # R interprets a variable with a single value as a vector
 highlight(best_practice, asterisk)
 ```
 
-```{.output}
+```output
 [1] "***"       "Write"     "programs"  "for"       "people"    "not"      
 [7] "computers" "***"      
 ```
@@ -208,7 +208,7 @@ dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
 edges(dry_principle)
 ```
 
-```{.output}
+```output
 [1] "Don't"  "others"
 ```
 
@@ -305,7 +305,7 @@ z <- c(0, 0, 0, 0)
 z
 ```
 
-```{.output}
+```output
 [1] 0 0 0 0
 ```
 
@@ -313,7 +313,7 @@ z
 center(z, 3)
 ```
 
-```{.output}
+```output
 [1] 3 3 3 3
 ```
 
@@ -326,7 +326,7 @@ centered <- center(dat[, 4], 0)
 head(centered)
 ```
 
-```{.output}
+```output
 [1]  1.25 -0.75  1.25 -1.75  1.25  0.25
 ```
 
@@ -338,7 +338,7 @@ It's hard to tell from the default output whether the result is correct, but the
 mean(dat[, 4])
 ```
 
-```{.output}
+```output
 [1] 1.75
 ```
 
@@ -347,7 +347,7 @@ mean(dat[, 4])
 mean(centered)
 ```
 
-```{.output}
+```output
 [1] 0
 ```
 
@@ -360,7 +360,7 @@ We can even go further and check that the standard deviation hasn't changed:
 sd(dat[, 4])
 ```
 
-```{.output}
+```output
 [1] 1.067628
 ```
 
@@ -369,7 +369,7 @@ sd(dat[, 4])
 sd(centered)
 ```
 
-```{.output}
+```output
 [1] 1.067628
 ```
 
@@ -382,7 +382,7 @@ Let's do this instead:
 sd(dat[, 4]) - sd(centered)
 ```
 
-```{.output}
+```output
 [1] 0
 ```
 
@@ -394,7 +394,7 @@ R has a useful function for comparing two objects allowing for rounding errors, 
 all.equal(sd(dat[, 4]), sd(centered))
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -415,7 +415,7 @@ datNA[10,4] <- NA
 center(datNA[,4], 0)
 ```
 
-```{.output}
+```output
  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
 [26] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
 [51] NA NA NA NA NA NA NA NA NA NA
@@ -433,7 +433,7 @@ center <- function(data, midpoint) {
 center(datNA[,4], 0)
 ```
 
-```{.output}
+```output
  [1]  1.2542373 -0.7457627  1.2542373 -1.7457627  1.2542373  0.2542373
  [7]  0.2542373  0.2542373  1.2542373         NA -1.7457627 -1.7457627
 [13] -0.7457627 -1.7457627 -0.7457627 -1.7457627 -1.7457627 -0.7457627
@@ -456,17 +456,17 @@ datNA[,2] <- as.character(datNA[,2])
 center(datNA[,1], 0)
 ```
 
-```{.warning}
+```warning
 Warning in mean.default(data, na.rm = TRUE): argument is not numeric or
 logical: returning NA
 ```
 
-```{.warning}
+```warning
 Warning in Ops.factor(data, mean(data, na.rm = TRUE)): '-' not meaningful for
 factors
 ```
 
-```{.output}
+```output
  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
 [26] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
 [51] NA NA NA NA NA NA NA NA NA NA
@@ -476,12 +476,12 @@ factors
 center(datNA[,2], 0)
 ```
 
-```{.warning}
+```warning
 Warning in mean.default(data, na.rm = TRUE): argument is not numeric or
 logical: returning NA
 ```
 
-```{.error}
+```error
 Error in data - mean(data, na.rm = TRUE): non-numeric argument to binary operator
 ```
 
@@ -603,7 +603,7 @@ dat <- read.csv(header = FALSE, file = "data/inflammation-01.csv")
 dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
 
-```{.error}
+```error
 Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 ```
 
@@ -629,7 +629,7 @@ test_data <- c(0, 0, 0, 0)
 center(test_data, 3)
 ```
 
-```{.output}
+```output
 [1] 3 3 3 3
 ```
 
@@ -641,7 +641,7 @@ more_data <- 5 + test_data
 more_data
 ```
 
-```{.output}
+```output
 [1] 5 5 5 5
 ```
 
@@ -649,7 +649,7 @@ more_data
 center(more_data)
 ```
 
-```{.output}
+```output
 [1] 0 0 0 0
 ```
 
@@ -669,7 +669,7 @@ display <- function(a = 1, b = 2, c = 3) {
 display()
 ```
 
-```{.output}
+```output
 a b c 
 1 2 3 
 ```
@@ -679,7 +679,7 @@ a b c
 display(55)
 ```
 
-```{.output}
+```output
  a  b  c 
 55  2  3 
 ```
@@ -689,7 +689,7 @@ display(55)
 display(55, 66)
 ```
 
-```{.output}
+```output
  a  b  c 
 55 66  3 
 ```
@@ -699,7 +699,7 @@ display(55, 66)
 display(55, 66, 77)
 ```
 
-```{.output}
+```output
  a  b  c 
 55 66 77 
 ```
@@ -713,7 +713,7 @@ We can override this behavior by naming the value as we pass it in:
 display(c = 77)
 ```
 
-```{.output}
+```output
  a  b  c 
  1  2 77 
 ```
@@ -758,7 +758,7 @@ Now we understand why the following gives an error:
 dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
 
-```{.error}
+```error
 Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 ```
 

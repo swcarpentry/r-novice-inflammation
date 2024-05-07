@@ -77,7 +77,7 @@ print_words <- function(sentence) {
 print_words(best_practice)
 ```
 
-```{.output}
+```output
 [1] "Let"
 [1] "the"
 [1] "computer"
@@ -97,7 +97,7 @@ but that's a bad approach for two reasons:
 best_practice[-6]
 ```
 
-```{.output}
+```output
 [1] "Let"      "the"      "computer" "do"       "the"     
 ```
 
@@ -105,7 +105,7 @@ best_practice[-6]
 print_words(best_practice[-6])
 ```
 
-```{.output}
+```output
 [1] "Let"
 [1] "the"
 [1] "computer"
@@ -138,7 +138,7 @@ print_words <- function(sentence) {
 print_words(best_practice)
 ```
 
-```{.output}
+```output
 [1] "Let"
 [1] "the"
 [1] "computer"
@@ -154,7 +154,7 @@ This is shorter - certainly shorter than something that prints every character i
 print_words(best_practice[-6])
 ```
 
-```{.output}
+```output
 [1] "Let"
 [1] "the"
 [1] "computer"
@@ -191,7 +191,7 @@ for (v in vowels) {
 len
 ```
 
-```{.output}
+```output
 [1] 5
 ```
 
@@ -213,7 +213,7 @@ for (letter in c("a", "b", "c")) {
 }
 ```
 
-```{.output}
+```output
 [1] "a"
 [1] "b"
 [1] "c"
@@ -224,7 +224,7 @@ for (letter in c("a", "b", "c")) {
 letter
 ```
 
-```{.output}
+```output
 [1] "c"
 ```
 
@@ -235,7 +235,7 @@ Note also that finding the length of a vector is such a common operation that R 
 length(vowels)
 ```
 
-```{.output}
+```output
 [1] 5
 ```
 
@@ -252,7 +252,7 @@ R has a built-in function called `seq` that creates a list of numbers:
 seq(3)
 ```
 
-```{.output}
+```output
 [1] 1 2 3
 ```
 
@@ -263,7 +263,7 @@ Using `seq`, write a function that prints the first **N** natural numbers, one p
 print_N(3)
 ```
 
-```{.output}
+```output
 [1] 1
 [1] 2
 [1] 3
@@ -300,7 +300,7 @@ ex_vec <- c(4, 8, 15, 16, 23, 42)
 total(ex_vec)
 ```
 
-```{.output}
+```output
 [1] 108
 ```
 
@@ -334,7 +334,7 @@ Exponentiation is built into R:
 2^4
 ```
 
-```{.output}
+```output
 [1] 16
 ```
 
@@ -345,7 +345,7 @@ Write a function called `expo` that uses a loop to calculate the same result.
 expo(2, 4)
 ```
 
-```{.output}
+```output
 [1] 16
 ```
 
@@ -387,7 +387,7 @@ So to list all the csv files, we could run either of the following:
 list.files(path = "data", pattern = "csv")
 ```
 
-```{.output}
+```output
  [1] "car-speeds-cleaned.csv" "car-speeds.csv"         "inflammation-01.csv"   
  [4] "inflammation-02.csv"    "inflammation-03.csv"    "inflammation-04.csv"   
  [7] "inflammation-05.csv"    "inflammation-06.csv"    "inflammation-07.csv"   
@@ -400,7 +400,7 @@ list.files(path = "data", pattern = "csv")
 list.files(path = "data", pattern = "inflammation")
 ```
 
-```{.output}
+```output
  [1] "inflammation-01.csv"            "inflammation-02.csv"           
  [3] "inflammation-03.csv"            "inflammation-04.csv"           
  [5] "inflammation-05.csv"            "inflammation-06.csv"           
@@ -436,7 +436,7 @@ We can do that by using the argument `full.names = TRUE`.
 list.files(path = "data", pattern = "csv", full.names = TRUE)
 ```
 
-```{.output}
+```output
  [1] "data/car-speeds-cleaned.csv" "data/car-speeds.csv"        
  [3] "data/inflammation-01.csv"    "data/inflammation-02.csv"   
  [5] "data/inflammation-03.csv"    "data/inflammation-04.csv"   
@@ -452,7 +452,7 @@ list.files(path = "data", pattern = "csv", full.names = TRUE)
 list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 ```
 
-```{.output}
+```output
  [1] "data/inflammation-01.csv"            "data/inflammation-02.csv"           
  [3] "data/inflammation-03.csv"            "data/inflammation-04.csv"           
  [5] "data/inflammation-05.csv"            "data/inflammation-06.csv"           
@@ -480,19 +480,19 @@ for (f in filenames) {
 }
 ```
 
-```{.output}
+```output
 [1] "data/inflammation-01.csv"
 ```
 
 <img src="fig/03-loops-R-rendered-loop-analyze-1.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-2.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-3.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" />
 
-```{.output}
+```output
 [1] "data/inflammation-02.csv"
 ```
 
 <img src="fig/03-loops-R-rendered-loop-analyze-4.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-5.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-6.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" />
 
-```{.output}
+```output
 [1] "data/inflammation-03.csv"
 ```
 

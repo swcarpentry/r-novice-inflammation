@@ -171,7 +171,7 @@ rm(list = ls()) # If you want to delete all the objects in the workspace and sta
 cat inflammation.R
 ```
 
-```{.output}
+```output
 # This code runs the inflammation data analysis.
 
 source("inflammation_fxns.R")
@@ -183,7 +183,7 @@ analyze_all("inflammation.*csv")
 cat inflammation_fxns.R
 ```
 
-```{.output}
+```output
 # This is code for functions used in our inflammation data analysis.
 
 analyze <- function(filename, output = NULL) {

@@ -103,7 +103,7 @@ num <- 37
 num > 100
 ```
 
-```{.output}
+```output
 [1] FALSE
 ```
 
@@ -114,7 +114,7 @@ As 37 is not greater than 100, this returns a `FALSE` object. And as you likely 
 num < 100
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -131,7 +131,7 @@ if (num > 100) {
 print("done")
 ```
 
-```{.output}
+```output
 [1] "not greater"
 [1] "done"
 ```
@@ -174,7 +174,7 @@ sign <- function(num) {
 sign(-3)
 ```
 
-```{.output}
+```output
 [1] -1
 ```
 
@@ -182,7 +182,7 @@ sign(-3)
 sign(0)
 ```
 
-```{.output}
+```output
 [1] 0
 ```
 
@@ -190,7 +190,7 @@ sign(0)
 sign(2/3)
 ```
 
-```{.output}
+```output
 [1] 1
 ```
 
@@ -221,7 +221,7 @@ if (1 > 0 && -1 > 0) {
 }
 ```
 
-```{.output}
+```output
 [1] "at least one part is not true"
 ```
 
@@ -236,7 +236,7 @@ if (1 > 0 || -1 > 0) {
 }
 ```
 
-```{.output}
+```output
 [1] "at least one part is true"
 ```
 
@@ -257,7 +257,7 @@ a <- NA
 a == 1
 ```
 
-```{.output}
+```output
 [1] NA
 ```
 
@@ -265,7 +265,7 @@ a == 1
 a == NA
 ```
 
-```{.output}
+```output
 [1] NA
 ```
 
@@ -279,7 +279,7 @@ if (a == NA) {
 }
 ```
 
-```{.error}
+```error
 Error in if (a == NA) {: missing value where TRUE/FALSE needed
 ```
 
@@ -290,7 +290,7 @@ To solve this issue, we need to use the dedicated `is.na()` function:
 is.na(a)
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -300,7 +300,7 @@ if (is.na(a)) {
 }
 ```
 
-```{.output}
+```output
 [1] "Hi!"
 ```
 
@@ -494,7 +494,7 @@ output <- NULL
 is.null(output)
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -502,7 +502,7 @@ is.null(output)
 !is.null(output)
 ```
 
-```{.output}
+```output
 [1] FALSE
 ```
 
@@ -552,7 +552,7 @@ f <- "inflammation-01.csv"
 sub("csv", "pdf", f)
 ```
 
-```{.output}
+```output
 [1] "inflammation-01.pdf"
 ```
 
@@ -563,7 +563,7 @@ To add the "results" directory to the filename use the function `file.path`,
 file.path("results", sub("csv", "pdf", f))
 ```
 
-```{.output}
+```output
 [1] "results/inflammation-01.pdf"
 ```
 

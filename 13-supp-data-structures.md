@@ -69,7 +69,7 @@ x <- "dataset"
 typeof(x)
 ```
 
-```{.output}
+```output
 [1] "character"
 ```
 
@@ -77,7 +77,7 @@ typeof(x)
 attributes(x)
 ```
 
-```{.output}
+```output
 NULL
 ```
 
@@ -86,7 +86,7 @@ y <- 1:10
 y
 ```
 
-```{.output}
+```output
  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
@@ -94,7 +94,7 @@ y
 typeof(y)
 ```
 
-```{.output}
+```output
 [1] "integer"
 ```
 
@@ -102,7 +102,7 @@ typeof(y)
 length(y)
 ```
 
-```{.output}
+```output
 [1] 10
 ```
 
@@ -111,7 +111,7 @@ z <- as.numeric(y)
 z
 ```
 
-```{.output}
+```output
  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
@@ -119,7 +119,7 @@ z
 typeof(z)
 ```
 
-```{.output}
+```output
 [1] "double"
 ```
 
@@ -155,7 +155,7 @@ common to use direct constructors such as `character()`, `numeric()`, etc.
 vector() # an empty 'logical' (the default) vector
 ```
 
-```{.output}
+```output
 logical(0)
 ```
 
@@ -163,7 +163,7 @@ logical(0)
 vector("character", length = 5) # a vector of mode 'character' with 5 elements
 ```
 
-```{.output}
+```output
 [1] "" "" "" "" ""
 ```
 
@@ -171,7 +171,7 @@ vector("character", length = 5) # a vector of mode 'character' with 5 elements
 character(5) # the same thing, but using the constructor directly
 ```
 
-```{.output}
+```output
 [1] "" "" "" "" ""
 ```
 
@@ -179,7 +179,7 @@ character(5) # the same thing, but using the constructor directly
 numeric(5)   # a numeric vector with 5 elements
 ```
 
-```{.output}
+```output
 [1] 0 0 0 0 0
 ```
 
@@ -187,7 +187,7 @@ numeric(5)   # a numeric vector with 5 elements
 logical(5)   # a logical vector with 5 elements
 ```
 
-```{.output}
+```output
 [1] FALSE FALSE FALSE FALSE FALSE
 ```
 
@@ -233,7 +233,7 @@ information about your vectors and R objects in general.
 typeof(z)
 ```
 
-```{.output}
+```output
 [1] "character"
 ```
 
@@ -241,7 +241,7 @@ typeof(z)
 length(z)
 ```
 
-```{.output}
+```output
 [1] 3
 ```
 
@@ -249,7 +249,7 @@ length(z)
 class(z)
 ```
 
-```{.output}
+```output
 [1] "character"
 ```
 
@@ -257,7 +257,7 @@ class(z)
 str(z)
 ```
 
-```{.output}
+```output
  chr [1:3] "Sarah" "Tracy" "Jon"
 ```
 
@@ -271,7 +271,7 @@ z <- c(z, "Annette")
 z
 ```
 
-```{.output}
+```output
 [1] "Sarah"   "Tracy"   "Jon"     "Annette"
 ```
 
@@ -280,7 +280,7 @@ z <- c("Greg", z)
 z
 ```
 
-```{.output}
+```output
 [1] "Greg"    "Sarah"   "Tracy"   "Jon"     "Annette"
 ```
 
@@ -294,7 +294,7 @@ series <- 1:10
 seq(10)
 ```
 
-```{.output}
+```output
  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
@@ -302,7 +302,7 @@ seq(10)
 seq(from = 1, to = 10, by = 0.1)
 ```
 
-```{.output}
+```output
  [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3  2.4
 [16]  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7  3.8  3.9
 [31]  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1  5.2  5.3  5.4
@@ -336,7 +336,7 @@ y <- c("a", "b", "c", "d", "e")
 is.na(x)
 ```
 
-```{.output}
+```output
 [1] FALSE  TRUE FALSE FALSE  TRUE
 ```
 
@@ -344,7 +344,7 @@ is.na(x)
 is.na(y)
 ```
 
-```{.output}
+```output
 [1] FALSE FALSE FALSE FALSE FALSE
 ```
 
@@ -352,7 +352,7 @@ is.na(y)
 anyNA(x)
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -360,7 +360,7 @@ anyNA(x)
 anyNA(y)
 ```
 
-```{.output}
+```output
 [1] FALSE
 ```
 
@@ -373,7 +373,7 @@ anyNA(y)
 1/0
 ```
 
-```{.output}
+```output
 [1] Inf
 ```
 
@@ -384,7 +384,7 @@ anyNA(y)
 0/0
 ```
 
-```{.output}
+```output
 [1] NaN
 ```
 
@@ -411,7 +411,7 @@ You can also control how vectors are coerced explicitly using the
 as.numeric("1")
 ```
 
-```{.output}
+```output
 [1] 1
 ```
 
@@ -419,7 +419,7 @@ as.numeric("1")
 as.character(1:2)
 ```
 
-```{.output}
+```output
 [1] "1" "2"
 ```
 
@@ -459,7 +459,7 @@ vectors and lists) or number of characters (for character strings).
 length(1:10)
 ```
 
-```{.output}
+```output
 [1] 10
 ```
 
@@ -467,7 +467,7 @@ length(1:10)
 nchar("Software Carpentry")
 ```
 
-```{.output}
+```output
 [1] 18
 ```
 
@@ -484,7 +484,7 @@ m <- matrix(nrow = 2, ncol = 2)
 m
 ```
 
-```{.output}
+```output
      [,1] [,2]
 [1,]   NA   NA
 [2,]   NA   NA
@@ -494,7 +494,7 @@ m
 dim(m)
 ```
 
-```{.output}
+```output
 [1] 2 2
 ```
 
@@ -507,7 +507,7 @@ m <- matrix(c(1:3))
 class(m)
 ```
 
-```{.output}
+```output
 [1] "matrix" "array" 
 ```
 
@@ -515,7 +515,7 @@ class(m)
 typeof(m)
 ```
 
-```{.output}
+```output
 [1] "integer"
 ```
 
@@ -582,7 +582,7 @@ y <- 10:12
 cbind(x, y)
 ```
 
-```{.output}
+```output
      x  y
 [1,] 1 10
 [2,] 2 11
@@ -593,7 +593,7 @@ cbind(x, y)
 rbind(x, y)
 ```
 
-```{.output}
+```output
   [,1] [,2] [,3]
 x    1    2    3
 y   10   11   12
@@ -611,7 +611,7 @@ mdat <- matrix(c(1, 2, 3, 11, 12, 13),
 mdat
 ```
 
-```{.output}
+```output
      [,1] [,2] [,3]
 [1,]    1    2    3
 [2,]   11   12   13
@@ -625,7 +625,7 @@ dimension (e.g. "row" and "column") in single square brackets.
 mdat[2, 3]
 ```
 
-```{.output}
+```output
 [1] 13
 ```
 
@@ -648,7 +648,7 @@ x <- list(1, "a", TRUE, 1+4i)
 x
 ```
 
-```{.output}
+```output
 [[1]]
 [1] 1
 
@@ -667,7 +667,7 @@ x <- vector("list", length = 5) # empty list
 length(x)
 ```
 
-```{.output}
+```output
 [1] 5
 ```
 
@@ -678,7 +678,7 @@ The content of elements of a list can be retrieved by using double square bracke
 x[[1]]
 ```
 
-```{.output}
+```output
 NULL
 ```
 
@@ -691,7 +691,7 @@ x <- as.list(x)
 length(x)
 ```
 
-```{.output}
+```output
 [1] 10
 ```
 
@@ -712,7 +712,7 @@ length(x)
     class(x[1])
     ```
     
-    ```{.output}
+    ```output
     [1] "list"
     ```
 2.
@@ -721,7 +721,7 @@ length(x)
     class(x[[1]])
     ```
     
-    ```{.output}
+    ```output
     [1] "integer"
     ```
 
@@ -737,7 +737,7 @@ xlist <- list(a = "Karthik Ram", b = 1:10, data = head(mtcars))
 xlist
 ```
 
-```{.output}
+```output
 $a
 [1] "Karthik Ram"
 
@@ -758,7 +758,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 names(xlist)
 ```
 
-```{.output}
+```output
 [1] "a"    "b"    "data"
 ```
 
@@ -779,7 +779,7 @@ names(xlist)
   length(xlist)
   ```
   
-  ```{.output}
+  ```output
   [1] 3
   ```
 2.
@@ -788,7 +788,7 @@ names(xlist)
   str(xlist)
   ```
   
-  ```{.output}
+  ```output
   List of 3
    $ a   : chr "Karthik Ram"
    $ b   : int [1:10] 1 2 3 4 5 6 7 8 9 10
@@ -851,7 +851,7 @@ dat <- data.frame(id = letters[1:10], x = 1:10, y = 11:20)
 dat
 ```
 
-```{.output}
+```output
    id  x  y
 1   a  1 11
 2   b  2 12
@@ -888,7 +888,7 @@ See that it is actually a special list:
 is.list(dat)
 ```
 
-```{.output}
+```output
 [1] TRUE
 ```
 
@@ -896,7 +896,7 @@ is.list(dat)
 class(dat)
 ```
 
-```{.output}
+```output
 [1] "data.frame"
 ```
 
@@ -908,7 +908,7 @@ the row and the column index in single square brackets (similar to matrix).
 dat[1, 3]
 ```
 
-```{.output}
+```output
 [1] 11
 ```
 
@@ -920,7 +920,7 @@ such list) using the list notation, i.e. either double square brackets or a `$`.
 dat[["y"]]
 ```
 
-```{.output}
+```output
  [1] 11 12 13 14 15 16 17 18 19 20
 ```
 
@@ -928,7 +928,7 @@ dat[["y"]]
 dat$y
 ```
 
-```{.output}
+```output
  [1] 11 12 13 14 15 16 17 18 19 20
 ```
 
@@ -973,7 +973,7 @@ differing type (although, remember that type must be consistent within each colu
 str(PlantGrowth)
 ```
 
-```{.output}
+```output
 'data.frame':	30 obs. of  2 variables:
  $ weight: num  4.17 5.58 5.18 6.11 4.5 4.61 5.17 4.53 5.33 5.14 ...
  $ group : Factor w/ 3 levels "ctrl","trt1",..: 1 1 1 1 1 1 1 1 1 1 ...
