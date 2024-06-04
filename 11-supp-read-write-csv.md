@@ -31,13 +31,13 @@ and explore the [arguments](../learners/reference.md#argument) that allow you re
 Let's start by opening a .csv file containing information on the speeds at which cars of different colors were clocked in 45 mph zones in the four-corners states (`car-speeds.csv`). We will use the built in `read.csv(...)` [function call](../learners/reference.md#function-call), which reads the data in as a data frame, and assign the data frame to a variable (using `<-`) so that it is stored in R's memory. Then we will explore some of the basic arguments that can be supplied to the function. First, open the RStudio project containing the scripts and data you were working on in episode 'Analyzing Patient Data'.
 
 
-```r
+``` r
 # Import the data and look at the first six rows
 carSpeeds <- read.csv(file = 'data/car-speeds.csv')
 head(carSpeeds)
 ```
 
-```output
+``` output
   Color Speed     State
 1  Blue    32 NewMexico
 2   Red    45   Arizona
@@ -67,24 +67,24 @@ The call above will import the data, but we have not taken advantage of several 
 The default for `read.csv(...)` is to set the `header` argument to `TRUE`. This means that the first row of values in the .csv is set as header information (column names). If your data set does not have a header, set the `header` argument to `FALSE`:
 
 
-```r
+``` r
 # The first row of the data without setting the header argument:
 carSpeeds[1, ]
 ```
 
-```output
+``` output
   Color Speed     State
 1  Blue    32 NewMexico
 ```
 
-```r
+``` r
 # The first row of the data if the header argument is set to FALSE:
 carSpeeds <- read.csv(file = 'data/car-speeds.csv', header = FALSE)
 
 carSpeeds[1, ]
 ```
 
-```output
+``` output
      V1    V2    V3
 1 Color Speed State
 ```
@@ -96,7 +96,7 @@ Clearly this is not the desired behavior for this data set, but it may be useful
 In older versions of R (prior to 4.0) this was perhaps the most important argument in `read.csv()`, particularly if you were working with categorical data. This is because the default behavior of R was to convert character [string](../learners/reference.md#string)s into [factors](12-supp-factors.Rmd), which may make it difficult to do such things as replace values. It is important to be aware of this behaviour, which we will demonstrate. For example, let's say we find out that the data collector was color blind, and accidentally recorded green cars as being blue. In order to correct the data set, let's replace 'Blue' with 'Green' in the `$Color` column:
 
 
-```r
+``` r
 # Here we will use R's `ifelse` function, in which we provide the test phrase,
 # the outcome if the result of the test is 'TRUE', and the outcome if the
 # result is 'FALSE'. We will also assign the results to the Color column,
@@ -109,7 +109,7 @@ carSpeeds$Color <- ifelse(carSpeeds$Color == 'Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
 ```
 
-```output
+``` output
   [1] "Green" "1"     "Green" "5"     "4"     "Green" "Green" "2"     "5"    
  [10] "4"     "4"     "5"     "Green" "Green" "2"     "4"     "Green" "Green"
  [19] "5"     "Green" "Green" "Green" "4"     "Green" "4"     "4"     "4"    
@@ -135,14 +135,14 @@ we are interested in. `str()` will be reviewed a little more in the lesson
 [Data Types and Structures](13-supp-data-structures.Rmd).
 
 
-```r
+``` r
 # Reload the data with a header (the previous ifelse call modifies attributes)
 carSpeeds <- read.csv(file = 'data/car-speeds.csv', stringsAsFactors = TRUE)
 
 str(carSpeeds)
 ```
 
-```output
+``` output
 'data.frame':	100 obs. of  3 variables:
  $ Color: Factor w/ 5 levels " Red","Black",..: 3 1 3 5 4 3 3 2 5 4 ...
  $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
@@ -154,24 +154,24 @@ We can see that the `$Color` and `$State` columns are factors and `$Speed` is a 
 Now, let's load the dataset using `stringsAsFactors=FALSE`, and see what happens when we try to replace 'Blue' with 'Green' in the `$Color` column:
 
 
-```r
+``` r
 carSpeeds <- read.csv(file = 'data/car-speeds.csv', stringsAsFactors = FALSE)
 str(carSpeeds)
 ```
 
-```output
+``` output
 'data.frame':	100 obs. of  3 variables:
  $ Color: chr  "Blue" " Red" "Blue" "White" ...
  $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
  $ State: chr  "NewMexico" "Arizona" "Colorado" "Arizona" ...
 ```
 
-```r
+``` r
 carSpeeds$Color <- ifelse(carSpeeds$Color == 'Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
 ```
 
-```output
+``` output
   [1] "Green" " Red"  "Green" "White" "Red"   "Green" "Green" "Black" "White"
  [10] "Red"   "Red"   "White" "Green" "Green" "Black" "Red"   "Green" "Green"
  [19] "White" "Green" "Green" "Green" "Red"   "Green" "Red"   "Red"   "Red"  
@@ -193,7 +193,7 @@ That's better! And we can see how the data now is read as character instead of f
 This is an extension of the `stringsAsFactors` argument, but gives you control over individual columns. For example, if we want the colors of cars imported as strings, but we want the names of the states imported as factors, we would load the data set as:
 
 
-```r
+``` r
 carSpeeds <- read.csv(file = 'data/car-speeds.csv', as.is = 1)
 
 # Note, the 1 applies as.is to the first column only
@@ -202,23 +202,23 @@ carSpeeds <- read.csv(file = 'data/car-speeds.csv', as.is = 1)
 Now we can see that if we try to replace 'Blue' with 'Green' in the `$Color` column everything looks fine, while trying to replace 'Arizona' with 'Ohio' in the `$State` column returns the factor numbers for the names of states that we haven't replaced:
 
 
-```r
+``` r
 str(carSpeeds)
 ```
 
-```output
+``` output
 'data.frame':	100 obs. of  3 variables:
  $ Color: chr  "Blue" " Red" "Blue" "White" ...
  $ Speed: int  32 45 35 34 25 41 34 29 31 26 ...
  $ State: Factor w/ 4 levels "Arizona","Colorado",..: 3 1 2 1 1 1 3 2 1 2 ...
 ```
 
-```r
+``` r
 carSpeeds$Color <- ifelse(carSpeeds$Color == 'Blue', 'Green', carSpeeds$Color)
 carSpeeds$Color
 ```
 
-```output
+``` output
   [1] "Green" " Red"  "Green" "White" "Red"   "Green" "Green" "Black" "White"
  [10] "Red"   "Red"   "White" "Green" "Green" "Black" "Red"   "Green" "Green"
  [19] "White" "Green" "Green" "Green" "Red"   "Green" "Red"   "Red"   "Red"  
@@ -233,12 +233,12 @@ carSpeeds$Color
 [100] "White"
 ```
 
-```r
+``` r
 carSpeeds$State <- ifelse(carSpeeds$State == 'Arizona', 'Ohio', carSpeeds$State)
 carSpeeds$State
 ```
 
-```output
+``` output
   [1] "3"    "Ohio" "2"    "Ohio" "Ohio" "Ohio" "3"    "2"    "Ohio" "2"   
  [11] "4"    "4"    "4"    "4"    "4"    "3"    "Ohio" "3"    "Ohio" "4"   
  [21] "4"    "4"    "3"    "2"    "2"    "3"    "2"    "4"    "2"    "4"   
@@ -289,12 +289,12 @@ It is not uncommon for mistakes to have been made when the data were recorded, f
 Here, the data recorder added a space before the color of the car in one of the cells:
 
 
-```r
+``` r
 # We use the built-in unique() function to extract the unique colors in our dataset
 unique(carSpeeds$Color)
 ```
 
-```output
+``` output
 [1] Green  Red  White Red   Black
 Levels:  Red Black Green Red White
 ```
@@ -304,7 +304,7 @@ Oops, we see two values for red cars.
 Let's try again, this time importing the data using the `strip.white` argument. NOTE - this argument must be accompanied by the `sep` argument, by which we indicate the type of delimiter in the file (the comma for most .csv files)
 
 
-```r
+``` r
 carSpeeds <- read.csv(
   file = 'data/car-speeds.csv',
   stringsAsFactors = FALSE, 
@@ -315,7 +315,7 @@ carSpeeds <- read.csv(
 unique(carSpeeds$Color)
 ```
 
-```output
+``` output
 [1] "Blue"  "Red"   "White" "Black"
 ```
 
@@ -359,7 +359,7 @@ read.csv(
 After altering our cars dataset by replacing 'Blue' with 'Green' in the `$Color` column, we now want to save the output. There are several arguments for the `write.csv(...)` [function call](../learners/reference.md#function-call), a few of which are particularly important for how the data are exported.  Let's explore these now.
 
 
-```r
+``` r
 # Export the first rows of data. The write.csv() function requires a minimum of
 # two arguments, the data to be saved and the name of the output file.
 
@@ -369,7 +369,7 @@ write.csv(head(carSpeeds), file = 'data/car-speeds-cleaned.csv')
 If you open the file, you'll see that it has header names, because the data had headers within R, but that there are numbers in the first column.
 
 
-```csv
+``` csv
 "","Color","Speed","State"
 "1","Blue",32,"NewMexico"
 "2","Red",45,"Arizona"
@@ -384,14 +384,14 @@ If you open the file, you'll see that it has header names, because the data had 
 This argument allows us to set the names of the rows in the output data file. R's default for this argument is `TRUE`, and since it does not know what else to name the rows for the cars data set, it resorts to using row numbers. To correct this, we can set `row.names` to `FALSE`:
 
 
-```r
+``` r
 write.csv(head(carSpeeds), file = 'data/car-speeds-cleaned.csv', row.names = FALSE)
 ```
 
 Now we see:
 
 
-```csv
+``` csv
 "Color","Speed","State"
 "Blue",32,"NewMexico"
 "Red",45,"Arizona"
@@ -418,14 +418,14 @@ names for a data set without headers. If the data set already has headers
 There are times when we want to specify certain values for `NA`s in the data set (e.g., we are going to pass the data to a program that only accepts -9999 as a nodata value). In this case, we want to set the `NA` value of our output file to the desired value, using the na argument. Let's see how this works:
 
 
-```r
+``` r
 # First, replace the speed in the 3rd row with NA, by using an index (square
 # brackets to indicate the position of the value we want to replace)
 carSpeeds$Speed[3] <- NA
 head(carSpeeds)
 ```
 
-```output
+``` output
   Color Speed     State
 1  Blue    32 NewMexico
 2   Red    45   Arizona
@@ -435,14 +435,14 @@ head(carSpeeds)
 6  Blue    41   Arizona
 ```
 
-```r
+``` r
 write.csv(carSpeeds, file = 'data/car-speeds-cleaned.csv', row.names = FALSE)
 ```
 
 Now we'll set `NA` to -9999 when we write the new .csv file:
 
 
-```r
+``` r
 # Note - the na argument requires a string input
 write.csv(head(carSpeeds),
           file = 'data/car-speeds-cleaned.csv',
@@ -453,7 +453,7 @@ write.csv(head(carSpeeds),
 And we see:
 
 
-```csv
+``` csv
 "Color","Speed","State"
 "Blue",32,"NewMexico"
 "Red",45,"Arizona"

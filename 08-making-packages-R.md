@@ -61,7 +61,7 @@ Suggestion: organize in a logical manner so that you know which file holds which
 Let's turn our temperature conversion functions into an R package.
 
 
-```r
+``` r
 fahrenheit_to_celsius <- function(temp_F) {
   # Converts Fahrenheit to Celsius
   temp_C <- (temp_F - 32) * 5 / 9
@@ -70,7 +70,7 @@ fahrenheit_to_celsius <- function(temp_F) {
 ```
 
 
-```r
+``` r
 celsius_to_kelvin <- function(temp_C) {
   # Converts Celsius to Kelvin
   temp_K <- temp_C + 273.15
@@ -79,7 +79,7 @@ celsius_to_kelvin <- function(temp_C) {
 ```
 
 
-```r
+``` r
 fahrenheit_to_kelvin <- function(temp_F) {
   # Converts Fahrenheit to Kelvin using fahrenheit_to_celsius() and celsius_to_kelvin()
   temp_C <- fahrenheit_to_celsius(temp_F)
@@ -91,7 +91,7 @@ fahrenheit_to_kelvin <- function(temp_F) {
 We will use the [devtools] and [roxygen2] packages, which make creating packages in R relatively simple. Both can be installed from CRAN like this:
 
 
-```r
+``` r
 install.packages(c("devtools", "roxygen2"))  # installations can be `c`ombined
 library("devtools")
 library("roxygen2")
@@ -104,7 +104,7 @@ Keep the name simple and unique.
 - tempConvert (GOOD)
 
 
-```r
+``` r
 setwd(parentDirectory)
 create_package("tempConvert")
 ```
@@ -113,7 +113,7 @@ Add our functions to the R directory.
 Place each function into a separate R script and add documentation like this:
 
 
-```r
+``` r
 #' Converts Fahrenheit to Celsius
 #'
 #' This function converts input temperatures in Fahrenheit to Celsius.
@@ -134,7 +134,7 @@ Descriptive tags are preceded with the `@` symbol. For example, `@param` has inf
 Now, we will use `roxygen2` to convert our documentation to the standard R format.
 
 
-```r
+``` r
 setwd("./tempConvert")
 document()
 ```
@@ -150,7 +150,7 @@ In the diagram above, your package is a folder (the same as it would exist on yo
 Now, let's load the package and take a look at the documentation.
 
 
-```r
+``` r
 setwd("..")
 install("tempConvert")
 
@@ -160,34 +160,34 @@ install("tempConvert")
 Notice there is now a tempConvert environment that is the parent environment to the global environment.
 
 
-```r
+``` r
 search()
 ```
 
 Now that our package is loaded, let's try out some of the functions.
 
 
-```r
+``` r
 fahrenheit_to_celsius(32)
 ```
 
-```output
+``` output
 [1] 0
 ```
 
-```r
+``` r
 celsius_to_kelvin(-273.15)
 ```
 
-```output
+``` output
 [1] 0
 ```
 
-```r
+``` r
 fahrenheit_to_kelvin(-459.67)
 ```
 
-```output
+``` output
 [1] 0
 ```
 

@@ -26,7 +26,7 @@ source: Rmd
 Starting your code with an annotated description of what the code does when it is run will help you when you have to look at or change it in the future. Just one or two lines at the beginning of the file can save you or someone else a lot of time and effort when trying to understand what a particular script does.
 
 
-```r
+``` r
 # This is code to replicate the analyses and figures from my 2014 Science
 # paper. Code developed by Sarah Supp, Tracy Teal, and Jon Borelli
 ```
@@ -41,7 +41,7 @@ to comment code. [RStudio enables this with a Git integration][rstudio-git].
 Loading all of the packages that will be necessary to run your code (using `library`) is a nice way of indicating which packages are necessary to run your code. It can be frustrating to make it two-thirds of the way through a long-running script only to find out that a dependency hasn't been installed.
 
 
-```r
+``` r
 library(ggplot2)
 library(reshape)
 library(vegan)
@@ -50,7 +50,7 @@ library(vegan)
 Another way you can be explicit about the requirements of your code and improve it's reproducibility is to limit the "hard-coding" of the input and output files for your script. If your code will read in data from a file, define a variable early in your code that stores the path to that file. For example
 
 
-```r
+``` r
 input_file <- "data/data.csv" 
 output_file <- "data/results.csv"
 
@@ -67,7 +67,7 @@ write.table(results, output_file)
 is preferable to
 
 
-```r
+``` r
 # check
 input_data <- read.csv("data/data.csv")
 # get number of samples in data
@@ -104,7 +104,7 @@ It is best practice to have the user running the script begin in a consistent di
 It's easy to annotate and mark your code using `#` or `#-` to set off sections of your code and to make finding specific parts of your code easier. For example, it's often helpful when writing code to separate the function definitions. If you create only one or a few custom functions in your script, put them toward the top of your code. If you have written many functions, put them all in their own .R file and then `source` those files. `source` will define all of these functions so that your code can make use of them as needed.
 
 
-```r
+``` r
 source("my_genius_fxns.R")
 ```
 
@@ -119,21 +119,21 @@ source("my_genius_fxns.R")
 4. Keep all of your source files for a [project in the same directory][rstudio-project], then use relative paths as necessary to access them. For example, use
 
 
-```r
+``` r
 dat <- read.csv(file = "files/dataset-2013-01.csv", header = TRUE)
 ```
 
 rather than:
 
 
-```r
+``` r
 dat <- read.csv(file = "/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv", header = TRUE)
 ```
 
 5. R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. To inspect the objects in your current R environment, you can list the objects, search current packages, and remove objects that are currently not in use. A good practice when running long lines of computationally intensive code is to remove temporary objects after they have served their purpose. However, sometimes, R will not clean up unused memory for a while after you delete objects. You can force R to tidy up its memory by using `gc()`.
 
 
-```r
+``` r
 # Sample dataset of 1000 rows
 interim_object <- data.frame(rep(1:100, 10),
                              rep(101:200, 10),
@@ -167,11 +167,11 @@ rm(list = ls()) # If you want to delete all the objects in the workspace and sta
 ## Solution
 
 
-```bash
+``` bash
 cat inflammation.R
 ```
 
-```output
+``` output
 # This code runs the inflammation data analysis.
 
 source("inflammation_fxns.R")
@@ -179,11 +179,11 @@ analyze_all("inflammation.*csv")
 ```
 
 
-```bash
+``` bash
 cat inflammation_fxns.R
 ```
 
-```output
+``` output
 # This is code for functions used in our inflammation data analysis.
 
 analyze <- function(filename, output = NULL) {

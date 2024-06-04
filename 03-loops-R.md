@@ -26,7 +26,7 @@ source: Rmd
 We have created a function called `analyze` that creates graphs of the minimum, average, and maximum daily inflammation rates for a single data set:
 
 
-```r
+``` r
 analyze <- function(filename) {
   # Plots the average, min, and max inflammation over time.
   # The argument or input is a character string representing the name and location of a CSV file.
@@ -47,7 +47,7 @@ analyze("data/inflammation-01.csv")
 We can use it to analyze other data sets one by one:
 
 
-```r
+``` r
 analyze("data/inflammation-02.csv")
 ```
 
@@ -63,7 +63,7 @@ Suppose we want to print each word in a sentence.
 One way is to use six `print` statements:
 
 
-```r
+``` r
 best_practice <- c("Let", "the", "computer", "do", "the", "work")
 print_words <- function(sentence) {
   print(sentence[1])
@@ -77,7 +77,7 @@ print_words <- function(sentence) {
 print_words(best_practice)
 ```
 
-```output
+``` output
 [1] "Let"
 [1] "the"
 [1] "computer"
@@ -93,19 +93,19 @@ but that's a bad approach for two reasons:
 2. It's fragile: if we give it a longer vector, it only prints part of the data, and if we give it a shorter input, it returns `NA` values because we're asking for elements that don't exist!
 
 
-```r
+``` r
 best_practice[-6]
 ```
 
-```output
+``` output
 [1] "Let"      "the"      "computer" "do"       "the"     
 ```
 
-```r
+``` r
 print_words(best_practice[-6])
 ```
 
-```output
+``` output
 [1] "Let"
 [1] "the"
 [1] "computer"
@@ -128,7 +128,7 @@ for more details.
 Here's a better approach:
 
 
-```r
+``` r
 print_words <- function(sentence) {
   for (word in sentence) {
     print(word)
@@ -138,7 +138,7 @@ print_words <- function(sentence) {
 print_words(best_practice)
 ```
 
-```output
+``` output
 [1] "Let"
 [1] "the"
 [1] "computer"
@@ -150,11 +150,11 @@ print_words(best_practice)
 This is shorter - certainly shorter than something that prints every character in a hundred-letter string - and more robust as well:
 
 
-```r
+``` r
 print_words(best_practice[-6])
 ```
 
-```output
+``` output
 [1] "Let"
 [1] "the"
 [1] "computer"
@@ -166,7 +166,7 @@ The improved version of `print_words` uses a [for loop](../learners/reference.md
 The general form of a loop is:
 
 
-```r
+``` r
 for (variable in collection) {
   do things with variable
 }
@@ -181,7 +181,7 @@ For a single-line loop body, as here, the braces aren't needed, but it is good p
 Here's another loop that repeatedly updates a variable:
 
 
-```r
+``` r
 len <- 0
 vowels <- c("a", "e", "i", "o", "u")
 for (v in vowels) {
@@ -191,7 +191,7 @@ for (v in vowels) {
 len
 ```
 
-```output
+``` output
 [1] 5
 ```
 
@@ -206,36 +206,36 @@ Note that a loop variable is just a variable that's being used to record progres
 It still exists after the loop is over, and we can re-use variables previously defined as loop variables as well:
 
 
-```r
+``` r
 letter <- "z"
 for (letter in c("a", "b", "c")) {
   print(letter)
 }
 ```
 
-```output
+``` output
 [1] "a"
 [1] "b"
 [1] "c"
 ```
 
-```r
+``` r
 # after the loop, letter is
 letter
 ```
 
-```output
+``` output
 [1] "c"
 ```
 
 Note also that finding the length of a vector is such a common operation that R actually has a built-in function to do it called `length`:
 
 
-```r
+``` r
 length(vowels)
 ```
 
-```output
+``` output
 [1] 5
 ```
 
@@ -248,22 +248,22 @@ length(vowels)
 R has a built-in function called `seq` that creates a list of numbers:
 
 
-```r
+``` r
 seq(3)
 ```
 
-```output
+``` output
 [1] 1 2 3
 ```
 
 Using `seq`, write a function that prints the first **N** natural numbers, one per line:
 
 
-```r
+``` r
 print_N(3)
 ```
 
-```output
+``` output
 [1] 1
 [1] 2
 [1] 3
@@ -295,12 +295,12 @@ Write a function called `total` that calculates the sum of the values in a vecto
 Please don't use it for this exercise.)
 
 
-```r
+``` r
 ex_vec <- c(4, 8, 15, 16, 23, 42)
 total(ex_vec)
 ```
 
-```output
+``` output
 [1] 108
 ```
 
@@ -330,22 +330,22 @@ total <- function(vec) {
 Exponentiation is built into R:
 
 
-```r
+``` r
 2^4
 ```
 
-```output
+``` output
 [1] 16
 ```
 
 Write a function called `expo` that uses a loop to calculate the same result.
 
 
-```r
+``` r
 expo(2, 4)
 ```
 
-```output
+``` output
 [1] 16
 ```
 
@@ -383,11 +383,11 @@ Since no pattern is specified to filter the files, all files are returned.
 So to list all the csv files, we could run either of the following:
 
 
-```r
+``` r
 list.files(path = "data", pattern = "csv")
 ```
 
-```output
+``` output
  [1] "car-speeds-cleaned.csv" "car-speeds.csv"         "inflammation-01.csv"   
  [4] "inflammation-02.csv"    "inflammation-03.csv"    "inflammation-04.csv"   
  [7] "inflammation-05.csv"    "inflammation-06.csv"    "inflammation-07.csv"   
@@ -396,11 +396,11 @@ list.files(path = "data", pattern = "csv")
 [16] "small-01.csv"           "small-02.csv"           "small-03.csv"          
 ```
 
-```r
+``` r
 list.files(path = "data", pattern = "inflammation")
 ```
 
-```output
+``` output
  [1] "inflammation-01.csv"            "inflammation-02.csv"           
  [3] "inflammation-03.csv"            "inflammation-04.csv"           
  [5] "inflammation-05.csv"            "inflammation-06.csv"           
@@ -432,11 +432,11 @@ using the output of `list.files` we also need to include the "path" portion of t
 We can do that by using the argument `full.names = TRUE`.
 
 
-```r
+``` r
 list.files(path = "data", pattern = "csv", full.names = TRUE)
 ```
 
-```output
+``` output
  [1] "data/car-speeds-cleaned.csv" "data/car-speeds.csv"        
  [3] "data/inflammation-01.csv"    "data/inflammation-02.csv"   
  [5] "data/inflammation-03.csv"    "data/inflammation-04.csv"   
@@ -448,11 +448,11 @@ list.files(path = "data", pattern = "csv", full.names = TRUE)
 [17] "data/small-02.csv"           "data/small-03.csv"          
 ```
 
-```r
+``` r
 list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 ```
 
-```output
+``` output
  [1] "data/inflammation-01.csv"            "data/inflammation-02.csv"           
  [3] "data/inflammation-03.csv"            "data/inflammation-04.csv"           
  [5] "data/inflammation-05.csv"            "data/inflammation-06.csv"           
@@ -465,7 +465,7 @@ list.files(path = "data", pattern = "inflammation", full.names = TRUE)
 Let's test out running our `analyze` function by using it on the first three files in the vector returned by `list.files`:
 
 
-```r
+``` r
 filenames <- list.files(path = "data",  
                         # Now follows a regular expression that matches:
                         pattern = "inflammation-[0-9]{2}.csv",
@@ -480,19 +480,19 @@ for (f in filenames) {
 }
 ```
 
-```output
+``` output
 [1] "data/inflammation-01.csv"
 ```
 
 <img src="fig/03-loops-R-rendered-loop-analyze-1.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-2.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-3.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" />
 
-```output
+``` output
 [1] "data/inflammation-02.csv"
 ```
 
 <img src="fig/03-loops-R-rendered-loop-analyze-4.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-5.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-6.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" />
 
-```output
+``` output
 [1] "data/inflammation-03.csv"
 ```
 

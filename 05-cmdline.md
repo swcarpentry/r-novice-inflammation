@@ -61,7 +61,7 @@ We'll tackle these questions in turn below.
 Using the text editor of your choice, save the following line of code in a text file called `session-info.R`:
 
 
-```output
+``` output
 sessionInfo()
 ```
 
@@ -71,11 +71,11 @@ This is very useful information to include when asking others for help with your
 Now we can run the code in the file we created from the Unix Shell using `Rscript`:
 
 
-```bash
+``` bash
 Rscript session-info.R
 ```
 
-```output
+``` output
 R version 4.4.0 (2024-04-24)
 Platform: x86_64-pc-linux-gnu
 Running under: Ubuntu 22.04.4 LTS
@@ -115,7 +115,7 @@ For a review, see this [lesson](https://swcarpentry.github.io/shell-novice/02-fi
 Now let's create another script that does something more interesting. Write the following lines in a file named `print-args.R`:
 
 
-```output
+``` output
 args <- commandArgs()
 cat(args, sep = "\n")
 ```
@@ -128,11 +128,11 @@ Because we set the argument `sep` to `"\n"`, which is the symbol to start a new 
 Let's see what happens when we run this program in the Unix Shell:
 
 
-```bash
+``` bash
 Rscript print-args.R
 ```
 
-```output
+``` output
 /usr/lib/R/bin/exec/R
 --no-echo
 --no-restore
@@ -152,11 +152,11 @@ From the R help file:
 Thus running a file with Rscript is an easier way to run the following:
 
 
-```bash
+``` bash
 R --no-echo --no-restore --file=print-args.R --args
 ```
 
-```output
+``` output
 /usr/lib/R/bin/exec/R
 --no-echo
 --no-restore
@@ -167,11 +167,11 @@ R --no-echo --no-restore --file=print-args.R --args
 If we run it with a few arguments, however:
 
 
-```bash
+``` bash
 Rscript print-args.R first second third
 ```
 
-```output
+``` output
 /usr/lib/R/bin/exec/R
 --no-echo
 --no-restore
@@ -187,7 +187,7 @@ Since the first elements of the vector are always the same, we can tell `command
 Let's update `print-args.R` and save it as `print-args-trailing.R`:
 
 
-```output
+``` output
 args <- commandArgs(trailingOnly = TRUE)
 cat(args, sep = "\n")
 ```
@@ -195,11 +195,11 @@ cat(args, sep = "\n")
 And then run `print-args-trailing` from the Unix Shell:
 
 
-```bash
+``` bash
 Rscript print-args-trailing.R first second third
 ```
 
-```output
+``` output
 first
 second
 third
@@ -213,7 +213,7 @@ By convention this function is usually called `main`, though we can call it what
 Write the following code in a file called `readings-01.R`:
 
 
-```output
+``` output
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   filename <- args[1]
@@ -227,7 +227,7 @@ This function gets the name of the file to process from the first element return
 Here's a simple test to run from the Unix Shell:
 
 
-```bash
+``` bash
 Rscript readings-01.R data/inflammation-01.csv
 ```
 
@@ -235,7 +235,7 @@ There is no output because we have defined a function, but haven't actually call
 Let's add a call to `main` and save it as `readings-02.R`:
 
 
-```output
+``` output
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   filename <- args[1]
@@ -248,11 +248,11 @@ main()
 ```
 
 
-```bash
+``` bash
 Rscript readings-02.R data/inflammation-01.csv
 ```
 
-```output
+``` output
 5.45
 5.425
 6.1
@@ -325,20 +325,20 @@ Rscript readings-02.R data/inflammation-01.csv
   You can convert from a string to a number using the function `as.numeric`.
 
 
-```bash
+``` bash
 Rscript arith.R 1 + 2
 ```
 
-```output
+``` output
 3
 ```
 
 
-```bash
+``` bash
 Rscript arith.R 3 - 4
 ```
 
-```output
+``` output
 -1
 ```
 
@@ -347,11 +347,11 @@ Rscript arith.R 3 - 4
 ## Solution
 
 
-```bash
+``` bash
 cat arith.R
 ```
 
-```output
+``` output
 main <- function() {
   # Performs addition or subtraction from the command line.
   #
@@ -400,12 +400,12 @@ This is likely because '\*' has a special meaning in the shell, as a wildcard.
   that lists all the files in the current directory that contain a specific pattern:
 
 
-```bash
+``` bash
 # For example, searching for the pattern "print-args" returns the two scripts we wrote earlier
 Rscript find-pattern.R print-args
 ```
 
-```output
+``` output
 print-args-trailing.R
 print-args.R
 ```
@@ -415,11 +415,11 @@ print-args.R
 ## Solution
 
 
-```bash
+``` bash
 cat find-pattern.R
 ```
 
-```output
+``` output
 main <- function() {
   # Finds all files in the current directory that contain a given pattern.
   #
@@ -448,32 +448,32 @@ Since 60 lines of output per file is a lot to page through, we'll start by using
 Let's investigate them from the Unix Shell:
 
 
-```bash
+``` bash
 ls data/small-*.csv
 ```
 
-```output
+``` output
 data/small-01.csv
 data/small-02.csv
 data/small-03.csv
 ```
 
 
-```bash
+``` bash
 cat data/small-01.csv
 ```
 
-```output
+``` output
 0,0,1
 0,1,2
 ```
 
 
-```bash
+``` bash
 Rscript readings-02.R data/small-01.csv
 ```
 
-```output
+``` output
 0.3333333
 1
 ```
@@ -489,7 +489,7 @@ The solution is to loop over the vector returned by `commandArgs(trailingOnly = 
 Here's our changed program, which we'll save as `readings-03.R`:
 
 
-```output
+``` output
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   for (filename in args) {
@@ -505,11 +505,11 @@ main()
 and here it is in action:
 
 
-```bash
+``` bash
 Rscript readings-03.R data/small-01.csv data/small-02.csv
 ```
 
-```output
+``` output
 0.3333333
 1
 13.66667
@@ -534,11 +534,11 @@ What is the best way to test your program?
 ## Solution
 
 
-```bash
+``` bash
 cat check.R
 ```
 
-```output
+``` output
 main <- function() {
   # Checks that all csv files have the same number of rows and columns.
   #
@@ -576,7 +576,7 @@ The next step is to teach our program to pay attention to the `--min`, `--mean`,
 These always appear before the names of the files, so let's save the following in `readings-04.R`:
 
 
-```output
+``` output
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   action <- args[1]
@@ -602,11 +602,11 @@ main()
 And we can confirm this works by running it from the Unix Shell:
 
 
-```bash
+``` bash
 Rscript readings-04.R --max data/small-01.csv
 ```
 
-```output
+``` output
 1
 2
 ```
@@ -622,7 +622,7 @@ This version pulls the processing of each file out of the loop into a function o
 It also uses `stopifnot` to check that `action` is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as `readings-05.R`:
 
 
-```output
+``` output
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   action <- args[1]
@@ -677,11 +677,11 @@ Separately, modify the program so that if no action is specified (or an incorrec
 ## Solution
 
 
-```bash
+``` bash
 cat readings-short.R
 ```
 
-```output
+``` output
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   action <- args[1]
@@ -713,11 +713,11 @@ The program is neither easier to read nor easier to understand due to the
 ambiguity of the argument names.
 
 
-```bash
+``` bash
 cat readings-usage.R
 ```
 
-```output
+``` output
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   action <- args[1]
@@ -761,7 +761,7 @@ The next thing our program has to do is read data from standard input if no file
 Let's experiment in another script, which we'll save as `count-stdin.R`:
 
 
-```output
+``` output
 lines <- readLines(con = file("stdin"))
 count <- length(lines)
 cat("lines in standard input: ")
@@ -774,11 +774,11 @@ In this example, we passed it as an argument to the function `readLines`, which 
 Let's try running it from the Unix Shell as if it were a regular command-line program:
 
 
-```bash
+``` bash
 Rscript count-stdin.R < data/small-01.csv
 ```
 
-```output
+``` output
 lines in standard input: 2
 ```
 
@@ -787,7 +787,7 @@ Note that because we did not specify `sep = "\n"` when calling `cat`, the output
 A common mistake is to try to run something that reads from standard input like this:
 
 
-```bash
+``` bash
 Rscript count-stdin.R data/small-01.csv
 ```
 
@@ -801,7 +801,7 @@ Luckily, `read.csv` can handle either a filename or an open file as its first pa
 That leaves `main`, which we'll update and save as `readings-06.R`:
 
 
-```output
+``` output
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   action <- args[1]
@@ -837,11 +837,11 @@ Let's try it out.
 Instead of calculating the mean inflammation of every patient, we'll only calculate the mean for the first 10 patients (rows):
 
 
-```bash
+``` bash
 head data/inflammation-01.csv | Rscript readings-06.R --mean
 ```
 
-```output
+``` output
 5.45
 5.425
 6.1
@@ -870,11 +870,11 @@ Write a program called `line-count.R` that works like the Unix `wc` command:
 ## Solution
 
 
-```bash
+``` bash
 cat line-count.R
 ```
 
-```output
+``` output
 main <- function() {
   args <- commandArgs(trailingOnly = TRUE)
   if (length(args) > 0) {

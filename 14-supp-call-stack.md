@@ -27,7 +27,7 @@ To make things clearer,
 we'll start by putting the initial value 32 in a variable and store the final result in one as well:
 
 
-```r
+``` r
 original <- 32
 final <- fahrenheit_to_kelvin(original)
 ```
@@ -72,11 +72,11 @@ What it *doesn't* hold is the variables that were in the various stack frames.
 If we try to get the value of `temp_F` after our functions have finished running, R tells us that there's no such thing:
 
 
-```r
+``` r
 temp_F
 ```
 
-```error
+``` error
 Error in eval(expr, envir, enclos): object 'temp_F' not found
 ```
 
@@ -100,7 +100,7 @@ terminology "environments" instead of frames.
 Why go to all this trouble? Well, here's a function called `span` that calculates the difference between the minimum and maximum values in an array:
 
 
-```r
+``` r
 span <- function(a) {
   diff <- max(a) - min(a)
   return(diff)
@@ -111,20 +111,20 @@ dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 span(dat)
 ```
 
-```output
+``` output
 [1] 20
 ```
 
 Notice `span` assigns a value to variable called `diff`. We might very well use a variable with the same name (`diff`) to hold the inflammation data:
 
 
-```r
+``` r
 diff <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 # span of inflammation data
 span(diff)
 ```
 
-```output
+``` output
 [1] 20
 ```
 
@@ -143,7 +143,7 @@ We previously wrote functions called `highlight` and `edges`.
 Draw a diagram showing how the call stack changes when we run the following:
 
 
-```r
+``` r
 inner_vec <- "carbon"
 outer_vec <- "+"
 result <- edges(highlight(inner_vec, outer_vec))

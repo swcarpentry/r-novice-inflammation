@@ -63,63 +63,63 @@ example
 - `attributes()` - does it have any metadata?
 
 
-```r
+``` r
 # Example
 x <- "dataset"
 typeof(x)
 ```
 
-```output
+``` output
 [1] "character"
 ```
 
-```r
+``` r
 attributes(x)
 ```
 
-```output
+``` output
 NULL
 ```
 
-```r
+``` r
 y <- 1:10
 y
 ```
 
-```output
+``` output
  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
-```r
+``` r
 typeof(y)
 ```
 
-```output
+``` output
 [1] "integer"
 ```
 
-```r
+``` r
 length(y)
 ```
 
-```output
+``` output
 [1] 10
 ```
 
-```r
+``` r
 z <- as.numeric(y)
 z
 ```
 
-```output
+``` output
  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
-```r
+``` r
 typeof(z)
 ```
 
-```output
+``` output
 [1] "double"
 ```
 
@@ -151,43 +151,43 @@ You can create an empty vector with `vector()`. (By default the mode is
 common to use direct constructors such as `character()`, `numeric()`, etc.
 
 
-```r
+``` r
 vector() # an empty 'logical' (the default) vector
 ```
 
-```output
+``` output
 logical(0)
 ```
 
-```r
+``` r
 vector("character", length = 5) # a vector of mode 'character' with 5 elements
 ```
 
-```output
+``` output
 [1] "" "" "" "" ""
 ```
 
-```r
+``` r
 character(5) # the same thing, but using the constructor directly
 ```
 
-```output
+``` output
 [1] "" "" "" "" ""
 ```
 
-```r
+``` r
 numeric(5)   # a numeric vector with 5 elements
 ```
 
-```output
+``` output
 [1] 0 0 0 0 0
 ```
 
-```r
+``` r
 logical(5)   # a logical vector with 5 elements
 ```
 
-```output
+``` output
 [1] FALSE FALSE FALSE FALSE FALSE
 ```
 
@@ -195,7 +195,7 @@ You can also create vectors by directly specifying their content. R will then
 guess the appropriate mode of storage for the vector. For instance:
 
 
-```r
+``` r
 x <- c(1, 2, 3)
 ```
 
@@ -205,21 +205,21 @@ integers, you need to add an `L` to each element (or *coerce* to the integer
 type using `as.integer()`).
 
 
-```r
+``` r
 x1 <- c(1L, 2L, 3L)
 ```
 
 Using `TRUE` and `FALSE` will create a vector of mode `logical`:
 
 
-```r
+``` r
 y <- c(TRUE, TRUE, FALSE, FALSE)
 ```
 
 While using quoted text will create a vector of mode `character`:
 
 
-```r
+``` r
 z <- c("Sarah", "Tracy", "Jon")
 ```
 
@@ -229,35 +229,35 @@ The functions `typeof()`, `length()`, `class()` and `str()` provide useful
 information about your vectors and R objects in general.
 
 
-```r
+``` r
 typeof(z)
 ```
 
-```output
+``` output
 [1] "character"
 ```
 
-```r
+``` r
 length(z)
 ```
 
-```output
+``` output
 [1] 3
 ```
 
-```r
+``` r
 class(z)
 ```
 
-```output
+``` output
 [1] "character"
 ```
 
-```r
+``` r
 str(z)
 ```
 
-```output
+``` output
  chr [1:3] "Sarah" "Tracy" "Jon"
 ```
 
@@ -266,21 +266,21 @@ str(z)
 The function `c()` (for combine) can also be used to add elements to a vector.
 
 
-```r
+``` r
 z <- c(z, "Annette")
 z
 ```
 
-```output
+``` output
 [1] "Sarah"   "Tracy"   "Jon"     "Annette"
 ```
 
-```r
+``` r
 z <- c("Greg", z)
 z
 ```
 
-```output
+``` output
 [1] "Greg"    "Sarah"   "Tracy"   "Jon"     "Annette"
 ```
 
@@ -289,20 +289,20 @@ z
 You can create vectors as a sequence of numbers.
 
 
-```r
+``` r
 series <- 1:10
 seq(10)
 ```
 
-```output
+``` output
  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
-```r
+``` r
 seq(from = 1, to = 10, by = 0.1)
 ```
 
-```output
+``` output
  [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3  2.4
 [16]  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7  3.8  3.9
 [31]  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1  5.2  5.3  5.4
@@ -318,7 +318,7 @@ R supports missing data in vectors. They are represented as `NA` (Not Available)
 and can be used for all the vector types covered in this lesson:
 
 
-```r
+``` r
 x <- c(0.5, NA, 0.7)
 x <- c(TRUE, FALSE, NA)
 x <- c("a", NA, "c", "d", "e")
@@ -330,37 +330,37 @@ missing data, and the function `anyNA()` returns `TRUE` if the vector contains
 any missing values:
 
 
-```r
+``` r
 x <- c("a", NA, "c", "d", NA)
 y <- c("a", "b", "c", "d", "e")
 is.na(x)
 ```
 
-```output
+``` output
 [1] FALSE  TRUE FALSE FALSE  TRUE
 ```
 
-```r
+``` r
 is.na(y)
 ```
 
-```output
+``` output
 [1] FALSE FALSE FALSE FALSE FALSE
 ```
 
-```r
+``` r
 anyNA(x)
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
-```r
+``` r
 anyNA(y)
 ```
 
-```output
+``` output
 [1] FALSE
 ```
 
@@ -369,22 +369,22 @@ anyNA(y)
 `Inf` is infinity. You can have either positive or negative infinity.
 
 
-```r
+``` r
 1/0
 ```
 
-```output
+``` output
 [1] Inf
 ```
 
 `NaN` means Not a Number. It's an undefined value.
 
 
-```r
+``` r
 0/0
 ```
 
-```output
+``` output
 [1] NaN
 ```
 
@@ -397,7 +397,7 @@ referred to as "implicit coercion". For instance, can you guess what the
 following do (without running them first)?
 
 
-```r
+``` r
 xx <- c(1.7, "a")
 xx <- c(TRUE, 2)
 xx <- c("a", TRUE)
@@ -407,19 +407,19 @@ You can also control how vectors are coerced explicitly using the
 `as.<class_name>()` functions:
 
 
-```r
+``` r
 as.numeric("1")
 ```
 
-```output
+``` output
 [1] 1
 ```
 
-```r
+``` r
 as.character(1:2)
 ```
 
-```output
+``` output
 [1] "1" "2"
 ```
 
@@ -455,19 +455,19 @@ You can also glean other attribute-like information such as length (works on
 vectors and lists) or number of characters (for character strings).
 
 
-```r
+``` r
 length(1:10)
 ```
 
-```output
+``` output
 [1] 10
 ```
 
-```r
+``` r
 nchar("Software Carpentry")
 ```
 
-```output
+``` output
 [1] 18
 ```
 
@@ -479,22 +479,22 @@ number of rows and columns. As with atomic vectors, the elements of a matrix mus
 be of the same data type.
 
 
-```r
+``` r
 m <- matrix(nrow = 2, ncol = 2)
 m
 ```
 
-```output
+``` output
      [,1] [,2]
 [1,]   NA   NA
 [2,]   NA   NA
 ```
 
-```r
+``` r
 dim(m)
 ```
 
-```output
+``` output
 [1] 2 2
 ```
 
@@ -502,20 +502,20 @@ You can check that matrices are vectors with a class attribute of `matrix` by us
 `class()` and `typeof()`.
 
 
-```r
+``` r
 m <- matrix(c(1:3))
 class(m)
 ```
 
-```output
+``` output
 [1] "matrix" "array" 
 ```
 
-```r
+``` r
 typeof(m)
 ```
 
-```output
+``` output
 [1] "integer"
 ```
 
@@ -529,7 +529,7 @@ matrix is an integer vector.
 Consider the following matrix:
 
 
-```r
+``` r
 FOURS <- matrix(
   c(4, 4, 4, 4),
   nrow = 2,
@@ -558,14 +558,14 @@ something like `as.character(FOURS)` if you needed the elements of `FOURS`
 Matrices in R are filled column-wise.
 
 
-```r
+``` r
 m <- matrix(1:6, nrow = 2, ncol = 3)
 ```
 
 Other ways to construct a matrix
 
 
-```r
+``` r
 m      <- 1:10
 dim(m) <- c(2, 5)
 ```
@@ -576,24 +576,24 @@ Another way is to bind columns or rows using `rbind()` and `cbind()` ("row bind"
 and "column bind", respectively).
 
 
-```r
+``` r
 x <- 1:3
 y <- 10:12
 cbind(x, y)
 ```
 
-```output
+``` output
      x  y
 [1,] 1 10
 [2,] 2 11
 [3,] 3 12
 ```
 
-```r
+``` r
 rbind(x, y)
 ```
 
-```output
+``` output
   [,1] [,2] [,3]
 x    1    2    3
 y   10   11   12
@@ -603,7 +603,7 @@ You can also use the `byrow` argument to specify how the matrix is filled.
 From R's own documentation:
 
 
-```r
+``` r
 mdat <- matrix(c(1, 2, 3, 11, 12, 13),
                nrow = 2,
                ncol = 3,
@@ -611,7 +611,7 @@ mdat <- matrix(c(1, 2, 3, 11, 12, 13),
 mdat
 ```
 
-```output
+``` output
      [,1] [,2] [,3]
 [1,]    1    2    3
 [2,]   11   12   13
@@ -621,11 +621,11 @@ Elements of a matrix can be referenced by specifying the index along each
 dimension (e.g. "row" and "column") in single square brackets.
 
 
-```r
+``` r
 mdat[2, 3]
 ```
 
-```output
+``` output
 [1] 13
 ```
 
@@ -643,12 +643,12 @@ Create lists using `list()` or coerce other objects using `as.list()`. An empty
 list of the required length can be created using `vector()`
 
 
-```r
+``` r
 x <- list(1, "a", TRUE, 1+4i)
 x
 ```
 
-```output
+``` output
 [[1]]
 [1] 1
 
@@ -662,36 +662,36 @@ x
 [1] 1+4i
 ```
 
-```r
+``` r
 x <- vector("list", length = 5) # empty list
 length(x)
 ```
 
-```output
+``` output
 [1] 5
 ```
 
 The content of elements of a list can be retrieved by using double square brackets.
 
 
-```r
+``` r
 x[[1]]
 ```
 
-```output
+``` output
 NULL
 ```
 
 Vectors can be coerced to lists as follows:
 
 
-```r
+``` r
 x <- 1:10
 x <- as.list(x)
 length(x)
 ```
 
-```output
+``` output
 [1] 10
 ```
 
@@ -708,20 +708,20 @@ length(x)
 
 1. 
     
-    ```r
+    ``` r
     class(x[1])
     ```
     
-    ```output
+    ``` output
     [1] "list"
     ```
 2.
     
-    ```r
+    ``` r
     class(x[[1]])
     ```
     
-    ```output
+    ``` output
     [1] "integer"
     ```
 
@@ -732,12 +732,12 @@ length(x)
 Elements of a list can be named (i.e. lists can have the `names` attribute)
 
 
-```r
+``` r
 xlist <- list(a = "Karthik Ram", b = 1:10, data = head(mtcars))
 xlist
 ```
 
-```output
+``` output
 $a
 [1] "Karthik Ram"
 
@@ -754,11 +754,11 @@ Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 ```
 
-```r
+``` r
 names(xlist)
 ```
 
-```output
+``` output
 [1] "a"    "b"    "data"
 ```
 
@@ -775,20 +775,20 @@ names(xlist)
 
 1. 
   
-  ```r
+  ``` r
   length(xlist)
   ```
   
-  ```output
+  ``` output
   [1] 3
   ```
 2.
   
-  ```r
+  ``` r
   str(xlist)
   ```
   
-  ```output
+  ``` output
   List of 3
    $ a   : chr "Karthik Ram"
    $ b   : int [1:10] 1 2 3 4 5 6 7 8 9 10
@@ -846,12 +846,12 @@ Some additional information on data frames:
 To create data frames by hand:
 
 
-```r
+``` r
 dat <- data.frame(id = letters[1:10], x = 1:10, y = 11:20)
 dat
 ```
 
-```output
+``` output
    id  x  y
 1   a  1 11
 2   b  2 12
@@ -884,19 +884,19 @@ dat
 See that it is actually a special list:
 
 
-```r
+``` r
 is.list(dat)
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
-```r
+``` r
 class(dat)
 ```
 
-```output
+``` output
 [1] "data.frame"
 ```
 
@@ -904,11 +904,11 @@ Because data frames are rectangular, elements of data frame can be referenced by
 the row and the column index in single square brackets (similar to matrix).
 
 
-```r
+``` r
 dat[1, 3]
 ```
 
-```output
+``` output
 [1] 11
 ```
 
@@ -916,19 +916,19 @@ As data frames are also lists, it is possible to refer to columns (which are ele
 such list) using the list notation, i.e. either double square brackets or a `$`.
 
 
-```r
+``` r
 dat[["y"]]
 ```
 
-```output
+``` output
  [1] 11 12 13 14 15 16 17 18 19 20
 ```
 
-```r
+``` r
 dat$y
 ```
 
-```output
+``` output
  [1] 11 12 13 14 15 16 17 18 19 20
 ```
 
@@ -969,11 +969,11 @@ Since a Data Frame is just a special type of list, it can have columns of
 differing type (although, remember that type must be consistent within each column!).
 
 
-```r
+``` r
 str(PlantGrowth)
 ```
 
-```output
+``` output
 'data.frame':	30 obs. of  2 variables:
  $ weight: num  4.17 5.58 5.18 6.11 4.5 4.61 5.17 4.53 5.33 5.14 ...
  $ group : Factor w/ 3 levels "ctrl","trt1",..: 1 1 1 1 1 1 1 1 1 1 ...

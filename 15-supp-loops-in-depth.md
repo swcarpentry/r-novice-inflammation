@@ -26,7 +26,7 @@ This lesson is an extension of [Analyzing Multiple Data Sets](03-loops-R.Rmd).
 In that lesson, we introduced how to run a custom function, `analyze`, over multiple data files:
 
 
-```r
+``` r
 analyze <- function(filename) {
   # Plots the average, min, and max inflammation over time.
   # Input is character string of a csv file.
@@ -41,7 +41,7 @@ analyze <- function(filename) {
 ```
 
 
-```r
+``` r
 filenames <- list.files(path = "data", pattern = "inflammation-[0-9]{2}.csv", full.names = TRUE)
 ```
 
@@ -55,7 +55,7 @@ Learning to use vectorized operations is a key skill in R.
 For example, to add pairs of numbers contained in two vectors
 
 
-```r
+``` r
 a <- 1:10
 b <- 1:10
 ```
@@ -65,7 +65,7 @@ You could loop over the pairs adding each in turn, but that would be very ineffi
 Instead of using `i in a` to make our loop variable, we use the function `seq_along` to generate indices for each element `a` contains.
 
 
-```r
+``` r
 res <- numeric(length = length(a))
 for (i in seq_along(a)) {
   res[i] <- a[i] + b[i]
@@ -73,19 +73,19 @@ for (i in seq_along(a)) {
 res
 ```
 
-```output
+``` output
  [1]  2  4  6  8 10 12 14 16 18 20
 ```
 
 Instead, `+` is a *vectorized* function which can operate on entire vectors at once
 
 
-```r
+``` r
 res2 <- a + b
 all.equal(res, res2)
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
@@ -94,26 +94,26 @@ all.equal(res, res2)
 When performing vector operations in R, it is important to know about recycling. If you perform an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector.  For example:
 
 
-```r
+``` r
 a <- 1:10
 b <- 1:5
 a + b
 ```
 
-```output
+``` output
  [1]  2  4  6  8 10  7  9 11 13 15
 ```
 
 The elements of `a` and `b` are added together starting from the first element of both vectors. When R reaches the end of the shorter vector `b`, it starts again at the first element of `b` and continues until it reaches the last element of the longest vector `a`.  This behaviour may seem crazy at first glance, but it is very useful when you want to perform the same operation on every element of a vector. For example, say we want to multiply every element of our vector `a` by 5:
 
 
-```r
+``` r
 a <- 1:10
 b <- 5
 a * b
 ```
 
-```output
+``` output
  [1]  5 10 15 20 25 30 35 40 45 50
 ```
 
@@ -122,18 +122,18 @@ Remember there are no scalars in R, so `b` is actually a vector of length 1; in 
 When the length of the longer object is a multiple of the shorter object length (as in our example above), the recycling occurs silently. When the longer object length is not a multiple of the shorter object length, a warning is given:
 
 
-```r
+``` r
 a <- 1:10
 b <- 1:7
 a + b
 ```
 
-```warning
+``` warning
 Warning in a + b: longer object length is not a multiple of shorter object
 length
 ```
 
-```output
+``` output
  [1]  2  4  6  8 10 12 14  9 11 13
 ```
 
@@ -153,7 +153,7 @@ Each of these has an argument `FUN` which takes a function to apply to each elem
 Instead of looping over `filenames` and calling `analyze`, as you did earlier, you could `sapply` over `filenames` with `FUN = analyze`:
 
 
-```r
+``` r
 sapply(filenames, FUN = analyze)
 ```
 
@@ -172,7 +172,7 @@ No, they are not! *If* you follow some golden rules:
 As an example, we'll create a new version of `analyze` that will return the mean inflammation per day (column) of each file.
 
 
-```r
+``` r
 analyze2 <- function(filenames) {
   for (f in seq_along(filenames)) {
     fdata <- read.csv(filenames[f], header = FALSE)
@@ -190,9 +190,9 @@ analyze2 <- function(filenames) {
 system.time(avg2 <- analyze2(filenames))
 ```
 
-```output
+``` output
    user  system elapsed 
-  0.023   0.000   0.023 
+  0.019   0.004   0.023 
 ```
 
 Note how we add a new column to `out` at each iteration?
@@ -203,7 +203,7 @@ Then we loop over the files but this time we fill in the `f`th column of our res
 This time there is no copying/growing for R to deal with.
 
 
-```r
+``` r
 analyze3 <- function(filenames) {
   out <- matrix(ncol = length(filenames), nrow = 40) # assuming 40 here from files
   for (f in seq_along(filenames)) {
@@ -216,9 +216,9 @@ analyze3 <- function(filenames) {
 system.time(avg3 <- analyze3(filenames))
 ```
 
-```output
+``` output
    user  system elapsed 
-  0.021   0.000   0.022 
+  0.021   0.000   0.021 
 ```
 
 In this simple example there is little difference in the compute time of `analyze2` and `analyze3`.

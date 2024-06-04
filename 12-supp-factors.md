@@ -39,7 +39,7 @@ instance, if you have a factor with 2 levels:
 The `factor()` command is used to create and modify factors in R:
 
 
-```r
+``` r
 sex <- factor(c("male", "female", "female", "male"))
 ```
 
@@ -51,19 +51,19 @@ R will assign `1` to the level `"female"` and `2` to the level `"male"` (because
 number of levels using `nlevels()`:
 
 
-```r
+``` r
 levels(sex)
 ```
 
-```output
+``` output
 [1] "female" "male"  
 ```
 
-```r
+``` r
 nlevels(sex)
 ```
 
-```output
+``` output
 [1] 2
 ```
 
@@ -73,46 +73,46 @@ it is required by particular type of analysis. Additionally, specifying the
 order of the levels allows us to compare levels:
 
 
-```r
+``` r
 food <- factor(c("low", "high", "medium", "high", "low", "medium", "high"))
 levels(food)
 ```
 
-```output
+``` output
 [1] "high"   "low"    "medium"
 ```
 
-```r
+``` r
 food <- factor(food, levels = c("low", "medium", "high"))
 levels(food)
 ```
 
-```output
+``` output
 [1] "low"    "medium" "high"  
 ```
 
-```r
+``` r
 min(food) # doesn't work
 ```
 
-```error
+``` error
 Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), levels = c("low", : 'min' not meaningful for factors
 ```
 
-```r
+``` r
 food <- factor(food, levels = c("low", "medium", "high"), ordered = TRUE)
 levels(food)
 ```
 
-```output
+``` output
 [1] "low"    "medium" "high"  
 ```
 
-```r
+``` r
 min(food) # works!
 ```
 
-```output
+``` output
 [1] low
 Levels: low < medium < high
 ```
@@ -166,12 +166,12 @@ We can order these from least intense to most intense, so let's use `ordered`.
 Converting from a factor to a number can cause problems:
 
 
-```r
+``` r
 f <- factor(c(3.4, 1.2, 5))
 as.numeric(f)
 ```
 
-```output
+``` output
 [1] 2 1 3
 ```
 
@@ -180,18 +180,18 @@ This does not behave as expected (and there is no warning).
 The recommended way is to use the integer vector to index the factor levels:
 
 
-```r
+``` r
 levels(f)[f]
 ```
 
-```output
+``` output
 [1] "3.4" "1.2" "5"  
 ```
 
 This returns a character vector, the `as.numeric()` function is still required to convert the values to the proper type (numeric).
 
 
-```r
+``` r
 f <- levels(f)[f]
 f <- as.numeric(f)
 ```
@@ -201,7 +201,7 @@ f <- as.numeric(f)
 Lets load our example data to see the use of factors:
 
 
-```r
+``` r
 dat <- read.csv(file = 'data/sample.csv', stringsAsFactors = TRUE)
 ```
 
@@ -217,11 +217,11 @@ It is included here for clarity.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-```r
+``` r
 str(dat)
 ```
 
-```output
+``` output
 'data.frame':	100 obs. of  9 variables:
  $ ID           : Factor w/ 100 levels "Sub001","Sub002",..: 1 2 3 4 5 6 7 8 9 10 ...
  $ Gender       : Factor w/ 4 levels "f","F","m","M": 3 3 3 1 3 4 1 3 3 1 ...
@@ -237,11 +237,11 @@ str(dat)
 Notice the first 3 columns have been converted to factors. These values were text in the data file so R automatically interpreted them as categorical variables.
 
 
-```r
+``` r
 summary(dat)
 ```
 
-```output
+``` output
        ID     Gender        Group    BloodPressure        Age       
  Sub001 : 1   f:35   Control   :30   Min.   : 62.0   Min.   :12.10  
  Sub002 : 1   F: 4   Treatment1:35   1st Qu.:107.5   1st Qu.:14.78  
@@ -279,17 +279,17 @@ It's also a great way for spotting missing data.
 The function `table()` tabulates observations and can be used to create bar plots quickly. For instance:
 
 
-```r
+``` r
 table(dat$Group)
 ```
 
-```output
+``` output
 
    Control Treatment1 Treatment2 
         30         35         35 
 ```
 
-```r
+``` r
 barplot(table(dat$Group))
 ```
 
@@ -302,7 +302,7 @@ Use the `factor()` command to modify the column `dat$Group` so that the *control
 ## Solution
 
 
-```r
+``` r
 dat$Group <- factor(dat$Group, levels = c("Treatment1", "Treatment2", "Control"))
 barplot(table(dat$Group))
 ```
@@ -319,7 +319,7 @@ Some of the Gender values in our dataset have been coded incorrectly.
 Let's remove levels from this factor.
 
 
-```r
+``` r
 barplot(table(dat$Gender))
 ```
 
@@ -328,7 +328,7 @@ barplot(table(dat$Gender))
 Values should have been recorded as lowercase 'm' and 'f'. We should correct this.
 
 
-```r
+``` r
 dat$Gender[dat$Gender == 'M'] <- 'm'
 ```
 
@@ -337,7 +337,7 @@ dat$Gender[dat$Gender == 'M'] <- 'm'
 ## Updating Factors
 
 
-```r
+``` r
 plot(x = dat$Gender, y = dat$BloodPressure)
 ```
 
@@ -363,7 +363,7 @@ We need to tell R that "M" is no longer a valid value for this column.
 We use the `droplevels()` function to remove extra levels.
 
 
-```r
+``` r
 dat$Gender <- droplevels(dat$Gender)
 plot(x = dat$Gender, y = dat$BloodPressure)
 ```
@@ -377,7 +377,7 @@ plot(x = dat$Gender, y = dat$BloodPressure)
 Adjusting the `levels()` of a factor provides a useful shortcut for reassigning values in this case.
 
 
-```r
+``` r
 levels(dat$Gender)[2] <- 'f'
 plot(x = dat$Gender, y = dat$BloodPressure)
 ```

@@ -30,7 +30,7 @@ We want programs to make choices based on the values they are manipulating.
 So far, we have built a function `analyze` to plot summary statistics of the inflammation data:
 
 
-```r
+``` r
 analyze <- function(filename) {
   # Plots the average, min, and max inflammation over time.
   # Input is character string of a csv file.
@@ -47,7 +47,7 @@ analyze <- function(filename) {
 And also built the function `analyze_all` to automate the processing of each data file:
 
 
-```r
+``` r
 analyze_all <- function(folder = "data", pattern) {
   # Runs the function analyze for each file in the given folder
   # that contains the given pattern.
@@ -66,7 +66,7 @@ And in the likely situation that we want to change how the data is processed or 
 Here's how we can save all three plots of the first inflammation data set in a pdf file:
 
 
-```r
+``` r
 pdf("inflammation-01.pdf")
 analyze("data/inflammation-01.csv")
 dev.off()
@@ -98,30 +98,30 @@ It would be ideal if `analyze` would either save or not save the plots based on 
 In order to update our function to decide between saving or not, we need to write code that automatically decides between multiple options. The computer can make these decisions through logical comparisons.
 
 
-```r
+``` r
 num <- 37
 num > 100
 ```
 
-```output
+``` output
 [1] FALSE
 ```
 
 As 37 is not greater than 100, this returns a `FALSE` object. And as you likely guessed, the opposite of `FALSE` is `TRUE`.
 
 
-```r
+``` r
 num < 100
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
 We pair these logical comparison tools with what R calls a [conditional statement](../learners/reference.md#conditional-statement), and it looks like this:
 
 
-```r
+``` r
 num <- 37
 if (num > 100) {
   print("greater")
@@ -131,7 +131,7 @@ if (num > 100) {
 print("done")
 ```
 
-```output
+``` output
 [1] "not greater"
 [1] "done"
 ```
@@ -149,7 +149,7 @@ Conditional statements don't have to include an `else`.
 If there isn't one, R simply does nothing if the test is false:
 
 
-```r
+``` r
 num <- 53
 if (num > 100) {
   print("num is greater than 100")
@@ -160,7 +160,7 @@ We can also chain several tests together when there are more than two options.
 This makes it simple to write a function that returns the sign of a number:
 
 
-```r
+``` r
 sign <- function(num) {
   if (num > 0) {
     return(1)
@@ -174,23 +174,23 @@ sign <- function(num) {
 sign(-3)
 ```
 
-```output
+``` output
 [1] -1
 ```
 
-```r
+``` r
 sign(0)
 ```
 
-```output
+``` output
 [1] 0
 ```
 
-```r
+``` r
 sign(2/3)
 ```
 
-```output
+``` output
 [1] 1
 ```
 
@@ -213,7 +213,7 @@ Two vertical bars, `||`, symbolize "or".
 `&&` is only true if both parts are true:
 
 
-```r
+``` r
 if (1 > 0 && -1 > 0) {
     print("both parts are true")
 } else {
@@ -221,14 +221,14 @@ if (1 > 0 && -1 > 0) {
 }
 ```
 
-```output
+``` output
 [1] "at least one part is not true"
 ```
 
 while `||` is true if either part is true:
 
 
-```r
+``` r
 if (1 > 0 || -1 > 0) {
     print("at least one part is true")
 } else {
@@ -236,7 +236,7 @@ if (1 > 0 || -1 > 0) {
 }
 ```
 
-```output
+``` output
 [1] "at least one part is true"
 ```
 
@@ -252,20 +252,20 @@ we will not be able to test its equality or inequality with another value.
 Such tests always return `NA`:
 
 
-```r
+``` r
 a <- NA
 a == 1
 ```
 
-```output
+``` output
 [1] NA
 ```
 
-```r
+``` r
 a == NA
 ```
 
-```output
+``` output
 [1] NA
 ```
 
@@ -273,34 +273,34 @@ We need to be particularly careful in tests because trying to compare a `NA`
 value will result in an error:
 
 
-```r
+``` r
 if (a == NA) {
   print("Hi!")
 }
 ```
 
-```error
+``` error
 Error in if (a == NA) {: missing value where TRUE/FALSE needed
 ```
 
 To solve this issue, we need to use the dedicated `is.na()` function:
 
 
-```r
+``` r
 is.na(a)
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
-```r
+``` r
 if (is.na(a)) {
   print("Hi!")
 }
 ```
 
-```output
+``` output
 [1] "Hi!"
 ```
 
@@ -316,14 +316,14 @@ and a stripchart otherwise.
 To do this you'll use the R functions `boxplot` and `stripchart`.
 
 
-```r
+``` r
 dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 plot_dist(dat[, 10], threshold = 10)     # day (column) 10
 ```
 
 <img src="fig/04-cond-rendered-using-conditions-01-1.png" style="display: block; margin: auto;" />
 
-```r
+``` r
 plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 ```
 
@@ -364,20 +364,20 @@ As before, if the length of the vector is shorter than `threshold`,
 A histogram is made with the `hist` command in R.
 
 
-```r
+``` r
 dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 plot_dist(dat[, 10], threshold = 10, use_boxplot = TRUE)   # day (column) 10 - create boxplot
 ```
 
 <img src="fig/04-cond-rendered-conditional-challenge-hist-1.png" alt="A grey unlabeled boxplot chart showing the distrubution values between 2 and 9 with a mean at 6." style="display: block; margin: auto;" />
 
-```r
+``` r
 plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
 ```
 
 <img src="fig/04-cond-rendered-conditional-challenge-hist-2.png" alt="A grey unlabeled histogram showing bimodal distribution between 2 and 9 with peaks at 2 and 6." style="display: block; margin: auto;" />
 
-```r
+``` r
 plot_dist(dat[1:5, 10], threshold = 10)                    # samples (rows) 1-5 on day (column) 10
 ```
 
@@ -418,7 +418,7 @@ Tips:
 Complete the code below:
 
 
-```r
+``` r
 filenames <- list.files(path = "data", pattern = "inflammation-[0-9]{2}.csv", full.names = TRUE)
 filename_max <- "" # filename where the maximum average inflammation patient is found
 patient_max <- 0 # index (row number) for this patient in this file
@@ -459,7 +459,7 @@ Now that we know how to have R make decisions based on input values,
 let's update `analyze`:
 
 
-```r
+``` r
 analyze <- function(filename, output = NULL) {
   # Plots the average, min, and max inflammation over time.
   # Input:
@@ -489,27 +489,27 @@ The exclamation mark, `!`, stands for "not".
 Therefore the line in the `if` block is only executed if `output` is "not null".
 
 
-```r
+``` r
 output <- NULL
 is.null(output)
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
-```r
+``` r
 !is.null(output)
 ```
 
-```output
+``` output
 [1] FALSE
 ```
 
 Now we can use `analyze` interactively, as before,
 
 
-```r
+``` r
 analyze("data/inflammation-01.csv")
 ```
 
@@ -518,7 +518,7 @@ analyze("data/inflammation-01.csv")
 but also use it to save plots,
 
 
-```r
+``` r
 analyze("data/inflammation-01.csv", output = "inflammation-01.pdf")
 ```
 
@@ -527,14 +527,14 @@ It is [good practice](https://swcarpentry.github.io/good-enough-practices-in-sci
 You can create this directory using the shell command [mkdir](https://swcarpentry.github.io/shell-novice/03-create/), or the R function `dir.create()`
 
 
-```r
+``` r
 dir.create("results")
 ```
 
 Now run `analyze` and save the plot in the `results` directory,
 
 
-```r
+``` r
 analyze("data/inflammation-01.csv", output = "results/inflammation-01.pdf")
 ```
 
@@ -547,30 +547,30 @@ We need to do two things:
 To change the extension to "pdf", we will use the function `sub`,
 
 
-```r
+``` r
 f <- "inflammation-01.csv"
 sub("csv", "pdf", f)
 ```
 
-```output
+``` output
 [1] "inflammation-01.pdf"
 ```
 
 To add the "results" directory to the filename use the function `file.path`,
 
 
-```r
+``` r
 file.path("results", sub("csv", "pdf", f))
 ```
 
-```output
+``` output
 [1] "results/inflammation-01.pdf"
 ```
 
 Now let's update `analyze_all`:
 
 
-```r
+``` r
 analyze_all <- function(pattern) {
   # Directory name containing the data
   data_dir <- "data"
@@ -589,7 +589,7 @@ analyze_all <- function(pattern) {
 Now we can save all of the results with just one line of code:
 
 
-```r
+``` r
 analyze_all("inflammation.*csv")
 ```
 

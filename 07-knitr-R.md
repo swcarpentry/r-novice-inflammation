@@ -28,7 +28,7 @@ You write `knitr` documents in a simple plain text-like format called markdown, 
 To get started, install the `knitr` package.
 
 
-```r
+``` r
 install.packages("knitr")
 ```
 

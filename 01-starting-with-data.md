@@ -35,7 +35,7 @@ holds the inflammation measured in a day, so we have a set of values in
 successive days. The first few rows of our first file look like this:
 
 
-```output
+``` output
 0,0,1,3,1,2,4,7,8,3,3,3,10,5,7,4,7,7,12,18,6,13,11,11,7,7,4,6,8,8,4,4,5,7,3,4,2,3,0,0
 0,1,2,1,2,1,3,2,2,6,10,11,5,9,4,4,7,16,8,6,18,4,12,5,12,7,11,5,11,3,3,5,4,4,5,5,1,1,0,1
 0,1,1,3,3,2,6,2,5,9,5,7,4,5,4,15,5,11,9,10,19,14,12,17,7,12,11,7,4,2,10,5,4,2,2,3,2,2,1,1
@@ -84,7 +84,7 @@ The data files should be located in the directory `data`, inside the working
 directory. Now we can load the data into R using `read.csv`:
 
 
-```r
+``` r
 read.csv(file = "data/inflammation-01.csv", header = FALSE)
 ```
 
@@ -174,7 +174,7 @@ We can think of a variable as a container with a name, such as `x`, `current_tem
 We can create a new variable and assign a value to it using `<-`.
 
 
-```r
+``` r
 weight_kg <- 55
 ```
 
@@ -186,23 +186,23 @@ To see the value of a variable, we can print it by typing the name of the variab
 In general, R will print to the console any object returned by a function or operation *unless* we assign it to a variable.
 
 
-```r
+``` r
 weight_kg
 ```
 
-```output
+``` output
 [1] 55
 ```
 
 We can treat our variable like a regular number, and do arithmetic with it:
 
 
-```r
+``` r
 # weight in pounds:
 2.2 * weight_kg
 ```
 
-```output
+``` output
 [1] 121
 ```
 
@@ -222,13 +222,13 @@ read it) have an easier time following what the code is doing.
 We can also change a variable's value by assigning it a new value:
 
 
-```r
+``` r
 weight_kg <- 57.5
 # weight in kilograms is now
 weight_kg
 ```
 
-```output
+``` output
 [1] 57.5
 ```
 
@@ -255,22 +255,22 @@ When you assign a value to a variable, R only stores the value, not the calculat
 First, we'll convert `weight_kg` into pounds, and store the new value in the variable `weight_lb`:
 
 
-```r
+``` r
 weight_lb <- 2.2 * weight_kg
 # weight in kg...
 weight_kg
 ```
 
-```output
+``` output
 [1] 57.5
 ```
 
-```r
+``` r
 # ...and in pounds
 weight_lb
 ```
 
-```output
+``` output
 [1] 126.5
 ```
 
@@ -282,22 +282,22 @@ multiply it by 2.2, and tag the result with the name `weight_lb`:
 If we now change the value of `weight_kg`:
 
 
-```r
+``` r
 weight_kg <- 100.0
 # weight in kg now...
 weight_kg
 ```
 
-```output
+``` output
 [1] 100
 ```
 
-```r
+``` r
 # ...and weight in pounds still
 weight_lb
 ```
 
-```output
+``` output
 [1] 126.5
 ```
 
@@ -322,7 +322,7 @@ and finally prints the assigned value of the variable `total_weight`.
 Now that we know how to assign things to variables, let's re-run `read.csv` and save its result into a variable called `dat`:
 
 
-```r
+``` r
 dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 ```
 
@@ -330,11 +330,11 @@ This statement doesn't produce any output because the assignment doesn't display
 If we want to check if our data has been loaded, we can print the variable's value by typing the name of the variable `dat`. However, for large data sets it is convenient to use the function `head` to display only the first few rows of data.
 
 
-```r
+``` r
 head(dat)
 ```
 
-```output
+``` output
   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20 V21
 1  0  0  1  3  1  2  4  7  8   3   3   3  10   5   7   4   7   7  12  18   6
 2  0  1  2  1  2  1  3  2  2   6  10  11   5   9   4   4   7  16   8   6  18
@@ -392,11 +392,11 @@ Now that our data are loaded into R, we can start doing things with them.
 First, let's ask what type of thing `dat` is:
 
 
-```r
+``` r
 class(dat)
 ```
 
-```output
+``` output
 [1] "data.frame"
 ```
 
@@ -407,11 +407,11 @@ A typical data frame of experimental data contains individual observations in ro
 We can see the shape, or [dimensions](../learners/reference.md#dimensions-of-an-array), of the data frame with the function `dim`:
 
 
-```r
+``` r
 dim(dat)
 ```
 
-```output
+``` output
 [1] 60 40
 ```
 
@@ -420,21 +420,21 @@ This tells us that our data frame, `dat`, has 60 rows and 40 columns.
 If we want to get a single value from the data frame, we can provide an [index](../learners/reference.md#index) in square brackets. The first number specifies the row and the second the column:
 
 
-```r
+``` r
 # first value in dat, row 1, column 1
 dat[1, 1]
 ```
 
-```output
+``` output
 [1] 0
 ```
 
-```r
+``` r
 # middle value in dat, row 30, column 20
 dat[30, 20]
 ```
 
-```output
+``` output
 [1] 16
 ```
 
@@ -444,11 +444,11 @@ which **c**ombines the values you give it into one vector or list.
 For example, to pick columns 10 and 20 from rows 1, 3, and 5, we can do this:
 
 
-```r
+``` r
 dat[c(1, 3, 5), c(10, 20)]
 ```
 
-```output
+``` output
   V10 V20
 1   3  18
 3   9  10
@@ -458,30 +458,30 @@ dat[c(1, 3, 5), c(10, 20)]
 We frequently want to select contiguous rows or columns, such as the first ten rows, or columns 3 through 7. You can use `c` for this, but it's more convenient to use the `:` operator. This special function generates sequences of numbers:
 
 
-```r
+``` r
 1:5
 ```
 
-```output
+``` output
 [1] 1 2 3 4 5
 ```
 
-```r
+``` r
 3:12
 ```
 
-```output
+``` output
  [1]  3  4  5  6  7  8  9 10 11 12
 ```
 
 For example, we can select the first ten columns of values for the first four rows like this:
 
 
-```r
+``` r
 dat[1:4, 1:10]
 ```
 
-```output
+``` output
   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
 1  0  0  1  3  1  2  4  7  8   3
 2  0  1  2  1  2  1  3  2  2   6
@@ -492,11 +492,11 @@ dat[1:4, 1:10]
 or the first ten columns of rows 5 to 10 like this:
 
 
-```r
+``` r
 dat[5:10, 1:10]
 ```
 
-```output
+``` output
    V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
 5   0  1  1  3  3  1  3  5  2   4
 6   0  0  1  2  2  4  2  1  6   4
@@ -509,24 +509,24 @@ dat[5:10, 1:10]
 If you want to select all rows or all columns, leave that index value empty.
 
 
-```r
+``` r
 # All columns from row 5
 dat[5, ]
 ```
 
-```output
+``` output
   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20 V21
 5  0  1  1  3  3  1  3  5  2   4   4   7   6   5   3  10   8  10   6  17   9
   V22 V23 V24 V25 V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38 V39 V40
 5  14   9   7  13   9  12   6   7   7   9   6   3   2   2   4   2   0   1   1
 ```
 
-```r
+``` r
 # All rows from column 16-18
 dat[, 16:18]
 ```
 
-```output
+``` output
    V16 V17 V18
 1    4   7   7
 2    4   7  16
@@ -607,14 +607,14 @@ When analyzing data we often want to look at partial statistics, such as the max
 One way to do this is to select the data we want to create a new temporary data frame, and then perform the calculation on this subset:
 
 
-```r
+``` r
 # first row, all of the columns
 patient_1 <- dat[1, ]
 # max inflammation for patient 1
 max(patient_1)
 ```
 
-```output
+``` output
 [1] 18
 ```
 
@@ -659,51 +659,51 @@ We don't actually need to store the row in a variable of its own.
 Instead, we can combine the selection and the function call:
 
 
-```r
+``` r
 # max inflammation for patient 2
 max(dat[2, ])
 ```
 
-```output
+``` output
 [1] 18
 ```
 
 R also has functions for other common calculations, e.g. finding the minimum, mean, median, and standard deviation of the data:
 
 
-```r
+``` r
 # minimum inflammation on day 7
 min(dat[, 7])
 ```
 
-```output
+``` output
 [1] 1
 ```
 
-```r
+``` r
 # mean inflammation on day 7
 mean(dat[, 7])
 ```
 
-```output
+``` output
 [1] 3.8
 ```
 
-```r
+``` r
 # median inflammation on day 7
 median(dat[, 7])
 ```
 
-```output
+``` output
 [1] 4
 ```
 
-```r
+``` r
 # standard deviation of inflammation on day 7
 sd(dat[, 7])
 ```
 
-```output
+``` output
 [1] 1.725187
 ```
 
@@ -726,12 +726,12 @@ are already defined as vectors.
 R also has a function that summaries the previous common calculations:
 
 
-```r
+``` r
 # Summarize function
 summary(dat[, 1:4])
 ```
 
-```output
+``` output
        V1          V2             V3              V4      
  Min.   :0   Min.   :0.00   Min.   :0.000   Min.   :0.00  
  1st Qu.:0   1st Qu.:0.00   1st Qu.:1.000   1st Qu.:1.00  
@@ -765,14 +765,14 @@ documentation by running `help(apply)` or `?apply`.
 Thus, to obtain the average inflammation of each patient we will need to calculate the mean of all of the rows (`MARGIN = 1`) of the data frame.
 
 
-```r
+``` r
 avg_patient_inflammation <- apply(dat, 1, mean)
 ```
 
 And to obtain the average inflammation of each day we will need to calculate the mean of all of the columns (`MARGIN = 2`) of the data frame.
 
 
-```r
+``` r
 avg_day_inflammation <- apply(dat, 2, mean)
 ```
 
@@ -797,22 +797,22 @@ can calculate the row-wise or column-wise means with `rowMeans` and
 We can take subsets of character vectors as well:
 
 
-```r
+``` r
 animal <- c("m", "o", "n", "k", "e", "y")
 # first three characters
 animal[1:3]
 ```
 
-```output
+``` output
 [1] "m" "o" "n"
 ```
 
-```r
+``` r
 # last three characters
 animal[4:6]
 ```
 
-```output
+``` output
 [1] "k" "e" "y"
 ```
 
@@ -941,7 +941,7 @@ Recall that we already calculated these values above using `apply(dat, 2, mean)`
 Plotting the values is done with the function `plot`.
 
 
-```r
+``` r
 plot(avg_day_inflammation)
 ```
 
@@ -956,7 +956,7 @@ The result is roughly a linear rise and fall, which is suspicious: based on othe
 Let's have a look at two other statistics: the maximum and minimum inflammation per day.
 
 
-```r
+``` r
 max_day_inflammation <- apply(dat, 2, max)
 plot(max_day_inflammation)
 ```
@@ -967,7 +967,7 @@ plot(max_day_inflammation)
 </div>
 
 
-```r
+``` r
 min_day_inflammation <- apply(dat, 2, min)
 plot(min_day_inflammation)
 ```

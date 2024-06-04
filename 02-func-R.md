@@ -36,7 +36,7 @@ You can write your own functions in order to make repetitive operations using a 
 Now let's see this process with an example. We are going to define a function `fahrenheit_to_celsius` that converts temperatures from [Fahrenheit to Celsius](https://en.wikipedia.org/wiki/Temperature_conversion_formulas#Fahrenheit):
 
 
-```r
+``` r
 fahrenheit_to_celsius <- function(temp_F) {
   temp_C <- (temp_F - 32) * 5 / 9
   return(temp_C)
@@ -69,21 +69,21 @@ Let's try running our function.
 Calling our own function is no different from calling any other function:
 
 
-```r
+``` r
 # freezing point of water
 fahrenheit_to_celsius(32)
 ```
 
-```output
+``` output
 [1] 0
 ```
 
-```r
+``` r
 # boiling point of water
 fahrenheit_to_celsius(212)
 ```
 
-```output
+``` output
 [1] 100
 ```
 
@@ -94,7 +94,7 @@ We've successfully called the function that we defined, and we have access to th
 Now that we've seen how to turn Fahrenheit into Celsius, we can also turn Celsius into Kelvin:
 
 
-```r
+``` r
 celsius_to_kelvin <- function(temp_C) {
   temp_K <- temp_C + 273.15
   return(temp_K)
@@ -104,7 +104,7 @@ celsius_to_kelvin <- function(temp_C) {
 celsius_to_kelvin(0)
 ```
 
-```output
+``` output
 [1] 273.15
 ```
 
@@ -113,7 +113,7 @@ We could write out the formula, but we don't need to.
 Instead, we can [compose](../learners/reference.md#function-composition) the two functions we have already created:
 
 
-```r
+``` r
 fahrenheit_to_kelvin <- function(temp_F) {
   temp_C <- fahrenheit_to_celsius(temp_F)
   temp_K <- celsius_to_kelvin(temp_C)
@@ -124,7 +124,7 @@ fahrenheit_to_kelvin <- function(temp_F) {
 fahrenheit_to_kelvin(32.0)
 ```
 
-```output
+``` output
 [1] 273.15
 ```
 
@@ -142,12 +142,12 @@ to perform this calculation in one line of code, by "nesting" one function call
 inside another, like so:
 
 
-```r
+``` r
 # freezing point of water in Fahrenheit
 celsius_to_kelvin(fahrenheit_to_celsius(32.0))
 ```
 
-```output
+``` output
 [1] 273.15
 ```
 
@@ -174,14 +174,14 @@ Write a function called `highlight` that takes two vectors as arguments, called
 at the beginning and end of the content:
 
 
-```r
+``` r
 best_practice <- c("Write", "programs", "for", "people", "not", "computers")
 asterisk <- "***"  # R interprets a variable with a single value as a vector
                    # with one element.
 highlight(best_practice, asterisk)
 ```
 
-```output
+``` output
 [1] "***"       "Write"     "programs"  "for"       "people"    "not"      
 [7] "computers" "***"      
 ```
@@ -203,12 +203,12 @@ If the variable `v` refers to a vector, then `v[1]` is the vector's first elemen
 Write a function called `edges` that returns a vector made up of just the first and last elements of its input:
 
 
-```r
+``` r
 dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
 edges(dry_principle)
 ```
 
-```output
+``` output
 [1] "Don't"  "others"
 ```
 
@@ -251,7 +251,7 @@ the function call `functionName(variable = value)`, as well as arguments by
 order:
 
 
-```r
+``` r
 input_1 <- 20
 mySum <- function(input_1, input_2 = 10) {
   output <- input_1 + input_2
@@ -288,7 +288,7 @@ To see how to do this, let's write a function to center a dataset around a
 particular midpoint:
 
 
-```r
+``` r
 center <- function(data, midpoint) {
   new_data <- (data - mean(data)) + midpoint
   return(new_data)
@@ -300,54 +300,54 @@ Instead, let's create a vector of 0s and then center that around 3.
 This will make it simple to see if our function is working as expected:
 
 
-```r
+``` r
 z <- c(0, 0, 0, 0)
 z
 ```
 
-```output
+``` output
 [1] 0 0 0 0
 ```
 
-```r
+``` r
 center(z, 3)
 ```
 
-```output
+``` output
 [1] 3 3 3 3
 ```
 
 That looks right, so let's try center on our real data. We'll center the inflammation data from day 4 around 0:
 
 
-```r
+``` r
 dat <- read.csv(file = "data/inflammation-01.csv", header = FALSE)
 centered <- center(dat[, 4], 0)
 head(centered)
 ```
 
-```output
+``` output
 [1]  1.25 -0.75  1.25 -1.75  1.25  0.25
 ```
 
 It's hard to tell from the default output whether the result is correct, but there are a few simple tests that will reassure us:
 
 
-```r
+``` r
 # original mean
 mean(dat[, 4])
 ```
 
-```output
+``` output
 [1] 1.75
 ```
 
-```r
+``` r
 # centered mean
 mean(centered)
 ```
 
-```output
+``` output
 [1] 0
 ```
 
@@ -355,21 +355,21 @@ That seems right: the original mean was about 1.75 and the mean of the centered 
 We can even go further and check that the standard deviation hasn't changed:
 
 
-```r
+``` r
 # original standard deviation
 sd(dat[, 4])
 ```
 
-```output
+``` output
 [1] 1.067628
 ```
 
-```r
+``` r
 # centered standard deviation
 sd(centered)
 ```
 
-```output
+``` output
 [1] 1.067628
 ```
 
@@ -377,12 +377,12 @@ Those values look the same, but we probably wouldn't notice if they were differe
 Let's do this instead:
 
 
-```r
+``` r
 # difference in standard deviations before and after
 sd(dat[, 4]) - sd(centered)
 ```
 
-```output
+``` output
 [1] 0
 ```
 
@@ -390,11 +390,11 @@ Sometimes, a very small difference can be detected due to rounding at very low d
 R has a useful function for comparing two objects allowing for rounding errors, `all.equal`:
 
 
-```r
+``` r
 all.equal(sd(dat[, 4]), sd(centered))
 ```
 
-```output
+``` output
 [1] TRUE
 ```
 
@@ -406,7 +406,7 @@ However, there are two other important tasks to consider: 1) we should ensure ou
 What happens if we have missing data (NA values) in the `data` argument we provide to `center`?
 
 
-```r
+``` r
 # new data object and set one value in column 4 to NA
 datNA <- dat
 datNA[10,4] <- NA
@@ -415,7 +415,7 @@ datNA[10,4] <- NA
 center(datNA[,4], 0)
 ```
 
-```output
+``` output
  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
 [26] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
 [51] NA NA NA NA NA NA NA NA NA NA
@@ -424,7 +424,7 @@ center(datNA[,4], 0)
 This is likely not the behavior we want, and is caused by the `mean` function returning NA when the `na.rm=TRUE` is not provided. We may wish to not consider NA values in our `center` function. We can provide the `na.rm=TRUE` argument and solve this issue.
 
 
-```r
+``` r
 center <- function(data, midpoint) {
   new_data <- (data - mean(data, na.rm=TRUE)) + midpoint
   return(new_data)
@@ -433,7 +433,7 @@ center <- function(data, midpoint) {
 center(datNA[,4], 0)
 ```
 
-```output
+``` output
  [1]  1.2542373 -0.7457627  1.2542373 -1.7457627  1.2542373  0.2542373
  [7]  0.2542373  0.2542373  1.2542373         NA -1.7457627 -1.7457627
 [13] -0.7457627 -1.7457627 -0.7457627 -1.7457627 -1.7457627 -0.7457627
@@ -449,39 +449,39 @@ center(datNA[,4], 0)
 However, what happens if the user were to accidentally hand this function a `factor` or `character` vector?
 
 
-```r
+``` r
 datNA[,1] <- as.factor(datNA[,1])
 datNA[,2] <- as.character(datNA[,2])
 
 center(datNA[,1], 0)
 ```
 
-```warning
+``` warning
 Warning in mean.default(data, na.rm = TRUE): argument is not numeric or
 logical: returning NA
 ```
 
-```warning
+``` warning
 Warning in Ops.factor(data, mean(data, na.rm = TRUE)): '-' not meaningful for
 factors
 ```
 
-```output
+``` output
  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
 [26] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
 [51] NA NA NA NA NA NA NA NA NA NA
 ```
 
-```r
+``` r
 center(datNA[,2], 0)
 ```
 
-```warning
+``` warning
 Warning in mean.default(data, na.rm = TRUE): argument is not numeric or
 logical: returning NA
 ```
 
-```error
+``` error
 Error in data - mean(data, na.rm = TRUE): non-numeric argument to binary operator
 ```
 
@@ -494,7 +494,7 @@ For instance, the `center` function only works on numeric vectors. Recognizing t
 A common way to put documentation in software is to add [comments](../learners/reference.md#comment) like this:
 
 
-```r
+``` r
 center <- function(data, midpoint) {
   # return a new vector containing the original data centered around the
   # midpoint.
@@ -591,26 +591,26 @@ We have passed arguments to functions in two ways: directly, as in `dim(dat)`, a
 In fact, we can pass the arguments to `read.csv` without naming them:
 
 
-```r
+``` r
 dat <- read.csv("data/inflammation-01.csv", FALSE)
 ```
 
 However, the position of the arguments matters if they are not named.
 
 
-```r
+``` r
 dat <- read.csv(header = FALSE, file = "data/inflammation-01.csv")
 dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
 
-```error
+``` error
 Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 ```
 
 To understand what's going on, and make our own functions easier to use, let's re-define our `center` function like this:
 
 
-```r
+``` r
 center <- function(data, midpoint = 0) {
   # return a new vector containing the original data centered around the
   # midpoint (0 by default).
@@ -624,32 +624,32 @@ The key change is that the second argument is now written `midpoint = 0` instead
 If we call the function with two arguments, it works as it did before:
 
 
-```r
+``` r
 test_data <- c(0, 0, 0, 0)
 center(test_data, 3)
 ```
 
-```output
+``` output
 [1] 3 3 3 3
 ```
 
 But we can also now call `center()` with just one argument, in which case `midpoint` is automatically assigned the default value of `0`:
 
 
-```r
+``` r
 more_data <- 5 + test_data
 more_data
 ```
 
-```output
+``` output
 [1] 5 5 5 5
 ```
 
-```r
+``` r
 center(more_data)
 ```
 
-```output
+``` output
 [1] 0 0 0 0
 ```
 
@@ -658,7 +658,7 @@ This is handy: if we usually want a function to work one way, but occasionally n
 The example below shows how R matches values to arguments
 
 
-```r
+``` r
 display <- function(a = 1, b = 2, c = 3) {
   result <- c(a, b, c)
   names(result) <- c("a", "b", "c")  # This names each element of the vector
@@ -669,37 +669,37 @@ display <- function(a = 1, b = 2, c = 3) {
 display()
 ```
 
-```output
+``` output
 a b c 
 1 2 3 
 ```
 
-```r
+``` r
 # one argument
 display(55)
 ```
 
-```output
+``` output
  a  b  c 
 55  2  3 
 ```
 
-```r
+``` r
 # two arguments
 display(55, 66)
 ```
 
-```output
+``` output
  a  b  c 
 55 66  3 
 ```
 
-```r
+``` r
 # three arguments
 display(55, 66, 77)
 ```
 
-```output
+``` output
  a  b  c 
 55 66 77 
 ```
@@ -708,12 +708,12 @@ As this example shows, arguments are matched from left to right, and any that ha
 We can override this behavior by naming the value as we pass it in:
 
 
-```r
+``` r
 # only setting the value of c
 display(c = 77)
 ```
 
-```output
+``` output
  a  b  c 
  1  2 77 
 ```
@@ -738,14 +738,14 @@ complete name, then by partial matching of names, and finally by position.
 With that in hand, let's look at the help for `read.csv()`:
 
 
-```r
+``` r
 ?read.csv
 ```
 
 There's a lot of information there, but the most important part is the first couple of lines:
 
 
-```r
+``` r
 read.csv(file, header = TRUE, sep = ",", quote = "\"",
          dec = ".", fill = TRUE, comment.char = "", ...)
 ```
@@ -754,11 +754,11 @@ This tells us that `read.csv()` has one argument, `file`, that doesn't have a de
 Now we understand why the following gives an error:
 
 
-```r
+``` r
 dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
 
-```error
+``` error
 Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
 ```
 
