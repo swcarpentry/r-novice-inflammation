@@ -1,7 +1,7 @@
 ---
 title: Analyzing Patient Data
 teaching: 45
-exercises: 0
+exercises: 10
 source: Rmd
 ---
 
