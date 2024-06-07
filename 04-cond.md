@@ -331,8 +331,6 @@ plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 
 :::::::::::::::  solution
 
-## Solution
-
 ```r
 plot_dist <- function(x, threshold) {
   if (length(x) > threshold) {
@@ -385,8 +383,6 @@ plot_dist(dat[1:5, 10], threshold = 10)                    # samples (rows) 1-5 
 
 :::::::::::::::  solution
 
-## Solution
-
 ```r
 plot_dist <- function(x, threshold, use_boxplot = TRUE) {
    if (length(x) > threshold && use_boxplot) {
@@ -437,8 +433,6 @@ print(average_inf_max)
 ```
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 # Add your code here ...
@@ -604,8 +598,6 @@ Find the relevant argument to `plot` by reading the documentation (`?plot`),
 update `analyze`, and then recreate all the figures with `analyze_all`.
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 analyze <- function(filename, output = NULL) {

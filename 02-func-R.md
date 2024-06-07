@@ -188,8 +188,6 @@ highlight(best_practice, asterisk)
 
 :::::::::::::::  solution
 
-## Solution
-
 ```r
 highlight <- function(content, wrapper) {
   answer <- c(wrapper, content, wrapper)
@@ -213,8 +211,6 @@ edges(dry_principle)
 ```
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 edges <- function(v) {
@@ -267,8 +263,6 @@ mySum <- function(input_1, input_2 = 10) {
 2. If `mySum(3)` returns 13, why does `mySum(input_2 = 3)` return an error?
 
 :::::::::::::::  solution
-
-## Solution
 
 1. The solution is `a.`.
 
@@ -535,8 +529,6 @@ Be sure to document your function with comments.
 
 :::::::::::::::  solution
 
-## Solution
-
 ```r
 analyze <- function(filename) {
   # Plots the average, min, and max inflammation over time.
@@ -566,8 +558,6 @@ Be sure to document your function with comments.
 Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 rescale <- function(v) {
@@ -774,8 +764,6 @@ Do your two implementations produce the same results when
 both are given the same input vector and parameters?
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 rescale <- function(v, lower = 0, upper = 1) {

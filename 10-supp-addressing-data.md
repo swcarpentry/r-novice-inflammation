@@ -116,8 +116,6 @@ Think about the number of rows and columns you would expect as the result.
 
 :::::::::::::::  solution
 
-## Solution
-
 
 ``` r
 dat[1, 1]
@@ -140,8 +138,6 @@ If we leave out a dimension R will interpret this as a request for all values in
 What will be returned by `dat[, 2]`?
 
 :::::::::::::::  solution
-
-## Solution
 
 
 ``` r
@@ -183,8 +179,6 @@ This can be very useful for addressing data.
 Use the colon operator to index just the aneurism count data (columns 6 to 9).
 
 :::::::::::::::  solution
-
-## Solution
 
 
 ``` r
@@ -591,8 +585,6 @@ plot(dat[dat$Group == 'Control', ]$BloodPressure)
 
 :::::::::::::::  solution
 
-## Solution
-
 1. The code for such a plot:
   
   ``` r
@@ -603,8 +595,6 @@ plot(dat[dat$Group == 'Control', ]$BloodPressure)
 2. In addition to
   `dat$Group != 'Control'`, one could use
   `dat$Group %in% c("Treatment1", "Treatment2")`.
-  
-  
 
 :::::::::::::::::::::::::
 
@@ -633,8 +623,6 @@ In this dataset, values for Gender have been recorded as both uppercase `M, F` a
 Combine the addressing and assignment operations to convert all values to lowercase.
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 dat[dat$Gender == 'M', ]$Gender <- 'm'

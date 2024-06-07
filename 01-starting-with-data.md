@@ -121,16 +121,12 @@ read.csv(file = "data/inflammation-01.csv")
 
 :::::::::::::::  solution
 
-## Solution
-
 R will construct column headers from values in your first row of data,
 resulting in `X0 X0.1 X1 X3 X1.1 X2 ...`.
 
 Note that the character `X` is prepended: a standalone number would not be a valid variable
 name. Because column headers are variables, the same naming rules apply.
 Appending `.1`, `.2` etc. is necessary to avoid duplicate column headers.
-
-
 
 :::::::::::::::::::::::::
 
@@ -145,8 +141,6 @@ Also, different devices or software can generate data with different kinds of de
 Take a look at `?read.csv` and write the code to load a file called `commadec.txt` that has numeric values with commas as decimal mark, separated by semicolons.
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 read.csv(file = "data/commadec.txt", sep = ";", dec = ",")
@@ -365,8 +359,6 @@ age <- age - 20
 ```
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 mass <- 47.5
@@ -827,8 +819,6 @@ animal[4:6]
 
 :::::::::::::::  solution
 
-## Solutions
-
 1. `animal[4:1]`
 
 2. `"o" "n" "k" "e" "y"` and `"m" "o" "n" "e" "y"`, which means that a
@@ -857,8 +847,6 @@ Which of the following lines of R code gives the correct answer?
 
 :::::::::::::::  solution
 
-## Solution
-
 Answer: 3
 
 Explanation: You want to extract the part of the dataframe representing data for patient 5 from days three to seven. In this dataframe, patient data is organised in rows and the days are represented by the columns. Subscripting in R follows the `[i, j]` principle, where `i = rows` and `j = columns`. Thus, answer 3 is correct since the patient is represented by the value for i (5) and the days are represented by the values in j, which is a subset spanning day 3 to 7.
@@ -879,8 +867,6 @@ Let's pretend there was something wrong with the instrument on the first five da
 3. Print out the corrected data frame to check that your code has fixed the problem
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 whichPatients <- seq(2, 60, 2) # i.e., which rows
@@ -915,8 +901,6 @@ Think about the number of rows and columns you would expect as the result before
 apply call and check your intuition by applying the mean function.
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 # 1.
@@ -987,8 +971,6 @@ Create a plot showing the standard deviation of the inflammation data for each d
 
 :::::::::::::::  solution
 
-## Solution
-
 ```r
 sd_day_inflammation <- apply(dat, 2, sd)
 plot(sd_day_inflammation)
@@ -997,8 +979,6 @@ plot(sd_day_inflammation)
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
@@ -1014,5 +994,3 @@ plot(sd_day_inflammation)
 - Use `plot` to create simple visualizations.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-

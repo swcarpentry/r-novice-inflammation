@@ -46,13 +46,8 @@ To do all that, we'll have to learn a little bit about programming.
 
 ::::::::::::::::::::::::::::::::::::::::::  prereq
 
-## Prerequisites
-
 Learners need to understand the concepts of files and directories
 (including the working directory).
 We often use RStudio to teach this lesson, but it is not required.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-

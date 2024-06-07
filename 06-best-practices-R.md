@@ -164,8 +164,6 @@ rm(list = ls()) # If you want to delete all the objects in the workspace and sta
 
 :::::::::::::::  solution
 
-## Solution
-
 
 ``` bash
 cat inflammation.R

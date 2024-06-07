@@ -263,8 +263,6 @@ without importing the data with `stringsAsFactors=FALSE`.
 
 :::::::::::::::  solution
 
-## Solution
-
 ```r
 carSpeeds <- read.csv(file = 'data/car-speeds.csv')
 # Replace 'Blue' with 'Green' in cars$Color without using the stringsAsFactors
@@ -334,8 +332,6 @@ Perhaps, in the `car-speeds.csv` data contains mistakes and the person measuring
 Is there a way to specify more than one 'string', such as "Black" and "Blue", to be replaced by `NA`
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 read.csv(file = "data/inflammation-01.csv", na.strings = "0")

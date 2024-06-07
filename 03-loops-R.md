@@ -271,8 +271,6 @@ print_N(3)
 
 :::::::::::::::  solution
 
-## Solution
-
 ```r
 print_N <- function(N) {
   nseq <- seq(N)
@@ -305,8 +303,6 @@ total(ex_vec)
 ```
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 total <- function(vec) {
@@ -350,8 +346,6 @@ expo(2, 4)
 ```
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 expo <- function(base, power) {
@@ -524,8 +518,6 @@ a filename pattern as its arguments
 and runs `analyze` for each file whose name matches the pattern.
 
 :::::::::::::::  solution
-
-## Solution
 
 ```r
 analyze_all <- function(folder = "data", pattern) {

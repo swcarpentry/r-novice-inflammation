@@ -431,11 +431,7 @@ Do you see a property that's common to all these vectors above?
 
 :::::::::::::::  solution
 
-## Solution
-
 All vectors are one-dimensional and each element is of the same type.
-
-
 
 :::::::::::::::::::::::::
 
@@ -543,8 +539,6 @@ running this code?
 *Hint* Can matrices be composed of elements of different data types?
 
 :::::::::::::::  solution
-
-## Solution
 
 We know that `typeof(FOURS)` will also return `"double"` since matrices
 are made of elements of the same data type. Note that you could do
@@ -704,8 +698,6 @@ length(x)
 
 :::::::::::::::  solution
 
-## Solution
-
 1. 
     
     ``` r
@@ -770,8 +762,6 @@ names(xlist)
 2. What is its structure?
 
 :::::::::::::::  solution
-
-## Solution
 
 1. 
   
@@ -959,8 +949,6 @@ Knowing that data frames are lists, can columns be of different type?
 What type of structure do you expect to see when you explore the structure of the `PlantGrowth` data frame? Hint: Use `str()`.
 
 :::::::::::::::  solution
-
-## Solution
 
 The weight column is numeric
 while group is a factor.

@@ -144,8 +144,6 @@ d. `exercise <- factor(c("L", "N", "N", "I", "L"), levels = c("N", "L", "I"), or
 
 :::::::::::::::  solution
 
-## Solution
-
 Correct solution is **d.**
 
 ```r
@@ -154,8 +152,6 @@ exercise <- factor(c("L", "N", "N", "I", "L"), levels = c("N", "L", "I"), ordere
 
 We only expect three categories ("N", "L", "I").
 We can order these from least intense to most intense, so let's use `ordered`.
-
-
 
 :::::::::::::::::::::::::
 
@@ -299,8 +295,6 @@ Use the `factor()` command to modify the column `dat$Group` so that the *control
 
 :::::::::::::::  solution
 
-## Solution
-
 
 ``` r
 dat$Group <- factor(dat$Group, levels = c("Treatment1", "Treatment2", "Control"))
@@ -345,15 +339,15 @@ plot(x = dat$Gender, y = dat$BloodPressure)
 
 Why does this plot show 4 levels?
 
-*Hint* how many levels does `dat$Gender` have?
+::::::::::::::: hint
+
+How many levels does `dat$Gender` have?
+
+::::::::::::::::::::
 
 :::::::::::::::  solution
 
-## Solution
-
 `dat$Gender` has 4 levels, so the plot shows 4 levels.
-
-
 
 :::::::::::::::::::::::::
 

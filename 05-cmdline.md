@@ -344,8 +344,6 @@ Rscript arith.R 3 - 4
 
 :::::::::::::::  solution
 
-## Solution
-
 
 ``` bash
 cat arith.R
@@ -387,8 +385,6 @@ main()
 
 :::::::::::::::  solution
 
-## Solution
-
 An error message is returned due to "invalid input."
 This is likely because '\*' has a special meaning in the shell, as a wildcard.
 
@@ -411,8 +407,6 @@ print-args.R
 ```
 
 :::::::::::::::  solution
-
-## Solution
 
 
 ``` bash
@@ -530,8 +524,6 @@ and checks that all the files have the same number of rows and columns.
 What is the best way to test your program?
 
 :::::::::::::::  solution
-
-## Solution
 
 
 ``` bash
@@ -673,8 +665,6 @@ Is the program easier to understand?
 Separately, modify the program so that if no action is specified (or an incorrect action is given), it prints a message explaining how it should be used.
 
 :::::::::::::::  solution
-
-## Solution
 
 
 ``` bash
@@ -866,8 +856,6 @@ Write a program called `line-count.R` that works like the Unix `wc` command:
 - If one or more filenames are given, it reports the number of lines in each, followed by the total number of lines.
 
 :::::::::::::::  solution
-
-## Solution
 
 
 ``` bash
