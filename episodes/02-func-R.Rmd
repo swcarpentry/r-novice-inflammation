@@ -33,8 +33,8 @@ You can write your own functions in order to make repetitive operations using a 
 
 ```{r, include=FALSE}
 my_function <- function(input) {
-# perform action and produce output
-return(output) # return output value
+  # perform action and produce output
+  return(output) # return output value
 }
 ```
 
@@ -177,10 +177,10 @@ Write a function called `edges` that returns a vector made up of just the first 
 
 ```{r, echo=-1}
 edges <- function(v) {
-   first <- v[1]
-   last <- v[length(v)]
-   answer <- c(first, last)
-   return(answer)
+  first <- v[1]
+  last <- v[length(v)]
+  answer <- c(first, last)
+  return(answer)
 }
 dry_principle <- c("Don't", "repeat", "yourself", "or", "others")
 edges(dry_principle)
