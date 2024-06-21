@@ -27,19 +27,23 @@ Why should you make your own R packages?
 An R package is the **basic unit of reusable code**.
 If you want to reuse code later or want others to be able to use your code, you should put it in a package.
 
-An R package requires four components:
+An R package requires four components, visualized in the folder tree below:
 
-- a DESCRIPTION file with metadata about the package
-- an R directory with the code
-- a man directory with documentation (we will create this automatically)
-- a NAMESPACE file listing user-level functions in the package (we will also create this automatically)
+```
+package_name/
+├── DESCRIPTION              # metadata about the package
+├── man/                     # function documentation (can be generated automatically)
+├── NAMESPACE                # list of user-level functions in the package (can be generated automatically)
+├── R/                       # R source code
+└── <other_components>
+```
 
 *There are other optional components. [rOpenSci community][r-open-sci] has written a science-focused guidebook for package development, while [the "R packages" book][r-pkgs-desc] contains all the fundamental information.*
 
 ### DESCRIPTION file
 
 ```source
-Package: Package name
+Package: package_name
 Title: Brief package description
 Description: Longer package description
 Version: Version number(major.minor.patch)
