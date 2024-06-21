@@ -59,7 +59,7 @@ analyze_all <- function(folder = "data", pattern) {
 ```
 
 While these are useful in an interactive R session, what if we want to send our results to our collaborators?
-Since we currently have 12 data sets, running `analyze_all` creates 36 plots.
+Since we currently have 12 data sets, running `analyze_all(pattern = inflammation.*csv)` creates 36 plots.
 Saving each of these individually would be tedious and error-prone.
 And in the likely situation that we want to change how the data is processed or the look of the plots, we would have to once again save all 36 before sharing the updated results with our collaborators.
 
