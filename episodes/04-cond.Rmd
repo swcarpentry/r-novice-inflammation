@@ -175,7 +175,7 @@ Two vertical bars, `||`, symbolize "or".
 
 ```{r}
 if (1 > 0 && -1 > 0) {
-    print("both parts are true")
+  print("both parts are true")
 } else {
   print("at least one part is not true")
 }
@@ -185,7 +185,7 @@ while `||` is true if either part is true:
 
 ```{r}
 if (1 > 0 || -1 > 0) {
-    print("at least one part is true")
+  print("at least one part is true")
 } else {
   print("neither part is true")
 }
@@ -239,11 +239,11 @@ To do this you'll use the R functions `boxplot` and `stripchart`.
 
 ```{r using-conditions-01, echo=-1}
 plot_dist <- function(x, threshold) {
-   if (length(x) > threshold) {
-       boxplot(x)
-   } else {
-       stripchart(x)
-   }
+  if (length(x) > threshold) {
+    boxplot(x)
+  } else {
+    stripchart(x)
+  }
 }
 dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 plot_dist(dat[, 10], threshold = 10)     # day (column) 10
@@ -285,11 +285,11 @@ A histogram is made with the `hist` command in R.
 ```{r conditional-challenge-hist, fig.alt=c("A grey unlabeled boxplot chart showing the distrubution values between 2 and 9 with a mean at 6.", "A grey unlabeled histogram showing bimodal distribution between 2 and 9 with peaks at 2 and 6.", "A mostly blank strip chart showing five points at 3, 4, 6, 7, and 9"), echo=-1}
 plot_dist <- function(x, threshold, use_boxplot = TRUE) {
    if (length(x) > threshold && use_boxplot) {
-       boxplot(x)
+    boxplot(x)
    } else if (length(x) > threshold && !use_boxplot) {
-       hist(x)
+    hist(x)
    } else {
-       stripchart(x)
+    stripchart(x)
    }
 }
 dat <- read.csv("data/inflammation-01.csv", header = FALSE)
