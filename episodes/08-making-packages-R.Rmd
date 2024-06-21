@@ -43,7 +43,7 @@ package_name/
 ### DESCRIPTION file
 
 ```source
-Package: Package name
+Package: package_name
 Title: Brief package description
 Description: Longer package description
 Version: Version number(major.minor.patch)
