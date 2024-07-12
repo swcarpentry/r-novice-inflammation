@@ -215,7 +215,7 @@ Two vertical bars, `||`, symbolize "or".
 
 ``` r
 if (1 > 0 && -1 > 0) {
-    print("both parts are true")
+  print("both parts are true")
 } else {
   print("at least one part is not true")
 }
@@ -230,7 +230,7 @@ while `||` is true if either part is true:
 
 ``` r
 if (1 > 0 || -1 > 0) {
-    print("at least one part is true")
+  print("at least one part is true")
 } else {
   print("neither part is true")
 }

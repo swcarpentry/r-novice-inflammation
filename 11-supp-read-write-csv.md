@@ -268,8 +268,8 @@ carSpeeds <- read.csv(file = 'data/car-speeds.csv')
 # Replace 'Blue' with 'Green' in cars$Color without using the stringsAsFactors
 # or as.is arguments
 carSpeeds$Color <- ifelse(as.character(carSpeeds$Color) == 'Blue',
-                         'Green',
-                         as.character(carSpeeds$Color))
+                          'Green',
+                          as.character(carSpeeds$Color))
 # Convert colors back to factors
 carSpeeds$Color <- as.factor(carSpeeds$Color)
 ```
@@ -308,7 +308,7 @@ carSpeeds <- read.csv(
   stringsAsFactors = FALSE, 
   strip.white = TRUE,
   sep = ','
-  )
+)
 
 unique(carSpeeds$Color)
 ```

@@ -529,7 +529,8 @@ Consider the following matrix:
 FOURS <- matrix(
   c(4, 4, 4, 4),
   nrow = 2,
-  ncol = 2)
+  ncol = 2
+)
 ```
 
 Given that `typeof(FOURS[1])` returns `"double"`, what would you expect
