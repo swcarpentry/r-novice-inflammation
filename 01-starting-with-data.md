@@ -595,7 +595,7 @@ You can learn more about subsetting by column name in this supplementary [lesson
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Now let's perform some common mathematical operations to learn more about our inflammation data.
-When analyzing data we often want to look at partial statistics, such as the maximum value per patient or the average value per day.
+When analyzing data we often want to calculate statistics for specific subsets or groups of the data frame, such as the maximum value per patient or the average value per day.
 One way to do this is to select the data we want to create a new temporary data frame, and then perform the calculation on this subset:
 
 
