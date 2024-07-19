@@ -390,7 +390,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Making Packages in R</h1>
-        <p>Last updated on 2024-07-02 |
+        <p>Last updated on 2024-07-19 |
 
         <a href="https://github.com/swcarpentry/r-novice-inflammation/edit/main/episodes/08-making-packages-R.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -435,20 +435,21 @@ R’s native help and documentation format.</li>
 <p>An R package is the <strong>basic unit of reusable code</strong>. If
 you want to reuse code later or want others to be able to use your code,
 you should put it in a package.</p>
-<p>An R package requires four components:</p>
-<ul><li>a DESCRIPTION file with metadata about the package</li>
-<li>an R directory with the code</li>
-<li>a man directory with documentation (we will create this
-automatically)</li>
-<li>a NAMESPACE file listing user-level functions in the package (we
-will also create this automatically)</li>
-</ul><p><em>There are other optional components. <a href="https://devguide.ropensci.org/building.html" class="external-link">rOpenSci
+<p>An R package requires four components, visualized in the folder tree
+below:</p>
+<pre><code>package_name/
+├── DESCRIPTION              # metadata about the package
+├── man/                     # function documentation (can be generated automatically)
+├── NAMESPACE                # list of user-level functions in the package (can be generated automatically)
+├── R/                       # R source code
+└── &lt;other_components&gt;</code></pre>
+<p><em>There are other optional components. <a href="https://devguide.ropensci.org/building.html" class="external-link">rOpenSci
 community</a> has written a science-focused guidebook for package
 development, while <a href="https://r-pkgs.org/description.html" class="external-link">the “R
 packages” book</a> contains all the fundamental information.</em></p>
 <div class="section level3">
 <h3 id="description-file">DESCRIPTION file<a class="anchor" aria-label="anchor" href="#description-file"></a></h3>
-<pre class="source"><code>Package: Package name
+<pre class="source"><code>Package: package_name
 Title: Brief package description
 Description: Longer package description
 Version: Version number(major.minor.patch)
@@ -468,7 +469,7 @@ manner so that you know which file holds which functions.</p>
 <h3 id="making-your-first-r-package">Making your first R package<a class="anchor" aria-label="anchor" href="#making-your-first-r-package"></a></h3>
 <p>Let’s turn our temperature conversion functions into an R
 package.</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -478,7 +479,7 @@ package.</p>
 <span>  <span class="kw">return</span><span class="op">(</span><span class="va">temp_C</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -488,7 +489,7 @@ package.</p>
 <span>  <span class="kw">return</span><span class="op">(</span><span class="va">temp_K</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -502,7 +503,7 @@ package.</p>
 <p>We will use the <a href="https://cran.r-project.org/package=devtools" class="external-link">devtools</a> and <a href="https://cran.r-project.org/package=roxygen2" class="external-link">roxygen2</a>
 packages, which make creating packages in R relatively simple. Both can
 be installed from CRAN like this:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -516,7 +517,7 @@ unique.</p>
 <ul><li>package_to_convert_temperatures_between_kelvin_fahrenheit_and_celsius
 (BAD)</li>
 <li>tempConvert (GOOD)</li>
-</ul><div class="codewrapper sourceCode" id="cb6">
+</ul><div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -525,7 +526,7 @@ unique.</p>
 </div>
 <p>Add our functions to the R directory. Place each function into a
 separate R script and add documentation like this:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -549,7 +550,7 @@ package. Descriptive tags are preceded with the <code>@</code> symbol.
 For example, <code>@param</code> has information about the input
 parameters for the function. Now, we will use <code>roxygen2</code> to
 convert our documentation to the standard R format.</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -564,7 +565,7 @@ exist on your computer!). This folder contains several files and
 sub-folders. For example, the folder ‘R’ contains all of the R scripts
 you just wrote above. Now, let’s load the package and take a look at the
 documentation.</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -575,7 +576,7 @@ documentation.</p>
 </div>
 <p>Notice there is now a tempConvert environment that is the parent
 environment to the global environment.</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -583,7 +584,7 @@ environment to the global environment.</p>
 </div>
 <p>Now that our package is loaded, let’s try out some of the
 functions.</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -594,7 +595,7 @@ functions.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 0</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -605,7 +606,7 @@ functions.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 0</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -638,7 +639,7 @@ will be easy to load when more data arrives.</li>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -656,7 +657,7 @@ will be easy to load when more data arrives.</li>
 <span>  <span class="va">temp_C</span></span>
 <span><span class="op">}</span></span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -674,7 +675,7 @@ will be easy to load when more data arrives.</li>
 <span>  <span class="va">temp_F</span></span>
 <span><span class="op">}</span></span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -775,7 +776,7 @@ documentation, but both can be autogenerated.</li>
   "url": "https://swcarpentry.github.io/r-novice-inflammation/instructor/08-making-packages-R.html",
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/instructor/08-making-packages-R.html",
   "dateCreated": "2014-12-18",
-  "dateModified": "2024-07-02",
+  "dateModified": "2024-07-19",
   "datePublished": "2024-07-19"
 }
 
