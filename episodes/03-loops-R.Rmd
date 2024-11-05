@@ -1,7 +1,7 @@
 ---
 title: Analyzing Multiple Data Sets
 teaching: 30
-exercises: 0
+exercises: 10
 source: Rmd
 ---
 

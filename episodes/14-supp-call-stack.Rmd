@@ -1,7 +1,7 @@
 ---
 title: The Call Stack
 teaching: 15
-exercises: 0
+exercises: 5
 source: Rmd
 ---
 
