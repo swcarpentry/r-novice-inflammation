@@ -1,7 +1,7 @@
 ---
 title: Addressing Data
 teaching: 20
-exercises: 0
+exercises: 10
 source: Rmd
 ---
 

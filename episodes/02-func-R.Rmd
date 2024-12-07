@@ -1,7 +1,7 @@
 ---
 title: Creating Functions
 teaching: 30
-exercises: 0
+exercises: 10
 source: Rmd
 ---
 

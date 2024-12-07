@@ -1,7 +1,7 @@
 ---
 title: Reading and Writing CSV Files
 teaching: 30
-exercises: 0
+exercises: 5
 source: Rmd
 ---
 
