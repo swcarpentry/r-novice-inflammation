@@ -207,6 +207,9 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#getting-started">Getting started</a></li>
+<li><a href="#manipulating-data">Manipulating Data</a></li>
+<li><a href="#plotting">Plotting</a></li>
+<li><a href="#generative-ai-help">Generative AI Help</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -397,7 +400,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Analyzing Patient Data</h1>
-        <p>Last updated on 2025-05-06 |
+        <p>Last updated on 2025-05-27 |
 
         <a href="https://github.com/swcarpentry/r-novice-inflammation/edit/main/episodes/01-starting-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -558,7 +561,7 @@ Then run the following code and see if your expectations agree:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>R will construct column headers from values in your first row of
 data, resulting in <code>X0 X0.1 X1 X3 X1.1 X2 ...</code>.</p>
@@ -591,7 +594,7 @@ mark, separated by semicolons.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -863,7 +866,7 @@ statement in the following program:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -884,9 +887,8 @@ statement in the following program:</p>
 </div>
 </div>
 </div>
-<div class="section level3">
-<h3 id="manipulating-data">Manipulating Data<a class="anchor" aria-label="anchor" href="#manipulating-data"></a></h3>
-<p>Now that our data are loaded into R, we can start doing things with
+</section><section><h2 class="section-heading" id="manipulating-data">Manipulating Data<a class="anchor" aria-label="anchor" href="#manipulating-data"></a></h2>
+<hr class="half-width"><p>Now that our data are loaded into R, we can start doing things with
 them. First, let’s ask what type of thing <code>dat</code> is:</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1399,7 +1401,7 @@ i.e. <code>c("e", "o", "n")</code>.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li><p><code>animal[4:1]</code></p></li>
 <li><p><code>"o" "n" "k" "e" "y"</code> and
@@ -1437,7 +1439,7 @@ following lines of R code gives the correct answer?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Answer: 3</p>
 <p>Explanation: You want to extract the part of the dataframe
@@ -1477,7 +1479,7 @@ the problem</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb69">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1525,7 +1527,7 @@ mean function.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb70">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1542,10 +1544,8 @@ mean function.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section level3">
-<h3 id="plotting">Plotting<a class="anchor" aria-label="anchor" href="#plotting"></a></h3>
-<p>The mathematician Richard Hamming once said, “The purpose of
+</section><section><h2 class="section-heading" id="plotting">Plotting<a class="anchor" aria-label="anchor" href="#plotting"></a></h2>
+<hr class="half-width"><p>The mathematician Richard Hamming once said, “The purpose of
 computing is insight, not numbers,” and the best way to develop insight
 is often to visualize data. Visualization deserves an entire lecture (or
 course) of its own, but we can explore a few of R’s plotting
@@ -1614,7 +1614,7 @@ for each day across all patients.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb74">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1627,7 +1627,63 @@ for each day across all patients.</p>
 </div>
 </div>
 </div>
-<div id="keypoints1" class="callout keypoints">
+</section><section><h2 class="section-heading" id="generative-ai-help">Generative AI Help<a class="anchor" aria-label="anchor" href="#generative-ai-help"></a></h2>
+<hr class="half-width"><p>It is increasingly common for people to use <em>generative AI</em>
+chatbots such as ChatGPT to get help while coding. You will probably
+receive some useful guidance by presenting your error message to the
+chatbot and asking it what went wrong. However, the way this help is
+provided by the chatbot is different. Answers on StackOverflow have
+(probably) been given by a human as a direct response to the question
+asked. But generative AI chatbots, which are based on an advanced
+statistical model, respond by generating the <em>most likely</em>
+sequence of text that would follow the prompt they are given.</p>
+<p>While responses from generative AI tools can often be helpful, they
+are not always reliable. These tools sometimes generate plausible but
+incorrect or misleading information, so (just as with an answer found on
+the internet) it is essential to verify their accuracy. You need the
+knowledge and skills to be able to understand these responses, to judge
+whether or not they are accurate, and to fix any errors in the code it
+offers you.</p>
+<p>In addition to asking for help, programmers can use generative AI
+tools to generate code from scratch; extend, improve and reorganise
+existing code; translate code between programming languages; figure out
+what terms to use in a search of the internet; and more. However, there
+are drawbacks that you should be aware of.</p>
+<p>The models used by these tools have been “trained” on very large
+volumes of data, much of it taken from the internet, and the responses
+they produce reflect that training data, and may recapitulate its
+inaccuracies or biases. The environmental costs (energy and water use)
+of LLMs are a lot higher than other technologies, both during
+development (known as training) and when an individual user uses one
+(also called inference). For more information see the <a href="https://huggingface.co/blog/sasha/ai-environment-primer" class="external-link">AI
+Environmental Impact Primer</a> developed by researchers at HuggingFace,
+an AI hosting platform. Concerns also exist about the way the data for
+this training was obtained, with questions raised about whether the
+people developing the LLMs had permission to use it. Other ethical
+concerns have also been raised, such as reports that workers were
+exploited during the training process.</p>
+<p><strong>We recommend that you avoid getting help from generative AI
+during the workshop</strong> for several reasons:</p>
+<ol style="list-style-type: decimal"><li>For most problems you will encounter at this stage, help and answers
+can be found among the first results returned by searching the
+internet.</li>
+<li>The foundational knowledge and skills you will learn in this lesson
+by writing and fixing your own programs are essential to be able to
+evaluate the correctness and safety of any code you receive from online
+help or a generative AI chatbot. If you choose to use these tools in the
+future, the expertise you gain from learning and practising these
+fundamentals on your own will help you use them more effectively.</li>
+<li>As you start out with programming, the mistakes you make will be the
+kinds that have also been made – and overcome! – by everybody else who
+learned to program before you. Since these mistakes and the questions
+you are likely to have at this stage are common, they are also better
+represented than other, more specialised problems and tasks in the data
+that was used to train generative AI tools. This means that a generative
+AI chatbot is <em>more likely to produce accurate responses</em> to
+questions that novices ask, which could give you a false impression of
+how reliable they will be when you are ready to do things that are more
+advanced.</li>
+</ol><div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
@@ -1653,7 +1709,6 @@ on vectors.</li>
 columns of a data frame.</li>
 <li>Use <code>plot</code> to create simple visualizations.</li>
 </ul></div>
-</div>
 </div>
 </div>
 </section></div> <!-- / div.lesson-content -->
@@ -1714,7 +1769,7 @@ columns of a data frame.</li>
   "url": "https://swcarpentry.github.io/r-novice-inflammation/01-starting-with-data.html",
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/01-starting-with-data.html",
   "dateCreated": "2014-12-18",
-  "dateModified": "2025-05-06",
+  "dateModified": "2025-05-27",
   "datePublished": "2025-05-27"
 }
 
