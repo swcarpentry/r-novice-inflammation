@@ -16,16 +16,16 @@ The following people are maintainers for this lesson, and are responsible for de
 changes to incorporate into the lesson:
 
 - Thomas Cason (@tecason)
-- [Rohit Goswami](https://carpentries.org/instructors/#HaoZeke) (@haozeke)
-- [Hugo Gruson](https://carpentries.org/instructors/#bisaloo) (@Bisaloo)
+- Rohit Goswami (@haozeke)
+- Hugo Gruson (@Bisaloo)
 - Katie O'Mahony (@aforestsomewhere)
 
 Alumni:
 
-- [Daniel Chen](https://software-carpentry.org/team/#chen_daniel) (@chendaniely)
-- [Diya Das](https://diyadas.github.io) (@diyadas)
-- [Isaac Jennings](https://carpentries.org/maintainers/#isaac-jennings) (@isaac-jennings)
-- [Katrin Leinweber](https://carpentries.org/instructors/#katrinleinweber) (@katrinleinweber)
+- Daniel Chen (@chendaniely)
+- Diya Das (@diyadas)
+- Isaac Jennings (@isaac-jennings)
+- Katrin Leinweber (@katrinleinweber)
 
 The goal of this lesson is to teach novice programmers to write modular code to
 perform a data analysis. R is used to teach these skills because it is a
