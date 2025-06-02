@@ -1,4 +1,4 @@
-name: "02 Maintain: Update Workflow Files"
+name: "04 Maintain: Update Workflow Files"
 
 on:
   workflow_dispatch:
@@ -7,18 +7,19 @@ on:
         description: 'Who triggered this build (enter github username to tag yourself)?'
         required: true
         default: 'weekly run'
+      tarball:
+        description: 'Absolute URL to the desired sandpaper repo tarball'
+        required: false
+        default: ''
       clean:
         description: 'Workflow files/file extensions to clean (no wildcards, enter "" for none)'
         required: false
         default: '.yaml'
-  schedule:
-    # Run every Tuesday
-    - cron: '0 0 * * 2'
 
 jobs:
   check_token:
     name: "Check SANDPAPER_WORKFLOW token"
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     outputs:
       workflow: ${{ steps.validate.outputs.wf }}
       repo: ${{ steps.validate.outputs.repo }}
@@ -31,7 +32,7 @@ jobs:
 
   update_workflow:
     name: "Update Workflow"
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     needs: check_token
     if: ${{ needs.check_token.outputs.workflow == 'true' }}
     steps:
@@ -40,9 +41,10 @@ jobs:
 
       - name: Update Workflows
         id: update
-        uses: carpentries/actions/update-workflows@main
+        uses: froggleston/actions/update-workflows@main
         with:
-          clean: ${{ github.event.inputs.clean }}
+          repo: ${{ github.event.inputs.tarball }} || "https://carpentries.r-universe.dev"
+          clean: ${{ github.event.inputs.clean }} || ".yaml"
 
       - name: Create Pull Request
         id: cpr
