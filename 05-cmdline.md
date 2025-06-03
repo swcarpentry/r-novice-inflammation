@@ -78,19 +78,21 @@ Rscript session-info.R
 ``` output
 R version 4.5.0 (2025-04-11)
 Platform: x86_64-pc-linux-gnu
-Running under: Ubuntu 22.04.5 LTS
+Running under: Ubuntu 24.04.2 LTS
 
 Matrix products: default
-BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0 
-LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0  LAPACK version 3.10.0
+BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
+LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0
 
 locale:
- [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
- [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
- [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
-[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
-time zone: UTC
+time zone: Etc/UTC
 tzcode source: system (glibc)
 
 attached base packages:
@@ -133,7 +135,9 @@ Rscript print-args.R
 ```
 
 ``` output
-/usr/lib/R/bin/exec/R
+/usr/local/lib/R/bin/exec/R
+--no-save
+--no-restore
 --no-echo
 --no-restore
 --file=print-args.R
@@ -157,7 +161,9 @@ R --no-echo --no-restore --file=print-args.R --args
 ```
 
 ``` output
-/usr/lib/R/bin/exec/R
+/usr/local/lib/R/bin/exec/R
+--no-save
+--no-restore
 --no-echo
 --no-restore
 --file=print-args.R
@@ -172,7 +178,9 @@ Rscript print-args.R first second third
 ```
 
 ``` output
-/usr/lib/R/bin/exec/R
+/usr/local/lib/R/bin/exec/R
+--no-save
+--no-restore
 --no-echo
 --no-restore
 --file=print-args.R
