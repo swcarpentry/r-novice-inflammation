@@ -41,7 +41,7 @@ jobs:
 
       - name: Update Workflows
         id: update
-        uses: froggleston/actions/update-workflows@main
+        uses: carpentries/actions/update-workflows@main
         with:
           repo: ${{ github.event.inputs.tarball }} || "https://carpentries.r-universe.dev"
           clean: ${{ github.event.inputs.clean }} || ".yaml"
