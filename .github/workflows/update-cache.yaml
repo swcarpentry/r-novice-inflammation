@@ -95,7 +95,7 @@ jobs:
 
       - name: "Update {renv} deps and determine if a PR is needed"
         id: update
-        uses: froggleston/actions/update-lockfile@main
+        uses: carpentries/actions/update-lockfile@main
         with:
           update: ${{ env.UPDATE_PACKAGES }}
           skip-restore: ${{ env.SKIP_RENV_RESTORE }}
