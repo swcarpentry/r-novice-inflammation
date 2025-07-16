@@ -233,6 +233,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ needs.test-pr.outputs.is_valid == 'true' }}
     steps:
+      - name: "Checkout Lesson"
+        uses: actions/checkout@v4
+
       - name: "Trigger PR Checks"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
