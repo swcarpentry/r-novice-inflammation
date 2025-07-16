@@ -5,6 +5,8 @@ exercises: 0
 source: Rmd
 ---
 
+
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Get familiar with RStudio interface.

@@ -5,6 +5,8 @@ exercises: 5
 source: Rmd
 ---
 
+
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Understand how to represent categorical data in R.
@@ -289,7 +291,7 @@ table(dat$Group)
 barplot(table(dat$Group))
 ```
 
-<img src="fig/12-supp-factors-rendered-reordering-factors-1.png" alt="Bar chart showing control and treatment to emphasise how the function table() tabulates observations." style="display: block; margin: auto;" />
+<img src="fig/12-supp-factors-rendered-reordering-factors-1.svg" alt="Bar chart showing control and treatment to emphasise how the function table() tabulates observations." style="display: block; margin: auto;" />
 
 Use the `factor()` command to modify the column `dat$Group` so that the *control* group is plotted last.
 
@@ -301,7 +303,7 @@ dat$Group <- factor(dat$Group, levels = c("Treatment1", "Treatment2", "Control")
 barplot(table(dat$Group))
 ```
 
-<img src="fig/12-supp-factors-rendered-reordering-factors-2-1.png" alt="Bar chart showing control and treatment to emphasise how the function factor() moves the control group to the last coulumn." style="display: block; margin: auto;" />
+<img src="fig/12-supp-factors-rendered-reordering-factors-2-1.svg" alt="Bar chart showing control and treatment to emphasise how the function factor() moves the control group to the last coulumn." style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::
 
@@ -317,7 +319,7 @@ Let's remove levels from this factor.
 barplot(table(dat$Gender))
 ```
 
-<img src="fig/12-supp-factors-rendered-gender-counts-1.png" alt="Bar chart showing gender values in the dataset have been coded incorrectly." style="display: block; margin: auto;" />
+<img src="fig/12-supp-factors-rendered-gender-counts-1.svg" alt="Bar chart showing gender values in the dataset have been coded incorrectly." style="display: block; margin: auto;" />
 
 Values should have been recorded as lowercase 'm' and 'f'. We should correct this.
 
@@ -335,7 +337,7 @@ dat$Gender[dat$Gender == 'M'] <- 'm'
 plot(x = dat$Gender, y = dat$BloodPressure)
 ```
 
-<img src="fig/12-supp-factors-rendered-updating-factors-1.png" alt="Barplot graph showing blood pressure in males and females." style="display: block; margin: auto;" />
+<img src="fig/12-supp-factors-rendered-updating-factors-1.svg" alt="Barplot graph showing blood pressure in males and females." style="display: block; margin: auto;" />
 
 Why does this plot show 4 levels?
 
@@ -362,7 +364,7 @@ dat$Gender <- droplevels(dat$Gender)
 plot(x = dat$Gender, y = dat$BloodPressure)
 ```
 
-<img src="fig/12-supp-factors-rendered-dropping-levels-1.png" style="display: block; margin: auto;" />
+<img src="fig/12-supp-factors-rendered-dropping-levels-1.svg" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -376,7 +378,7 @@ levels(dat$Gender)[2] <- 'f'
 plot(x = dat$Gender, y = dat$BloodPressure)
 ```
 
-<img src="fig/12-supp-factors-rendered-adjusting-levels-1.png" style="display: block; margin: auto;" />
+<img src="fig/12-supp-factors-rendered-adjusting-levels-1.svg" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

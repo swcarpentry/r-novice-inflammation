@@ -5,6 +5,8 @@ exercises: 10
 source: Rmd
 ---
 
+
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Explain what a `for` loop does.
@@ -42,7 +44,7 @@ analyze <- function(filename) {
 analyze("data/inflammation-01.csv")
 ```
 
-<img src="fig/03-loops-R-rendered-inflammation-01-1.png" alt="Scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-inflammation-01-2.png" alt="A scatterplot of maximum daily inflammation over 40 days, increasing in a straight line until day 20, and then decreasing in a straight line to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-inflammation-01-3.png" alt="A scatterplot of minimum daily inflammation over 40 days, increasing in a step-wise pattern until day 20, and then decreasing in a step-wise pattern to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" />
+<img src="fig/03-loops-R-rendered-inflammation-01-1.svg" alt="Scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-inflammation-01-2.svg" alt="A scatterplot of maximum daily inflammation over 40 days, increasing in a straight line until day 20, and then decreasing in a straight line to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-inflammation-01-3.svg" alt="A scatterplot of minimum daily inflammation over 40 days, increasing in a step-wise pattern until day 20, and then decreasing in a step-wise pattern to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" />
 
 We can use it to analyze other data sets one by one:
 
@@ -51,7 +53,7 @@ We can use it to analyze other data sets one by one:
 analyze("data/inflammation-02.csv")
 ```
 
-<img src="fig/03-loops-R-rendered-inflammation-02-1.png" alt="A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-inflammation-02-2.png" alt="A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-inflammation-02-3.png" alt="A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" />
+<img src="fig/03-loops-R-rendered-inflammation-02-1.svg" alt="A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-inflammation-02-2.svg" alt="A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-inflammation-02-3.svg" alt="A scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" />
 
 but we have a dozen data sets right now and more on the way.
 We want to create plots for all our data sets with a single statement.
@@ -478,19 +480,19 @@ for (f in filenames) {
 [1] "data/inflammation-01.csv"
 ```
 
-<img src="fig/03-loops-R-rendered-loop-analyze-1.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-2.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-3.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" />
+<img src="fig/03-loops-R-rendered-loop-analyze-1.svg" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-2.svg" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-3.svg" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" />
 
 ``` output
 [1] "data/inflammation-02.csv"
 ```
 
-<img src="fig/03-loops-R-rendered-loop-analyze-4.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-5.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-6.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" />
+<img src="fig/03-loops-R-rendered-loop-analyze-4.svg" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-5.svg" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-6.svg" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" />
 
 ``` output
 [1] "data/inflammation-03.csv"
 ```
 
-<img src="fig/03-loops-R-rendered-loop-analyze-7.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-8.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-9.png" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" />
+<img src="fig/03-loops-R-rendered-loop-analyze-7.svg" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-8.svg" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" /><img src="fig/03-loops-R-rendered-loop-analyze-9.svg" alt="Scatterplot of average daily inflammation showing a ramp with a peak at 20 days." style="display: block; margin: auto;" />
 
 Sure enough, the maxima of these data sets show exactly the same ramp as the first, and their minima show the same staircase structure.
 

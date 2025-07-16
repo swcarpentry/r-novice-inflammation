@@ -5,6 +5,8 @@ exercises: 10
 source: Rmd
 ---
 
+
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Save plot(s) in a PDF file.
@@ -321,13 +323,13 @@ dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 plot_dist(dat[, 10], threshold = 10)     # day (column) 10
 ```
 
-<img src="fig/04-cond-rendered-using-conditions-01-1.png" style="display: block; margin: auto;" />
+<img src="fig/04-cond-rendered-using-conditions-01-1.svg" style="display: block; margin: auto;" />
 
 ``` r
 plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 ```
 
-<img src="fig/04-cond-rendered-using-conditions-01-2.png" style="display: block; margin: auto;" />
+<img src="fig/04-cond-rendered-using-conditions-01-2.svg" style="display: block; margin: auto;" />
 
 :::::::::::::::  solution
 
@@ -367,19 +369,19 @@ dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 plot_dist(dat[, 10], threshold = 10, use_boxplot = TRUE)   # day (column) 10 - create boxplot
 ```
 
-<img src="fig/04-cond-rendered-conditional-challenge-hist-1.png" alt="A grey unlabeled boxplot chart showing the distrubution values between 2 and 9 with a mean at 6." style="display: block; margin: auto;" />
+<img src="fig/04-cond-rendered-conditional-challenge-hist-1.svg" alt="A grey unlabeled boxplot chart showing the distrubution values between 2 and 9 with a mean at 6." style="display: block; margin: auto;" />
 
 ``` r
 plot_dist(dat[, 10], threshold = 10, use_boxplot = FALSE)  # day (column) 10 - create histogram
 ```
 
-<img src="fig/04-cond-rendered-conditional-challenge-hist-2.png" alt="A grey unlabeled histogram showing bimodal distribution between 2 and 9 with peaks at 2 and 6." style="display: block; margin: auto;" />
+<img src="fig/04-cond-rendered-conditional-challenge-hist-2.svg" alt="A grey unlabeled histogram showing bimodal distribution between 2 and 9 with peaks at 2 and 6." style="display: block; margin: auto;" />
 
 ``` r
 plot_dist(dat[1:5, 10], threshold = 10)                    # samples (rows) 1-5 on day (column) 10
 ```
 
-<img src="fig/04-cond-rendered-conditional-challenge-hist-3.png" alt="A mostly blank strip chart showing five points at 3, 4, 6, 7, and 9" style="display: block; margin: auto;" />
+<img src="fig/04-cond-rendered-conditional-challenge-hist-3.svg" alt="A mostly blank strip chart showing five points at 3, 4, 6, 7, and 9" style="display: block; margin: auto;" />
 
 :::::::::::::::  solution
 
@@ -507,7 +509,7 @@ Now we can use `analyze` interactively, as before,
 analyze("data/inflammation-01.csv")
 ```
 
-<img src="fig/04-cond-rendered-inflammation-01-1.png" style="display: block; margin: auto;" /><img src="fig/04-cond-rendered-inflammation-01-2.png" style="display: block; margin: auto;" /><img src="fig/04-cond-rendered-inflammation-01-3.png" style="display: block; margin: auto;" />
+<img src="fig/04-cond-rendered-inflammation-01-1.svg" style="display: block; margin: auto;" /><img src="fig/04-cond-rendered-inflammation-01-2.svg" style="display: block; margin: auto;" /><img src="fig/04-cond-rendered-inflammation-01-3.svg" style="display: block; margin: auto;" />
 
 but also use it to save plots,
 

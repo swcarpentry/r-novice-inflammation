@@ -5,6 +5,8 @@ exercises: 10
 source: Rmd
 ---
 
+
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Expose learners to the different data types in R and show how these data types are used in data structures.
