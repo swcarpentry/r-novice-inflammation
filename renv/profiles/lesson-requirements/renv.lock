@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.5.0",
+    "Version": "4.5.1",
     "Repositories": [
       {
         "Name": "carpentries",
@@ -225,7 +225,7 @@
     },
     "evaluate": {
       "Package": "evaluate",
-      "Version": "1.0.3",
+      "Version": "1.0.4",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Parsing and Evaluation Tools that Provide More Details than the Default",
@@ -244,7 +244,8 @@
         "lattice",
         "methods",
         "pkgload",
-        "rlang",
+        "ragg (>= 1.4.0)",
+        "rlang (>= 1.1.5)",
         "knitr",
         "testthat (>= 3.0.0)",
         "withr"
@@ -254,7 +255,7 @@
       "Encoding": "UTF-8",
       "RoxygenNote": "7.3.2",
       "NeedsCompilation": "no",
-      "Author": "Hadley Wickham [aut, cre], Yihui Xie [aut] (<https://orcid.org/0000-0003-0645-5666>), Michael Lawrence [ctb], Thomas Kluyver [ctb], Jeroen Ooms [ctb], Barret Schloerke [ctb], Adam Ryczkowski [ctb], Hiroaki Yutani [ctb], Michel Lang [ctb], Karolis Koncevičius [ctb], Posit Software, PBC [cph, fnd]",
+      "Author": "Hadley Wickham [aut, cre], Yihui Xie [aut] (ORCID: <https://orcid.org/0000-0003-0645-5666>), Michael Lawrence [ctb], Thomas Kluyver [ctb], Jeroen Ooms [ctb], Barret Schloerke [ctb], Adam Ryczkowski [ctb], Hiroaki Yutani [ctb], Michel Lang [ctb], Karolis Koncevičius [ctb], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
       "Repository": "CRAN"
     },
