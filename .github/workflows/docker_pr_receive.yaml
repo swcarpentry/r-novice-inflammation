@@ -236,8 +236,9 @@ jobs:
     if: ${{ needs.test-pr.outputs.is_valid == 'true' }}
     permissions:
       contents: read
-      actions: read
+      actions: write
       checks: write
+      pull-requests: write
     steps:
       - name: "Checkout Lesson"
         uses: actions/checkout@v4
