@@ -5,6 +5,13 @@ exercises: 5
 source: Rmd
 ---
 
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  dev = "svglite"
+)
+library(svglite)
+```
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Explain how stack frames are created and destroyed as functions are called.
