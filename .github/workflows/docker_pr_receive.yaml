@@ -227,7 +227,13 @@ jobs:
         run: sandpaper::reset_site()
         shell: Rscript {0}
 
-      - name: "Trigger PR checks"
+  pr-checks:
+    name: "Trigger PR Checks"
+    needs: test-pr
+    runs-on: ubuntu-latest
+    if: ${{ needs.test-pr.outputs.is_valid == 'true' }}
+    steps:
+      - name: "Trigger PR Checks"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
