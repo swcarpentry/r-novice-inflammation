@@ -229,9 +229,15 @@ jobs:
 
   pr-checks:
     name: "Trigger PR Checks"
-    needs: test-pr
+    needs:
+      - test-pr
+      - build-md-source
     runs-on: ubuntu-latest
     if: ${{ needs.test-pr.outputs.is_valid == 'true' }}
+    permissions:
+      contents: read
+      actions: read
+      checks: write
     steps:
       - name: "Checkout Lesson"
         uses: actions/checkout@v4
