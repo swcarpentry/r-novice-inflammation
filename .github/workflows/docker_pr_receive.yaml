@@ -232,3 +232,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh workflow run pr-comment.yaml --field workflow_id=${{ github.run_id }}
+        shell: bash
