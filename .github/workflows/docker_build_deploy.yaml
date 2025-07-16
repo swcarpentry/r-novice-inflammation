@@ -44,23 +44,48 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - name: Debug workflow_run event
+        run: cat $GITHUB_EVENT_PATH
+
       - name: "Should we run build and deploy?"
         id: check
         run: |
           if [[ "${{ github.event_name }}" == "schedule" ||
-                "${{ github.event_name }}" == "workflow_dispatch" ||
-                "${{ github.event_name }}" == "workflow_run" ]]; then
-            echo "✅ Schedule, manual, or auto trigger. Build will run."
+                "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "✅ Scheduled or manual trigger. Build will run."
             echo "push_or_pr=true" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event_name }}" == "workflow_run" &&
+                  "${{ github.event.workflow_run.conclusion }}" == "success" ]]; then
+            if [[ "${{ github.event.workflow_run.event }}" == "pull_request" ]] ; then
+              PRE_PR="${{ github.event.workflow_run.pull_requests[0].number }}"
+              if [[ -n "$PRE_PR" ]]; then
+                PR_DATA=$(gh pr view "$PRE_PR" --repo "${{ github.repository }}" --json merged,state)
+                MERGED=$(echo "$PR_DATA" | jq -r '.merged')
+                STATE=$(echo "$PR_DATA" | jq -r '.state')
+
+                if [[ "$MERGED" == "false" || "$STATE" != "MERGED" ]]; then
+                  echo "❗PR not merged or in an invalid state. No build will run."
+                  echo "push_or_pr=false" >> $GITHUB_OUTPUT
+                else
+                  echo "✅ PR merged successfully. Build will run."
+                  echo "push_or_pr=true" >> $GITHUB_OUTPUT
+                fi
+              else
+                echo "✅ PR merged successfully. Build will run."
+                echo "push_or_pr=true" >> $GITHUB_OUTPUT
+              fi
+            else
+              echo "✅ PR merged successfully. Build will run."
+              echo "push_or_pr=true" >> $GITHUB_OUTPUT
+            fi
           elif [[ "${{ github.event_name }}" == "push" && "${{ github.ref }}" == "refs/heads/main" ]]; then
             PRE_PR=$(gh pr list --repo "${{ github.repository }}" --state merged --search "${{ github.sha }}" --json number -q ".[0].number") >> $GITHUB_ENV
 
             if [[ -n "$PRE_PR" ]]; then
               LABELS=$(gh pr view "$PRE_PR" --repo "${{ github.repository }}" --json labels -q ".labels[].name")
               if echo "$LABELS" | grep -q "type: package cache"; then
-                echo "❗Package Cache PR merged. Please run '03 Maintain: Apply Package Cache' if not already running!"
+                echo "❗Package cache update PR merged. Build will not run."
                 echo "push_or_pr=false" >> $GITHUB_OUTPUT
-                exit 1
               else
                 echo "✅ Valid PR merged. Build will run."
                 echo "push_or_pr=true" >> $GITHUB_OUTPUT
@@ -72,7 +97,6 @@ jobs:
           else
             echo "❗This was not a schedule or valid trigger. No build will run."
             echo "push_or_pr=false" >> $GITHUB_OUTPUT
-            exit 1
           fi
 
   check-renv:
@@ -90,21 +114,25 @@ jobs:
         id: check-for-renv
         run: |
           if [[ -d renv ]]; then
+            echo "✅ renv requirement found."
             echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "❗No renv requirement found. Skipping..."
+            echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
   prepare-renv:
     name: "Grab renv.lock hash"
     runs-on: ubuntu-latest
     needs: check-renv
-    if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
     outputs:
-      renv-cache-hashsum: ${{ steps.set-hash.outputs.renv-cache-hashsum }}
+      renv-cache-hashsum: ${{ steps.set-hash.outputs.renv-cache-hashsum || '' }}
     steps:
       - uses: actions/checkout@v4
 
       - name: Calculate renv hash
         id: set-hash
+        if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
         run: |
           CACHE_VERSION_INPUT="${{ github.event.inputs.CACHE_VERSION || vars.CACHE_VERSION }}"
           if [ -z "$CACHE_VERSION_INPUT" ]; then
@@ -184,9 +212,6 @@ jobs:
         if: env.RENV_EXISTS == 'true'
         run: echo "RENV_VERSION is $RENV_VERSION"
 
-      - name: Current env
-        run: env | sort
-
       - name: Debugging Info
         run: |
           cd /home/rstudio/lesson
@@ -203,15 +228,28 @@ jobs:
         run: |
           Rscript /home/rstudio/.workbench/setup_lesson_deps.R
 
+      - name: Get Container Version Used
+        run: |
+          tag=${{ vars.WORKBENCH_TAG || 'latest' }}
+          digest=$(curl -s "https://hub.docker.com/v2/repositories/carpentries/workbench-docker/tags?name=$tag" | jq -r '.results[] | select(.name == "'$tag'") | .digest')
+          if [[ "$tag" == "latest" ]]; then
+            vers=$(curl -s "https://hub.docker.com/v2/repositories/carpentries/workbench-docker/tags" | jq -r '.results[] | select(.digest == "'$digest'") | .name')
+            ver=$(echo "$vers" | grep -Po "^v.*")
+          else
+            ver="$tag"
+          fi
+          echo "CONTAINER_VER=$ver" >> $GITHUB_ENV
+        shell: bash
+
       - name: Restore renv from cache
         id: restore-renv-cache
         uses: actions/cache@v4
         if: env.RENV_EXISTS == 'true'
         with:
           path: /home/rstudio/lesson/renv
-          key: ${{ runner.os }}-${{ inputs.cache-version }}-renv-${{ needs.prepare-renv.outputs.renv-cache-hashsum }}
+          key: ${{ env.CONTAINER_VER }}-${{ inputs.cache-version }}-renv-${{ needs.prepare-renv.outputs.renv-cache-hashsum }}
           restore-keys:
-            ${{ runner.os }}-${{ inputs.cache-version }}-renv-
+            ${{ env.CONTAINER_VER }}-${{ inputs.cache-version }}-renv-
 
       - name: Restore renv Dependencies
         if: env.RENV_EXISTS == 'true' && steps.restore-renv-cache.outputs.cache-hit == 'true'
@@ -278,6 +316,7 @@ jobs:
       - name: Run Container and Build Site
         run: |
           library(sandpaper)
+          reset <- "${{ github.event.inputs.reset }}" == "true"
           sandpaper::package_cache_trigger(TRUE)
-          sandpaper:::ci_deploy(reset = TRUE)
+          sandpaper:::ci_deploy(reset = reset)
         shell: Rscript {0}
