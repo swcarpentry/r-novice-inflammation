@@ -17,30 +17,54 @@ on:
         default: '.yaml'
 
 jobs:
-  check_token:
-    name: "Check SANDPAPER_WORKFLOW token"
-    runs-on: ubuntu-latest
-    outputs:
-      workflow: ${{ steps.validate.outputs.wf }}
-      repo: ${{ steps.validate.outputs.repo }}
-    steps:
-      - name: "validate token"
-        id: validate
-        uses: carpentries/actions/check-valid-credentials@main
-        with:
-          token: ${{ secrets.SANDPAPER_WORKFLOW }}
-
   update_workflow:
     name: "Update Workflow"
     runs-on: ubuntu-latest
-    needs: check_token
-    if: ${{ needs.check_token.outputs.workflow == 'true' }}
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: "Checkout Repository"
         uses: actions/checkout@v4
 
+      - name: "Validate Current Org and Workflow"
+        id: validate-org-workflow
+        uses: carpentries/actions/validate-org-workflow@main
+        with:
+          repo: ${{ github.repository }}
+          workflow: ${{ github.workflow }}
+
+      - name: Configure AWS credentials via OIDC
+        if: ${{ steps.validate-org-workflow.outputs.is_valid == 'true' }}
+        uses: aws-actions/configure-aws-credentials@v4.1.0
+        with:
+          role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
+          aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
+
+      - name: Set PAT from AWS Secrets Manager
+        id: set-pat
+        shell: bash
+        run: |
+          SECRET=$(aws secretsmanager get-secret-value \
+                   --secret-id carpentries-bot/github-pat \
+                   --query SecretString --output text)
+          PAT=$(echo "$SECRET" | jq -r .[])
+          echo "::add-mask::$PAT"
+          echo "pat=$PAT" >> "$GITHUB_OUTPUT"
+
+      - name: "Validate token"
+        id: validate-token
+        uses: carpentries/actions/check-valid-credentials@main
+        with:
+          token: ${{ secrets.SANDPAPER_WORKFLOW || steps.set-pat.outputs.pat }}
+
+      - name: "No Token Found: Skipping Workflow Update"
+        if: ${{ steps.validate-token.outputs.wf == 'false' }}
+        run: echo "❗No valid SANDPAPER_WORKFLOW token found, skipping workflow update."
+
       - name: Update Workflows
         id: update
+        if: ${{ steps.validate-token.outputs.wf == 'true' }}
         uses: carpentries/actions/update-workflows@main
         with:
           repo: ${{ github.event.inputs.tarball }} || "https://carpentries.r-universe.dev"
@@ -48,10 +72,10 @@ jobs:
 
       - name: Create Pull Request
         id: cpr
-        if: "${{ steps.update.outputs.new }}"
+        if: ${{ steps.update.outputs.new > 0 && steps.validate-token.outputs.wf == 'true' }}
         uses: carpentries/create-pull-request@main
         with:
-          token: ${{ secrets.SANDPAPER_WORKFLOW }}
+          token: ${{ secrets.SANDPAPER_WORKFLOW || steps.set-pat.outputs.pat }}
           delete-branch: true
           branch: "update/workflows"
           commit-message: "[actions] update sandpaper workflow to version ${{ steps.update.outputs.new }}"
