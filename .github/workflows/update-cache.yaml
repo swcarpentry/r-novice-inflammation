@@ -132,11 +132,11 @@ jobs:
         id: validate-token
         uses: carpentries/actions/check-valid-credentials@main
         with:
-          token: ${{ secrets.SANDPAPER_WORKFLOW || steps.set-pat.outputs.pat }}
+          token: ${{ steps.set-pat.outputs.pat || secrets.SANDPAPER_WORKFLOW }}
 
       # Create the PR with the following roles in order of preference:
-      # - repo-scoped SANDPAPER_WORKFLOW classic PAT (will work in all scenarios)
       # - Carpentries Bot classic PAT fetched from AWS (will only work in official Carpentries repos)
+      # - repo-scoped SANDPAPER_WORKFLOW classic PAT (will work in all scenarios)
       # - default GITHUB_TOKEN (will work suitably, but PR preflight checks will not occur)
       - name: "Create Pull Request"
         id: cpr
@@ -148,7 +148,7 @@ jobs:
           )
         uses: carpentries/create-pull-request@main
         with:
-          token: ${{ secrets.SANDPAPER_WORKFLOW || steps.set-pat.outputs.pat || secrets.GITHUB_TOKEN }}
+          token: ${{ steps.set-pat.outputs.pat || secrets.SANDPAPER_WORKFLOW || secrets.GITHUB_TOKEN }}
           delete-branch: true
           branch: "update/packages"
           commit-message: "[actions] update ${{ steps.update.outputs.n }} packages"

@@ -56,7 +56,7 @@ jobs:
         id: validate-token
         uses: carpentries/actions/check-valid-credentials@main
         with:
-          token: ${{ secrets.SANDPAPER_WORKFLOW || steps.set-pat.outputs.pat }}
+          token: ${{ steps.set-pat.outputs.pat || secrets.SANDPAPER_WORKFLOW }}
 
       - name: "No Token Found: Skipping Workflow Update"
         if: ${{ steps.validate-token.outputs.wf == 'false' }}
@@ -75,7 +75,7 @@ jobs:
         if: ${{ steps.update.outputs.new > 0 && steps.validate-token.outputs.wf == 'true' }}
         uses: carpentries/create-pull-request@main
         with:
-          token: ${{ secrets.SANDPAPER_WORKFLOW || steps.set-pat.outputs.pat }}
+          token: ${{ steps.set-pat.outputs.pat || secrets.SANDPAPER_WORKFLOW }}
           delete-branch: true
           branch: "update/workflows"
           commit-message: "[actions] update sandpaper workflow to version ${{ steps.update.outputs.new }}"
