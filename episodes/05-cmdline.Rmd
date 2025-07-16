@@ -5,6 +5,13 @@ exercises: 50
 source: Rmd
 ---
 
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  dev = "svglite"
+)
+library(svglite)
+```
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Use the values of command-line arguments in a program.

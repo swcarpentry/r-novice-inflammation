@@ -5,6 +5,13 @@ exercises: 5
 source: Rmd
 ---
 
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  dev = "svglite"
+)
+library(svglite)
+```
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Read in a .csv, and explore the arguments of the csv reader.

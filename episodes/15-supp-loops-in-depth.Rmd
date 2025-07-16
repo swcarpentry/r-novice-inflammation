@@ -5,6 +5,13 @@ exercises: 0
 source: Rmd
 ---
 
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  dev = "svglite"
+)
+library(svglite)
+```
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Compare loops and vectorized operations.
