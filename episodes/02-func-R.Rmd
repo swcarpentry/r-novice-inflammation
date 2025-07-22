@@ -5,6 +5,13 @@ exercises: 10
 source: Rmd
 ---
 
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  dev = "svglite"
+)
+library(svglite)
+```
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Define a function that takes arguments.
