@@ -5,6 +5,8 @@ exercises: 10
 source: Rmd
 ---
 
+
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Read tabular data from a file into a program.
@@ -930,7 +932,7 @@ plot(avg_day_inflammation)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="fig/01-starting-with-data-rendered-plot-avg-inflammation-1.png" alt="Scatter plot of average inflammation versus time demonstrating the result of using the plot function"  />
+<img src="fig/01-starting-with-data-rendered-plot-avg-inflammation-1.svg" alt="Scatter plot of average inflammation versus time demonstrating the result of using the plot function"  />
 <p class="caption">Scatter plot of average inflammation versus time demonstrating the result of using the plot function</p>
 </div>
 
@@ -946,7 +948,7 @@ plot(max_day_inflammation)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="fig/01-starting-with-data-rendered-plot-max-inflammation-1.png" alt="Scatter plot of maximum inflammation versus time demonstrating the result of using the plot function"  />
+<img src="fig/01-starting-with-data-rendered-plot-max-inflammation-1.svg" alt="Scatter plot of maximum inflammation versus time demonstrating the result of using the plot function"  />
 <p class="caption">Scatter plot of maximum inflammation versus time demonstrating the result of using the plot function</p>
 </div>
 
@@ -957,7 +959,7 @@ plot(min_day_inflammation)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="fig/01-starting-with-data-rendered-plot-min-inflammation-1.png" alt="Scatter plot of minimum inflammation versus time demonstrating the result of using the plot function"  />
+<img src="fig/01-starting-with-data-rendered-plot-min-inflammation-1.svg" alt="Scatter plot of minimum inflammation versus time demonstrating the result of using the plot function"  />
 <p class="caption">Scatter plot of minimum inflammation versus time demonstrating the result of using the plot function</p>
 </div>
 

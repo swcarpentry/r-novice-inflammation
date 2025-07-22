@@ -5,6 +5,8 @@ exercises: 5
 source: Rmd
 ---
 
+
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Understand the value of `knitr` for generating dynamic documents that include text, code, and results.

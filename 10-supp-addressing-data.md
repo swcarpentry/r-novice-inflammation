@@ -5,6 +5,8 @@ exercises: 10
 source: Rmd
 ---
 
+
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Understand the three different ways R can address data inside a data frame.
@@ -574,7 +576,7 @@ Often this operation is written as one line of code:
 plot(dat[dat$Group == 'Control', ]$BloodPressure)
 ```
 
-<img src="fig/10-supp-addressing-data-rendered-logical_vectors_indexing2-1.png" style="display: block; margin: auto;" />
+<img src="fig/10-supp-addressing-data-rendered-logical_vectors_indexing2-1.svg" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -591,7 +593,7 @@ plot(dat[dat$Group == 'Control', ]$BloodPressure)
   plot(dat[dat$Group != 'Control', ]$BloodPressure)
   ```
   
-  <img src="fig/10-supp-addressing-data-rendered-plot-logical-1.png" style="display: block; margin: auto;" />
+  <img src="fig/10-supp-addressing-data-rendered-plot-logical-1.svg" style="display: block; margin: auto;" />
 2. In addition to
   `dat$Group != 'Control'`, one could use
   `dat$Group %in% c("Treatment1", "Treatment2")`.
