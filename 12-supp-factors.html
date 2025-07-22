@@ -390,7 +390,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Understanding Factors</h1>
-        <p>Last updated on 2025-07-16 |
+        <p>Last updated on 2025-07-22 |
 
         <a href="https://github.com/swcarpentry/r-novice-inflammation/edit/main/episodes/12-supp-factors.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -753,7 +753,7 @@ used to create bar plots quickly. For instance:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">barplot</span><span class="op">(</span><span class="fu">table</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">Group</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/12-supp-factors-rendered-reordering-factors-1.png" alt="Bar chart showing control and treatment to emphasise how the function table() tabulates observations." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Use the <code>factor()</code> command to modify the column
+<figure><img src="fig/12-supp-factors-rendered-reordering-factors-1.svg" alt="Bar chart showing control and treatment to emphasise how the function table() tabulates observations." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Use the <code>factor()</code> command to modify the column
 <code>dat$Group</code> so that the <em>control</em> group is plotted
 last.</p>
 </div>
@@ -773,7 +773,7 @@ last.</p>
 <code class="sourceCode R"><span><span class="va">dat</span><span class="op">$</span><span class="va">Group</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">Group</span>, levels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"Treatment1"</span>, <span class="st">"Treatment2"</span>, <span class="st">"Control"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">barplot</span><span class="op">(</span><span class="fu">table</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">Group</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/12-supp-factors-rendered-reordering-factors-2-1.png" alt="Bar chart showing control and treatment to emphasise how the function factor() moves the control group to the last coulumn." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/12-supp-factors-rendered-reordering-factors-2-1.svg" alt="Bar chart showing control and treatment to emphasise how the function factor() moves the control group to the last coulumn." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
@@ -788,7 +788,7 @@ Let’s remove levels from this factor.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">barplot</span><span class="op">(</span><span class="fu">table</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/12-supp-factors-rendered-gender-counts-1.png" alt="Bar chart showing gender values in the dataset have been coded incorrectly." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Values should have been recorded as lowercase ‘m’ and ‘f’. We should
+<figure><img src="fig/12-supp-factors-rendered-gender-counts-1.svg" alt="Bar chart showing gender values in the dataset have been coded incorrectly." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Values should have been recorded as lowercase ‘m’ and ‘f’. We should
 correct this.</p>
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -809,7 +809,7 @@ correct this.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">plot</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dat</span><span class="op">$</span><span class="va">Gender</span>, y <span class="op">=</span> <span class="va">dat</span><span class="op">$</span><span class="va">BloodPressure</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/12-supp-factors-rendered-updating-factors-1.png" alt="Barplot graph showing blood pressure in males and females." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Why does this plot show 4 levels?</p>
+<figure><img src="fig/12-supp-factors-rendered-updating-factors-1.svg" alt="Barplot graph showing blood pressure in males and females." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Why does this plot show 4 levels?</p>
 </div>
 </div>
 </div>
@@ -847,7 +847,7 @@ levels.</p>
 <code class="sourceCode R"><span><span class="va">dat</span><span class="op">$</span><span class="va">Gender</span> <span class="op">&lt;-</span> <span class="fu">droplevels</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span></span>
 <span><span class="fu">plot</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dat</span><span class="op">$</span><span class="va">Gender</span>, y <span class="op">=</span> <span class="va">dat</span><span class="op">$</span><span class="va">BloodPressure</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/12-supp-factors-rendered-dropping-levels-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="adjusting-factor-levels" class="callout">
+<figure><img src="fig/12-supp-factors-rendered-dropping-levels-1.svg" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="adjusting-factor-levels" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
@@ -863,7 +863,7 @@ shortcut for reassigning values in this case.</p>
 <code class="sourceCode R"><span><span class="fu">levels</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">'f'</span></span>
 <span><span class="fu">plot</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dat</span><span class="op">$</span><span class="va">Gender</span>, y <span class="op">=</span> <span class="va">dat</span><span class="op">$</span><span class="va">BloodPressure</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/12-supp-factors-rendered-adjusting-levels-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/12-supp-factors-rendered-adjusting-levels-1.svg" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 <div id="keypoints1" class="callout keypoints">
@@ -941,7 +941,7 @@ shortcut for reassigning values in this case.</p>
   "url": "https://swcarpentry.github.io/r-novice-inflammation/12-supp-factors.html",
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/12-supp-factors.html",
   "dateCreated": "2014-12-18",
-  "dateModified": "2025-07-16",
+  "dateModified": "2025-07-22",
   "datePublished": "2025-07-22"
 }
 
