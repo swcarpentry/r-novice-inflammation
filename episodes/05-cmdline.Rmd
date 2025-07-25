@@ -89,10 +89,10 @@ Remember that you must be in the correct directory, the one in which you created
 You can determine which directory you are currently in using `pwd` and change to a different directory using `cd`.
 For a review, see this [lesson](https://swcarpentry.github.io/shell-novice/02-filedir/).
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Now let's create another script that does something more interesting. Write the following lines in a file named `print-args.R`:
+Now let's create another script that does something more interesting.
+Write the following lines in a file named `print-args.R`:
 
 ```{r, echo=FALSE, engine="bash"}
 cat print-args.R
@@ -100,8 +100,7 @@ cat print-args.R
 
 The function `commandArgs` extracts all the command line arguments and returns them as a vector.
 The function `cat`, similar to the `cat` of the Unix Shell, outputs the contents of the variable.
-Since we did not specify a filename for writing, `cat` sends the output to [standard output](../learners/reference.md#standard-output-stdout),
-which we can then pipe to other Unix functions.
+Since we did not specify a filename for writing, `cat` sends the output to [standard output](../learners/reference.md#standard-output-stdout), which we can then pipe to other Unix functions.
 Because we set the argument `sep` to `"\n"`, which is the symbol to start a new line, each element of the vector is printed on its own line.
 Let's see what happens when we run this program in the Unix Shell:
 
@@ -179,9 +178,10 @@ Rscript readings-02.R data/inflammation-01.csv
 ## A Simple Command-Line Program
 
 1. Write a command-line program that does addition and subtraction of two numbers.
-  
-  **Hint:** Everything argument read from the command-line is interpreted as a character [string](../learners/reference.md#string).
-  You can convert from a string to a number using the function `as.numeric`.
+
+**Hint:**
+Everything argument read from the command-line is interpreted as a character [string](../learners/reference.md#string).
+You can convert from a string to a number using the function `as.numeric`.
 
 ```{r, engine="bash"}
 Rscript arith.R 1 + 2
@@ -203,9 +203,7 @@ cat arith.R
 
 :::::::::::::::  solution
 
-An error message is returned due to "invalid input."
-This is likely because '\*' has a special meaning in the shell, as a wildcard.
-
+An error message is returned due to "invalid input." This is likely because '\*' has a special meaning in the shell, as a wildcard.
 
 :::::::::::::::::::::::::
 
@@ -274,9 +272,7 @@ For teaching, though, we need all the successive versions side by side.
 
 ## A Command Line Program with Arguments
 
-Write a program called `check.R`
-that takes the names of one or more inflammation data files as arguments
-and checks that all the files have the same number of rows and columns.
+Write a program called `check.R` that takes the names of one or more inflammation data files as arguments and checks that all the files have the same number of rows and columns.
 What is the best way to test your program?
 
 :::::::::::::::  solution
@@ -312,7 +308,8 @@ but there are several things wrong with it:
   [Silent failures](../learners/reference.md#silent-failure) like this are always hard to debug.
 
 This version pulls the processing of each file out of the loop into a function of its own.
-It also uses `stopifnot` to check that `action` is one of the allowed flags before doing any processing, so that the program fails fast. We'll save it as `readings-05.R`:
+It also uses `stopifnot` to check that `action` is one of the allowed flags before doing any processing, so that the program fails fast.
+We'll save it as `readings-05.R`:
 
 ```{r, echo=FALSE, engine="bash"}
 cat readings-05.R
@@ -326,7 +323,6 @@ This is four lines longer than its predecessor, but broken into more digestible 
 
 R has a package named [argparse][argparse-r] that helps handle complex command-line flags (it utilizes a [Python module][argparse-py] of the same name).
 We will not cover this package in this lesson but when you start writing programs with multiple parameters you'll want to read through the package's [vignette].
-
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -346,8 +342,7 @@ Separately, modify the program so that if no action is specified (or an incorrec
 cat readings-short.R
 ```
 
-The program is neither easier to read nor easier to understand due to the
-ambiguity of the argument names.
+The program is neither easier to read nor easier to understand due to the ambiguity of the argument names.
 
 ```{r, engine="bash"}
 cat readings-usage.R
