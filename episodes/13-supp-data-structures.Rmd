@@ -434,7 +434,7 @@ names(xlist)
 :::::::::::::::  solution
 
 1.
-```{r examine-named-lists-1}
+  ```{r examine-named-lists-1}
   length(xlist)
   ```
 2.
