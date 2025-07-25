@@ -23,9 +23,12 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-`knitr` is an R package that allows you to organize your notes, code, and results in a single document. It's a great tool for "literate programming" -- the idea that your code should be readable by humans as well as computers! It also keeps your writing and results together, so if you collect some new data or change how you clean the data, you just have to re-compile the document and you're up to date!
+`knitr` is an R package that allows you to organize your notes, code, and results in a single document.
+It's a great tool for "literate programming" -- the idea that your code should be readable by humans as well as computers!
+It also keeps your writing and results together, so if you collect some new data or change how you clean the data, you just have to re-compile the document and you're up to date!
 
-You write `knitr` documents in a simple plain text-like format called markdown, which allows you to format text using intuitive notation, so that you can focus on the content you're writing and generating a well-formatted document when needed. In fact, you can turn your plain text (and R code and results) into an HTML file or, if you have an installation of LaTeX and [Pandoc][pandoc] on your machine, a PDF, or even a Word document (if you must!).
+You write `knitr` documents in a simple plain text-like format called markdown, which allows you to format text using intuitive notation, so that you can focus on the content you're writing and generating a well-formatted document when needed.
+In fact, you can turn your plain text (and R code and results) into an HTML file or, if you have an installation of LaTeX and [Pandoc][pandoc] on your machine, a PDF, or even a Word document (if you must!).
 
 To get started, install the `knitr` package.
 
@@ -34,13 +37,18 @@ To get started, install the `knitr` package.
 install.packages("knitr")
 ```
 
-To create a new `knitr` document in RStudio, click on File -> New File, and then select "R Markdown..." from the dropdown list. Accept the default options in the dialog box that follows (but note the other document formats to choose from, including presentations). Save the file and click on the dropdown arrow next to the "Knit" button at the top of the script window. This will bring up another dropdown menu, this time with a number of options for controlling `knitr` output. Select the "Knit to HTML" option to create an HTML document based on the markdown file. Compare the output to the source.
+To create a new `knitr` document in RStudio, click on File -> New File, and then select "R Markdown..." from the dropdown list.
+Accept the default options in the dialog box that follows (but note the other document formats to choose from, including presentations).
+Save the file and click on the dropdown arrow next to the "Knit" button at the top of the script window.
+This will bring up another dropdown menu, this time with a number of options for controlling `knitr` output.
+Select the "Knit to HTML" option to create an HTML document based on the markdown file.
+Compare the output to the source.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Formatting Text in Markdown
 
-Visit [https://rmarkdown.rstudio.com/authoring\_basics.html](https://rmarkdown.rstudio.com/authoring_basics.html) and briefly check out some of the formatting options.
+Visit <https://rmarkdown.rstudio.com/authoring_basics.html> and briefly check out some of the formatting options.
 
 In the example document add
 
@@ -48,23 +56,20 @@ In the example document add
 - Emphasis using asterisk: \*italics\* and \*\*bold\*\*
 - Lists using `*` and numbered lists using `1.`, `2.`, etc.
 - **Bonus:** Create a table
-  
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Markdown also supports LaTeX equation editing.
-We can display pretty equations by enclosing them in `$`,
-e.g., `$\alpha = \dfrac{1}{(1 - \beta)^2}$` renders as:
+We can display pretty equations by enclosing them in `$`, e.g., `$\alpha = \dfrac{1}{(1 - \beta)^2}$` renders as:
 $\alpha = \dfrac{1}{(1 - \beta)^2}$
 
-The top of the source (.Rmd) file has some header material in YAML format (enclosed by triple dashes).
+The top of the source (`.Rmd`) file has some header material in YAML format (enclosed by triple dashes).
 Some of this gets displayed in the output header, other of it provides formatting information to the conversion engine.
 
 To distinguish R code from text, RMarkdown uses three back-ticks followed by `{r}` to distinguish a "code chunk".
 In RStudio, the keyboard shortcut to create a code chunk is <kbd>Command</kbd>\+<kbd>Option</kbd>\+<kbd>I</kbd> or <kbd>Ctrl</kbd>\+<kbd>Alt</kbd>\+<kbd>I</kbd>.
 
-A code chunk will set off the code and its results in the output document,
-but you can also print the results of code within a text block by enclosing code like so: ```r code-here```.
+A code chunk will set off the code and its results in the output document, but you can also print the results of code within a text block by enclosing code like so: `r code-here`.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -74,7 +79,6 @@ but you can also print the results of code within a text block by enclosing code
 2. Copy code from earlier into code chunks to read the inflammation data and plot average inflammation.
 3. Add a few notes describing what the code does and what the main findings are. Include an in-line calculation of the median inflammation level.
 4. `knit` the document and view the html result.
-  
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -87,5 +91,3 @@ but you can also print the results of code within a text block by enclosing code
 - Put code in blocks delimited by triple back quotes followed by `{r}`.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-

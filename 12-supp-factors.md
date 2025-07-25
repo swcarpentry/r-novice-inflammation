@@ -22,17 +22,15 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Factors are used to represent categorical data. Factors can be ordered or
-unordered and are an important class for statistical analysis and for plotting.
+Factors are used to represent categorical data.
+Factors can be ordered or unordered and are an important class for statistical analysis and for plotting.
 
-Factors are stored as integers, and have labels associated with these unique
-integers. While factors look (and often behave) like character vectors, they are
-actually integers under the hood, and you need to be careful when treating them
-like strings.
+Factors are stored as integers, and have labels associated with these unique integers.
+While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.
 
-Once created, factors can only contain a pre-defined set values, known as
-*levels*. By default, R always sorts *levels* in alphabetical order. For
-instance, if you have a factor with 2 levels:
+Once created, factors can only contain a pre-defined set values, known as *levels*.
+By default, R always sorts*levels*in alphabetical order.
+For instance, if you have a factor with 2 levels:
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -47,10 +45,8 @@ sex <- factor(c("male", "female", "female", "male"))
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-R will assign `1` to the level `"female"` and `2` to the level `"male"` (because
-`f` comes before `m`, even though the first element in this vector is
-`"male"`). You can check this by using the function `levels()`, and check the
-number of levels using `nlevels()`:
+R will assign `1` to the level `"female"` and `2` to the level `"male"` (because `f` comes before `m`, even though the first element in this vector is `"male"`).
+You can check this by using the function `levels()`, and check the number of levels using `nlevels()`:
 
 
 ``` r
@@ -69,10 +65,8 @@ nlevels(sex)
 [1] 2
 ```
 
-Sometimes, the order of the factors does not matter, other times you might want
-to specify the order because it is meaningful (e.g., "low", "medium", "high") or
-it is required by particular type of analysis. Additionally, specifying the
-order of the levels allows us to compare levels:
+Sometimes, the order of the factors does not matter, other times you might want to specify the order because it is meaningful (e.g., "low", "medium", "high") or it is required by particular type of analysis.
+Additionally, specifying the order of the levels allows us to compare levels:
 
 
 ``` r
@@ -119,12 +113,13 @@ min(food) # works!
 Levels: low < medium < high
 ```
 
-In R's memory, these factors are represented by numbers (1, 2, 3). They are
-better than using simple integer labels because factors are self describing:
-`"low"`, `"medium"`, and `"high"`" is more descriptive than `1`, `2`, `3`. Which
-is low?  You wouldn't be able to tell with just integer data. Factors have this
-information built in. It is particularly helpful when there are many levels
-(like the subjects in our example data set).
+In R's memory, these factors are represented by numbers (1, 2, 3).
+They are better than using simple integer labels because factors are self describing:
+`"low"`, `"medium"`, and `"high"`" is more descriptive than `1`, `2`, `3`.
+Which is low?
+You wouldn't be able to tell with just integer data.
+Factors have this information built in.
+It is particularly helpful when there are many levels (like the subjects in our example data set).
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -211,7 +206,6 @@ dat <- read.csv(file = 'data/sample.csv', stringsAsFactors = TRUE)
 We are using it here to override the default behaviour for R version 4.0 which is `stringsAsFactors = FALSE`.
 It is included here for clarity.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
@@ -232,7 +226,8 @@ str(dat)
  $ Aneurisms_q4 : int  237 248 177 220 228 294 245 251 272 185 ...
 ```
 
-Notice the first 3 columns have been converted to factors. These values were text in the data file so R automatically interpreted them as categorical variables.
+Notice the first 3 columns have been converted to factors.
+These values were text in the data file so R automatically interpreted them as categorical variables.
 
 
 ``` r
@@ -267,14 +262,14 @@ Notice the `summary()` function handles factors differently to numbers (and stri
 The `summary()` function is a great way of spotting errors in your data (look at the `dat$Gender` column).
 It's also a great way for spotting missing data.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Reordering Factors
 
-The function `table()` tabulates observations and can be used to create bar plots quickly. For instance:
+The function `table()` tabulates observations and can be used to create bar plots quickly.
+For instance:
 
 
 ``` r
@@ -321,7 +316,8 @@ barplot(table(dat$Gender))
 
 <img src="fig/12-supp-factors-rendered-gender-counts-1.svg" alt="Bar chart showing gender values in the dataset have been coded incorrectly." style="display: block; margin: auto;" />
 
-Values should have been recorded as lowercase 'm' and 'f'. We should correct this.
+Values should have been recorded as lowercase 'm' and 'f'.
+We should correct this.
 
 
 ``` r
@@ -381,8 +377,6 @@ plot(x = dat$Gender, y = dat$BloodPressure)
 <img src="fig/12-supp-factors-rendered-adjusting-levels-1.svg" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

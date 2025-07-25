@@ -43,7 +43,6 @@ We used the *header = TRUE* argument to `read.csv` so that R can interpret the f
 We are using the *stringsAsFactors = FALSE* argument to override the default behaviour for R.
 Using factors in R is covered in a separate lesson.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Lets take a look at this data.
@@ -79,7 +78,8 @@ str(dat)
  $ Aneurisms_q4 : int  237 248 177 220 228 294 245 251 272 185 ...
 ```
 
-The `str` function tell us that the data has 100 rows and 9 columns. It is also tell us that the data frame is made up of character `chr`, integer `int` and `numeric` vectors.
+The `str` function tell us that the data has 100 rows and 9 columns.
+It is also tell us that the data frame is made up of character `chr`, integer `int` and `numeric` vectors.
 
 
 ``` r
@@ -107,7 +107,9 @@ The data is the results of an (not real) experiment, looking at the number of an
 
 ### Addressing by Index
 
-Data can be accessed by index. We have already seen how square brackets `[` can be used to subset data (sometimes also called "slicing"). The generic format is `dat[row_numbers,column_numbers]`.
+Data can be accessed by index.
+We have already seen how square brackets `[` can be used to subset data (sometimes also called "slicing").
+The generic format is `dat[row_numbers,column_numbers]`.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -361,7 +363,6 @@ colnames(dat)
 
 If column names are not specified e.g. using `header = FALSE` in a `read.csv()` function, R assigns default names `V1, V2, ..., Vn`
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 We usually use the `$` operator to address a column by name
@@ -420,16 +421,15 @@ head(dat[, c('Age', 'Gender')])
 
 ## Best Practice
 
-Best practice is to address columns by name. Often, you will create or delete columns and the column position will change.
-
+Best practice is to address columns by name.
+Often, you will create or delete columns and the column position will change.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 <br>
 
 Rows in an R data frame can also be named, and rows can also be addressed by their names.
-<br>
-By default, row names are indices (i.e. position of each row in the data frame):
+<br> By default, row names are indices (i.e. position of each row in the data frame):
 
 
 ``` r
@@ -448,7 +448,8 @@ rownames(dat)
  [97] "97"  "98"  "99"  "100"
 ```
 
-We can add row names as we read in the file with the `row.names` parameter in `read.csv`.<br>
+We can add row names as we read in the file with the `row.names` parameter in `read.csv`.
+
 In the following example, we choose the first column *ID* to become the vector of row names of the data frame, with `row.names = 1`.
 
 
@@ -502,7 +503,7 @@ Sub072          220          227
 ```
 
 Note that row names must be **unique**!
-<br>
+
 For example, if we try and read in the data setting the *Group* column as row names, R will throw an error because values in that column are duplicated:
 
 
@@ -533,7 +534,6 @@ c(TRUE, TRUE, FALSE, FALSE, TRUE)
 
 Note the values `TRUE` and `FALSE` are all capital letters and are not quoted.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Logical vectors can be created using `relational operators` e.g. `<, >, ==, !=, %in%`.
@@ -556,7 +556,8 @@ x %in% 1:10
 [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE
 ```
 
-We can use logical vectors to select data from a data frame. This is often referred to as *logical indexing*.
+We can use logical vectors to select data from a data frame.
+This is often referred to as *logical indexing*.
 
 
 ``` r
@@ -634,8 +635,6 @@ dat[dat$Gender == 'F', ]$Gender <- 'f'
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

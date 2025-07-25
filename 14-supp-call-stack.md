@@ -25,8 +25,7 @@ source: Rmd
 ### The Call Stack
 
 Let's take a closer look at what happens when we call `fahrenheit_to_kelvin(32)`.
-To make things clearer,
-we'll start by putting the initial value 32 in a variable and store the final result in one as well:
+To make things clearer, we'll start by putting the initial value 32 in a variable and store the final result in one as well:
 
 
 ``` r
@@ -59,8 +58,7 @@ It then calls `celsius_to_kelvin`, which means it creates a stack frame to hold 
 
 <img src="fig/python-call-stack-05.svg" alt="Call Stack During Call to Second Nested Function" />
 
-Once again, R throws away that stack frame when `celsius_to_kelvin` is done
-and creates the variable `temp_K` in the stack frame for `fahrenheit_to_kelvin`:
+Once again, R throws away that stack frame when `celsius_to_kelvin` is done and creates the variable `temp_K` in the stack frame for `fahrenheit_to_kelvin`:
 
 <img src="fig/python-call-stack-06.svg" alt="Call Stack After Second Nested Function Returns" />
 
@@ -86,20 +84,16 @@ Error: object 'temp_F' not found
 
 ## Where to Learn More
 
-The explanation of the stack frame above was very general and the basic
-concept will help you understand most languages you try to program with.
-However, R has some unique aspects that can be exploited when performing
-more complicated operations. We will not be writing anything that requires
-knowledge of these more advanced concepts. In the future when you are
-comfortable writing functions in R, you can learn more by reading the
-[R Language Manual][man] or this [chapter] from
-[Advanced R Programming][adv-r] by Hadley Wickham. For context, R uses the
-terminology "environments" instead of frames.
-
+The explanation of the stack frame above was very general and the basic concept will help you understand most languages you try to program with.
+However, R has some unique aspects that can be exploited when performing more complicated operations.
+We will not be writing anything that requires knowledge of these more advanced concepts.
+In the future when you are comfortable writing functions in R, you can learn more by reading the [R Language Manual][man] or this [chapter] from [Advanced R Programming][adv-r]by Hadley Wickham.
+For context, R uses the terminology "environments" instead of frames.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Why go to all this trouble? Well, here's a function called `span` that calculates the difference between the minimum and maximum values in an array:
+Why go to all this trouble?
+Well, here's a function called `span` that calculates the difference between the minimum and maximum values in an array:
 
 
 ``` r
@@ -117,7 +111,8 @@ span(dat)
 [1] 20
 ```
 
-Notice `span` assigns a value to variable called `diff`. We might very well use a variable with the same name (`diff`) to hold the inflammation data:
+Notice `span` assigns a value to variable called `diff`.
+We might very well use a variable with the same name (`diff`) to hold the inflammation data:
 
 
 ``` r

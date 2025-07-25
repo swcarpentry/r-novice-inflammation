@@ -27,17 +27,15 @@ source: Rmd
 
 ### Understanding Basic Data Types and Data Structures in R
 
-To make the best of the R language, you'll need a strong understanding of the
-basic data types and data structures and how to operate on them.
+To make the best of the R language, you'll need a strong understanding of the basic data types and data structures and how to operate on them.
 
-Data structures are very important to understand because these are the objects you
-will manipulate on a day-to-day basis in R. Dealing with object conversions is one
-of the most common sources of frustration for beginners.
+Data structures are very important to understand because these are the objects you will manipulate on a day-to-day basis in R.
+Dealing with object conversions is one of the most common sources of frustration for beginners.
 
 **Everything** in R is an object.
 
-R has 6 basic data types. (In addition to the five listed below, there is also
-*raw* which will not be discussed in this workshop.)
+R has 6 basic data types.
+(In addition to the five listed below, there is also *raw* which will not be discussed in this workshop.)
 
 - character
 - numeric (real or decimal)
@@ -45,10 +43,9 @@ R has 6 basic data types. (In addition to the five listed below, there is also
 - logical
 - complex
 
-Elements of these data types may be combined to form data structures, such as
-atomic vectors. When we call a vector *atomic*, we mean that the vector only
-holds data of a single data type. Below are examples of atomic character vectors,
-numeric vectors, integer vectors, etc.
+Elements of these data types may be combined to form data structures, such as atomic vectors.
+When we call a vector *atomic*, we mean that the vector only holds data of a single data type.
+Below are examples of atomic character vectors, numeric vectors, integer vectors, etc.
 
 - **character**: `"a"`, `"swc"`
 - **numeric**: `2`, `15.5`
@@ -56,8 +53,7 @@ numeric vectors, integer vectors, etc.
 - **logical**: `TRUE`, `FALSE`
 - **complex**: `1+4i` (complex numbers with real and imaginary parts)
 
-R provides many functions to examine features of vectors and other objects, for
-example
+R provides many functions to examine features of vectors and other objects, for example
 
 - `class()` - what kind of object is it (high-level)?
 - `typeof()` - what is the object's data type (low-level)?
@@ -125,7 +121,8 @@ typeof(z)
 [1] "double"
 ```
 
-R has many **data structures**. These include
+R has many **data structures**.
+These include
 
 - atomic vector
 - list
@@ -135,8 +132,8 @@ R has many **data structures**. These include
 
 ### Vectors
 
-A vector is the most common and basic data structure in R and is pretty much the
-workhorse of R. Technically, vectors can be one of two types:
+A vector is the most common and basic data structure in R and is pretty much the workhorse of R.
+Technically, vectors can be one of two types:
 
 - atomic vectors
 - lists
@@ -145,12 +142,11 @@ although the term "vector" most commonly refers to the atomic types not to lists
 
 ### The Different Vector Modes
 
-A vector is a collection of elements that are most commonly of mode `character`,
-`logical`, `integer` or `numeric`.
+A vector is a collection of elements that are most commonly of mode `character`, `logical`, `integer` or `numeric`.
 
-You can create an empty vector with `vector()`. (By default the mode is
-`logical`. You can be more explicit as shown in the examples below.) It is more
-common to use direct constructors such as `character()`, `numeric()`, etc.
+You can create an empty vector with `vector()`.
+(By default the mode is `logical`.
+You can be more explicit as shown in the examples below.)It is more common to use direct constructors such as `character()`, `numeric()`, etc.
 
 
 ``` r
@@ -193,18 +189,18 @@ logical(5)   # a logical vector with 5 elements
 [1] FALSE FALSE FALSE FALSE FALSE
 ```
 
-You can also create vectors by directly specifying their content. R will then
-guess the appropriate mode of storage for the vector. For instance:
+You can also create vectors by directly specifying their content.
+R will then guess the appropriate mode of storage for the vector.
+For instance:
 
 
 ``` r
 x <- c(1, 2, 3)
 ```
 
-will create a vector `x` of mode `numeric`. These are the most common kind, and
-are treated as double precision real numbers. If you wanted to explicitly create
-integers, you need to add an `L` to each element (or *coerce* to the integer
-type using `as.integer()`).
+will create a vector `x` of mode `numeric`.
+These are the most common kind, and are treated as double precision real numbers.
+If you wanted to explicitly create integers, you need to add an `L` to each element (or *coerce* to the integer type using `as.integer()`).
 
 
 ``` r
@@ -227,8 +223,7 @@ z <- c("Sarah", "Tracy", "Jon")
 
 ### Examining Vectors
 
-The functions `typeof()`, `length()`, `class()` and `str()` provide useful
-information about your vectors and R objects in general.
+The functions `typeof()`, `length()`, `class()` and `str()` provide useful information about your vectors and R objects in general.
 
 
 ``` r
@@ -316,8 +311,8 @@ seq(from = 1, to = 10, by = 0.1)
 
 ### Missing Data
 
-R supports missing data in vectors. They are represented as `NA` (Not Available)
-and can be used for all the vector types covered in this lesson:
+R supports missing data in vectors.
+They are represented as `NA` (Not Available) and can be used for all the vector types covered in this lesson:
 
 
 ``` r
@@ -327,9 +322,7 @@ x <- c("a", NA, "c", "d", "e")
 x <- c(1+5i, 2-3i, NA)
 ```
 
-The function `is.na()` indicates the elements of the vectors that represent
-missing data, and the function `anyNA()` returns `TRUE` if the vector contains
-any missing values:
+The function `is.na()` indicates the elements of the vectors that represent missing data, and the function `anyNA()` returns `TRUE` if the vector contains any missing values:
 
 
 ``` r
@@ -368,7 +361,8 @@ anyNA(y)
 
 ### Other Special Values
 
-`Inf` is infinity. You can have either positive or negative infinity.
+`Inf` is infinity.
+You can have either positive or negative infinity.
 
 
 ``` r
@@ -379,7 +373,8 @@ anyNA(y)
 [1] Inf
 ```
 
-`NaN` means Not a Number. It's an undefined value.
+`NaN` means Not a Number.
+It's an undefined value.
 
 
 ``` r
@@ -392,11 +387,10 @@ anyNA(y)
 
 ### What Happens When You Mix Types Inside a Vector?
 
-R will create a resulting vector with a mode that can most easily accommodate
-all the elements it contains. This conversion between modes of storage is called
-"coercion". When R converts the mode of storage based on its content, it is
-referred to as "implicit coercion". For instance, can you guess what the
-following do (without running them first)?
+R will create a resulting vector with a mode that can most easily accommodate all the elements it contains.
+This conversion between modes of storage is called "coercion".
+When R converts the mode of storage based on its content, it is referred to as "implicit coercion".
+For instance, can you guess what the following do (without running them first)?
 
 
 ``` r
@@ -405,8 +399,7 @@ xx <- c(TRUE, 2)
 xx <- c("a", TRUE)
 ```
 
-You can also control how vectors are coerced explicitly using the
-`as.<class_name>()` functions:
+You can also control how vectors are coerced explicitly using the `as.<class_name>()` functions:
 
 
 ``` r
@@ -441,7 +434,9 @@ All vectors are one-dimensional and each element is of the same type.
 
 ### Objects Attributes
 
-Objects can have **attributes**. Attributes are part of the object. These include:
+Objects can have **attributes**.
+Attributes are part of the object.
+These include:
 
 - names
 - dimnames
@@ -449,8 +444,7 @@ Objects can have **attributes**. Attributes are part of the object. These includ
 - class
 - attributes (contain metadata)
 
-You can also glean other attribute-like information such as length (works on
-vectors and lists) or number of characters (for character strings).
+You can also glean other attribute-like information such as length (works on vectors and lists) or number of characters (for character strings).
 
 
 ``` r
@@ -471,10 +465,9 @@ nchar("Software Carpentry")
 
 ### Matrix
 
-In R matrices are an extension of the numeric or character vectors. They are not
-a separate type of object but simply an atomic vector with dimensions; the
-number of rows and columns. As with atomic vectors, the elements of a matrix must
-be of the same data type.
+In R matrices are an extension of the numeric or character vectors.
+They are not a separate type of object but simply an atomic vector with dimensions; the number of rows and columns.
+As with atomic vectors, the elements of a matrix must be of the same data type.
 
 
 ``` r
@@ -496,8 +489,7 @@ dim(m)
 [1] 2 2
 ```
 
-You can check that matrices are vectors with a class attribute of `matrix` by using
-`class()` and `typeof()`.
+You can check that matrices are vectors with a class attribute of `matrix` by using `class()` and `typeof()`.
 
 
 ``` r
@@ -517,8 +509,7 @@ typeof(m)
 [1] "integer"
 ```
 
-While `class()` shows that m is a matrix, `typeof()` shows that fundamentally the
-matrix is an integer vector.
+While `class()` shows that m is a matrix, `typeof()` shows that fundamentally the matrix is an integer vector.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -535,18 +526,15 @@ FOURS <- matrix(
 )
 ```
 
-Given that `typeof(FOURS[1])` returns `"double"`, what would you expect
-`typeof(FOURS)` to return? How do you know this is the case even without
-running this code?
+Given that `typeof(FOURS[1])` returns `"double"`, what would you expect `typeof(FOURS)`to return?
+How do you know this is the case even without running this code?
 
 *Hint* Can matrices be composed of elements of different data types?
 
 :::::::::::::::  solution
 
-We know that `typeof(FOURS)` will also return `"double"` since matrices
-are made of elements of the same data type. Note that you could do
-something like `as.character(FOURS)` if you needed the elements of `FOURS`
-*as characters*.
+We know that `typeof(FOURS)` will also return `"double"` since matrices are made of elements of the same data type.
+Note that you could do something like `as.character(FOURS)` if you needed the elements of `FOURS` *as characters*.
 
 :::::::::::::::::::::::::
 
@@ -569,8 +557,7 @@ dim(m) <- c(2, 5)
 
 This takes a vector and transforms it into a matrix with 2 rows and 5 columns.
 
-Another way is to bind columns or rows using `rbind()` and `cbind()` ("row bind"
-and "column bind", respectively).
+Another way is to bind columns or rows using `rbind()` and `cbind()` ("row bind" and "column bind", respectively).
 
 
 ``` r
@@ -614,8 +601,7 @@ mdat
 [2,]   11   12   13
 ```
 
-Elements of a matrix can be referenced by specifying the index along each
-dimension (e.g. "row" and "column") in single square brackets.
+Elements of a matrix can be referenced by specifying the index along each dimension (e.g. "row" and "column") in single square brackets.
 
 
 ``` r
@@ -628,16 +614,16 @@ mdat[2, 3]
 
 ### List
 
-In R lists act as containers. Unlike atomic vectors, the contents of a list are
-not restricted to a single mode and can encompass any mixture of data
-types. Lists are sometimes called generic vectors, because the elements of a
-list can by of any type of R object, even lists containing further lists. This
-property makes them fundamentally different from atomic vectors.
+In R lists act as containers.
+Unlike atomic vectors, the contents of a list are not restricted to a single mode and can encompass any mixture of data types.
+Lists are sometimes called generic vectors, because the elements of a list can by of any type of R object, even lists containing further lists.
+This property makes them fundamentally different from atomic vectors.
 
-A list is a special type of vector. Each element can be a different type.
+A list is a special type of vector.
+Each element can be a different type.
 
-Create lists using `list()` or coerce other objects using `as.list()`. An empty
-list of the required length can be created using `vector()`
+Create lists using `list()` or coerce other objects using `as.list()`.
+An empty list of the required length can be created using `vector()`
 
 
 ``` r
@@ -701,7 +687,7 @@ length(x)
 
 :::::::::::::::  solution
 
-1. 
+1.
     
     ``` r
     class(x[1])
@@ -766,7 +752,7 @@ names(xlist)
 
 :::::::::::::::  solution
 
-1. 
+1.
   
   ``` r
   length(xlist)
@@ -803,28 +789,25 @@ names(xlist)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Lists can be extremely useful inside functions. Because the functions in R are
-able to return only a single object, you can "staple" together lots of different
-kinds of results into a single object that a function can return.
+Lists can be extremely useful inside functions.
+Because the functions in R are able to return only a single object, you can "staple" together lots of different kinds of results into a single object that a function can return.
 
-A list does not print to the console like a vector. Instead, each element of the
-list starts on a new line.
+A list does not print to the console like a vector.
+Instead, each element of the list starts on a new line.
 
-Elements are indexed by double brackets. Single brackets will still return
-a(nother) list. If the elements of a list are named, they can be referenced by
-the `$` notation (i.e. `xlist$data`).
+Elements are indexed by double brackets.
+Single brackets will still return a(nother) list.
+If the elements of a list are named, they can be referenced by the `$` notation (i.e. `xlist$data`).
 
 ### Data Frame
 
-A data frame is a very important data type in R. It's pretty much the *de facto*
-data structure for most tabular data and what we use for statistics.
+A data frame is a very important data type in R.
+It's pretty much the *de facto* data structure for most tabular data and what we use for statistics.
 
-A data frame is a *special type of list* where every element of the list has same
-length (i.e. data frame is a "rectangular" list).
+A data frame is a *special type of list* where every element of the list has same length (i.e. data frame is a "rectangular" list).
 
-Data frames can have additional attributes such as `rownames()`, which can be
-useful for annotating data, like `subject_id` or `sample_id`. But most of the
-time they are not used.
+Data frames can have additional attributes such as `rownames()`, which can be useful for annotating data, like `subject_id` or `sample_id`.
+But most of the time they are not used.
 
 Some additional information on data frames:
 
@@ -870,7 +853,6 @@ dat
 - `str()` - structure of data frame - name, type and preview of data in each column
 - `names()` or `colnames()` - both show the `names` attribute for a data frame
 - `sapply(dataframe, class)` - shows the class of each column in the data frame
-  
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -893,8 +875,7 @@ class(dat)
 [1] "data.frame"
 ```
 
-Because data frames are rectangular, elements of data frame can be referenced by specifying
-the row and the column index in single square brackets (similar to matrix).
+Because data frames are rectangular, elements of data frame can be referenced by specifying the row and the column index in single square brackets (similar to matrix).
 
 
 ``` r
@@ -905,8 +886,7 @@ dat[1, 3]
 [1] 11
 ```
 
-As data frames are also lists, it is possible to refer to columns (which are elements of
-such list) using the list notation, i.e. either double square brackets or a `$`.
+As data frames are also lists, it is possible to refer to columns (which are elements of such list) using the list notation, i.e. either double square brackets or a `$`.
 
 
 ``` r
@@ -925,21 +905,18 @@ dat$y
  [1] 11 12 13 14 15 16 17 18 19 20
 ```
 
-The following table summarizes the one-dimensional and two-dimensional data structures in
-R in relation to diversity of data types they can contain.
+The following table summarizes the one-dimensional and two-dimensional data structures in R in relation to diversity of data types they can contain.
 
-| Dimensions | Homogenous    | Heterogeneous | 
+| Dimensions | Homogenous    | Heterogeneous |
 | ---------- | ------------- | ------------- |
-| 1-D        | atomic vector | list          | 
-| 2-D        | matrix        | data frame    | 
+| 1-D        | atomic vector | list          |
+| 2-D        | matrix        | data frame    |
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-Lists can contain elements that are themselves muti-dimensional (e.g. a lists can contain
-data frames or another type of objects). Lists can also contain elements of any length,
-therefore list do not necessarily have to be "rectangular". However in order for the list
-to qualify as a data frame, the length of each element has to be the same.
-
+Lists can contain elements that are themselves muti-dimensional (e.g. a lists can contain data frames or another type of objects).
+Lists can also contain elements of any length, therefore list do not necessarily have to be "rectangular".
+However in order for the list to qualify as a data frame, the length of each element has to be the same.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -949,15 +926,14 @@ to qualify as a data frame, the length of each element has to be the same.
 
 Knowing that data frames are lists, can columns be of different type?
 
-What type of structure do you expect to see when you explore the structure of the `PlantGrowth` data frame? Hint: Use `str()`.
+What type of structure do you expect to see when you explore the structure of the `PlantGrowth` data frame?
+Hint: Use `str()`.
 
 :::::::::::::::  solution
 
-The weight column is numeric
-while group is a factor.
+The weight column is numeric while group is a factor.
 Lists can have elements of different types.
-Since a Data Frame is just a special type of list, it can have columns of
-differing type (although, remember that type must be consistent within each column!).
+Since a Data Frame is just a special type of list, it can have columns of differing type (although, remember that type must be consistent within each column!).
 
 
 ``` r
@@ -973,8 +949,6 @@ str(PlantGrowth)
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
