@@ -390,7 +390,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Reading and Writing CSV Files</h1>
-        <p>Last updated on 2025-07-29 |
+        <p>Last updated on 2025-08-04 |
 
         <a href="https://github.com/swcarpentry/r-novice-inflammation/edit/main/episodes/11-supp-read-write-csv.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -431,10 +431,10 @@ arguments.</li>
 <p>The most common way that scientists store data is in Excel
 spreadsheets. While there are R packages designed to access data from
 Excel spreadsheets (e.g., gdata, RODBC, XLConnect, xlsx, RExcel), users
-often find it easier to save their spreadsheets in <a href="reference.html#comma-separated-values-csv)%20files%20(CSV">comma-separated
-values</a> and then use R’s built in functionality to read and
-manipulate the data. In this short lesson, we’ll learn how to read data
-from a .csv and write to a new .csv, and explore the <a href="reference.html#argument">arguments</a> that allow you read and
+often find it easier to save their spreadsheets in <a href="reference.html#comma-separated-values-csv">comma-separated
+values</a> files (CSV) and then use R’s built in functionality to read
+and manipulate the data. In this short lesson, we’ll learn how to read
+data from a .csv and write to a new .csv, and explore the <a href="reference.html#argument">arguments</a> that allow you read and
 write the data correctly for your needs.</p>
 <div class="section level3">
 <h3 id="read-a--csv-and-explore-the-arguments">Read a .csv and Explore the Arguments<a class="anchor" aria-label="anchor" href="#read-a--csv-and-explore-the-arguments"></a></h3>
@@ -738,7 +738,7 @@ importing the data with <code>stringsAsFactors=FALSE</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -794,7 +794,7 @@ type of delimiter in the file (the comma for most .csv files)</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">carSpeeds</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span></span>
 <span>  file <span class="op">=</span> <span class="st">'data/car-speeds.csv'</span>,</span>
-<span>  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  strip.white <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  sep <span class="op">=</span> <span class="st">','</span></span>
 <span><span class="op">)</span></span>
@@ -837,7 +837,7 @@ replaced by <code>NA</code></p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1061,8 +1061,8 @@ and <code>na</code>.</li>
   "url": "https://swcarpentry.github.io/r-novice-inflammation/instructor/11-supp-read-write-csv.html",
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/instructor/11-supp-read-write-csv.html",
   "dateCreated": "2014-12-18",
-  "dateModified": "2025-07-29",
-  "datePublished": "2025-07-29"
+  "dateModified": "2025-08-04",
+  "datePublished": "2025-08-04"
 }
 
   </script><script>

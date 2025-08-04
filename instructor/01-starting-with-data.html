@@ -400,7 +400,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Analyzing Patient Data</h1>
-        <p>Last updated on 2025-07-29 |
+        <p>Last updated on 2025-08-04 |
 
         <a href="https://github.com/swcarpentry/r-novice-inflammation/edit/main/episodes/01-starting-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -514,7 +514,7 @@ working directory. Now we can load the data into R using
 the function <code>read.csv</code>.</p>
 <p><code>read.csv</code> has two <a href="reference.html#argument">arguments</a>: the name of the file we
 want to read, and whether the first line of the file contains names for
-the columns of data. The filename needs to be a character string (or <a href="reference.html#string">string</a> for short), so we put it in
+the columns of data. The filename needs to be a character string (or <a href="reference.html#string">string</a>for short), so we put it in
 quotes. Assigning the second argument, <code>header</code>, to be
 <code>FALSE</code> indicates that the data file does not have column
 headers. We’ll talk more about the value <code>FALSE</code>, and its
@@ -643,7 +643,7 @@ R reads that tag (<code>weight_kg</code>), it substitutes the value
 the variable and hitting <kbd>CTRL + Return</kbd> (or <kbd>CTRL +
 Enter</kbd>) while working in the “<code>script.R</code>” file in the
 editor which is recommended. If we are working in the console directly,
-we need to hit <kbd>Return</kbd> (or <kbd>Enter</kbd>). In general, R
+we need to hit<kbd>Return</kbd> (or <kbd>Enter</kbd>). In general, R
 will print to the console any object returned by a function or operation
 <em>unless</em> we assign it to a variable.</p>
 <div class="codewrapper sourceCode" id="cb7">
@@ -715,7 +715,7 @@ newcomers who have programmed in languages where <code>.</code> has a
 more significant meaning. Today, most R programmers 1) start variable
 names with lower case letters, 2) separate words in variable names with
 underscores, and 3) use only lowercase letters, underscores, and numbers
-in variable names. The <em>Tidyverse Style Guide</em> includes a <a href="https://style.tidyverse.org/syntax.html" class="external-link">section</a> on this and
+in variable names. The<em>Tidyverse Style Guide</em> includes a <a href="https://style.tidyverse.org/syntax.html" class="external-link">section</a> on this and
 other style considerations.</p>
 </div>
 </div>
@@ -816,7 +816,7 @@ assigned value of the variable <code>total_weight</code>.</p>
 doesn’t display anything. If we want to check if our data has been
 loaded, we can print the variable’s value by typing the name of the
 variable <code>dat</code>. However, for large data sets it is convenient
-to use the function <code>head</code> to display only the first few rows
+to use the function<code>head</code> to display only the first few rows
 of data.</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -924,8 +924,8 @@ frame with the function <code>dim</code>:</p>
 <p>This tells us that our data frame, <code>dat</code>, has 60 rows and
 40 columns.</p>
 <p>If we want to get a single value from the data frame, we can provide
-an <a href="reference.html#index">index</a> in square brackets. The
-first number specifies the row and the second the column:</p>
+an <a href="reference.html#index">index</a>in square brackets. The first
+number specifies the row and the second the column:</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1262,7 +1262,7 @@ minimum, mean, median, and standard deviation of the data:</p>
 <h3 class="callout-title">Forcing Conversion</h3>
 <div class="callout-content">
 <p>Note that R may return an error when you attempt to perform similar
-calculations on subsetted <em>rows</em> of data frames. This is because
+calculations on subsetted <em>rows</em>of data frames. This is because
 some functions in R automatically convert the object type to a numeric
 vector, while others do not (e.g. <code>max(dat[1, ])</code> works as
 expected, while <code>mean(dat[1, ])</code> returns <code>NA</code> and
@@ -1798,8 +1798,8 @@ columns of a data frame.</li>
   "url": "https://swcarpentry.github.io/r-novice-inflammation/instructor/01-starting-with-data.html",
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/instructor/01-starting-with-data.html",
   "dateCreated": "2014-12-18",
-  "dateModified": "2025-07-29",
-  "datePublished": "2025-07-29"
+  "dateModified": "2025-08-04",
+  "datePublished": "2025-08-04"
 }
 
   </script><script>
