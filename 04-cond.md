@@ -88,7 +88,6 @@ You can check your current status using the function `dev.cur`.
 If it says "pdf", all your plots are being saved in the last pdf specified.
 If it says "null device" or "RStudioGD", the plots will be visualized normally.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 We can update the `analyze` function so that it always saves the plots in a pdf.
@@ -97,7 +96,8 @@ It would be ideal if `analyze` would either save or not save the plots based on 
 
 ### Conditionals
 
-In order to update our function to decide between saving or not, we need to write code that automatically decides between multiple options. The computer can make these decisions through logical comparisons.
+In order to update our function to decide between saving or not, we need to write code that automatically decides between multiple options.
+The computer can make these decisions through logical comparisons.
 
 
 ``` r
@@ -109,7 +109,8 @@ num > 100
 [1] FALSE
 ```
 
-As 37 is not greater than 100, this returns a `FALSE` object. And as you likely guessed, the opposite of `FALSE` is `TRUE`.
+As 37 is not greater than 100, this returns a `FALSE` object.
+And as you likely guessed, the opposite of `FALSE` is `TRUE`.
 
 
 ``` r
@@ -196,16 +197,15 @@ sign(2/3)
 [1] 1
 ```
 
-Note that when combining `else` and `if` in an `else if` statement, the `if` portion still requires a direct input condition.  This is never the case for the `else` statement alone, which is only executed if all other conditions go unsatisfied.
+Note that when combining `else` and `if` in an `else if` statement, the `if` portion still requires a direct input condition.
+This is never the case for the `else` statement alone, which is only executed if all other conditions go unsatisfied.
 Note that the test for equality uses two equal signs, `==`.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Other Comparisons
 
-Other tests include greater than or equal to (`>=`), less than or equal to
-(`<=`), and not equal to (`!=`).
-
+Other tests include greater than or equal to (`>=`), less than or equal to (`<=`), and not equal to (`!=`).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -248,9 +248,8 @@ In this case, "either" means "either or both", not "either one or the other but 
 
 ## Special case of the `NA` variable
 
-You may remember from the previous lesson that R has a special variable, `NA`,
-for designating missing values. Because it represents the absence of a value,
-we will not be able to test its equality or inequality with another value.
+You may remember from the previous lesson that R has a special variable, `NA`, for designating missing values.
+Because it represents the absence of a value, we will not be able to test its equality or inequality with another value.
 Such tests always return `NA`:
 
 
@@ -271,8 +270,7 @@ a == NA
 [1] NA
 ```
 
-We need to be particularly careful in tests because trying to compare a `NA`
-value will result in an error:
+We need to be particularly careful in tests because trying to compare a `NA` value will result in an error:
 
 
 ``` r
@@ -312,9 +310,7 @@ if (is.na(a)) {
 
 ## Choosing Plots Based on Data
 
-Write a function `plot_dist` that plots
-a boxplot if the length of the vector is greater than a specified threshold
-and a stripchart otherwise.
+Write a function `plot_dist` that plots a boxplot if the length of the vector is greater than a specified threshold and a stripchart otherwise.
 To do this you'll use the R functions `boxplot` and `stripchart`.
 
 
@@ -351,16 +347,11 @@ plot_dist <- function(x, threshold) {
 
 ## Histograms Instead
 
-One of your collaborators prefers to see the distributions of the larger vectors
-as a histogram instead of as a boxplot.
-In order to choose between a histogram and a boxplot
-we will edit the function `plot_dist` and add an additional argument `use_boxplot`.
-By default we will set `use_boxplot` to `TRUE`
-which will create a boxplot when the vector is longer than `threshold`.
-When `use_boxplot` is set to `FALSE`,
-`plot_dist` will instead plot a histogram for the larger vectors.
-As before, if the length of the vector is shorter than `threshold`,
-`plot_dist` will create a stripchart.
+One of your collaborators prefers to see the distributions of the larger vectors as a histogram instead of as a boxplot.
+In order to choose between a histogram and a boxplot we will edit the function `plot_dist` and add an additional argument `use_boxplot`.
+By default we will set `use_boxplot` to `TRUE` which will create a boxplot when the vector is longer than `threshold`.
+When `use_boxplot` is set to `FALSE`, `plot_dist` will instead plot a histogram for the larger vectors.
+As before, if the length of the vector is shorter than `threshold`, `plot_dist` will create a stripchart.
 A histogram is made with the `hist` command in R.
 
 
@@ -451,8 +442,7 @@ if (patient_average_inf > average_inf_max) {
 
 ### Saving Automatically Generated Figures
 
-Now that we know how to have R make decisions based on input values,
-let's update `analyze`:
+Now that we know how to have R make decisions based on input values, let's update `analyze`:
 
 
 ``` r
@@ -596,8 +586,7 @@ Now if we need to make any changes to our analysis, we can edit the `analyze` fu
 ## Changing the Behavior of the Plot Command
 
 One of your collaborators asks if you can recreate the figures with lines instead of points.
-Find the relevant argument to `plot` by reading the documentation (`?plot`),
-update `analyze`, and then recreate all the figures with `analyze_all`.
+Find the relevant argument to `plot` by reading the documentation (`?plot`), update `analyze`, and then recreate all the figures with `analyze_all`.
 
 :::::::::::::::  solution
 
@@ -626,8 +615,6 @@ analyze <- function(filename, output = NULL) {
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

@@ -31,11 +31,15 @@ In this lesson, we'll learn how to write a function so that we can repeat severa
 
 ### Defining a Function
 
-You can write your own functions in order to make repetitive operations using a single command. Let's start by defining your function "my\_function" and the input parameter(s) that the user will feed to the function. Afterwards you will define the operation that you desire to program in the body of the function within curly braces ({}). Finally, you need to assign the result (or output) of your function in the return statement.
+You can write your own functions in order to make repetitive operations using a single command.
+Let's start by defining your function "my\_function" and the input parameter(s) that the user will feed to the function.
+Afterwards you will define the operation that you desire to program in the body of the function within curly braces ({}).
+Finally, you need to assign the result (or output) of your function in the return statement.
 
 
 
-Now let's see this process with an example. We are going to define a function `fahrenheit_to_celsius` that converts temperatures from [Fahrenheit to Celsius](https://en.wikipedia.org/wiki/Temperature_conversion_formulas#Fahrenheit):
+Now let's see this process with an example.
+We are going to define a function `fahrenheit_to_celsius` that converts temperatures from [Fahrenheit to Celsius](https://en.wikipedia.org/wiki/Temperature_conversion_formulas#Fahrenheit):
 
 
 ``` r
@@ -60,10 +64,8 @@ Inside the function, we use a [return statement](../learners/reference.md#return
 ## Automatic Returns
 
 In R, it is not necessary to include the return statement.
-R automatically returns whichever variable is on the last line of the body
-of the function. While in the learning phase, we will explicitly define the
-return statement.
-
+R automatically returns whichever variable is on the last line of the body of the function.
+While in the learning phase, we will explicitly define the return statement.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -130,18 +132,15 @@ fahrenheit_to_kelvin(32.0)
 [1] 273.15
 ```
 
-This is our first taste of how larger programs are built: we define basic
-operations, then combine them in ever-larger chunks to get the effect we want.
+This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-larger chunks to get the effect we want.
 Real-life functions will usually be larger than the ones shown here--typically half a dozen to a few dozen lines--but they shouldn't ever be much longer than that, or the next person who reads it won't be able to understand what's going on.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Nesting Function Calls
 
-This example showed the output of `fahrenheit_to_celsius` assigned to `temp_C`, which
-is then passed to `celsius_to_kelvin` to get the final result. It is also possible
-to perform this calculation in one line of code, by "nesting" one function call
-inside another, like so:
+This example showed the output of `fahrenheit_to_celsius` assigned to `temp_C`, which is then passed to `celsius_to_kelvin`to get the final result.
+It is also possible to perform this calculation in one line of code, by "nesting" one function call inside another, like so:
 
 
 ``` r
@@ -153,14 +152,10 @@ celsius_to_kelvin(fahrenheit_to_celsius(32.0))
 [1] 273.15
 ```
 
-Here, we call `fahrenheit_to_celsius` to convert `32.0` from Fahrenheit to
-Celsius, and immediately pass the value returned from `fahrenheit_to_celsius`
-to `celsius_to_kelvin` to convert from Celsius to Kelvin. Our conversion
-from Fahrenheit to Kelvin is done, all in one go!
+Here, we call `fahrenheit_to_celsius` to convert `32.0` from Fahrenheit to Celsius, and immediately pass the value returned from `fahrenheit_to_celsius` to `celsius_to_kelvin` to convert from Celsius to Kelvin.
+Our conversion from Fahrenheit to Kelvin is done, all in one go!
 
-This is convenient, but you should be careful not to nest too many function
-calls at once - it can become confusing and difficult to read!
-
+This is convenient, but you should be careful not to nest too many function calls at once - it can become confusing and difficult to read!
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -168,12 +163,9 @@ calls at once - it can become confusing and difficult to read!
 
 ## Create a Function
 
-In the last lesson, we learned to **c**ombine elements into a vector using the `c` function,
-e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
+In the last lesson, we learned to **c**ombine elements into a vector using the `c` function, e.g. `x <- c("A", "B", "C")` creates a vector `x` with three elements.
 Furthermore, we can extend that vector again using `c`, e.g. `y <- c(x, "D")` creates a vector `y` with four elements.
-Write a function called `highlight` that takes two vectors as arguments, called
-`content` and `wrapper`, and returns a new vector that has the wrapper vector
-at the beginning and end of the content:
+Write a function called `highlight` that takes two vectors as arguments, called `content` and `wrapper`, and returns a new vector that has the wrapper vector at the beginning and end of the content:
 
 
 ``` r
@@ -231,12 +223,9 @@ edges <- function(v) {
 
 ## The Call Stack
 
-For a deeper understanding of how functions work,
-you'll need to learn how they create their own environments and call other functions.
+For a deeper understanding of how functions work, you'll need to learn how they create their own environments and call other functions.
 Function calls are managed via the call stack.
-For more details on the call stack,
-have a look at the [supplementary material](14-supp-call-stack.Rmd).
-
+For more details on the call stack, have a look at the [supplementary material](14-supp-call-stack.Rmd).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -244,9 +233,7 @@ have a look at the [supplementary material](14-supp-call-stack.Rmd).
 
 ## Named Variables and the Scope of Variables
 
-Functions can accept arguments explicitly assigned to a variable name in
-the function call `functionName(variable = value)`, as well as arguments by
-order:
+Functions can accept arguments explicitly assigned to a variable name in the function call `functionName(variable = value)`, as well as arguments by order:
 
 
 ``` r
@@ -258,10 +245,10 @@ mySum <- function(input_1, input_2 = 10) {
 ```
 
 1. Given the above code was run, which value does `mySum(input_1 = 1, 3)` produce?
-    a. 4
-    b. 11
-    c. 23
-    d. 30
+  a. 4
+  b. 11
+  c. 23
+  d. 30
 2. If `mySum(3)` returns 13, why does `mySum(input_2 = 3)` return an error?
 
 :::::::::::::::  solution
@@ -280,8 +267,7 @@ mySum <- function(input_1, input_2 = 10) {
 ### Testing, Error Handling, and Documenting
 
 Once we start putting things in functions so that we can re-use them, we need to start testing that those functions are working correctly.
-To see how to do this, let's write a function to center a dataset around a
-particular midpoint:
+To see how to do this, let's write a function to center a dataset around a particular midpoint:
 
 
 ``` r
@@ -313,7 +299,8 @@ center(z, 3)
 [1] 3 3 3 3
 ```
 
-That looks right, so let's try center on our real data. We'll center the inflammation data from day 4 around 0:
+That looks right, so let's try center on our real data.
+We'll center the inflammation data from day 4 around 0:
 
 
 ``` r
@@ -417,7 +404,9 @@ center(datNA[,4], 0)
 [51] NA NA NA NA NA NA NA NA NA NA
 ```
 
-This is likely not the behavior we want, and is caused by the `mean` function returning NA when the `na.rm=TRUE` is not provided. We may wish to not consider NA values in our `center` function. We can provide the `na.rm=TRUE` argument and solve this issue.
+This is likely not the behavior we want, and is caused by the `mean` function returning NA when the `na.rm=TRUE` is not provided.
+We may wish to not consider NA values in our `center`function.
+We can provide the `na.rm=TRUE` argument and solve this issue.
 
 
 ``` r
@@ -481,9 +470,12 @@ logical: returning NA
 Error in data - mean(data, na.rm = TRUE): non-numeric argument to binary operator
 ```
 
-Both of these attempts result in errors. Luckily, the errors are quite informative. In other cases, we may need to add in error handling using the `warning` and `stop` functions.
+Both of these attempts result in errors.
+Luckily, the errors are quite informative.
+In other cases, we may need to add in error handling using the `warning` and `stop` functions.
 
-For instance, the `center` function only works on numeric vectors. Recognizing this and adding warnings and errors provides feedback to the user and makes sure the output of the function is what the user wanted.
+For instance, the `center` function only works on numeric vectors.
+Recognizing this and adding warnings and errors provides feedback to the user and makes sure the output of the function is what the user wanted.
 
 #### Documentation
 
@@ -504,14 +496,10 @@ center <- function(data, midpoint) {
 
 ## Writing Documentation
 
-Formal documentation for R functions is written in separate `.Rd` using a
-markup language similar to [LaTeX]. You see the result of this documentation
-when you look at the help file for a given function, e.g. `?read.csv`.
-The [roxygen2] package allows R coders to write documentation alongside
-the function code and then process it into the appropriate `.Rd` files.
-You will want to switch to this more formal method of writing documentation
-when you start writing more complicated R projects.
-
+Formal documentation for R functions is written in separate `.Rd` using a markup language similar to [LaTeX].
+You see the result of this documentation when you look at the help file for a given function, e.g. `?read.csv`.
+The [roxygen2] package allows R coders to write documentation alongside the function code and then process it into the appropriate `.Rd` files.
+You will want to switch to this more formal method of writing documentation when you start writing more complicated R projects.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -523,10 +511,8 @@ when you start writing more complicated R projects.
 
 ## Functions to Create Graphs
 
-Write a function called `analyze` that takes a filename as an argument
-and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
-`analyze("data/inflammation-01.csv")` should produce the graphs already shown,
-while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set.
+Write a function called `analyze` that takes a filename as an argument and displays the three graphs produced in the [previous lesson][01] (average, min and max inflammation over time).
+`analyze("data/inflammation-01.csv")` should produce the graphs already shown, while `analyze("data/inflammation-02.csv")` should produce corresponding graphs for the second data set.
 Be sure to document your function with comments.
 
 :::::::::::::::  solution
@@ -554,8 +540,7 @@ analyze <- function(filename) {
 ## Rescaling
 
 Write a function `rescale` that takes a vector as input and returns a corresponding vector of values scaled to lie in the range 0 to 1.
-(If `L` and `H` are the lowest and highest values in the original vector, then the replacement for a value `v` should be `(v-L) / (H-L)`.)
-Be sure to document your function with comments.
+(If `L` and `H` are the lowest and highest values in the original vector, then the replacement for a value `v` should be `(v-L) / (H-L)`.) Be sure to document your function with comments.
 
 Test that your `rescale` function is working properly using `min`, `max`, and `plot`.
 
@@ -714,16 +699,13 @@ display(c = 77)
 
 ## Matching Arguments
 
-To be precise, R has three ways that arguments supplied
-by you are matched to the *formal arguments* of the function definition:
+To be precise, R has three ways that arguments supplied by you are matched to the *formal arguments* of the function definition:
 
 1. by complete name,
 2. by partial name (matching on initial *n* characters of the argument name), and
 3. by position.
 
-Arguments are matched in the manner outlined above in *that order*: by
-complete name, then by partial matching of names, and finally by position.
-
+Arguments are matched in the manner outlined above in *that order*: by complete name, then by partial matching of names, and finally by position.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -762,8 +744,7 @@ It fails because `FALSE` is assigned to `file` and the filename is assigned to t
 
 Rewrite the `rescale` function so that it scales a vector to lie between 0 and 1 by default, but will allow the caller to specify lower and upper bounds if they want.
 Compare your implementation to your neighbor's:
-Do your two implementations produce the same results when
-both are given the same input vector and parameters?
+Do your two implementations produce the same results when both are given the same input vector and parameters?
 
 :::::::::::::::  solution
 
@@ -783,12 +764,9 @@ rescale <- function(v, lower = 0, upper = 1) {
 
 
 
-
-
 [LaTeX]: https://www.latex-project.org/
 [roxygen2]: https://cran.r-project.org/package=roxygen2/vignettes/rd.html
 [01]: 01-starting-with-data.Rmd
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
@@ -802,5 +780,3 @@ rescale <- function(v, lower = 0, upper = 1) {
 - Arguments can be passed by matching based on name, by position, or by omitting them (in which case the default value is used).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-

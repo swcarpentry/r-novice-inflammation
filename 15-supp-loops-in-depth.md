@@ -93,7 +93,9 @@ all.equal(res, res2)
 
 ## Vector Recycling
 
-When performing vector operations in R, it is important to know about recycling. If you perform an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector.  For example:
+When performing vector operations in R, it is important to know about recycling.
+If you perform an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector.
+For example:
 
 
 ``` r
@@ -106,7 +108,10 @@ a + b
  [1]  2  4  6  8 10  7  9 11 13 15
 ```
 
-The elements of `a` and `b` are added together starting from the first element of both vectors. When R reaches the end of the shorter vector `b`, it starts again at the first element of `b` and continues until it reaches the last element of the longest vector `a`.  This behaviour may seem crazy at first glance, but it is very useful when you want to perform the same operation on every element of a vector. For example, say we want to multiply every element of our vector `a` by 5:
+The elements of `a` and `b`are added together starting from the first element of both vectors.
+When R reaches the end of the shorter vector`b`, it starts again at the first element of `b` and continues until it reaches the last element of the longest vector `a`.
+This behaviour may seem crazy at first glance, but it is very useful when you want to perform the same operation on every element of a vector.
+For example, say we want to multiply every element of our vector `a` by 5:
 
 
 ``` r
@@ -121,7 +126,8 @@ a * b
 
 Remember there are no scalars in R, so `b` is actually a vector of length 1; in order to add its value to every element of `a`, it is *recycled* to match the length of `a`.
 
-When the length of the longer object is a multiple of the shorter object length (as in our example above), the recycling occurs silently. When the longer object length is not a multiple of the shorter object length, a warning is given:
+When the length of the longer object is a multiple of the shorter object length (as in our example above), the recycling occurs silently.
+When the longer object length is not a multiple of the shorter object length, a warning is given:
 
 
 ``` r
@@ -194,7 +200,7 @@ system.time(avg2 <- analyze2(filenames))
 
 ``` output
    user  system elapsed 
-  0.022   0.001   0.023 
+  0.023   0.001   0.027 
 ```
 
 Note how we add a new column to `out` at each iteration?
@@ -220,7 +226,7 @@ system.time(avg3 <- analyze3(filenames))
 
 ``` output
    user  system elapsed 
-  0.023   0.000   0.023 
+  0.023   0.000   0.022 
 ```
 
 In this simple example there is little difference in the compute time of `analyze2` and `analyze3`.
@@ -229,8 +235,6 @@ If we were doing this over more files or the data objects we were growing were l
 
 Note that `apply` handles these memory allocation issues for you, but then you have to write the loop part as a function to pass to `apply`.
 At its heart, `apply` is just a `for` loop with extra convenience.
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
