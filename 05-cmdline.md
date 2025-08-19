@@ -330,7 +330,8 @@ Rscript readings-02.R data/inflammation-01.csv
 
 1. Write a command-line program that does addition and subtraction of two numbers.
 
-**Hint:**
+:::::::::::::::  hint
+
 Everything argument read from the command-line is interpreted as a character [string](../learners/reference.md#string).
 You can convert from a string to a number using the function `as.numeric`.
 
@@ -351,6 +352,8 @@ Rscript arith.R 3 - 4
 ``` output
 -1
 ```
+
+:::::::::::::::
 
 :::::::::::::::  solution
 
