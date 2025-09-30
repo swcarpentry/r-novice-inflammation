@@ -40,142 +40,36 @@ jobs:
     name: "Preflight: Schedule, Push, or PR?"
     runs-on: ubuntu-latest
     outputs:
-      do-build: ${{ steps.check.outputs.push_or_pr }}
+      do-build: ${{ steps.build-check.outputs.do-build }}
+      renv-needed: ${{ steps.build-check.outputs.renv-needed }}
+      renv-cache-hashsum: ${{ steps.build-check.outputs.renv-cache-hashsum || '' }}
+      varnish-version: ${{ steps.build-check.outputs.varnish-version-override }}
+      sandpaper-version: ${{ steps.build-check.outputs.sandpaper-version-override }}
+      pegboard-version: ${{ steps.build-check.outputs.pegboard-version-override }}
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - name: Debug workflow_run event
-        run: cat $GITHUB_EVENT_PATH
 
+    steps:
       - name: "Should we run build and deploy?"
-        id: check
-        run: |
-          if [[ "${{ github.event_name }}" == "schedule" ||
-                "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "✅ Scheduled or manual trigger. Build will run."
-            echo "push_or_pr=true" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.event_name }}" == "workflow_run" &&
-                  "${{ github.event.workflow_run.conclusion }}" == "success" ]]; then
-            if [[ "${{ github.event.workflow_run.event }}" == "pull_request" ]] ; then
-              PRE_PR="${{ github.event.workflow_run.pull_requests[0].number }}"
-              if [[ -n "$PRE_PR" ]]; then
-                PR_DATA=$(gh pr view "$PRE_PR" --repo "${{ github.repository }}" --json merged,state)
-                MERGED=$(echo "$PR_DATA" | jq -r '.merged')
-                STATE=$(echo "$PR_DATA" | jq -r '.state')
-
-                if [[ "$MERGED" == "false" || "$STATE" != "MERGED" ]]; then
-                  echo "❗PR not merged or in an invalid state. No build will run."
-                  echo "push_or_pr=false" >> $GITHUB_OUTPUT
-                else
-                  echo "✅ PR merged successfully. Build will run."
-                  echo "push_or_pr=true" >> $GITHUB_OUTPUT
-                fi
-              else
-                echo "✅ PR merged successfully. Build will run."
-                echo "push_or_pr=true" >> $GITHUB_OUTPUT
-              fi
-            else
-              echo "✅ PR merged successfully. Build will run."
-              echo "push_or_pr=true" >> $GITHUB_OUTPUT
-            fi
-          elif [[ "${{ github.event_name }}" == "push" && "${{ github.ref }}" == "refs/heads/main" ]]; then
-            PRE_PR=$(gh pr list --repo "${{ github.repository }}" --state merged --search "${{ github.sha }}" --json number -q ".[0].number") >> $GITHUB_ENV
-
-            if [[ -n "$PRE_PR" ]]; then
-              LABELS=$(gh pr view "$PRE_PR" --repo "${{ github.repository }}" --json labels -q ".labels[].name")
-              if echo "$LABELS" | grep -q "type: package cache"; then
-                echo "❗Package cache update PR merged. Build will not run."
-                echo "push_or_pr=false" >> $GITHUB_OUTPUT
-              else
-                echo "✅ Valid PR merged. Build will run."
-                echo "push_or_pr=true" >> $GITHUB_OUTPUT
-              fi
-            else
-              echo "✅ Direct push to main. Build will run."
-              echo "push_or_pr=true" >> $GITHUB_OUTPUT
-            fi
-          else
-            echo "❗This was not a schedule or valid trigger. No build will run."
-            echo "push_or_pr=false" >> $GITHUB_OUTPUT
-          fi
-
-  check-renv:
-    name: "Check if We Need {renv}"
-    runs-on: ubuntu-latest
-    needs: preflight
-    if: ${{ needs.preflight.outputs.do-build == 'true' }}
-    outputs:
-      renv-needed: ${{ steps.check-for-renv.outputs.exists }}
-    steps:
-      - name: "Checkout Lesson"
-        uses: actions/checkout@v4
-
-      - name: "Check for renv"
-        id: check-for-renv
-        run: |
-          if [[ -d renv ]]; then
-            echo "✅ renv requirement found."
-            echo "exists=true" >> $GITHUB_OUTPUT
-          else
-            echo "❗No renv requirement found. Skipping..."
-            echo "exists=false" >> $GITHUB_OUTPUT
-          fi
-
-  prepare-renv:
-    name: "Grab renv.lock hash"
-    runs-on: ubuntu-latest
-    needs: check-renv
-    outputs:
-      renv-cache-hashsum: ${{ steps.set-hash.outputs.renv-cache-hashsum || '' }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Calculate renv hash
-        id: set-hash
-        if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
-        run: |
-          CACHE_VERSION_INPUT="${{ github.event.inputs.CACHE_VERSION || vars.CACHE_VERSION }}"
-          if [ -z "$CACHE_VERSION_INPUT" ]; then
-            echo "renv-cache-hashsum=${{ hashFiles('renv/profiles/lesson-requirements/renv.lock') }}" >> $GITHUB_OUTPUT
-          else
-            echo "renv-cache-hashsum=$CACHE_VERSION_INPUT" >> $GITHUB_OUTPUT
-          fi
-
-  prepare-wb-package-override:
-    name: "Any Workbench package version inputs?"
-    runs-on: ubuntu-latest
-    outputs:
-      varnish-version: ${{ steps.input-wb-vers.outputs.varnish-version-override }}
-      sandpaper-version: ${{ steps.input-wb-vers.outputs.sandpaper-version-override }}
-      pegboard-version: ${{ steps.input-wb-vers.outputs.pegboard-version-override }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: "Get var/input Workbench package versions"
-        id: input-wb-vers
-        run: |
-          VARNISH_VERSION_INPUT="${{ github.event.inputs.varnish-version || 'latest' }}"
-          if [ ! -z "$VARNISH_VERSION_INPUT" ]; then
-            echo "varnish-version-override=$VARNISH_VERSION_INPUT" >> $GITHUB_OUTPUT
-          fi
-          SANDPAPER_VERSION_INPUT="${{ github.event.inputs.sandpaper-version || 'latest' }}"
-          if [ ! -z "$SANDPAPER_VERSION_INPUT" ]; then
-            echo "sandpaper-version-override=$SANDPAPER_VERSION_INPUT" >> $GITHUB_OUTPUT
-          fi
-          PEGBOARD_VERSION_INPUT="${{ github.event.inputs.pegboard-version || 'latest' }}"
-          if [ ! -z "$PEGBOARD_VERSION_INPUT" ]; then
-            echo "pegboard-version-override=$PEGBOARD_VERSION_INPUT" >> $GITHUB_OUTPUT
-          fi
+        id: build-check
+        uses: carpentries/actions/build-preflight@main
+        with:
+          sandpaper-version: ${{ vars.SANDPAPER_VER || github.event.inputs.sandpaper-version || 'latest' }}
+          pegboard-version: ${{ vars.PEGBOARD_VER || github.event.inputs.pegboard-version || 'latest' }}
+          varnish-version: ${{ vars.VARNISH_VER || github.event.inputs.varnish-version || 'latest' }}
+          CACHE_VERSION: ${{ secrets.CACHE_VERSION || vars.CACHE_VERSION || github.event.inputs.CACHE_VERSION || '' }}
 
   full-build:
     name: "Build Full Site"
     runs-on: ubuntu-latest
-    needs: [preflight, check-renv, prepare-renv, prepare-wb-package-override]
+    needs: [preflight]
     if: ${{ needs.preflight.outputs.do-build == 'true' }}
     env:
-        VARNISH_VER: ${{ needs.prepare-wb-package-override.outputs.varnish-version }}
-        SANDPAPER_VER: ${{ needs.prepare-wb-package-override.outputs.sandpaper-version }}
-        PEGBOARD_VER: ${{ needs.prepare-wb-package-override.outputs.pegboard-version }}
+        RENV_EXISTS: ${{ needs.preflight.outputs.renv-needed }}
+        RENV_HASH: ${{ needs.preflight.outputs.renv-cache-hashsum }}
+        VARNISH_VER: ${{ needs.preflight.outputs.varnish-version }}
+        SANDPAPER_VER: ${{ needs.preflight.outputs.sandpaper-version }}
+        PEGBOARD_VER: ${{ needs.preflight.outputs.pegboard-version }}
     permissions:
       checks: write
       contents: write
@@ -188,10 +82,6 @@ jobs:
         RENV_PATHS_ROOT: /home/rstudio/lesson/renv
         RENV_PROFILE: "lesson-requirements"
         RENV_CONFIG_EXTERNAL_LIBRARIES: "/usr/local/lib/R/site-library"
-        RENV_VERSION: ${{ needs.prepare-renv.outputs.renv-cache-hashsum }}
-        VARNISH_VER: ${{ needs.prepare-wb-package-override.outputs.varnish-version }}
-        SANDPAPER_VER: ${{ needs.prepare-wb-package-override.outputs.sandpaper-version }}
-        PEGBOARD_VER: ${{ needs.prepare-wb-package-override.outputs.pegboard-version }}
       volumes:
         - ${{ github.workspace }}:/home/rstudio/lesson
       options: --cpus 1
@@ -199,119 +89,25 @@ jobs:
       - name: "Checkout Lesson"
         uses: actions/checkout@v4
 
-      - name: Check if renv Exists
-        id: check-renv
-        run: |
-          if [ -d "/home/rstudio/lesson/renv" ]; then
-            echo "RENV_EXISTS=true" >> $GITHUB_ENV
-          else
-            echo "RENV_EXISTS=false" >> $GITHUB_ENV
-          fi
-
-      - name: "Grabbed renv.lock hash"
-        if: env.RENV_EXISTS == 'true'
-        run: echo "RENV_VERSION is $RENV_VERSION"
-
-      - name: Debugging Info
+      - name: "Debugging Info"
         run: |
           cd /home/rstudio/lesson
           echo "Current Directory: $(pwd)"
+          echo "RENV_HASH is $RENV_HASH"
           ls -lah /home/rstudio/.workbench
           ls -lah $(pwd)
           Rscript -e 'sessionInfo()'
 
-      - name: Mark Repository as Safe
+      - name: "Mark Repository as Safe"
         run: |
           git config --global --add safe.directory $(pwd)
 
-      - name: Setup Lesson Dependencies
-        run: |
-          Rscript /home/rstudio/.workbench/setup_lesson_deps.R
-
-      - name: Get Container Version Used
-        run: |
-          tag=${{ vars.WORKBENCH_TAG || 'latest' }}
-          digest=$(curl -s "https://hub.docker.com/v2/repositories/carpentries/workbench-docker/tags?name=$tag" | jq -r '.results[] | select(.name == "'$tag'") | .digest')
-          if [[ "$tag" == "latest" ]]; then
-            vers=$(curl -s "https://hub.docker.com/v2/repositories/carpentries/workbench-docker/tags" | jq -r '.results[] | select(.digest == "'$digest'") | .name')
-            ver=$(echo "$vers" | grep -Po "^v.*")
-          else
-            ver="$tag"
-          fi
-          echo "CONTAINER_VER=$ver" >> $GITHUB_ENV
-        shell: bash
-
-      - name: Restore renv from cache
-        id: restore-renv-cache
-        uses: actions/cache@v4
-        if: env.RENV_EXISTS == 'true'
+      - name: "Setup Lesson Dependencies"
+        id: build-container-deps
+        uses: carpentries/actions/build-container-deps@main
         with:
-          path: /home/rstudio/lesson/renv
-          key: ${{ env.CONTAINER_VER }}-${{ inputs.cache-version }}-renv-${{ needs.prepare-renv.outputs.renv-cache-hashsum }}
-          restore-keys:
-            ${{ env.CONTAINER_VER }}-${{ inputs.cache-version }}-renv-
-
-      - name: Restore renv Dependencies
-        if: env.RENV_EXISTS == 'true' && steps.restore-renv-cache.outputs.cache-hit == 'true'
-        run: |
-          lsn_path <- fs::path("/home/rstudio/lesson")
-          renv::load(project = lsn_path)
-          renv_lib  <- renv::paths$library(project = lsn_path)
-          renv_lock <- renv::paths$lockfile(project = lsn_path)
-          renv::restore(project = lsn_path, library = renv_lib, lockfile = renv_lock, prompt = FALSE)
-        shell: Rscript {0}
-
-      - name: Fail on renv cache miss
-        if: env.RENV_EXISTS == 'true' && steps.restore-renv-cache.outputs.cache-hit != 'true'
-        run: |
-          echo "❌ renv cache required but none available. Please run the "02 Maintain: Check for Updated Packages" then the "03 Maintain: Apply Package Cache" workflows."
-          exit 1
-
-      - name: Override any Workbench packages
-        if: env.VARNISH_VER != 'latest' || env.SANDPAPER_VER != 'latest' || env.PEGBOARD_VER != 'latest'
-        run: |
-          varnish_version   <- '${{ env.VARNISH_VER }}'
-          sandpaper_version <- '${{ env.SANDPAPER_VER }}'
-          pegboard_version  <- '${{ env.PEGBOARD_VER }}'
-
-          cfg_file <- '/home/rstudio/lesson/config.yaml'
-
-          library("remotes")
-          cfg <- if (file.exists(cfg_file)) readLines(cfg_file) else character(0)
-          get_version <- function(x, key = "varnish") {
-            res <- x[grepl(paste0("^", key, "\\s?:"), x)]
-            if (length(res)) {
-              res <- trimws(strsplit(res, ":")[[1]][2])
-              # trim quotes
-              res <- gsub("[\"']", "", res)
-              if (grepl("^[0-9]", res)) {
-                res <- paste0("carpentries/", key, "@", res)
-              }
-            } else {
-              res <- "latest"
-            }
-            res
-          }
-
-          varnish_version <- get_version(cfg, key = "varnish")
-          sandpaper_version <- get_version(cfg, key = "sandpaper")
-          pegboard_version <- get_version(cfg, key = "pegboard")
-          if (varnish_version != "latest") {
-            cat("::group::Installing", varnish_version, "\n")
-            remotes::install_github(varnish_version)
-            cat("::endgroup::\n")
-          }
-          if (sandpaper_version != "latest") {
-            cat("::group::Installing", sandpaper_version, "\n")
-            remotes::install_github(sandpaper_version)
-            cat("::endgroup::\n")
-          }
-          if (pegboard_version != "latest") {
-            cat("::group::Installing", pegboard_version, "\n")
-            remotes::install_github(pegboard_version)
-            cat("::endgroup::\n")
-          }
-        shell: Rscript {0}
+          WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG || 'latest' }}
+          LESSON_PATH: ${{ vars.LESSON_PATH || '/home/rstudio/lesson' }}
 
       - name: Run Container and Build Site
         run: |

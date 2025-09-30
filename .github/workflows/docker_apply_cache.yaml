@@ -35,46 +35,48 @@ jobs:
     needs: preflight
     if: ${{ needs.preflight.outputs.do-apply == 'true' }}
     outputs:
-      renv-needed: ${{ steps.check-for-renv.outputs.exists }}
+      renv-needed: ${{ steps.check-for-renv.outputs.renv-needed }}
+      renv-cache-hashsum: ${{ steps.check-for-renv.outputs.renv-cache-hashsum }}
+      renv-cache-available: ${{ steps.check-for-renv.outputs.renv-cache-available }}
     steps:
-      - name: "Checkout Lesson"
-        uses: actions/checkout@v4
-
       - name: "Check for renv"
         id: check-for-renv
-        run: |
-          if [[ -d renv ]]; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-          fi
-
-  prepare:
-    name: "Grab renv.lock hash"
+        uses: carpentries/actions/renv-checks@main
+  no-renv-cache-used:
+    name: "No renv cache used"
     runs-on: ubuntu-latest
     needs: check-renv
-    if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
-    outputs:
-      renv-cache-hashsum: ${{ steps.set-hash.outputs.renv-cache-hashsum }}
+    if: ${{ needs.check-renv.outputs.renv-needed != 'true' }}
     steps:
-      - uses: actions/checkout@v4
+      - name: "No renv cache needed"
+        run: echo "No renv cache needed for this lesson"
 
-      - name: Calculate renv hash
-        id: set-hash
-        run: |
-          echo "renv-cache-hashsum=${{ hashFiles('renv/profiles/lesson-requirements/renv.lock') }}" >> $GITHUB_OUTPUT
+  renv-cache-available:
+    name: "renv cache available"
+    runs-on: ubuntu-latest
+    needs: check-renv
+    if: ${{ needs.check-renv.outputs.renv-cache-available == 'true' }}
+    steps:
+      - name: "renv cache available"
+        run: echo "renv cache available for this lesson"
 
   update-renv-cache:
     name: "Update renv Cache"
+    runs-on: ubuntu-latest
+    needs: check-renv
     if: |
-      github.event_name == 'workflow_dispatch' ||
+      needs.check-renv.outputs.renv-needed == 'true' &&
+      needs.check-renv.outputs.renv-cache-available != 'true' &&
       (
-        github.event.pull_request.merged == true &&
-        contains(
-          join(github.event.pull_request.labels.*.name, ','),
-          'type: package cache'
+        github.event_name == 'workflow_dispatch' ||
+        (
+          github.event.pull_request.merged == true &&
+          contains(
+            join(github.event.pull_request.labels.*.name, ','),
+            'type: package cache'
+          )
         )
       )
-    runs-on: ubuntu-latest
-    needs: prepare
     permissions:
       checks: write
       contents: write
@@ -94,9 +96,6 @@ jobs:
     steps:
       - name: "Checkout Lesson"
         uses: actions/checkout@v4
-
-      - name: Current env
-        run: env | sort
 
       - name: Debugging Info
         run: |
@@ -124,22 +123,29 @@ jobs:
           Rscript /home/rstudio/.workbench/fortify_renv_cache.R
 
       - name: Get Container Version Used
-        run: |
-          tag=${{ vars.WORKBENCH_TAG || 'latest' }}
-          digest=$(curl -s "https://hub.docker.com/v2/repositories/carpentries/workbench-docker/tags?name=$tag" | jq -r '.results[] | select(.name == "'$tag'") | .digest')
-          if [[ "$tag" == "latest" ]]; then
-            vers=$(curl -s "https://hub.docker.com/v2/repositories/carpentries/workbench-docker/tags" | jq -r '.results[] | select(.digest == "'$digest'") | .name')
-            ver=$(echo "$vers" | grep -Po "^v.*")
-          else
-            ver="$tag"
-          fi
-          echo "CONTAINER_VER=$ver" >> $GITHUB_ENV
-        shell: bash
+        id: wb-vers
+        uses: carpentries/actions/container-version@main
+        with:
+          WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG }}
 
       - name: Cache renv Directory
         uses: actions/cache@v4
         with:
           path: /home/rstudio/lesson/renv
-          key: ${{ env.CONTAINER_VER }}-${{ inputs.cache-version }}-renv-${{ needs.prepare.outputs.renv-cache-hashsum }}
+          key: ${{ github.repository }}-${{ steps.wb-vers.outputs.container-version }}-renv-${{ needs.check-renv.outputs.renv-cache-hashsum }}
           restore-keys:
-            ${{ env.CONTAINER_VER }}-${{ inputs.cache-version }}-renv-
+            ${{ github.repository }}-${{ steps.wb-vers.outputs.container-version }}-renv-
+
+  # trigger the build deploy workflow if update-renv-cache was successful
+  trigger-build-deploy:
+    name: "Trigger Build and Deploy Workflow"
+    runs-on: ubuntu-latest
+    needs: [check-renv, update-renv-cache]
+    if: |
+      needs.update-renv-cache.outcome == 'success'
+    steps:
+      - name: "Trigger Build and Deploy Workflow"
+        run: |
+          gh workflow run docker_build_deploy.yaml --ref main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

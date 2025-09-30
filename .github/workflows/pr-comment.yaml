@@ -5,10 +5,6 @@ on:
     inputs:
       workflow_id:
         required: true
-  workflow_run:
-    workflows: ["Bot: Receive Pull Request"]
-    types:
-      - completed
 
 concurrency:
   group: pr-${{ github.event.workflow_run.pull_requests[0].number }}
