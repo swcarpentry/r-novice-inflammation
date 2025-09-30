@@ -111,7 +111,6 @@ jobs:
     name: "Grab renv.lock hash"
     runs-on: ubuntu-latest
     needs: check-renv
-
     outputs:
       renv-cache-hashsum: ${{ steps.set-hash.outputs.renv-cache-hashsum }}
     steps:

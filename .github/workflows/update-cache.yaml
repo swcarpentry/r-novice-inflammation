@@ -182,6 +182,14 @@ jobs:
         run: |
           echo "No updates needed, skipping PR creation"
 
+      - name: "Trigger Apply Cache Workflow"
+        if: ${{ steps.update.outputs.n == 0 }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run docker_apply_cache.yaml
+        shell: bash
+
       # thanks @Bisaloo! - https://github.com/carpentries/sandpaper/issues/646#issuecomment-2829578435
       - name: "Trigger checks"
         if: ${{ steps.cpr.outputs.pull-request-number != '' }}
