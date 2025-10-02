@@ -58,6 +58,7 @@ jobs:
           pegboard-version: ${{ vars.PEGBOARD_VER || github.event.inputs.pegboard-version || 'latest' }}
           varnish-version: ${{ vars.VARNISH_VER || github.event.inputs.varnish-version || 'latest' }}
           CACHE_VERSION: ${{ secrets.CACHE_VERSION || vars.CACHE_VERSION || github.event.inputs.CACHE_VERSION || '' }}
+          WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG || 'latest' }}
 
   full-build:
     name: "Build Full Site"
