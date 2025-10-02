@@ -146,7 +146,7 @@ jobs:
             steps.validate-token.outputs.wf == 'true' ||
             steps.validate-org-workflow.outputs.is_valid == 'false'
           )
-        uses: carpentries/create-pull-request@main
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ steps.set-pat.outputs.pat || secrets.SANDPAPER_WORKFLOW || secrets.GITHUB_TOKEN }}
           delete-branch: true
@@ -191,8 +191,9 @@ jobs:
         shell: bash
 
       # thanks @Bisaloo! - https://github.com/carpentries/sandpaper/issues/646#issuecomment-2829578435
+      # only trigger checks manually if the validate-token step had no valid AWS or SANDPAPER_WORKFLOW token
       - name: "Trigger checks"
-        if: ${{ steps.cpr.outputs.pull-request-number != '' }}
+        if: ${{ steps.cpr.outputs.pull-request-number != '' && steps.validate-token.outputs.wf != 'true'}}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
