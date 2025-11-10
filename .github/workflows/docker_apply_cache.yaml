@@ -10,6 +10,8 @@ on:
   pull_request:
     types:
       - closed
+    branches:
+      - main
 
 jobs:
   preflight:
@@ -34,6 +36,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: preflight
     if: ${{ needs.preflight.outputs.do-apply == 'true' }}
+    permissions:
+      id-token: write # OIDC permission required
     outputs:
       renv-needed: ${{ steps.check-for-renv.outputs.renv-needed }}
       renv-cache-hashsum: ${{ steps.check-for-renv.outputs.renv-cache-hashsum }}
@@ -41,7 +45,12 @@ jobs:
     steps:
       - name: "Check for renv"
         id: check-for-renv
-        uses: carpentries/actions/renv-checks@main
+        uses: carpentries/actions/renv-checks@frog-s3-test-1
+        with:
+          role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
+          aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
+          WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG || 'latest' }}
+
   no-renv-cache-used:
     name: "No renv cache used"
     runs-on: ubuntu-latest
@@ -81,6 +90,7 @@ jobs:
       checks: write
       contents: write
       pages: write
+      id-token: write # OIDC permission required
     container:
       image: carpentries/workbench-docker:${{ vars.WORKBENCH_TAG || 'latest' }}
       env:
@@ -94,8 +104,7 @@ jobs:
         - ${{ github.workspace }}:/home/rstudio/lesson
       options: --cpus 2
     steps:
-      - name: "Checkout Lesson"
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Debugging Info
         run: |
@@ -124,17 +133,41 @@ jobs:
 
       - name: Get Container Version Used
         id: wb-vers
-        uses: carpentries/actions/container-version@main
+        uses: carpentries/actions/container-version@frog-s3-test-1
         with:
           WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG }}
+          renv-needed: ${{ needs.check-renv.outputs.renv-needed }}
 
-      - name: Cache renv Directory
-        uses: actions/cache@v4
+      - name: "Validate Current Org and Workflow"
+        id: validate-org-workflow
+        uses: carpentries/actions/validate-org-workflow@frog-s3-test-1
         with:
-          path: /home/rstudio/lesson/renv
-          key: ${{ github.repository }}-${{ steps.wb-vers.outputs.container-version }}-renv-${{ needs.check-renv.outputs.renv-cache-hashsum }}
+          repo: ${{ github.repository }}
+          workflow: ${{ github.workflow }}
+
+      - name: Configure AWS credentials via OIDC
+        id: aws-creds
+        if: ${{ steps.validate-org-workflow.outputs.is_valid == 'true' }}
+        uses: aws-actions/configure-aws-credentials@v5.0.0
+        with:
+          role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
+          aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
+          output-credentials: true
+
+      - name: Upload cache object to S3
+        uses: carpentries/actions-cache@frog-matchedkey-1
+        with:
+          # insecure: false # optional, use http instead of https. default false
+          accessKey: ${{ steps.aws-creds.outputs.aws-access-key-id }}
+          secretKey: ${{ steps.aws-creds.outputs.aws-secret-access-key }}
+          sessionToken: ${{ steps.aws-creds.outputs.aws-session-token }}
+          bucket: workbench-docker-caches
+          path: |
+            /home/rstudio/lesson/renv
+            /usr/local/lib/R/site-library
+          key: ${{ github.repository }}/${{ steps.wb-vers.outputs.container-version }}_renv-${{ needs.check-renv.outputs.renv-cache-hashsum }}
           restore-keys:
-            ${{ github.repository }}-${{ steps.wb-vers.outputs.container-version }}-renv-
+            ${{ github.repository }}/${{ steps.wb-vers.outputs.container-version }}_renv-
 
   # trigger the build deploy workflow if update-renv-cache was successful
   trigger-build-deploy:
@@ -145,7 +178,8 @@ jobs:
       needs.update-renv-cache.outcome == 'success'
     steps:
       - name: "Trigger Build and Deploy Workflow"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh workflow run docker_build_deploy.yaml --ref main
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash

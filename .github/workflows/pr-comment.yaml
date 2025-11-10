@@ -14,7 +14,7 @@ jobs:
   # Pull requests are valid if:
   #  - they match the sha of the workflow run head commit
   #  - they are open
-  #  - no .github files were committed
+  #  - no .github files were committed, except for .github/workbench-docker-version.txt
   test-pr:
     name: "Test if pull request is valid"
     runs-on: ubuntu-latest
@@ -54,6 +54,31 @@ jobs:
         run: |
           echo '::error::A pull request number was not recorded. The pull request that triggered this workflow is likely malicious.'
           exit 1
+
+      - name: "Checkout Lesson"
+        uses: actions/checkout@v4
+
+      - name: Verify committed files
+        id: changed-files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ## Get list of changed files in the PR ##
+          FILES=$(gh pr view ${{ steps.get-pr.outputs.NUM }} --json files --jq '.files[].path')
+          FILE_COUNT=$(echo "$FILES" | wc -l)
+
+          # Check if only docker-version.txt changed
+          if [ "$FILE_COUNT" -eq 1 ] && echo "$FILES" | grep -q "^workbench-docker-version\.txt$"; then
+            echo "only_version_file=true" >> $GITHUB_OUTPUT
+          else
+            echo "only_version_file=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Skip checks for Workbench version file updates
+        if: steps.changed-files.outputs.only_version_file == 'true'
+        run: |
+          echo "Only workbench-docker-version.txt changed, skipping preflight checks"
+          exit 0
 
       - name: "Get Invalid Hashes File"
         id: hash

@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        description: 'Who triggered this build (enter github username to tag yourself)?'
+        description: 'Who triggered this build?'
         required: true
-        default: 'monthly run'
+        default: 'Maintainer (via GitHub)'
       skip-restore:
         description: 'Force lockfile update?'
         required: false
@@ -53,21 +53,24 @@ jobs:
             echo "ok=false" >> $GITHUB_OUTPUT
             echo "Not Running Today"
           fi
+
   check-renv:
     name: "Check If We Need {renv}"
     runs-on: ubuntu-latest
     needs: preflight
     if: ${{ needs.preflight.outputs.ok == 'true' }}
     outputs:
-      renv-needed: ${{ steps.check-for-renv.outputs.exists }}
+      renv-needed: ${{ steps.renv-check.outputs.renv-needed }}
     steps:
       - name: "Checkout Lesson"
         uses: actions/checkout@v4
-      - id: check-for-renv
-        run: |
-          if [[ -d renv ]]; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-          fi
+
+      - name: "Is renv required?"
+        id: renv-check
+        uses: carpentries/actions/renv-checks@frog-s3-test-1
+        with:
+          CACHE_VERSION: ${{ inputs.CACHE_VERSION || '' }}
+          skip-cache-check: true
 
   update_cache:
     name: "Create Package Update Pull Request"
@@ -104,14 +107,14 @@ jobs:
 
       - name: "Validate Current Org and Workflow"
         id: validate-org-workflow
-        uses: carpentries/actions/validate-org-workflow@main
+        uses: carpentries/actions/validate-org-workflow@frog-s3-test-1
         with:
           repo: ${{ github.repository }}
           workflow: ${{ github.workflow }}
 
       - name: Configure AWS credentials via OIDC
         if: ${{ steps.validate-org-workflow.outputs.is_valid == 'true' }}
-        uses: aws-actions/configure-aws-credentials@v4.1.0
+        uses: aws-actions/configure-aws-credentials@v5.0.0
         with:
           role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
           aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
@@ -146,7 +149,7 @@ jobs:
             steps.validate-token.outputs.wf == 'true' ||
             steps.validate-org-workflow.outputs.is_valid == 'false'
           )
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v7.0.8
         with:
           token: ${{ steps.set-pat.outputs.pat || secrets.SANDPAPER_WORKFLOW || secrets.GITHUB_TOKEN }}
           delete-branch: true
@@ -185,7 +188,7 @@ jobs:
       - name: "Trigger Apply Cache Workflow"
         if: ${{ steps.update.outputs.n == 0 }}
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh workflow run docker_apply_cache.yaml
         shell: bash
@@ -195,7 +198,7 @@ jobs:
       - name: "Trigger checks"
         if: ${{ steps.cpr.outputs.pull-request-number != '' && steps.validate-token.outputs.wf != 'true'}}
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh workflow run docker_pr_receive.yaml --field pr_number=${{ steps.cpr.outputs.pull-request-number }}
         shell: bash
