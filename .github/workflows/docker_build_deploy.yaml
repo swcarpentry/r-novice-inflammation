@@ -21,15 +21,11 @@ on:
         required: false
         default: false
         type: boolean
-      sandpaper-version:
-        description: 'The version of sandpaper to use. You can use the remotes syntax to specify a version to use. Defaults to latest on the r-universe.'
-        default: 'latest'
-      pegboard-version:
-        description: 'The version of pegboard to use. You can use the remotes syntax to specify a version to use. Defaults to latest on the r-universe.'
-        default: 'latest'
-      varnish-version:
-        description: 'The version of varnish to use. You can use the remotes syntax to specify a version to use. Defaults to latest on the r-universe.'
-        default: 'latest'
+      skip-manage-deps:
+        description: 'Skip build-time dependency management'
+        required: false
+        default: true
+        type: boolean
   workflow_run:
     workflows: ["03 Maintain: Apply Package Cache"]
     types:
@@ -42,39 +38,43 @@ jobs:
     outputs:
       do-build: ${{ steps.build-check.outputs.do-build }}
       renv-needed: ${{ steps.build-check.outputs.renv-needed }}
-      renv-cache-hashsum: ${{ steps.build-check.outputs.renv-cache-hashsum || '' }}
-      varnish-version: ${{ steps.build-check.outputs.varnish-version-override }}
-      sandpaper-version: ${{ steps.build-check.outputs.sandpaper-version-override }}
-      pegboard-version: ${{ steps.build-check.outputs.pegboard-version-override }}
+      renv-cache-hashsum: ${{ steps.build-check.outputs.renv-cache-hashsum }}
+      workbench-container-file-exists: ${{ steps.wb-vers.outputs.workbench-container-file-exists }}
+      wb-vers: ${{ steps.wb-vers.outputs.container-version }}
+      last-wb-vers: ${{ steps.wb-vers.outputs.last-container-version }}
+      workbench-update: ${{ steps.wb-vers.outputs.workbench-update }}
     env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: "Should we run build and deploy?"
         id: build-check
-        uses: carpentries/actions/build-preflight@main
+        uses: carpentries/actions/build-preflight@frog-s3-test-1
+
+      - name: Checkout Lesson
+        if: ${{ steps.build-check.outputs.do-build == 'true' }}
+        uses: actions/checkout@v4
+
+      - name: Get container version info
+        id: wb-vers
+        if: ${{ steps.build-check.outputs.do-build == 'true' }}
+        uses: carpentries/actions/container-version@frog-s3-test-1
         with:
-          sandpaper-version: ${{ vars.SANDPAPER_VER || github.event.inputs.sandpaper-version || 'latest' }}
-          pegboard-version: ${{ vars.PEGBOARD_VER || github.event.inputs.pegboard-version || 'latest' }}
-          varnish-version: ${{ vars.VARNISH_VER || github.event.inputs.varnish-version || 'latest' }}
-          CACHE_VERSION: ${{ secrets.CACHE_VERSION || vars.CACHE_VERSION || github.event.inputs.CACHE_VERSION || '' }}
-          WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG || 'latest' }}
+          WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG }}
+          renv-needed: ${{ steps.build-check.outputs.renv-needed }}
 
   full-build:
     name: "Build Full Site"
     runs-on: ubuntu-latest
-    needs: [preflight]
-    if: ${{ needs.preflight.outputs.do-build == 'true' }}
+    needs: preflight
+    if: always() && ${{ needs.preflight.outputs.do-build == 'true' && needs.preflight.outputs.workbench-update != 'true' }}
     env:
-        RENV_EXISTS: ${{ needs.preflight.outputs.renv-needed }}
-        RENV_HASH: ${{ needs.preflight.outputs.renv-cache-hashsum }}
-        VARNISH_VER: ${{ needs.preflight.outputs.varnish-version }}
-        SANDPAPER_VER: ${{ needs.preflight.outputs.sandpaper-version }}
-        PEGBOARD_VER: ${{ needs.preflight.outputs.pegboard-version }}
+      RENV_EXISTS: ${{ needs.preflight.outputs.renv-needed }}
+      RENV_HASH: ${{ needs.preflight.outputs.renv-cache-hashsum }}
     permissions:
       checks: write
       contents: write
       pages: write
+      id-token: write # OIDC permission required
     container:
       image: carpentries/workbench-docker:${{ vars.WORKBENCH_TAG || 'latest' }}
       env:
@@ -87,8 +87,7 @@ jobs:
         - ${{ github.workspace }}:/home/rstudio/lesson
       options: --cpus 1
     steps:
-      - name: "Checkout Lesson"
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: "Debugging Info"
         run: |
@@ -105,15 +104,43 @@ jobs:
 
       - name: "Setup Lesson Dependencies"
         id: build-container-deps
-        uses: carpentries/actions/build-container-deps@main
+        uses: carpentries/actions/build-container-deps@frog-s3-test-1
         with:
+          CACHE_VERSION: ${{ vars.CACHE_VERSION || github.event.inputs.CACHE_VERSION || '' }}
           WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG || 'latest' }}
           LESSON_PATH: ${{ vars.LESSON_PATH || '/home/rstudio/lesson' }}
+          role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
+          aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
 
       - name: Run Container and Build Site
-        run: |
-          library(sandpaper)
-          reset <- "${{ github.event.inputs.reset }}" == "true"
-          sandpaper::package_cache_trigger(TRUE)
-          sandpaper:::ci_deploy(reset = reset)
-        shell: Rscript {0}
+        id: build-and-deploy
+        uses: carpentries/actions/build-and-deploy@frog-s3-test-1
+        with:
+          reset: ${{ github.event.inputs.reset }}
+          skip-manage-deps: ${{ github.event.inputs.skip-manage-deps }}
+
+  update-container-version:
+    name: "Update container version used"
+    runs-on: ubuntu-latest
+    needs: [preflight, full-build]
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write # OIDC permission required
+    if: |
+      needs.preflight.outputs.do-build == 'true' &&
+      (
+        needs.preflight.outputs.workbench-container-file-exists == 'false' ||
+        (
+          needs.full-build.build-and-deploy.outcome == 'success' &&
+          needs.preflight.outputs.wb-vers != needs.preflight.outputs.last-wb-vers
+        )
+      )
+    steps:
+      - name: Record container version used
+        uses: carpentries/actions/record-container-version@frog-s3-test-1
+        with:
+          CONTAINER_VER: ${{ needs.preflight.outputs.wb-vers }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
+          aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
