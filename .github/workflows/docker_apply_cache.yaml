@@ -35,7 +35,7 @@ jobs:
     name: "Check If We Need {renv}"
     runs-on: ubuntu-latest
     needs: preflight
-    if: ${{ needs.preflight.outputs.do-apply == 'true' }}
+    if: needs.preflight.outputs.do-apply == 'true'
     permissions:
       id-token: write # OIDC permission required
     outputs:
@@ -55,7 +55,7 @@ jobs:
     name: "No renv cache used"
     runs-on: ubuntu-latest
     needs: check-renv
-    if: ${{ needs.check-renv.outputs.renv-needed != 'true' }}
+    if: needs.check-renv.outputs.renv-needed != 'true'
     steps:
       - name: "No renv cache needed"
         run: echo "No renv cache needed for this lesson"
@@ -64,7 +64,7 @@ jobs:
     name: "renv cache available"
     runs-on: ubuntu-latest
     needs: check-renv
-    if: ${{ needs.check-renv.outputs.renv-cache-available == 'true' }}
+    if: needs.check-renv.outputs.renv-cache-available == 'true'
     steps:
       - name: "renv cache available"
         run: echo "renv cache available for this lesson"
@@ -106,14 +106,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Debugging Info
+      - name: "Debugging Info"
         run: |
           echo "Current Directory: $(pwd)"
           ls -lah /home/rstudio/.workbench
           ls -lah $(pwd)
           Rscript -e 'sessionInfo()'
 
-      - name: Mark Repository as Safe
+      - name: "Mark Repository as Safe"
         run: |
           git config --global --add safe.directory $(pwd)
 
@@ -123,15 +123,15 @@ jobs:
           library(sandpaper)
         shell: Rscript {0}
 
-      - name: Setup Lesson Dependencies
+      - name: "Setup Lesson Dependencies"
         run: |
           Rscript /home/rstudio/.workbench/setup_lesson_deps.R
 
-      - name: Fortify renv Cache
+      - name: "Fortify renv Cache"
         run: |
           Rscript /home/rstudio/.workbench/fortify_renv_cache.R
 
-      - name: Get Container Version Used
+      - name: "Get Container Version Used"
         id: wb-vers
         uses: carpentries/actions/container-version@frog-s3-test-1
         with:
@@ -145,16 +145,16 @@ jobs:
           repo: ${{ github.repository }}
           workflow: ${{ github.workflow }}
 
-      - name: Configure AWS credentials via OIDC
+      - name: "Configure AWS credentials via OIDC"
         id: aws-creds
-        if: ${{ steps.validate-org-workflow.outputs.is_valid == 'true' }}
+        if: steps.validate-org-workflow.outputs.is_valid == 'true'
         uses: aws-actions/configure-aws-credentials@v5.0.0
         with:
           role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
           aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
           output-credentials: true
 
-      - name: Upload cache object to S3
+      - name: "Upload cache object to S3"
         uses: carpentries/actions-cache@frog-matchedkey-1
         with:
           # insecure: false # optional, use http instead of https. default false
@@ -174,8 +174,7 @@ jobs:
     name: "Trigger Build and Deploy Workflow"
     runs-on: ubuntu-latest
     needs: [check-renv, update-renv-cache]
-    if: |
-      needs.update-renv-cache.outcome == 'success'
+    if: needs.update-renv-cache.outcome == 'success'
     steps:
       - name: "Trigger Build and Deploy Workflow"
         env:

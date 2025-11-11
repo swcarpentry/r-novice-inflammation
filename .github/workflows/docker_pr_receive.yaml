@@ -50,7 +50,7 @@ jobs:
       pr_branch: ${{ env.PR_BRANCH }}
     steps:
       - name: "Auto: Grab PR"
-        if: ${{ github.event_name == 'pull_request' }}
+        if: github.event_name == 'pull_request'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -116,13 +116,14 @@ jobs:
       - test-pr
       - check-renv
     runs-on: ubuntu-latest
-    if: ${{ needs.test-pr.outputs.is_valid == 'true' }}
+    if: needs.test-pr.outputs.is_valid == 'true'
     env:
       CHIVE: ${{ github.workspace }}/site/chive
       PR: ${{ github.workspace }}/site/pr
       GHWMD: ${{ github.workspace }}/site/built
       PR_BRANCH: ${{ needs.test-pr.outputs.pr_branch }}
       PR_NUMBER: ${{ needs.test-pr.outputs.pr_number }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       checks: write
       contents: write
@@ -133,17 +134,17 @@ jobs:
       env:
         WORKBENCH_PROFILE: "ci"
         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         RENV_PATHS_ROOT: /home/rstudio/lesson/renv
         RENV_PROFILE: "lesson-requirements"
         RENV_CONFIG_EXTERNAL_LIBRARIES: "/usr/local/lib/R/site-library"
       volumes:
         - ${{ github.workspace }}:/home/rstudio/lesson
       options: --cpus 2
+    outputs:
+      workbench-update: ${{ steps.wb-vers.outputs.workbench-update }}
     steps:
-      - name: "Check Out PR Branch"
-        uses: actions/checkout@v4
-        # with:
-        #   ref: ${{ env.PR_BRANCH }}
+      - uses: actions/checkout@v4
 
       - name: "Check Out Staging Branch"
         uses: actions/checkout@v4
@@ -168,7 +169,7 @@ jobs:
 
       - name: Get Container Version Used
         id: wb-vers
-        if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
+        if: needs.check-renv.outputs.renv-needed == 'true'
         uses: carpentries/actions/container-version@frog-s3-test-1
         with:
           WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG }}
@@ -176,7 +177,7 @@ jobs:
 
       - name: "Validate Current Org and Workflow"
         id: validate-org-workflow
-        if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
+        if: needs.check-renv.outputs.renv-needed == 'true'
         uses: carpentries/actions/validate-org-workflow@frog-s3-test-1
         with:
           repo: ${{ github.repository }}
@@ -184,7 +185,9 @@ jobs:
 
       - name: Configure AWS credentials via OIDC
         id: aws-creds
-        if: ${{ steps.validate-org-workflow.outputs.is_valid == 'true' && needs.check-renv.outputs.renv-needed == 'true' }}
+        if: |
+          steps.validate-org-workflow.outputs.is_valid == 'true' &&
+          needs.check-renv.outputs.renv-needed == 'true'
         uses: aws-actions/configure-aws-credentials@v5.0.0
         with:
           role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
@@ -194,7 +197,7 @@ jobs:
       - name: Get cache object from S3
         id: s3-cache
         uses: carpentries/actions-cache@frog-matchedkey-1
-        if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
+        if: needs.check-renv.outputs.renv-needed == 'true'
         with:
           # insecure: false # optional, use http instead of https. default false
           accessKey: ${{ steps.aws-creds.outputs.aws-access-key-id }}
@@ -209,7 +212,9 @@ jobs:
             ${{ github.repository }}/${{ steps.wb-vers.outputs.container-version }}_renv-
 
       - name: "Fortify renv Cache"
-        if: ${{ needs.check-renv.outputs.renv-needed == 'true' && steps.s3-cache.outputs.cache-hit != 'true'}}
+        if: |
+          needs.check-renv.outputs.renv-needed == 'true' &&
+          steps.s3-cache.outputs.cache-hit != 'true'
         run: |
           Rscript /home/rstudio/.workbench/fortify_renv_cache.R
 
@@ -260,12 +265,12 @@ jobs:
         shell: Rscript {0}
 
   pr-checks:
-    name: "Trigger PR Checks"
+    name: "Trigger PR Checks?"
     needs:
       - test-pr
       - build-md-source
     runs-on: ubuntu-latest
-    if: ${{ needs.test-pr.outputs.is_valid == 'true' }}
+    if: needs.test-pr.outputs.is_valid == 'true'
     permissions:
       actions: write
       checks: write
@@ -278,4 +283,25 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh workflow run pr-comment.yaml --ref main --field workflow_id=${{ github.run_id }}
+        shell: bash
+
+  cache-update:
+    name: "Trigger Update Cache Workflow?"
+    needs:
+      - check-renv
+      - build-md-source
+    runs-on: ubuntu-latest
+    if: |
+      needs.check-renv.outputs.renv-needed == 'true' &&
+      needs.build-md-source.outputs.workbench-update == 'true' &&
+      needs.build-md-source.build-site.outcome == 'success'
+    permissions:
+      actions: write
+      checks: write
+    steps:
+      - name: "Trigger renv rebuild"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run update-cache.yaml
         shell: bash
