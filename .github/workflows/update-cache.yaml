@@ -82,9 +82,10 @@ jobs:
       actions: write
       issues: write
       id-token: write # OIDC permission required
-    if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
+    if: needs.check-renv.outputs.renv-needed == 'true'
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       RENV_PATHS_ROOT: ~/.local/share/renv/
     steps:
       - name: "Checkout Lesson"
@@ -112,15 +113,15 @@ jobs:
           repo: ${{ github.repository }}
           workflow: ${{ github.workflow }}
 
-      - name: Configure AWS credentials via OIDC
-        if: ${{ steps.validate-org-workflow.outputs.is_valid == 'true' }}
+      - name: "Configure AWS credentials via OIDC"
+        if: steps.validate-org-workflow.outputs.is_valid == 'true'
         uses: aws-actions/configure-aws-credentials@v5.0.0
         with:
           role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
           aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
 
       - name: "Set PAT from AWS Secrets Manager"
-        if: ${{ steps.validate-org-workflow.outputs.is_valid == 'true' }}
+        if: steps.validate-org-workflow.outputs.is_valid == 'true'
         id: set-pat
         shell: bash
         run: |
@@ -143,7 +144,7 @@ jobs:
       # - default GITHUB_TOKEN (will work suitably, but PR preflight checks will not occur)
       - name: "Create Pull Request"
         id: cpr
-        if: >
+        if: |
           steps.update.outputs.n > 0 &&
           (
             steps.validate-token.outputs.wf == 'true' ||
@@ -181,14 +182,12 @@ jobs:
           draft: false
 
       - name: "Skip PR creation"
-        if: ${{ steps.update.outputs.n == 0 }}
+        if: steps.update.outputs.n == 0
         run: |
           echo "No updates needed, skipping PR creation"
 
       - name: "Trigger Apply Cache Workflow"
-        if: ${{ steps.update.outputs.n == 0 }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: steps.update.outputs.n == 0
         run: |
           gh workflow run docker_apply_cache.yaml
         shell: bash
@@ -196,9 +195,9 @@ jobs:
       # thanks @Bisaloo! - https://github.com/carpentries/sandpaper/issues/646#issuecomment-2829578435
       # only trigger checks manually if the validate-token step had no valid AWS or SANDPAPER_WORKFLOW token
       - name: "Trigger checks"
-        if: ${{ steps.cpr.outputs.pull-request-number != '' && steps.validate-token.outputs.wf != 'true'}}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: |
+          steps.cpr.outputs.pull-request-number != '' &&
+          steps.validate-token.outputs.wf != 'true'
         run: |
           gh workflow run docker_pr_receive.yaml --field pr_number=${{ steps.cpr.outputs.pull-request-number }}
         shell: bash

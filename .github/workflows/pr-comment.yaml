@@ -34,7 +34,7 @@ jobs:
       number: ${{ steps.get-pr.outputs.NUM }}
       msg: ${{ steps.check-pr.outputs.MSG }}
     steps:
-      - name: 'Download PR artifact'
+      - name: "Download PR artifact"
         id: dl
         uses: carpentries/actions/download-workflow-artifact@main
         with:
@@ -58,7 +58,7 @@ jobs:
       - name: "Checkout Lesson"
         uses: actions/checkout@v4
 
-      - name: Verify committed files
+      - name: "Verify committed files"
         id: changed-files
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -74,7 +74,7 @@ jobs:
             echo "only_version_file=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Skip checks for Workbench version file updates
+      - name: "Skip checks for Workbench version file updates"
         if: steps.changed-files.outputs.only_version_file == 'true'
         run: |
           echo "Only workbench-docker-version.txt changed, skipping preflight checks"
@@ -100,7 +100,7 @@ jobs:
 
       - name: "Comment result of validation"
         id: comment-diff
-        if: ${{ always() }}
+        if: always()
         uses: carpentries/actions/comment-diff@main
         with:
           pr: ${{ steps.get-pr.outputs.NUM }}
@@ -114,31 +114,31 @@ jobs:
     name: "Create Git Branch"
     needs: test-pr
     runs-on: ubuntu-latest
-    if: ${{ needs.test-pr.outputs.is_valid == 'true' }}
+    if: needs.test-pr.outputs.is_valid == 'true'
     env:
       NR: ${{ needs.test-pr.outputs.number }}
     permissions:
       contents: write
     steps:
-      - name: 'Checkout md outputs'
+      - name: "Checkout md outputs"
         uses: actions/checkout@v4
         with:
           ref: md-outputs
           path: built
           fetch-depth: 1
 
-      - name: 'Download built markdown'
+      - name: "Download built markdown"
         id: dl
         uses: carpentries/actions/download-workflow-artifact@main
         with:
           run: ${{ github.event.workflow_run.id || inputs.workflow_id }}
           name: 'built'
 
-      - if: ${{ steps.dl.outputs.success == 'true' }}
+      - if: steps.dl.outputs.success == 'true'
         run: unzip built.zip
 
       - name: "Create orphan and push"
-        if: ${{ steps.dl.outputs.success == 'true' }}
+        if: steps.dl.outputs.success == 'true'
         run: |
           cd built/
           git config --local user.email "actions@github.com"
@@ -160,25 +160,25 @@ jobs:
     name: "Comment on Pull Request"
     needs: [test-pr, create-branch]
     runs-on: ubuntu-latest
-    if: ${{ needs.test-pr.outputs.is_valid == 'true' }}
+    if: needs.test-pr.outputs.is_valid == 'true'
     env:
       NR: ${{ needs.test-pr.outputs.number }}
     permissions:
       pull-requests: write
     steps:
-      - name: 'Download comment artifact'
+      - name: "Download comment artifact"
         id: dl
         uses: carpentries/actions/download-workflow-artifact@main
         with:
           run: ${{ github.event.workflow_run.id || inputs.workflow_id }}
           name: 'diff'
 
-      - if: ${{ steps.dl.outputs.success == 'true' }}
+      - if: steps.dl.outputs.success == 'true'
         run: unzip ${{ github.workspace }}/diff.zip
 
       - name: "Comment on PR"
         id: comment-diff
-        if: ${{ steps.dl.outputs.success == 'true' }}
+        if: steps.dl.outputs.success == 'true'
         uses: carpentries/actions/comment-diff@main
         with:
           pr: ${{ env.NR }}
@@ -190,23 +190,25 @@ jobs:
     name: "Comment if workflow files have changed"
     needs: test-pr
     runs-on: ubuntu-latest
-    if: ${{ always() && needs.test-pr.outputs.is_valid == 'false' }}
+    if: |
+      always() &&
+      needs.test-pr.outputs.is_valid == 'false'
     env:
       NR: ${{ needs.test-pr.outputs.number }}
       body: ${{ needs.test-pr.outputs.msg }}
     permissions:
       pull-requests: write
     steps:
-      - name: 'Check for spoofing'
+      - name: "Check for spoofing"
         id: dl
         uses: carpentries/actions/download-workflow-artifact@main
         with:
           run: ${{ github.event.workflow_run.id || inputs.workflow_id }}
           name: 'built'
 
-      - name: 'Alert if spoofed'
+      - name: "Alert if spoofed"
         id: spoof
-        if: ${{ steps.dl.outputs.success == 'true' }}
+        if: steps.dl.outputs.success == 'true'
         run: |
           echo 'body<<EOF' >> $GITHUB_ENV
           echo '' >> $GITHUB_ENV
