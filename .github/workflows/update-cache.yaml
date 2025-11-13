@@ -53,6 +53,7 @@ jobs:
             echo "ok=false" >> $GITHUB_OUTPUT
             echo "Not Running Today"
           fi
+        shell: bash
 
   check-renv:
     name: "Check If We Need {renv}"
@@ -123,7 +124,6 @@ jobs:
       - name: "Set PAT from AWS Secrets Manager"
         if: steps.validate-org-workflow.outputs.is_valid == 'true'
         id: set-pat
-        shell: bash
         run: |
           SECRET=$(aws secretsmanager get-secret-value \
                    --secret-id carpentries-bot/github-pat \
@@ -131,6 +131,7 @@ jobs:
           PAT=$(echo "$SECRET" | jq -r .[])
           echo "::add-mask::$PAT"
           echo "pat=$PAT" >> "$GITHUB_OUTPUT"
+        shell: bash
 
       - name: "Validate token"
         id: validate-token
@@ -141,7 +142,7 @@ jobs:
       # Create the PR with the following roles in order of preference:
       # - Carpentries Bot classic PAT fetched from AWS (will only work in official Carpentries repos)
       # - repo-scoped SANDPAPER_WORKFLOW classic PAT (will work in all scenarios)
-      # - default GITHUB_TOKEN (will work suitably, but PR preflight checks will not occur)
+      # - default GITHUB_TOKEN (will work suitably, but workflows need to be triggered)
       - name: "Create Pull Request"
         id: cpr
         if: |
@@ -185,6 +186,7 @@ jobs:
         if: steps.update.outputs.n == 0
         run: |
           echo "No updates needed, skipping PR creation"
+        shell: bash
 
       - name: "Trigger Apply Cache Workflow"
         if: steps.update.outputs.n == 0

@@ -43,7 +43,6 @@ jobs:
 
       - name: Set PAT from AWS Secrets Manager
         id: set-pat
-        shell: bash
         run: |
           SECRET=$(aws secretsmanager get-secret-value \
                    --secret-id carpentries-bot/github-pat \
@@ -51,6 +50,7 @@ jobs:
           PAT=$(echo "$SECRET" | jq -r .[])
           echo "::add-mask::$PAT"
           echo "pat=$PAT" >> "$GITHUB_OUTPUT"
+        shell: bash
 
       - name: "Validate token"
         id: validate-token

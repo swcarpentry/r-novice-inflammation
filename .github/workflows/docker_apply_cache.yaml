@@ -30,6 +30,7 @@ jobs:
             echo "This was not a manual trigger and no PR was merged. No action taken."
             echo "merged_or_manual=false" >> $GITHUB_OUTPUT
           fi
+        shell: bash
 
   check-renv:
     name: "Check If We Need {renv}"
@@ -112,10 +113,12 @@ jobs:
           ls -lah /home/rstudio/.workbench
           ls -lah $(pwd)
           Rscript -e 'sessionInfo()'
+        shell: bash
 
       - name: "Mark Repository as Safe"
         run: |
           git config --global --add safe.directory $(pwd)
+        shell: bash
 
       - name: "Ensure sandpaper is loadable"
         run: |
@@ -126,10 +129,12 @@ jobs:
       - name: "Setup Lesson Dependencies"
         run: |
           Rscript /home/rstudio/.workbench/setup_lesson_deps.R
+        shell: bash
 
       - name: "Fortify renv Cache"
         run: |
           Rscript /home/rstudio/.workbench/fortify_renv_cache.R
+        shell: bash
 
       - name: "Get Container Version Used"
         id: wb-vers
@@ -137,6 +142,7 @@ jobs:
         with:
           WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG }}
           renv-needed: ${{ needs.check-renv.outputs.renv-needed }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Validate Current Org and Workflow"
         id: validate-org-workflow
