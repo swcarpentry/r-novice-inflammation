@@ -31,13 +31,20 @@ jobs:
       - name: "Check if md-outputs branch exists"
         id: check
         run: |
+          # 💡 Checking for md-outputs branch #
           if [[ -n $(git ls-remote --exit-code --heads origin md-outputs) ]]; then
             echo "exists=true" >> $GITHUB_OUTPUT
           else
             echo "exists=false" >> $GITHUB_OUTPUT
-            echo "❌ md-outputs branch required. Please merge any open package update PRs, and run the '03 Maintain: Apply Package Cache' and '01: Maintain: Build and Deploy Site' workflows."
+            echo "::error::md-outputs branch required but does not exist."
+            echo "::error::Please merge any open package update PRs, and run the '03 Maintain: Apply Package Cache' and '01: Maintain: Build and Deploy Site' workflows."
+
+            echo "## ❌ ERROR: md-outputs branch required" >> $GITHUB_STEP_SUMMARY
+            echo "Please merge any open package update PRs, and run the '03 Maintain: Apply Package Cache' and '01: Maintain: Build and Deploy Site' workflows." >> $GITHUB_STEP_SUMMARY
+
             exit 1
           fi
+        shell: bash
 
   test-pr:
     name: "Record PR number"
@@ -49,25 +56,24 @@ jobs:
       pr_number: ${{ env.NR }}
       pr_branch: ${{ env.PR_BRANCH }}
     steps:
-      - name: "Auto: Grab PR"
-        if: ${{ github.event_name == 'pull_request' }}
-        run: |
-          echo ${{ github.event.number }} > ${{ github.workspace }}/NR
-          echo "NR=${{ github.event.number }}" >> $GITHUB_ENV
-          echo "PR_BRANCH=$(gh -R ${{ github.repository }} pr view ${{ github.event.number }} --json headRefName --jq '.headRefName')" >> $GITHUB_ENV
-
-      - name: "Manual: Grab PR"
-        if: ${{ github.event_name == 'workflow_dispatch' }}
+      - name: "Grab PR"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo ${{ inputs.pr_number }} > ${{ github.workspace }}/NR
-          echo "NR=${{ inputs.pr_number }}" >> $GITHUB_ENV
-          echo "PR_BRANCH=$(gh -R ${{ github.repository }} pr view ${{ inputs.pr_number }} --json headRefName --jq '.headRefName')" >> $GITHUB_ENV
+          if [[ "${{ github.event_name }}" == "pull_request" ]] ; then
+            PR_NUMBER=${{ github.event.number }}
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]] ; then
+            PR_NUMBER=${{ inputs.pr_number }}
+          fi
+
+          echo $PR_NUMBER > ${{ github.workspace }}/NR
+          echo "NR=$PR_NUMBER" >> $GITHUB_ENV
+          echo "PR_BRANCH=$(gh -R ${{ github.repository }} pr view $PR_NUMBER --json headRefName --jq '.headRefName')" >> $GITHUB_ENV
+        shell: bash
 
       - name: "Upload PR number"
         id: upload
-        if: ${{ always() }}
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pr
@@ -79,10 +85,12 @@ jobs:
           echo "json<<EOF
           $(curl -sL https://files.carpentries.org/invalid-hashes.json)
           EOF" >> $GITHUB_OUTPUT
+        shell: bash
 
-      - name: "echo output"
+      - name: "Debug Hashes Output"
         run: |
           echo "${{ steps.hash.outputs.json }}"
+        shell: bash
 
       - name: "Check PR"
         id: check-pr
@@ -95,32 +103,18 @@ jobs:
     name: "Check If We Need {renv}"
     runs-on: ubuntu-latest
     outputs:
-      renv-needed: ${{ steps.check-for-renv.outputs.exists }}
+      renv-needed: ${{ steps.renv-check.outputs.renv-needed }}
+      renv-cache-hashsum: ${{ steps.renv-check.outputs.renv-cache-hashsum }}
     steps:
       - name: "Checkout Lesson"
         uses: actions/checkout@v4
 
-      - name: "Check for renv"
-        id: check-for-renv
-        run: |
-          if [[ -d renv ]]; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-          fi
-
-  prepare:
-    name: "Grab renv.lock hash"
-    runs-on: ubuntu-latest
-    needs: check-renv
-
-    outputs:
-      renv-cache-hashsum: ${{ steps.set-hash.outputs.renv-cache-hashsum }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: "Calculate renv hash"
-        id: set-hash
-        run: |
-          echo "renv-cache-hashsum=${{ hashFiles('renv/profiles/lesson-requirements/renv.lock') }}" >> $GITHUB_OUTPUT
+      - name: "Is renv required?"
+        id: renv-check
+        uses: carpentries/actions/renv-checks@frog-s3-test-1
+        with:
+          CACHE_VERSION: ${{ inputs.CACHE_VERSION || '' }}
+          skip-cache-check: true
 
   build-md-source:
     name: "Build markdown source files if valid"
@@ -128,33 +122,35 @@ jobs:
       - test-pr
       - check-renv
     runs-on: ubuntu-latest
-    if: ${{ needs.test-pr.outputs.is_valid == 'true' }}
+    if: needs.test-pr.outputs.is_valid == 'true'
     env:
       CHIVE: ${{ github.workspace }}/site/chive
       PR: ${{ github.workspace }}/site/pr
       GHWMD: ${{ github.workspace }}/site/built
       PR_BRANCH: ${{ needs.test-pr.outputs.pr_branch }}
       PR_NUMBER: ${{ needs.test-pr.outputs.pr_number }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       checks: write
       contents: write
       pages: write
+      id-token: write # OIDC permission required
     container:
       image: carpentries/workbench-docker:${{ vars.WORKBENCH_TAG || 'latest' }}
       env:
         WORKBENCH_PROFILE: "ci"
         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         RENV_PATHS_ROOT: /home/rstudio/lesson/renv
         RENV_PROFILE: "lesson-requirements"
         RENV_CONFIG_EXTERNAL_LIBRARIES: "/usr/local/lib/R/site-library"
       volumes:
         - ${{ github.workspace }}:/home/rstudio/lesson
       options: --cpus 2
+    outputs:
+      workbench-update: ${{ steps.wb-vers.outputs.workbench-update }}
     steps:
-      - name: "Check Out PR Branch"
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ env.PR_BRANCH }}
+      - uses: actions/checkout@v4
 
       - name: "Check Out Staging Branch"
         uses: actions/checkout@v4
@@ -165,6 +161,8 @@ jobs:
       - name: Mark Repository as Safe
         run: |
           git config --global --add safe.directory $(pwd)
+          git config --global --add safe.directory /home/rstudio/lesson
+        shell: bash
 
       - name: "Ensure sandpaper is loadable"
         run: |
@@ -175,11 +173,60 @@ jobs:
       - name: Setup Lesson Dependencies
         run: |
           Rscript /home/rstudio/.workbench/setup_lesson_deps.R
+        shell: bash
+
+      - name: Get Container Version Used
+        id: wb-vers
+        if: needs.check-renv.outputs.renv-needed == 'true'
+        uses: carpentries/actions/container-version@frog-s3-test-1
+        with:
+          WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG }}
+          renv-needed: ${{ needs.check-renv.outputs.renv-needed }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "Validate Current Org and Workflow"
+        id: validate-org-workflow
+        if: needs.check-renv.outputs.renv-needed == 'true'
+        uses: carpentries/actions/validate-org-workflow@frog-s3-test-1
+        with:
+          repo: ${{ github.repository }}
+          workflow: ${{ github.workflow }}
+
+      - name: Configure AWS credentials via OIDC
+        id: aws-creds
+        if: |
+          steps.validate-org-workflow.outputs.is_valid == 'true' &&
+          needs.check-renv.outputs.renv-needed == 'true'
+        uses: aws-actions/configure-aws-credentials@v5.0.0
+        with:
+          role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
+          aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
+          output-credentials: true
+
+      - name: Get cache object from S3
+        id: s3-cache
+        uses: carpentries/actions-cache@frog-matchedkey-1
+        if: needs.check-renv.outputs.renv-needed == 'true'
+        with:
+          # insecure: false # optional, use http instead of https. default false
+          accessKey: ${{ steps.aws-creds.outputs.aws-access-key-id }}
+          secretKey: ${{ steps.aws-creds.outputs.aws-secret-access-key }}
+          sessionToken: ${{ steps.aws-creds.outputs.aws-session-token }}
+          bucket: workbench-docker-caches
+          path: |
+            /home/rstudio/lesson/renv
+            /usr/local/lib/R/site-library
+          key: ${{ github.repository }}/${{ steps.wb-vers.outputs.container-version }}_renv-${{ needs.check-renv.outputs.renv-cache-hashsum }}
+          restore-keys:
+            ${{ github.repository }}/${{ steps.wb-vers.outputs.container-version }}_renv-
 
       - name: "Fortify renv Cache"
-        if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
+        if: |
+          needs.check-renv.outputs.renv-needed == 'true' &&
+          steps.s3-cache.outputs.cache-hit != 'true'
         run: |
           Rscript /home/rstudio/.workbench/fortify_renv_cache.R
+        shell: bash
 
       - name: "Validate and Build Markdown"
         id: build-site
@@ -228,24 +275,43 @@ jobs:
         shell: Rscript {0}
 
   pr-checks:
-    name: "Trigger PR Checks"
+    name: "Trigger PR Checks?"
     needs:
       - test-pr
       - build-md-source
     runs-on: ubuntu-latest
-    if: ${{ needs.test-pr.outputs.is_valid == 'true' }}
+    if: needs.test-pr.outputs.is_valid == 'true'
     permissions:
-      contents: read
       actions: write
       checks: write
-      pull-requests: write
     steps:
       - name: "Checkout Lesson"
         uses: actions/checkout@v4
 
       - name: "Trigger PR Checks"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh workflow run pr-comment.yaml --field workflow_id=${{ github.run_id }}
+          gh workflow run pr-comment.yaml --ref main --field workflow_id=${{ github.run_id }}
+        shell: bash
+
+  cache-update:
+    name: "Trigger Update Cache Workflow?"
+    needs:
+      - check-renv
+      - build-md-source
+    runs-on: ubuntu-latest
+    if: |
+      needs.check-renv.outputs.renv-needed == 'true' &&
+      needs.build-md-source.outputs.workbench-update == 'true' &&
+      needs.build-md-source.build-site.outcome == 'success'
+    permissions:
+      actions: write
+      checks: write
+    steps:
+      - name: "Trigger renv rebuild"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run update-cache.yaml
         shell: bash

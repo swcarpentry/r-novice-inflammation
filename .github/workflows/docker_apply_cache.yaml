@@ -10,6 +10,8 @@ on:
   pull_request:
     types:
       - closed
+    branches:
+      - main
 
 jobs:
   preflight:
@@ -28,57 +30,68 @@ jobs:
             echo "This was not a manual trigger and no PR was merged. No action taken."
             echo "merged_or_manual=false" >> $GITHUB_OUTPUT
           fi
+        shell: bash
 
   check-renv:
     name: "Check If We Need {renv}"
     runs-on: ubuntu-latest
     needs: preflight
-    if: ${{ needs.preflight.outputs.do-apply == 'true' }}
+    if: needs.preflight.outputs.do-apply == 'true'
+    permissions:
+      id-token: write # OIDC permission required
     outputs:
-      renv-needed: ${{ steps.check-for-renv.outputs.exists }}
+      renv-needed: ${{ steps.check-for-renv.outputs.renv-needed }}
+      renv-cache-hashsum: ${{ steps.check-for-renv.outputs.renv-cache-hashsum }}
+      renv-cache-available: ${{ steps.check-for-renv.outputs.renv-cache-available }}
     steps:
-      - name: "Checkout Lesson"
-        uses: actions/checkout@v4
-
       - name: "Check for renv"
         id: check-for-renv
-        run: |
-          if [[ -d renv ]]; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-          fi
+        uses: carpentries/actions/renv-checks@frog-s3-test-1
+        with:
+          role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
+          aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
+          WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG || 'latest' }}
 
-  prepare:
-    name: "Grab renv.lock hash"
+  no-renv-cache-used:
+    name: "No renv cache used"
     runs-on: ubuntu-latest
     needs: check-renv
-    if: ${{ needs.check-renv.outputs.renv-needed == 'true' }}
-    outputs:
-      renv-cache-hashsum: ${{ steps.set-hash.outputs.renv-cache-hashsum }}
+    if: needs.check-renv.outputs.renv-needed != 'true'
     steps:
-      - uses: actions/checkout@v4
+      - name: "No renv cache needed"
+        run: echo "No renv cache needed for this lesson"
 
-      - name: Calculate renv hash
-        id: set-hash
-        run: |
-          echo "renv-cache-hashsum=${{ hashFiles('renv/profiles/lesson-requirements/renv.lock') }}" >> $GITHUB_OUTPUT
+  renv-cache-available:
+    name: "renv cache available"
+    runs-on: ubuntu-latest
+    needs: check-renv
+    if: needs.check-renv.outputs.renv-cache-available == 'true'
+    steps:
+      - name: "renv cache available"
+        run: echo "renv cache available for this lesson"
 
   update-renv-cache:
     name: "Update renv Cache"
+    runs-on: ubuntu-latest
+    needs: check-renv
     if: |
-      github.event_name == 'workflow_dispatch' ||
+      needs.check-renv.outputs.renv-needed == 'true' &&
+      needs.check-renv.outputs.renv-cache-available != 'true' &&
       (
-        github.event.pull_request.merged == true &&
-        contains(
-          join(github.event.pull_request.labels.*.name, ','),
-          'type: package cache'
+        github.event_name == 'workflow_dispatch' ||
+        (
+          github.event.pull_request.merged == true &&
+          contains(
+            join(github.event.pull_request.labels.*.name, ','),
+            'type: package cache'
+          )
         )
       )
-    runs-on: ubuntu-latest
-    needs: prepare
     permissions:
       checks: write
       contents: write
       pages: write
+      id-token: write # OIDC permission required
     container:
       image: carpentries/workbench-docker:${{ vars.WORKBENCH_TAG || 'latest' }}
       env:
@@ -92,22 +105,20 @@ jobs:
         - ${{ github.workspace }}:/home/rstudio/lesson
       options: --cpus 2
     steps:
-      - name: "Checkout Lesson"
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Current env
-        run: env | sort
-
-      - name: Debugging Info
+      - name: "Debugging Info"
         run: |
           echo "Current Directory: $(pwd)"
           ls -lah /home/rstudio/.workbench
           ls -lah $(pwd)
           Rscript -e 'sessionInfo()'
+        shell: bash
 
-      - name: Mark Repository as Safe
+      - name: "Mark Repository as Safe"
         run: |
           git config --global --add safe.directory $(pwd)
+        shell: bash
 
       - name: "Ensure sandpaper is loadable"
         run: |
@@ -115,31 +126,65 @@ jobs:
           library(sandpaper)
         shell: Rscript {0}
 
-      - name: Setup Lesson Dependencies
+      - name: "Setup Lesson Dependencies"
         run: |
           Rscript /home/rstudio/.workbench/setup_lesson_deps.R
-
-      - name: Fortify renv Cache
-        run: |
-          Rscript /home/rstudio/.workbench/fortify_renv_cache.R
-
-      - name: Get Container Version Used
-        run: |
-          tag=${{ vars.WORKBENCH_TAG || 'latest' }}
-          digest=$(curl -s "https://hub.docker.com/v2/repositories/carpentries/workbench-docker/tags?name=$tag" | jq -r '.results[] | select(.name == "'$tag'") | .digest')
-          if [[ "$tag" == "latest" ]]; then
-            vers=$(curl -s "https://hub.docker.com/v2/repositories/carpentries/workbench-docker/tags" | jq -r '.results[] | select(.digest == "'$digest'") | .name')
-            ver=$(echo "$vers" | grep -Po "^v.*")
-          else
-            ver="$tag"
-          fi
-          echo "CONTAINER_VER=$ver" >> $GITHUB_ENV
         shell: bash
 
-      - name: Cache renv Directory
-        uses: actions/cache@v4
+      - name: "Fortify renv Cache"
+        run: |
+          Rscript /home/rstudio/.workbench/fortify_renv_cache.R
+        shell: bash
+
+      - name: "Get Container Version Used"
+        id: wb-vers
+        uses: carpentries/actions/container-version@frog-s3-test-1
         with:
-          path: /home/rstudio/lesson/renv
-          key: ${{ env.CONTAINER_VER }}-${{ inputs.cache-version }}-renv-${{ needs.prepare.outputs.renv-cache-hashsum }}
+          WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG }}
+          renv-needed: ${{ needs.check-renv.outputs.renv-needed }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "Validate Current Org and Workflow"
+        id: validate-org-workflow
+        uses: carpentries/actions/validate-org-workflow@frog-s3-test-1
+        with:
+          repo: ${{ github.repository }}
+          workflow: ${{ github.workflow }}
+
+      - name: "Configure AWS credentials via OIDC"
+        id: aws-creds
+        if: steps.validate-org-workflow.outputs.is_valid == 'true'
+        uses: aws-actions/configure-aws-credentials@v5.0.0
+        with:
+          role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
+          aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
+          output-credentials: true
+
+      - name: "Upload cache object to S3"
+        uses: carpentries/actions-cache@frog-matchedkey-1
+        with:
+          # insecure: false # optional, use http instead of https. default false
+          accessKey: ${{ steps.aws-creds.outputs.aws-access-key-id }}
+          secretKey: ${{ steps.aws-creds.outputs.aws-secret-access-key }}
+          sessionToken: ${{ steps.aws-creds.outputs.aws-session-token }}
+          bucket: workbench-docker-caches
+          path: |
+            /home/rstudio/lesson/renv
+            /usr/local/lib/R/site-library
+          key: ${{ github.repository }}/${{ steps.wb-vers.outputs.container-version }}_renv-${{ needs.check-renv.outputs.renv-cache-hashsum }}
           restore-keys:
-            ${{ env.CONTAINER_VER }}-${{ inputs.cache-version }}-renv-
+            ${{ github.repository }}/${{ steps.wb-vers.outputs.container-version }}_renv-
+
+  # trigger the build deploy workflow if update-renv-cache was successful
+  trigger-build-deploy:
+    name: "Trigger Build and Deploy Workflow"
+    runs-on: ubuntu-latest
+    needs: [check-renv, update-renv-cache]
+    if: needs.update-renv-cache.outcome == 'success'
+    steps:
+      - name: "Trigger Build and Deploy Workflow"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run docker_build_deploy.yaml --ref main
+        shell: bash
