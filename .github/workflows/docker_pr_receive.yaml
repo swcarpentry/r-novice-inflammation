@@ -9,6 +9,7 @@ on:
       pr_number:
         type: number
         required: true
+
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
@@ -194,18 +195,23 @@ jobs:
 
       - name: Configure AWS credentials via OIDC
         id: aws-creds
-        if: |
-          steps.validate-org-workflow.outputs.is_valid == 'true' &&
-          needs.check-renv.outputs.renv-needed == 'true'
-        uses: aws-actions/configure-aws-credentials@v5.0.0
-        with:
+        env:
           role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
           aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
+        if: |
+          steps.validate-org-workflow.outputs.is_valid == 'true' &&
+          needs.check-renv.outputs.renv-needed == 'true' &&
+          env.role-to-assume != '' &&
+          env.aws-region != ''
+        uses: aws-actions/configure-aws-credentials@v5.0.0
+        with:
+          role-to-assume: ${{ env.role-to-assume }}
+          aws-region: ${{ env.aws-region }}
           output-credentials: true
 
       - name: Get cache object from S3
         id: s3-cache
-        uses: carpentries/actions-cache@frog-matchedkey-1
+        uses: carpentries/actions-cache/restore@frog-matchedkey-1
         if: needs.check-renv.outputs.renv-needed == 'true'
         with:
           # insecure: false # optional, use http instead of https. default false
