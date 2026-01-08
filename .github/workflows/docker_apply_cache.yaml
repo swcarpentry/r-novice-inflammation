@@ -1,5 +1,5 @@
 name: "03 Maintain: Apply Package Cache"
-
+description: "Generate the package cache for the lesson after a pull request has been merged or via manual trigger, and cache in S3 or GitHub"
 on:
   workflow_dispatch:
     inputs:
@@ -51,7 +51,7 @@ jobs:
     steps:
       - name: "Check for renv"
         id: check-for-renv
-        uses: carpentries/actions/renv-checks@frog-s3-test-1
+        uses: carpentries/actions/renv-checks@main
         with:
           role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
           aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
@@ -144,7 +144,7 @@ jobs:
 
       - name: "Get Container Version Used"
         id: wb-vers
-        uses: carpentries/actions/container-version@frog-s3-test-1
+        uses: carpentries/actions/container-version@main
         with:
           WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG }}
           renv-needed: ${{ needs.check-renv.outputs.renv-needed }}
@@ -152,7 +152,7 @@ jobs:
 
       - name: "Validate Current Org and Workflow"
         id: validate-org-workflow
-        uses: carpentries/actions/validate-org-workflow@frog-s3-test-1
+        uses: carpentries/actions/validate-org-workflow@main
         with:
           repo: ${{ github.repository }}
           workflow: ${{ github.workflow }}
@@ -173,9 +173,9 @@ jobs:
           output-credentials: true
 
       - name: "Upload cache object to S3"
+        id: upload-cache
         uses: carpentries/actions-cache@frog-matchedkey-1
         with:
-          # insecure: false # optional, use http instead of https. default false
           accessKey: ${{ steps.aws-creds.outputs.aws-access-key-id }}
           secretKey: ${{ steps.aws-creds.outputs.aws-secret-access-key }}
           sessionToken: ${{ steps.aws-creds.outputs.aws-session-token }}
@@ -186,6 +186,23 @@ jobs:
           key: ${{ github.repository }}/${{ steps.wb-vers.outputs.container-version }}_renv-${{ needs.check-renv.outputs.renv-cache-hashsum }}
           restore-keys:
             ${{ github.repository }}/${{ steps.wb-vers.outputs.container-version }}_renv-
+
+      - name: "List current cache objects in S3 bucket"
+        uses: gsaraf/aws-s3-github-action@master
+        env:
+          role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
+          aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
+        if: |
+          steps.upload-cache.outcome == 'success' &&
+          steps.validate-org-workflow.outputs.is_valid == 'true' &&
+          env.role-to-assume != '' &&
+          env.aws-region != ''
+        with:
+          command: ls
+          source: s3://workbench-docker-caches/${{ github.repository }}/
+          aws_access_key_id: ${{ steps.aws-creds.outputs.aws-access-key-id }}
+          aws_secret_access_key: ${{ steps.aws-creds.outputs.aws-secret-access-key }}
+          aws_region: ${{ env.aws-region }}
 
   # trigger the build deploy workflow if update-renv-cache was successful
   trigger-build-deploy:

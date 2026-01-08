@@ -1,5 +1,5 @@
 name: "01 Maintain: Build and Deploy Site"
-
+description: "Build and deploy the lesson site using the carpentries/workbench-docker container"
 on:
   push:
     branches:
@@ -53,7 +53,7 @@ jobs:
     steps:
       - name: "Should we run build and deploy?"
         id: build-check
-        uses: carpentries/actions/build-preflight@frog-s3-test-1
+        uses: carpentries/actions/build-preflight@main
 
       - name: "Checkout Lesson"
         if: steps.build-check.outputs.do-build == 'true'
@@ -62,7 +62,7 @@ jobs:
       - name: "Get container version info"
         id: wb-vers
         if: steps.build-check.outputs.do-build == 'true'
-        uses: carpentries/actions/container-version@frog-s3-test-1
+        uses: carpentries/actions/container-version@main
         with:
           WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG }}
           renv-needed: ${{ steps.build-check.outputs.renv-needed }}
@@ -115,7 +115,7 @@ jobs:
 
       - name: "Setup Lesson Dependencies"
         id: build-container-deps
-        uses: carpentries/actions/build-container-deps@frog-s3-test-1
+        uses: carpentries/actions/build-container-deps@main
         with:
           CACHE_VERSION: ${{ vars.CACHE_VERSION || github.event.inputs.CACHE_VERSION || '' }}
           WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG || 'latest' }}
@@ -126,7 +126,7 @@ jobs:
 
       - name: "Run Container and Build Site"
         id: build-and-deploy
-        uses: carpentries/actions/build-and-deploy@frog-s3-test-1
+        uses: carpentries/actions/build-and-deploy@main
         with:
           reset: ${{ github.event.inputs.reset || 'false' }}
           skip-manage-deps: ${{ github.event.inputs.force-skip-manage-deps == 'true' || steps.build-container-deps.outputs.renv-cache-available || steps.build-container-deps.outputs.backup-cache-used || 'false' }}
@@ -148,7 +148,7 @@ jobs:
       )
     steps:
       - name: "Record container version used"
-        uses: carpentries/actions/record-container-version@frog-s3-test-1
+        uses: carpentries/actions/record-container-version@main
         with:
           CONTAINER_VER: ${{ needs.preflight.outputs.wb-vers }}
           token: ${{ secrets.GITHUB_TOKEN }}
