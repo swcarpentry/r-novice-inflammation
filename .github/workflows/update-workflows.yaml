@@ -1,5 +1,5 @@
 name: "04 Maintain: Update Workflow Files"
-
+description: "Update workflow files from the carpentries/sandpaper repository"
 on:
   workflow_dispatch:
     inputs:

@@ -1,5 +1,5 @@
 name: "Bot: Receive Pull Request"
-
+description: "Receive a pull request and build the markdown source files"
 on:
   pull_request:
     types:
@@ -112,7 +112,7 @@ jobs:
 
       - name: "Is renv required?"
         id: renv-check
-        uses: carpentries/actions/renv-checks@frog-s3-test-1
+        uses: carpentries/actions/renv-checks@main
         with:
           CACHE_VERSION: ${{ inputs.CACHE_VERSION || '' }}
           skip-cache-check: true
@@ -179,7 +179,7 @@ jobs:
       - name: Get Container Version Used
         id: wb-vers
         if: needs.check-renv.outputs.renv-needed == 'true'
-        uses: carpentries/actions/container-version@frog-s3-test-1
+        uses: carpentries/actions/container-version@main
         with:
           WORKBENCH_TAG: ${{ vars.WORKBENCH_TAG }}
           renv-needed: ${{ needs.check-renv.outputs.renv-needed }}
@@ -188,7 +188,7 @@ jobs:
       - name: "Validate Current Org and Workflow"
         id: validate-org-workflow
         if: needs.check-renv.outputs.renv-needed == 'true'
-        uses: carpentries/actions/validate-org-workflow@frog-s3-test-1
+        uses: carpentries/actions/validate-org-workflow@main
         with:
           repo: ${{ github.repository }}
           workflow: ${{ github.workflow }}

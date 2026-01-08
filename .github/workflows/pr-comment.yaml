@@ -1,5 +1,5 @@
 name: "Bot: Comment on the Pull Request"
-
+description: "Comment on the pull request with the results of the markdown generation"
 on:
   workflow_dispatch:
     inputs:

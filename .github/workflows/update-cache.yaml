@@ -1,5 +1,5 @@
 name: "02 Maintain: Check for Updated Packages"
-
+description: "Check for updated R packages and create a pull request to update the lesson's renv lockfile and package cache"
 on:
   workflow_dispatch:
     inputs:
@@ -68,7 +68,7 @@ jobs:
 
       - name: "Is renv required?"
         id: renv-check
-        uses: carpentries/actions/renv-checks@frog-s3-test-1
+        uses: carpentries/actions/renv-checks@main
         with:
           CACHE_VERSION: ${{ inputs.CACHE_VERSION || '' }}
           skip-cache-check: true
@@ -100,7 +100,7 @@ jobs:
 
       - name: "Update {renv} deps and determine if a PR is needed"
         id: update
-        uses: carpentries/actions/update-lockfile@frog-s3-test-1
+        uses: carpentries/actions/update-lockfile@main
         with:
           update: ${{ env.UPDATE_PACKAGES }}
           force-renv-init: ${{ env.FORCE_RENV_INIT }}
@@ -109,7 +109,7 @@ jobs:
 
       - name: "Validate Current Org and Workflow"
         id: validate-org-workflow
-        uses: carpentries/actions/validate-org-workflow@frog-s3-test-1
+        uses: carpentries/actions/validate-org-workflow@main
         with:
           repo: ${{ github.repository }}
           workflow: ${{ github.workflow }}
@@ -144,12 +144,6 @@ jobs:
           echo "::add-mask::$PAT"
           echo "pat=$PAT" >> "$GITHUB_OUTPUT"
         shell: bash
-
-      # - name: "Validate token"
-      #   id: validate-token
-      #   uses: carpentries/actions/check-valid-credentials@main
-      #   with:
-      #     token: ${{ steps.set-pat.outputs.pat || secrets.SANDPAPER_WORKFLOW || secrets.GITHUB_TOKEN }}
 
       # Create the PR with the following roles in order of preference:
       # - Carpentries Bot classic PAT fetched from AWS (will only work in official Carpentries repos)
