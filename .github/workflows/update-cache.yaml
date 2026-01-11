@@ -1,5 +1,5 @@
 name: "02 Maintain: Check for Updated Packages"
-
+description: "Check for updated R packages and create a pull request to update the lesson's renv lockfile and package cache"
 on:
   workflow_dispatch:
     inputs:
@@ -7,8 +7,8 @@ on:
         description: 'Who triggered this build?'
         required: true
         default: 'Maintainer (via GitHub)'
-      skip-restore:
-        description: 'Force lockfile update?'
+      force-renv-init:
+        description: 'Force full lockfile update?'
         required: false
         default: false
         type: boolean
@@ -27,9 +27,9 @@ on:
     - cron: '0 0 * * 2'
 
 env:
-  LOCKFILE_CACHE_GEN: ${{ github.event.inputs.generate-cache || 'false' }}
-  SKIP_RENV_RESTORE: ${{ github.event.inputs.skip-restore || 'false' }}
-  UPDATE_PACKAGES: ${{ github.event.inputs.update-packages || 'true' }}
+  LOCKFILE_CACHE_GEN: ${{ vars.LOCKFILE_CACHE_GEN || github.event.inputs.generate-cache || 'false' }}
+  FORCE_RENV_INIT: ${{ vars.FORCE_RENV_INIT || github.event.inputs.force-renv-init || 'false' }}
+  UPDATE_PACKAGES: ${{ vars.UPDATE_PACKAGES || github.event.inputs.update-packages || 'true' }}
 
 jobs:
   preflight:
@@ -68,7 +68,7 @@ jobs:
 
       - name: "Is renv required?"
         id: renv-check
-        uses: carpentries/actions/renv-checks@frog-s3-test-1
+        uses: carpentries/actions/renv-checks@main
         with:
           CACHE_VERSION: ${{ inputs.CACHE_VERSION || '' }}
           skip-cache-check: true
@@ -103,26 +103,38 @@ jobs:
         uses: carpentries/actions/update-lockfile@main
         with:
           update: ${{ env.UPDATE_PACKAGES }}
-          skip-restore: ${{ env.SKIP_RENV_RESTORE }}
+          force-renv-init: ${{ env.FORCE_RENV_INIT }}
           generate-cache: ${{ env.LOCKFILE_CACHE_GEN }}
           cache-version: ${{ secrets.CACHE_VERSION }}
 
       - name: "Validate Current Org and Workflow"
         id: validate-org-workflow
-        uses: carpentries/actions/validate-org-workflow@frog-s3-test-1
+        uses: carpentries/actions/validate-org-workflow@main
         with:
           repo: ${{ github.repository }}
           workflow: ${{ github.workflow }}
 
       - name: "Configure AWS credentials via OIDC"
-        if: steps.validate-org-workflow.outputs.is_valid == 'true'
-        uses: aws-actions/configure-aws-credentials@v5.0.0
-        with:
+        env:
           role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
           aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
+        if: |
+          steps.validate-org-workflow.outputs.is_valid == 'true' &&
+          env.role-to-assume != '' &&
+          env.aws-region != ''
+        uses: aws-actions/configure-aws-credentials@v5.0.0
+        with:
+          role-to-assume: ${{ env.role-to-assume }}
+          aws-region: ${{ env.aws-region }}
 
       - name: "Set PAT from AWS Secrets Manager"
-        if: steps.validate-org-workflow.outputs.is_valid == 'true'
+        env:
+          role-to-assume: ${{ secrets.AWS_GH_OIDC_ARN }}
+          aws-region: ${{ secrets.AWS_GH_OIDC_REGION }}
+        if: |
+          steps.validate-org-workflow.outputs.is_valid == 'true' &&
+          env.role-to-assume != '' &&
+          env.aws-region != ''
         id: set-pat
         run: |
           SECRET=$(aws secretsmanager get-secret-value \
@@ -133,12 +145,6 @@ jobs:
           echo "pat=$PAT" >> "$GITHUB_OUTPUT"
         shell: bash
 
-      - name: "Validate token"
-        id: validate-token
-        uses: carpentries/actions/check-valid-credentials@main
-        with:
-          token: ${{ steps.set-pat.outputs.pat || secrets.SANDPAPER_WORKFLOW }}
-
       # Create the PR with the following roles in order of preference:
       # - Carpentries Bot classic PAT fetched from AWS (will only work in official Carpentries repos)
       # - repo-scoped SANDPAPER_WORKFLOW classic PAT (will work in all scenarios)
@@ -146,12 +152,8 @@ jobs:
       - name: "Create Pull Request"
         id: cpr
         if: |
-          steps.update.outputs.n > 0 &&
-          (
-            steps.validate-token.outputs.wf == 'true' ||
-            steps.validate-org-workflow.outputs.is_valid == 'false'
-          )
-        uses: peter-evans/create-pull-request@v7.0.8
+          steps.update.outputs.n > 0
+        uses: carpentries/create-pull-request@main
         with:
           token: ${{ steps.set-pat.outputs.pat || secrets.SANDPAPER_WORKFLOW || secrets.GITHUB_TOKEN }}
           delete-branch: true
@@ -199,7 +201,7 @@ jobs:
       - name: "Trigger checks"
         if: |
           steps.cpr.outputs.pull-request-number != '' &&
-          steps.validate-token.outputs.wf != 'true'
+          steps.validate-org-workflow.outputs.is_valid != 'true'
         run: |
           gh workflow run docker_pr_receive.yaml --field pr_number=${{ steps.cpr.outputs.pull-request-number }}
         shell: bash

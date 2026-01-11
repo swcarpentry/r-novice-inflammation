@@ -1,5 +1,5 @@
 name: "Bot: Comment on the Pull Request"
-
+description: "Comment on the pull request with the results of the markdown generation"
 on:
   workflow_dispatch:
     inputs:
@@ -64,21 +64,28 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ## Get list of changed files in the PR ##
-          FILES=$(gh pr view ${{ steps.get-pr.outputs.NUM }} --json files --jq '.files[].path')
-          FILE_COUNT=$(echo "$FILES" | wc -l)
+          ONLY_VERSION=$(gh pr view ${{ steps.get-pr.outputs.NUM }} --json files --jq '
+            .files |
+            length == 1 and
+            .[0].path == ".github/workbench-docker-version.txt"
+          ')
 
-          # Check if only docker-version.txt changed
-          if [ "$FILE_COUNT" -eq 1 ] && echo "$FILES" | grep -q "^workbench-docker-version\.txt$"; then
+          if [[ "$ONLY_VERSION" == "true" ]]; then
             echo "only_version_file=true" >> $GITHUB_OUTPUT
           else
             echo "only_version_file=false" >> $GITHUB_OUTPUT
           fi
+        shell: bash
 
       - name: "Skip checks for Workbench version file updates"
         if: steps.changed-files.outputs.only_version_file == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Only workbench-docker-version.txt changed, skipping preflight checks"
+          echo "Only workbench-docker-version.txt changed, skipping preflight checks and running cache update"
+          gh workflow run update-cache.yaml --ref main
           exit 0
+        shell: bash
 
       - name: "Get Invalid Hashes File"
         id: hash
