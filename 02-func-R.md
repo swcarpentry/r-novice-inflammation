@@ -467,7 +467,8 @@ logical: returning NA
 ```
 
 ``` error
-Error in data - mean(data, na.rm = TRUE): non-numeric argument to binary operator
+Error in `data - mean(data, na.rm = TRUE)`:
+! non-numeric argument to binary operator
 ```
 
 Both of these attempts result in errors.
@@ -581,7 +582,8 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
 
 ``` error
-Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
+Error in `read.table()`:
+! 'file' must be a character string or connection
 ```
 
 To understand what's going on, and make our own functions easier to use, let's re-define our `center` function like this:
@@ -733,7 +735,8 @@ dat <- read.csv(FALSE, "data/inflammation-01.csv")
 ```
 
 ``` error
-Error in read.table(file = file, header = header, sep = sep, quote = quote, : 'file' must be a character string or connection
+Error in `read.table()`:
+! 'file' must be a character string or connection
 ```
 
 It fails because `FALSE` is assigned to `file` and the filename is assigned to the argument `header`.

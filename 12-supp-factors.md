@@ -92,7 +92,8 @@ min(food) # doesn't work
 ```
 
 ``` error
-Error in Summary.factor(structure(c(1L, 3L, 2L, 3L, 1L, 2L, 3L), levels = c("low", : 'min' not meaningful for factors
+Error in `Summary.factor()`:
+! 'min' not meaningful for factors
 ```
 
 ``` r
@@ -360,7 +361,7 @@ dat$Gender <- droplevels(dat$Gender)
 plot(x = dat$Gender, y = dat$BloodPressure)
 ```
 
-<img src="fig/12-supp-factors-rendered-dropping-levels-1.svg" style="display: block; margin: auto;" />
+<img src="fig/12-supp-factors-rendered-dropping-levels-1.svg" alt="" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -374,7 +375,7 @@ levels(dat$Gender)[2] <- 'f'
 plot(x = dat$Gender, y = dat$BloodPressure)
 ```
 
-<img src="fig/12-supp-factors-rendered-adjusting-levels-1.svg" style="display: block; margin: auto;" />
+<img src="fig/12-supp-factors-rendered-adjusting-levels-1.svg" alt="" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

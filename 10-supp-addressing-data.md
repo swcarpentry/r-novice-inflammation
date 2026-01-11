@@ -512,7 +512,8 @@ dat2 <- read.csv(file = 'data/sample.csv', header = TRUE, stringsAsFactors = FAL
 ```
 
 ``` error
-Error in read.table(file = file, header = header, sep = sep, quote = quote, : duplicate 'row.names' are not allowed
+Error in `read.table()`:
+! duplicate 'row.names' are not allowed
 ```
 
 ### Addressing by Logical Vector
@@ -577,7 +578,7 @@ Often this operation is written as one line of code:
 plot(dat[dat$Group == 'Control', ]$BloodPressure)
 ```
 
-<img src="fig/10-supp-addressing-data-rendered-logical_vectors_indexing2-1.svg" style="display: block; margin: auto;" />
+<img src="fig/10-supp-addressing-data-rendered-logical_vectors_indexing2-1.svg" alt="" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -594,7 +595,7 @@ plot(dat[dat$Group == 'Control', ]$BloodPressure)
   plot(dat[dat$Group != 'Control', ]$BloodPressure)
   ```
   
-  <img src="fig/10-supp-addressing-data-rendered-plot-logical-1.svg" style="display: block; margin: auto;" />
+  <img src="fig/10-supp-addressing-data-rendered-plot-logical-1.svg" alt="" style="display: block; margin: auto;" />
 2. In addition to
   `dat$Group != 'Control'`, one could use
   `dat$Group %in% c("Treatment1", "Treatment2")`.

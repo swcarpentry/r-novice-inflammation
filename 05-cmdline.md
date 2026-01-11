@@ -78,7 +78,7 @@ Rscript session-info.R
 ```
 
 ``` output
-R version 4.5.1 (2025-06-13)
+R version 4.5.2 (2025-10-31)
 Platform: x86_64-pc-linux-gnu
 Running under: Ubuntu 24.04.3 LTS
 
@@ -101,7 +101,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
-[1] compiler_4.5.1
+[1] compiler_4.5.2
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout

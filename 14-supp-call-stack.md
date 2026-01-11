@@ -77,7 +77,8 @@ temp_F
 ```
 
 ``` error
-Error: object 'temp_F' not found
+Error:
+! object 'temp_F' not found
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout

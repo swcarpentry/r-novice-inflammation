@@ -280,7 +280,8 @@ if (a == NA) {
 ```
 
 ``` error
-Error in if (a == NA) {: missing value where TRUE/FALSE needed
+Error in `if (a == NA) ...`:
+! missing value where TRUE/FALSE needed
 ```
 
 To solve this issue, we need to use the dedicated `is.na()` function:
@@ -319,13 +320,13 @@ dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 plot_dist(dat[, 10], threshold = 10)     # day (column) 10
 ```
 
-<img src="fig/04-cond-rendered-using-conditions-01-1.svg" style="display: block; margin: auto;" />
+<img src="fig/04-cond-rendered-using-conditions-01-1.svg" alt="" style="display: block; margin: auto;" />
 
 ``` r
 plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 ```
 
-<img src="fig/04-cond-rendered-using-conditions-01-2.svg" style="display: block; margin: auto;" />
+<img src="fig/04-cond-rendered-using-conditions-01-2.svg" alt="" style="display: block; margin: auto;" />
 
 :::::::::::::::  solution
 
@@ -499,7 +500,7 @@ Now we can use `analyze` interactively, as before,
 analyze("data/inflammation-01.csv")
 ```
 
-<img src="fig/04-cond-rendered-inflammation-01-1.svg" style="display: block; margin: auto;" /><img src="fig/04-cond-rendered-inflammation-01-2.svg" style="display: block; margin: auto;" /><img src="fig/04-cond-rendered-inflammation-01-3.svg" style="display: block; margin: auto;" />
+<img src="fig/04-cond-rendered-inflammation-01-1.svg" alt="" style="display: block; margin: auto;" /><img src="fig/04-cond-rendered-inflammation-01-2.svg" alt="" style="display: block; margin: auto;" /><img src="fig/04-cond-rendered-inflammation-01-3.svg" alt="" style="display: block; margin: auto;" />
 
 but also use it to save plots,
 
