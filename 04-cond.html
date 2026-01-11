@@ -47,6 +47,7 @@
           </ul></li>
       </div>
 
+
       <div class="dropdown" id="instructor-dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
           <i aria-hidden="true" class="icon" data-feather="eye"></i> Learner View <i data-feather="chevron-down"></i>
@@ -390,7 +391,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Making Choices</h1>
-        <p>Last updated on 2025-11-14 |
+        <p>Last updated on 2026-01-11 |
 
         <a href="https://github.com/swcarpentry/r-novice-inflammation/edit/main/episodes/04-cond.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -743,7 +744,8 @@ a <code>NA</code> value will result in an error:</p>
 <div class="codewrapper">
 <h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in if (a == NA) {: missing value where TRUE/FALSE needed</code></pre>
+<pre class="error" tabindex="0"><code>Error in `if (a == NA) ...`:
+! missing value where TRUE/FALSE needed</code></pre>
 </div>
 <p>To solve this issue, we need to use the dedicated
 <code>is.na()</code> function:</p>
@@ -793,13 +795,13 @@ stripchart otherwise. To do this you’ll use the R functions
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">read.csv</span><span class="op">(</span><span class="st">"data/inflammation-01.csv"</span>, header <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu">plot_dist</span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>, <span class="fl">10</span><span class="op">]</span>, threshold <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>     <span class="co"># day (column) 10</span></span></code></pre>
 </div>
-<figure><img src="fig/04-cond-rendered-using-conditions-01-1.svg" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb32">
+<figure><img src="fig/04-cond-rendered-using-conditions-01-1.svg" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">plot_dist</span><span class="op">(</span><span class="va">dat</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">10</span><span class="op">]</span>, threshold <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>  <span class="co"># samples (rows) 1-5 on day (column) 10</span></span></code></pre>
 </div>
-<figure><img src="fig/04-cond-rendered-using-conditions-01-2.svg" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/04-cond-rendered-using-conditions-01-2.svg" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
@@ -807,7 +809,7 @@ stripchart otherwise. To do this you’ll use the R functions
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -872,7 +874,7 @@ A histogram is made with the <code>hist</code> command in R.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -938,7 +940,7 @@ row).</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1022,7 +1024,7 @@ only executed if <code>output</code> is “not null”.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">analyze</span><span class="op">(</span><span class="st">"data/inflammation-01.csv"</span><span class="op">)</span></span></code></pre>
 </div>
-<p><img src="fig/04-cond-rendered-inflammation-01-1.svg" style="display: block; margin: auto;" class="figure"><img src="fig/04-cond-rendered-inflammation-01-2.svg" style="display: block; margin: auto;" class="figure"><img src="fig/04-cond-rendered-inflammation-01-3.svg" style="display: block; margin: auto;" class="figure"></p>
+<p><img src="fig/04-cond-rendered-inflammation-01-1.svg" alt="" style="display: block; margin: auto;" class="figure"><img src="fig/04-cond-rendered-inflammation-01-2.svg" alt="" style="display: block; margin: auto;" class="figure"><img src="fig/04-cond-rendered-inflammation-01-3.svg" alt="" style="display: block; margin: auto;" class="figure"></p>
 <p>but also use it to save plots,</p>
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1132,7 +1134,7 @@ by reading the documentation (<code>?plot</code>), update
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb55">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1219,15 +1221,17 @@ true.</li>
 	
         | <a href="https://github.com/swcarpentry/r-novice-inflammation/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/swcarpentry/r-novice-inflammation/" class="external-link">Source</a></p>
-				<p><a href="https://github.com/swcarpentry/r-novice-inflammation/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:team@carpentries.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
-			</div>
-			<div class="col-md-6">
+        <p>
+        <a href="https://github.com/swcarpentry/r-novice-inflammation/blob/main/" class="external-link">Cite</a>
+        | <a href="mailto:team@carpentries.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
+		</div>
+		<div class="col-md-6">
 
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/frog-renv-rebuild-1" class="external-link">sandpaper (0.17.2.9000)</a>, <a href="https://github.com/carpentries/pegboard/tree/7dc6acfdd6233c0d124a0ecf288325edc40dd96d" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/main" class="external-link">varnish (1.0.7)</a></p>
-			</div>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.17.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.0.9)</a></p>
+		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
 		<a href="#top">
@@ -1248,8 +1252,8 @@ true.</li>
   "url": "https://swcarpentry.github.io/r-novice-inflammation/04-cond.html",
   "identifier": "https://swcarpentry.github.io/r-novice-inflammation/04-cond.html",
   "dateCreated": "2014-12-18",
-  "dateModified": "2025-11-14",
-  "datePublished": "2025-12-30"
+  "dateModified": "2026-01-11",
+  "datePublished": "2026-01-11"
 }
 
   </script><script>
