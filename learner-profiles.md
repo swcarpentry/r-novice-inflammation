@@ -2,7 +2,7 @@
 title: Learner profiles
 ---
 
-The trainig is designed to cater to a wide range of learners, ensuring that everyone can start with a solid foundation in R programming and data analysis. Here are some specific learner profiles who would benefit from the course in different ways:
+The training is designed to cater to a wide range of learners, ensuring that everyone can start with a solid foundation in R programming and data analysis. Here are some specific learner profiles who would benefit from the course in different ways:
 
 ## Profile 1: Wet Lab Scientists Transitioning to Data Analysis
 
