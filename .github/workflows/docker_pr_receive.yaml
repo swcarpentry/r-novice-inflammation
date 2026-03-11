@@ -19,7 +19,6 @@ permissions:
   pull-requests: write
 
 jobs:
-
   preflight:
     name: "Preflight: md-outputs exists?"
     runs-on: ubuntu-latest
@@ -38,10 +37,10 @@ jobs:
           else
             echo "exists=false" >> $GITHUB_OUTPUT
             echo "::error::md-outputs branch required but does not exist."
-            echo "::error::Please merge any open package update PRs, and run the '03 Maintain: Apply Package Cache' and '01: Maintain: Build and Deploy Site' workflows."
+            echo "::error::Please merge any open package update PRs to trigger the '03 Maintain: Apply Package Cache' and '01: Maintain: Build and Deploy Site' workflows."
 
             echo "## ❌ ERROR: md-outputs branch required" >> $GITHUB_STEP_SUMMARY
-            echo "Please merge any open package update PRs, and run the '03 Maintain: Apply Package Cache' and '01: Maintain: Build and Deploy Site' workflows." >> $GITHUB_STEP_SUMMARY
+            echo "Please merge any open package update PRs to trigger the '03 Maintain: Apply Package Cache' and '01: Maintain: Build and Deploy Site' workflows." >> $GITHUB_STEP_SUMMARY
 
             exit 1
           fi
@@ -49,7 +48,9 @@ jobs:
 
   test-pr:
     name: "Record PR number"
-    if: ${{ github.event.action != 'closed' }} && ${{ needs.preflight.outputs.branch-exists == 'true' }}
+    if: |
+      github.event.action != 'closed' &&
+      needs.preflight.outputs.branch-exists == 'true'
     runs-on: ubuntu-latest
     needs: preflight
     outputs:
@@ -135,9 +136,9 @@ jobs:
       checks: write
       contents: write
       pages: write
-      id-token: write # OIDC permission required
+      id-token: write
     container:
-      image: carpentries/workbench-docker:${{ vars.WORKBENCH_TAG || 'latest' }}
+      image: ghcr.io/carpentries/workbench-docker:${{ vars.WORKBENCH_TAG || 'latest' }}
       env:
         WORKBENCH_PROFILE: "ci"
         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -150,6 +151,7 @@ jobs:
       options: --cpus 2
     outputs:
       workbench-update: ${{ steps.wb-vers.outputs.workbench-update }}
+      build-site: ${{ steps.build-site.outcome }}
     steps:
       - uses: actions/checkout@v4
 
@@ -279,45 +281,3 @@ jobs:
       - name: "Teardown"
         run: sandpaper::reset_site()
         shell: Rscript {0}
-
-  pr-checks:
-    name: "Trigger PR Checks?"
-    needs:
-      - test-pr
-      - build-md-source
-    runs-on: ubuntu-latest
-    if: needs.test-pr.outputs.is_valid == 'true'
-    permissions:
-      actions: write
-      checks: write
-    steps:
-      - name: "Checkout Lesson"
-        uses: actions/checkout@v4
-
-      - name: "Trigger PR Checks"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh workflow run pr-comment.yaml --ref main --field workflow_id=${{ github.run_id }}
-        shell: bash
-
-  cache-update:
-    name: "Trigger Update Cache Workflow?"
-    needs:
-      - check-renv
-      - build-md-source
-    runs-on: ubuntu-latest
-    if: |
-      needs.check-renv.outputs.renv-needed == 'true' &&
-      needs.build-md-source.outputs.workbench-update == 'true' &&
-      needs.build-md-source.build-site.outcome == 'success'
-    permissions:
-      actions: write
-      checks: write
-    steps:
-      - name: "Trigger renv rebuild"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh workflow run update-cache.yaml
-        shell: bash
