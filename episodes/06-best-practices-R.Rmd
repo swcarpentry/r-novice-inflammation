@@ -52,7 +52,7 @@ library(reshape)
 library(vegan)
 ```
 
-Another way you can be explicit about the requirements of your code and improve it's reproducibility is to limit the "hard-coding" of the input and output files for your script.
+Another way you can be explicit about the requirements of your code and improve its reproducibility is to limit the "hard-coding" of the input and output files for your script.
 If your code will read in data from a file, define a variable early in your code that stores the path to that file.
 For example
 
@@ -111,7 +111,7 @@ It's easy to annotate and mark your code using `#` or `#-`to set off sections of
 For example, it's often helpful when writing code to separate the function definitions.
 If you create only one or a few custom functions in your script, put them toward the top of your code.
 If you have written many functions, put them all in their own .
-R file and then` source` those files. `source` will define all of these functions so that your code can make use of them as needed.
+R file and then `source` those files. `source` will define all of these functions so that your code can make use of them as needed.
 
 ```{r source_ex, eval=FALSE}
 source("my_genius_fxns.R")

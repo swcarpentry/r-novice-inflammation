@@ -95,8 +95,8 @@ b <- 1:5
 a + b
 ```
 
-The elements of `a` and `b`are added together starting from the first element of both vectors.
-When R reaches the end of the shorter vector`b`, it starts again at the first element of `b` and continues until it reaches the last element of the longest vector `a`.
+The elements of `a` and `b` are added together starting from the first element of both vectors.
+When R reaches the end of the shorter vector `b`, it starts again at the first element of `b` and continues until it reaches the last element of the longest vector `a`.
 This behaviour may seem crazy at first glance, but it is very useful when you want to perform the same operation on every element of a vector.
 For example, say we want to multiply every element of our vector `a` by 5:
 
