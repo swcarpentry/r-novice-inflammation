@@ -88,7 +88,7 @@ read.csv(file = "data/inflammation-01.csv", header = FALSE)
 The expression `read.csv(...)` is a [function call](../learners/reference.md#function-call) that asks R to run the function `read.csv`.
 
 `read.csv` has two [arguments](../learners/reference.md#argument): the name of the file we want to read, and whether the first line of the file contains names for the columns of data.
-The filename needs to be a character string (or [string](../learners/reference.md#string)for short), so we put it in quotes.
+The filename needs to be a character string (or [string](../learners/reference.md#string) for short), so we put it in quotes.
 Assigning the second argument, `header`, to be `FALSE` indicates that the data file does not have column headers.
 We'll talk more about the value `FALSE`, and its converse `TRUE`, in lesson 04.
 In case of our `inflammation-01.csv` example, R auto-generates column names in the sequence `V1` (for "variable 1"), `V2`, and so on, until `V40`.
@@ -334,7 +334,7 @@ dim(dat)
 
 This tells us that our data frame, `dat`, has `r nrow(dat)` rows and `r ncol(dat)` columns.
 
-If we want to get a single value from the data frame, we can provide an [index](../learners/reference.md#index)in square brackets.
+If we want to get a single value from the data frame, we can provide an [index](../learners/reference.md#index) in square brackets.
 The first number specifies the row and the second the column:
 
 ```{r selecting data frame elements}
@@ -466,7 +466,7 @@ sd(dat[, 7])
 
 ## Forcing Conversion
 
-Note that R may return an error when you attempt to perform similar calculations on subsetted *rows*of data frames.
+Note that R may return an error when you attempt to perform similar calculations on subsetted *rows* of data frames.
 This is because some functions in R automatically convert the object type to a numeric vector, while others do not (e.g. `max(dat[1, ])` works as expected, while `mean(dat[1, ])` returns `NA` and a warning).
 You get the expected output by including an explicit call to `as.numeric()`, e.g. `mean(as.numeric(dat[1, ]))`.
 By contrast, calculations on subsetted *columns* always work as expected, since columns of data frames are already defined as vectors.

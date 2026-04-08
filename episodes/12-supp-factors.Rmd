@@ -33,8 +33,8 @@ Factors can be ordered or unordered and are an important class for statistical a
 Factors are stored as integers, and have labels associated with these unique integers.
 While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.
 
-Once created, factors can only contain a pre-defined set values, known as *levels*.
-By default, R always sorts*levels*in alphabetical order.
+Once created, factors can only contain a pre-defined set of values, known as *levels*.
+By default, R always sorts *levels* in alphabetical order.
 For instance, if you have a factor with 2 levels:
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -57,7 +57,7 @@ levels(sex)
 nlevels(sex)
 ```
 
-Sometimes, the order of the factors does not matter, other times you might want to specify the order because it is meaningful (e.g., "low", "medium", "high") or it is required by particular type of analysis.
+Sometimes, the order of the factors does not matter, other times you might want to specify the order because it is meaningful (e.g., "low", "medium", "high") or it is required by a particular type of analysis.
 Additionally, specifying the order of the levels allows us to compare levels:
 
 ```{r, error=TRUE}

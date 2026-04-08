@@ -100,7 +100,7 @@ We will use the [devtools] and [roxygen2] packages, which make creating packages
 Both can be installed from CRAN like this:
 
 ```{r, eval=FALSE}
-install.packages(c("devtools", "roxygen2"))  # installations can be `c`ombined
+install.packages(c("devtools", "roxygen2"))  # installations can be combined
 library("devtools")
 library("roxygen2")
 ```

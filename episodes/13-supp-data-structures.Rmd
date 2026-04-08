@@ -363,7 +363,7 @@ mdat[2, 3]
 
 In R lists act as containers.
 Unlike atomic vectors, the contents of a list are not restricted to a single mode and can encompass any mixture of data types.
-Lists are sometimes called generic vectors, because the elements of a list can by of any type of R object, even lists containing further lists.
+Lists are sometimes called generic vectors, because the elements of a list can be of any type of R object, even lists containing further lists.
 This property makes them fundamentally different from atomic vectors.
 
 A list is a special type of vector.
@@ -461,7 +461,7 @@ If the elements of a list are named, they can be referenced by the `$` notation 
 A data frame is a very important data type in R.
 It's pretty much the *de facto* data structure for most tabular data and what we use for statistics.
 
-A data frame is a *special type of list* where every element of the list has same length (i.e. data frame is a "rectangular" list).
+A data frame is a *special type of list* where every element of the list has the same length (i.e. data frame is a "rectangular" list).
 
 Data frames can have additional attributes such as `rownames()`, which can be useful for annotating data, like `subject_id` or `sample_id`.
 But most of the time they are not used.
@@ -469,10 +469,10 @@ But most of the time they are not used.
 Some additional information on data frames:
 
 - Usually created by `read.csv()` and `read.table()`, i.e. when importing the data into R.
-- Assuming all columns in a data frame are of same type, data frame can be converted to a matrix with data.matrix() (preferred) or as.matrix(). Otherwise type coercion will be enforced and the results may not always be what you expect.
+- Assuming all columns in a data frame are of the same type, data frame can be converted to a matrix with data.matrix() (preferred) or as.matrix(). Otherwise type coercion will be enforced and the results may not always be what you expect.
 - Can also create a new data frame with `data.frame()` function.
 - Find the number of rows and columns with `nrow(dat)` and `ncol(dat)`, respectively.
-- Rownames are often automatically generated and look like 1, 2, ..., n. Consistency in numbering of rownames may not be honored when rows are reshuffled or subset.
+- Row names are often automatically generated and look like 1, 2, ..., n. Consistency in numbering of rownames may not be honored when rows are reshuffled or subset.
 
 ### Creating Data Frames by Hand
 
@@ -518,7 +518,7 @@ dat[["y"]]
 dat$y
 ```
 
-The following table summarizes the one-dimensional and two-dimensional data structures in R in relation to diversity of data types they can contain.
+The following table summarizes the one-dimensional and two-dimensional data structures in R in relation to the diversity of data types they can contain.
 
 | Dimensions | Homogenous    | Heterogeneous |
 | ---------- | ------------- | ------------- |
@@ -528,7 +528,7 @@ The following table summarizes the one-dimensional and two-dimensional data stru
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 Lists can contain elements that are themselves muti-dimensional (e.g. a lists can contain data frames or another type of objects).
-Lists can also contain elements of any length, therefore list do not necessarily have to be "rectangular".
+Lists can also contain elements of any length, therefore lists do not necessarily have to be "rectangular".
 However in order for the list to qualify as a data frame, the length of each element has to be the same.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -537,7 +537,7 @@ However in order for the list to qualify as a data frame, the length of each ele
 
 ## Column Types in Data Frames
 
-Knowing that data frames are lists, can columns be of different type?
+Knowing that data frames are lists, can columns be of different types?
 
 What type of structure do you expect to see when you explore the structure of the `PlantGrowth` data frame?
 Hint: Use `str()`.

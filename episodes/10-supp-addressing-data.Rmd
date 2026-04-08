@@ -32,7 +32,7 @@ There are three main ways for addressing data inside R objects.
 - By logical vector
 - By name
 
-Lets start by loading some sample data:
+Let's start by loading some sample data:
 
 ```{r readData}
 dat <- read.csv(file = 'data/sample.csv', header = TRUE, stringsAsFactors = FALSE)
@@ -49,7 +49,7 @@ Using factors in R is covered in a separate lesson.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Lets take a look at this data.
+Let's take a look at this data.
 
 ```{r classDat}
 class(dat)
@@ -63,8 +63,8 @@ We can compactly display the internal structure of a data frame using the  struc
 str(dat)
 ```
 
-The `str` function tell us that the data has 100 rows and 9 columns.
-It is also tell us that the data frame is made up of character `chr`, integer `int` and `numeric` vectors.
+The `str` function tells us that the data has 100 rows and 9 columns.
+It is also tells us that the data frame is made up of character `chr`, integer `int` and `numeric` vectors.
 
 ```{r headDat}
 head(dat)
