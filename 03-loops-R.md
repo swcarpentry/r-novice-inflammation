@@ -120,7 +120,7 @@ print_words(best_practice[-6])
 
 ## Not Available
 
-R has has a special variable, `NA`, for designating missing values that are **N**ot **A**vailable in a data set.
+R has a special variable, `NA`, for designating missing values that are **N**ot **A**vailable in a data set.
 See `?NA` and [An Introduction to R][na] for more details.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

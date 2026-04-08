@@ -108,8 +108,8 @@ a + b
  [1]  2  4  6  8 10  7  9 11 13 15
 ```
 
-The elements of `a` and `b`are added together starting from the first element of both vectors.
-When R reaches the end of the shorter vector`b`, it starts again at the first element of `b` and continues until it reaches the last element of the longest vector `a`.
+The elements of `a` and `b` are added together starting from the first element of both vectors.
+When R reaches the end of the shorter vector `b`, it starts again at the first element of `b` and continues until it reaches the last element of the longest vector `a`.
 This behaviour may seem crazy at first glance, but it is very useful when you want to perform the same operation on every element of a vector.
 For example, say we want to multiply every element of our vector `a` by 5:
 
@@ -200,7 +200,7 @@ system.time(avg2 <- analyze2(filenames))
 
 ``` output
    user  system elapsed 
-  0.023   0.001   0.024 
+  0.024   0.000   0.023 
 ```
 
 Note how we add a new column to `out` at each iteration?

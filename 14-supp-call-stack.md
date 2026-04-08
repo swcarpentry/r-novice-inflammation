@@ -88,7 +88,7 @@ Error:
 The explanation of the stack frame above was very general and the basic concept will help you understand most languages you try to program with.
 However, R has some unique aspects that can be exploited when performing more complicated operations.
 We will not be writing anything that requires knowledge of these more advanced concepts.
-In the future when you are comfortable writing functions in R, you can learn more by reading the [R Language Manual][man] or this [chapter] from [Advanced R Programming][adv-r]by Hadley Wickham.
+In the future when you are comfortable writing functions in R, you can learn more by reading the [R Language Manual][man] or this [chapter] from [Advanced R Programming][adv-r] by Hadley Wickham.
 For context, R uses the terminology "environments" instead of frames.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -112,7 +112,7 @@ span(dat)
 [1] 20
 ```
 
-Notice `span` assigns a value to variable called `diff`.
+Notice `span` assigns a value to a variable called `diff`.
 We might very well use a variable with the same name (`diff`) to hold the inflammation data:
 
 

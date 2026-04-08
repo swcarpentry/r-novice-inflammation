@@ -99,7 +99,7 @@ Both can be installed from CRAN like this:
 
 
 ``` r
-install.packages(c("devtools", "roxygen2"))  # installations can be `c`ombined
+install.packages(c("devtools", "roxygen2"))  # installations can be combined
 library("devtools")
 library("roxygen2")
 ```

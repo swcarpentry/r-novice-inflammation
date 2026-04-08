@@ -27,7 +27,7 @@ There are three main ways for addressing data inside R objects.
 - By logical vector
 - By name
 
-Lets start by loading some sample data:
+Let's start by loading some sample data:
 
 
 ``` r
@@ -45,7 +45,7 @@ Using factors in R is covered in a separate lesson.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Lets take a look at this data.
+Let's take a look at this data.
 
 
 ``` r
@@ -78,8 +78,8 @@ str(dat)
  $ Aneurisms_q4 : int  237 248 177 220 228 294 245 251 272 185 ...
 ```
 
-The `str` function tell us that the data has 100 rows and 9 columns.
-It is also tell us that the data frame is made up of character `chr`, integer `int` and `numeric` vectors.
+The `str` function tells us that the data has 100 rows and 9 columns.
+It is also tells us that the data frame is made up of character `chr`, integer `int` and `numeric` vectors.
 
 
 ``` r

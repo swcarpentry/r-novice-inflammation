@@ -299,7 +299,7 @@ center(z, 3)
 [1] 3 3 3 3
 ```
 
-That looks right, so let's try center on our real data.
+That looks right, so let's try `center()` on our real data.
 We'll center the inflammation data from day 4 around 0:
 
 
