@@ -1,0 +1,95 @@
+#------------------------------------------------------------
+# Values for this lesson.
+#------------------------------------------------------------
+
+# Which carpentry is this (swc, dc, lc, or cp)?
+# swc: Software Carpentry
+# dc: Data Carpentry
+# lc: Library Carpentry
+# cp: Carpentries (to use for instructor training for instance)
+# incubator: The Carpentries Incubator
+carpentry: 'swc'
+
+# Overall title for pages.
+title: 'Programming with R'
+
+# Date the lesson was created (YYYY-MM-DD, this is empty by default)
+created: '2014-12-18'
+
+# Comma-separated list of keywords for the lesson
+keywords: 'software, data, lesson, The Carpentries'
+
+# Life cycle stage of the lesson
+# possible values: pre-alpha, alpha, beta, stable
+life_cycle: 'stable'
+
+# License of the lesson materials (recommended CC-BY 4.0)
+license: 'CC-BY 4.0'
+
+# Link to the source repository for this lesson
+source: 'https://github.com/swcarpentry/r-novice-inflammation'
+
+# Default branch of your lesson
+branch: 'main'
+
+# Who to contact if there are any issues
+contact: 'team@carpentries.org'
+
+# Navigation ------------------------------------------------
+#
+# Use the following menu items to specify the order of
+# individual pages in each dropdown section. Leave blank to
+# include all pages in the folder.
+#
+# Example -------------
+#
+# episodes:
+# - introduction.md
+# - first-steps.md
+#
+# learners:
+# - setup.md
+#
+# instructors:
+# - instructor-notes.md
+#
+# profiles:
+# - one-learner.md
+# - another-learner.md
+
+# Order of episodes in your lesson
+episodes: 
+- 01-starting-with-data.Rmd
+- 02-func-R.Rmd
+- 03-loops-R.Rmd
+- 04-cond.Rmd
+- 05-cmdline.Rmd
+- 06-best-practices-R.Rmd
+- 07-knitr-R.Rmd
+- 08-making-packages-R.Rmd
+- 09-supp-intro-rstudio.Rmd
+- 10-supp-addressing-data.Rmd
+- 11-supp-read-write-csv.Rmd
+- 12-supp-factors.Rmd
+- 13-supp-data-structures.Rmd
+- 14-supp-call-stack.Rmd
+- 15-supp-loops-in-depth.Rmd
+
+# Information for Learners
+learners: 
+
+# Information for Instructors
+instructors: 
+
+# Learner Profiles
+profiles: 
+
+# Customisation ---------------------------------------------
+#
+# This space below is where custom yaml items (e.g. pinning
+# sandpaper and varnish versions) should live
+
+
+url: 'https://swcarpentry.github.io/r-novice-inflammation'
+analytics: carpentries
+lang: en
