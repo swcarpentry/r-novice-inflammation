@@ -1,0 +1,24 @@
+main <- function() {
+  args <- commandArgs(trailingOnly = TRUE)
+  if (length(args) > 0) {
+    total_lines <- 0
+    for (filename in args) {
+      input <- readLines(filename)
+      num_lines <- length(input)
+      cat(filename)
+      cat(" ")
+      cat(num_lines, sep = "\n")
+      total_lines <- total_lines + num_lines
+    }
+    if (length(args) > 1) {
+      cat("Total ")
+      cat(total_lines, sep = "\n")
+    }
+  } else {
+    input <- readLines(file("stdin"))
+    num_lines <- length(input)
+    cat(num_lines, sep = "\n")
+  }
+}
+
+main()
