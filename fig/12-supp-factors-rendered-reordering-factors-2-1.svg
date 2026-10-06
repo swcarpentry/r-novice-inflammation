@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='504.00pt' height='504.00pt' viewBox='0 0 504.00 504.00'>
+<g class='svglite'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw1MDQuMDB8MC4wMHw1MDQuMDA='>
+    <rect x='0.00' y='0.00' width='504.00' height='504.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHw1MDQuMDA=)'>
+<rect x='74.40' y='59.04' width='112.94' height='367.84' style='stroke-width: 0.75; fill: #BEBEBE;' />
+<rect x='209.93' y='59.04' width='112.94' height='367.84' style='stroke-width: 0.75; fill: #BEBEBE;' />
+<rect x='345.46' y='111.59' width='112.94' height='315.29' style='stroke-width: 0.75; fill: #BEBEBE;' />
+<text x='130.87' y='456.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Nimbus Sans";' textLength='59.86px' lengthAdjust='spacingAndGlyphs'>Treatment1</text>
+<text x='266.40' y='456.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Nimbus Sans";' textLength='59.86px' lengthAdjust='spacingAndGlyphs'>Treatment2</text>
+<text x='401.93' y='456.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Nimbus Sans";' textLength='38.52px' lengthAdjust='spacingAndGlyphs'>Control</text>
+<line x1='59.04' y1='426.88' x2='59.04' y2='59.04' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='426.88' x2='51.84' y2='426.88' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='374.33' x2='51.84' y2='374.33' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='321.78' x2='51.84' y2='321.78' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='269.24' x2='51.84' y2='269.24' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='216.69' x2='51.84' y2='216.69' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='164.14' x2='51.84' y2='164.14' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='111.59' x2='51.84' y2='111.59' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='59.04' x2='51.84' y2='59.04' style='stroke-width: 0.75;' />
+<text transform='translate(41.76,426.88) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Nimbus Sans";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text transform='translate(41.76,374.33) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Nimbus Sans";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>5</text>
+<text transform='translate(41.76,321.78) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Nimbus Sans";' textLength='13.34px' lengthAdjust='spacingAndGlyphs'>10</text>
+<text transform='translate(41.76,269.24) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Nimbus Sans";' textLength='13.34px' lengthAdjust='spacingAndGlyphs'>15</text>
+<text transform='translate(41.76,216.69) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Nimbus Sans";' textLength='13.34px' lengthAdjust='spacingAndGlyphs'>20</text>
+<text transform='translate(41.76,164.14) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Nimbus Sans";' textLength='13.34px' lengthAdjust='spacingAndGlyphs'>25</text>
+<text transform='translate(41.76,111.59) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Nimbus Sans";' textLength='13.34px' lengthAdjust='spacingAndGlyphs'>30</text>
+<text transform='translate(41.76,59.04) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Nimbus Sans";' textLength='13.34px' lengthAdjust='spacingAndGlyphs'>35</text>
+</g>
+</g>
+</svg>
