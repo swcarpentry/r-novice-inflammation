@@ -915,7 +915,7 @@ plot(avg_day_inflammation)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="fig/01-starting-with-data-rendered-plot-avg-inflammation-1.svg" alt="Scatter plot of average inflammation versus time demonstrating the result of using the plot function"  />
+<img src="fig/01-starting-with-data-rendered-plot-avg-inflammation-1.svg" alt="Scatter plot of average inflammation per day across all patients over the 40 days of treatment, showing a roughly linear rise and fall."  />
 <p class="caption">Scatter plot of average inflammation versus time demonstrating the result of using the plot function</p>
 </div>
 
@@ -931,7 +931,7 @@ plot(max_day_inflammation)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="fig/01-starting-with-data-rendered-plot-max-inflammation-1.svg" alt="Scatter plot of maximum inflammation versus time demonstrating the result of using the plot function"  />
+<img src="fig/01-starting-with-data-rendered-plot-max-inflammation-1.svg" alt="Scatter plot of maximum inflammation per day over the 40 days of treatment, rising and falling perfectly smoothly."  />
 <p class="caption">Scatter plot of maximum inflammation versus time demonstrating the result of using the plot function</p>
 </div>
 
@@ -942,7 +942,7 @@ plot(min_day_inflammation)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="fig/01-starting-with-data-rendered-plot-min-inflammation-1.svg" alt="Scatter plot of minimum inflammation versus time demonstrating the result of using the plot function"  />
+<img src="fig/01-starting-with-data-rendered-plot-min-inflammation-1.svg" alt="Scatter plot of minimum inflammation per day over the 40 days of treatment, looking like a step function."  />
 <p class="caption">Scatter plot of minimum inflammation versus time demonstrating the result of using the plot function</p>
 </div>
 

@@ -320,13 +320,13 @@ dat <- read.csv("data/inflammation-01.csv", header = FALSE)
 plot_dist(dat[, 10], threshold = 10)     # day (column) 10
 ```
 
-<img src="fig/04-cond-rendered-using-conditions-01-1.svg" alt="" style="display: block; margin: auto;" />
+<img src="fig/04-cond-rendered-using-conditions-01-1.svg" alt="Box plot of inflammation values on day 10 for all patients, drawn because there are more values than the threshold." style="display: block; margin: auto;" />
 
 ``` r
 plot_dist(dat[1:5, 10], threshold = 10)  # samples (rows) 1-5 on day (column) 10
 ```
 
-<img src="fig/04-cond-rendered-using-conditions-01-2.svg" alt="" style="display: block; margin: auto;" />
+<img src="fig/04-cond-rendered-using-conditions-01-2.svg" alt="Strip chart of inflammation values on day 10 for the first five patients, drawn because there are fewer values than the threshold." style="display: block; margin: auto;" />
 
 :::::::::::::::  solution
 
@@ -500,7 +500,7 @@ Now we can use `analyze` interactively, as before,
 analyze("data/inflammation-01.csv")
 ```
 
-<img src="fig/04-cond-rendered-inflammation-01-1.svg" alt="" style="display: block; margin: auto;" /><img src="fig/04-cond-rendered-inflammation-01-2.svg" alt="" style="display: block; margin: auto;" /><img src="fig/04-cond-rendered-inflammation-01-3.svg" alt="" style="display: block; margin: auto;" />
+<img src="fig/04-cond-rendered-inflammation-01-1.svg" alt="Scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" /><img src="fig/04-cond-rendered-inflammation-01-2.svg" alt="A scatterplot of maximum daily inflammation over 40 days, increasing in a straight line until day 20, and then decreasing in a straight line to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" /><img src="fig/04-cond-rendered-inflammation-01-3.svg" alt="A scatterplot of minimum daily inflammation over 40 days, increasing in a step-wise pattern until day 20, and then decreasing in a step-wise pattern to visualize inflammation levels in a single dataset." style="display: block; margin: auto;" />
 
 but also use it to save plots,
 

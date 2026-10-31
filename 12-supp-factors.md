@@ -361,7 +361,7 @@ dat$Gender <- droplevels(dat$Gender)
 plot(x = dat$Gender, y = dat$BloodPressure)
 ```
 
-<img src="fig/12-supp-factors-rendered-dropping-levels-1.svg" alt="" style="display: block; margin: auto;" />
+<img src="fig/12-supp-factors-rendered-dropping-levels-1.svg" alt="Box plot of blood pressure by gender with three gender categories, after the unused level M has been dropped." style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -375,7 +375,7 @@ levels(dat$Gender)[2] <- 'f'
 plot(x = dat$Gender, y = dat$BloodPressure)
 ```
 
-<img src="fig/12-supp-factors-rendered-adjusting-levels-1.svg" alt="" style="display: block; margin: auto;" />
+<img src="fig/12-supp-factors-rendered-adjusting-levels-1.svg" alt="Box plot of blood pressure by gender with two categories, female and male, after the incorrectly coded level is merged with f." style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
