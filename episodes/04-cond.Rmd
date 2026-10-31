@@ -402,7 +402,7 @@ is.null(output)
 
 Now we can use `analyze` interactively, as before,
 
-```{r inflammation-01}
+```{r inflammation-01, fig.alt=c("Scatterplot of average daily inflammation over 40 days, increasing in a mostly straight line until day 20, and then decreasing in a mostly straight line to visualize inflammation levels in a single dataset.", "A scatterplot of maximum daily inflammation over 40 days, increasing in a straight line until day 20, and then decreasing in a straight line to visualize inflammation levels in a single dataset.", "A scatterplot of minimum daily inflammation over 40 days, increasing in a step-wise pattern until day 20, and then decreasing in a step-wise pattern to visualize inflammation levels in a single dataset.")}
 analyze("data/inflammation-01.csv")
 ```
 
