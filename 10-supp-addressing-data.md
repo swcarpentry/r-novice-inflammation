@@ -578,7 +578,7 @@ Often this operation is written as one line of code:
 plot(dat[dat$Group == 'Control', ]$BloodPressure)
 ```
 
-<img src="fig/10-supp-addressing-data-rendered-logical_vectors_indexing2-1.svg" alt="" style="display: block; margin: auto;" />
+<img src="fig/10-supp-addressing-data-rendered-logical_vectors_indexing2-1.svg" alt="Scatter plot of blood pressure for subjects in the control group, plotted against their index." style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -595,7 +595,7 @@ plot(dat[dat$Group == 'Control', ]$BloodPressure)
   plot(dat[dat$Group != 'Control', ]$BloodPressure)
   ```
   
-  <img src="fig/10-supp-addressing-data-rendered-plot-logical-1.svg" alt="" style="display: block; margin: auto;" />
+  <img src="fig/10-supp-addressing-data-rendered-plot-logical-1.svg" alt="Scatter plot of blood pressure for subjects not in the control group, plotted against their index." style="display: block; margin: auto;" />
 2. In addition to
   `dat$Group != 'Control'`, one could use
   `dat$Group %in% c("Treatment1", "Treatment2")`.
