@@ -244,7 +244,7 @@ How many levels does `dat$Gender` have?
 We need to tell R that "M" is no longer a valid value for this column.
 We use the `droplevels()` function to remove extra levels.
 
-```{r dropping-levels, fig.alt="Box plot of blood pressure by gender with three gender categories, after the unused level M has been dropped."}
+```{r dropping-levels, fig.alt="Box plot of blood pressure by gender with three gender levels f, F, and m, after the unused level M has been dropped."}
 dat$Gender <- droplevels(dat$Gender)
 plot(x = dat$Gender, y = dat$BloodPressure)
 ```

@@ -667,7 +667,7 @@ max_day_inflammation <- apply(dat, 2, max)
 plot(max_day_inflammation)
 ```
 
-```{r plot-min-inflammation, fig.cap="Scatter plot of minimum inflammation versus time demonstrating the result of using the plot function", fig.alt="Scatter plot of minimum inflammation per day over the 40 days of treatment, looking like a step function."}
+```{r plot-min-inflammation, fig.cap="Scatter plot of minimum inflammation versus time demonstrating the result of using the plot function", fig.alt="Scatter plot of minimum inflammation per day over the 40 days of treatment, rising in steps from 0 to 5 around day 20, then falling in steps back to 0."}
 min_day_inflammation <- apply(dat, 2, min)
 plot(min_day_inflammation)
 ```
