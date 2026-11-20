@@ -280,7 +280,7 @@ dat[index,]$BloodPressure
 
 Often this operation is written as one line of code:
 
-```{r logical_vectors_indexing2}
+```{r logical_vectors_indexing2, fig.alt="Scatter plot of blood pressure for subjects in the control group, plotted against their index."}
 plot(dat[dat$Group == 'Control', ]$BloodPressure)
 ```
 
@@ -294,7 +294,7 @@ plot(dat[dat$Group == 'Control', ]$BloodPressure)
 :::::::::::::::  solution
 
 1. The code for such a plot:
-  ```{r plot-logical}
+  ```{r plot-logical, fig.alt="Scatter plot of blood pressure for subjects not in the control group, plotted against their index."}
   plot(dat[dat$Group != 'Control', ]$BloodPressure)
   ```
 2. In addition to
