@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg height="246.2mm" width="210.9mm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     font-family="sans-serif" font-size="14">
+  <g id="a">
+    <path d="m54 521 1.8-76.2h29.5v9.9l55.4-.7v4.2" fill="#a80" fill-rule="evenodd" stroke="#000" stroke-width=".7"/>
+    <path d="m56 517 13.2-48.7h22.9l4.2-11.3 59.6.7-15.7 61.7-86 .4z" fill="#fc0" fill-rule="evenodd" stroke="#000" stroke-width=".7"/>
+  </g>
+  <use transform="translate(180 -294)" xlink:href="#a"/>
+  <use transform="translate(180 10)" xlink:href="#a"/>
+  <text x="55" y="538.6"><tspan>tempConvert</tspan></text>
+  <text x="281" y="204.3"><tspan>R</tspan></text>
+  <text x="268" y="509.8"><tspan>man</tspan></text>
+  <text x="245" y="738.8"><tspan>DESCRIPTION</tspan></text>
+  <text x="246" y="868.8"><tspan>NAMESPACE</tspan></text>
+  <text x="384" y="166.1"><tspan>fahrenheit_to_celsius.R</tspan></text>
+  <text x="591" y="166.1"><tspan>fahrenheit_to_kelvin.R</tspan></text>
+  <text x="500" y="291.8"><tspan>celsius_to_kelvin.R</tspan></text>
+  <text x="384" y="470.7"><tspan>fahrenheit_to_celsius.Rd</tspan></text>
+  <text x="585" y="470.7"><tspan>fahrenheit_to_kelvin.Rd</tspan></text>
+  <text x="500" y="604.4"><tspan>celsius_to_kelvin.Rd</tspan></text>
+  <g id="b">
+    <path d="m253 636 h67 v81 h-67z" fill="#fff" stroke="#000"/>
+    <path d="m266 652 39-.7" fill="none" stroke="#000"/>
+    <path d="m266 690 39-.7" fill="none" stroke="#000"/>
+    <path d="m266 677 39-.7" fill="none" stroke="#000"/>
+    <path d="m266 664 39-.7" fill="none" stroke="#000"/>
+    <path d="m266 703 39-.7" fill="none" stroke="#000"/>
+  </g>
+  <g fill="none" stroke="#000" transform="translate(20 26)">
+    <g>
+      <path d="m205.2 101.6s-27 0-29 29.8-15 342.7-27 347.3"/>
+      <path d="m205.2 854s-27 0-29-29.8-15-342.7-27-347.3"/>
+    </g>
+    <g>
+      <path d="m378.3 18s-27.1 0-29.1 10.9-15 125.3-27.1 126.9"/>
+      <path d="m378.3 293.1s-27.1 0-29.1-10.9-15-125.3-27.1-126.9"/>
+    </g>
+    <g>
+      <path d="m378.3 326s-27.1 0-29.1 10.9-15 125.3-27.1 126.9"/>
+      <path d="m378.3 601.1s-27.1 0-29.1-10.9-15-125.3-27.1-126.9"/>
+    </g>
+  </g>
+  <use transform="translate(1.3 128.6)" xlink:href="#b"/>
+  <use transform="translate(282.6 -139.2)" xlink:href="#b"/>
+  <use transform="translate(187.2 -271.8)" xlink:href="#b"/>
+  <use transform="translate(378 -271.8)" xlink:href="#b"/>
+  <use transform="translate(282.6 -448.1)" xlink:href="#b"/>
+  <use transform="translate(181.4 -578.1)" xlink:href="#b"/>
+  <use transform="translate(383.7 -576.7)" xlink:href="#b"/>
+</svg>
